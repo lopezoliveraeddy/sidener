@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Election.
+    -->
+    <changeSet id="20170922021415-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="state_id"
+                                 baseTableName="election"
+                                 constraintName="fk_election_state_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="state"/>
+
+        <addForeignKeyConstraint baseColumnNames="election_type_id"
+                                 baseTableName="election"
+                                 constraintName="fk_election_election_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="election_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="election_period_id"
+                                 baseTableName="election"
+                                 constraintName="fk_election_election_period_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="election_period"/>
+
+        <addForeignKeyConstraint baseColumnNames="elections_id"
+                                 baseTableName="election_political_parties"
+                                 constraintName="fk_election_political_parties_elections_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="election"/>
+        <addForeignKeyConstraint baseColumnNames="political_parties_id"
+                                 baseTableName="election_political_parties"
+                                 constraintName="fk_election_political_parties_political_parties_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="political_party"/>
+        
+        <addForeignKeyConstraint baseColumnNames="elections_id"
+                                 baseTableName="election_independent_candidates"
+                                 constraintName="fk_election_independent_candidates_elections_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="election"/>
+        <addForeignKeyConstraint baseColumnNames="independent_candidates_id"
+                                 baseTableName="election_independent_candidates"
+                                 constraintName="fk_election_independent_candidates_independent_candidates_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="independent_candidate"/>
+        
+        <addForeignKeyConstraint baseColumnNames="elections_id"
+                                 baseTableName="election_coalitions"
+                                 constraintName="fk_election_coalitions_elections_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="election"/>
+        <addForeignKeyConstraint baseColumnNames="coalitions_id"
+                                 baseTableName="election_coalitions"
+                                 constraintName="fk_election_coalitions_coalitions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="coalition"/>
+        
+        <addForeignKeyConstraint baseColumnNames="elections_id"
+                                 baseTableName="election_causals"
+                                 constraintName="fk_election_causals_elections_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="election"/>
+        <addForeignKeyConstraint baseColumnNames="causals_id"
+                                 baseTableName="election_causals"
+                                 constraintName="fk_election_causals_causals_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="causal"/>
+        
+    </changeSet>
+</databaseChangeLog>

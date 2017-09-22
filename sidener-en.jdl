@@ -60,7 +60,7 @@ entity Election {
     /* published Boolean, */
     /* created ZonedDateTime, */
     /* updated ZonedDateTime */
-/* }
+/* } */
 
 /* Entidad Partido Político */
 entity PoliticalParty {
@@ -239,7 +239,7 @@ relationship OneToOne {
 }
 
 // Set pagination options
-paginate Election, Pol, IndependentCandidate, Coalition, ElectionType, State, ElectionPeriod, District, PollingPlace, Vote, Causal with pagination
+paginate Election, PoliticalParty, IndependentCandidate, Coalition, ElectionType, State, ElectionPeriod, District, PollingPlace, Vote, Causal with pagination
 
 dto * with mapstruct
 

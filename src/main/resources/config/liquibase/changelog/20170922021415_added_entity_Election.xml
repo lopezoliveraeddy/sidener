@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Election.
+    -->
+    <changeSet id="20170922021415-1" author="jhipster">
+        <createTable tableName="election">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="location" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="jhi_date" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="prep_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="ballot_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="inset_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="demand_template_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="recount_template_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="recount_districts_rule" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="recount_polling_place_rule" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="published" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="updated" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="state_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="election_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="election_period_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="election" columnName="jhi_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="election" columnName="created" columnDataType="datetime"/>
+        <dropDefaultValue tableName="election" columnName="updated" columnDataType="datetime"/>
+        
+        <createTable tableName="election_political_parties">
+            <column name="political_parties_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="elections_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="elections_id, political_parties_id" tableName="election_political_parties"/>
+        
+        <createTable tableName="election_independent_candidates">
+            <column name="independent_candidates_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="elections_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="elections_id, independent_candidates_id" tableName="election_independent_candidates"/>
+        
+        <createTable tableName="election_coalitions">
+            <column name="coalitions_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="elections_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="elections_id, coalitions_id" tableName="election_coalitions"/>
+        
+        <createTable tableName="election_causals">
+            <column name="causals_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="elections_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="elections_id, causals_id" tableName="election_causals"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

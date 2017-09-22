@@ -1,0 +1,27 @@
+{
+    "sidenerApp": {
+        "independentCandidate" : {
+            "home": {
+                "title": "Candidatos Independientes",
+                "createLabel": "Crear un nuevo Candidato Independiente",
+                "createOrEditLabel": "Crear o editar un Candidato Independiente",
+                "search": "Buscar Candidato Independiente"
+            },
+            "created": "Un nuevo Candidato Independiente ha sido creado con el identificador {{ param }}",
+            "updated": "Un Candidato Independiente ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Candidato Independiente ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar el Candidato Independiente {{ id }}?"
+            },
+            "detail": {
+                "title": "Candidato Independiente"
+            },
+            "name": "Nombre",
+            "acronym": "Iniciales",
+            "image": "Imagen",
+            "published": "Publicado",
+            "created": "Creado",
+            "updated": "Actualizado"
+        }
+    }
+}

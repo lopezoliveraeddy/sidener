@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span data-translate="sidenerApp.politicalParty.detail.title">Political Party</span> {{vm.politicalParty.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="sidenerApp.politicalParty.name">Name</span></dt>
+        <dd>
+            <span>{{vm.politicalParty.name}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.politicalParty.acronym">Acronym</span></dt>
+        <dd>
+            <span>{{vm.politicalParty.acronym}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.politicalParty.image">Image</span></dt>
+        <dd>
+            <span>{{vm.politicalParty.image}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.politicalParty.published">Published</span></dt>
+        <dd>
+            <span>{{vm.politicalParty.published}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.politicalParty.created">Created</span></dt>
+        <dd>
+            <span>{{vm.politicalParty.created | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.politicalParty.updated">Updated</span></dt>
+        <dd>
+            <span>{{vm.politicalParty.updated | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="political-party-detail.edit({id:vm.politicalParty.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

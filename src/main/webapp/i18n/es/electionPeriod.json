@@ -1,0 +1,27 @@
+{
+    "sidenerApp": {
+        "electionPeriod" : {
+            "home": {
+                "title": "Periodos de Elección",
+                "createLabel": "Crear nuevo Periodo de Elección",
+                "createOrEditLabel": "Crear o editar Periodo de Elección",
+                "search": "Buscar Periodo de Elección"
+            },
+            "created": "Un nuevo Periodo de Elección ha sido creado con el identificador {{ param }}",
+            "updated": "Un Periodo de Elección ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Periodo de Elección ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar el Periodo de Elección {{ id }}?"
+            },
+            "detail": {
+                "title": "Periodo de Elección"
+            },
+            "name": "Periodo",
+            "start": "Inicio",
+            "end": "Fin",
+            "published": "Publicado",
+            "created": "Creado",
+            "updated": "Actualizado"
+        }
+    }
+}

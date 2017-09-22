@@ -1,0 +1,28 @@
+{
+    "sidenerApp": {
+        "coalition" : {
+            "home": {
+                "title": "Coaliciones",
+                "createLabel": "Crear una nueva Coalición",
+                "createOrEditLabel": "Crear o editar una Coalición",
+                "search": "Buscar Coalición"
+            },
+            "created": "Una nueva Coalición ha sido creada con el identificador {{ param }}",
+            "updated": "Una Coalición ha sido actualizada con el identificador {{ param }}",
+            "deleted": "Una Coalición ha sido eliminada con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar la Coalición {{ id }}?"
+            },
+            "detail": {
+                "title": "Coalición"
+            },
+            "name": "Nombre",
+            "acronym": "Iniciales",
+            "image": "Imagen",
+            "published": "Publicado",
+            "created": "Creado",
+            "updated": "Actualizado",
+            "politicalParties": "Partidos Políticos"
+        }
+    }
+}

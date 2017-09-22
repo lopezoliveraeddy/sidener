@@ -1,0 +1,113 @@
+<div>
+    <h2 data-translate="sidenerApp.election.home.title">Elections</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="election.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down"  data-translate="sidenerApp.election.home.createLabel">
+                        Create new Election
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'sidenerApp.election.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="location"><span data-translate="sidenerApp.election.location">Location</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="date"><span data-translate="sidenerApp.election.date">Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span data-translate="sidenerApp.election.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="prepUrl"><span data-translate="sidenerApp.election.prepUrl">Prep Url</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ballotUrl"><span data-translate="sidenerApp.election.ballotUrl">Ballot Url</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="insetUrl"><span data-translate="sidenerApp.election.insetUrl">Inset Url</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="demandTemplateUrl"><span data-translate="sidenerApp.election.demandTemplateUrl">Demand Template Url</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="recountTemplateUrl"><span data-translate="sidenerApp.election.recountTemplateUrl">Recount Template Url</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="recountDistrictsRule"><span data-translate="sidenerApp.election.recountDistrictsRule">Recount Districts Rule</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="recountPollingPlaceRule"><span data-translate="sidenerApp.election.recountPollingPlaceRule">Recount Polling Place Rule</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="published"><span data-translate="sidenerApp.election.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="created"><span data-translate="sidenerApp.election.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updated"><span data-translate="sidenerApp.election.updated">Updated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="stateName"><span data-translate="sidenerApp.election.state">State</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="electionTypeName"><span data-translate="sidenerApp.election.electionType">Election Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="electionPeriodName"><span data-translate="sidenerApp.election.electionPeriod">Election Period</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="election in vm.elections track by election.id">
+                    <td><a ui-sref="election-detail({id:election.id})">{{election.id}}</a></td>
+                    <td>{{election.location}}</td>
+                    <td>{{election.date | date:'medium'}}</td>
+                    <td data-translate="{{'sidenerApp.Status.' + election.status}}">{{election.status}}</td>
+                    <td>{{election.prepUrl}}</td>
+                    <td>{{election.ballotUrl}}</td>
+                    <td>{{election.insetUrl}}</td>
+                    <td>{{election.demandTemplateUrl}}</td>
+                    <td>{{election.recountTemplateUrl}}</td>
+                    <td data-translate="{{'sidenerApp.RecountDistrictsRule.' + election.recountDistrictsRule}}">{{election.recountDistrictsRule}}</td>
+                    <td data-translate="{{'sidenerApp.RecountPollingPlaceRule.' + election.recountPollingPlaceRule}}">{{election.recountPollingPlaceRule}}</td>
+                    <td>{{election.published}}</td>
+                    <td>{{election.created | date:'medium'}}</td>
+                    <td>{{election.updated | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="state-detail({id:election.stateId})">{{election.stateName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="election-type-detail({id:election.electionTypeId})">{{election.electionTypeName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="election-period-detail({id:election.electionPeriodId})">{{election.electionPeriodName}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="election-detail({id:election.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="election.edit({id:election.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="election.delete({id:election.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

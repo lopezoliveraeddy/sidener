@@ -1,0 +1,28 @@
+{
+    "sidenerApp": {
+        "causal": {
+            "home": {
+                "title": "Causales",
+                "createLabel": "Crear nuevo Causal",
+                "createOrEditLabel": "Crear o editar Causal",
+                "search": "Buscar Causal"
+            },
+            "created": "Un nuevo Causal ha sido creado con el identificador {{ param }}",
+            "updated": "Un Causal ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Causal ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar el Causal {{ id }}?"
+            },
+            "detail": {
+                "title": "Causal"
+            },
+            "name": "Nombre",
+            "type": "Tipo",
+            "description": "Descripción",
+            "color": "Color",
+            "published": "Publicado",
+            "created": "Creado",
+            "updated": "Actualizado"
+        }
+    }
+}

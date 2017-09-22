@@ -1,0 +1,9 @@
+{
+    "sidenerApp": {
+        "RecountDistrictsRule" : {
+            "null": "",
+            "LESS_1": "Menor al 1%",
+            "LESS_EQUAL_1": "Menor o igual al 1%"
+        }
+    }
+}

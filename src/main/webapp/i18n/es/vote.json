@@ -1,0 +1,29 @@
+{
+    "sidenerApp": {
+        "vote" : {
+            "home": {
+                "title": "Votos",
+                "createLabel": "Crear nuevo Voto",
+                "createOrEditLabel": "Crear o editar Voto",
+                "search": "Buscar Voto"
+            },
+            "created": "Un nuevo Voto ha sido creado con el identificador {{ param }}",
+            "updated": "Un Voto ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Voto ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar el Voto {{ id }}?"
+            },
+            "detail": {
+                "title": "Voto"
+            },
+            "total": "Total",
+			"published": "Publicado",
+            "created": "Creado",
+            "updated": "Actualizado",
+            "politicalParty": "Partido Político",
+            "independentCandidate": "Candidato Independiente",
+            "coalition": "Coalición",
+            "pollingPlace": "Casilla"
+        }
+    }
+}

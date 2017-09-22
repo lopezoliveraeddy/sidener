@@ -1,0 +1,81 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myDistrictLabel" data-translate="sidenerApp.district.home.createOrEditLabel">Create or edit a District</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.district.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.district.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.district.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.district.name"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.district.number" for="field_number">Number</label>
+            <input type="text" class="form-control" name="number" id="field_number"
+                    ng-model="vm.district.number"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.district.distritoIdentificador" for="field_distritoIdentificador">Distrito Identificador</label>
+            <input type="text" class="form-control" name="distritoIdentificador" id="field_distritoIdentificador"
+                    ng-model="vm.district.distritoIdentificador"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.district.seccion" for="field_seccion">Seccion</label>
+            <input type="text" class="form-control" name="seccion" id="field_seccion"
+                    ng-model="vm.district.seccion"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.district.published" for="field_published">Published</label>
+                <input type="checkbox" name="published" id="field_published"
+                          ng-model="vm.district.published"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.district.created" for="field_created">Created</label>
+                <div class="input-group">
+                    <input id="field_created" type="text" class="form-control" name="created" datetime-picker="{{dateformat}}" ng-model="vm.district.created" is-open="vm.datePickerOpenStatus.created"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('created')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.district.updated" for="field_updated">Updated</label>
+                <div class="input-group">
+                    <input id="field_updated" type="text" class="form-control" name="updated" datetime-picker="{{dateformat}}" ng-model="vm.district.updated" is-open="vm.datePickerOpenStatus.updated"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('updated')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="sidenerApp.district.election" for="field_election">Election</label>
+            <select class="form-control" id="field_election" name="election" ng-model="vm.district.electionId" ng-options="election.id as election.id for election in vm.elections"            >
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

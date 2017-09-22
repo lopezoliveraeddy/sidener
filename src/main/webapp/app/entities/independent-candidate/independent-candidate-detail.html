@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span data-translate="sidenerApp.independentCandidate.detail.title">Independent Candidate</span> {{vm.independentCandidate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="sidenerApp.independentCandidate.name">Name</span></dt>
+        <dd>
+            <span>{{vm.independentCandidate.name}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.independentCandidate.acronym">Acronym</span></dt>
+        <dd>
+            <span>{{vm.independentCandidate.acronym}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.independentCandidate.image">Image</span></dt>
+        <dd>
+            <span>{{vm.independentCandidate.image}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.independentCandidate.published">Published</span></dt>
+        <dd>
+            <span>{{vm.independentCandidate.published}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.independentCandidate.created">Created</span></dt>
+        <dd>
+            <span>{{vm.independentCandidate.created | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.independentCandidate.updated">Updated</span></dt>
+        <dd>
+            <span>{{vm.independentCandidate.updated | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="independent-candidate-detail.edit({id:vm.independentCandidate.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

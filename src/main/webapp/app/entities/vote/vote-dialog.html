@@ -1,0 +1,81 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myVoteLabel" data-translate="sidenerApp.vote.home.createOrEditLabel">Create or edit a Vote</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.vote.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.vote.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.vote.total" for="field_total">Total</label>
+            <input type="number" class="form-control" name="total" id="field_total"
+                    ng-model="vm.vote.total"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.vote.published" for="field_published">Published</label>
+                <input type="checkbox" name="published" id="field_published"
+                          ng-model="vm.vote.published"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.vote.created" for="field_created">Created</label>
+                <div class="input-group">
+                    <input id="field_created" type="text" class="form-control" name="created" datetime-picker="{{dateformat}}" ng-model="vm.vote.created" is-open="vm.datePickerOpenStatus.created"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('created')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.vote.updated" for="field_updated">Updated</label>
+                <div class="input-group">
+                    <input id="field_updated" type="text" class="form-control" name="updated" datetime-picker="{{dateformat}}" ng-model="vm.vote.updated" is-open="vm.datePickerOpenStatus.updated"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('updated')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="sidenerApp.vote.politicalParty" for="field_politicalParty">Political Party</label>
+            <select class="form-control" id="field_politicalParty" name="politicalParty" ng-model="vm.vote.politicalPartyId" ng-options="politicalParty.id as politicalParty.name for politicalParty in vm.politicalparties | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="sidenerApp.vote.independentCandidate" for="field_independentCandidate">Independent Candidate</label>
+            <select class="form-control" id="field_independentCandidate" name="independentCandidate" ng-model="vm.vote.independentCandidateId" ng-options="independentCandidate.id as independentCandidate.name for independentCandidate in vm.independentcandidates | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="sidenerApp.vote.coalition" for="field_coalition">Coalition</label>
+            <select class="form-control" id="field_coalition" name="coalition" ng-model="vm.vote.coalitionId" ng-options="coalition.id as coalition.name for coalition in vm.coalitions | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="sidenerApp.vote.pollingPlace" for="field_pollingPlace">Polling Place</label>
+            <select class="form-control" id="field_pollingPlace" name="pollingPlace" ng-model="vm.vote.pollingPlaceId" ng-options="pollingPlace.id as pollingPlace.name for pollingPlace in vm.pollingplaces | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

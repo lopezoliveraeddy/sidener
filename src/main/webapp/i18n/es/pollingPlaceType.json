@@ -1,0 +1,11 @@
+{
+    "sidenerApp": {
+        "PollingPlaceType" : {
+            "null": "",
+            "BASIC": "Básica",
+            "CONTIGUOUS": "Contigua",
+            "EXTRAORDINARY": "Extraordinaria",
+            "SPECIAL": "Especial"
+        }
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "javadoc": "OK",
+            "relationshipName": "election",
+            "otherEntityName": "election",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "number",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "distritoIdentificador",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "seccion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "published",
+            "javadoc": "Datos Sistema",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "created",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "updated",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170922021422",
+    "javadoc": "Entidad Distritos",
+    "entityTableName": "district",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

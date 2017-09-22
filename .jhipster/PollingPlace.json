@@ -1,0 +1,87 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "javadoc": "OK",
+            "relationshipName": "district",
+            "otherEntityName": "district",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "PollingPlaceType",
+            "fieldValues": "BASIC,CONTIGUOUS,EXTRAORDINARY,SPECIAL"
+        },
+        {
+            "fieldName": "adress",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "leftoverBallots",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "votingCitizens",
+            "javadoc": "Total de Boletas Sobrantes",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "exctractedBallots",
+            "javadoc": "Total de Ciudadanos Votantes",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "notRegistered",
+            "javadoc": "Total de Boletas Extraídas",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nullVotes",
+            "javadoc": "Total de Votos a Candidatos NO Registrados",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "totalVotes",
+            "javadoc": "Total de Votos Nulos",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "electoralRoll",
+            "javadoc": "Total de Votos",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "observations",
+            "javadoc": "Ciudadanos en la Lista Nominal",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "published",
+            "javadoc": "Datos Sistema",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "created",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "updated",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170922021423",
+    "javadoc": "Entidad Casillas",
+    "entityTableName": "polling_place",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

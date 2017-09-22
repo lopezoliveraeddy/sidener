@@ -5,6 +5,22 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021415_added_entity_Election.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021416_added_entity_PoliticalParty.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021417_added_entity_IndependentCandidate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021418_added_entity_Coalition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021419_added_entity_ElectionType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021420_added_entity_State.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021421_added_entity_ElectionPeriod.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021422_added_entity_District.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021423_added_entity_PollingPlace.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021424_added_entity_Vote.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021425_added_entity_Causal.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20170922021415_added_entity_constraints_Election.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021418_added_entity_constraints_Coalition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021422_added_entity_constraints_District.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021423_added_entity_constraints_PollingPlace.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021424_added_entity_constraints_Vote.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

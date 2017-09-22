@@ -1,12 +1,23 @@
 {
     "global": {
-        "title": "Sidener",
+        "title": "SIDENER",
         "browsehappy": "Está usando un navegador <strong>no actualizado</strong>. Por favor, <a href=\"http://browsehappy.com/?locale=en\">actualice su navegador</a> para mejorar su experiencia.",
         "menu": {
             "home": "Inicio",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entidades",
+                "election": "Elección",
+                "politicalParty": "Partido Político",
+                "independentCandidate": "Candidato Independiente",
+                "coalition": "Coalición",
+                "electionType": "Tipo de Elección",
+                "state": "Estado",
+                "electionPeriod": "Periodo de Elección",
+                "district": "Distrito",
+                "pollingPlace": "Casilla",
+                "vote": "Voto",
+                "causal": "Causal",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

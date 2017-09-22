@@ -1,0 +1,124 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPollingPlaceLabel" data-translate="sidenerApp.pollingPlace.home.createOrEditLabel">Create or edit a Polling Place</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.pollingPlace.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.pollingPlace.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.pollingPlace.name"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.type" for="field_type">Type</label>
+            <select class="form-control" name="type" ng-model="vm.pollingPlace.type" id="field_type">
+                <option value="BASIC" data-translate="sidenerApp.PollingPlaceType.BASIC">BASIC</option>
+                <option value="CONTIGUOUS" data-translate="sidenerApp.PollingPlaceType.CONTIGUOUS">CONTIGUOUS</option>
+                <option value="EXTRAORDINARY" data-translate="sidenerApp.PollingPlaceType.EXTRAORDINARY">EXTRAORDINARY</option>
+                <option value="SPECIAL" data-translate="sidenerApp.PollingPlaceType.SPECIAL">SPECIAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.adress" for="field_adress">Adress</label>
+                <textarea class="form-control" name="adress" id="field_adress"
+                    ng-model="vm.pollingPlace.adress" ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.leftoverBallots" for="field_leftoverBallots">Leftover Ballots</label>
+            <input type="number" class="form-control" name="leftoverBallots" id="field_leftoverBallots"
+                    ng-model="vm.pollingPlace.leftoverBallots"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.votingCitizens" for="field_votingCitizens">Voting Citizens</label>
+            <input type="number" class="form-control" name="votingCitizens" id="field_votingCitizens"
+                    ng-model="vm.pollingPlace.votingCitizens"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.exctractedBallots" for="field_exctractedBallots">Exctracted Ballots</label>
+            <input type="number" class="form-control" name="exctractedBallots" id="field_exctractedBallots"
+                    ng-model="vm.pollingPlace.exctractedBallots"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.notRegistered" for="field_notRegistered">Not Registered</label>
+            <input type="number" class="form-control" name="notRegistered" id="field_notRegistered"
+                    ng-model="vm.pollingPlace.notRegistered"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.nullVotes" for="field_nullVotes">Null Votes</label>
+            <input type="number" class="form-control" name="nullVotes" id="field_nullVotes"
+                    ng-model="vm.pollingPlace.nullVotes"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.totalVotes" for="field_totalVotes">Total Votes</label>
+            <input type="number" class="form-control" name="totalVotes" id="field_totalVotes"
+                    ng-model="vm.pollingPlace.totalVotes"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.electoralRoll" for="field_electoralRoll">Electoral Roll</label>
+            <input type="number" class="form-control" name="electoralRoll" id="field_electoralRoll"
+                    ng-model="vm.pollingPlace.electoralRoll"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.observations" for="field_observations">Observations</label>
+                <textarea class="form-control" name="observations" id="field_observations"
+                    ng-model="vm.pollingPlace.observations" ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.published" for="field_published">Published</label>
+                <input type="checkbox" name="published" id="field_published"
+                          ng-model="vm.pollingPlace.published"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.created" for="field_created">Created</label>
+                <div class="input-group">
+                    <input id="field_created" type="text" class="form-control" name="created" datetime-picker="{{dateformat}}" ng-model="vm.pollingPlace.created" is-open="vm.datePickerOpenStatus.created"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('created')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.updated" for="field_updated">Updated</label>
+                <div class="input-group">
+                    <input id="field_updated" type="text" class="form-control" name="updated" datetime-picker="{{dateformat}}" ng-model="vm.pollingPlace.updated" is-open="vm.datePickerOpenStatus.updated"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('updated')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="sidenerApp.pollingPlace.district" for="field_district">District</label>
+            <select class="form-control" id="field_district" name="district" ng-model="vm.pollingPlace.districtId" ng-options="district.id as district.id for district in vm.districts"            >
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

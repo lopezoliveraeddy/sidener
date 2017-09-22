@@ -1,0 +1,127 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "javadoc": "OK",
+            "relationshipName": "state",
+            "otherEntityName": "state",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "javadoc": "OK",
+            "relationshipName": "electionType",
+            "otherEntityName": "electionType",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "javadoc": "OK",
+            "relationshipName": "electionPeriod",
+            "otherEntityName": "electionPeriod",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "javadoc": "OK",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "politicalParties",
+            "otherEntityName": "politicalParty",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "javadoc": "OK",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "independentCandidates",
+            "otherEntityName": "independentCandidate",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "javadoc": "OK",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "coalitions",
+            "otherEntityName": "coalition",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "javadoc": "OK",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "causals",
+            "otherEntityName": "causal",
+            "otherEntityField": "name",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "location",
+            "javadoc": "Campos Informativos de la Elección",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "NEW,IN_PROGRESS,COMPLETE"
+        },
+        {
+            "fieldName": "prepUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ballotUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "insetUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "demandTemplateUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "recountTemplateUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "recountDistrictsRule",
+            "fieldType": "RecountDistrictsRule",
+            "fieldValues": "LESS_1,LESS_EQUAL_1"
+        },
+        {
+            "fieldName": "recountPollingPlaceRule",
+            "fieldType": "RecountPollingPlaceRule",
+            "fieldValues": "LESS_1,LESS_EQUAL_1"
+        },
+        {
+            "fieldName": "published",
+            "javadoc": "Datos Sistema",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "created",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "updated",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170922021415",
+    "javadoc": "Entidad propia de una elección, la cual almacena datos informativos de la elección",
+    "entityTableName": "election",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

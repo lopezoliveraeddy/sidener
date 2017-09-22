@@ -1,0 +1,41 @@
+{
+    "sidenerApp": {
+        "election" : {
+            "home": {
+                "title": "Elecciones",
+                "createLabel": "Crear nueva Elección",
+                "createOrEditLabel": "Crear o editar Election",
+                "search": "Buscar Elección"
+            },
+            "created": "Una nueva Elección ha sido creado con el identificador {{ param }}",
+            "updated": "Una Elección ha sido actualizada con el identificador {{ param }}",
+            "deleted": "Una Elección ha sido eliminada con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar la Elección {{ id }}?"
+            },
+            "detail": {
+                "title": "Elección"
+            },
+            "location": "Localidad",
+            "date": "Fecha",
+            "status": "Estatus",
+            "prepUrl": "URL PREP",
+            "ballotUrl": "URL Boleta",
+            "insetUrl": "URL Encarte",
+            "demandTemplateUrl": "Plantilla de Demanda",
+            "recountTemplateUrl": "Plantilla de Recuento",
+            "recountDistrictsRule": "Regla para recuento de Distritos",
+            "recountPollingPlaceRule": "Regla para recuento de Casillas",
+            "published": "Publicada",
+            "created": "Creada",
+            "updated": "Actualizada",
+            "state": "Estado",
+            "electionType": "TIpo de Elección",
+            "electionPeriod": "Periodo de Elección",
+            "politicalParties": "Partidos Políticos",
+            "independentCandidates": "Candidatos Independientes",
+            "coalitions": "Coaliciones",
+            "causals": "Causales"
+        }
+    }
+}

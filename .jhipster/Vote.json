@@ -1,0 +1,62 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "politicalParty",
+            "otherEntityName": "politicalParty",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "vote"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "independentCandidate",
+            "otherEntityName": "independentCandidate",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "vote"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "coalition",
+            "otherEntityName": "coalition",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "vote"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "pollingPlace",
+            "otherEntityName": "pollingPlace",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "vote"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "total",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "published",
+            "javadoc": "Datos Sistema",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "created",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "updated",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170922021424",
+    "javadoc": "Entidad Votos",
+    "entityTableName": "vote",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

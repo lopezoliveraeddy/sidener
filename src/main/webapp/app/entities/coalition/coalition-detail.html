@@ -1,0 +1,49 @@
+
+<div>
+    <h2><span data-translate="sidenerApp.coalition.detail.title">Coalition</span> {{vm.coalition.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="sidenerApp.coalition.name">Name</span></dt>
+        <dd>
+            <span>{{vm.coalition.name}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.coalition.acronym">Acronym</span></dt>
+        <dd>
+            <span>{{vm.coalition.acronym}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.coalition.image">Image</span></dt>
+        <dd>
+            <span>{{vm.coalition.image}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.coalition.published">Published</span></dt>
+        <dd>
+            <span>{{vm.coalition.published}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.coalition.created">Created</span></dt>
+        <dd>
+            <span>{{vm.coalition.created | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.coalition.updated">Updated</span></dt>
+        <dd>
+            <span>{{vm.coalition.updated | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.coalition.politicalParties">Political Parties</span></dt>
+        <dd>
+            <span ng-repeat="politicalParties in vm.coalition.politicalParties">
+                <a ui-sref="political-party-detail({id: politicalParties.id})">{{politicalParties.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="coalition-detail.edit({id:vm.coalition.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,25 @@
+{
+    "sidenerApp": {
+        "electionType" : {
+            "home": {
+                "title": "Tipos de Elección",
+                "createLabel": "Crear nuevo Tipo de Elección",
+                "createOrEditLabel": "Crear o editar Tipo de Elección",
+                "search": "Buscar Tipo de Elección"
+            },
+            "created": "Un nuevo Tipo de Elección ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipo de Elección ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipo de Elección ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar el Tipo de Elección {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipo de Elección"
+            },
+            "name": "Nombre",
+            "published": "Publicado",
+            "created": "Creado",
+            "updated": "Actualizado"
+        }
+    }
+}

@@ -1,0 +1,107 @@
+
+<div>
+    <h2><span data-translate="sidenerApp.election.detail.title">Election</span> {{vm.election.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="sidenerApp.election.location">Location</span></dt>
+        <dd>
+            <span>{{vm.election.location}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.date">Date</span></dt>
+        <dd>
+            <span>{{vm.election.date | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.status">Status</span></dt>
+        <dd>
+            <span data-translate="{{'sidenerApp.Status.' + vm.election.status}}">{{vm.election.status}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.prepUrl">Prep Url</span></dt>
+        <dd>
+            <span>{{vm.election.prepUrl}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.ballotUrl">Ballot Url</span></dt>
+        <dd>
+            <span>{{vm.election.ballotUrl}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.insetUrl">Inset Url</span></dt>
+        <dd>
+            <span>{{vm.election.insetUrl}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.demandTemplateUrl">Demand Template Url</span></dt>
+        <dd>
+            <span>{{vm.election.demandTemplateUrl}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.recountTemplateUrl">Recount Template Url</span></dt>
+        <dd>
+            <span>{{vm.election.recountTemplateUrl}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.recountDistrictsRule">Recount Districts Rule</span></dt>
+        <dd>
+            <span data-translate="{{'sidenerApp.RecountDistrictsRule.' + vm.election.recountDistrictsRule}}">{{vm.election.recountDistrictsRule}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.recountPollingPlaceRule">Recount Polling Place Rule</span></dt>
+        <dd>
+            <span data-translate="{{'sidenerApp.RecountPollingPlaceRule.' + vm.election.recountPollingPlaceRule}}">{{vm.election.recountPollingPlaceRule}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.published">Published</span></dt>
+        <dd>
+            <span>{{vm.election.published}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.created">Created</span></dt>
+        <dd>
+            <span>{{vm.election.created | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.updated">Updated</span></dt>
+        <dd>
+            <span>{{vm.election.updated | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.state">State</span></dt>
+        <dd>
+            <a ui-sref="state-detail({id:vm.election.stateId})">{{vm.election.stateName}}</a>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.electionType">Election Type</span></dt>
+        <dd>
+            <a ui-sref="election-type-detail({id:vm.election.electionTypeId})">{{vm.election.electionTypeName}}</a>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.electionPeriod">Election Period</span></dt>
+        <dd>
+            <a ui-sref="election-period-detail({id:vm.election.electionPeriodId})">{{vm.election.electionPeriodName}}</a>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.politicalParties">Political Parties</span></dt>
+        <dd>
+            <span ng-repeat="politicalParties in vm.election.politicalParties">
+                <a ui-sref="political-party-detail({id: politicalParties.id})">{{politicalParties.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.independentCandidates">Independent Candidates</span></dt>
+        <dd>
+            <span ng-repeat="independentCandidates in vm.election.independentCandidates">
+                <a ui-sref="independent-candidate-detail({id: independentCandidates.id})">{{independentCandidates.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.coalitions">Coalitions</span></dt>
+        <dd>
+            <span ng-repeat="coalitions in vm.election.coalitions">
+                <a ui-sref="coalition-detail({id: coalitions.id})">{{coalitions.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.causals">Causals</span></dt>
+        <dd>
+            <span ng-repeat="causals in vm.election.causals">
+                <a ui-sref="causal-detail({id: causals.id})">{{causals.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="election-detail.edit({id:vm.election.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

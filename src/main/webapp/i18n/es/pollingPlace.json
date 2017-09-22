@@ -1,0 +1,36 @@
+{
+    "sidenerApp": {
+        "pollingPlace" : {
+            "home": {
+                "title": "Casillas",
+                "createLabel": "Crear nuevo Casilla",
+                "createOrEditLabel": "Crear o editar Casilla",
+                "search": "Buscar Casilla"
+            },
+            "created": "Una nueva Casilla ha sido creada con el identificador {{ param }}",
+            "updated": "Una Casilla ha sido actualizada con el identificador {{ param }}",
+            "deleted": "Una Casilla ha sido eliminada con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar la Casilla {{ id }}?"
+            },
+            "detail": {
+                "title": "Casilla"
+            },
+            "name": "Nombre",
+            "type": "Tipo",
+            "adress": "Dirección",
+            "leftoverBallots": "Total de Boletas Sobrantes",
+            "votingCitizens": "Total de Ciudadanos que Votaron",
+            "exctractedBallots": "Total de Boletas Extraídas",
+            "notRegistered": "Total de Votos a Candidatos no Registrados",
+            "nullVotes": "Total de Votos Nulos",
+            "totalVotes": "Total de Votos",
+            "electoralRoll": "Total de Ciudadanos en la Lista Nominal",
+            "observations": "Observaciones",
+			"published": "Publicado",
+            "created": "Creado",
+            "updated": "Actualizado",
+            "district": "Distrito"
+        }
+    }
+}

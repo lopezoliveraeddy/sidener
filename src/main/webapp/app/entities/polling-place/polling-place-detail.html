@@ -1,0 +1,79 @@
+
+<div>
+    <h2><span data-translate="sidenerApp.pollingPlace.detail.title">Polling Place</span> {{vm.pollingPlace.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="sidenerApp.pollingPlace.name">Name</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.name}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.type">Type</span></dt>
+        <dd>
+            <span data-translate="{{'sidenerApp.PollingPlaceType.' + vm.pollingPlace.type}}">{{vm.pollingPlace.type}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.adress">Adress</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.adress}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.leftoverBallots">Leftover Ballots</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.leftoverBallots}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.votingCitizens">Voting Citizens</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.votingCitizens}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.exctractedBallots">Exctracted Ballots</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.exctractedBallots}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.notRegistered">Not Registered</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.notRegistered}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.nullVotes">Null Votes</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.nullVotes}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.totalVotes">Total Votes</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.totalVotes}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.electoralRoll">Electoral Roll</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.electoralRoll}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.observations">Observations</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.observations}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.published">Published</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.published}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.created">Created</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.created | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.updated">Updated</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.updated | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.district">District</span></dt>
+        <dd>
+            <a ui-sref="district-detail({id:vm.pollingPlace.districtId})">{{vm.pollingPlace.districtId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="polling-place-detail.edit({id:vm.pollingPlace.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,29 @@
+{
+    "sidenerApp": {
+        "district" : {
+            "home": {
+                "title": "Distritos",
+                "createLabel": "Crear nuevo Distrito",
+                "createOrEditLabel": "Crear o editar Distrito",
+                "search": "Buscar Distrito"
+            },
+            "created": "Un nuevo Distrito ha sido creado con el identificador {{ param }}",
+            "updated": "Un Distrito ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Distrito ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar el Distrito {{ id }}?"
+            },
+            "detail": {
+                "title": "Distrito"
+            },
+            "name": "Nombre",
+            "number": "Número",
+            "distritoIdentificador": "Identificador de Distrito",
+            "seccion": "Sección",
+            "published": "Publicado",
+            "created": "Creado",
+            "updated": "Actualizado",
+            "election": "Elección"
+        }
+    }
+}

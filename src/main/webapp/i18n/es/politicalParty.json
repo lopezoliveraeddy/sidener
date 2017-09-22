@@ -1,0 +1,27 @@
+{
+    "sidenerApp": {
+        "politicalParty" : {
+            "home": {
+                "title": "Partidos Políticos",
+                "createLabel": "Crear nuevo Partido Político",
+                "createOrEditLabel": "Crear o editar Partido Político",
+                "search": "Buscar Partido Político"
+            },
+            "created": "Un nuevo Partido Político ha sido creado con el identificador {{ param }}",
+            "updated": "Un Partido Político ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Partido Político ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar el Partido Político {{ id }}?"
+            },
+            "detail": {
+                "title": "Partido Político"
+            },
+            "name": "Nombre",
+            "acronym": "Iniciales",
+            "image": "Imagen",
+            "published": "Publicado",
+            "created": "Creado",
+            "updated": "Actualizado"
+        }
+    }
+}
