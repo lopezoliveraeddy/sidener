@@ -1,0 +1,247 @@
+/* Entidad propia de una elección, la cual almacena datos informativos de la elección */
+entity Election {
+    /* Campos Informativos de la Elección */
+    location String,
+    date ZonedDateTime,
+    status Status,
+    prepUrl String,
+    ballotUrl String,
+    insetUrl String,
+    demandTemplateUrl String,
+    recountTemplateUrl String,
+    recountDistrictsRule RecountDistrictsRule,
+    recountPollingPlaceRule RecountPollingPlaceRule,
+    /* Datos Sistema */
+    published Boolean,
+    created ZonedDateTime,
+    updated ZonedDateTime
+}
+
+/* Entidad Demandante */
+/* entity Demand { */
+	/* name String, */
+    /* Datos Sistema */
+    /* published Boolean, */
+    /* created ZonedDateTime, */
+    /* updated ZonedDateTime */
+/* } */
+
+/* Entidad Recuento */
+/* entity Recount { */
+	/* electoralInstitute String, */
+    /* type String, */
+    /* fundamentoSolicitud TextBlob, */
+    /* Datos Sistema */
+    /* published Boolean, */
+    /* created ZonedDateTime, */
+    /* updated ZonedDateTime */
+/* } */
+
+/* Entidad Nulidad */
+/* entity Nulidad { */
+	/* representado String, */
+    /* tribunalElectoral String, */
+    /* direccionNotificaciones String, */
+    /* personasAutorizadas String, */
+    /* fundamentoPromocion TextBlob, */
+    /* tipoJuicio String, */
+    /* computoControvertido String, */
+    /* fechaInicioProcesoElectoral ZonedDateTime, */
+    /* cargosRenovar String, */
+    /* fechaJornadaElectoral ZonedDateTime, */
+    /* fechaInicioComputo ZonedDateTime, */
+    /* tipoComputo String, */
+    /* fechaConcluyoComputo ZonedDateTime, */
+    /* fundamentoNulidad String, */
+    /* documentalesPublicas TextBlob, */
+    /* documentalesPrivadas TextBlob, */
+    /* otras TextBlob, */
+    /* Datos Sistema */
+    /* published Boolean, */
+    /* created ZonedDateTime, */
+    /* updated ZonedDateTime */
+/* }
+
+/* Entidad Partido Político */
+entity PoliticalParty {
+	name String,
+    acronym String,
+    image String,
+    /* Datos Sistema */
+    published Boolean,
+    created ZonedDateTime,
+    updated ZonedDateTime
+}
+
+/* Entidad Candidato Independiente */
+entity IndependentCandidate {
+	name String,
+	acronym String,
+    image String,
+    /* Datos Sistema */
+    published Boolean,
+    created ZonedDateTime,
+    updated ZonedDateTime
+}
+
+/* Entidad Coalición */
+entity Coalition {
+	name String,
+	acronym String,
+	image String
+    /* Datos Sistema */
+    published Boolean,
+    created ZonedDateTime,
+    updated ZonedDateTime
+}
+
+/* Entidad Tipo de Elección (Gobernador, Diputado) */
+entity ElectionType {
+	name String,
+	/* Datos Sistema */
+    published Boolean,
+    created ZonedDateTime,
+    updated ZonedDateTime
+}
+
+/* Entidad Lugar de la votación (Estados de la República) */
+entity State {
+    name String,
+    /* Datos Sistema */
+    published Boolean,
+    created ZonedDateTime,
+    updated ZonedDateTime
+}
+
+/* Entidad Periodos de Eleccion */
+entity ElectionPeriod {
+	name String,
+    start ZonedDateTime,
+    end ZonedDateTime,
+    /* Datos Sistema */
+    published Boolean,
+    created ZonedDateTime,
+    updated ZonedDateTime
+}
+
+/* Entidad Distritos */
+entity District {
+	name String,
+	number String,
+    distritoIdentificador String,
+    seccion String,
+    /* Datos Sistema */
+    published Boolean,
+    created ZonedDateTime,
+    updated ZonedDateTime
+}
+
+/* Entidad Casillas */
+entity PollingPlace {
+	name String,
+    type PollingPlaceType,
+    adress TextBlob,
+    leftoverBallots Long, /* Total de Boletas Sobrantes */
+    votingCitizens Long, /* Total de Ciudadanos Votantes */
+    exctractedBallots Long, /* Total de Boletas Extraídas */
+    notRegistered Long, /* Total de Votos a Candidatos NO Registrados */
+    nullVotes Long, /* Total de Votos Nulos */
+    totalVotes Long, /* Total de Votos */
+  	electoralRoll Long, /* Ciudadanos en la Lista Nominal */
+    observations TextBlob,
+    /* Datos Sistema */
+    published Boolean,
+    created ZonedDateTime,
+    updated ZonedDateTime
+
+}
+
+/* Entidad Votos */
+entity Vote {
+    total Long,
+    /* Datos Sistema */
+    published Boolean,
+    created ZonedDateTime,
+    updated ZonedDateTime
+}
+
+/* Entidad Causales */
+entity Causal {
+	name String,
+	type CausalType,
+    description TextBlob,
+    color String,
+    /* Datos Sistema */
+    published Boolean,
+    created ZonedDateTime,
+    updated ZonedDateTime
+
+}
+
+enum Status {
+	NEW, IN_PROGRESS, COMPLETE
+}
+
+enum RecountDistrictsRule {
+	LESS_1, LESS_EQUAL_1
+}
+
+enum RecountPollingPlaceRule {
+	LESS_1, LESS_EQUAL_1
+}
+
+enum PollingPlaceType {
+	BASIC, CONTIGUOUS, EXTRAORDINARY, SPECIAL
+}
+
+enum CausalType {
+	RECOUNT, NULLITY
+}
+
+relationship ManyToMany {
+	/* OK */
+	Election{politicalParties(name)} to PoliticalParty,
+    /* OK */
+  	Election{independentCandidates(name)} to IndependentCandidate,
+    /* OK */
+	Election{coalitions(name)} to Coalition,
+    /* OK */
+	Election{causals(name)} to Causal,
+	/* OK */
+	Coalition{politicalParties(name)} to PoliticalParty
+}
+
+relationship ManyToOne {
+	/* OK */
+	Election{state(name)} to State,
+    /* OK */
+    Election{electionType(name)} to ElectionType,
+    /* OK */
+    Election{electionPeriod(name)} to ElectionPeriod,
+	/* OK */
+	District{election} to Election,
+	/* OK */
+	PollingPlace{district} to District
+
+}
+
+/* relationship OneToMany { */
+	/* Demandante{demandante} to Election, */
+    /* Recuento{recuento} to Election, */
+	/* Nulidad{nulidad} to Election */
+/* } */
+
+relationship OneToOne {
+    Vote{politicalParty(name)} to PoliticalParty,
+    Vote{independentCandidate(name)} to IndependentCandidate,
+	Vote{coalition(name)} to Coalition,
+	Vote{pollingPlace(name)} to PollingPlace
+}
+
+// Set pagination options
+paginate Election, Pol, IndependentCandidate, Coalition, ElectionType, State, ElectionPeriod, District, PollingPlace, Vote, Causal with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
