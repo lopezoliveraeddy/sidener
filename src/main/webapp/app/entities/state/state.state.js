@@ -17,7 +17,7 @@
                 pageTitle: 'sidenerApp.state.home.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/state/states.html',
                     controller: 'StateController',
                     controllerAs: 'vm'
@@ -59,7 +59,7 @@
                 pageTitle: 'sidenerApp.state.detail.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/state/state-detail.html',
                     controller: 'StateDetailController',
                     controllerAs: 'vm'

@@ -17,7 +17,7 @@
                 pageTitle: 'sidenerApp.electionPeriod.home.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/election-period/election-periods.html',
                     controller: 'ElectionPeriodController',
                     controllerAs: 'vm'
@@ -59,7 +59,7 @@
                 pageTitle: 'sidenerApp.electionPeriod.detail.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/election-period/election-period-detail.html',
                     controller: 'ElectionPeriodDetailController',
                     controllerAs: 'vm'

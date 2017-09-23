@@ -1,0 +1,84 @@
+<div class="body-bg"></div>
+<main ng-if="$pageFinishedLoading" ng-class="{ 'menu-collapsed': $baSidebarService.isMenuCollapsed() }">
+
+    <aside class="al-sidebar">
+        <div class="slimScrollDiv">
+            <ul class="al-sidebar-list" ng-switch="vm.isAuthenticated()">
+                <li ng-repeat="menu in vm.menu" class="al-sidebar-list-item"
+                    ng-class="{'ba-sidebar-item-expanded': menu.isOpen}"
+                    ng-show="menu.isVisible">
+                    <a ng-click="menu.isOpen = !menu.isOpen; menu.action();"
+                        class="al-sidebar-list-link" ui-sref-active="selected" href="">
+                        <i ng-class="menu.icon"></i> <span>{{menu.name}}</span>
+                        <b class="fa fa-angle-down" ui-sref-active="fa-angle-up" ng-if="menu.hasChild"></b>
+                    </a>
+                    <ul class="al-sidebar-sublist" ng-class="{'slide-right': item.slideRight}" ng-if="menu.hasChild">
+                      <li ng-repeat="child in menu.childrens" ui-sref-active="selected"
+                          class="ba-sidebar-sublist-item" ng-show="child.isVisible">
+                        <a ng-click="child.action();">
+                            <span ng-class="child.icon"></span>&nbsp;
+                            <span>{{child.name}}</span>
+                        </a>
+                      </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="slimScrollBar"></div>
+            <div class="slimScrollRail"></div>
+        </div>
+        <div class="sidebar-hover-elem show-hover-elem" ng-style="{top: hoverElemTop + 'px', height: hoverElemHeight + 'px'}" ng-class="{'show-hover-elem': showHoverElem }" style="height: 42px;"></div>
+    </aside>
+
+    <div class="page-top clearfix" scroll-position="scrolled" max-height="50" ng-class="{'scrolled': scrolled}">
+      <a href="/" class="al-logo clearfix"><span>SIDENER</span> <small>v{{VERSION}}</small></a>
+      <a href class="collapse-menu-link ion-navicon" ba-sidebar-toggle-menu></a>
+      <!--
+      <div class="search">
+        <i class="ion-ios-search-strong" ng-click="startSearch()"></i>
+        <input id="searchInput" type="text" placeholder="Search for...">
+      </div>
+      -->
+      <!--
+      <div class="user-profile clearfix">
+        <div class="al-user-profile" uib-dropdown>
+          <a uib-dropdown-toggle class="profile-toggle-link">
+            <img src="content/images/profile.png">
+          </a>
+          <ul  class="top-dropdown-menu profile-dropdown" uib-dropdown-menu>
+            <li><i class="dropdown-arr"></i></li>
+            <li><a href=""><i class="fa fa-user"></i>Profile</a></li>
+            <li><a href="#/settigns"><i class="fa fa-cog"></i><span data-translate="global.menu.account.settings">Settings</span></a></li>
+            <li><a href class="signout" ng-click="vm.logout()"><i class="fa fa-power-off"></i> <span data-translate="global.menu.account.logout">Sign out</span></a></li>
+          </ul>
+        </div>
+      -->
+        <msg-center></msg-center>
+      </div>
+    </div>
+
+    <div class="al-main">
+        <div class="al-content">
+            <content-top></content-top>
+            <div ui-view="content" autoscroll="true" autoscroll-body-top></div>
+        </div>
+    </div>
+
+    <footer class="al-footer clearfix">
+        <div class="al-footer-right"> <i class="ion-heart"></i></div>
+        <div class="al-footer-main clearfix">
+            <div class="al-copy">Electorum 2017</div>
+            <ul class="al-share clearfix">
+                <!-- <li><i class="socicon socicon-facebook"></i></li>
+                <li><i class="socicon socicon-twitter"></i></li>
+                <li><i class="socicon socicon-google"></i></li>
+                <li><i class="socicon socicon-github"></i></li> -->
+            </ul>
+        </div>
+    </footer>
+
+    <back-top></back-top>
+</main>
+
+<div id="preloader" ng-show="!$pageFinishedLoading">
+    <div></div>
+</div>

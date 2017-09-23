@@ -17,7 +17,7 @@
                 pageTitle: 'sidenerApp.vote.home.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/vote/votes.html',
                     controller: 'VoteController',
                     controllerAs: 'vm'
@@ -59,7 +59,7 @@
                 pageTitle: 'sidenerApp.vote.detail.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/vote/vote-detail.html',
                     controller: 'VoteDetailController',
                     controllerAs: 'vm'

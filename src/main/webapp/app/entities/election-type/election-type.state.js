@@ -17,7 +17,7 @@
                 pageTitle: 'sidenerApp.electionType.home.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/election-type/election-types.html',
                     controller: 'ElectionTypeController',
                     controllerAs: 'vm'
@@ -59,7 +59,7 @@
                 pageTitle: 'sidenerApp.electionType.detail.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/election-type/election-type-detail.html',
                     controller: 'ElectionTypeDetailController',
                     controllerAs: 'vm'

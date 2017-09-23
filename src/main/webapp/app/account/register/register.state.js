@@ -16,7 +16,7 @@
                 pageTitle: 'register.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/account/register/register.html',
                     controller: 'RegisterController',
                     controllerAs: 'vm'

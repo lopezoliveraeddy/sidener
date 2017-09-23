@@ -16,7 +16,7 @@
                 pageTitle: 'health.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/admin/health/health.html',
                     controller: 'JhiHealthCheckController',
                     controllerAs: 'vm'

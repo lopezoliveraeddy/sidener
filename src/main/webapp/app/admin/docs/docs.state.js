@@ -16,7 +16,7 @@
                 pageTitle: 'global.menu.admin.apidocs'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/admin/docs/docs.html'
                 }
             },

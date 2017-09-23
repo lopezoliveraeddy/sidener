@@ -17,7 +17,7 @@
                 pageTitle: 'sidenerApp.district.home.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/district/districts.html',
                     controller: 'DistrictController',
                     controllerAs: 'vm'
@@ -59,7 +59,7 @@
                 pageTitle: 'sidenerApp.district.detail.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/district/district-detail.html',
                     controller: 'DistrictDetailController',
                     controllerAs: 'vm'

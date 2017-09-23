@@ -17,7 +17,7 @@
                 pageTitle: 'sidenerApp.election.home.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/election/elections.html',
                     controller: 'ElectionController',
                     controllerAs: 'vm'

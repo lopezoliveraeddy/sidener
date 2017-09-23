@@ -17,7 +17,7 @@
                 pageTitle: 'sidenerApp.coalition.home.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/coalition/coalitions.html',
                     controller: 'CoalitionController',
                     controllerAs: 'vm'
@@ -59,7 +59,7 @@
                 pageTitle: 'sidenerApp.coalition.detail.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/coalition/coalition-detail.html',
                     controller: 'CoalitionDetailController',
                     controllerAs: 'vm'

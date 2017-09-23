@@ -16,7 +16,7 @@
                 pageTitle: 'metrics.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/admin/metrics/metrics.html',
                     controller: 'JhiMetricsMonitoringController',
                     controllerAs: 'vm'

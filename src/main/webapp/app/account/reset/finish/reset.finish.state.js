@@ -15,7 +15,7 @@
                 authorities: []
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/account/reset/finish/reset.finish.html',
                     controller: 'ResetFinishController',
                     controllerAs: 'vm'

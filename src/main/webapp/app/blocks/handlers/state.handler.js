@@ -21,6 +21,7 @@
                 $rootScope.toState = toState;
                 $rootScope.toStateParams = toStateParams;
                 $rootScope.fromState = fromState;
+				$rootScope.$pageFinishedLoading = false;
 
                 // Redirect to a state with an external URL (http://stackoverflow.com/a/30221248/1098564)
                 if (toState.external) {
@@ -40,6 +41,7 @@
 
             var stateChangeSuccess = $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
                 var titleKey = 'global.title' ;
+				$rootScope.$pageFinishedLoading = true;
 
                 // Set the page title key to the one configured in state or use default one
                 if (toState.data.pageTitle) {

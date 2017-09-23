@@ -16,7 +16,7 @@
                 pageTitle: 'global.menu.account.settings'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/account/settings/settings.html',
                     controller: 'SettingsController',
                     controllerAs: 'vm'

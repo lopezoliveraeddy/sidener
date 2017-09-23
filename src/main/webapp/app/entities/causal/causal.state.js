@@ -17,7 +17,7 @@
                 pageTitle: 'sidenerApp.causal.home.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/causal/causals.html',
                     controller: 'CausalController',
                     controllerAs: 'vm'
@@ -60,7 +60,7 @@
                 pageTitle: 'sidenerApp.causal.detail.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/causal/causal-detail.html',
                     controller: 'CausalDetailController',
                     controllerAs: 'vm'

@@ -17,7 +17,7 @@
                 pageTitle: 'userManagement.home.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/admin/user-management/user-management.html',
                     controller: 'UserManagementController',
                     controllerAs: 'vm'
@@ -108,7 +108,7 @@
                 pageTitle: 'user-management.detail.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/admin/user-management/user-management-detail.html',
                     controller: 'UserManagementDetailController',
                     controllerAs: 'vm'

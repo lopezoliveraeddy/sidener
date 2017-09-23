@@ -17,7 +17,7 @@
                 pageTitle: 'sidenerApp.independentCandidate.home.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/independent-candidate/independent-candidates.html',
                     controller: 'IndependentCandidateController',
                     controllerAs: 'vm'
@@ -59,7 +59,7 @@
                 pageTitle: 'sidenerApp.independentCandidate.detail.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/independent-candidate/independent-candidate-detail.html',
                     controller: 'IndependentCandidateDetailController',
                     controllerAs: 'vm'

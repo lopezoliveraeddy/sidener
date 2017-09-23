@@ -11,7 +11,7 @@
         $stateProvider.state('app', {
             abstract: true,
             views: {
-                'navbar@': {
+                'navbar@public': {
                     templateUrl: 'app/layouts/navbar/navbar.html',
                     controller: 'NavbarController',
                     controllerAs: 'vm'

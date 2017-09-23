@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('account', {
             abstract: true,
-            parent: 'app'
+            parent: 'private'
         });
     }
 })();

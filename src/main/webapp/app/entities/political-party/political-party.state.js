@@ -17,7 +17,7 @@
                 pageTitle: 'sidenerApp.politicalParty.home.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/political-party/political-parties.html',
                     controller: 'PoliticalPartyController',
                     controllerAs: 'vm'
@@ -59,7 +59,7 @@
                 pageTitle: 'sidenerApp.politicalParty.detail.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/political-party/political-party-detail.html',
                     controller: 'PoliticalPartyDetailController',
                     controllerAs: 'vm'

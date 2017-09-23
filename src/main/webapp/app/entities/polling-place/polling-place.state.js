@@ -17,7 +17,7 @@
                 pageTitle: 'sidenerApp.pollingPlace.home.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/polling-place/polling-places.html',
                     controller: 'PollingPlaceController',
                     controllerAs: 'vm'
@@ -60,7 +60,7 @@
                 pageTitle: 'sidenerApp.pollingPlace.detail.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/polling-place/polling-place-detail.html',
                     controller: 'PollingPlaceDetailController',
                     controllerAs: 'vm'
