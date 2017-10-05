@@ -16,6 +16,14 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
 
+        ini();
+
+        function ini() {
+            if(vm.state.id == null) {
+                vm.state.published = true;
+            }
+        }
+
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
@@ -27,8 +35,11 @@
         function save () {
             vm.isSaving = true;
             if (vm.state.id !== null) {
+                vm.state.updated = new Date();
                 State.update(vm.state, onSaveSuccess, onSaveError);
             } else {
+                vm.state.created = new Date();
+                vm.state.updated = new Date();
                 State.save(vm.state, onSaveSuccess, onSaveError);
             }
         }

@@ -16,6 +16,14 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
 
+        ini();
+
+        function ini() {
+            if(vm.electionType.id == null) {
+                vm.electionType.published = true;
+            }
+        }
+
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
@@ -27,8 +35,11 @@
         function save () {
             vm.isSaving = true;
             if (vm.electionType.id !== null) {
+                vm.electionType.updated = new Date();
                 ElectionType.update(vm.electionType, onSaveSuccess, onSaveError);
             } else {
+                vm.electionType.created = new Date();
+                vm.electionType.updated = new Date();
                 ElectionType.save(vm.electionType, onSaveSuccess, onSaveError);
             }
         }

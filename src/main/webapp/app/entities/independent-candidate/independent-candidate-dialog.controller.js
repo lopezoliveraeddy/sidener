@@ -16,6 +16,14 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
 
+        ini();
+
+        function ini() {
+            if(vm.independentCandidate.id == null) {
+                vm.independentCandidate.published = true;
+            }
+        }
+
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
@@ -27,8 +35,11 @@
         function save () {
             vm.isSaving = true;
             if (vm.independentCandidate.id !== null) {
+                vm.independentCandidate.updated = new Date();
                 IndependentCandidate.update(vm.independentCandidate, onSaveSuccess, onSaveError);
             } else {
+                vm.independentCandidate.created = new Date();
+                vm.independentCandidate.updated = new Date();
                 IndependentCandidate.save(vm.independentCandidate, onSaveSuccess, onSaveError);
             }
         }

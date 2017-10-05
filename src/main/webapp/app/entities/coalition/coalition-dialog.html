@@ -36,6 +36,7 @@
                 <input type="checkbox" name="published" id="field_published"
                           ng-model="vm.coalition.published"/>
         </div>
+        <!--
         <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.coalition.created" for="field_created">Created</label>
                 <div class="input-group">
@@ -56,7 +57,7 @@
                     </span>
                 </div>
         </div>
-
+        -->
         <div class="form-group">
             <label data-translate="sidenerApp.coalition.politicalParties" for="field_politicalParties">Political Parties</label>
             <select class="form-control" id="field_politicalParties" multiple name="politicalParties" ng-model="vm.coalition.politicalParties" ng-options="politicalParty as politicalParty.name for politicalParty in vm.politicalparties track by politicalParty.id"></select>

@@ -47,7 +47,14 @@
                 <tr ng-repeat="state in vm.states track by state.id">
                     <td><a ui-sref="state-detail({id:state.id})">{{state.id}}</a></td>
                     <td>{{state.name}}</td>
-                    <td>{{state.published}}</td>
+                    <td>
+                        <span ng-if="state.published==true">
+                            <i class="fa fa-check fa-2x"></i>
+                        </span>
+                        <span ng-if="state.published!=true">
+                            <i class="fa fa-times fa-2x"></i>
+                        </span>
+                    </td>
                     <td>{{state.created | date:'medium'}}</td>
                     <td>{{state.updated | date:'medium'}}</td>
                     <td class="text-right">

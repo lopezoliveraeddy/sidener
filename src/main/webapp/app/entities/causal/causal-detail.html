@@ -22,7 +22,12 @@
         </dd>
         <dt><span data-translate="sidenerApp.causal.published">Published</span></dt>
         <dd>
-            <span>{{vm.causal.published}}</span>
+            <span ng-if="vm.causal.published==true">
+                <i class="fa fa-check fa-2x"></i>
+            </span>
+            <span ng-if="vm.causal.published!=true">
+                <i class="fa fa-times fa-2x"></i>
+            </span>
         </dd>
         <dt><span data-translate="sidenerApp.causal.created">Created</span></dt>
         <dd>

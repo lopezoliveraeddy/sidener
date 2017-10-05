@@ -51,7 +51,14 @@
                     <td>{{independentCandidate.name}}</td>
                     <td>{{independentCandidate.acronym}}</td>
                     <td>{{independentCandidate.image}}</td>
-                    <td>{{independentCandidate.published}}</td>
+                    <td>
+                        <span ng-if="independentCandidate.published==true">
+                            <i class="fa fa-check fa-2x"></i>
+                        </span>
+                        <span ng-if="independentCandidate.published!=true">
+                            <i class="fa fa-times fa-2x"></i>
+                        </span>
+                    </td>
                     <td>{{independentCandidate.created | date:'medium'}}</td>
                     <td>{{independentCandidate.updated | date:'medium'}}</td>
                     <td class="text-right">

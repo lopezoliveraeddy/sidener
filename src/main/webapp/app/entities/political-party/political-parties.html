@@ -51,7 +51,14 @@
                     <td>{{politicalParty.name}}</td>
                     <td>{{politicalParty.acronym}}</td>
                     <td>{{politicalParty.image}}</td>
-                    <td>{{politicalParty.published}}</td>
+                    <td>
+                        <span ng-if="politicalParty.published==true">
+                            <i class="fa fa-check fa-2x"></i>
+                        </span>
+                        <span ng-if="politicalParty.published!=true">
+                            <i class="fa fa-times fa-2x"></i>
+                        </span>
+                    </td>
                     <td>{{politicalParty.created | date:'medium'}}</td>
                     <td>{{politicalParty.updated | date:'medium'}}</td>
                     <td class="text-right">

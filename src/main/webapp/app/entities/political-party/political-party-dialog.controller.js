@@ -16,6 +16,14 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
 
+        ini();
+
+        function ini() {
+            if(vm.politicalParty.id == null) {
+                vm.politicalParty.published = true;
+            }
+        }
+
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
@@ -27,8 +35,11 @@
         function save () {
             vm.isSaving = true;
             if (vm.politicalParty.id !== null) {
+                vm.politicalParty.updated = new Date();
                 PoliticalParty.update(vm.politicalParty, onSaveSuccess, onSaveError);
             } else {
+                vm.politicalParty.created = new Date();
+                vm.politicalParty.updated = new Date();
                 PoliticalParty.save(vm.politicalParty, onSaveSuccess, onSaveError);
             }
         }

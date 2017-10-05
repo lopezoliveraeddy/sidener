@@ -51,7 +51,14 @@
                     <td>{{electionPeriod.name}}</td>
                     <td>{{electionPeriod.start | date:'medium'}}</td>
                     <td>{{electionPeriod.end | date:'medium'}}</td>
-                    <td>{{electionPeriod.published}}</td>
+                    <td>
+                        <span ng-if="electionPeriod.published==true">
+                            <i class="fa fa-check fa-2x"></i>
+                        </span>
+                        <span ng-if="electionPeriod.published!=true">
+                            <i class="fa fa-times fa-2x"></i>
+                        </span>
+                    </td>
                     <td>{{electionPeriod.created | date:'medium'}}</td>
                     <td>{{electionPeriod.updated | date:'medium'}}</td>
                     <td class="text-right">

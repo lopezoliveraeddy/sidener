@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('ElectionPeriodDialogController', ElectionPeriodDialogController);
 
-    ElectionPeriodDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'ElectionPeriod'];
+    ElectionPeriodDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$filter', 'entity', 'ElectionPeriod'];
 
-    function ElectionPeriodDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, ElectionPeriod) {
+    function ElectionPeriodDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $filter, entity, ElectionPeriod) {
         var vm = this;
 
         vm.electionPeriod = entity;
@@ -15,6 +15,14 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
+
+        ini();
+
+        function ini() {
+            if(vm.electionPeriod.id == null) {
+                vm.electionPeriod.published = true;
+            }
+        }
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -26,9 +34,14 @@
 
         function save () {
             vm.isSaving = true;
+            vm.electionPeriod.name = $filter('date')(vm.electionPeriod.start, 'yyyy') + "-" + $filter('date')(vm.electionPeriod.end, 'yyyy');
+
             if (vm.electionPeriod.id !== null) {
+                vm.electionPeriod.updated = new Date();
                 ElectionPeriod.update(vm.electionPeriod, onSaveSuccess, onSaveError);
             } else {
+                vm.electionPeriod.created = new Date();
+                vm.electionPeriod.updated = new Date();
                 ElectionPeriod.save(vm.electionPeriod, onSaveSuccess, onSaveError);
             }
         }

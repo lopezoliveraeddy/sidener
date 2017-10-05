@@ -51,7 +51,14 @@
                     <td>{{coalition.name}}</td>
                     <td>{{coalition.acronym}}</td>
                     <td>{{coalition.image}}</td>
-                    <td>{{coalition.published}}</td>
+                    <td>
+                        <span ng-if="coalition.published==true">
+                            <i class="fa fa-check fa-2x"></i>
+                        </span>
+                        <span ng-if="coalition.published!=true">
+                            <i class="fa fa-times fa-2x"></i>
+                        </span>
+                    </td>
                     <td>{{coalition.created | date:'medium'}}</td>
                     <td>{{coalition.updated | date:'medium'}}</td>
                     <td class="text-right">

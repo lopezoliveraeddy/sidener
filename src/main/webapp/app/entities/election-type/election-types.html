@@ -47,7 +47,14 @@
                 <tr ng-repeat="electionType in vm.electionTypes track by electionType.id">
                     <td><a ui-sref="election-type-detail({id:electionType.id})">{{electionType.id}}</a></td>
                     <td>{{electionType.name}}</td>
-                    <td>{{electionType.published}}</td>
+                    <td>
+                        <span ng-if="electionType.published==true">
+                            <i class="fa fa-check fa-2x"></i>
+                        </span>
+                        <span ng-if="electionType.published!=true">
+                            <i class="fa fa-times fa-2x"></i>
+                        </span>
+                    </td>
                     <td>{{electionType.created | date:'medium'}}</td>
                     <td>{{electionType.updated | date:'medium'}}</td>
                     <td class="text-right">

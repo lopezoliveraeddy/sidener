@@ -17,6 +17,14 @@
         vm.save = save;
         vm.politicalparties = PoliticalParty.query();
 
+        ini();
+
+        function ini() {
+            if(vm.coalition.id == null) {
+                vm.coalition.published = true;
+            }
+        }
+
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
@@ -28,8 +36,11 @@
         function save () {
             vm.isSaving = true;
             if (vm.coalition.id !== null) {
+                vm.coalition.updated = new Date();
                 Coalition.update(vm.coalition, onSaveSuccess, onSaveError);
             } else {
+                vm.coalition.created = new Date();
+                vm.coalition.updated = new Date();
                 Coalition.save(vm.coalition, onSaveSuccess, onSaveError);
             }
         }

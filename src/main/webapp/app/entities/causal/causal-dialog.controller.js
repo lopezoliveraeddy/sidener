@@ -18,6 +18,14 @@
         vm.openFile = DataUtils.openFile;
         vm.save = save;
 
+        ini();
+
+        function ini() {
+            if(vm.causal.id == null) {
+                vm.causal.published = true;
+            }
+        }
+
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
@@ -29,8 +37,11 @@
         function save () {
             vm.isSaving = true;
             if (vm.causal.id !== null) {
+                vm.causal.updated = new Date();
                 Causal.update(vm.causal, onSaveSuccess, onSaveError);
             } else {
+                vm.causal.created = new Date();
+                vm.causal.updated = new Date();
                 Causal.save(vm.causal, onSaveSuccess, onSaveError);
             }
         }

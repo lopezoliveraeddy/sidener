@@ -18,7 +18,12 @@
         </dd>
         <dt><span data-translate="sidenerApp.independentCandidate.published">Published</span></dt>
         <dd>
-            <span>{{vm.independentCandidate.published}}</span>
+            <span ng-if="vm.independentCandidate.published==true">
+                <i class="fa fa-check fa-2x"></i>
+            </span>
+            <span ng-if="vm.independentCandidate.published!=true">
+                <i class="fa fa-times fa-2x"></i>
+            </span>
         </dd>
         <dt><span data-translate="sidenerApp.independentCandidate.created">Created</span></dt>
         <dd>
