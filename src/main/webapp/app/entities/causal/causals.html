@@ -52,7 +52,7 @@
                     <td>{{causal.name}}</td>
                     <td data-translate="{{'sidenerApp.CausalType.' + causal.type}}">{{causal.type}}</td>
                     <td>{{causal.description}}</td>
-                    <td>{{causal.color}}</td>
+                    <td ng-style="{ 'background-color': causal.color }"></td>
                     <td>
                         <span ng-if="causal.published==true">
                             <i class="fa fa-check fa-2x"></i>

@@ -50,6 +50,7 @@ module.exports = function (config) {
             'src/main/webapp/bower_components/angular-ui-select/dist/select.js',
             'src/main/webapp/bower_components/ng-flow/dist/ng-flow.js',
             'src/main/webapp/bower_components/angular-chart.js/dist/angular-chart.js',
+            'src/main/webapp/bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js',
             'src/main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'src/main/webapp/app/app.module.js',
