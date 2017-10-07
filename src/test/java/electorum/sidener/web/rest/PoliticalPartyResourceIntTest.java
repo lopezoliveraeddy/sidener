@@ -58,11 +58,11 @@ public class PoliticalPartyResourceIntTest {
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
 
-    private static final ZonedDateTime DEFAULT_CREATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_CREATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_UPDATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_UPDATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_UPDATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     @Autowired
     private PoliticalPartyRepository politicalPartyRepository;
@@ -114,8 +114,8 @@ public class PoliticalPartyResourceIntTest {
             .acronym(DEFAULT_ACRONYM)
             .image(DEFAULT_IMAGE)
             .published(DEFAULT_PUBLISHED)
-            .created(DEFAULT_CREATED)
-            .updated(DEFAULT_UPDATED);
+            .createdDate(DEFAULT_CREATED_DATE)
+            .updatedDate(DEFAULT_UPDATED_DATE);
         return politicalParty;
     }
 
@@ -145,8 +145,8 @@ public class PoliticalPartyResourceIntTest {
         assertThat(testPoliticalParty.getAcronym()).isEqualTo(DEFAULT_ACRONYM);
         assertThat(testPoliticalParty.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testPoliticalParty.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
-        assertThat(testPoliticalParty.getCreated()).isEqualTo(DEFAULT_CREATED);
-        assertThat(testPoliticalParty.getUpdated()).isEqualTo(DEFAULT_UPDATED);
+        assertThat(testPoliticalParty.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testPoliticalParty.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
 
         // Validate the PoliticalParty in Elasticsearch
         PoliticalParty politicalPartyEs = politicalPartySearchRepository.findOne(testPoliticalParty.getId());
@@ -188,8 +188,8 @@ public class PoliticalPartyResourceIntTest {
             .andExpect(jsonPath("$.[*].acronym").value(hasItem(DEFAULT_ACRONYM.toString())))
             .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test
@@ -207,8 +207,8 @@ public class PoliticalPartyResourceIntTest {
             .andExpect(jsonPath("$.acronym").value(DEFAULT_ACRONYM.toString()))
             .andExpect(jsonPath("$.image").value(DEFAULT_IMAGE.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
-            .andExpect(jsonPath("$.created").value(sameInstant(DEFAULT_CREATED)))
-            .andExpect(jsonPath("$.updated").value(sameInstant(DEFAULT_UPDATED)));
+            .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
+            .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
     }
 
     @Test
@@ -234,8 +234,8 @@ public class PoliticalPartyResourceIntTest {
             .acronym(UPDATED_ACRONYM)
             .image(UPDATED_IMAGE)
             .published(UPDATED_PUBLISHED)
-            .created(UPDATED_CREATED)
-            .updated(UPDATED_UPDATED);
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
         PoliticalPartyDTO politicalPartyDTO = politicalPartyMapper.toDto(updatedPoliticalParty);
 
         restPoliticalPartyMockMvc.perform(put("/api/political-parties")
@@ -251,8 +251,8 @@ public class PoliticalPartyResourceIntTest {
         assertThat(testPoliticalParty.getAcronym()).isEqualTo(UPDATED_ACRONYM);
         assertThat(testPoliticalParty.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testPoliticalParty.isPublished()).isEqualTo(UPDATED_PUBLISHED);
-        assertThat(testPoliticalParty.getCreated()).isEqualTo(UPDATED_CREATED);
-        assertThat(testPoliticalParty.getUpdated()).isEqualTo(UPDATED_UPDATED);
+        assertThat(testPoliticalParty.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testPoliticalParty.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
 
         // Validate the PoliticalParty in Elasticsearch
         PoliticalParty politicalPartyEs = politicalPartySearchRepository.findOne(testPoliticalParty.getId());
@@ -316,8 +316,8 @@ public class PoliticalPartyResourceIntTest {
             .andExpect(jsonPath("$.[*].acronym").value(hasItem(DEFAULT_ACRONYM.toString())))
             .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test

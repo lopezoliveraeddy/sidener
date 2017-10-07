@@ -56,9 +56,9 @@ public class PollingPlaceDTO implements Serializable {
 
     private Boolean published;
 
-    private ZonedDateTime created;
+    private ZonedDateTime createdDate;
 
-    private ZonedDateTime updated;
+    private ZonedDateTime updatedDate;
 
     private Long electionId;
 
@@ -224,20 +224,20 @@ public class PollingPlaceDTO implements Serializable {
         this.published = published;
     }
 
-    public ZonedDateTime getCreated() {
-        return created;
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreated(ZonedDateTime created) {
-        this.created = created;
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getUpdated() {
-        return updated;
+    public ZonedDateTime getUpdatedDate() {
+        return updatedDate;
     }
 
-    public void setUpdated(ZonedDateTime updated) {
-        this.updated = updated;
+    public void setUpdatedDate(ZonedDateTime updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public Long getElectionId() {
@@ -300,8 +300,8 @@ public class PollingPlaceDTO implements Serializable {
             ", alternateTwo='" + getAlternateTwo() + "'" +
             ", alternateThree='" + getAlternateThree() + "'" +
             ", published='" + isPublished() + "'" +
-            ", created='" + getCreated() + "'" +
-            ", updated='" + getUpdated() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 }

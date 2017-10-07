@@ -63,11 +63,11 @@ public class CausalResourceIntTest {
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
 
-    private static final ZonedDateTime DEFAULT_CREATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_CREATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_UPDATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_UPDATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_UPDATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     @Autowired
     private CausalRepository causalRepository;
@@ -120,8 +120,8 @@ public class CausalResourceIntTest {
             .description(DEFAULT_DESCRIPTION)
             .color(DEFAULT_COLOR)
             .published(DEFAULT_PUBLISHED)
-            .created(DEFAULT_CREATED)
-            .updated(DEFAULT_UPDATED);
+            .createdDate(DEFAULT_CREATED_DATE)
+            .updatedDate(DEFAULT_UPDATED_DATE);
         return causal;
     }
 
@@ -152,8 +152,8 @@ public class CausalResourceIntTest {
         assertThat(testCausal.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testCausal.getColor()).isEqualTo(DEFAULT_COLOR);
         assertThat(testCausal.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
-        assertThat(testCausal.getCreated()).isEqualTo(DEFAULT_CREATED);
-        assertThat(testCausal.getUpdated()).isEqualTo(DEFAULT_UPDATED);
+        assertThat(testCausal.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testCausal.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
 
         // Validate the Causal in Elasticsearch
         Causal causalEs = causalSearchRepository.findOne(testCausal.getId());
@@ -196,8 +196,8 @@ public class CausalResourceIntTest {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].color").value(hasItem(DEFAULT_COLOR.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test
@@ -216,8 +216,8 @@ public class CausalResourceIntTest {
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.color").value(DEFAULT_COLOR.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
-            .andExpect(jsonPath("$.created").value(sameInstant(DEFAULT_CREATED)))
-            .andExpect(jsonPath("$.updated").value(sameInstant(DEFAULT_UPDATED)));
+            .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
+            .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
     }
 
     @Test
@@ -244,8 +244,8 @@ public class CausalResourceIntTest {
             .description(UPDATED_DESCRIPTION)
             .color(UPDATED_COLOR)
             .published(UPDATED_PUBLISHED)
-            .created(UPDATED_CREATED)
-            .updated(UPDATED_UPDATED);
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
         CausalDTO causalDTO = causalMapper.toDto(updatedCausal);
 
         restCausalMockMvc.perform(put("/api/causals")
@@ -262,8 +262,8 @@ public class CausalResourceIntTest {
         assertThat(testCausal.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testCausal.getColor()).isEqualTo(UPDATED_COLOR);
         assertThat(testCausal.isPublished()).isEqualTo(UPDATED_PUBLISHED);
-        assertThat(testCausal.getCreated()).isEqualTo(UPDATED_CREATED);
-        assertThat(testCausal.getUpdated()).isEqualTo(UPDATED_UPDATED);
+        assertThat(testCausal.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testCausal.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
 
         // Validate the Causal in Elasticsearch
         Causal causalEs = causalSearchRepository.findOne(testCausal.getId());
@@ -328,8 +328,8 @@ public class CausalResourceIntTest {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].color").value(hasItem(DEFAULT_COLOR.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test

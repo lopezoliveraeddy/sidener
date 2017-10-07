@@ -21,8 +21,8 @@
             "districtIdentificator": "Identificador de Distrito",
             "section": "Sección",
             "published": "Publicado",
-            "created": "Creado",
-            "updated": "Actualizado",
+            "createdDate": "Creado",
+            "updatedDate": "Actualizado",
             "election": "Elección"
         }
     }

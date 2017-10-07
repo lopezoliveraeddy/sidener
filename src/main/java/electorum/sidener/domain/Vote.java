@@ -37,11 +37,11 @@ public class Vote implements Serializable {
     @Column(name = "published")
     private Boolean published;
 
-    @Column(name = "created")
-    private ZonedDateTime created;
+    @Column(name = "created_date")
+    private ZonedDateTime createdDate;
 
-    @Column(name = "updated")
-    private ZonedDateTime updated;
+    @Column(name = "updated_date")
+    private ZonedDateTime updatedDate;
 
     @ManyToOne
     private Election election;
@@ -93,30 +93,30 @@ public class Vote implements Serializable {
         this.published = published;
     }
 
-    public ZonedDateTime getCreated() {
-        return created;
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public Vote created(ZonedDateTime created) {
-        this.created = created;
+    public Vote createdDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreated(ZonedDateTime created) {
-        this.created = created;
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getUpdated() {
-        return updated;
+    public ZonedDateTime getUpdatedDate() {
+        return updatedDate;
     }
 
-    public Vote updated(ZonedDateTime updated) {
-        this.updated = updated;
+    public Vote updatedDate(ZonedDateTime updatedDate) {
+        this.updatedDate = updatedDate;
         return this;
     }
 
-    public void setUpdated(ZonedDateTime updated) {
-        this.updated = updated;
+    public void setUpdatedDate(ZonedDateTime updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public Election getElection() {
@@ -211,8 +211,8 @@ public class Vote implements Serializable {
             "id=" + getId() +
             ", total='" + getTotal() + "'" +
             ", published='" + isPublished() + "'" +
-            ", created='" + getCreated() + "'" +
-            ", updated='" + getUpdated() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 }

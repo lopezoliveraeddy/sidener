@@ -45,11 +45,11 @@ public class Coalition implements Serializable {
     @Column(name = "published")
     private Boolean published;
 
-    @Column(name = "created")
-    private ZonedDateTime created;
+    @Column(name = "created_date")
+    private ZonedDateTime createdDate;
 
-    @Column(name = "updated")
-    private ZonedDateTime updated;
+    @Column(name = "updated_date")
+    private ZonedDateTime updatedDate;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -119,30 +119,30 @@ public class Coalition implements Serializable {
         this.published = published;
     }
 
-    public ZonedDateTime getCreated() {
-        return created;
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public Coalition created(ZonedDateTime created) {
-        this.created = created;
+    public Coalition createdDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreated(ZonedDateTime created) {
-        this.created = created;
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getUpdated() {
-        return updated;
+    public ZonedDateTime getUpdatedDate() {
+        return updatedDate;
     }
 
-    public Coalition updated(ZonedDateTime updated) {
-        this.updated = updated;
+    public Coalition updatedDate(ZonedDateTime updatedDate) {
+        this.updatedDate = updatedDate;
         return this;
     }
 
-    public void setUpdated(ZonedDateTime updated) {
-        this.updated = updated;
+    public void setUpdatedDate(ZonedDateTime updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public Set<PoliticalParty> getPoliticalParties() {
@@ -197,8 +197,8 @@ public class Coalition implements Serializable {
             ", acronym='" + getAcronym() + "'" +
             ", image='" + getImage() + "'" +
             ", published='" + isPublished() + "'" +
-            ", created='" + getCreated() + "'" +
-            ", updated='" + getUpdated() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 }

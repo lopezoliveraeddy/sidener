@@ -20,8 +20,8 @@
             "start": "Inicio",
             "end": "Fin",
             "published": "Publicado",
-            "created": "Creado",
-            "updated": "Actualizado"
+            "createdDate": "Creado",
+            "updatedDate": "Actualizado"
         }
     }
 }

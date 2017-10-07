@@ -58,11 +58,11 @@ public class CoalitionResourceIntTest {
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
 
-    private static final ZonedDateTime DEFAULT_CREATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_CREATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_UPDATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_UPDATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_UPDATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     @Autowired
     private CoalitionRepository coalitionRepository;
@@ -114,8 +114,8 @@ public class CoalitionResourceIntTest {
             .acronym(DEFAULT_ACRONYM)
             .image(DEFAULT_IMAGE)
             .published(DEFAULT_PUBLISHED)
-            .created(DEFAULT_CREATED)
-            .updated(DEFAULT_UPDATED);
+            .createdDate(DEFAULT_CREATED_DATE)
+            .updatedDate(DEFAULT_UPDATED_DATE);
         return coalition;
     }
 
@@ -145,8 +145,8 @@ public class CoalitionResourceIntTest {
         assertThat(testCoalition.getAcronym()).isEqualTo(DEFAULT_ACRONYM);
         assertThat(testCoalition.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testCoalition.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
-        assertThat(testCoalition.getCreated()).isEqualTo(DEFAULT_CREATED);
-        assertThat(testCoalition.getUpdated()).isEqualTo(DEFAULT_UPDATED);
+        assertThat(testCoalition.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testCoalition.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
 
         // Validate the Coalition in Elasticsearch
         Coalition coalitionEs = coalitionSearchRepository.findOne(testCoalition.getId());
@@ -188,8 +188,8 @@ public class CoalitionResourceIntTest {
             .andExpect(jsonPath("$.[*].acronym").value(hasItem(DEFAULT_ACRONYM.toString())))
             .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test
@@ -207,8 +207,8 @@ public class CoalitionResourceIntTest {
             .andExpect(jsonPath("$.acronym").value(DEFAULT_ACRONYM.toString()))
             .andExpect(jsonPath("$.image").value(DEFAULT_IMAGE.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
-            .andExpect(jsonPath("$.created").value(sameInstant(DEFAULT_CREATED)))
-            .andExpect(jsonPath("$.updated").value(sameInstant(DEFAULT_UPDATED)));
+            .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
+            .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
     }
 
     @Test
@@ -234,8 +234,8 @@ public class CoalitionResourceIntTest {
             .acronym(UPDATED_ACRONYM)
             .image(UPDATED_IMAGE)
             .published(UPDATED_PUBLISHED)
-            .created(UPDATED_CREATED)
-            .updated(UPDATED_UPDATED);
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
         CoalitionDTO coalitionDTO = coalitionMapper.toDto(updatedCoalition);
 
         restCoalitionMockMvc.perform(put("/api/coalitions")
@@ -251,8 +251,8 @@ public class CoalitionResourceIntTest {
         assertThat(testCoalition.getAcronym()).isEqualTo(UPDATED_ACRONYM);
         assertThat(testCoalition.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testCoalition.isPublished()).isEqualTo(UPDATED_PUBLISHED);
-        assertThat(testCoalition.getCreated()).isEqualTo(UPDATED_CREATED);
-        assertThat(testCoalition.getUpdated()).isEqualTo(UPDATED_UPDATED);
+        assertThat(testCoalition.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testCoalition.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
 
         // Validate the Coalition in Elasticsearch
         Coalition coalitionEs = coalitionSearchRepository.findOne(testCoalition.getId());
@@ -316,8 +316,8 @@ public class CoalitionResourceIntTest {
             .andExpect(jsonPath("$.[*].acronym").value(hasItem(DEFAULT_ACRONYM.toString())))
             .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test

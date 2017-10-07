@@ -38,11 +38,11 @@
         function save () {
             vm.isSaving = true;
             if (vm.causal.id !== null) {
-                vm.causal.updated = new Date();
+                vm.causal.updatedDate = new Date();
                 Causal.update(vm.causal, onSaveSuccess, onSaveError);
             } else {
-                vm.causal.created = new Date();
-                vm.causal.updated = new Date();
+                vm.causal.createdDate = new Date();
+                vm.causal.updatedDate = new Date();
                 Causal.save(vm.causal, onSaveSuccess, onSaveError);
             }
         }
@@ -57,8 +57,8 @@
             vm.isSaving = false;
         }
 
-        vm.datePickerOpenStatus.created = false;
-        vm.datePickerOpenStatus.updated = false;
+        vm.datePickerOpenStatus.createdDate = false;
+        vm.datePickerOpenStatus.updatedDate = false;
 
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;

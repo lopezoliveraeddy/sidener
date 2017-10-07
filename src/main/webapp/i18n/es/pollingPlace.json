@@ -35,8 +35,8 @@
             "alternateTwo": "Segundo Alternativo",
             "alternateThree": "Tercer Alternativo",
 			"published": "Publicado",
-            "created": "Creado",
-            "updated": "Actualizado",
+            "createdDate": "Creado",
+            "updatedDate": "Actualizado",
             "election": "Elección",
             "district": "Distrito"
         }

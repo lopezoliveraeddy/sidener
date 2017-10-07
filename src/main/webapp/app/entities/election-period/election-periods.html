@@ -40,8 +40,8 @@
                     <th jh-sort-by="start"><span data-translate="sidenerApp.electionPeriod.start">Start</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="end"><span data-translate="sidenerApp.electionPeriod.end">End</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.electionPeriod.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="created"><span data-translate="sidenerApp.electionPeriod.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="updated"><span data-translate="sidenerApp.electionPeriod.updated">Updated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span data-translate="sidenerApp.electionPeriod.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.electionPeriod.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -59,8 +59,8 @@
                             <i class="fa fa-times fa-2x"></i>
                         </span>
                     </td>
-                    <td>{{electionPeriod.created | date:'medium'}}</td>
-                    <td>{{electionPeriod.updated | date:'medium'}}</td>
+                    <td>{{electionPeriod.createdDate | date:'medium'}}</td>
+                    <td>{{electionPeriod.updatedDate | date:'medium'}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

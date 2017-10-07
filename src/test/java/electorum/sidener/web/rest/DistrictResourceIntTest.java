@@ -61,11 +61,11 @@ public class DistrictResourceIntTest {
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
 
-    private static final ZonedDateTime DEFAULT_CREATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_CREATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_UPDATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_UPDATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_UPDATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     @Autowired
     private DistrictRepository districtRepository;
@@ -118,8 +118,8 @@ public class DistrictResourceIntTest {
             .districtIdentificator(DEFAULT_DISTRICT_IDENTIFICATOR)
             .section(DEFAULT_SECTION)
             .published(DEFAULT_PUBLISHED)
-            .created(DEFAULT_CREATED)
-            .updated(DEFAULT_UPDATED);
+            .createdDate(DEFAULT_CREATED_DATE)
+            .updatedDate(DEFAULT_UPDATED_DATE);
         return district;
     }
 
@@ -150,8 +150,8 @@ public class DistrictResourceIntTest {
         assertThat(testDistrict.getDistrictIdentificator()).isEqualTo(DEFAULT_DISTRICT_IDENTIFICATOR);
         assertThat(testDistrict.getSection()).isEqualTo(DEFAULT_SECTION);
         assertThat(testDistrict.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
-        assertThat(testDistrict.getCreated()).isEqualTo(DEFAULT_CREATED);
-        assertThat(testDistrict.getUpdated()).isEqualTo(DEFAULT_UPDATED);
+        assertThat(testDistrict.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testDistrict.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
 
         // Validate the District in Elasticsearch
         District districtEs = districtSearchRepository.findOne(testDistrict.getId());
@@ -194,8 +194,8 @@ public class DistrictResourceIntTest {
             .andExpect(jsonPath("$.[*].districtIdentificator").value(hasItem(DEFAULT_DISTRICT_IDENTIFICATOR.toString())))
             .andExpect(jsonPath("$.[*].section").value(hasItem(DEFAULT_SECTION.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test
@@ -214,8 +214,8 @@ public class DistrictResourceIntTest {
             .andExpect(jsonPath("$.districtIdentificator").value(DEFAULT_DISTRICT_IDENTIFICATOR.toString()))
             .andExpect(jsonPath("$.section").value(DEFAULT_SECTION.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
-            .andExpect(jsonPath("$.created").value(sameInstant(DEFAULT_CREATED)))
-            .andExpect(jsonPath("$.updated").value(sameInstant(DEFAULT_UPDATED)));
+            .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
+            .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
     }
 
     @Test
@@ -242,8 +242,8 @@ public class DistrictResourceIntTest {
             .districtIdentificator(UPDATED_DISTRICT_IDENTIFICATOR)
             .section(UPDATED_SECTION)
             .published(UPDATED_PUBLISHED)
-            .created(UPDATED_CREATED)
-            .updated(UPDATED_UPDATED);
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
         DistrictDTO districtDTO = districtMapper.toDto(updatedDistrict);
 
         restDistrictMockMvc.perform(put("/api/districts")
@@ -260,8 +260,8 @@ public class DistrictResourceIntTest {
         assertThat(testDistrict.getDistrictIdentificator()).isEqualTo(UPDATED_DISTRICT_IDENTIFICATOR);
         assertThat(testDistrict.getSection()).isEqualTo(UPDATED_SECTION);
         assertThat(testDistrict.isPublished()).isEqualTo(UPDATED_PUBLISHED);
-        assertThat(testDistrict.getCreated()).isEqualTo(UPDATED_CREATED);
-        assertThat(testDistrict.getUpdated()).isEqualTo(UPDATED_UPDATED);
+        assertThat(testDistrict.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testDistrict.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
 
         // Validate the District in Elasticsearch
         District districtEs = districtSearchRepository.findOne(testDistrict.getId());
@@ -326,8 +326,8 @@ public class DistrictResourceIntTest {
             .andExpect(jsonPath("$.[*].districtIdentificator").value(hasItem(DEFAULT_DISTRICT_IDENTIFICATOR.toString())))
             .andExpect(jsonPath("$.[*].section").value(hasItem(DEFAULT_SECTION.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test

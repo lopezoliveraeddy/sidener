@@ -145,8 +145,8 @@
                                 alternateTwo: null,
                                 alternateThree: null,
                                 published: null,
-                                created: null,
-                                updated: null,
+                                createdDate: null,
+                                updatedDate: null,
                                 id: null
                             };
                         }

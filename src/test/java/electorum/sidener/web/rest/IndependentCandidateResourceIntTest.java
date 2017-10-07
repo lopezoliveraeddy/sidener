@@ -58,11 +58,11 @@ public class IndependentCandidateResourceIntTest {
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
 
-    private static final ZonedDateTime DEFAULT_CREATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_CREATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_UPDATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_UPDATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_UPDATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     @Autowired
     private IndependentCandidateRepository independentCandidateRepository;
@@ -114,8 +114,8 @@ public class IndependentCandidateResourceIntTest {
             .acronym(DEFAULT_ACRONYM)
             .image(DEFAULT_IMAGE)
             .published(DEFAULT_PUBLISHED)
-            .created(DEFAULT_CREATED)
-            .updated(DEFAULT_UPDATED);
+            .createdDate(DEFAULT_CREATED_DATE)
+            .updatedDate(DEFAULT_UPDATED_DATE);
         return independentCandidate;
     }
 
@@ -145,8 +145,8 @@ public class IndependentCandidateResourceIntTest {
         assertThat(testIndependentCandidate.getAcronym()).isEqualTo(DEFAULT_ACRONYM);
         assertThat(testIndependentCandidate.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testIndependentCandidate.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
-        assertThat(testIndependentCandidate.getCreated()).isEqualTo(DEFAULT_CREATED);
-        assertThat(testIndependentCandidate.getUpdated()).isEqualTo(DEFAULT_UPDATED);
+        assertThat(testIndependentCandidate.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testIndependentCandidate.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
 
         // Validate the IndependentCandidate in Elasticsearch
         IndependentCandidate independentCandidateEs = independentCandidateSearchRepository.findOne(testIndependentCandidate.getId());
@@ -188,8 +188,8 @@ public class IndependentCandidateResourceIntTest {
             .andExpect(jsonPath("$.[*].acronym").value(hasItem(DEFAULT_ACRONYM.toString())))
             .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test
@@ -207,8 +207,8 @@ public class IndependentCandidateResourceIntTest {
             .andExpect(jsonPath("$.acronym").value(DEFAULT_ACRONYM.toString()))
             .andExpect(jsonPath("$.image").value(DEFAULT_IMAGE.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
-            .andExpect(jsonPath("$.created").value(sameInstant(DEFAULT_CREATED)))
-            .andExpect(jsonPath("$.updated").value(sameInstant(DEFAULT_UPDATED)));
+            .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
+            .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
     }
 
     @Test
@@ -234,8 +234,8 @@ public class IndependentCandidateResourceIntTest {
             .acronym(UPDATED_ACRONYM)
             .image(UPDATED_IMAGE)
             .published(UPDATED_PUBLISHED)
-            .created(UPDATED_CREATED)
-            .updated(UPDATED_UPDATED);
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
         IndependentCandidateDTO independentCandidateDTO = independentCandidateMapper.toDto(updatedIndependentCandidate);
 
         restIndependentCandidateMockMvc.perform(put("/api/independent-candidates")
@@ -251,8 +251,8 @@ public class IndependentCandidateResourceIntTest {
         assertThat(testIndependentCandidate.getAcronym()).isEqualTo(UPDATED_ACRONYM);
         assertThat(testIndependentCandidate.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testIndependentCandidate.isPublished()).isEqualTo(UPDATED_PUBLISHED);
-        assertThat(testIndependentCandidate.getCreated()).isEqualTo(UPDATED_CREATED);
-        assertThat(testIndependentCandidate.getUpdated()).isEqualTo(UPDATED_UPDATED);
+        assertThat(testIndependentCandidate.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testIndependentCandidate.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
 
         // Validate the IndependentCandidate in Elasticsearch
         IndependentCandidate independentCandidateEs = independentCandidateSearchRepository.findOne(testIndependentCandidate.getId());
@@ -316,8 +316,8 @@ public class IndependentCandidateResourceIntTest {
             .andExpect(jsonPath("$.[*].acronym").value(hasItem(DEFAULT_ACRONYM.toString())))
             .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test

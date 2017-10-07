@@ -129,8 +129,8 @@
                                 districtIdentificator: null,
                                 section: null,
                                 published: null,
-                                created: null,
-                                updated: null,
+                                createdDate: null,
+                                updatedDate: null,
                                 id: null
                             };
                         }

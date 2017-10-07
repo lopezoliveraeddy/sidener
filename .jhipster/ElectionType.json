@@ -12,11 +12,11 @@
             "fieldType": "Boolean"
         },
         {
-            "fieldName": "created",
+            "fieldName": "createdDate",
             "fieldType": "ZonedDateTime"
         },
         {
-            "fieldName": "updated",
+            "fieldName": "updatedDate",
             "fieldType": "ZonedDateTime"
         }
     ],

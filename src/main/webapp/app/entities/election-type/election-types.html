@@ -38,8 +38,8 @@
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="sidenerApp.electionType.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.electionType.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="created"><span data-translate="sidenerApp.electionType.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="updated"><span data-translate="sidenerApp.electionType.updated">Updated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span data-translate="sidenerApp.electionType.createdDate">Create Dated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.electionType.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -55,8 +55,8 @@
                             <i class="fa fa-times fa-2x"></i>
                         </span>
                     </td>
-                    <td>{{electionType.created | date:'medium'}}</td>
-                    <td>{{electionType.updated | date:'medium'}}</td>
+                    <td>{{electionType.createdDate | date:'medium'}}</td>
+                    <td>{{electionType.updatedDate | date:'medium'}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

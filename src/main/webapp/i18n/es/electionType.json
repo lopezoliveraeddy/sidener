@@ -18,8 +18,8 @@
             },
             "name": "Nombre",
             "published": "Publicado",
-            "created": "Creado",
-            "updated": "Actualizado"
+            "createdDate": "Creado",
+            "updatedDate": "Actualizado"
         }
     }
 }

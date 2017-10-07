@@ -48,8 +48,8 @@
                     <th jh-sort-by="recountDistrictsRule"><span data-translate="sidenerApp.election.recountDistrictsRule">Recount Districts Rule</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="recountPollingPlaceRule"><span data-translate="sidenerApp.election.recountPollingPlaceRule">Recount Polling Place Rule</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.election.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="created"><span data-translate="sidenerApp.election.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="updated"><span data-translate="sidenerApp.election.updated">Updated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span data-translate="sidenerApp.election.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.election.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="electionTypeName"><span data-translate="sidenerApp.election.electionType">Election Type</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="electionPeriodName"><span data-translate="sidenerApp.election.electionPeriod">Election Period</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="politicalPartyAsociatedId"><span data-translate="sidenerApp.election.politicalPartyAsociated">Political Party Asociated</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -73,8 +73,8 @@
                     <td data-translate="{{'sidenerApp.RecountDistrictsRule.' + election.recountDistrictsRule}}">{{election.recountDistrictsRule}}</td>
                     <td data-translate="{{'sidenerApp.RecountPollingPlaceRule.' + election.recountPollingPlaceRule}}">{{election.recountPollingPlaceRule}}</td>
                     <td>{{election.published}}</td>
-                    <td>{{election.created | date:'medium'}}</td>
-                    <td>{{election.updated | date:'medium'}}</td>
+                    <td>{{election.createdDate | date:'medium'}}</td>
+                    <td>{{election.updatedDate | date:'medium'}}</td>
                     <td>
                         <a ui-sref="election-type-detail({id:election.electionTypeId})">{{election.electionTypeName}}</a>
                     </td>

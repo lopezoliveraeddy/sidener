@@ -21,8 +21,8 @@
             "description": "Descripción",
             "color": "Color",
             "published": "Publicado",
-            "created": "Creado",
-            "updated": "Actualizado",
+            "createdDate": "Creado",
+            "updatedDate": "Actualizado",
             "causalDescription": "Descripciones"
         }
     }

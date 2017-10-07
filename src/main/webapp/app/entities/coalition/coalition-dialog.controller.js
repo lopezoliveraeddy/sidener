@@ -36,11 +36,11 @@
         function save () {
             vm.isSaving = true;
             if (vm.coalition.id !== null) {
-                vm.coalition.updated = new Date();
+                vm.coalition.updatedDate = new Date();
                 Coalition.update(vm.coalition, onSaveSuccess, onSaveError);
             } else {
-                vm.coalition.created = new Date();
-                vm.coalition.updated = new Date();
+                vm.coalition.createdDate = new Date();
+                vm.coalition.updatedDate = new Date();
                 Coalition.save(vm.coalition, onSaveSuccess, onSaveError);
             }
         }
@@ -55,8 +55,8 @@
             vm.isSaving = false;
         }
 
-        vm.datePickerOpenStatus.created = false;
-        vm.datePickerOpenStatus.updated = false;
+        vm.datePickerOpenStatus.createdDate = false;
+        vm.datePickerOpenStatus.updatedDate = false;
 
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;

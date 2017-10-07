@@ -35,11 +35,11 @@
         function save () {
             vm.isSaving = true;
             if (vm.independentCandidate.id !== null) {
-                vm.independentCandidate.updated = new Date();
+                vm.independentCandidate.updatedDate = new Date();
                 IndependentCandidate.update(vm.independentCandidate, onSaveSuccess, onSaveError);
             } else {
-                vm.independentCandidate.created = new Date();
-                vm.independentCandidate.updated = new Date();
+                vm.independentCandidate.createdDate = new Date();
+                vm.independentCandidate.updatedDate = new Date();
                 IndependentCandidate.save(vm.independentCandidate, onSaveSuccess, onSaveError);
             }
         }
@@ -54,8 +54,8 @@
             vm.isSaving = false;
         }
 
-        vm.datePickerOpenStatus.created = false;
-        vm.datePickerOpenStatus.updated = false;
+        vm.datePickerOpenStatus.createdDate = false;
+        vm.datePickerOpenStatus.updatedDate = false;
 
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;

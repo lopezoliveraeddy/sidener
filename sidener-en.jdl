@@ -14,8 +14,8 @@ entity Election {
     recountPollingPlaceRule RecountPollingPlaceRule,
     /* Datos Sistema */
     published Boolean,
-    created ZonedDateTime,
-    updated ZonedDateTime
+    createdDate ZonedDateTime,
+    updatedDate ZonedDateTime
 }
 
 /* Entidad Demandante */
@@ -23,8 +23,8 @@ entity Election {
 	/* name String, */
     /* Datos Sistema */
     /* published Boolean, */
-    /* created ZonedDateTime, */
-    /* updated ZonedDateTime */
+    /* createdDate ZonedDateTime, */
+    /* updatedDate ZonedDateTime */
 /* } */
 
 /* Entidad Recuento */
@@ -34,8 +34,8 @@ entity Election {
     /* fundamentoSolicitud TextBlob, */
     /* Datos Sistema */
     /* published Boolean, */
-    /* created ZonedDateTime, */
-    /* updated ZonedDateTime */
+    /* createdDate ZonedDateTime, */
+    /* updatedDate ZonedDateTime */
 /* } */
 
 /* Entidad Nulidad */
@@ -59,8 +59,8 @@ entity Election {
     /* otras TextBlob, */
     /* Datos Sistema */
     /* published Boolean, */
-    /* created ZonedDateTime, */
-    /* updated ZonedDateTime */
+    /* createdDate ZonedDateTime, */
+    /* updateddate ZonedDateTime */
 /* } */
 
 /* Entidad Partido Político */
@@ -70,8 +70,8 @@ entity PoliticalParty {
     image String,
     /* Datos Sistema */
     published Boolean,
-    created ZonedDateTime,
-    updated ZonedDateTime
+    createdDate ZonedDateTime,
+    updatedDate ZonedDateTime
 }
 
 /* Entidad Candidato Independiente */
@@ -81,8 +81,8 @@ entity IndependentCandidate {
     image String,
     /* Datos Sistema */
     published Boolean,
-    created ZonedDateTime,
-    updated ZonedDateTime
+    createdDate ZonedDateTime,
+    updatedDate ZonedDateTime
 }
 
 /* Entidad Coalición */
@@ -92,8 +92,8 @@ entity Coalition {
 	image String
     /* Datos Sistema */
     published Boolean,
-    created ZonedDateTime,
-    updated ZonedDateTime
+    createdDate ZonedDateTime,
+    updatedDate ZonedDateTime
 }
 
 /* Entidad Tipo de Elección (Gobernador, Diputado) */
@@ -101,8 +101,8 @@ entity ElectionType {
 	name String,
 	/* Datos Sistema */
     published Boolean,
-    created ZonedDateTime,
-    updated ZonedDateTime
+    createdDate ZonedDateTime,
+    updatedDate ZonedDateTime
 }
 
 /* Entidad Periodos de Eleccion */
@@ -112,8 +112,8 @@ entity ElectionPeriod {
     end ZonedDateTime,
     /* Datos Sistema */
     published Boolean,
-    created ZonedDateTime,
-    updated ZonedDateTime
+    createdDate ZonedDateTime,
+    updatedDate ZonedDateTime
 }
 
 /* Entidad Distritos */
@@ -124,8 +124,8 @@ entity District {
     section String,
     /* Datos Sistema */
     published Boolean,
-    created ZonedDateTime,
-    updated ZonedDateTime
+    createdDate ZonedDateTime,
+    updatedDate ZonedDateTime
 }
 
 /* Entidad Casillas */
@@ -150,8 +150,8 @@ entity PollingPlace {
     alternateThree String,
     /* Datos Sistema */
     published Boolean,
-    created ZonedDateTime,
-    updated ZonedDateTime
+    createdDate ZonedDateTime,
+    updatedDate ZonedDateTime
 }
 
 /* Entidad Votos */
@@ -159,8 +159,8 @@ entity Vote {
     total Long,
     /* Datos Sistema */
     published Boolean,
-    created ZonedDateTime,
-    updated ZonedDateTime
+    createdDate ZonedDateTime,
+    updatedDate ZonedDateTime
 }
 
 /* Entidad Causales */
@@ -171,8 +171,8 @@ entity Causal {
     color String,
     /* Datos Sistema */
     published Boolean,
-    created ZonedDateTime,
-    updated ZonedDateTime
+    createdDate ZonedDateTime,
+    updatedDate ZonedDateTime
 }
 
 entity CausalDescription {

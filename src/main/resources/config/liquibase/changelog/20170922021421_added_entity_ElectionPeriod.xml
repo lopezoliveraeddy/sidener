@@ -38,11 +38,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="created" type="timestamp">
+            <column name="created_date" type="timestamp">
                 <constraints nullable="true" />
             </column>
 
-            <column name="updated" type="timestamp">
+            <column name="updated_date" type="timestamp">
                 <constraints nullable="true" />
             </column>
 
@@ -50,8 +50,8 @@
         </createTable>
         <dropDefaultValue tableName="election_period" columnName="jhi_start" columnDataType="datetime"/>
         <dropDefaultValue tableName="election_period" columnName="jhi_end" columnDataType="datetime"/>
-        <dropDefaultValue tableName="election_period" columnName="created" columnDataType="datetime"/>
-        <dropDefaultValue tableName="election_period" columnName="updated" columnDataType="datetime"/>
+        <dropDefaultValue tableName="election_period" columnName="created_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="election_period" columnName="updated_date" columnDataType="datetime"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

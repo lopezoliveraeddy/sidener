@@ -68,7 +68,7 @@ class ElectionPeriodGatlingTest extends Simulation {
             .exec(http("Create new electionPeriod")
             .post("/api/election-periods")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "start":"2020-01-01T00:00:00.000Z", "end":"2020-01-01T00:00:00.000Z", "published":null, "created":"2020-01-01T00:00:00.000Z", "updated":"2020-01-01T00:00:00.000Z"}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "start":"2020-01-01T00:00:00.000Z", "end":"2020-01-01T00:00:00.000Z", "published":null, "createdDate":"2020-01-01T00:00:00.000Z", "updatedDate":"2020-01-01T00:00:00.000Z"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_electionPeriod_url"))).exitHereIfFailed
             .pause(10)

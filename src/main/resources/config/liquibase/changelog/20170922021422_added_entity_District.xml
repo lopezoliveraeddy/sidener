@@ -42,11 +42,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="created" type="timestamp">
+            <column name="created_date" type="timestamp">
                 <constraints nullable="true" />
             </column>
 
-            <column name="updated" type="timestamp">
+            <column name="updated_date" type="timestamp">
                 <constraints nullable="true" />
             </column>
 
@@ -56,8 +56,8 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="district" columnName="created" columnDataType="datetime"/>
-        <dropDefaultValue tableName="district" columnName="updated" columnDataType="datetime"/>
+        <dropDefaultValue tableName="district" columnName="created_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="district" columnName="updated_date" columnDataType="datetime"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

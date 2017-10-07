@@ -40,8 +40,8 @@
                     <th jh-sort-by="acronym"><span data-translate="sidenerApp.politicalParty.acronym">Acronym</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="image"><span data-translate="sidenerApp.politicalParty.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.politicalParty.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="created"><span data-translate="sidenerApp.politicalParty.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="updated"><span data-translate="sidenerApp.politicalParty.updated">Updated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span data-translate="sidenerApp.politicalParty.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.politicalParty.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -59,8 +59,8 @@
                             <i class="fa fa-times fa-2x"></i>
                         </span>
                     </td>
-                    <td>{{politicalParty.created | date:'medium'}}</td>
-                    <td>{{politicalParty.updated | date:'medium'}}</td>
+                    <td>{{politicalParty.createdDate | date:'medium'}}</td>
+                    <td>{{politicalParty.updatedDate | date:'medium'}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

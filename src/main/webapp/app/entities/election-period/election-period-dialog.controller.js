@@ -37,11 +37,11 @@
             vm.electionPeriod.name = $filter('date')(vm.electionPeriod.start, 'yyyy') + "-" + $filter('date')(vm.electionPeriod.end, 'yyyy');
 
             if (vm.electionPeriod.id !== null) {
-                vm.electionPeriod.updated = new Date();
+                vm.electionPeriod.updatedDate = new Date();
                 ElectionPeriod.update(vm.electionPeriod, onSaveSuccess, onSaveError);
             } else {
-                vm.electionPeriod.created = new Date();
-                vm.electionPeriod.updated = new Date();
+                vm.electionPeriod.createdDate = new Date();
+                vm.electionPeriod.updatedDate = new Date();
                 ElectionPeriod.save(vm.electionPeriod, onSaveSuccess, onSaveError);
             }
         }
@@ -58,8 +58,8 @@
 
         vm.datePickerOpenStatus.start = false;
         vm.datePickerOpenStatus.end = false;
-        vm.datePickerOpenStatus.created = false;
-        vm.datePickerOpenStatus.updated = false;
+        vm.datePickerOpenStatus.createdDate = false;
+        vm.datePickerOpenStatus.updatedDate = false;
 
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;

@@ -17,8 +17,8 @@
                     if (data) {
                         data = angular.fromJson(data);
                         data.date = DateUtils.convertDateTimeFromServer(data.date);
-                        data.created = DateUtils.convertDateTimeFromServer(data.created);
-                        data.updated = DateUtils.convertDateTimeFromServer(data.updated);
+                        data.createdDate = DateUtils.convertDateTimeFromServer(data.createdDate);
+                        data.updatedDate = DateUtils.convertDateTimeFromServer(data.updatedDate);
                     }
                     return data;
                 }

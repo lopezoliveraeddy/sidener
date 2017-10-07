@@ -20,8 +20,8 @@
             "acronym": "Iniciales",
             "image": "Imagen",
             "published": "Publicado",
-            "created": "Creado",
-            "updated": "Actualizado"
+            "createdDate": "Creado",
+            "updatedDate": "Actualizado"
         }
     }
 }

@@ -52,11 +52,11 @@ public class ElectionTypeResourceIntTest {
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
 
-    private static final ZonedDateTime DEFAULT_CREATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_CREATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_UPDATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_UPDATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_UPDATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     @Autowired
     private ElectionTypeRepository electionTypeRepository;
@@ -106,8 +106,8 @@ public class ElectionTypeResourceIntTest {
         ElectionType electionType = new ElectionType()
             .name(DEFAULT_NAME)
             .published(DEFAULT_PUBLISHED)
-            .created(DEFAULT_CREATED)
-            .updated(DEFAULT_UPDATED);
+            .createdDate(DEFAULT_CREATED_DATE)
+            .updatedDate(DEFAULT_UPDATED_DATE);
         return electionType;
     }
 
@@ -135,8 +135,8 @@ public class ElectionTypeResourceIntTest {
         ElectionType testElectionType = electionTypeList.get(electionTypeList.size() - 1);
         assertThat(testElectionType.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testElectionType.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
-        assertThat(testElectionType.getCreated()).isEqualTo(DEFAULT_CREATED);
-        assertThat(testElectionType.getUpdated()).isEqualTo(DEFAULT_UPDATED);
+        assertThat(testElectionType.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testElectionType.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
 
         // Validate the ElectionType in Elasticsearch
         ElectionType electionTypeEs = electionTypeSearchRepository.findOne(testElectionType.getId());
@@ -176,8 +176,8 @@ public class ElectionTypeResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(electionType.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test
@@ -193,8 +193,8 @@ public class ElectionTypeResourceIntTest {
             .andExpect(jsonPath("$.id").value(electionType.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
-            .andExpect(jsonPath("$.created").value(sameInstant(DEFAULT_CREATED)))
-            .andExpect(jsonPath("$.updated").value(sameInstant(DEFAULT_UPDATED)));
+            .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
+            .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
     }
 
     @Test
@@ -218,8 +218,8 @@ public class ElectionTypeResourceIntTest {
         updatedElectionType
             .name(UPDATED_NAME)
             .published(UPDATED_PUBLISHED)
-            .created(UPDATED_CREATED)
-            .updated(UPDATED_UPDATED);
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
         ElectionTypeDTO electionTypeDTO = electionTypeMapper.toDto(updatedElectionType);
 
         restElectionTypeMockMvc.perform(put("/api/election-types")
@@ -233,8 +233,8 @@ public class ElectionTypeResourceIntTest {
         ElectionType testElectionType = electionTypeList.get(electionTypeList.size() - 1);
         assertThat(testElectionType.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testElectionType.isPublished()).isEqualTo(UPDATED_PUBLISHED);
-        assertThat(testElectionType.getCreated()).isEqualTo(UPDATED_CREATED);
-        assertThat(testElectionType.getUpdated()).isEqualTo(UPDATED_UPDATED);
+        assertThat(testElectionType.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testElectionType.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
 
         // Validate the ElectionType in Elasticsearch
         ElectionType electionTypeEs = electionTypeSearchRepository.findOne(testElectionType.getId());
@@ -296,8 +296,8 @@ public class ElectionTypeResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(electionType.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test

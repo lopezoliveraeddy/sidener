@@ -20,9 +20,9 @@ public class IndependentCandidateDTO implements Serializable {
 
     private Boolean published;
 
-    private ZonedDateTime created;
+    private ZonedDateTime createdDate;
 
-    private ZonedDateTime updated;
+    private ZonedDateTime updatedDate;
 
     public Long getId() {
         return id;
@@ -64,20 +64,20 @@ public class IndependentCandidateDTO implements Serializable {
         this.published = published;
     }
 
-    public ZonedDateTime getCreated() {
-        return created;
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreated(ZonedDateTime created) {
-        this.created = created;
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getUpdated() {
-        return updated;
+    public ZonedDateTime getUpdatedDate() {
+        return updatedDate;
     }
 
-    public void setUpdated(ZonedDateTime updated) {
-        this.updated = updated;
+    public void setUpdatedDate(ZonedDateTime updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     @Override
@@ -109,8 +109,8 @@ public class IndependentCandidateDTO implements Serializable {
             ", acronym='" + getAcronym() + "'" +
             ", image='" + getImage() + "'" +
             ", published='" + isPublished() + "'" +
-            ", created='" + getCreated() + "'" +
-            ", updated='" + getUpdated() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 }

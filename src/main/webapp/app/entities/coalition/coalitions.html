@@ -39,9 +39,10 @@
                     <th jh-sort-by="name"><span data-translate="sidenerApp.coalition.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="acronym"><span data-translate="sidenerApp.coalition.acronym">Acronym</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="image"><span data-translate="sidenerApp.coalition.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th><span data-translate="sidenerApp.coalition.politicalParties">Political Parties</span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.coalition.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="created"><span data-translate="sidenerApp.coalition.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="updated"><span data-translate="sidenerApp.coalition.updated">Updated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span data-translate="sidenerApp.coalition.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.coalition.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -52,6 +53,11 @@
                     <td>{{coalition.acronym}}</td>
                     <td>{{coalition.image}}</td>
                     <td>
+                        <span ng-repeat="politicalParties in coalition.politicalParties">
+                            <a ui-sref="political-party-detail({id: politicalParties.id})">{{politicalParties.acronym}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                    <td>
                         <span ng-if="coalition.published==true">
                             <i class="fa fa-check fa-2x"></i>
                         </span>
@@ -59,8 +65,8 @@
                             <i class="fa fa-times fa-2x"></i>
                         </span>
                     </td>
-                    <td>{{coalition.created | date:'medium'}}</td>
-                    <td>{{coalition.updated | date:'medium'}}</td>
+                    <td>{{coalition.createdDate | date:'medium'}}</td>
+                    <td>{{coalition.updatedDate | date:'medium'}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

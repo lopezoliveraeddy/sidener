@@ -86,11 +86,11 @@ public class ElectionResourceIntTest {
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
 
-    private static final ZonedDateTime DEFAULT_CREATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_CREATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_UPDATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_UPDATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_UPDATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     @Autowired
     private ElectionRepository electionRepository;
@@ -150,8 +150,8 @@ public class ElectionResourceIntTest {
             .recountDistrictsRule(DEFAULT_RECOUNT_DISTRICTS_RULE)
             .recountPollingPlaceRule(DEFAULT_RECOUNT_POLLING_PLACE_RULE)
             .published(DEFAULT_PUBLISHED)
-            .created(DEFAULT_CREATED)
-            .updated(DEFAULT_UPDATED);
+            .createdDate(DEFAULT_CREATED_DATE)
+            .updatedDate(DEFAULT_UPDATED_DATE);
         return election;
     }
 
@@ -189,8 +189,8 @@ public class ElectionResourceIntTest {
         assertThat(testElection.getRecountDistrictsRule()).isEqualTo(DEFAULT_RECOUNT_DISTRICTS_RULE);
         assertThat(testElection.getRecountPollingPlaceRule()).isEqualTo(DEFAULT_RECOUNT_POLLING_PLACE_RULE);
         assertThat(testElection.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
-        assertThat(testElection.getCreated()).isEqualTo(DEFAULT_CREATED);
-        assertThat(testElection.getUpdated()).isEqualTo(DEFAULT_UPDATED);
+        assertThat(testElection.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testElection.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
 
         // Validate the Election in Elasticsearch
         Election electionEs = electionSearchRepository.findOne(testElection.getId());
@@ -240,8 +240,8 @@ public class ElectionResourceIntTest {
             .andExpect(jsonPath("$.[*].recountDistrictsRule").value(hasItem(DEFAULT_RECOUNT_DISTRICTS_RULE.toString())))
             .andExpect(jsonPath("$.[*].recountPollingPlaceRule").value(hasItem(DEFAULT_RECOUNT_POLLING_PLACE_RULE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test
@@ -267,8 +267,8 @@ public class ElectionResourceIntTest {
             .andExpect(jsonPath("$.recountDistrictsRule").value(DEFAULT_RECOUNT_DISTRICTS_RULE.toString()))
             .andExpect(jsonPath("$.recountPollingPlaceRule").value(DEFAULT_RECOUNT_POLLING_PLACE_RULE.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
-            .andExpect(jsonPath("$.created").value(sameInstant(DEFAULT_CREATED)))
-            .andExpect(jsonPath("$.updated").value(sameInstant(DEFAULT_UPDATED)));
+            .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
+            .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
     }
 
     @Test
@@ -302,8 +302,8 @@ public class ElectionResourceIntTest {
             .recountDistrictsRule(UPDATED_RECOUNT_DISTRICTS_RULE)
             .recountPollingPlaceRule(UPDATED_RECOUNT_POLLING_PLACE_RULE)
             .published(UPDATED_PUBLISHED)
-            .created(UPDATED_CREATED)
-            .updated(UPDATED_UPDATED);
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
         ElectionDTO electionDTO = electionMapper.toDto(updatedElection);
 
         restElectionMockMvc.perform(put("/api/elections")
@@ -327,8 +327,8 @@ public class ElectionResourceIntTest {
         assertThat(testElection.getRecountDistrictsRule()).isEqualTo(UPDATED_RECOUNT_DISTRICTS_RULE);
         assertThat(testElection.getRecountPollingPlaceRule()).isEqualTo(UPDATED_RECOUNT_POLLING_PLACE_RULE);
         assertThat(testElection.isPublished()).isEqualTo(UPDATED_PUBLISHED);
-        assertThat(testElection.getCreated()).isEqualTo(UPDATED_CREATED);
-        assertThat(testElection.getUpdated()).isEqualTo(UPDATED_UPDATED);
+        assertThat(testElection.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testElection.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
 
         // Validate the Election in Elasticsearch
         Election electionEs = electionSearchRepository.findOne(testElection.getId());
@@ -400,8 +400,8 @@ public class ElectionResourceIntTest {
             .andExpect(jsonPath("$.[*].recountDistrictsRule").value(hasItem(DEFAULT_RECOUNT_DISTRICTS_RULE.toString())))
             .andExpect(jsonPath("$.[*].recountPollingPlaceRule").value(hasItem(DEFAULT_RECOUNT_POLLING_PLACE_RULE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test

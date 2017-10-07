@@ -40,8 +40,8 @@
                     <th jh-sort-by="acronym"><span data-translate="sidenerApp.independentCandidate.acronym">Acronym</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="image"><span data-translate="sidenerApp.independentCandidate.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.independentCandidate.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="created"><span data-translate="sidenerApp.independentCandidate.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="updated"><span data-translate="sidenerApp.independentCandidate.updated">Updated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span data-translate="sidenerApp.independentCandidate.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.independentCandidate.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -59,8 +59,8 @@
                             <i class="fa fa-times fa-2x"></i>
                         </span>
                     </td>
-                    <td>{{independentCandidate.created | date:'medium'}}</td>
-                    <td>{{independentCandidate.updated | date:'medium'}}</td>
+                    <td>{{independentCandidate.createdDate | date:'medium'}}</td>
+                    <td>{{independentCandidate.updatedDate | date:'medium'}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

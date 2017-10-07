@@ -105,11 +105,11 @@ public class PollingPlaceResourceIntTest {
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
 
-    private static final ZonedDateTime DEFAULT_CREATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_CREATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_UPDATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_UPDATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_UPDATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     @Autowired
     private PollingPlaceRepository pollingPlaceRepository;
@@ -176,8 +176,8 @@ public class PollingPlaceResourceIntTest {
             .alternateTwo(DEFAULT_ALTERNATE_TWO)
             .alternateThree(DEFAULT_ALTERNATE_THREE)
             .published(DEFAULT_PUBLISHED)
-            .created(DEFAULT_CREATED)
-            .updated(DEFAULT_UPDATED);
+            .createdDate(DEFAULT_CREATED_DATE)
+            .updatedDate(DEFAULT_UPDATED_DATE);
         return pollingPlace;
     }
 
@@ -222,8 +222,8 @@ public class PollingPlaceResourceIntTest {
         assertThat(testPollingPlace.getAlternateTwo()).isEqualTo(DEFAULT_ALTERNATE_TWO);
         assertThat(testPollingPlace.getAlternateThree()).isEqualTo(DEFAULT_ALTERNATE_THREE);
         assertThat(testPollingPlace.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
-        assertThat(testPollingPlace.getCreated()).isEqualTo(DEFAULT_CREATED);
-        assertThat(testPollingPlace.getUpdated()).isEqualTo(DEFAULT_UPDATED);
+        assertThat(testPollingPlace.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testPollingPlace.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
 
         // Validate the PollingPlace in Elasticsearch
         PollingPlace pollingPlaceEs = pollingPlaceSearchRepository.findOne(testPollingPlace.getId());
@@ -280,8 +280,8 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.[*].alternateTwo").value(hasItem(DEFAULT_ALTERNATE_TWO.toString())))
             .andExpect(jsonPath("$.[*].alternateThree").value(hasItem(DEFAULT_ALTERNATE_THREE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test
@@ -314,8 +314,8 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.alternateTwo").value(DEFAULT_ALTERNATE_TWO.toString()))
             .andExpect(jsonPath("$.alternateThree").value(DEFAULT_ALTERNATE_THREE.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
-            .andExpect(jsonPath("$.created").value(sameInstant(DEFAULT_CREATED)))
-            .andExpect(jsonPath("$.updated").value(sameInstant(DEFAULT_UPDATED)));
+            .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
+            .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
     }
 
     @Test
@@ -356,8 +356,8 @@ public class PollingPlaceResourceIntTest {
             .alternateTwo(UPDATED_ALTERNATE_TWO)
             .alternateThree(UPDATED_ALTERNATE_THREE)
             .published(UPDATED_PUBLISHED)
-            .created(UPDATED_CREATED)
-            .updated(UPDATED_UPDATED);
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
         PollingPlaceDTO pollingPlaceDTO = pollingPlaceMapper.toDto(updatedPollingPlace);
 
         restPollingPlaceMockMvc.perform(put("/api/polling-places")
@@ -388,8 +388,8 @@ public class PollingPlaceResourceIntTest {
         assertThat(testPollingPlace.getAlternateTwo()).isEqualTo(UPDATED_ALTERNATE_TWO);
         assertThat(testPollingPlace.getAlternateThree()).isEqualTo(UPDATED_ALTERNATE_THREE);
         assertThat(testPollingPlace.isPublished()).isEqualTo(UPDATED_PUBLISHED);
-        assertThat(testPollingPlace.getCreated()).isEqualTo(UPDATED_CREATED);
-        assertThat(testPollingPlace.getUpdated()).isEqualTo(UPDATED_UPDATED);
+        assertThat(testPollingPlace.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testPollingPlace.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
 
         // Validate the PollingPlace in Elasticsearch
         PollingPlace pollingPlaceEs = pollingPlaceSearchRepository.findOne(testPollingPlace.getId());
@@ -468,8 +468,8 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.[*].alternateTwo").value(hasItem(DEFAULT_ALTERNATE_TWO.toString())))
             .andExpect(jsonPath("$.[*].alternateThree").value(hasItem(DEFAULT_ALTERNATE_THREE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
     }
 
     @Test

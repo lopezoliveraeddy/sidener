@@ -27,18 +27,18 @@
             </span>
             </span>
         </dd>
-        <dt><span data-translate="sidenerApp.coalition.created">Created</span></dt>
+        <dt><span data-translate="sidenerApp.coalition.createdDate">Created Date</span></dt>
         <dd>
-            <span>{{vm.coalition.created | date:'medium'}}</span>
+            <span>{{vm.coalition.createdDate | date:'medium'}}</span>
         </dd>
-        <dt><span data-translate="sidenerApp.coalition.updated">Updated</span></dt>
+        <dt><span data-translate="sidenerApp.coalition.updatedDate">Updated Date</span></dt>
         <dd>
-            <span>{{vm.coalition.updated | date:'medium'}}</span>
+            <span>{{vm.coalition.updatedDate | date:'medium'}}</span>
         </dd>
         <dt><span data-translate="sidenerApp.coalition.politicalParties">Political Parties</span></dt>
         <dd>
             <span ng-repeat="politicalParties in vm.coalition.politicalParties">
-                <a ui-sref="political-party-detail({id: politicalParties.id})">{{politicalParties.name}}</a>{{$last ? '' : ', '}}
+                <a ui-sref="political-party-detail({id: politicalParties.id})">{{politicalParties.name}}</a><br ng-if="!$last"/>
             </span>
         </dd>
     </dl>

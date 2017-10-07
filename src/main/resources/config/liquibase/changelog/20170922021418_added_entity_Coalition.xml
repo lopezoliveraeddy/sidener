@@ -38,18 +38,18 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="created" type="timestamp">
+            <column name="created_date" type="timestamp">
                 <constraints nullable="true" />
             </column>
 
-            <column name="updated" type="timestamp">
+            <column name="updated_date" type="timestamp">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="coalition" columnName="created" columnDataType="datetime"/>
-        <dropDefaultValue tableName="coalition" columnName="updated" columnDataType="datetime"/>
+        <dropDefaultValue tableName="coalition" columnName="created_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="coalition" columnName="updated_date" columnDataType="datetime"/>
         
         <createTable tableName="coalition_political_parties">
             <column name="political_parties_id" type="bigint">

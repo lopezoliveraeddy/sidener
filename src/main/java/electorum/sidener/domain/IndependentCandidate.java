@@ -43,11 +43,11 @@ public class IndependentCandidate implements Serializable {
     @Column(name = "published")
     private Boolean published;
 
-    @Column(name = "created")
-    private ZonedDateTime created;
+    @Column(name = "created_date")
+    private ZonedDateTime createdDate;
 
-    @Column(name = "updated")
-    private ZonedDateTime updated;
+    @Column(name = "updated_date")
+    private ZonedDateTime updatedDate;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
     public Long getId() {
@@ -110,30 +110,30 @@ public class IndependentCandidate implements Serializable {
         this.published = published;
     }
 
-    public ZonedDateTime getCreated() {
-        return created;
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public IndependentCandidate created(ZonedDateTime created) {
-        this.created = created;
+    public IndependentCandidate createdDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreated(ZonedDateTime created) {
-        this.created = created;
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getUpdated() {
-        return updated;
+    public ZonedDateTime getUpdatedDate() {
+        return updatedDate;
     }
 
-    public IndependentCandidate updated(ZonedDateTime updated) {
-        this.updated = updated;
+    public IndependentCandidate updatedDate(ZonedDateTime updatedDate) {
+        this.updatedDate = updatedDate;
         return this;
     }
 
-    public void setUpdated(ZonedDateTime updated) {
-        this.updated = updated;
+    public void setUpdatedDate(ZonedDateTime updatedDate) {
+        this.updatedDate = updatedDate;
     }
     // jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not remove
 
@@ -165,8 +165,8 @@ public class IndependentCandidate implements Serializable {
             ", acronym='" + getAcronym() + "'" +
             ", image='" + getImage() + "'" +
             ", published='" + isPublished() + "'" +
-            ", created='" + getCreated() + "'" +
-            ", updated='" + getUpdated() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 }

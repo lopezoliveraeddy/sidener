@@ -35,11 +35,11 @@
         function save () {
             vm.isSaving = true;
             if (vm.politicalParty.id !== null) {
-                vm.politicalParty.updated = new Date();
+                vm.politicalParty.updatedDate = new Date();
                 PoliticalParty.update(vm.politicalParty, onSaveSuccess, onSaveError);
             } else {
-                vm.politicalParty.created = new Date();
-                vm.politicalParty.updated = new Date();
+                vm.politicalParty.createdDate = new Date();
+                vm.politicalParty.updatedDate = new Date();
                 PoliticalParty.save(vm.politicalParty, onSaveSuccess, onSaveError);
             }
         }
@@ -54,8 +54,8 @@
             vm.isSaving = false;
         }
 
-        vm.datePickerOpenStatus.created = false;
-        vm.datePickerOpenStatus.updated = false;
+        vm.datePickerOpenStatus.createdDate = false;
+        vm.datePickerOpenStatus.updatedDate = false;
 
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;

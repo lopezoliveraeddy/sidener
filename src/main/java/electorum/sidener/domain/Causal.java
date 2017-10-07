@@ -52,11 +52,11 @@ public class Causal implements Serializable {
     @Column(name = "published")
     private Boolean published;
 
-    @Column(name = "created")
-    private ZonedDateTime created;
+    @Column(name = "created_date")
+    private ZonedDateTime createdDate;
 
-    @Column(name = "updated")
-    private ZonedDateTime updated;
+    @Column(name = "updated_date")
+    private ZonedDateTime updatedDate;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -139,30 +139,30 @@ public class Causal implements Serializable {
         this.published = published;
     }
 
-    public ZonedDateTime getCreated() {
-        return created;
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public Causal created(ZonedDateTime created) {
-        this.created = created;
+    public Causal createdDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreated(ZonedDateTime created) {
-        this.created = created;
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getUpdated() {
-        return updated;
+    public ZonedDateTime getUpdatedDate() {
+        return updatedDate;
     }
 
-    public Causal updated(ZonedDateTime updated) {
-        this.updated = updated;
+    public Causal updatedDate(ZonedDateTime updatedDate) {
+        this.updatedDate = updatedDate;
         return this;
     }
 
-    public void setUpdated(ZonedDateTime updated) {
-        this.updated = updated;
+    public void setUpdatedDate(ZonedDateTime updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public Set<CausalDescription> getCausalDescriptions() {
@@ -218,8 +218,8 @@ public class Causal implements Serializable {
             ", description='" + getDescription() + "'" +
             ", color='" + getColor() + "'" +
             ", published='" + isPublished() + "'" +
-            ", created='" + getCreated() + "'" +
-            ", updated='" + getUpdated() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 }

@@ -42,9 +42,9 @@ public class ElectionDTO implements Serializable {
 
     private Boolean published;
 
-    private ZonedDateTime created;
+    private ZonedDateTime createdDate;
 
-    private ZonedDateTime updated;
+    private ZonedDateTime updatedDate;
 
     private Long electionTypeId;
 
@@ -172,20 +172,20 @@ public class ElectionDTO implements Serializable {
         this.published = published;
     }
 
-    public ZonedDateTime getCreated() {
-        return created;
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreated(ZonedDateTime created) {
-        this.created = created;
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getUpdated() {
-        return updated;
+    public ZonedDateTime getUpdatedDate() {
+        return updatedDate;
     }
 
-    public void setUpdated(ZonedDateTime updated) {
-        this.updated = updated;
+    public void setUpdatedDate(ZonedDateTime updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public Long getElectionTypeId() {
@@ -313,8 +313,8 @@ public class ElectionDTO implements Serializable {
             ", recountDistrictsRule='" + getRecountDistrictsRule() + "'" +
             ", recountPollingPlaceRule='" + getRecountPollingPlaceRule() + "'" +
             ", published='" + isPublished() + "'" +
-            ", created='" + getCreated() + "'" +
-            ", updated='" + getUpdated() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 }

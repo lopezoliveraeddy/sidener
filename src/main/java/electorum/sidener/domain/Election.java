@@ -85,11 +85,11 @@ public class Election implements Serializable {
     @Column(name = "published")
     private Boolean published;
 
-    @Column(name = "created")
-    private ZonedDateTime created;
+    @Column(name = "created_date")
+    private ZonedDateTime createdDate;
 
-    @Column(name = "updated")
-    private ZonedDateTime updated;
+    @Column(name = "updated_date")
+    private ZonedDateTime updatedDate;
 
     @ManyToOne
     private ElectionType electionType;
@@ -299,30 +299,30 @@ public class Election implements Serializable {
         this.published = published;
     }
 
-    public ZonedDateTime getCreated() {
-        return created;
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public Election created(ZonedDateTime created) {
-        this.created = created;
+    public Election createdDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreated(ZonedDateTime created) {
-        this.created = created;
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getUpdated() {
-        return updated;
+    public ZonedDateTime getUpdatedDate() {
+        return updatedDate;
     }
 
-    public Election updated(ZonedDateTime updated) {
-        this.updated = updated;
+    public Election updatedDate(ZonedDateTime updatedDate) {
+        this.updatedDate = updatedDate;
         return this;
     }
 
-    public void setUpdated(ZonedDateTime updated) {
-        this.updated = updated;
+    public void setUpdatedDate(ZonedDateTime updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public ElectionType getElectionType() {
@@ -519,8 +519,8 @@ public class Election implements Serializable {
             ", recountDistrictsRule='" + getRecountDistrictsRule() + "'" +
             ", recountPollingPlaceRule='" + getRecountPollingPlaceRule() + "'" +
             ", published='" + isPublished() + "'" +
-            ", created='" + getCreated() + "'" +
-            ", updated='" + getUpdated() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 }

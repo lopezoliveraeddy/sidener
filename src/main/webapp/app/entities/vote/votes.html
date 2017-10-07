@@ -38,8 +38,8 @@
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="total"><span data-translate="sidenerApp.vote.total">Total</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.vote.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="created"><span data-translate="sidenerApp.vote.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="updated"><span data-translate="sidenerApp.vote.updated">Updated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span data-translate="sidenerApp.vote.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.vote.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="electionId"><span data-translate="sidenerApp.vote.election">Election</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="politicalPartyName"><span data-translate="sidenerApp.vote.politicalParty">Political Party</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="independentCandidateName"><span data-translate="sidenerApp.vote.independentCandidate">Independent Candidate</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -53,8 +53,8 @@
                     <td><a ui-sref="vote-detail({id:vote.id})">{{vote.id}}</a></td>
                     <td>{{vote.total}}</td>
                     <td>{{vote.published}}</td>
-                    <td>{{vote.created | date:'medium'}}</td>
-                    <td>{{vote.updated | date:'medium'}}</td>
+                    <td>{{vote.createdDate | date:'medium'}}</td>
+                    <td>{{vote.updatedDate | date:'medium'}}</td>
                     <td>
                         <a ui-sref="election-detail({id:vote.electionId})">{{vote.electionId}}</a>
                     </td>
