@@ -43,20 +43,19 @@ public class Vote implements Serializable {
     @Column(name = "updated")
     private ZonedDateTime updated;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
+    private Election election;
+
+    @ManyToOne
     private PoliticalParty politicalParty;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
     private IndependentCandidate independentCandidate;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
     private Coalition coalition;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
     private PollingPlace pollingPlace;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
@@ -118,6 +117,19 @@ public class Vote implements Serializable {
 
     public void setUpdated(ZonedDateTime updated) {
         this.updated = updated;
+    }
+
+    public Election getElection() {
+        return election;
+    }
+
+    public Vote election(Election election) {
+        this.election = election;
+        return this;
+    }
+
+    public void setElection(Election election) {
+        this.election = election;
     }
 
     public PoliticalParty getPoliticalParty() {

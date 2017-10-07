@@ -1,0 +1,22 @@
+{
+    "sidenerApp": {
+        "causalDescription" : {
+            "home": {
+                "title": "Causal Descriptions",
+                "createLabel": "Crear nuevo Causal Description",
+                "createOrEditLabel": "Crear o editar Causal Description",
+                "search": "Search for Causal Description"
+            },
+            "created": "Un nuevo Causal Description ha sido creado con el identificador {{ param }}",
+            "updated": "Un Causal Description ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Causal Description ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Causal Description {{ id }}?"
+            },
+            "detail": {
+                "title": "Causal Description"
+            },
+            "text": "Text"
+        }
+    }
+}

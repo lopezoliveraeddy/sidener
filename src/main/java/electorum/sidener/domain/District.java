@@ -33,11 +33,11 @@ public class District implements Serializable {
     @Column(name = "jhi_number")
     private String number;
 
-    @Column(name = "distrito_identificador")
-    private String distritoIdentificador;
+    @Column(name = "district_identificator")
+    private String districtIdentificator;
 
-    @Column(name = "seccion")
-    private String seccion;
+    @Column(name = "section")
+    private String section;
 
     /**
      * Datos Sistema
@@ -52,10 +52,6 @@ public class District implements Serializable {
     @Column(name = "updated")
     private ZonedDateTime updated;
 
-    /**
-     * OK
-     */
-    @ApiModelProperty(value = "OK")
     @ManyToOne
     private Election election;
 
@@ -94,30 +90,30 @@ public class District implements Serializable {
         this.number = number;
     }
 
-    public String getDistritoIdentificador() {
-        return distritoIdentificador;
+    public String getDistrictIdentificator() {
+        return districtIdentificator;
     }
 
-    public District distritoIdentificador(String distritoIdentificador) {
-        this.distritoIdentificador = distritoIdentificador;
+    public District districtIdentificator(String districtIdentificator) {
+        this.districtIdentificator = districtIdentificator;
         return this;
     }
 
-    public void setDistritoIdentificador(String distritoIdentificador) {
-        this.distritoIdentificador = distritoIdentificador;
+    public void setDistrictIdentificator(String districtIdentificator) {
+        this.districtIdentificator = districtIdentificator;
     }
 
-    public String getSeccion() {
-        return seccion;
+    public String getSection() {
+        return section;
     }
 
-    public District seccion(String seccion) {
-        this.seccion = seccion;
+    public District section(String section) {
+        this.section = section;
         return this;
     }
 
-    public void setSeccion(String seccion) {
-        this.seccion = seccion;
+    public void setSection(String section) {
+        this.section = section;
     }
 
     public Boolean isPublished() {
@@ -199,8 +195,8 @@ public class District implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", number='" + getNumber() + "'" +
-            ", distritoIdentificador='" + getDistritoIdentificador() + "'" +
-            ", seccion='" + getSeccion() + "'" +
+            ", districtIdentificator='" + getDistrictIdentificator() + "'" +
+            ", section='" + getSection() + "'" +
             ", published='" + isPublished() + "'" +
             ", created='" + getCreated() + "'" +
             ", updated='" + getUpdated() + "'" +

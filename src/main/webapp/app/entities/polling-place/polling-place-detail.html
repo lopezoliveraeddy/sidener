@@ -4,9 +4,9 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="sidenerApp.pollingPlace.name">Name</span></dt>
+        <dt><span data-translate="sidenerApp.pollingPlace.town">Town</span></dt>
         <dd>
-            <span>{{vm.pollingPlace.name}}</span>
+            <span>{{vm.pollingPlace.town}}</span>
         </dd>
         <dt><span data-translate="sidenerApp.pollingPlace.type">Type</span></dt>
         <dd>
@@ -48,6 +48,34 @@
         <dd>
             <span>{{vm.pollingPlace.observations}}</span>
         </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.president">President</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.president}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.secretary">Secretary</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.secretary}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.scrutineerOne">Scrutineer One</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.scrutineerOne}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.scrutineerTwo">Scrutineer Two</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.scrutineerTwo}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.alternateOne">Alternate One</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.alternateOne}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.alternateTwo">Alternate Two</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.alternateTwo}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.alternateThree">Alternate Three</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.alternateThree}}</span>
+        </dd>
         <dt><span data-translate="sidenerApp.pollingPlace.published">Published</span></dt>
         <dd>
             <span>{{vm.pollingPlace.published}}</span>
@@ -59,6 +87,10 @@
         <dt><span data-translate="sidenerApp.pollingPlace.updated">Updated</span></dt>
         <dd>
             <span>{{vm.pollingPlace.updated | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.election">Election</span></dt>
+        <dd>
+            <a ui-sref="election-detail({id:vm.pollingPlace.electionId})">{{vm.pollingPlace.electionId}}</a>
         </dd>
         <dt><span data-translate="sidenerApp.pollingPlace.district">District</span></dt>
         <dd>

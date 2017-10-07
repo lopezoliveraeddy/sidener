@@ -46,26 +46,32 @@
         </div>
 
         <div class="form-group">
+            <label data-translate="sidenerApp.vote.election" for="field_election">Election</label>
+            <select class="form-control" id="field_election" name="election" ng-model="vm.vote.electionId" ng-options="election.id as election.id for election in vm.elections"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
             <label data-translate="sidenerApp.vote.politicalParty" for="field_politicalParty">Political Party</label>
-            <select class="form-control" id="field_politicalParty" name="politicalParty" ng-model="vm.vote.politicalPartyId" ng-options="politicalParty.id as politicalParty.name for politicalParty in vm.politicalparties | orderBy:'id'">
+            <select class="form-control" id="field_politicalParty" name="politicalParty" ng-model="vm.vote.politicalPartyId" ng-options="politicalParty.id as politicalParty.name for politicalParty in vm.politicalparties"            >
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label data-translate="sidenerApp.vote.independentCandidate" for="field_independentCandidate">Independent Candidate</label>
-            <select class="form-control" id="field_independentCandidate" name="independentCandidate" ng-model="vm.vote.independentCandidateId" ng-options="independentCandidate.id as independentCandidate.name for independentCandidate in vm.independentcandidates | orderBy:'id'">
+            <select class="form-control" id="field_independentCandidate" name="independentCandidate" ng-model="vm.vote.independentCandidateId" ng-options="independentCandidate.id as independentCandidate.name for independentCandidate in vm.independentcandidates"            >
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label data-translate="sidenerApp.vote.coalition" for="field_coalition">Coalition</label>
-            <select class="form-control" id="field_coalition" name="coalition" ng-model="vm.vote.coalitionId" ng-options="coalition.id as coalition.name for coalition in vm.coalitions | orderBy:'id'">
+            <select class="form-control" id="field_coalition" name="coalition" ng-model="vm.vote.coalitionId" ng-options="coalition.id as coalition.name for coalition in vm.coalitions"            >
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label data-translate="sidenerApp.vote.pollingPlace" for="field_pollingPlace">Polling Place</label>
-            <select class="form-control" id="field_pollingPlace" name="pollingPlace" ng-model="vm.vote.pollingPlaceId" ng-options="pollingPlace.id as pollingPlace.name for pollingPlace in vm.pollingplaces | orderBy:'id'">
+            <select class="form-control" id="field_pollingPlace" name="pollingPlace" ng-model="vm.vote.pollingPlaceId" ng-options="pollingPlace.id as pollingPlace.id for pollingPlace in vm.pollingplaces"            >
                 <option value=""></option>
             </select>
         </div>

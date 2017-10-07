@@ -3,6 +3,8 @@ package electorum.sidener.service.dto;
 
 import java.time.ZonedDateTime;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 import javax.persistence.Lob;
 import electorum.sidener.domain.enumeration.CausalType;
@@ -28,6 +30,8 @@ public class CausalDTO implements Serializable {
     private ZonedDateTime created;
 
     private ZonedDateTime updated;
+
+    private Set<CausalDescriptionDTO> causalDescriptions = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -91,6 +95,14 @@ public class CausalDTO implements Serializable {
 
     public void setUpdated(ZonedDateTime updated) {
         this.updated = updated;
+    }
+
+    public Set<CausalDescriptionDTO> getCausalDescriptions() {
+        return causalDescriptions;
+    }
+
+    public void setCausalDescriptions(Set<CausalDescriptionDTO> causalDescriptions) {
+        this.causalDescriptions = causalDescriptions;
     }
 
     @Override

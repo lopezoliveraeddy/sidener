@@ -14,9 +14,9 @@
                     ng-model="vm.pollingPlace.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.pollingPlace.name" for="field_name">Name</label>
-            <input type="text" class="form-control" name="name" id="field_name"
-                    ng-model="vm.pollingPlace.name"
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.town" for="field_town">Town</label>
+            <input type="text" class="form-control" name="town" id="field_town"
+                    ng-model="vm.pollingPlace.town"
                     />
         </div>
         <div class="form-group">
@@ -81,6 +81,48 @@
                     ng-model="vm.pollingPlace.observations" ></textarea>
         </div>
         <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.president" for="field_president">President</label>
+            <input type="text" class="form-control" name="president" id="field_president"
+                    ng-model="vm.pollingPlace.president"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.secretary" for="field_secretary">Secretary</label>
+            <input type="text" class="form-control" name="secretary" id="field_secretary"
+                    ng-model="vm.pollingPlace.secretary"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.scrutineerOne" for="field_scrutineerOne">Scrutineer One</label>
+            <input type="text" class="form-control" name="scrutineerOne" id="field_scrutineerOne"
+                    ng-model="vm.pollingPlace.scrutineerOne"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.scrutineerTwo" for="field_scrutineerTwo">Scrutineer Two</label>
+            <input type="text" class="form-control" name="scrutineerTwo" id="field_scrutineerTwo"
+                    ng-model="vm.pollingPlace.scrutineerTwo"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.alternateOne" for="field_alternateOne">Alternate One</label>
+            <input type="text" class="form-control" name="alternateOne" id="field_alternateOne"
+                    ng-model="vm.pollingPlace.alternateOne"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.alternateTwo" for="field_alternateTwo">Alternate Two</label>
+            <input type="text" class="form-control" name="alternateTwo" id="field_alternateTwo"
+                    ng-model="vm.pollingPlace.alternateTwo"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.alternateThree" for="field_alternateThree">Alternate Three</label>
+            <input type="text" class="form-control" name="alternateThree" id="field_alternateThree"
+                    ng-model="vm.pollingPlace.alternateThree"
+                    />
+        </div>
+        <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.pollingPlace.published" for="field_published">Published</label>
                 <input type="checkbox" name="published" id="field_published"
                           ng-model="vm.pollingPlace.published"/>
@@ -105,7 +147,12 @@
                     </span>
                 </div>
         </div>
-
+        <div class="form-group">
+            <label data-translate="sidenerApp.pollingPlace.election" for="field_election">Election</label>
+            <select class="form-control" id="field_election" name="election" ng-model="vm.pollingPlace.electionId" ng-options="election.id as election.id for election in vm.elections"            >
+                <option value=""></option>
+            </select>
+        </div>
         <div class="form-group">
             <label data-translate="sidenerApp.pollingPlace.district" for="field_district">District</label>
             <select class="form-control" id="field_district" name="district" ng-model="vm.pollingPlace.districtId" ng-options="district.id as district.id for district in vm.districts"            >

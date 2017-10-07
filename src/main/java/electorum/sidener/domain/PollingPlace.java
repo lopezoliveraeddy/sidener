@@ -29,8 +29,8 @@ public class PollingPlace implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "town")
+    private String town;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "jhi_type")
@@ -93,6 +93,27 @@ public class PollingPlace implements Serializable {
     @Column(name = "observations")
     private String observations;
 
+    @Column(name = "president")
+    private String president;
+
+    @Column(name = "secretary")
+    private String secretary;
+
+    @Column(name = "scrutineer_one")
+    private String scrutineerOne;
+
+    @Column(name = "scrutineer_two")
+    private String scrutineerTwo;
+
+    @Column(name = "alternate_one")
+    private String alternateOne;
+
+    @Column(name = "alternate_two")
+    private String alternateTwo;
+
+    @Column(name = "alternate_three")
+    private String alternateThree;
+
     /**
      * Datos Sistema
      */
@@ -106,10 +127,9 @@ public class PollingPlace implements Serializable {
     @Column(name = "updated")
     private ZonedDateTime updated;
 
-    /**
-     * OK
-     */
-    @ApiModelProperty(value = "OK")
+    @ManyToOne
+    private Election election;
+
     @ManyToOne
     private District district;
 
@@ -122,17 +142,17 @@ public class PollingPlace implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTown() {
+        return town;
     }
 
-    public PollingPlace name(String name) {
-        this.name = name;
+    public PollingPlace town(String town) {
+        this.town = town;
         return this;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTown(String town) {
+        this.town = town;
     }
 
     public PollingPlaceType getType() {
@@ -265,6 +285,97 @@ public class PollingPlace implements Serializable {
         this.observations = observations;
     }
 
+    public String getPresident() {
+        return president;
+    }
+
+    public PollingPlace president(String president) {
+        this.president = president;
+        return this;
+    }
+
+    public void setPresident(String president) {
+        this.president = president;
+    }
+
+    public String getSecretary() {
+        return secretary;
+    }
+
+    public PollingPlace secretary(String secretary) {
+        this.secretary = secretary;
+        return this;
+    }
+
+    public void setSecretary(String secretary) {
+        this.secretary = secretary;
+    }
+
+    public String getScrutineerOne() {
+        return scrutineerOne;
+    }
+
+    public PollingPlace scrutineerOne(String scrutineerOne) {
+        this.scrutineerOne = scrutineerOne;
+        return this;
+    }
+
+    public void setScrutineerOne(String scrutineerOne) {
+        this.scrutineerOne = scrutineerOne;
+    }
+
+    public String getScrutineerTwo() {
+        return scrutineerTwo;
+    }
+
+    public PollingPlace scrutineerTwo(String scrutineerTwo) {
+        this.scrutineerTwo = scrutineerTwo;
+        return this;
+    }
+
+    public void setScrutineerTwo(String scrutineerTwo) {
+        this.scrutineerTwo = scrutineerTwo;
+    }
+
+    public String getAlternateOne() {
+        return alternateOne;
+    }
+
+    public PollingPlace alternateOne(String alternateOne) {
+        this.alternateOne = alternateOne;
+        return this;
+    }
+
+    public void setAlternateOne(String alternateOne) {
+        this.alternateOne = alternateOne;
+    }
+
+    public String getAlternateTwo() {
+        return alternateTwo;
+    }
+
+    public PollingPlace alternateTwo(String alternateTwo) {
+        this.alternateTwo = alternateTwo;
+        return this;
+    }
+
+    public void setAlternateTwo(String alternateTwo) {
+        this.alternateTwo = alternateTwo;
+    }
+
+    public String getAlternateThree() {
+        return alternateThree;
+    }
+
+    public PollingPlace alternateThree(String alternateThree) {
+        this.alternateThree = alternateThree;
+        return this;
+    }
+
+    public void setAlternateThree(String alternateThree) {
+        this.alternateThree = alternateThree;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -302,6 +413,19 @@ public class PollingPlace implements Serializable {
 
     public void setUpdated(ZonedDateTime updated) {
         this.updated = updated;
+    }
+
+    public Election getElection() {
+        return election;
+    }
+
+    public PollingPlace election(Election election) {
+        this.election = election;
+        return this;
+    }
+
+    public void setElection(Election election) {
+        this.election = election;
     }
 
     public District getDistrict() {
@@ -342,7 +466,7 @@ public class PollingPlace implements Serializable {
     public String toString() {
         return "PollingPlace{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
+            ", town='" + getTown() + "'" +
             ", type='" + getType() + "'" +
             ", adress='" + getAdress() + "'" +
             ", leftoverBallots='" + getLeftoverBallots() + "'" +
@@ -353,6 +477,13 @@ public class PollingPlace implements Serializable {
             ", totalVotes='" + getTotalVotes() + "'" +
             ", electoralRoll='" + getElectoralRoll() + "'" +
             ", observations='" + getObservations() + "'" +
+            ", president='" + getPresident() + "'" +
+            ", secretary='" + getSecretary() + "'" +
+            ", scrutineerOne='" + getScrutineerOne() + "'" +
+            ", scrutineerTwo='" + getScrutineerTwo() + "'" +
+            ", alternateOne='" + getAlternateOne() + "'" +
+            ", alternateTwo='" + getAlternateTwo() + "'" +
+            ", alternateThree='" + getAlternateThree() + "'" +
             ", published='" + isPublished() + "'" +
             ", created='" + getCreated() + "'" +
             ", updated='" + getUpdated() + "'" +

@@ -30,11 +30,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="distrito_identificador" type="varchar(255)">
+            <column name="district_identificator" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="seccion" type="varchar(255)">
+            <column name="section" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

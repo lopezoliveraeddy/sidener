@@ -22,7 +22,8 @@
             "color": "Color",
             "published": "Publicado",
             "created": "Creado",
-            "updated": "Actualizado"
+            "updated": "Actualizado",
+            "causalDescription": "Descripciones"
         }
     }
 }

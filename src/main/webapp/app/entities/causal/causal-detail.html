@@ -37,6 +37,12 @@
         <dd>
             <span>{{vm.causal.updated | date:'medium'}}</span>
         </dd>
+        <dt><span data-translate="sidenerApp.causal.causalDescription">Causal Description</span></dt>
+        <dd>
+            <span ng-repeat="causalDescription in vm.causal.causalDescriptions">
+                <a ui-sref="causal-description-detail({id: causalDescription.id})">{{causalDescription.text}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
     </dl>
 
     <button type="submit"

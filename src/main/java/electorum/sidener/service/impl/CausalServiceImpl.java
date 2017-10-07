@@ -77,7 +77,7 @@ public class CausalServiceImpl implements CausalService{
     @Transactional(readOnly = true)
     public CausalDTO findOne(Long id) {
         log.debug("Request to get Causal : {}", id);
-        Causal causal = causalRepository.findOne(id);
+        Causal causal = causalRepository.findOneWithEagerRelationships(id);
         return causalMapper.toDto(causal);
     }
 

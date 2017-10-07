@@ -22,6 +22,8 @@ public class VoteDTO implements Serializable {
 
     private ZonedDateTime updated;
 
+    private Long electionId;
+
     private Long politicalPartyId;
 
     private String politicalPartyName;
@@ -35,8 +37,6 @@ public class VoteDTO implements Serializable {
     private String coalitionName;
 
     private Long pollingPlaceId;
-
-    private String pollingPlaceName;
 
     public Long getId() {
         return id;
@@ -76,6 +76,14 @@ public class VoteDTO implements Serializable {
 
     public void setUpdated(ZonedDateTime updated) {
         this.updated = updated;
+    }
+
+    public Long getElectionId() {
+        return electionId;
+    }
+
+    public void setElectionId(Long electionId) {
+        this.electionId = electionId;
     }
 
     public Long getPoliticalPartyId() {
@@ -132,14 +140,6 @@ public class VoteDTO implements Serializable {
 
     public void setPollingPlaceId(Long pollingPlaceId) {
         this.pollingPlaceId = pollingPlaceId;
-    }
-
-    public String getPollingPlaceName() {
-        return pollingPlaceName;
-    }
-
-    public void setPollingPlaceName(String pollingPlaceName) {
-        this.pollingPlaceName = pollingPlaceName;
     }
 
     @Override

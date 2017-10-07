@@ -1,20 +1,20 @@
 <div>
-    <h2 data-translate="sidenerApp.state.home.title">States</h2>
+    <h2 data-translate="sidenerApp.causalDescription.home.title">Causal Descriptions</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="state.new" >
+                <button class="btn btn-primary" ui-sref="causal-description.new" >
                     <span class="glyphicon glyphicon-plus"></span>
-                    <span class="hidden-xs-down"  data-translate="sidenerApp.state.home.createLabel">
-                        Create new State
+                    <span class="hidden-xs-down"  data-translate="sidenerApp.causalDescription.home.createLabel">
+                        Create new Causal Description
                     </span>
                 </button>
             </div>
             <div class="col-xs-8 no-padding-right">
                 <form name="searchForm" class="form-inline">
                     <div class="input-group pull-right" >
-                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'sidenerApp.state.home.search' | translate }}">
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'sidenerApp.causalDescription.home.search' | translate }}">
                         <span  class="input-group-btn width-min" >
                             <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -34,45 +34,32 @@
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="name"><span data-translate="sidenerApp.state.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="published"><span data-translate="sidenerApp.state.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="created"><span data-translate="sidenerApp.state.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="updated"><span data-translate="sidenerApp.state.updated">Updated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="sidenerApp.causalDescription.text">Text</span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="state in vm.states track by state.id">
-                    <td><a ui-sref="state-detail({id:state.id})">{{state.id}}</a></td>
-                    <td>{{state.name}}</td>
-                    <td>
-                        <span ng-if="state.published==true">
-                            <i class="fa fa-check fa-2x"></i>
-                        </span>
-                        <span ng-if="state.published!=true">
-                            <i class="fa fa-times fa-2x"></i>
-                        </span>
-                    </td>
-                    <td>{{state.created | date:'medium'}}</td>
-                    <td>{{state.updated | date:'medium'}}</td>
+                <tr ng-repeat="causalDescription in vm.causalDescriptions track by causalDescription.id">
+                    <td><a ui-sref="causal-description-detail({id:causalDescription.id})">{{causalDescription.id}}</a></td>
+                    <td>{{causalDescription.text}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
-                                    ui-sref="state-detail({id:state.id})"
+                                    ui-sref="causal-description-detail({id:causalDescription.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.view"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="state.edit({id:state.id})"
+                                    ui-sref="causal-description.edit({id:causalDescription.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="state.delete({id:state.id})"
+                                    ui-sref="causal-description.delete({id:causalDescription.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
@@ -82,9 +69,5 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div class="text-center">
-        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
-        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
     </div>
 </div>

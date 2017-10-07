@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('CausalDetailController', CausalDetailController);
 
-    CausalDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'Causal'];
+    CausalDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'Causal', 'CausalDescription'];
 
-    function CausalDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, Causal) {
+    function CausalDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, Causal, CausalDescription) {
         var vm = this;
 
         vm.causal = entity;

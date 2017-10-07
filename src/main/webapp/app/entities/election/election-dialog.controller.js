@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('ElectionDialogController', ElectionDialogController);
 
-    ElectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Election', 'State', 'ElectionType', 'ElectionPeriod', 'PoliticalParty', 'IndependentCandidate', 'Coalition', 'Causal'];
+    ElectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Election', 'ElectionType', 'ElectionPeriod', 'PoliticalParty', 'Coalition', 'IndependentCandidate', 'Causal'];
 
-    function ElectionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Election, State, ElectionType, ElectionPeriod, PoliticalParty, IndependentCandidate, Coalition, Causal) {
+    function ElectionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Election, ElectionType, ElectionPeriod, PoliticalParty, Coalition, IndependentCandidate, Causal) {
         var vm = this;
 
         vm.election = entity;
@@ -15,12 +15,11 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
-        vm.states = State.query();
         vm.electiontypes = ElectionType.query();
         vm.electionperiods = ElectionPeriod.query();
         vm.politicalparties = PoliticalParty.query();
-        vm.independentcandidates = IndependentCandidate.query();
         vm.coalitions = Coalition.query();
+        vm.independentcandidates = IndependentCandidate.query();
         vm.causals = Causal.query();
 
         $timeout(function (){

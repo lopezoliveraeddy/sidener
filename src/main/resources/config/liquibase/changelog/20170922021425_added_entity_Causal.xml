@@ -55,6 +55,17 @@
         <dropDefaultValue tableName="causal" columnName="created" columnDataType="datetime"/>
         <dropDefaultValue tableName="causal" columnName="updated" columnDataType="datetime"/>
         
+        <createTable tableName="causal_causal_description">
+            <column name="causal_descriptions_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="causals_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="causals_id, causal_descriptions_id" tableName="causal_causal_description"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

@@ -1,25 +1,39 @@
 {
     "sidenerApp": {
-        "state" : {
-            "home": {
-                "title": "Estados",
-                "createLabel": "Crear nuevo Estado",
-                "createOrEditLabel": "Crear o editar Estado",
-                "search": "Buscar Estado"
-            },
-            "created": "Un nuevo Estado ha sido creado con el identificador {{ param }}",
-            "updated": "Un Estado ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Estado ha sido eliminado con el identificador {{ param }}",
-            "delete": {
-                "question": "¿Seguro que quiere eliminar el Estado {{ id }}?"
-            },
-            "detail": {
-                "title": "Estado"
-            },
-            "name": "Nombre",
-            "published": "Publicado",
-            "created": "Creado",
-            "updated": "Actualizado"
+        "State" : {
+            "null": "",
+            "AGU": "Aguascalientes",
+            "BCN": "Baja California",
+            "BCS": "Baja California Sur",
+            "CAM": "Campeche",
+            "CHP": "Chiapas",
+            "CHH": "Chihuahua",
+            "COA": "Coahuila",
+            "COL": "Colima",
+            "CMX": "Ciudad de México",
+            "DUR": "Durango",
+            "GUA": "Guanajuato",
+            "GRO": "Guerrero",
+            "HID": "Hidalgo",
+            "JAL": "Jalisco",
+            "MEX": "Estado de México",
+            "MIC": "Michoacán",
+            "MOR": "Morelos",
+            "NAY": "Nayarit",
+            "NLE": "Nuevo León",
+            "OAX": "Oaxaca",
+            "PUE": "Puebla",
+            "QUE": "Querétaro",
+            "ROO": "Quintana Roo",
+            "SLP": "San Luis Potosí",
+            "SIN": "Sinaloa",
+            "SON": "Sonora",
+            "TAB": "Tabasco",
+            "TAM": "Tamaulipas",
+            "TLA": "Tlaxcala",
+            "VER": "Veracruz",
+            "YUC": "Yucatán",
+            "ZAC": "Zacatecas"
         }
     }
 }

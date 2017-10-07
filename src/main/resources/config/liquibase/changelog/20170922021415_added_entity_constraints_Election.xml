@@ -8,12 +8,6 @@
     -->
     <changeSet id="20170922021415-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="state_id"
-                                 baseTableName="election"
-                                 constraintName="fk_election_state_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="state"/>
-
         <addForeignKeyConstraint baseColumnNames="election_type_id"
                                  baseTableName="election"
                                  constraintName="fk_election_election_type_id"
@@ -25,6 +19,24 @@
                                  constraintName="fk_election_election_period_id"
                                  referencedColumnNames="id"
                                  referencedTableName="election_period"/>
+
+        <addForeignKeyConstraint baseColumnNames="political_party_asociated_id"
+                                 baseTableName="election"
+                                 constraintName="fk_election_political_party_asociated_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="political_party"/>
+
+        <addForeignKeyConstraint baseColumnNames="coalition_asociated_id"
+                                 baseTableName="election"
+                                 constraintName="fk_election_coalition_asociated_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="coalition"/>
+
+        <addForeignKeyConstraint baseColumnNames="independent_candidate_asociated_id"
+                                 baseTableName="election"
+                                 constraintName="fk_election_independent_candidate_asociated_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="independent_candidate"/>
 
         <addForeignKeyConstraint baseColumnNames="elections_id"
                                  baseTableName="election_political_parties"

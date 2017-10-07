@@ -68,7 +68,7 @@ class ElectionGatlingTest extends Simulation {
             .exec(http("Create new election")
             .post("/api/elections")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "location":"SAMPLE_TEXT", "date":"2020-01-01T00:00:00.000Z", "status":null, "prepUrl":"SAMPLE_TEXT", "ballotUrl":"SAMPLE_TEXT", "insetUrl":"SAMPLE_TEXT", "demandTemplateUrl":"SAMPLE_TEXT", "recountTemplateUrl":"SAMPLE_TEXT", "recountDistrictsRule":null, "recountPollingPlaceRule":null, "published":null, "created":"2020-01-01T00:00:00.000Z", "updated":"2020-01-01T00:00:00.000Z"}""")).asJSON
+            .body(StringBody("""{"id":null, "state":null, "location":"SAMPLE_TEXT", "date":"2020-01-01T00:00:00.000Z", "status":null, "prepUrl":"SAMPLE_TEXT", "ballotUrl":"SAMPLE_TEXT", "insetUrl":"SAMPLE_TEXT", "demandTemplateUrl":"SAMPLE_TEXT", "recountTemplateUrl":"SAMPLE_TEXT", "recountDistrictsRule":null, "recountPollingPlaceRule":null, "published":null, "created":"2020-01-01T00:00:00.000Z", "updated":"2020-01-01T00:00:00.000Z"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_election_url"))).exitHereIfFailed
             .pause(10)

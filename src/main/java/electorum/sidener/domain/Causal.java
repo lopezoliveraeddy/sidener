@@ -9,6 +9,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 import electorum.sidener.domain.enumeration.CausalType;
@@ -55,6 +57,13 @@ public class Causal implements Serializable {
 
     @Column(name = "updated")
     private ZonedDateTime updated;
+
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "causal_causal_description",
+               joinColumns = @JoinColumn(name="causals_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="causal_descriptions_id", referencedColumnName="id"))
+    private Set<CausalDescription> causalDescriptions = new HashSet<>();
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
     public Long getId() {
@@ -154,6 +163,29 @@ public class Causal implements Serializable {
 
     public void setUpdated(ZonedDateTime updated) {
         this.updated = updated;
+    }
+
+    public Set<CausalDescription> getCausalDescriptions() {
+        return causalDescriptions;
+    }
+
+    public Causal causalDescriptions(Set<CausalDescription> causalDescriptions) {
+        this.causalDescriptions = causalDescriptions;
+        return this;
+    }
+
+    public Causal addCausalDescription(CausalDescription causalDescription) {
+        this.causalDescriptions.add(causalDescription);
+        return this;
+    }
+
+    public Causal removeCausalDescription(CausalDescription causalDescription) {
+        this.causalDescriptions.remove(causalDescription);
+        return this;
+    }
+
+    public void setCausalDescriptions(Set<CausalDescription> causalDescriptions) {
+        this.causalDescriptions = causalDescriptions;
     }
     // jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not remove
 

@@ -126,7 +126,7 @@
                     resolve: {
                         entity: function () {
                             return {
-                                name: null,
+                                town: null,
                                 type: null,
                                 adress: null,
                                 leftoverBallots: null,
@@ -137,6 +137,13 @@
                                 totalVotes: null,
                                 electoralRoll: null,
                                 observations: null,
+                                president: null,
+                                secretary: null,
+                                scrutineerOne: null,
+                                scrutineerTwo: null,
+                                alternateOne: null,
+                                alternateTwo: null,
+                                alternateThree: null,
                                 published: null,
                                 created: null,
                                 updated: null,

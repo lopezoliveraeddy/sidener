@@ -37,6 +37,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import electorum.sidener.domain.enumeration.State;
 import electorum.sidener.domain.enumeration.Status;
 import electorum.sidener.domain.enumeration.RecountDistrictsRule;
 import electorum.sidener.domain.enumeration.RecountPollingPlaceRule;
@@ -48,6 +49,9 @@ import electorum.sidener.domain.enumeration.RecountPollingPlaceRule;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SidenerApp.class)
 public class ElectionResourceIntTest {
+
+    private static final State DEFAULT_STATE = State.AGU;
+    private static final State UPDATED_STATE = State.BCN;
 
     private static final String DEFAULT_LOCATION = "AAAAAAAAAA";
     private static final String UPDATED_LOCATION = "BBBBBBBBBB";
@@ -134,6 +138,7 @@ public class ElectionResourceIntTest {
      */
     public static Election createEntity(EntityManager em) {
         Election election = new Election()
+            .state(DEFAULT_STATE)
             .location(DEFAULT_LOCATION)
             .date(DEFAULT_DATE)
             .status(DEFAULT_STATUS)
@@ -172,6 +177,7 @@ public class ElectionResourceIntTest {
         List<Election> electionList = electionRepository.findAll();
         assertThat(electionList).hasSize(databaseSizeBeforeCreate + 1);
         Election testElection = electionList.get(electionList.size() - 1);
+        assertThat(testElection.getState()).isEqualTo(DEFAULT_STATE);
         assertThat(testElection.getLocation()).isEqualTo(DEFAULT_LOCATION);
         assertThat(testElection.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testElection.getStatus()).isEqualTo(DEFAULT_STATUS);
@@ -222,6 +228,7 @@ public class ElectionResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(election.getId().intValue())))
+            .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
             .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION.toString())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
@@ -248,6 +255,7 @@ public class ElectionResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(election.getId().intValue()))
+            .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
             .andExpect(jsonPath("$.location").value(DEFAULT_LOCATION.toString()))
             .andExpect(jsonPath("$.date").value(sameInstant(DEFAULT_DATE)))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
@@ -282,6 +290,7 @@ public class ElectionResourceIntTest {
         // Update the election
         Election updatedElection = electionRepository.findOne(election.getId());
         updatedElection
+            .state(UPDATED_STATE)
             .location(UPDATED_LOCATION)
             .date(UPDATED_DATE)
             .status(UPDATED_STATUS)
@@ -306,6 +315,7 @@ public class ElectionResourceIntTest {
         List<Election> electionList = electionRepository.findAll();
         assertThat(electionList).hasSize(databaseSizeBeforeUpdate);
         Election testElection = electionList.get(electionList.size() - 1);
+        assertThat(testElection.getState()).isEqualTo(UPDATED_STATE);
         assertThat(testElection.getLocation()).isEqualTo(UPDATED_LOCATION);
         assertThat(testElection.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testElection.getStatus()).isEqualTo(UPDATED_STATUS);
@@ -378,6 +388,7 @@ public class ElectionResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(election.getId().intValue())))
+            .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
             .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION.toString())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))

@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "text",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        }
+    ],
+    "changelogDate": "20171007043201",
+    "entityTableName": "causal_description",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

@@ -36,7 +36,7 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="name"><span data-translate="sidenerApp.pollingPlace.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="town"><span data-translate="sidenerApp.pollingPlace.town">Town</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="type"><span data-translate="sidenerApp.pollingPlace.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="adress"><span data-translate="sidenerApp.pollingPlace.adress">Adress</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="leftoverBallots"><span data-translate="sidenerApp.pollingPlace.leftoverBallots">Leftover Ballots</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -47,6 +47,13 @@
                     <th jh-sort-by="totalVotes"><span data-translate="sidenerApp.pollingPlace.totalVotes">Total Votes</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="electoralRoll"><span data-translate="sidenerApp.pollingPlace.electoralRoll">Electoral Roll</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="observations"><span data-translate="sidenerApp.pollingPlace.observations">Observations</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="president"><span data-translate="sidenerApp.pollingPlace.president">President</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="secretary"><span data-translate="sidenerApp.pollingPlace.secretary">Secretary</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="scrutineerOne"><span data-translate="sidenerApp.pollingPlace.scrutineerOne">Scrutineer One</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="scrutineerTwo"><span data-translate="sidenerApp.pollingPlace.scrutineerTwo">Scrutineer Two</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="alternateOne"><span data-translate="sidenerApp.pollingPlace.alternateOne">Alternate One</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="alternateTwo"><span data-translate="sidenerApp.pollingPlace.alternateTwo">Alternate Two</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="alternateThree"><span data-translate="sidenerApp.pollingPlace.alternateThree">Alternate Three</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.pollingPlace.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="created"><span data-translate="sidenerApp.pollingPlace.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="updated"><span data-translate="sidenerApp.pollingPlace.updated">Updated</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -57,7 +64,7 @@
             <tbody>
                 <tr ng-repeat="pollingPlace in vm.pollingPlaces track by pollingPlace.id">
                     <td><a ui-sref="polling-place-detail({id:pollingPlace.id})">{{pollingPlace.id}}</a></td>
-                    <td>{{pollingPlace.name}}</td>
+                    <td>{{pollingPlace.town}}</td>
                     <td data-translate="{{'sidenerApp.PollingPlaceType.' + pollingPlace.type}}">{{pollingPlace.type}}</td>
                     <td>{{pollingPlace.adress}}</td>
                     <td>{{pollingPlace.leftoverBallots}}</td>
@@ -68,9 +75,19 @@
                     <td>{{pollingPlace.totalVotes}}</td>
                     <td>{{pollingPlace.electoralRoll}}</td>
                     <td>{{pollingPlace.observations}}</td>
+                    <td>{{pollingPlace.president}}</td>
+                    <td>{{pollingPlace.secretary}}</td>
+                    <td>{{pollingPlace.scrutineerOne}}</td>
+                    <td>{{pollingPlace.scrutineerTwo}}</td>
+                    <td>{{pollingPlace.alternateOne}}</td>
+                    <td>{{pollingPlace.alternateTwo}}</td>
+                    <td>{{pollingPlace.alternateThree}}</td>
                     <td>{{pollingPlace.published}}</td>
                     <td>{{pollingPlace.created | date:'medium'}}</td>
                     <td>{{pollingPlace.updated | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="election-detail({id:pollingPlace.electionId})">{{pollingPlace.electionId}}</a>
+                    </td>
                     <td>
                         <a ui-sref="district-detail({id:pollingPlace.districtId})">{{pollingPlace.districtId}}</a>
                     </td>

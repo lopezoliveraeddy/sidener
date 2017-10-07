@@ -51,10 +51,6 @@ public class Coalition implements Serializable {
     @Column(name = "updated")
     private ZonedDateTime updated;
 
-    /**
-     * OK
-     */
-    @ApiModelProperty(value = "OK")
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "coalition_political_parties",

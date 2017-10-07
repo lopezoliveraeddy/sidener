@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Causal.
+    -->
+    <changeSet id="20170922021425-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="causals_id"
+                                 baseTableName="causal_causal_description"
+                                 constraintName="fk_causal_causal_description_causals_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="causal"/>
+        <addForeignKeyConstraint baseColumnNames="causal_descriptions_id"
+                                 baseTableName="causal_causal_description"
+                                 constraintName="fk_causal_causal_description_causal_descriptions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="causal_description"/>
+        
+    </changeSet>
+</databaseChangeLog>

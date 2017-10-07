@@ -1,6 +1,15 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "causalDescription",
+            "otherEntityName": "causalDescription",
+            "otherEntityField": "text",
+            "ownerSide": true
+        }
+    ],
     "fields": [
         {
             "fieldName": "name",

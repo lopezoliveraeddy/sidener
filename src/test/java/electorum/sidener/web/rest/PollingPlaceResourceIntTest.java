@@ -48,8 +48,8 @@ import electorum.sidener.domain.enumeration.PollingPlaceType;
 @SpringBootTest(classes = SidenerApp.class)
 public class PollingPlaceResourceIntTest {
 
-    private static final String DEFAULT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_NAME = "BBBBBBBBBB";
+    private static final String DEFAULT_TOWN = "AAAAAAAAAA";
+    private static final String UPDATED_TOWN = "BBBBBBBBBB";
 
     private static final PollingPlaceType DEFAULT_TYPE = PollingPlaceType.BASIC;
     private static final PollingPlaceType UPDATED_TYPE = PollingPlaceType.CONTIGUOUS;
@@ -80,6 +80,27 @@ public class PollingPlaceResourceIntTest {
 
     private static final String DEFAULT_OBSERVATIONS = "AAAAAAAAAA";
     private static final String UPDATED_OBSERVATIONS = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PRESIDENT = "AAAAAAAAAA";
+    private static final String UPDATED_PRESIDENT = "BBBBBBBBBB";
+
+    private static final String DEFAULT_SECRETARY = "AAAAAAAAAA";
+    private static final String UPDATED_SECRETARY = "BBBBBBBBBB";
+
+    private static final String DEFAULT_SCRUTINEER_ONE = "AAAAAAAAAA";
+    private static final String UPDATED_SCRUTINEER_ONE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_SCRUTINEER_TWO = "AAAAAAAAAA";
+    private static final String UPDATED_SCRUTINEER_TWO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ALTERNATE_ONE = "AAAAAAAAAA";
+    private static final String UPDATED_ALTERNATE_ONE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ALTERNATE_TWO = "AAAAAAAAAA";
+    private static final String UPDATED_ALTERNATE_TWO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ALTERNATE_THREE = "AAAAAAAAAA";
+    private static final String UPDATED_ALTERNATE_THREE = "BBBBBBBBBB";
 
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
@@ -136,7 +157,7 @@ public class PollingPlaceResourceIntTest {
      */
     public static PollingPlace createEntity(EntityManager em) {
         PollingPlace pollingPlace = new PollingPlace()
-            .name(DEFAULT_NAME)
+            .town(DEFAULT_TOWN)
             .type(DEFAULT_TYPE)
             .adress(DEFAULT_ADRESS)
             .leftoverBallots(DEFAULT_LEFTOVER_BALLOTS)
@@ -147,6 +168,13 @@ public class PollingPlaceResourceIntTest {
             .totalVotes(DEFAULT_TOTAL_VOTES)
             .electoralRoll(DEFAULT_ELECTORAL_ROLL)
             .observations(DEFAULT_OBSERVATIONS)
+            .president(DEFAULT_PRESIDENT)
+            .secretary(DEFAULT_SECRETARY)
+            .scrutineerOne(DEFAULT_SCRUTINEER_ONE)
+            .scrutineerTwo(DEFAULT_SCRUTINEER_TWO)
+            .alternateOne(DEFAULT_ALTERNATE_ONE)
+            .alternateTwo(DEFAULT_ALTERNATE_TWO)
+            .alternateThree(DEFAULT_ALTERNATE_THREE)
             .published(DEFAULT_PUBLISHED)
             .created(DEFAULT_CREATED)
             .updated(DEFAULT_UPDATED);
@@ -175,7 +203,7 @@ public class PollingPlaceResourceIntTest {
         List<PollingPlace> pollingPlaceList = pollingPlaceRepository.findAll();
         assertThat(pollingPlaceList).hasSize(databaseSizeBeforeCreate + 1);
         PollingPlace testPollingPlace = pollingPlaceList.get(pollingPlaceList.size() - 1);
-        assertThat(testPollingPlace.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testPollingPlace.getTown()).isEqualTo(DEFAULT_TOWN);
         assertThat(testPollingPlace.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testPollingPlace.getAdress()).isEqualTo(DEFAULT_ADRESS);
         assertThat(testPollingPlace.getLeftoverBallots()).isEqualTo(DEFAULT_LEFTOVER_BALLOTS);
@@ -186,6 +214,13 @@ public class PollingPlaceResourceIntTest {
         assertThat(testPollingPlace.getTotalVotes()).isEqualTo(DEFAULT_TOTAL_VOTES);
         assertThat(testPollingPlace.getElectoralRoll()).isEqualTo(DEFAULT_ELECTORAL_ROLL);
         assertThat(testPollingPlace.getObservations()).isEqualTo(DEFAULT_OBSERVATIONS);
+        assertThat(testPollingPlace.getPresident()).isEqualTo(DEFAULT_PRESIDENT);
+        assertThat(testPollingPlace.getSecretary()).isEqualTo(DEFAULT_SECRETARY);
+        assertThat(testPollingPlace.getScrutineerOne()).isEqualTo(DEFAULT_SCRUTINEER_ONE);
+        assertThat(testPollingPlace.getScrutineerTwo()).isEqualTo(DEFAULT_SCRUTINEER_TWO);
+        assertThat(testPollingPlace.getAlternateOne()).isEqualTo(DEFAULT_ALTERNATE_ONE);
+        assertThat(testPollingPlace.getAlternateTwo()).isEqualTo(DEFAULT_ALTERNATE_TWO);
+        assertThat(testPollingPlace.getAlternateThree()).isEqualTo(DEFAULT_ALTERNATE_THREE);
         assertThat(testPollingPlace.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
         assertThat(testPollingPlace.getCreated()).isEqualTo(DEFAULT_CREATED);
         assertThat(testPollingPlace.getUpdated()).isEqualTo(DEFAULT_UPDATED);
@@ -226,7 +261,7 @@ public class PollingPlaceResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(pollingPlace.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN.toString())))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
             .andExpect(jsonPath("$.[*].adress").value(hasItem(DEFAULT_ADRESS.toString())))
             .andExpect(jsonPath("$.[*].leftoverBallots").value(hasItem(DEFAULT_LEFTOVER_BALLOTS.intValue())))
@@ -237,6 +272,13 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.[*].totalVotes").value(hasItem(DEFAULT_TOTAL_VOTES.intValue())))
             .andExpect(jsonPath("$.[*].electoralRoll").value(hasItem(DEFAULT_ELECTORAL_ROLL.intValue())))
             .andExpect(jsonPath("$.[*].observations").value(hasItem(DEFAULT_OBSERVATIONS.toString())))
+            .andExpect(jsonPath("$.[*].president").value(hasItem(DEFAULT_PRESIDENT.toString())))
+            .andExpect(jsonPath("$.[*].secretary").value(hasItem(DEFAULT_SECRETARY.toString())))
+            .andExpect(jsonPath("$.[*].scrutineerOne").value(hasItem(DEFAULT_SCRUTINEER_ONE.toString())))
+            .andExpect(jsonPath("$.[*].scrutineerTwo").value(hasItem(DEFAULT_SCRUTINEER_TWO.toString())))
+            .andExpect(jsonPath("$.[*].alternateOne").value(hasItem(DEFAULT_ALTERNATE_ONE.toString())))
+            .andExpect(jsonPath("$.[*].alternateTwo").value(hasItem(DEFAULT_ALTERNATE_TWO.toString())))
+            .andExpect(jsonPath("$.[*].alternateThree").value(hasItem(DEFAULT_ALTERNATE_THREE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
             .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
@@ -253,7 +295,7 @@ public class PollingPlaceResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(pollingPlace.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.town").value(DEFAULT_TOWN.toString()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
             .andExpect(jsonPath("$.adress").value(DEFAULT_ADRESS.toString()))
             .andExpect(jsonPath("$.leftoverBallots").value(DEFAULT_LEFTOVER_BALLOTS.intValue()))
@@ -264,6 +306,13 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.totalVotes").value(DEFAULT_TOTAL_VOTES.intValue()))
             .andExpect(jsonPath("$.electoralRoll").value(DEFAULT_ELECTORAL_ROLL.intValue()))
             .andExpect(jsonPath("$.observations").value(DEFAULT_OBSERVATIONS.toString()))
+            .andExpect(jsonPath("$.president").value(DEFAULT_PRESIDENT.toString()))
+            .andExpect(jsonPath("$.secretary").value(DEFAULT_SECRETARY.toString()))
+            .andExpect(jsonPath("$.scrutineerOne").value(DEFAULT_SCRUTINEER_ONE.toString()))
+            .andExpect(jsonPath("$.scrutineerTwo").value(DEFAULT_SCRUTINEER_TWO.toString()))
+            .andExpect(jsonPath("$.alternateOne").value(DEFAULT_ALTERNATE_ONE.toString()))
+            .andExpect(jsonPath("$.alternateTwo").value(DEFAULT_ALTERNATE_TWO.toString()))
+            .andExpect(jsonPath("$.alternateThree").value(DEFAULT_ALTERNATE_THREE.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
             .andExpect(jsonPath("$.created").value(sameInstant(DEFAULT_CREATED)))
             .andExpect(jsonPath("$.updated").value(sameInstant(DEFAULT_UPDATED)));
@@ -288,7 +337,7 @@ public class PollingPlaceResourceIntTest {
         // Update the pollingPlace
         PollingPlace updatedPollingPlace = pollingPlaceRepository.findOne(pollingPlace.getId());
         updatedPollingPlace
-            .name(UPDATED_NAME)
+            .town(UPDATED_TOWN)
             .type(UPDATED_TYPE)
             .adress(UPDATED_ADRESS)
             .leftoverBallots(UPDATED_LEFTOVER_BALLOTS)
@@ -299,6 +348,13 @@ public class PollingPlaceResourceIntTest {
             .totalVotes(UPDATED_TOTAL_VOTES)
             .electoralRoll(UPDATED_ELECTORAL_ROLL)
             .observations(UPDATED_OBSERVATIONS)
+            .president(UPDATED_PRESIDENT)
+            .secretary(UPDATED_SECRETARY)
+            .scrutineerOne(UPDATED_SCRUTINEER_ONE)
+            .scrutineerTwo(UPDATED_SCRUTINEER_TWO)
+            .alternateOne(UPDATED_ALTERNATE_ONE)
+            .alternateTwo(UPDATED_ALTERNATE_TWO)
+            .alternateThree(UPDATED_ALTERNATE_THREE)
             .published(UPDATED_PUBLISHED)
             .created(UPDATED_CREATED)
             .updated(UPDATED_UPDATED);
@@ -313,7 +369,7 @@ public class PollingPlaceResourceIntTest {
         List<PollingPlace> pollingPlaceList = pollingPlaceRepository.findAll();
         assertThat(pollingPlaceList).hasSize(databaseSizeBeforeUpdate);
         PollingPlace testPollingPlace = pollingPlaceList.get(pollingPlaceList.size() - 1);
-        assertThat(testPollingPlace.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testPollingPlace.getTown()).isEqualTo(UPDATED_TOWN);
         assertThat(testPollingPlace.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testPollingPlace.getAdress()).isEqualTo(UPDATED_ADRESS);
         assertThat(testPollingPlace.getLeftoverBallots()).isEqualTo(UPDATED_LEFTOVER_BALLOTS);
@@ -324,6 +380,13 @@ public class PollingPlaceResourceIntTest {
         assertThat(testPollingPlace.getTotalVotes()).isEqualTo(UPDATED_TOTAL_VOTES);
         assertThat(testPollingPlace.getElectoralRoll()).isEqualTo(UPDATED_ELECTORAL_ROLL);
         assertThat(testPollingPlace.getObservations()).isEqualTo(UPDATED_OBSERVATIONS);
+        assertThat(testPollingPlace.getPresident()).isEqualTo(UPDATED_PRESIDENT);
+        assertThat(testPollingPlace.getSecretary()).isEqualTo(UPDATED_SECRETARY);
+        assertThat(testPollingPlace.getScrutineerOne()).isEqualTo(UPDATED_SCRUTINEER_ONE);
+        assertThat(testPollingPlace.getScrutineerTwo()).isEqualTo(UPDATED_SCRUTINEER_TWO);
+        assertThat(testPollingPlace.getAlternateOne()).isEqualTo(UPDATED_ALTERNATE_ONE);
+        assertThat(testPollingPlace.getAlternateTwo()).isEqualTo(UPDATED_ALTERNATE_TWO);
+        assertThat(testPollingPlace.getAlternateThree()).isEqualTo(UPDATED_ALTERNATE_THREE);
         assertThat(testPollingPlace.isPublished()).isEqualTo(UPDATED_PUBLISHED);
         assertThat(testPollingPlace.getCreated()).isEqualTo(UPDATED_CREATED);
         assertThat(testPollingPlace.getUpdated()).isEqualTo(UPDATED_UPDATED);
@@ -386,7 +449,7 @@ public class PollingPlaceResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(pollingPlace.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN.toString())))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
             .andExpect(jsonPath("$.[*].adress").value(hasItem(DEFAULT_ADRESS.toString())))
             .andExpect(jsonPath("$.[*].leftoverBallots").value(hasItem(DEFAULT_LEFTOVER_BALLOTS.intValue())))
@@ -397,6 +460,13 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.[*].totalVotes").value(hasItem(DEFAULT_TOTAL_VOTES.intValue())))
             .andExpect(jsonPath("$.[*].electoralRoll").value(hasItem(DEFAULT_ELECTORAL_ROLL.intValue())))
             .andExpect(jsonPath("$.[*].observations").value(hasItem(DEFAULT_OBSERVATIONS.toString())))
+            .andExpect(jsonPath("$.[*].president").value(hasItem(DEFAULT_PRESIDENT.toString())))
+            .andExpect(jsonPath("$.[*].secretary").value(hasItem(DEFAULT_SECRETARY.toString())))
+            .andExpect(jsonPath("$.[*].scrutineerOne").value(hasItem(DEFAULT_SCRUTINEER_ONE.toString())))
+            .andExpect(jsonPath("$.[*].scrutineerTwo").value(hasItem(DEFAULT_SCRUTINEER_TWO.toString())))
+            .andExpect(jsonPath("$.[*].alternateOne").value(hasItem(DEFAULT_ALTERNATE_ONE.toString())))
+            .andExpect(jsonPath("$.[*].alternateTwo").value(hasItem(DEFAULT_ALTERNATE_TWO.toString())))
+            .andExpect(jsonPath("$.[*].alternateThree").value(hasItem(DEFAULT_ALTERNATE_THREE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
             .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));

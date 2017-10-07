@@ -3,28 +3,36 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
-            "javadoc": "OK",
-            "relationshipName": "state",
-            "otherEntityName": "state",
-            "otherEntityField": "name"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "javadoc": "OK",
             "relationshipName": "electionType",
             "otherEntityName": "electionType",
             "otherEntityField": "name"
         },
         {
             "relationshipType": "many-to-one",
-            "javadoc": "OK",
             "relationshipName": "electionPeriod",
             "otherEntityName": "electionPeriod",
             "otherEntityField": "name"
         },
         {
+            "relationshipType": "many-to-one",
+            "relationshipName": "politicalPartyAsociated",
+            "otherEntityName": "politicalParty",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "coalitionAsociated",
+            "otherEntityName": "coalition",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "independentCandidateAsociated",
+            "otherEntityName": "independentCandidate",
+            "otherEntityField": "id"
+        },
+        {
             "relationshipType": "many-to-many",
-            "javadoc": "OK",
             "otherEntityRelationshipName": "",
             "relationshipName": "politicalParties",
             "otherEntityName": "politicalParty",
@@ -33,7 +41,6 @@
         },
         {
             "relationshipType": "many-to-many",
-            "javadoc": "OK",
             "otherEntityRelationshipName": "",
             "relationshipName": "independentCandidates",
             "otherEntityName": "independentCandidate",
@@ -42,7 +49,6 @@
         },
         {
             "relationshipType": "many-to-many",
-            "javadoc": "OK",
             "otherEntityRelationshipName": "",
             "relationshipName": "coalitions",
             "otherEntityName": "coalition",
@@ -51,7 +57,6 @@
         },
         {
             "relationshipType": "many-to-many",
-            "javadoc": "OK",
             "otherEntityRelationshipName": "",
             "relationshipName": "causals",
             "otherEntityName": "causal",
@@ -61,8 +66,13 @@
     ],
     "fields": [
         {
-            "fieldName": "location",
+            "fieldName": "state",
             "javadoc": "Campos Informativos de la Elección",
+            "fieldType": "State",
+            "fieldValues": "AGU,BCN,BCS,CAM,CHP,CHH,COA,COL,CMX,DUR,GUA,GRO,HID,JAL,MEX,MIC,MOR,NAY,NLE,OAX,PUE,QUE,ROO,SLP,SIN,SON,TAB,TAM,TLA,VER,YUC,ZAC"
+        },
+        {
+            "fieldName": "location",
             "fieldType": "String"
         },
         {

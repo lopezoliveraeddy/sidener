@@ -4,6 +4,10 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="sidenerApp.election.state">State</span></dt>
+        <dd>
+            <span data-translate="{{'sidenerApp.State.' + vm.election.state}}">{{vm.election.state}}</span>
+        </dd>
         <dt><span data-translate="sidenerApp.election.location">Location</span></dt>
         <dd>
             <span>{{vm.election.location}}</span>
@@ -56,10 +60,6 @@
         <dd>
             <span>{{vm.election.updated | date:'medium'}}</span>
         </dd>
-        <dt><span data-translate="sidenerApp.election.state">State</span></dt>
-        <dd>
-            <a ui-sref="state-detail({id:vm.election.stateId})">{{vm.election.stateName}}</a>
-        </dd>
         <dt><span data-translate="sidenerApp.election.electionType">Election Type</span></dt>
         <dd>
             <a ui-sref="election-type-detail({id:vm.election.electionTypeId})">{{vm.election.electionTypeName}}</a>
@@ -67,6 +67,18 @@
         <dt><span data-translate="sidenerApp.election.electionPeriod">Election Period</span></dt>
         <dd>
             <a ui-sref="election-period-detail({id:vm.election.electionPeriodId})">{{vm.election.electionPeriodName}}</a>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.politicalPartyAsociated">Political Party Asociated</span></dt>
+        <dd>
+            <a ui-sref="political-party-detail({id:vm.election.politicalPartyAsociatedId})">{{vm.election.politicalPartyAsociatedId}}</a>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.coalitionAsociated">Coalition Asociated</span></dt>
+        <dd>
+            <a ui-sref="coalition-detail({id:vm.election.coalitionAsociatedId})">{{vm.election.coalitionAsociatedId}}</a>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.independentCandidateAsociated">Independent Candidate Asociated</span></dt>
+        <dd>
+            <a ui-sref="independent-candidate-detail({id:vm.election.independentCandidateAsociatedId})">{{vm.election.independentCandidateAsociatedId}}</a>
         </dd>
         <dt><span data-translate="sidenerApp.election.politicalParties">Political Parties</span></dt>
         <dd>

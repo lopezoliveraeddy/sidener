@@ -2,36 +2,34 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
+            "relationshipName": "election",
+            "otherEntityName": "election",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
             "relationshipName": "politicalParty",
             "otherEntityName": "politicalParty",
-            "otherEntityField": "name",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "vote"
+            "otherEntityField": "name"
         },
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "relationshipName": "independentCandidate",
             "otherEntityName": "independentCandidate",
-            "otherEntityField": "name",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "vote"
+            "otherEntityField": "name"
         },
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "relationshipName": "coalition",
             "otherEntityName": "coalition",
-            "otherEntityField": "name",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "vote"
+            "otherEntityField": "name"
         },
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "relationshipName": "pollingPlace",
             "otherEntityName": "pollingPlace",
-            "otherEntityField": "name",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "vote"
+            "otherEntityField": "id"
         }
     ],
     "fields": [

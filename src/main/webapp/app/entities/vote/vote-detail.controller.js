@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('VoteDetailController', VoteDetailController);
 
-    VoteDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Vote', 'PoliticalParty', 'IndependentCandidate', 'Coalition', 'PollingPlace'];
+    VoteDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Vote', 'Election', 'PoliticalParty', 'IndependentCandidate', 'Coalition', 'PollingPlace'];
 
-    function VoteDetailController($scope, $rootScope, $stateParams, previousState, entity, Vote, PoliticalParty, IndependentCandidate, Coalition, PollingPlace) {
+    function VoteDetailController($scope, $rootScope, $stateParams, previousState, entity, Vote, Election, PoliticalParty, IndependentCandidate, Coalition, PollingPlace) {
         var vm = this;
 
         vm.vote = entity;

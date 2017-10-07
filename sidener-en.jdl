@@ -1,6 +1,7 @@
 /* Entidad propia de una elección, la cual almacena datos informativos de la elección */
 entity Election {
     /* Campos Informativos de la Elección */
+    state State,
     location String,
     date ZonedDateTime,
     status Status,
@@ -104,15 +105,6 @@ entity ElectionType {
     updated ZonedDateTime
 }
 
-/* Entidad Lugar de la votación (Estados de la República) */
-entity State {
-    name String,
-    /* Datos Sistema */
-    published Boolean,
-    created ZonedDateTime,
-    updated ZonedDateTime
-}
-
 /* Entidad Periodos de Eleccion */
 entity ElectionPeriod {
 	name String,
@@ -128,8 +120,8 @@ entity ElectionPeriod {
 entity District {
 	name String,
 	number String,
-    distritoIdentificador String,
-    seccion String,
+    districtIdentificator String,
+    section String,
     /* Datos Sistema */
     published Boolean,
     created ZonedDateTime,
@@ -138,7 +130,7 @@ entity District {
 
 /* Entidad Casillas */
 entity PollingPlace {
-	name String,
+	town String,
     type PollingPlaceType,
     adress TextBlob,
     leftoverBallots Long, /* Total de Boletas Sobrantes */
@@ -149,11 +141,17 @@ entity PollingPlace {
     totalVotes Long, /* Total de Votos */
   	electoralRoll Long, /* Ciudadanos en la Lista Nominal */
     observations TextBlob,
+    president String,
+    secretary String,
+    scrutineerOne String,
+    scrutineerTwo String,
+    alternateOne String,
+    alternateTwo String,
+    alternateThree String,
     /* Datos Sistema */
     published Boolean,
     created ZonedDateTime,
     updated ZonedDateTime
-
 }
 
 /* Entidad Votos */
@@ -175,7 +173,10 @@ entity Causal {
     published Boolean,
     created ZonedDateTime,
     updated ZonedDateTime
+}
 
+entity CausalDescription {
+	text TextBlob
 }
 
 enum Status {
@@ -198,48 +199,37 @@ enum CausalType {
 	RECOUNT, NULLITY
 }
 
+enum State {
+    AGU, BCN, BCS, CAM, CHP, CHH, COA, COL, CMX, DUR, GUA, GRO, HID, JAL, MEX, MIC, MOR, NAY, NLE, OAX, PUE, QUE, ROO, SLP, SIN, SON, TAB, TAM, TLA, VER, YUC, ZAC
+}
+
 relationship ManyToMany {
-	/* OK */
 	Election{politicalParties(name)} to PoliticalParty,
-    /* OK */
   	Election{independentCandidates(name)} to IndependentCandidate,
-    /* OK */
 	Election{coalitions(name)} to Coalition,
-    /* OK */
 	Election{causals(name)} to Causal,
-	/* OK */
-	Coalition{politicalParties(name)} to PoliticalParty
+	Coalition{politicalParties(name)} to PoliticalParty,
+    Causal{causalDescription(text)} to CausalDescription
 }
 
 relationship ManyToOne {
-	/* OK */
-	Election{state(name)} to State,
-    /* OK */
     Election{electionType(name)} to ElectionType,
-    /* OK */
     Election{electionPeriod(name)} to ElectionPeriod,
-	/* OK */
+    Election{politicalPartyAsociated} to PoliticalParty,
+    Election{coalitionAsociated} to Coalition,
+    Election{independentCandidateAsociated} to IndependentCandidate,
 	District{election} to Election,
-	/* OK */
-	PollingPlace{district} to District
-
-}
-
-/* relationship OneToMany { */
-	/* Demandante{demandante} to Election, */
-    /* Recuento{recuento} to Election, */
-	/* Nulidad{nulidad} to Election */
-/* } */
-
-relationship OneToOne {
-    Vote{politicalParty(name)} to PoliticalParty,
+    PollingPlace{election} to Election,
+	PollingPlace{district} to District,
+	Vote{election} to Election,
+	Vote{politicalParty(name)} to PoliticalParty,
     Vote{independentCandidate(name)} to IndependentCandidate,
-	Vote{coalition(name)} to Coalition,
-	Vote{pollingPlace(name)} to PollingPlace
+    Vote{coalition(name)} to Coalition,
+    Vote{pollingPlace} to PollingPlace
 }
 
 // Set pagination options
-paginate Election, PoliticalParty, IndependentCandidate, Coalition, ElectionType, State, ElectionPeriod, District, PollingPlace, Vote, Causal with pagination
+paginate Election, PoliticalParty, IndependentCandidate, Coalition, ElectionType, ElectionPeriod, District, PollingPlace, Vote, Causal with pagination
 
 dto * with mapstruct
 

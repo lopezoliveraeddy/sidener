@@ -8,7 +8,7 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Causal and its DTO CausalDTO.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {CausalDescriptionMapper.class, })
 public interface CausalMapper extends EntityMapper <CausalDTO, Causal> {
     
     

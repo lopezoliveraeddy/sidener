@@ -46,6 +46,7 @@
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('election');
+                    $translatePartialLoader.addPart('state');
                     $translatePartialLoader.addPart('status');
                     $translatePartialLoader.addPart('recountDistrictsRule');
                     $translatePartialLoader.addPart('recountPollingPlaceRule');
@@ -62,7 +63,7 @@
                 pageTitle: 'sidenerApp.election.detail.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/election/election-detail.html',
                     controller: 'ElectionDetailController',
                     controllerAs: 'vm'
@@ -71,6 +72,7 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('election');
+                    $translatePartialLoader.addPart('state');
                     $translatePartialLoader.addPart('status');
                     $translatePartialLoader.addPart('recountDistrictsRule');
                     $translatePartialLoader.addPart('recountPollingPlaceRule');
@@ -130,6 +132,7 @@
                     resolve: {
                         entity: function () {
                             return {
+                                state: null,
                                 location: null,
                                 date: null,
                                 status: null,

@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
+import electorum.sidener.domain.enumeration.State;
 import electorum.sidener.domain.enumeration.Status;
 import electorum.sidener.domain.enumeration.RecountDistrictsRule;
 import electorum.sidener.domain.enumeration.RecountPollingPlaceRule;
@@ -16,6 +17,8 @@ import electorum.sidener.domain.enumeration.RecountPollingPlaceRule;
 public class ElectionDTO implements Serializable {
 
     private Long id;
+
+    private State state;
 
     private String location;
 
@@ -43,10 +46,6 @@ public class ElectionDTO implements Serializable {
 
     private ZonedDateTime updated;
 
-    private Long stateId;
-
-    private String stateName;
-
     private Long electionTypeId;
 
     private String electionTypeName;
@@ -54,6 +53,12 @@ public class ElectionDTO implements Serializable {
     private Long electionPeriodId;
 
     private String electionPeriodName;
+
+    private Long politicalPartyAsociatedId;
+
+    private Long coalitionAsociatedId;
+
+    private Long independentCandidateAsociatedId;
 
     private Set<PoliticalPartyDTO> politicalParties = new HashSet<>();
 
@@ -69,6 +74,14 @@ public class ElectionDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 
     public String getLocation() {
@@ -175,22 +188,6 @@ public class ElectionDTO implements Serializable {
         this.updated = updated;
     }
 
-    public Long getStateId() {
-        return stateId;
-    }
-
-    public void setStateId(Long stateId) {
-        this.stateId = stateId;
-    }
-
-    public String getStateName() {
-        return stateName;
-    }
-
-    public void setStateName(String stateName) {
-        this.stateName = stateName;
-    }
-
     public Long getElectionTypeId() {
         return electionTypeId;
     }
@@ -221,6 +218,30 @@ public class ElectionDTO implements Serializable {
 
     public void setElectionPeriodName(String electionPeriodName) {
         this.electionPeriodName = electionPeriodName;
+    }
+
+    public Long getPoliticalPartyAsociatedId() {
+        return politicalPartyAsociatedId;
+    }
+
+    public void setPoliticalPartyAsociatedId(Long politicalPartyId) {
+        this.politicalPartyAsociatedId = politicalPartyId;
+    }
+
+    public Long getCoalitionAsociatedId() {
+        return coalitionAsociatedId;
+    }
+
+    public void setCoalitionAsociatedId(Long coalitionId) {
+        this.coalitionAsociatedId = coalitionId;
+    }
+
+    public Long getIndependentCandidateAsociatedId() {
+        return independentCandidateAsociatedId;
+    }
+
+    public void setIndependentCandidateAsociatedId(Long independentCandidateId) {
+        this.independentCandidateAsociatedId = independentCandidateId;
     }
 
     public Set<PoliticalPartyDTO> getPoliticalParties() {
@@ -280,6 +301,7 @@ public class ElectionDTO implements Serializable {
     public String toString() {
         return "ElectionDTO{" +
             "id=" + getId() +
+            ", state='" + getState() + "'" +
             ", location='" + getLocation() + "'" +
             ", date='" + getDate() + "'" +
             ", status='" + getStatus() + "'" +

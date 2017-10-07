@@ -8,11 +8,15 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity PollingPlace and its DTO PollingPlaceDTO.
  */
-@Mapper(componentModel = "spring", uses = {DistrictMapper.class, })
+@Mapper(componentModel = "spring", uses = {ElectionMapper.class, DistrictMapper.class, })
 public interface PollingPlaceMapper extends EntityMapper <PollingPlaceDTO, PollingPlace> {
+
+    @Mapping(source = "election.id", target = "electionId")
 
     @Mapping(source = "district.id", target = "districtId")
     PollingPlaceDTO toDto(PollingPlace pollingPlace); 
+
+    @Mapping(source = "electionId", target = "election")
 
     @Mapping(source = "districtId", target = "district")
     PollingPlace toEntity(PollingPlaceDTO pollingPlaceDTO); 

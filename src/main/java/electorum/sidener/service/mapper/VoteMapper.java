@@ -8,8 +8,10 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Vote and its DTO VoteDTO.
  */
-@Mapper(componentModel = "spring", uses = {PoliticalPartyMapper.class, IndependentCandidateMapper.class, CoalitionMapper.class, PollingPlaceMapper.class, })
+@Mapper(componentModel = "spring", uses = {ElectionMapper.class, PoliticalPartyMapper.class, IndependentCandidateMapper.class, CoalitionMapper.class, PollingPlaceMapper.class, })
 public interface VoteMapper extends EntityMapper <VoteDTO, Vote> {
+
+    @Mapping(source = "election.id", target = "electionId")
 
     @Mapping(source = "politicalParty.id", target = "politicalPartyId")
     @Mapping(source = "politicalParty.name", target = "politicalPartyName")
@@ -21,8 +23,9 @@ public interface VoteMapper extends EntityMapper <VoteDTO, Vote> {
     @Mapping(source = "coalition.name", target = "coalitionName")
 
     @Mapping(source = "pollingPlace.id", target = "pollingPlaceId")
-    @Mapping(source = "pollingPlace.name", target = "pollingPlaceName")
     VoteDTO toDto(Vote vote); 
+
+    @Mapping(source = "electionId", target = "election")
 
     @Mapping(source = "politicalPartyId", target = "politicalParty")
 

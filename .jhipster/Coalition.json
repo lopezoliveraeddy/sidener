@@ -3,7 +3,6 @@
     "relationships": [
         {
             "relationshipType": "many-to-many",
-            "javadoc": "OK",
             "otherEntityRelationshipName": "",
             "relationshipName": "politicalParties",
             "otherEntityName": "politicalParty",

@@ -3,14 +3,14 @@
 
     angular
         .module('sidenerApp')
-        .controller('StateDeleteController',StateDeleteController);
+        .controller('CausalDescriptionDeleteController',CausalDescriptionDeleteController);
 
-    StateDeleteController.$inject = ['$uibModalInstance', 'entity', 'State'];
+    CausalDescriptionDeleteController.$inject = ['$uibModalInstance', 'entity', 'CausalDescription'];
 
-    function StateDeleteController($uibModalInstance, entity, State) {
+    function CausalDescriptionDeleteController($uibModalInstance, entity, CausalDescription) {
         var vm = this;
 
-        vm.state = entity;
+        vm.causalDescription = entity;
         vm.clear = clear;
         vm.confirmDelete = confirmDelete;
 
@@ -19,7 +19,7 @@
         }
 
         function confirmDelete (id) {
-            State.delete({id: id},
+            CausalDescription.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);
                 });

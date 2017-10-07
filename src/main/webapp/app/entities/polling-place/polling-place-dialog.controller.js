@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('PollingPlaceDialogController', PollingPlaceDialogController);
 
-    PollingPlaceDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'PollingPlace', 'District'];
+    PollingPlaceDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'PollingPlace', 'Election', 'District'];
 
-    function PollingPlaceDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, PollingPlace, District) {
+    function PollingPlaceDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, PollingPlace, Election, District) {
         var vm = this;
 
         vm.pollingPlace = entity;
@@ -17,6 +17,7 @@
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
         vm.save = save;
+        vm.elections = Election.query();
         vm.districts = District.query();
 
         $timeout(function (){

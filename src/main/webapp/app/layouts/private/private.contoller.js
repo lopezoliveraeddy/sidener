@@ -105,14 +105,6 @@
                 isActive: false,
                 isVisible: true
             }, {
-                name: $translate.instant('global.menu.entities.state'),
-                action: function() {
-                    $state.go('state');
-                },
-                icon: 'glyphicon glyphicon-asterisk',
-                isActive: false,
-                isVisible: true
-            }, {
                 name: $translate.instant('global.menu.entities.district'),
                 action: function() {
                     $state.go('district');

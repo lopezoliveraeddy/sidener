@@ -3,7 +3,6 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
-            "javadoc": "OK",
             "relationshipName": "election",
             "otherEntityName": "election",
             "otherEntityField": "id"
@@ -19,11 +18,11 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "distritoIdentificador",
+            "fieldName": "districtIdentificator",
             "fieldType": "String"
         },
         {
-            "fieldName": "seccion",
+            "fieldName": "section",
             "fieldType": "String"
         },
         {

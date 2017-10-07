@@ -13,6 +13,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 
+import electorum.sidener.domain.enumeration.State;
+
 import electorum.sidener.domain.enumeration.Status;
 
 import electorum.sidener.domain.enumeration.RecountDistrictsRule;
@@ -39,6 +41,10 @@ public class Election implements Serializable {
      * Campos Informativos de la Elección
      */
     @ApiModelProperty(value = "Campos Informativos de la Elección")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "state")
+    private State state;
+
     @Column(name = "location")
     private String location;
 
@@ -85,31 +91,21 @@ public class Election implements Serializable {
     @Column(name = "updated")
     private ZonedDateTime updated;
 
-    /**
-     * OK
-     */
-    @ApiModelProperty(value = "OK")
-    @ManyToOne
-    private State state;
-
-    /**
-     * OK
-     */
-    @ApiModelProperty(value = "OK")
     @ManyToOne
     private ElectionType electionType;
 
-    /**
-     * OK
-     */
-    @ApiModelProperty(value = "OK")
     @ManyToOne
     private ElectionPeriod electionPeriod;
 
-    /**
-     * OK
-     */
-    @ApiModelProperty(value = "OK")
+    @ManyToOne
+    private PoliticalParty politicalPartyAsociated;
+
+    @ManyToOne
+    private Coalition coalitionAsociated;
+
+    @ManyToOne
+    private IndependentCandidate independentCandidateAsociated;
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "election_political_parties",
@@ -117,10 +113,6 @@ public class Election implements Serializable {
                inverseJoinColumns = @JoinColumn(name="political_parties_id", referencedColumnName="id"))
     private Set<PoliticalParty> politicalParties = new HashSet<>();
 
-    /**
-     * OK
-     */
-    @ApiModelProperty(value = "OK")
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "election_independent_candidates",
@@ -128,10 +120,6 @@ public class Election implements Serializable {
                inverseJoinColumns = @JoinColumn(name="independent_candidates_id", referencedColumnName="id"))
     private Set<IndependentCandidate> independentCandidates = new HashSet<>();
 
-    /**
-     * OK
-     */
-    @ApiModelProperty(value = "OK")
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "election_coalitions",
@@ -139,10 +127,6 @@ public class Election implements Serializable {
                inverseJoinColumns = @JoinColumn(name="coalitions_id", referencedColumnName="id"))
     private Set<Coalition> coalitions = new HashSet<>();
 
-    /**
-     * OK
-     */
-    @ApiModelProperty(value = "OK")
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "election_causals",
@@ -157,6 +141,19 @@ public class Election implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public Election state(State state) {
+        this.state = state;
+        return this;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 
     public String getLocation() {
@@ -328,19 +325,6 @@ public class Election implements Serializable {
         this.updated = updated;
     }
 
-    public State getState() {
-        return state;
-    }
-
-    public Election state(State state) {
-        this.state = state;
-        return this;
-    }
-
-    public void setState(State state) {
-        this.state = state;
-    }
-
     public ElectionType getElectionType() {
         return electionType;
     }
@@ -365,6 +349,45 @@ public class Election implements Serializable {
 
     public void setElectionPeriod(ElectionPeriod electionPeriod) {
         this.electionPeriod = electionPeriod;
+    }
+
+    public PoliticalParty getPoliticalPartyAsociated() {
+        return politicalPartyAsociated;
+    }
+
+    public Election politicalPartyAsociated(PoliticalParty politicalParty) {
+        this.politicalPartyAsociated = politicalParty;
+        return this;
+    }
+
+    public void setPoliticalPartyAsociated(PoliticalParty politicalParty) {
+        this.politicalPartyAsociated = politicalParty;
+    }
+
+    public Coalition getCoalitionAsociated() {
+        return coalitionAsociated;
+    }
+
+    public Election coalitionAsociated(Coalition coalition) {
+        this.coalitionAsociated = coalition;
+        return this;
+    }
+
+    public void setCoalitionAsociated(Coalition coalition) {
+        this.coalitionAsociated = coalition;
+    }
+
+    public IndependentCandidate getIndependentCandidateAsociated() {
+        return independentCandidateAsociated;
+    }
+
+    public Election independentCandidateAsociated(IndependentCandidate independentCandidate) {
+        this.independentCandidateAsociated = independentCandidate;
+        return this;
+    }
+
+    public void setIndependentCandidateAsociated(IndependentCandidate independentCandidate) {
+        this.independentCandidateAsociated = independentCandidate;
     }
 
     public Set<PoliticalParty> getPoliticalParties() {
@@ -484,6 +507,7 @@ public class Election implements Serializable {
     public String toString() {
         return "Election{" +
             "id=" + getId() +
+            ", state='" + getState() + "'" +
             ", location='" + getLocation() + "'" +
             ", date='" + getDate() + "'" +
             ", status='" + getStatus() + "'" +

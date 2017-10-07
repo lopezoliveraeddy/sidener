@@ -52,11 +52,11 @@ public class DistrictResourceIntTest {
     private static final String DEFAULT_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_NUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_DISTRITO_IDENTIFICADOR = "AAAAAAAAAA";
-    private static final String UPDATED_DISTRITO_IDENTIFICADOR = "BBBBBBBBBB";
+    private static final String DEFAULT_DISTRICT_IDENTIFICATOR = "AAAAAAAAAA";
+    private static final String UPDATED_DISTRICT_IDENTIFICATOR = "BBBBBBBBBB";
 
-    private static final String DEFAULT_SECCION = "AAAAAAAAAA";
-    private static final String UPDATED_SECCION = "BBBBBBBBBB";
+    private static final String DEFAULT_SECTION = "AAAAAAAAAA";
+    private static final String UPDATED_SECTION = "BBBBBBBBBB";
 
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
@@ -115,8 +115,8 @@ public class DistrictResourceIntTest {
         District district = new District()
             .name(DEFAULT_NAME)
             .number(DEFAULT_NUMBER)
-            .distritoIdentificador(DEFAULT_DISTRITO_IDENTIFICADOR)
-            .seccion(DEFAULT_SECCION)
+            .districtIdentificator(DEFAULT_DISTRICT_IDENTIFICATOR)
+            .section(DEFAULT_SECTION)
             .published(DEFAULT_PUBLISHED)
             .created(DEFAULT_CREATED)
             .updated(DEFAULT_UPDATED);
@@ -147,8 +147,8 @@ public class DistrictResourceIntTest {
         District testDistrict = districtList.get(districtList.size() - 1);
         assertThat(testDistrict.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testDistrict.getNumber()).isEqualTo(DEFAULT_NUMBER);
-        assertThat(testDistrict.getDistritoIdentificador()).isEqualTo(DEFAULT_DISTRITO_IDENTIFICADOR);
-        assertThat(testDistrict.getSeccion()).isEqualTo(DEFAULT_SECCION);
+        assertThat(testDistrict.getDistrictIdentificator()).isEqualTo(DEFAULT_DISTRICT_IDENTIFICATOR);
+        assertThat(testDistrict.getSection()).isEqualTo(DEFAULT_SECTION);
         assertThat(testDistrict.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
         assertThat(testDistrict.getCreated()).isEqualTo(DEFAULT_CREATED);
         assertThat(testDistrict.getUpdated()).isEqualTo(DEFAULT_UPDATED);
@@ -191,8 +191,8 @@ public class DistrictResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(district.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].number").value(hasItem(DEFAULT_NUMBER.toString())))
-            .andExpect(jsonPath("$.[*].distritoIdentificador").value(hasItem(DEFAULT_DISTRITO_IDENTIFICADOR.toString())))
-            .andExpect(jsonPath("$.[*].seccion").value(hasItem(DEFAULT_SECCION.toString())))
+            .andExpect(jsonPath("$.[*].districtIdentificator").value(hasItem(DEFAULT_DISTRICT_IDENTIFICATOR.toString())))
+            .andExpect(jsonPath("$.[*].section").value(hasItem(DEFAULT_SECTION.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
             .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));
@@ -211,8 +211,8 @@ public class DistrictResourceIntTest {
             .andExpect(jsonPath("$.id").value(district.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.number").value(DEFAULT_NUMBER.toString()))
-            .andExpect(jsonPath("$.distritoIdentificador").value(DEFAULT_DISTRITO_IDENTIFICADOR.toString()))
-            .andExpect(jsonPath("$.seccion").value(DEFAULT_SECCION.toString()))
+            .andExpect(jsonPath("$.districtIdentificator").value(DEFAULT_DISTRICT_IDENTIFICATOR.toString()))
+            .andExpect(jsonPath("$.section").value(DEFAULT_SECTION.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
             .andExpect(jsonPath("$.created").value(sameInstant(DEFAULT_CREATED)))
             .andExpect(jsonPath("$.updated").value(sameInstant(DEFAULT_UPDATED)));
@@ -239,8 +239,8 @@ public class DistrictResourceIntTest {
         updatedDistrict
             .name(UPDATED_NAME)
             .number(UPDATED_NUMBER)
-            .distritoIdentificador(UPDATED_DISTRITO_IDENTIFICADOR)
-            .seccion(UPDATED_SECCION)
+            .districtIdentificator(UPDATED_DISTRICT_IDENTIFICATOR)
+            .section(UPDATED_SECTION)
             .published(UPDATED_PUBLISHED)
             .created(UPDATED_CREATED)
             .updated(UPDATED_UPDATED);
@@ -257,8 +257,8 @@ public class DistrictResourceIntTest {
         District testDistrict = districtList.get(districtList.size() - 1);
         assertThat(testDistrict.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testDistrict.getNumber()).isEqualTo(UPDATED_NUMBER);
-        assertThat(testDistrict.getDistritoIdentificador()).isEqualTo(UPDATED_DISTRITO_IDENTIFICADOR);
-        assertThat(testDistrict.getSeccion()).isEqualTo(UPDATED_SECCION);
+        assertThat(testDistrict.getDistrictIdentificator()).isEqualTo(UPDATED_DISTRICT_IDENTIFICATOR);
+        assertThat(testDistrict.getSection()).isEqualTo(UPDATED_SECTION);
         assertThat(testDistrict.isPublished()).isEqualTo(UPDATED_PUBLISHED);
         assertThat(testDistrict.getCreated()).isEqualTo(UPDATED_CREATED);
         assertThat(testDistrict.getUpdated()).isEqualTo(UPDATED_UPDATED);
@@ -323,8 +323,8 @@ public class DistrictResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(district.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].number").value(hasItem(DEFAULT_NUMBER.toString())))
-            .andExpect(jsonPath("$.[*].distritoIdentificador").value(hasItem(DEFAULT_DISTRITO_IDENTIFICADOR.toString())))
-            .andExpect(jsonPath("$.[*].seccion").value(hasItem(DEFAULT_SECCION.toString())))
+            .andExpect(jsonPath("$.[*].districtIdentificator").value(hasItem(DEFAULT_DISTRICT_IDENTIFICATOR.toString())))
+            .andExpect(jsonPath("$.[*].section").value(hasItem(DEFAULT_SECTION.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
             .andExpect(jsonPath("$.[*].updated").value(hasItem(sameInstant(DEFAULT_UPDATED))));

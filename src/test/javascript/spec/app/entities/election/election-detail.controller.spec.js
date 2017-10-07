@@ -4,7 +4,7 @@ describe('Controller Tests', function() {
 
     describe('Election Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockElection, MockState, MockElectionType, MockElectionPeriod, MockPoliticalParty, MockIndependentCandidate, MockCoalition, MockCausal;
+        var MockEntity, MockPreviousState, MockElection, MockElectionType, MockElectionPeriod, MockPoliticalParty, MockCoalition, MockIndependentCandidate, MockCausal;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -13,12 +13,11 @@ describe('Controller Tests', function() {
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
             MockElection = jasmine.createSpy('MockElection');
-            MockState = jasmine.createSpy('MockState');
             MockElectionType = jasmine.createSpy('MockElectionType');
             MockElectionPeriod = jasmine.createSpy('MockElectionPeriod');
             MockPoliticalParty = jasmine.createSpy('MockPoliticalParty');
-            MockIndependentCandidate = jasmine.createSpy('MockIndependentCandidate');
             MockCoalition = jasmine.createSpy('MockCoalition');
+            MockIndependentCandidate = jasmine.createSpy('MockIndependentCandidate');
             MockCausal = jasmine.createSpy('MockCausal');
             
 
@@ -28,12 +27,11 @@ describe('Controller Tests', function() {
                 'entity': MockEntity,
                 'previousState': MockPreviousState,
                 'Election': MockElection,
-                'State': MockState,
                 'ElectionType': MockElectionType,
                 'ElectionPeriod': MockElectionPeriod,
                 'PoliticalParty': MockPoliticalParty,
-                'IndependentCandidate': MockIndependentCandidate,
                 'Coalition': MockCoalition,
+                'IndependentCandidate': MockIndependentCandidate,
                 'Causal': MockCausal
             };
             createController = function() {

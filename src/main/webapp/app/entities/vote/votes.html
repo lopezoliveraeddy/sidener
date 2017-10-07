@@ -40,10 +40,11 @@
                     <th jh-sort-by="published"><span data-translate="sidenerApp.vote.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="created"><span data-translate="sidenerApp.vote.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="updated"><span data-translate="sidenerApp.vote.updated">Updated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="electionId"><span data-translate="sidenerApp.vote.election">Election</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="politicalPartyName"><span data-translate="sidenerApp.vote.politicalParty">Political Party</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="independentCandidateName"><span data-translate="sidenerApp.vote.independentCandidate">Independent Candidate</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="coalitionName"><span data-translate="sidenerApp.vote.coalition">Coalition</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="pollingPlaceName"><span data-translate="sidenerApp.vote.pollingPlace">Polling Place</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pollingPlaceId"><span data-translate="sidenerApp.vote.pollingPlace">Polling Place</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -55,6 +56,9 @@
                     <td>{{vote.created | date:'medium'}}</td>
                     <td>{{vote.updated | date:'medium'}}</td>
                     <td>
+                        <a ui-sref="election-detail({id:vote.electionId})">{{vote.electionId}}</a>
+                    </td>
+                    <td>
                         <a ui-sref="political-party-detail({id:vote.politicalPartyId})">{{vote.politicalPartyName}}</a>
                     </td>
                     <td>
@@ -64,7 +68,7 @@
                         <a ui-sref="coalition-detail({id:vote.coalitionId})">{{vote.coalitionName}}</a>
                     </td>
                     <td>
-                        <a ui-sref="polling-place-detail({id:vote.pollingPlaceId})">{{vote.pollingPlaceName}}</a>
+                        <a ui-sref="polling-place-detail({id:vote.pollingPlaceId})">{{vote.pollingPlaceId}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

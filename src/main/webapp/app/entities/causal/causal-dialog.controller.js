@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('CausalDialogController', CausalDialogController);
 
-    CausalDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Causal'];
+    CausalDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Causal', 'CausalDescription'];
 
-    function CausalDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Causal) {
+    function CausalDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Causal, CausalDescription) {
         var vm = this;
 
         vm.causal = entity;
@@ -17,6 +17,7 @@
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
         vm.save = save;
+        vm.causaldescriptions = CausalDescription.query();
 
         ini();
 

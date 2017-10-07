@@ -3,7 +3,12 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
-            "javadoc": "OK",
+            "relationshipName": "election",
+            "otherEntityName": "election",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
             "relationshipName": "district",
             "otherEntityName": "district",
             "otherEntityField": "id"
@@ -11,7 +16,7 @@
     ],
     "fields": [
         {
-            "fieldName": "name",
+            "fieldName": "town",
             "fieldType": "String"
         },
         {
@@ -63,6 +68,34 @@
             "javadoc": "Ciudadanos en la Lista Nominal",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "president",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "secretary",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "scrutineerOne",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "scrutineerTwo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "alternateOne",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "alternateTwo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "alternateThree",
+            "fieldType": "String"
         },
         {
             "fieldName": "published",

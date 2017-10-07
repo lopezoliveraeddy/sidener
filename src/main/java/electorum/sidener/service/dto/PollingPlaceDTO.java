@@ -16,7 +16,7 @@ public class PollingPlaceDTO implements Serializable {
 
     private Long id;
 
-    private String name;
+    private String town;
 
     private PollingPlaceType type;
 
@@ -40,11 +40,27 @@ public class PollingPlaceDTO implements Serializable {
     @Lob
     private String observations;
 
+    private String president;
+
+    private String secretary;
+
+    private String scrutineerOne;
+
+    private String scrutineerTwo;
+
+    private String alternateOne;
+
+    private String alternateTwo;
+
+    private String alternateThree;
+
     private Boolean published;
 
     private ZonedDateTime created;
 
     private ZonedDateTime updated;
+
+    private Long electionId;
 
     private Long districtId;
 
@@ -56,12 +72,12 @@ public class PollingPlaceDTO implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTown() {
+        return town;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTown(String town) {
+        this.town = town;
     }
 
     public PollingPlaceType getType() {
@@ -144,6 +160,62 @@ public class PollingPlaceDTO implements Serializable {
         this.observations = observations;
     }
 
+    public String getPresident() {
+        return president;
+    }
+
+    public void setPresident(String president) {
+        this.president = president;
+    }
+
+    public String getSecretary() {
+        return secretary;
+    }
+
+    public void setSecretary(String secretary) {
+        this.secretary = secretary;
+    }
+
+    public String getScrutineerOne() {
+        return scrutineerOne;
+    }
+
+    public void setScrutineerOne(String scrutineerOne) {
+        this.scrutineerOne = scrutineerOne;
+    }
+
+    public String getScrutineerTwo() {
+        return scrutineerTwo;
+    }
+
+    public void setScrutineerTwo(String scrutineerTwo) {
+        this.scrutineerTwo = scrutineerTwo;
+    }
+
+    public String getAlternateOne() {
+        return alternateOne;
+    }
+
+    public void setAlternateOne(String alternateOne) {
+        this.alternateOne = alternateOne;
+    }
+
+    public String getAlternateTwo() {
+        return alternateTwo;
+    }
+
+    public void setAlternateTwo(String alternateTwo) {
+        this.alternateTwo = alternateTwo;
+    }
+
+    public String getAlternateThree() {
+        return alternateThree;
+    }
+
+    public void setAlternateThree(String alternateThree) {
+        this.alternateThree = alternateThree;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -166,6 +238,14 @@ public class PollingPlaceDTO implements Serializable {
 
     public void setUpdated(ZonedDateTime updated) {
         this.updated = updated;
+    }
+
+    public Long getElectionId() {
+        return electionId;
+    }
+
+    public void setElectionId(Long electionId) {
+        this.electionId = electionId;
     }
 
     public Long getDistrictId() {
@@ -201,7 +281,7 @@ public class PollingPlaceDTO implements Serializable {
     public String toString() {
         return "PollingPlaceDTO{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
+            ", town='" + getTown() + "'" +
             ", type='" + getType() + "'" +
             ", adress='" + getAdress() + "'" +
             ", leftoverBallots='" + getLeftoverBallots() + "'" +
@@ -212,6 +292,13 @@ public class PollingPlaceDTO implements Serializable {
             ", totalVotes='" + getTotalVotes() + "'" +
             ", electoralRoll='" + getElectoralRoll() + "'" +
             ", observations='" + getObservations() + "'" +
+            ", president='" + getPresident() + "'" +
+            ", secretary='" + getSecretary() + "'" +
+            ", scrutineerOne='" + getScrutineerOne() + "'" +
+            ", scrutineerTwo='" + getScrutineerTwo() + "'" +
+            ", alternateOne='" + getAlternateOne() + "'" +
+            ", alternateTwo='" + getAlternateTwo() + "'" +
+            ", alternateThree='" + getAlternateThree() + "'" +
             ", published='" + isPublished() + "'" +
             ", created='" + getCreated() + "'" +
             ", updated='" + getUpdated() + "'" +

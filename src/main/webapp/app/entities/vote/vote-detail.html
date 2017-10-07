@@ -20,6 +20,10 @@
         <dd>
             <span>{{vm.vote.updated | date:'medium'}}</span>
         </dd>
+        <dt><span data-translate="sidenerApp.vote.election">Election</span></dt>
+        <dd>
+            <a ui-sref="election-detail({id:vm.vote.electionId})">{{vm.vote.electionId}}</a>
+        </dd>
         <dt><span data-translate="sidenerApp.vote.politicalParty">Political Party</span></dt>
         <dd>
             <a ui-sref="political-party-detail({id:vm.vote.politicalPartyId})">{{vm.vote.politicalPartyName}}</a>
@@ -34,7 +38,7 @@
         </dd>
         <dt><span data-translate="sidenerApp.vote.pollingPlace">Polling Place</span></dt>
         <dd>
-            <a ui-sref="polling-place-detail({id:vm.vote.pollingPlaceId})">{{vm.vote.pollingPlaceName}}</a>
+            <a ui-sref="polling-place-detail({id:vm.vote.pollingPlaceId})">{{vm.vote.pollingPlaceId}}</a>
         </dd>
     </dl>
 

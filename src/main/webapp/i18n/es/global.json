@@ -12,12 +12,13 @@
                 "independentCandidate": "Candidato Independiente",
                 "coalition": "Coalición",
                 "electionType": "Tipo de Elección",
-                "state": "Estado",
                 "electionPeriod": "Periodo de Elección",
                 "district": "Distrito",
                 "pollingPlace": "Casilla",
                 "vote": "Voto",
                 "causal": "Causal",
+                "causalDescription": "Causal Description",
+                "election": "Elección",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

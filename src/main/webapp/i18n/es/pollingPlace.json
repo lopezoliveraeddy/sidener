@@ -16,7 +16,7 @@
             "detail": {
                 "title": "Casilla"
             },
-            "name": "Nombre",
+            "town": "Ciudad",
             "type": "Tipo",
             "adress": "Dirección",
             "leftoverBallots": "Total de Boletas Sobrantes",
@@ -27,9 +27,17 @@
             "totalVotes": "Total de Votos",
             "electoralRoll": "Total de Ciudadanos en la Lista Nominal",
             "observations": "Observaciones",
+            "president": "Presidente",
+            "secretary": "Secretario",
+            "scrutineerOne": "Primer Escrutador",
+            "scrutineerTwo": "Segundo Escrutador",
+            "alternateOne": "Primer Alternativo",
+            "alternateTwo": "Segundo Alternativo",
+            "alternateThree": "Tercer Alternativo",
 			"published": "Publicado",
             "created": "Creado",
             "updated": "Actualizado",
+            "election": "Elección",
             "district": "Distrito"
         }
     }

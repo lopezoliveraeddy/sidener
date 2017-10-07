@@ -126,8 +126,8 @@
                             return {
                                 name: null,
                                 number: null,
-                                distritoIdentificador: null,
-                                seccion: null,
+                                districtIdentificator: null,
+                                section: null,
                                 published: null,
                                 created: null,
                                 updated: null,

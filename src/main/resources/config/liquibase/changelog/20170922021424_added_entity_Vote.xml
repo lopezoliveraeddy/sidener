@@ -37,15 +37,27 @@
             <column name="updated" type="timestamp">
                 <constraints nullable="true" />
             </column>
-            <column name="political_party_id" type="bigint">
-                <constraints unique="true" nullable="true" />
-            </column>            <column name="independent_candidate_id" type="bigint">
-                <constraints unique="true" nullable="true" />
-            </column>            <column name="coalition_id" type="bigint">
-                <constraints unique="true" nullable="true" />
-            </column>            <column name="polling_place_id" type="bigint">
-                <constraints unique="true" nullable="true" />
+
+            <column name="election_id" type="bigint">
+                <constraints nullable="true" />
             </column>
+
+            <column name="political_party_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="independent_candidate_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="coalition_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="polling_place_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="vote" columnName="created" columnDataType="datetime"/>

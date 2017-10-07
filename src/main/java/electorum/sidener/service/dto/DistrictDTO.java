@@ -18,9 +18,9 @@ public class DistrictDTO implements Serializable {
 
     private String number;
 
-    private String distritoIdentificador;
+    private String districtIdentificator;
 
-    private String seccion;
+    private String section;
 
     private Boolean published;
 
@@ -54,20 +54,20 @@ public class DistrictDTO implements Serializable {
         this.number = number;
     }
 
-    public String getDistritoIdentificador() {
-        return distritoIdentificador;
+    public String getDistrictIdentificator() {
+        return districtIdentificator;
     }
 
-    public void setDistritoIdentificador(String distritoIdentificador) {
-        this.distritoIdentificador = distritoIdentificador;
+    public void setDistrictIdentificator(String districtIdentificator) {
+        this.districtIdentificator = districtIdentificator;
     }
 
-    public String getSeccion() {
-        return seccion;
+    public String getSection() {
+        return section;
     }
 
-    public void setSeccion(String seccion) {
-        this.seccion = seccion;
+    public void setSection(String section) {
+        this.section = section;
     }
 
     public Boolean isPublished() {
@@ -129,8 +129,8 @@ public class DistrictDTO implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", number='" + getNumber() + "'" +
-            ", distritoIdentificador='" + getDistritoIdentificador() + "'" +
-            ", seccion='" + getSeccion() + "'" +
+            ", districtIdentificator='" + getDistrictIdentificator() + "'" +
+            ", section='" + getSection() + "'" +
             ", published='" + isPublished() + "'" +
             ", created='" + getCreated() + "'" +
             ", updated='" + getUpdated() + "'" +

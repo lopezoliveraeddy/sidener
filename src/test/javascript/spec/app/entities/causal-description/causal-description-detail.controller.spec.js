@@ -2,9 +2,9 @@
 
 describe('Controller Tests', function() {
 
-    describe('State Management Detail Controller', function() {
+    describe('CausalDescription Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockState;
+        var MockEntity, MockPreviousState, MockCausalDescription;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -12,7 +12,7 @@ describe('Controller Tests', function() {
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
-            MockState = jasmine.createSpy('MockState');
+            MockCausalDescription = jasmine.createSpy('MockCausalDescription');
             
 
             var locals = {
@@ -20,17 +20,17 @@ describe('Controller Tests', function() {
                 '$rootScope': $rootScope,
                 'entity': MockEntity,
                 'previousState': MockPreviousState,
-                'State': MockState
+                'CausalDescription': MockCausalDescription
             };
             createController = function() {
-                $injector.get('$controller')("StateDetailController", locals);
+                $injector.get('$controller')("CausalDescriptionDetailController", locals);
             };
         }));
 
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'sidenerApp:stateUpdate';
+                var eventType = 'sidenerApp:causalDescriptionUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);
