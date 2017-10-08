@@ -20,8 +20,8 @@
                     />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.pollingPlace.type" for="field_type">Type</label>
-            <select class="form-control" name="type" ng-model="vm.pollingPlace.type" id="field_type">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.typePollingPlace" for="field_typePollingPlace">Type Polling Place</label>
+            <select class="form-control" name="typePollingPlace" ng-model="vm.pollingPlace.typePollingPlace" id="field_typePollingPlace">
                 <option value="BASIC" data-translate="sidenerApp.PollingPlaceType.BASIC">BASIC</option>
                 <option value="CONTIGUOUS" data-translate="sidenerApp.PollingPlaceType.CONTIGUOUS">CONTIGUOUS</option>
                 <option value="EXTRAORDINARY" data-translate="sidenerApp.PollingPlaceType.EXTRAORDINARY">EXTRAORDINARY</option>
@@ -29,9 +29,21 @@
             </select>
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.pollingPlace.adress" for="field_adress">Adress</label>
-                <textarea class="form-control" name="adress" id="field_adress"
-                    ng-model="vm.pollingPlace.adress" ></textarea>
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.typeNumber" for="field_typeNumber">Type Number</label>
+            <input type="text" class="form-control" name="typeNumber" id="field_typeNumber"
+                    ng-model="vm.pollingPlace.typeNumber"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.section" for="field_section">Section</label>
+            <input type="text" class="form-control" name="section" id="field_section"
+                    ng-model="vm.pollingPlace.section"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.address" for="field_address">Address</label>
+                <textarea class="form-control" name="address" id="field_address"
+                    ng-model="vm.pollingPlace.address" ></textarea>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.pollingPlace.leftoverBallots" for="field_leftoverBallots">Leftover Ballots</label>

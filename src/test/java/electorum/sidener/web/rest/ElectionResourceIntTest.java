@@ -53,11 +53,8 @@ public class ElectionResourceIntTest {
     private static final State DEFAULT_STATE = State.AGU;
     private static final State UPDATED_STATE = State.BCN;
 
-    private static final String DEFAULT_LOCATION = "AAAAAAAAAA";
-    private static final String UPDATED_LOCATION = "BBBBBBBBBB";
-
-    private static final ZonedDateTime DEFAULT_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_DATE_ELECTION = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_DATE_ELECTION = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     private static final Status DEFAULT_STATUS = Status.NEW;
     private static final Status UPDATED_STATUS = Status.IN_PROGRESS;
@@ -139,8 +136,7 @@ public class ElectionResourceIntTest {
     public static Election createEntity(EntityManager em) {
         Election election = new Election()
             .state(DEFAULT_STATE)
-            .location(DEFAULT_LOCATION)
-            .date(DEFAULT_DATE)
+            .dateElection(DEFAULT_DATE_ELECTION)
             .status(DEFAULT_STATUS)
             .prepUrl(DEFAULT_PREP_URL)
             .ballotUrl(DEFAULT_BALLOT_URL)
@@ -178,8 +174,7 @@ public class ElectionResourceIntTest {
         assertThat(electionList).hasSize(databaseSizeBeforeCreate + 1);
         Election testElection = electionList.get(electionList.size() - 1);
         assertThat(testElection.getState()).isEqualTo(DEFAULT_STATE);
-        assertThat(testElection.getLocation()).isEqualTo(DEFAULT_LOCATION);
-        assertThat(testElection.getDate()).isEqualTo(DEFAULT_DATE);
+        assertThat(testElection.getDateElection()).isEqualTo(DEFAULT_DATE_ELECTION);
         assertThat(testElection.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testElection.getPrepUrl()).isEqualTo(DEFAULT_PREP_URL);
         assertThat(testElection.getBallotUrl()).isEqualTo(DEFAULT_BALLOT_URL);
@@ -229,8 +224,7 @@ public class ElectionResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(election.getId().intValue())))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
-            .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION.toString())))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
+            .andExpect(jsonPath("$.[*].dateElection").value(hasItem(sameInstant(DEFAULT_DATE_ELECTION))))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
             .andExpect(jsonPath("$.[*].prepUrl").value(hasItem(DEFAULT_PREP_URL.toString())))
             .andExpect(jsonPath("$.[*].ballotUrl").value(hasItem(DEFAULT_BALLOT_URL.toString())))
@@ -256,8 +250,7 @@ public class ElectionResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(election.getId().intValue()))
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
-            .andExpect(jsonPath("$.location").value(DEFAULT_LOCATION.toString()))
-            .andExpect(jsonPath("$.date").value(sameInstant(DEFAULT_DATE)))
+            .andExpect(jsonPath("$.dateElection").value(sameInstant(DEFAULT_DATE_ELECTION)))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
             .andExpect(jsonPath("$.prepUrl").value(DEFAULT_PREP_URL.toString()))
             .andExpect(jsonPath("$.ballotUrl").value(DEFAULT_BALLOT_URL.toString()))
@@ -291,8 +284,7 @@ public class ElectionResourceIntTest {
         Election updatedElection = electionRepository.findOne(election.getId());
         updatedElection
             .state(UPDATED_STATE)
-            .location(UPDATED_LOCATION)
-            .date(UPDATED_DATE)
+            .dateElection(UPDATED_DATE_ELECTION)
             .status(UPDATED_STATUS)
             .prepUrl(UPDATED_PREP_URL)
             .ballotUrl(UPDATED_BALLOT_URL)
@@ -316,8 +308,7 @@ public class ElectionResourceIntTest {
         assertThat(electionList).hasSize(databaseSizeBeforeUpdate);
         Election testElection = electionList.get(electionList.size() - 1);
         assertThat(testElection.getState()).isEqualTo(UPDATED_STATE);
-        assertThat(testElection.getLocation()).isEqualTo(UPDATED_LOCATION);
-        assertThat(testElection.getDate()).isEqualTo(UPDATED_DATE);
+        assertThat(testElection.getDateElection()).isEqualTo(UPDATED_DATE_ELECTION);
         assertThat(testElection.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testElection.getPrepUrl()).isEqualTo(UPDATED_PREP_URL);
         assertThat(testElection.getBallotUrl()).isEqualTo(UPDATED_BALLOT_URL);
@@ -389,8 +380,7 @@ public class ElectionResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(election.getId().intValue())))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
-            .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION.toString())))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
+            .andExpect(jsonPath("$.[*].dateElection").value(hasItem(sameInstant(DEFAULT_DATE_ELECTION))))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
             .andExpect(jsonPath("$.[*].prepUrl").value(hasItem(DEFAULT_PREP_URL.toString())))
             .andExpect(jsonPath("$.[*].ballotUrl").value(hasItem(DEFAULT_BALLOT_URL.toString())))

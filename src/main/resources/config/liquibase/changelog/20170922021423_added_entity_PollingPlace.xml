@@ -26,11 +26,19 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="jhi_type" type="varchar(255)">
+            <column name="type_polling_place" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="adress" type="clob">
+            <column name="type_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="section" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="address" type="clob">
                 <constraints nullable="true" />
             </column>
 

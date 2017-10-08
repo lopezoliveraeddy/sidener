@@ -30,11 +30,11 @@ public class ElectionPeriod implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "jhi_start")
-    private ZonedDateTime start;
+    @Column(name = "start_date")
+    private ZonedDateTime startDate;
 
-    @Column(name = "jhi_end")
-    private ZonedDateTime end;
+    @Column(name = "end_date")
+    private ZonedDateTime endDate;
 
     /**
      * Datos Sistema
@@ -71,30 +71,30 @@ public class ElectionPeriod implements Serializable {
         this.name = name;
     }
 
-    public ZonedDateTime getStart() {
-        return start;
+    public ZonedDateTime getStartDate() {
+        return startDate;
     }
 
-    public ElectionPeriod start(ZonedDateTime start) {
-        this.start = start;
+    public ElectionPeriod startDate(ZonedDateTime startDate) {
+        this.startDate = startDate;
         return this;
     }
 
-    public void setStart(ZonedDateTime start) {
-        this.start = start;
+    public void setStartDate(ZonedDateTime startDate) {
+        this.startDate = startDate;
     }
 
-    public ZonedDateTime getEnd() {
-        return end;
+    public ZonedDateTime getEndDate() {
+        return endDate;
     }
 
-    public ElectionPeriod end(ZonedDateTime end) {
-        this.end = end;
+    public ElectionPeriod endDate(ZonedDateTime endDate) {
+        this.endDate = endDate;
         return this;
     }
 
-    public void setEnd(ZonedDateTime end) {
-        this.end = end;
+    public void setEndDate(ZonedDateTime endDate) {
+        this.endDate = endDate;
     }
 
     public Boolean isPublished() {
@@ -162,8 +162,8 @@ public class ElectionPeriod implements Serializable {
         return "ElectionPeriod{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", start='" + getStart() + "'" +
-            ", end='" + getEnd() + "'" +
+            ", startDate='" + getStartDate() + "'" +
+            ", endDate='" + getEndDate() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

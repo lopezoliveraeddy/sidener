@@ -49,11 +49,11 @@ public class ElectionPeriodResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final ZonedDateTime DEFAULT_START = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_START = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_START_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_START_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_END = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_END = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime DEFAULT_END_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_END_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
@@ -111,8 +111,8 @@ public class ElectionPeriodResourceIntTest {
     public static ElectionPeriod createEntity(EntityManager em) {
         ElectionPeriod electionPeriod = new ElectionPeriod()
             .name(DEFAULT_NAME)
-            .start(DEFAULT_START)
-            .end(DEFAULT_END)
+            .startDate(DEFAULT_START_DATE)
+            .endDate(DEFAULT_END_DATE)
             .published(DEFAULT_PUBLISHED)
             .createdDate(DEFAULT_CREATED_DATE)
             .updatedDate(DEFAULT_UPDATED_DATE);
@@ -142,8 +142,8 @@ public class ElectionPeriodResourceIntTest {
         assertThat(electionPeriodList).hasSize(databaseSizeBeforeCreate + 1);
         ElectionPeriod testElectionPeriod = electionPeriodList.get(electionPeriodList.size() - 1);
         assertThat(testElectionPeriod.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testElectionPeriod.getStart()).isEqualTo(DEFAULT_START);
-        assertThat(testElectionPeriod.getEnd()).isEqualTo(DEFAULT_END);
+        assertThat(testElectionPeriod.getStartDate()).isEqualTo(DEFAULT_START_DATE);
+        assertThat(testElectionPeriod.getEndDate()).isEqualTo(DEFAULT_END_DATE);
         assertThat(testElectionPeriod.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
         assertThat(testElectionPeriod.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testElectionPeriod.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
@@ -185,8 +185,8 @@ public class ElectionPeriodResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(electionPeriod.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].start").value(hasItem(sameInstant(DEFAULT_START))))
-            .andExpect(jsonPath("$.[*].end").value(hasItem(sameInstant(DEFAULT_END))))
+            .andExpect(jsonPath("$.[*].startDate").value(hasItem(sameInstant(DEFAULT_START_DATE))))
+            .andExpect(jsonPath("$.[*].endDate").value(hasItem(sameInstant(DEFAULT_END_DATE))))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
@@ -204,8 +204,8 @@ public class ElectionPeriodResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(electionPeriod.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.start").value(sameInstant(DEFAULT_START)))
-            .andExpect(jsonPath("$.end").value(sameInstant(DEFAULT_END)))
+            .andExpect(jsonPath("$.startDate").value(sameInstant(DEFAULT_START_DATE)))
+            .andExpect(jsonPath("$.endDate").value(sameInstant(DEFAULT_END_DATE)))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
             .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
             .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
@@ -231,8 +231,8 @@ public class ElectionPeriodResourceIntTest {
         ElectionPeriod updatedElectionPeriod = electionPeriodRepository.findOne(electionPeriod.getId());
         updatedElectionPeriod
             .name(UPDATED_NAME)
-            .start(UPDATED_START)
-            .end(UPDATED_END)
+            .startDate(UPDATED_START_DATE)
+            .endDate(UPDATED_END_DATE)
             .published(UPDATED_PUBLISHED)
             .createdDate(UPDATED_CREATED_DATE)
             .updatedDate(UPDATED_UPDATED_DATE);
@@ -248,8 +248,8 @@ public class ElectionPeriodResourceIntTest {
         assertThat(electionPeriodList).hasSize(databaseSizeBeforeUpdate);
         ElectionPeriod testElectionPeriod = electionPeriodList.get(electionPeriodList.size() - 1);
         assertThat(testElectionPeriod.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testElectionPeriod.getStart()).isEqualTo(UPDATED_START);
-        assertThat(testElectionPeriod.getEnd()).isEqualTo(UPDATED_END);
+        assertThat(testElectionPeriod.getStartDate()).isEqualTo(UPDATED_START_DATE);
+        assertThat(testElectionPeriod.getEndDate()).isEqualTo(UPDATED_END_DATE);
         assertThat(testElectionPeriod.isPublished()).isEqualTo(UPDATED_PUBLISHED);
         assertThat(testElectionPeriod.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testElectionPeriod.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
@@ -313,8 +313,8 @@ public class ElectionPeriodResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(electionPeriod.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].start").value(hasItem(sameInstant(DEFAULT_START))))
-            .andExpect(jsonPath("$.[*].end").value(hasItem(sameInstant(DEFAULT_END))))
+            .andExpect(jsonPath("$.[*].startDate").value(hasItem(sameInstant(DEFAULT_START_DATE))))
+            .andExpect(jsonPath("$.[*].endDate").value(hasItem(sameInstant(DEFAULT_END_DATE))))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));

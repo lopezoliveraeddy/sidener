@@ -37,8 +37,10 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="town"><span data-translate="sidenerApp.pollingPlace.town">Town</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="type"><span data-translate="sidenerApp.pollingPlace.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="adress"><span data-translate="sidenerApp.pollingPlace.adress">Adress</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="typePollingPlace"><span data-translate="sidenerApp.pollingPlace.typePollingPlace">Type Polling Place</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="typeNumber"><span data-translate="sidenerApp.pollingPlace.typeNumber">Type Number</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="section"><span data-translate="sidenerApp.pollingPlace.section">Section</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address"><span data-translate="sidenerApp.pollingPlace.address">Address</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="leftoverBallots"><span data-translate="sidenerApp.pollingPlace.leftoverBallots">Leftover Ballots</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="votingCitizens"><span data-translate="sidenerApp.pollingPlace.votingCitizens">Voting Citizens</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="exctractedBallots"><span data-translate="sidenerApp.pollingPlace.exctractedBallots">Exctracted Ballots</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -66,8 +68,10 @@
                 <tr ng-repeat="pollingPlace in vm.pollingPlaces track by pollingPlace.id">
                     <td><a ui-sref="polling-place-detail({id:pollingPlace.id})">{{pollingPlace.id}}</a></td>
                     <td>{{pollingPlace.town}}</td>
-                    <td data-translate="{{'sidenerApp.PollingPlaceType.' + pollingPlace.type}}">{{pollingPlace.type}}</td>
-                    <td>{{pollingPlace.adress}}</td>
+                    <td data-translate="{{'sidenerApp.PollingPlaceType.' + pollingPlace.typePollingPlace}}">{{pollingPlace.typePollingPlace}}</td>
+                    <td>{{pollingPlace.typeNumber}}</td>
+                    <td>{{pollingPlace.section}}</td>
+                    <td>{{pollingPlace.address}}</td>
                     <td>{{pollingPlace.leftoverBallots}}</td>
                     <td>{{pollingPlace.votingCitizens}}</td>
                     <td>{{pollingPlace.exctractedBallots}}</td>

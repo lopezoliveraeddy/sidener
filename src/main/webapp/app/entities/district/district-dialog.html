@@ -14,15 +14,15 @@
                     ng-model="vm.district.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.district.name" for="field_name">Name</label>
-            <input type="text" class="form-control" name="name" id="field_name"
-                    ng-model="vm.district.name"
+            <label class="control-label" data-translate="sidenerApp.district.decimalNumber" for="field_decimalNumber">Decimal Number</label>
+            <input type="text" class="form-control" name="decimalNumber" id="field_decimalNumber"
+                    ng-model="vm.district.decimalNumber"
                     />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.district.number" for="field_number">Number</label>
-            <input type="text" class="form-control" name="number" id="field_number"
-                    ng-model="vm.district.number"
+            <label class="control-label" data-translate="sidenerApp.district.romanNumber" for="field_romanNumber">Roman Number</label>
+            <input type="text" class="form-control" name="romanNumber" id="field_romanNumber"
+                    ng-model="vm.district.romanNumber"
                     />
         </div>
         <div class="form-group">
@@ -32,10 +32,41 @@
                     />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.district.section" for="field_section">Section</label>
-            <input type="text" class="form-control" name="section" id="field_section"
-                    ng-model="vm.district.section"
-                    />
+            <label class="control-label" data-translate="sidenerApp.district.state" for="field_state">State</label>
+            <select class="form-control" name="state" ng-model="vm.district.state" id="field_state">
+                <option value="AGU" data-translate="sidenerApp.State.AGU">AGU</option>
+                <option value="BCN" data-translate="sidenerApp.State.BCN">BCN</option>
+                <option value="BCS" data-translate="sidenerApp.State.BCS">BCS</option>
+                <option value="CAM" data-translate="sidenerApp.State.CAM">CAM</option>
+                <option value="CHP" data-translate="sidenerApp.State.CHP">CHP</option>
+                <option value="CHH" data-translate="sidenerApp.State.CHH">CHH</option>
+                <option value="COA" data-translate="sidenerApp.State.COA">COA</option>
+                <option value="COL" data-translate="sidenerApp.State.COL">COL</option>
+                <option value="CMX" data-translate="sidenerApp.State.CMX">CMX</option>
+                <option value="DUR" data-translate="sidenerApp.State.DUR">DUR</option>
+                <option value="GUA" data-translate="sidenerApp.State.GUA">GUA</option>
+                <option value="GRO" data-translate="sidenerApp.State.GRO">GRO</option>
+                <option value="HID" data-translate="sidenerApp.State.HID">HID</option>
+                <option value="JAL" data-translate="sidenerApp.State.JAL">JAL</option>
+                <option value="MEX" data-translate="sidenerApp.State.MEX">MEX</option>
+                <option value="MIC" data-translate="sidenerApp.State.MIC">MIC</option>
+                <option value="MOR" data-translate="sidenerApp.State.MOR">MOR</option>
+                <option value="NAY" data-translate="sidenerApp.State.NAY">NAY</option>
+                <option value="NLE" data-translate="sidenerApp.State.NLE">NLE</option>
+                <option value="OAX" data-translate="sidenerApp.State.OAX">OAX</option>
+                <option value="PUE" data-translate="sidenerApp.State.PUE">PUE</option>
+                <option value="QUE" data-translate="sidenerApp.State.QUE">QUE</option>
+                <option value="ROO" data-translate="sidenerApp.State.ROO">ROO</option>
+                <option value="SLP" data-translate="sidenerApp.State.SLP">SLP</option>
+                <option value="SIN" data-translate="sidenerApp.State.SIN">SIN</option>
+                <option value="SON" data-translate="sidenerApp.State.SON">SON</option>
+                <option value="TAB" data-translate="sidenerApp.State.TAB">TAB</option>
+                <option value="TAM" data-translate="sidenerApp.State.TAM">TAM</option>
+                <option value="TLA" data-translate="sidenerApp.State.TLA">TLA</option>
+                <option value="VER" data-translate="sidenerApp.State.VER">VER</option>
+                <option value="YUC" data-translate="sidenerApp.State.YUC">YUC</option>
+                <option value="ZAC" data-translate="sidenerApp.State.ZAC">ZAC</option>
+            </select>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.district.published" for="field_published">Published</label>

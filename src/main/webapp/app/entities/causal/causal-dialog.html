@@ -15,21 +15,15 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.causal.name" for="field_name">Name</label>
-            <input type="text" class="form-control" name="name" id="field_name"
-                    ng-model="vm.causal.name"
-                    />
+                <textarea class="form-control" name="name" id="field_name"
+                    ng-model="vm.causal.name" ></textarea>
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.causal.type" for="field_type">Type</label>
-            <select class="form-control" name="type" ng-model="vm.causal.type" id="field_type">
+            <label class="control-label" data-translate="sidenerApp.causal.typeCausal" for="field_typeCausal">Type Causal</label>
+            <select class="form-control" name="typeCausal" ng-model="vm.causal.typeCausal" id="field_typeCausal">
                 <option value="RECOUNT" data-translate="sidenerApp.CausalType.RECOUNT">RECOUNT</option>
                 <option value="NULLITY" data-translate="sidenerApp.CausalType.NULLITY">NULLITY</option>
             </select>
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.causal.description" for="field_description">Description</label>
-                <textarea class="form-control" name="description" id="field_description"
-                    ng-model="vm.causal.description" ></textarea>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.causal.color" for="field_color">Color</label>

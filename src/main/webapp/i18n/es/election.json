@@ -17,8 +17,7 @@
                 "title": "Elección"
             },
             "state": "Estado",
-            "location": "Locación",
-            "date": "Fecha",
+            "dateElection": "Fecha",
             "status": "Estatus",
             "prepUrl": "Prep Url",
             "ballotUrl": "Ballot Url",
@@ -26,7 +25,7 @@
             "demandTemplateUrl": "Plantilla de Demanda",
             "recountTemplateUrl": "Plantilla de Recuento",
             "recountDistrictsRule": "Regla para recuento de Distritos",
-            "recountPollingPlaceRule": "egla para recuento de Casillas",
+            "recountPollingPlaceRule": "Regla para recuento de Casillas",
             "published": "Publicado",
             "createdDate": "Creado",
             "updatedDate": "Actualizado",

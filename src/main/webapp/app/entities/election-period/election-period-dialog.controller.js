@@ -56,8 +56,8 @@
             vm.isSaving = false;
         }
 
-        vm.datePickerOpenStatus.start = false;
-        vm.datePickerOpenStatus.end = false;
+        vm.datePickerOpenStatus.startDate = false;
+        vm.datePickerOpenStatus.endDate = false;
         vm.datePickerOpenStatus.createdDate = false;
         vm.datePickerOpenStatus.updatedDate = false;
 

@@ -20,9 +20,7 @@ public class ElectionDTO implements Serializable {
 
     private State state;
 
-    private String location;
-
-    private ZonedDateTime date;
+    private ZonedDateTime dateElection;
 
     private Status status;
 
@@ -84,20 +82,12 @@ public class ElectionDTO implements Serializable {
         this.state = state;
     }
 
-    public String getLocation() {
-        return location;
+    public ZonedDateTime getDateElection() {
+        return dateElection;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public ZonedDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(ZonedDateTime date) {
-        this.date = date;
+    public void setDateElection(ZonedDateTime dateElection) {
+        this.dateElection = dateElection;
     }
 
     public Status getStatus() {
@@ -302,8 +292,7 @@ public class ElectionDTO implements Serializable {
         return "ElectionDTO{" +
             "id=" + getId() +
             ", state='" + getState() + "'" +
-            ", location='" + getLocation() + "'" +
-            ", date='" + getDate() + "'" +
+            ", dateElection='" + getDateElection() + "'" +
             ", status='" + getStatus() + "'" +
             ", prepUrl='" + getPrepUrl() + "'" +
             ", ballotUrl='" + getBallotUrl() + "'" +

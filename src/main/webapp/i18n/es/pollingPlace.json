@@ -17,8 +17,10 @@
                 "title": "Casilla"
             },
             "town": "Ciudad",
-            "type": "Tipo",
-            "adress": "Dirección",
+            "typePollingPlace": "Tipo de Casilla",
+            "typeNumber": "Número Tipo de Casilla",
+            "section": "Sección",
+            "address": "Dirección",
             "leftoverBallots": "Total de Boletas Sobrantes",
             "votingCitizens": "Total de Ciudadanos que Votaron",
             "exctractedBallots": "Total de Boletas Extraídas",

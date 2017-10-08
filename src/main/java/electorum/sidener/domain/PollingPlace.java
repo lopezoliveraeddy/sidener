@@ -32,14 +32,40 @@ public class PollingPlace implements Serializable {
     @Column(name = "town")
     private String town;
 
+    /**
+     * Municipio
+     */
+    @ApiModelProperty(value = "Municipio")
     @Enumerated(EnumType.STRING)
-    @Column(name = "jhi_type")
-    private PollingPlaceType type;
+    @Column(name = "type_polling_place")
+    private PollingPlaceType typePollingPlace;
 
+    /**
+     * Tipo de Casilla
+     */
+    @ApiModelProperty(value = "Tipo de Casilla")
+    @Column(name = "type_number")
+    private String typeNumber;
+
+    /**
+     * Número Tipo de Casilla
+     */
+    @ApiModelProperty(value = "Número Tipo de Casilla")
+    @Column(name = "section")
+    private String section;
+
+    /**
+     * Sección
+     */
+    @ApiModelProperty(value = "Sección")
     @Lob
-    @Column(name = "adress")
-    private String adress;
+    @Column(name = "address")
+    private String address;
 
+    /**
+     * Dirección
+     */
+    @ApiModelProperty(value = "Dirección")
     @Column(name = "leftover_ballots")
     private Long leftoverBallots;
 
@@ -93,31 +119,59 @@ public class PollingPlace implements Serializable {
     @Column(name = "observations")
     private String observations;
 
+    /**
+     * Observaciones
+     */
+    @ApiModelProperty(value = "Observaciones")
     @Column(name = "president")
     private String president;
 
+    /**
+     * Presidente
+     */
+    @ApiModelProperty(value = "Presidente")
     @Column(name = "secretary")
     private String secretary;
 
+    /**
+     * Secretario
+     */
+    @ApiModelProperty(value = "Secretario")
     @Column(name = "scrutineer_one")
     private String scrutineerOne;
 
+    /**
+     * Primer Escrutador
+     */
+    @ApiModelProperty(value = "Primer Escrutador")
     @Column(name = "scrutineer_two")
     private String scrutineerTwo;
 
+    /**
+     * Segundo Escrutador
+     */
+    @ApiModelProperty(value = "Segundo Escrutador")
     @Column(name = "alternate_one")
     private String alternateOne;
 
+    /**
+     * Primer Alternativo
+     */
+    @ApiModelProperty(value = "Primer Alternativo")
     @Column(name = "alternate_two")
     private String alternateTwo;
 
+    /**
+     * Segundo ALternativo
+     */
+    @ApiModelProperty(value = "Segundo ALternativo")
     @Column(name = "alternate_three")
     private String alternateThree;
 
     /**
-     * Datos Sistema
+     * Tercer ALternativo
      */
-    @ApiModelProperty(value = "Datos Sistema")
+    @ApiModelProperty(value = "Tercer ALternativo")
     @Column(name = "published")
     private Boolean published;
 
@@ -155,30 +209,56 @@ public class PollingPlace implements Serializable {
         this.town = town;
     }
 
-    public PollingPlaceType getType() {
-        return type;
+    public PollingPlaceType getTypePollingPlace() {
+        return typePollingPlace;
     }
 
-    public PollingPlace type(PollingPlaceType type) {
-        this.type = type;
+    public PollingPlace typePollingPlace(PollingPlaceType typePollingPlace) {
+        this.typePollingPlace = typePollingPlace;
         return this;
     }
 
-    public void setType(PollingPlaceType type) {
-        this.type = type;
+    public void setTypePollingPlace(PollingPlaceType typePollingPlace) {
+        this.typePollingPlace = typePollingPlace;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getTypeNumber() {
+        return typeNumber;
     }
 
-    public PollingPlace adress(String adress) {
-        this.adress = adress;
+    public PollingPlace typeNumber(String typeNumber) {
+        this.typeNumber = typeNumber;
         return this;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setTypeNumber(String typeNumber) {
+        this.typeNumber = typeNumber;
+    }
+
+    public String getSection() {
+        return section;
+    }
+
+    public PollingPlace section(String section) {
+        this.section = section;
+        return this;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public PollingPlace address(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Long getLeftoverBallots() {
@@ -467,8 +547,10 @@ public class PollingPlace implements Serializable {
         return "PollingPlace{" +
             "id=" + getId() +
             ", town='" + getTown() + "'" +
-            ", type='" + getType() + "'" +
-            ", adress='" + getAdress() + "'" +
+            ", typePollingPlace='" + getTypePollingPlace() + "'" +
+            ", typeNumber='" + getTypeNumber() + "'" +
+            ", section='" + getSection() + "'" +
+            ", address='" + getAddress() + "'" +
             ", leftoverBallots='" + getLeftoverBallots() + "'" +
             ", votingCitizens='" + getVotingCitizens() + "'" +
             ", exctractedBallots='" + getExctractedBallots() + "'" +

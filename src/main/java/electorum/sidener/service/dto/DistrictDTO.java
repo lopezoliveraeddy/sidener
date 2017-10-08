@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
+import electorum.sidener.domain.enumeration.State;
 
 /**
  * A DTO for the District entity.
@@ -14,13 +15,13 @@ public class DistrictDTO implements Serializable {
 
     private Long id;
 
-    private String name;
+    private String decimalNumber;
 
-    private String number;
+    private String romanNumber;
 
     private String districtIdentificator;
 
-    private String section;
+    private State state;
 
     private Boolean published;
 
@@ -38,20 +39,20 @@ public class DistrictDTO implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDecimalNumber() {
+        return decimalNumber;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDecimalNumber(String decimalNumber) {
+        this.decimalNumber = decimalNumber;
     }
 
-    public String getNumber() {
-        return number;
+    public String getRomanNumber() {
+        return romanNumber;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setRomanNumber(String romanNumber) {
+        this.romanNumber = romanNumber;
     }
 
     public String getDistrictIdentificator() {
@@ -62,12 +63,12 @@ public class DistrictDTO implements Serializable {
         this.districtIdentificator = districtIdentificator;
     }
 
-    public String getSection() {
-        return section;
+    public State getState() {
+        return state;
     }
 
-    public void setSection(String section) {
-        this.section = section;
+    public void setState(State state) {
+        this.state = state;
     }
 
     public Boolean isPublished() {
@@ -127,10 +128,10 @@ public class DistrictDTO implements Serializable {
     public String toString() {
         return "DistrictDTO{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", number='" + getNumber() + "'" +
+            ", decimalNumber='" + getDecimalNumber() + "'" +
+            ", romanNumber='" + getRomanNumber() + "'" +
             ", districtIdentificator='" + getDistrictIdentificator() + "'" +
-            ", section='" + getSection() + "'" +
+            ", state='" + getState() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

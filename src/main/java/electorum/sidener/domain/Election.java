@@ -45,11 +45,8 @@ public class Election implements Serializable {
     @Column(name = "state")
     private State state;
 
-    @Column(name = "location")
-    private String location;
-
-    @Column(name = "jhi_date")
-    private ZonedDateTime date;
+    @Column(name = "date_election")
+    private ZonedDateTime dateElection;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
@@ -156,30 +153,17 @@ public class Election implements Serializable {
         this.state = state;
     }
 
-    public String getLocation() {
-        return location;
+    public ZonedDateTime getDateElection() {
+        return dateElection;
     }
 
-    public Election location(String location) {
-        this.location = location;
+    public Election dateElection(ZonedDateTime dateElection) {
+        this.dateElection = dateElection;
         return this;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public ZonedDateTime getDate() {
-        return date;
-    }
-
-    public Election date(ZonedDateTime date) {
-        this.date = date;
-        return this;
-    }
-
-    public void setDate(ZonedDateTime date) {
-        this.date = date;
+    public void setDateElection(ZonedDateTime dateElection) {
+        this.dateElection = dateElection;
     }
 
     public Status getStatus() {
@@ -508,8 +492,7 @@ public class Election implements Serializable {
         return "Election{" +
             "id=" + getId() +
             ", state='" + getState() + "'" +
-            ", location='" + getLocation() + "'" +
-            ", date='" + getDate() + "'" +
+            ", dateElection='" + getDateElection() + "'" +
             ", status='" + getStatus() + "'" +
             ", prepUrl='" + getPrepUrl() + "'" +
             ", ballotUrl='" + getBallotUrl() + "'" +

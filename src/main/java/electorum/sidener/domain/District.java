@@ -11,6 +11,8 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
+import electorum.sidener.domain.enumeration.State;
+
 /**
  * Entidad Distritos
  */
@@ -27,17 +29,18 @@ public class District implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "decimal_number")
+    private String decimalNumber;
 
-    @Column(name = "jhi_number")
-    private String number;
+    @Column(name = "roman_number")
+    private String romanNumber;
 
     @Column(name = "district_identificator")
     private String districtIdentificator;
 
-    @Column(name = "section")
-    private String section;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "state")
+    private State state;
 
     /**
      * Datos Sistema
@@ -64,30 +67,30 @@ public class District implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDecimalNumber() {
+        return decimalNumber;
     }
 
-    public District name(String name) {
-        this.name = name;
+    public District decimalNumber(String decimalNumber) {
+        this.decimalNumber = decimalNumber;
         return this;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDecimalNumber(String decimalNumber) {
+        this.decimalNumber = decimalNumber;
     }
 
-    public String getNumber() {
-        return number;
+    public String getRomanNumber() {
+        return romanNumber;
     }
 
-    public District number(String number) {
-        this.number = number;
+    public District romanNumber(String romanNumber) {
+        this.romanNumber = romanNumber;
         return this;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setRomanNumber(String romanNumber) {
+        this.romanNumber = romanNumber;
     }
 
     public String getDistrictIdentificator() {
@@ -103,17 +106,17 @@ public class District implements Serializable {
         this.districtIdentificator = districtIdentificator;
     }
 
-    public String getSection() {
-        return section;
+    public State getState() {
+        return state;
     }
 
-    public District section(String section) {
-        this.section = section;
+    public District state(State state) {
+        this.state = state;
         return this;
     }
 
-    public void setSection(String section) {
-        this.section = section;
+    public void setState(State state) {
+        this.state = state;
     }
 
     public Boolean isPublished() {
@@ -193,10 +196,10 @@ public class District implements Serializable {
     public String toString() {
         return "District{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", number='" + getNumber() + "'" +
+            ", decimalNumber='" + getDecimalNumber() + "'" +
+            ", romanNumber='" + getRomanNumber() + "'" +
             ", districtIdentificator='" + getDistrictIdentificator() + "'" +
-            ", section='" + getSection() + "'" +
+            ", state='" + getState() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

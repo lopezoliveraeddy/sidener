@@ -18,10 +18,14 @@ public class PollingPlaceDTO implements Serializable {
 
     private String town;
 
-    private PollingPlaceType type;
+    private PollingPlaceType typePollingPlace;
+
+    private String typeNumber;
+
+    private String section;
 
     @Lob
-    private String adress;
+    private String address;
 
     private Long leftoverBallots;
 
@@ -80,20 +84,36 @@ public class PollingPlaceDTO implements Serializable {
         this.town = town;
     }
 
-    public PollingPlaceType getType() {
-        return type;
+    public PollingPlaceType getTypePollingPlace() {
+        return typePollingPlace;
     }
 
-    public void setType(PollingPlaceType type) {
-        this.type = type;
+    public void setTypePollingPlace(PollingPlaceType typePollingPlace) {
+        this.typePollingPlace = typePollingPlace;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getTypeNumber() {
+        return typeNumber;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setTypeNumber(String typeNumber) {
+        this.typeNumber = typeNumber;
+    }
+
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Long getLeftoverBallots() {
@@ -282,8 +302,10 @@ public class PollingPlaceDTO implements Serializable {
         return "PollingPlaceDTO{" +
             "id=" + getId() +
             ", town='" + getTown() + "'" +
-            ", type='" + getType() + "'" +
-            ", adress='" + getAdress() + "'" +
+            ", typePollingPlace='" + getTypePollingPlace() + "'" +
+            ", typeNumber='" + getTypeNumber() + "'" +
+            ", section='" + getSection() + "'" +
+            ", address='" + getAddress() + "'" +
             ", leftoverBallots='" + getLeftoverBallots() + "'" +
             ", votingCitizens='" + getVotingCitizens() + "'" +
             ", exctractedBallots='" + getExctractedBallots() + "'" +

@@ -4,21 +4,21 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="sidenerApp.district.name">Name</span></dt>
+        <dt><span data-translate="sidenerApp.district.decimalNumber">Decimal Number</span></dt>
         <dd>
-            <span>{{vm.district.name}}</span>
+            <span>{{vm.district.decimalNumber}}</span>
         </dd>
-        <dt><span data-translate="sidenerApp.district.number">Number</span></dt>
+        <dt><span data-translate="sidenerApp.district.romanNumber">Roman Number</span></dt>
         <dd>
-            <span>{{vm.district.number}}</span>
+            <span>{{vm.district.romanNumber}}</span>
         </dd>
         <dt><span data-translate="sidenerApp.district.districtIdentificator">District Identificator</span></dt>
         <dd>
             <span>{{vm.district.districtIdentificator}}</span>
         </dd>
-        <dt><span data-translate="sidenerApp.district.section">Section</span></dt>
+        <dt><span data-translate="sidenerApp.district.state">State</span></dt>
         <dd>
-            <span>{{vm.district.section}}</span>
+            <span data-translate="{{'sidenerApp.State.' + vm.district.state}}">{{vm.district.state}}</span>
         </dd>
         <dt><span data-translate="sidenerApp.district.published">Published</span></dt>
         <dd>

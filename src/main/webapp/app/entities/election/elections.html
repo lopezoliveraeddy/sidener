@@ -37,8 +37,7 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="state"><span data-translate="sidenerApp.election.state">State</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="location"><span data-translate="sidenerApp.election.location">Location</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="date"><span data-translate="sidenerApp.election.date">Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateElection"><span data-translate="sidenerApp.election.dateElection">Date Election</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="status"><span data-translate="sidenerApp.election.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="prepUrl"><span data-translate="sidenerApp.election.prepUrl">Prep Url</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="ballotUrl"><span data-translate="sidenerApp.election.ballotUrl">Ballot Url</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -62,8 +61,7 @@
                 <tr ng-repeat="election in vm.elections track by election.id">
                     <td><a ui-sref="election-detail({id:election.id})">{{election.id}}</a></td>
                     <td data-translate="{{'sidenerApp.State.' + election.state}}">{{election.state}}</td>
-                    <td>{{election.location}}</td>
-                    <td>{{election.date | date:'medium'}}</td>
+                    <td>{{election.dateElection | date:'medium'}}</td>
                     <td data-translate="{{'sidenerApp.Status.' + election.status}}">{{election.status}}</td>
                     <td>{{election.prepUrl}}</td>
                     <td>{{election.ballotUrl}}</td>

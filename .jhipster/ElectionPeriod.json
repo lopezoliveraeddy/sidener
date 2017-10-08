@@ -7,11 +7,11 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "start",
+            "fieldName": "startDate",
             "fieldType": "ZonedDateTime"
         },
         {
-            "fieldName": "end",
+            "fieldName": "endDate",
             "fieldType": "ZonedDateTime"
         },
         {

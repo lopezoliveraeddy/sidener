@@ -37,8 +37,7 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="sidenerApp.causal.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="type"><span data-translate="sidenerApp.causal.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="description"><span data-translate="sidenerApp.causal.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="typeCausal"><span data-translate="sidenerApp.causal.typeCausal">Type Causal</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="color"><span data-translate="sidenerApp.causal.color">Color</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.causal.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="createdDate"><span data-translate="sidenerApp.causal.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -50,8 +49,7 @@
                 <tr ng-repeat="causal in vm.causals track by causal.id">
                     <td><a ui-sref="causal-detail({id:causal.id})">{{causal.id}}</a></td>
                     <td>{{causal.name}}</td>
-                    <td data-translate="{{'sidenerApp.CausalType.' + causal.type}}">{{causal.type}}</td>
-                    <td>{{causal.description}}</td>
+                    <td data-translate="{{'sidenerApp.CausalType.' + causal.typeCausal}}">{{causal.typeCausal}}</td>
                     <td ng-style="{ 'background-color': causal.color }"></td>
                     <td>
                         <span ng-if="causal.published==true">

@@ -16,12 +16,10 @@ public class CausalDTO implements Serializable {
 
     private Long id;
 
+    @Lob
     private String name;
 
-    private CausalType type;
-
-    @Lob
-    private String description;
+    private CausalType typeCausal;
 
     private String color;
 
@@ -49,20 +47,12 @@ public class CausalDTO implements Serializable {
         this.name = name;
     }
 
-    public CausalType getType() {
-        return type;
+    public CausalType getTypeCausal() {
+        return typeCausal;
     }
 
-    public void setType(CausalType type) {
-        this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTypeCausal(CausalType typeCausal) {
+        this.typeCausal = typeCausal;
     }
 
     public String getColor() {
@@ -131,8 +121,7 @@ public class CausalDTO implements Serializable {
         return "CausalDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", type='" + getType() + "'" +
-            ", description='" + getDescription() + "'" +
+            ", typeCausal='" + getTypeCausal() + "'" +
             ", color='" + getColor() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +

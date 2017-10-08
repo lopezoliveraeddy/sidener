@@ -133,7 +133,6 @@
                         entity: function () {
                             return {
                                 state: null,
-                                location: null,
                                 date: null,
                                 status: null,
                                 prepUrl: null,

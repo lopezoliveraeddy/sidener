@@ -17,8 +17,8 @@
                 "title": "Periodo de Elección"
             },
             "name": "Periodo",
-            "start": "Inicio",
-            "end": "Fin",
+            "startDate": "Inicio",
+            "endDate": "Fin",
             "published": "Publicado",
             "createdDate": "Creado",
             "updatedDate": "Actualizado"

@@ -2,8 +2,7 @@
 entity Election {
     /* Campos Informativos de la Elección */
     state State,
-    location String,
-    date ZonedDateTime,
+    dateElection ZonedDateTime,
     status Status,
     prepUrl String,
     ballotUrl String,
@@ -108,8 +107,8 @@ entity ElectionType {
 /* Entidad Periodos de Eleccion */
 entity ElectionPeriod {
 	name String,
-    start ZonedDateTime,
-    end ZonedDateTime,
+    startDate ZonedDateTime,
+    endDate ZonedDateTime,
     /* Datos Sistema */
     published Boolean,
     createdDate ZonedDateTime,
@@ -118,10 +117,10 @@ entity ElectionPeriod {
 
 /* Entidad Distritos */
 entity District {
-	name String,
-	number String,
+	decimalNumber String,
+	romanNumber String,
     districtIdentificator String,
-    section String,
+    state State,
     /* Datos Sistema */
     published Boolean,
     createdDate ZonedDateTime,
@@ -130,9 +129,11 @@ entity District {
 
 /* Entidad Casillas */
 entity PollingPlace {
-	town String,
-    type PollingPlaceType,
-    adress TextBlob,
+	town String, /* Municipio */
+    typePollingPlace PollingPlaceType, /* Tipo de Casilla */
+    typeNumber String, /* Número Tipo de Casilla */
+    section String, /* Sección */
+    address TextBlob, /* Dirección */
     leftoverBallots Long, /* Total de Boletas Sobrantes */
     votingCitizens Long, /* Total de Ciudadanos Votantes */
     exctractedBallots Long, /* Total de Boletas Extraídas */
@@ -140,15 +141,14 @@ entity PollingPlace {
     nullVotes Long, /* Total de Votos Nulos */
     totalVotes Long, /* Total de Votos */
   	electoralRoll Long, /* Ciudadanos en la Lista Nominal */
-    observations TextBlob,
-    president String,
-    secretary String,
-    scrutineerOne String,
-    scrutineerTwo String,
-    alternateOne String,
-    alternateTwo String,
-    alternateThree String,
-    /* Datos Sistema */
+    observations TextBlob, /* Observaciones */
+    president String, /* Presidente */
+    secretary String, /* Secretario */
+    scrutineerOne String, /* Primer Escrutador */
+    scrutineerTwo String, /* Segundo Escrutador */
+    alternateOne String, /* Primer Alternativo */
+    alternateTwo String, /* Segundo ALternativo */
+    alternateThree String, /* Tercer ALternativo */
     published Boolean,
     createdDate ZonedDateTime,
     updatedDate ZonedDateTime
@@ -165,9 +165,8 @@ entity Vote {
 
 /* Entidad Causales */
 entity Causal {
-	name String,
-	type CausalType,
-    description TextBlob,
+	name TextBlob,
+	typeCausal CausalType,
     color String,
     /* Datos Sistema */
     published Boolean,

@@ -8,13 +8,9 @@
         <dd>
             <span data-translate="{{'sidenerApp.State.' + vm.election.state}}">{{vm.election.state}}</span>
         </dd>
-        <dt><span data-translate="sidenerApp.election.location">Location</span></dt>
+        <dt><span data-translate="sidenerApp.election.dateElection">Date Election</span></dt>
         <dd>
-            <span>{{vm.election.location}}</span>
-        </dd>
-        <dt><span data-translate="sidenerApp.election.date">Date</span></dt>
-        <dd>
-            <span>{{vm.election.date | date:'medium'}}</span>
+            <span>{{vm.election.dateElection | date:'medium'}}</span>
         </dd>
         <dt><span data-translate="sidenerApp.election.status">Status</span></dt>
         <dd>

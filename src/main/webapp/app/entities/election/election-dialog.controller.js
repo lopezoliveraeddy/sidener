@@ -49,7 +49,7 @@
             vm.isSaving = false;
         }
 
-        vm.datePickerOpenStatus.date = false;
+        vm.datePickerOpenStatus.dateElection = false;
         vm.datePickerOpenStatus.createdDate = false;
         vm.datePickerOpenStatus.updatedDate = false;
 

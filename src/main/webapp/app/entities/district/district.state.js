@@ -46,6 +46,7 @@
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('district');
+                    $translatePartialLoader.addPart('state');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
@@ -68,6 +69,7 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('district');
+                    $translatePartialLoader.addPart('state');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'District', function($stateParams, District) {
@@ -124,10 +126,10 @@
                     resolve: {
                         entity: function () {
                             return {
-                                name: null,
-                                number: null,
+                                decimalNumber: null,
+                                romanNumber: null,
                                 districtIdentificator: null,
-                                section: null,
+                                state: null,
                                 published: null,
                                 createdDate: null,
                                 updatedDate: null,

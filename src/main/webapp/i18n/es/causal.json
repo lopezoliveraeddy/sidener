@@ -17,7 +17,7 @@
                 "title": "Causal"
             },
             "name": "Nombre",
-            "type": "Tipo",
+            "typeCausal": "Tipo",
             "description": "Descripción",
             "color": "Color",
             "published": "Publicado",

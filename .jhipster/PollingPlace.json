@@ -20,17 +20,30 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "type",
+            "fieldName": "typePollingPlace",
+            "javadoc": "Municipio",
             "fieldType": "PollingPlaceType",
             "fieldValues": "BASIC,CONTIGUOUS,EXTRAORDINARY,SPECIAL"
         },
         {
-            "fieldName": "adress",
+            "fieldName": "typeNumber",
+            "javadoc": "Tipo de Casilla",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "section",
+            "javadoc": "Número Tipo de Casilla",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "address",
+            "javadoc": "Sección",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "text"
         },
         {
             "fieldName": "leftoverBallots",
+            "javadoc": "Dirección",
             "fieldType": "Long"
         },
         {
@@ -71,35 +84,42 @@
         },
         {
             "fieldName": "president",
+            "javadoc": "Observaciones",
             "fieldType": "String"
         },
         {
             "fieldName": "secretary",
+            "javadoc": "Presidente",
             "fieldType": "String"
         },
         {
             "fieldName": "scrutineerOne",
+            "javadoc": "Secretario",
             "fieldType": "String"
         },
         {
             "fieldName": "scrutineerTwo",
+            "javadoc": "Primer Escrutador",
             "fieldType": "String"
         },
         {
             "fieldName": "alternateOne",
+            "javadoc": "Segundo Escrutador",
             "fieldType": "String"
         },
         {
             "fieldName": "alternateTwo",
+            "javadoc": "Primer Alternativo",
             "fieldType": "String"
         },
         {
             "fieldName": "alternateThree",
+            "javadoc": "Segundo ALternativo",
             "fieldType": "String"
         },
         {
             "fieldName": "published",
-            "javadoc": "Datos Sistema",
+            "javadoc": "Tercer ALternativo",
             "fieldType": "Boolean"
         },
         {

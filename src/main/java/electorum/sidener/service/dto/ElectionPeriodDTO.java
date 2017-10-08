@@ -14,9 +14,9 @@ public class ElectionPeriodDTO implements Serializable {
 
     private String name;
 
-    private ZonedDateTime start;
+    private ZonedDateTime startDate;
 
-    private ZonedDateTime end;
+    private ZonedDateTime endDate;
 
     private Boolean published;
 
@@ -40,20 +40,20 @@ public class ElectionPeriodDTO implements Serializable {
         this.name = name;
     }
 
-    public ZonedDateTime getStart() {
-        return start;
+    public ZonedDateTime getStartDate() {
+        return startDate;
     }
 
-    public void setStart(ZonedDateTime start) {
-        this.start = start;
+    public void setStartDate(ZonedDateTime startDate) {
+        this.startDate = startDate;
     }
 
-    public ZonedDateTime getEnd() {
-        return end;
+    public ZonedDateTime getEndDate() {
+        return endDate;
     }
 
-    public void setEnd(ZonedDateTime end) {
-        this.end = end;
+    public void setEndDate(ZonedDateTime endDate) {
+        this.endDate = endDate;
     }
 
     public Boolean isPublished() {
@@ -106,8 +106,8 @@ public class ElectionPeriodDTO implements Serializable {
         return "ElectionPeriodDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", start='" + getStart() + "'" +
-            ", end='" + getEnd() + "'" +
+            ", startDate='" + getStartDate() + "'" +
+            ", endDate='" + getEndDate() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

@@ -31,16 +31,13 @@ public class Causal implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Lob
     @Column(name = "name")
     private String name;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "jhi_type")
-    private CausalType type;
-
-    @Lob
-    @Column(name = "description")
-    private String description;
+    @Column(name = "type_causal")
+    private CausalType typeCausal;
 
     @Column(name = "color")
     private String color;
@@ -87,30 +84,17 @@ public class Causal implements Serializable {
         this.name = name;
     }
 
-    public CausalType getType() {
-        return type;
+    public CausalType getTypeCausal() {
+        return typeCausal;
     }
 
-    public Causal type(CausalType type) {
-        this.type = type;
+    public Causal typeCausal(CausalType typeCausal) {
+        this.typeCausal = typeCausal;
         return this;
     }
 
-    public void setType(CausalType type) {
-        this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Causal description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTypeCausal(CausalType typeCausal) {
+        this.typeCausal = typeCausal;
     }
 
     public String getColor() {
@@ -214,8 +198,7 @@ public class Causal implements Serializable {
         return "Causal{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", type='" + getType() + "'" +
-            ", description='" + getDescription() + "'" +
+            ", typeCausal='" + getTypeCausal() + "'" +
             ", color='" + getColor() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +

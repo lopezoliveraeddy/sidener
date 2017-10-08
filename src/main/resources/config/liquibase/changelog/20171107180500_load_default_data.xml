@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="20171107180500" author="mdominguezn">
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/politicalParty.csv"
+                  separator=","
+                  tableName="political_party">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/coalition.csv"
+                  separator=","
+                  tableName="coalition">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/independentCandidate.csv"
+                  separator=","
+                  tableName="independent_candidate">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/electionType.csv"
+                  separator=","
+                  tableName="election_type">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/electionPeriod.csv"
+                  separator=","
+                  tableName="election_period">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/causal.csv"
+                  separator=","
+                  tableName="causal">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/election.csv"
+                  separator=","
+                  tableName="election">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/district.csv"
+                  separator=","
+                  tableName="district">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/pollingPlace.csv"
+                  separator=","
+                  tableName="polling_place">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/vote.csv"
+                  separator=","
+                  tableName="vote">
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

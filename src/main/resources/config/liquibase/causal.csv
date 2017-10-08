@@ -1,0 +1,21 @@
+id,type_causal,name,color,published,created_date,updated_date
+1,NULLITY,Manifestaciones que se consideren violaciones graves el día de la jornada.,,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995
+2,NULLITY,Pendiente,,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995
+3,NULLITY,El número de votos nulos es mayor a la diferencia entre el primer y segundo lugar.,,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.996
+4,NULLITY,Inexistencia del acta de escrutinio y cómputo.,,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.997
+5,NULLITY,Existir alteraciones evidentes en el paquete electoral.,,true,2017-10-07 18:13:34.997,2017-10-07 18:13:34.998
+6,NULLITY,Errores o inconsistencias evidentes.,,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.999
+7,NULLITY,El número de votos nulos es mayor a la diferencia entre el primer y segundo lugar.,,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.995
+8,NULLITY,Todos los votos son para una misma opción política.,,true,2017-10-07 18:13:34.997,2017-10-07 18:13:34.996
+9,NULLITY,Son ilegibles los resultados.,,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.997
+10,NULLITY,Están en blanco los resultados.,,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
+11,RECOUNT,Manifestaciones que se consideren violaciones graves el día de la jornada.,#E6E6FA,true,2017-10-07 18:13:34.997,2017-10-07 18:13:34.995
+12,RECOUNT,Pendiente,#CEE7FF,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.996
+13,RECOUNT,El número de votos nulos es mayor a la diferencia entre el primer y segundo lugar.,#B0E0E6,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.997
+14,RECOUNT,Inexistencia del acta de escrutinio y cómputo.,#ADD8E6,true,2017-10-07 18:13:34.997,2017-10-07 18:13:34.998
+15,RECOUNT,Existir alteraciones evidentes en el paquete electoral.,#87CEFA,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.999
+16,RECOUNT,Errores o inconsistencias evidentes.,#87CEEB,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.995
+17,RECOUNT,El número de votos nulos es mayor a la diferencia entre el primer y segundo lugar.,#B0C4DE,true,2017-10-07 18:13:34.997,2017-10-07 18:13:34.996
+18,RECOUNT,Todos los votos son para una misma opción política.,#00BFFF,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.997
+19,RECOUNT,Son ilegibles los resultados.,#6495ED,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
+20,RECOUNT,Están en blanco los resultados.,#1E90FF,true,2017-10-07 18:13:34.997,2017-10-07 18:13:34.995

@@ -1,0 +1,18 @@
+id,town,type_polling_place,type_number,section,address,leftover_ballots,voting_citizens,exctracted_ballots,not_registered,null_votes,total_votes,electoral_roll,observations
+1,COSIO,BASIC,B,387,null,null,null,null,2,11,null,null,null
+2,COSIO,CONTIGUOUS,1,387,null,null,null,null,null,17,null,null,null
+3,COSIO,CONTIGUOUS,2,387,null,null,null,null,null,null,null,null,Sin sobre
+4,COSIO,CONTIGUOUS,3,387,null,null,null,null,null,12,null,null,null
+5,COSIO,BASIC,null,388,null,null,null,null,0,11,null,null,null
+6,COSIO,CONTIGUOUS,1,388,null,null,null,null,0,13,null,null,null
+7,COSIO,CONTIGUOUS,2,388,null,null,null,null,null,null,null,null,Acta ilegible
+8,COSIO,BASIC,B,389,null,null,null,null,null,null,null,null,Sin sobre
+9,COSIO,CONTIGUOUS,1,389,null,null,null,null,0,12,null,null,null
+10,COSIO,CONTIGUOUS,2,389,null,null,null,null,1,20,null,null,null
+11,COSIO,BASIC,B,390,null,null,null,null,null,null,null,null,Sin sobre
+12,COSIO,CONTIGUOUS,1,390,null,null,null,null,null,null,null,null,Sin sobre
+13,COSIO,CONTIGUOUS,2,390,null,null,null,null,0,16,null,null,null
+14,COSIO,BASIC,B,391,null,null,null,null,0,9,null,null,null
+15,COSIO,CONTIGUOUS,1,391,null,null,null,null,0,10,null,null,null
+16,COSIO,CONTIGUOUS,2,391,null,null,null,null,0,4,null,null,null
+17,COSIO,CONTIGUOUS,3,391,null,null,null,null,0,10,null,null,null

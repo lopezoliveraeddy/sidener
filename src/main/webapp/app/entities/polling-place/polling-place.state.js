@@ -127,8 +127,10 @@
                         entity: function () {
                             return {
                                 town: null,
-                                type: null,
-                                adress: null,
+                                typePollingPlace: null,
+                                typeNumber: null,
+                                section: null,
+                                address: null,
                                 leftoverBallots: null,
                                 votingCitizens: null,
                                 exctractedBallots: null,

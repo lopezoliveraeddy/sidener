@@ -13,17 +13,13 @@
     "fields": [
         {
             "fieldName": "name",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "type",
-            "fieldType": "CausalType",
-            "fieldValues": "RECOUNT,NULLITY"
-        },
-        {
-            "fieldName": "description",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "typeCausal",
+            "fieldType": "CausalType",
+            "fieldValues": "RECOUNT,NULLITY"
         },
         {
             "fieldName": "color",

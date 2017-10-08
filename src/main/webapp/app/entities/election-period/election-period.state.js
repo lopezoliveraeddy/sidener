@@ -125,8 +125,8 @@
                         entity: function () {
                             return {
                                 name: null,
-                                start: null,
-                                end: null,
+                                startDate: null,
+                                endDate: null,
                                 published: null,
                                 createdDate: null,
                                 updatedDate: null,

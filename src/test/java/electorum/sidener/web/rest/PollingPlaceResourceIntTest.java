@@ -51,11 +51,17 @@ public class PollingPlaceResourceIntTest {
     private static final String DEFAULT_TOWN = "AAAAAAAAAA";
     private static final String UPDATED_TOWN = "BBBBBBBBBB";
 
-    private static final PollingPlaceType DEFAULT_TYPE = PollingPlaceType.BASIC;
-    private static final PollingPlaceType UPDATED_TYPE = PollingPlaceType.CONTIGUOUS;
+    private static final PollingPlaceType DEFAULT_TYPE_POLLING_PLACE = PollingPlaceType.BASIC;
+    private static final PollingPlaceType UPDATED_TYPE_POLLING_PLACE = PollingPlaceType.CONTIGUOUS;
 
-    private static final String DEFAULT_ADRESS = "AAAAAAAAAA";
-    private static final String UPDATED_ADRESS = "BBBBBBBBBB";
+    private static final String DEFAULT_TYPE_NUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_TYPE_NUMBER = "BBBBBBBBBB";
+
+    private static final String DEFAULT_SECTION = "AAAAAAAAAA";
+    private static final String UPDATED_SECTION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
+    private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
 
     private static final Long DEFAULT_LEFTOVER_BALLOTS = 1L;
     private static final Long UPDATED_LEFTOVER_BALLOTS = 2L;
@@ -158,8 +164,10 @@ public class PollingPlaceResourceIntTest {
     public static PollingPlace createEntity(EntityManager em) {
         PollingPlace pollingPlace = new PollingPlace()
             .town(DEFAULT_TOWN)
-            .type(DEFAULT_TYPE)
-            .adress(DEFAULT_ADRESS)
+            .typePollingPlace(DEFAULT_TYPE_POLLING_PLACE)
+            .typeNumber(DEFAULT_TYPE_NUMBER)
+            .section(DEFAULT_SECTION)
+            .address(DEFAULT_ADDRESS)
             .leftoverBallots(DEFAULT_LEFTOVER_BALLOTS)
             .votingCitizens(DEFAULT_VOTING_CITIZENS)
             .exctractedBallots(DEFAULT_EXCTRACTED_BALLOTS)
@@ -204,8 +212,10 @@ public class PollingPlaceResourceIntTest {
         assertThat(pollingPlaceList).hasSize(databaseSizeBeforeCreate + 1);
         PollingPlace testPollingPlace = pollingPlaceList.get(pollingPlaceList.size() - 1);
         assertThat(testPollingPlace.getTown()).isEqualTo(DEFAULT_TOWN);
-        assertThat(testPollingPlace.getType()).isEqualTo(DEFAULT_TYPE);
-        assertThat(testPollingPlace.getAdress()).isEqualTo(DEFAULT_ADRESS);
+        assertThat(testPollingPlace.getTypePollingPlace()).isEqualTo(DEFAULT_TYPE_POLLING_PLACE);
+        assertThat(testPollingPlace.getTypeNumber()).isEqualTo(DEFAULT_TYPE_NUMBER);
+        assertThat(testPollingPlace.getSection()).isEqualTo(DEFAULT_SECTION);
+        assertThat(testPollingPlace.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testPollingPlace.getLeftoverBallots()).isEqualTo(DEFAULT_LEFTOVER_BALLOTS);
         assertThat(testPollingPlace.getVotingCitizens()).isEqualTo(DEFAULT_VOTING_CITIZENS);
         assertThat(testPollingPlace.getExctractedBallots()).isEqualTo(DEFAULT_EXCTRACTED_BALLOTS);
@@ -262,8 +272,10 @@ public class PollingPlaceResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(pollingPlace.getId().intValue())))
             .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN.toString())))
-            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
-            .andExpect(jsonPath("$.[*].adress").value(hasItem(DEFAULT_ADRESS.toString())))
+            .andExpect(jsonPath("$.[*].typePollingPlace").value(hasItem(DEFAULT_TYPE_POLLING_PLACE.toString())))
+            .andExpect(jsonPath("$.[*].typeNumber").value(hasItem(DEFAULT_TYPE_NUMBER.toString())))
+            .andExpect(jsonPath("$.[*].section").value(hasItem(DEFAULT_SECTION.toString())))
+            .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
             .andExpect(jsonPath("$.[*].leftoverBallots").value(hasItem(DEFAULT_LEFTOVER_BALLOTS.intValue())))
             .andExpect(jsonPath("$.[*].votingCitizens").value(hasItem(DEFAULT_VOTING_CITIZENS.intValue())))
             .andExpect(jsonPath("$.[*].exctractedBallots").value(hasItem(DEFAULT_EXCTRACTED_BALLOTS.intValue())))
@@ -296,8 +308,10 @@ public class PollingPlaceResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(pollingPlace.getId().intValue()))
             .andExpect(jsonPath("$.town").value(DEFAULT_TOWN.toString()))
-            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
-            .andExpect(jsonPath("$.adress").value(DEFAULT_ADRESS.toString()))
+            .andExpect(jsonPath("$.typePollingPlace").value(DEFAULT_TYPE_POLLING_PLACE.toString()))
+            .andExpect(jsonPath("$.typeNumber").value(DEFAULT_TYPE_NUMBER.toString()))
+            .andExpect(jsonPath("$.section").value(DEFAULT_SECTION.toString()))
+            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
             .andExpect(jsonPath("$.leftoverBallots").value(DEFAULT_LEFTOVER_BALLOTS.intValue()))
             .andExpect(jsonPath("$.votingCitizens").value(DEFAULT_VOTING_CITIZENS.intValue()))
             .andExpect(jsonPath("$.exctractedBallots").value(DEFAULT_EXCTRACTED_BALLOTS.intValue()))
@@ -338,8 +352,10 @@ public class PollingPlaceResourceIntTest {
         PollingPlace updatedPollingPlace = pollingPlaceRepository.findOne(pollingPlace.getId());
         updatedPollingPlace
             .town(UPDATED_TOWN)
-            .type(UPDATED_TYPE)
-            .adress(UPDATED_ADRESS)
+            .typePollingPlace(UPDATED_TYPE_POLLING_PLACE)
+            .typeNumber(UPDATED_TYPE_NUMBER)
+            .section(UPDATED_SECTION)
+            .address(UPDATED_ADDRESS)
             .leftoverBallots(UPDATED_LEFTOVER_BALLOTS)
             .votingCitizens(UPDATED_VOTING_CITIZENS)
             .exctractedBallots(UPDATED_EXCTRACTED_BALLOTS)
@@ -370,8 +386,10 @@ public class PollingPlaceResourceIntTest {
         assertThat(pollingPlaceList).hasSize(databaseSizeBeforeUpdate);
         PollingPlace testPollingPlace = pollingPlaceList.get(pollingPlaceList.size() - 1);
         assertThat(testPollingPlace.getTown()).isEqualTo(UPDATED_TOWN);
-        assertThat(testPollingPlace.getType()).isEqualTo(UPDATED_TYPE);
-        assertThat(testPollingPlace.getAdress()).isEqualTo(UPDATED_ADRESS);
+        assertThat(testPollingPlace.getTypePollingPlace()).isEqualTo(UPDATED_TYPE_POLLING_PLACE);
+        assertThat(testPollingPlace.getTypeNumber()).isEqualTo(UPDATED_TYPE_NUMBER);
+        assertThat(testPollingPlace.getSection()).isEqualTo(UPDATED_SECTION);
+        assertThat(testPollingPlace.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testPollingPlace.getLeftoverBallots()).isEqualTo(UPDATED_LEFTOVER_BALLOTS);
         assertThat(testPollingPlace.getVotingCitizens()).isEqualTo(UPDATED_VOTING_CITIZENS);
         assertThat(testPollingPlace.getExctractedBallots()).isEqualTo(UPDATED_EXCTRACTED_BALLOTS);
@@ -450,8 +468,10 @@ public class PollingPlaceResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(pollingPlace.getId().intValue())))
             .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN.toString())))
-            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
-            .andExpect(jsonPath("$.[*].adress").value(hasItem(DEFAULT_ADRESS.toString())))
+            .andExpect(jsonPath("$.[*].typePollingPlace").value(hasItem(DEFAULT_TYPE_POLLING_PLACE.toString())))
+            .andExpect(jsonPath("$.[*].typeNumber").value(hasItem(DEFAULT_TYPE_NUMBER.toString())))
+            .andExpect(jsonPath("$.[*].section").value(hasItem(DEFAULT_SECTION.toString())))
+            .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
             .andExpect(jsonPath("$.[*].leftoverBallots").value(hasItem(DEFAULT_LEFTOVER_BALLOTS.intValue())))
             .andExpect(jsonPath("$.[*].votingCitizens").value(hasItem(DEFAULT_VOTING_CITIZENS.intValue())))
             .andExpect(jsonPath("$.[*].exctractedBallots").value(hasItem(DEFAULT_EXCTRACTED_BALLOTS.intValue())))

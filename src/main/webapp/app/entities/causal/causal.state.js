@@ -127,8 +127,7 @@
                         entity: function () {
                             return {
                                 name: null,
-                                type: null,
-                                description: null,
+                                typeCausal: null,
                                 color: null,
                                 published: null,
                                 createdDate: null,
