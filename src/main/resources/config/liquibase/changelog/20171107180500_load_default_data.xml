@@ -53,6 +53,21 @@
                   tableName="polling_place">
         </loadData>
         <loadData encoding="UTF-8"
+                  file="config/liquibase/election_politicalParties.csv"
+                  separator=","
+                  tableName="election_political_parties">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/election_coalitions.csv"
+                  separator=","
+                  tableName="election_coalitions">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/election_independentCandidates.csv"
+                  separator=","
+                  tableName="election_independent_candidates">
+        </loadData>
+        <loadData encoding="UTF-8"
                   file="config/liquibase/vote.csv"
                   separator=","
                   tableName="vote">
