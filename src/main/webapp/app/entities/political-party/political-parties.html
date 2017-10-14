@@ -51,7 +51,7 @@
                     <td>{{politicalParty.name}}</td>
                     <td>{{politicalParty.acronym}}</td>
                     <td>{{politicalParty.image}}</td>
-                    <td>
+                    <td class="text-center">
                         <span ng-if="politicalParty.published==true">
                             <i class="fa fa-check fa-2x"></i>
                         </span>
@@ -59,8 +59,8 @@
                             <i class="fa fa-times fa-2x"></i>
                         </span>
                     </td>
-                    <td>{{politicalParty.createdDate | date:'medium'}}</td>
-                    <td>{{politicalParty.updatedDate | date:'medium'}}</td>
+                    <td>{{politicalParty.createdDate | date:'short'}}</td>
+                    <td>{{politicalParty.updatedDate | date:'short'}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

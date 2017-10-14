@@ -342,3 +342,28 @@ ui bootstrap tweaks
 
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
+
+/* ==========================================================================
+Estilos Generales
+========================================================================== */
+
+table.jh-table {
+    thead {
+        tr {
+            th {
+                text-align: center;
+            }
+        }
+    }
+}
+
+.ui-select-match-item.btn:hover {
+    transform: none !important;
+}
+.ui-select-match > span {
+    display: block;
+}
+
+.padding-bottom {
+    padding-bottom: 15px;
+}

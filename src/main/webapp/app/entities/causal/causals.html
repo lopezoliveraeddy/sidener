@@ -51,7 +51,7 @@
                     <td>{{causal.name}}</td>
                     <td data-translate="{{'sidenerApp.CausalType.' + causal.typeCausal}}">{{causal.typeCausal}}</td>
                     <td ng-style="{ 'background-color': causal.color }"></td>
-                    <td>
+                    <td class="text-center">
                         <span ng-if="causal.published==true">
                             <i class="fa fa-check fa-2x"></i>
                         </span>
@@ -59,8 +59,8 @@
                             <i class="fa fa-times fa-2x"></i>
                         </span>
                     </td>
-                    <td>{{causal.createdDate | date:'medium'}}</td>
-                    <td>{{causal.updatedDate | date:'medium'}}</td>
+                    <td>{{causal.createdDate | date:'short'}}</td>
+                    <td>{{causal.updatedDate | date:'short'}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

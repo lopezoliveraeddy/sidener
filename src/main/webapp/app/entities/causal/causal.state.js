@@ -70,6 +70,7 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('causal');
                     $translatePartialLoader.addPart('causalType');
+                    $translatePartialLoader.addPart('causalDescription');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Causal', function($stateParams, Causal) {

@@ -57,7 +57,7 @@
                             <a ui-sref="political-party-detail({id: politicalParties.id})">{{politicalParties.acronym}}</a>{{$last ? '' : ', '}}
                         </span>
                     </td>
-                    <td>
+                    <td class="text-center">
                         <span ng-if="coalition.published==true">
                             <i class="fa fa-check fa-2x"></i>
                         </span>
@@ -65,8 +65,8 @@
                             <i class="fa fa-times fa-2x"></i>
                         </span>
                     </td>
-                    <td>{{coalition.createdDate | date:'medium'}}</td>
-                    <td>{{coalition.updatedDate | date:'medium'}}</td>
+                    <td>{{coalition.createdDate | date:'short'}}</td>
+                    <td>{{coalition.updatedDate | date:'short'}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

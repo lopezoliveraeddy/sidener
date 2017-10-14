@@ -55,7 +55,7 @@ public class Causal implements Serializable {
     @Column(name = "updated_date")
     private ZonedDateTime updatedDate;
 
-    @ManyToMany
+    @ManyToMany(cascade = { CascadeType.ALL })
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "causal_causal_description",
                joinColumns = @JoinColumn(name="causals_id", referencedColumnName="id"),

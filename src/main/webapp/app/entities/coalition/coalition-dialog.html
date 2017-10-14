@@ -60,7 +60,13 @@
         -->
         <div class="form-group">
             <label data-translate="sidenerApp.coalition.politicalParties" for="field_politicalParties">Political Parties</label>
-            <select class="form-control" id="field_politicalParties" multiple name="politicalParties" ng-model="vm.coalition.politicalParties" ng-options="politicalParty as politicalParty.name for politicalParty in vm.politicalparties track by politicalParty.id"></select>
+            <ui-select multiple ng-model="vm.coalition.politicalParties" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true">
+                <ui-select-match placeholder="Selecciona un Partido Político...">{{$item.name}}</ui-select-match>
+                <ui-select-choices repeat="politicalParty in vm.politicalparties | propsFilter: {name: $select.search}" position='down'>
+                    <div ng-bind-html="politicalParty.name | highlight: $select.search"></div>
+                    <small>{{politicalParty.acronym}}</small>
+                </ui-select-choices>
+            </ui-select>
         </div>
     </div>
     <div class="modal-footer">

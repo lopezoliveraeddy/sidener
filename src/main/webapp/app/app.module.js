@@ -21,7 +21,8 @@
             'flow',
             // jhipster-needle-angularjs-add-module JHipster will add new module here
             'angular-loading-bar',
-            'colorpicker.module'
+            'colorpicker.module',
+            'ui.select'
         ])
         .run(run);
 

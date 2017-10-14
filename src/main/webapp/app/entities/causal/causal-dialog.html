@@ -59,10 +59,24 @@
                 </div>
         </div>
         -->
+
         <div class="form-group">
-            <label data-translate="sidenerApp.causal.causalDescription" for="field_causalDescription">Causal Description</label>
-            <select class="form-control" id="field_causalDescription" multiple name="causalDescription" ng-model="vm.causal.causalDescriptions" ng-options="causalDescription as causalDescription.text for causalDescription in vm.causaldescriptions track by causalDescription.id"></select>
+            <div ng-repeat="causalDescription in vm.causal.causalDescriptions" class="row padding-bottom">
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                    <textarea class="form-control" name="text" id="field_text" ng-model="causalDescription.text"></textarea>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                    <button type="button" class="btn-danger btn-sm" ng-click="vm.deleteDescription($index, causalDescription.id)">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                    </button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" ng-click="addNewDescription()">
+                <span class="glyphicon glyphicon-plus"></span>
+                <span class="hidden-xs-down">Añadir Descripción</span>
+            </button>
         </div>
+
 
     </div>
     <div class="modal-footer">

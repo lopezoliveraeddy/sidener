@@ -31,13 +31,13 @@
         </dd>
         <dt><span data-translate="sidenerApp.causal.updatedDate">Updated Date</span></dt>
         <dd>
-            <span>{{vm.causal.updatedDate | date:'medium'}}</span>
+            <span>{{ vm.causal.updatedDate | date:'medium' }}</span>
         </dd>
         <dt><span data-translate="sidenerApp.causal.causalDescription">Causal Description</span></dt>
         <dd>
-            <span ng-repeat="causalDescription in vm.causal.causalDescriptions">
-                <a ui-sref="causal-description-detail({id: causalDescription.id})">{{causalDescription.text}}</a>{{$last ? '' : ', '}}
-            </span>
+            <ul ng-repeat="causalDescription in vm.causal.causalDescriptions">
+                <li>{{causalDescription.text}}</li>
+            </ul>
         </dd>
     </dl>
 
