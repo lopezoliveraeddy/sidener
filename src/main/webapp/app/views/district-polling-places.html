@@ -1,0 +1,72 @@
+<div>
+    <h2 data-translate="sidenerApp.pollingPlace.home.title">Polling Places</h2>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <th><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.town">Town</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.typePollingPlace">Type Polling Place</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.typeNumber">Type Number</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.section">Section</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.address">Address</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.leftoverBallots">Leftover Ballots</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.votingCitizens">Voting Citizens</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.exctractedBallots">Exctracted Ballots</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.notRegistered">Not Registered</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.nullVotes">Null Votes</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.totalVotes">Total Votes</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.electoralRoll">Electoral Roll</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.observations">Observations</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.president">President</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.secretary">Secretary</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.scrutineerOne">Scrutineer One</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.scrutineerTwo">Scrutineer Two</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.alternateOne">Alternate One</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.alternateTwo">Alternate Two</span></th>
+                <th><span data-translate="sidenerApp.pollingPlace.alternateThree">Alternate Three</span> </th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="pollingPlace in vm.pollingPlaces track by pollingPlace.id">
+                <td><a ui-sref="polling-place-detail({id:pollingPlace.id})">{{pollingPlace.id}}</a></td>
+                <td>{{pollingPlace.town}}</td>
+                <td data-translate="{{'sidenerApp.PollingPlaceType.' + pollingPlace.typePollingPlace}}">{{pollingPlace.typePollingPlace}}</td>
+                <td>{{pollingPlace.typeNumber}}</td>
+                <td>{{pollingPlace.section}}</td>
+                <td>{{pollingPlace.address}}</td>
+                <td>{{pollingPlace.leftoverBallots}}</td>
+                <td>{{pollingPlace.votingCitizens}}</td>
+                <td>{{pollingPlace.exctractedBallots}}</td>
+                <td>{{pollingPlace.notRegistered}}</td>
+                <td>{{pollingPlace.nullVotes}}</td>
+                <td>{{pollingPlace.totalVotes}}</td>
+                <td>{{pollingPlace.electoralRoll}}</td>
+                <td>{{pollingPlace.observations}}</td>
+                <td>{{pollingPlace.president}}</td>
+                <td>{{pollingPlace.secretary}}</td>
+                <td>{{pollingPlace.scrutineerOne}}</td>
+                <td>{{pollingPlace.scrutineerTwo}}</td>
+                <td>{{pollingPlace.alternateOne}}</td>
+                <td>{{pollingPlace.alternateTwo}}</td>
+                <td>{{pollingPlace.alternateThree}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                ui-sref="polling-place-detail({id:pollingPlace.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

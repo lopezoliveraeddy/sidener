@@ -1,0 +1,41 @@
+<div>
+    <h2 data-translate="sidenerApp.district.home.title">Districts</h2>
+    <jhi-alert></jhi-alert>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr callback="vm.transition()">
+                <th><span data-translate="global.field.id">ID</span></th>
+                <th><span data-translate="sidenerApp.district.decimalNumber">Decimal Number</span></th>
+                <th><span data-translate="sidenerApp.district.romanNumber">Roman Number</span></th>
+                <th><span data-translate="sidenerApp.district.districtIdentificator">District Identificator</span></span></th>
+                <th><span data-translate="sidenerApp.district.state">State</span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="district in vm.districts track by district.id">
+                <td><a ui-sref="district-detail({id:district.id})">{{district.id}}</a></td>
+                <td>{{district.decimalNumber}}</td>
+                <td>{{district.romanNumber}}</td>
+                <td>{{district.districtIdentificator}}</td>
+                <td data-translate="{{'sidenerApp.State.' + district.state}}">{{district.state}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                ui-sref="district-pollingPlaces({id:district.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

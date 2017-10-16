@@ -144,4 +144,20 @@ public class PollingPlaceResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+    /**
+     * GET DISTRICTS  /districts/{id}/polling-places : get pollingPlaces by "id" district
+     * to the query.
+     *
+     * @param pageable the pagination information
+     * @return the result of the search
+     */
+    @GetMapping("/districts/{id}/polling-places")
+    @Timed
+    public ResponseEntity<List<PollingPlaceDTO>> getDistrictsByIdElection(@PathVariable Long id, @ApiParam Pageable pageable) {
+        log.debug("REST request to get PollingPlaces by District : {}", id);
+        Page<PollingPlaceDTO> page = pollingPlaceService.getPollingPlacesByIdDistrict(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/districts/{id}/polling-places");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
 }

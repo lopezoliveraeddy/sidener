@@ -18,6 +18,11 @@
                   tableName="coalition">
         </loadData>
         <loadData encoding="UTF-8"
+                  file="config/liquibase/coalition_politicalParties.csv"
+                  separator=","
+                  tableName="coalition_political_parties">
+        </loadData>
+        <loadData encoding="UTF-8"
                   file="config/liquibase/independentCandidate.csv"
                   separator=","
                   tableName="independent_candidate">

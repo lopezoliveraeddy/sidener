@@ -107,4 +107,19 @@ public class PollingPlaceServiceImpl implements PollingPlaceService{
         Page<PollingPlace> result = pollingPlaceSearchRepository.search(queryStringQuery(query), pageable);
         return result.map(pollingPlaceMapper::toDto);
     }
+
+    /**
+     *  Get pollingPlaces of district by id.
+     *
+     *  @param id the id of the entity
+     *  @param pageable the pagination information
+     *  @return the entity
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public Page<PollingPlaceDTO> getPollingPlacesByIdDistrict(Long id, Pageable pageable) {
+        log.debug("Request to get PollingPlaces by District : {}", id);
+        Page<PollingPlace> result = pollingPlaceRepository.findByDistrictId(id, pageable);
+        return result.map(pollingPlaceMapper::toDto);
+    }
 }

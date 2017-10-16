@@ -107,4 +107,20 @@ public class DistrictServiceImpl implements DistrictService{
         Page<District> result = districtSearchRepository.search(queryStringQuery(query), pageable);
         return result.map(districtMapper::toDto);
     }
+
+    /**
+     *  Get distrcits of election by id.
+     *
+     *  @param id the id of the entity
+     *  @param pageable the pagination information
+     *  @return the entity
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public Page<DistrictDTO> getDistrictsByIdElection(Long id, Pageable pageable) {
+        log.debug("Request to get Districts by Election : {}", id);
+        Page<District> result = districtRepository.findByElectionId(id, pageable);
+        return result.map(districtMapper::toDto);
+    }
+
 }

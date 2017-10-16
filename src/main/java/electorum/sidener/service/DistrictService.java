@@ -44,9 +44,20 @@ public interface DistrictService {
      * Search for the district corresponding to the query.
      *
      *  @param query the query of the search
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
     Page<DistrictDTO> search(String query, Pageable pageable);
+
+    /**
+     *  Get districts by id election.
+     *
+     *  @param id the id of the entity
+     *  @param pageable the pagination information
+     *  @return the entity
+     */
+
+    Page<DistrictDTO> getDistrictsByIdElection(Long id, Pageable pageable);
+
 }

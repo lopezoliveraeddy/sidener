@@ -44,9 +44,19 @@ public interface PollingPlaceService {
      * Search for the pollingPlace corresponding to the query.
      *
      *  @param query the query of the search
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
     Page<PollingPlaceDTO> search(String query, Pageable pageable);
+
+    /**
+     *  Get pollingPlaces by id district.
+     *
+     *  @param id the id of the entity
+     *  @param pageable the pagination information
+     *  @return the entity
+     */
+
+    Page<PollingPlaceDTO> getPollingPlacesByIdDistrict(Long id, Pageable pageable);
 }
