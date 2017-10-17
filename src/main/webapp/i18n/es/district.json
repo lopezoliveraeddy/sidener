@@ -16,6 +16,10 @@
             "detail": {
                 "title": "Distrito"
             },
+            "firstPlace": "Partido 1er Lugar",
+            "secondPlace": "Partido 2do Lugar",
+            "difference": "Diferencia",
+            "totalVotes": "Votación Total",
             "decimalNumber": "Número de Distrito",
             "romanNumber": "Número de Distrito (Número Romano)",
             "districtIdentificator": "Identificador de Distrito",

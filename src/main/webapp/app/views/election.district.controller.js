@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('ElectionDistrictController', ElectionDistrictController);
 
-    ElectionDistrictController.$inject = ['$state', '$stateParams', 'ElectionDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    ElectionDistrictController.$inject = ['$state', '$stateParams', 'Election', 'ElectionDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function ElectionDistrictController($state, $stateParams, ElectionDistrict, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function ElectionDistrictController($state, $stateParams, Election, ElectionDistrict, ParseLinks, AlertService, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -16,7 +16,21 @@
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.loadAll = loadAll;
 
+        // Datos de la Elección
+        vm.election = [];
+
+        loadElection();
         loadAll();
+
+        function loadElection () {
+            Election.get({ id : $stateParams.id }, onSuccess, onError);
+            function onSuccess(data) {
+                vm.election = data;
+            }
+            function onError(error) {
+                AlertService.error(error.data.message);
+            }
+        }
 
         function loadAll () {
                 ElectionDistrict.get({ id : $stateParams.id

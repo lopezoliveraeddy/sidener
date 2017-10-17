@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span data-translate="sidenerApp.election.detail.title">Election</span> {{vm.election.id}}</h2>
+    <h2>{{vm.election.electionTypeName}} - <span data-translate="{{'sidenerApp.State.' + vm.election.state}}">{{vm.election.state}}</span></h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
@@ -78,21 +78,21 @@
         </dd>
         <dt><span data-translate="sidenerApp.election.politicalParties">Political Parties</span></dt>
         <dd>
-            <span ng-repeat="politicalParties in vm.election.politicalParties">
-                <a ui-sref="political-party-detail({id: politicalParties.id})">{{politicalParties.name}}</a>{{$last ? '' : ', '}}
-            </span>
+            <ul ng-repeat="politicalParties in vm.election.politicalParties">
+                <li><a ui-sref="political-party-detail({id: politicalParties.id})">{{politicalParties.name}}</a></li>
+            </ul>
         </dd>
         <dt><span data-translate="sidenerApp.election.independentCandidates">Independent Candidates</span></dt>
         <dd>
-            <span ng-repeat="independentCandidates in vm.election.independentCandidates">
-                <a ui-sref="independent-candidate-detail({id: independentCandidates.id})">{{independentCandidates.name}}</a>{{$last ? '' : ', '}}
-            </span>
+            <ul ng-repeat="independentCandidates in vm.election.independentCandidates">
+                <li><a ui-sref="independent-candidate-detail({id: independentCandidates.id})">{{independentCandidates.name}}</a></li>
+            </ul>
         </dd>
         <dt><span data-translate="sidenerApp.election.coalitions">Coalitions</span></dt>
         <dd>
-            <span ng-repeat="coalitions in vm.election.coalitions">
-                <a ui-sref="coalition-detail({id: coalitions.id})">{{coalitions.name}}</a>{{$last ? '' : ', '}}
-            </span>
+            <ul ng-repeat="coalitions in vm.election.coalitions">
+                <li><a ui-sref="coalition-detail({id: coalitions.id})">{{coalitions.name}}</a></li>
+            </ul>
         </dd>
         <dt><span data-translate="sidenerApp.election.causals">Causals</span></dt>
         <dd>

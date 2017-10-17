@@ -7,7 +7,7 @@
     ElectionDistrict.$inject = ['$resource', 'DateUtils'];
 
     function ElectionDistrict ($resource, DateUtils) {
-        var resourceUrl =  'api/elections/districts/:id';
+        var resourceUrl =  'api/elections/:id/districts';
 
         return $resource(resourceUrl, {}, {
             'get': {

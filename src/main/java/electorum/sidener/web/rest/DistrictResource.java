@@ -145,18 +145,18 @@ public class DistrictResource {
     }
 
     /**
-     * GET DISTRICTS  /elections/districts/{id} : get disctricts by "id" election
+     * GET DISTRICTS  /elections/{id}/districts : get disctricts by "id" election
      * to the query.
      *
      * @param pageable the pagination information
      * @return the result of the search
      */
-    @GetMapping("/elections/districts/{id}")
+    @GetMapping("/elections/{id}/districts")
     @Timed
     public ResponseEntity<List<DistrictDTO>> getDistrictsByIdElection(@PathVariable Long id, @ApiParam Pageable pageable) {
         log.debug("REST request to get Districts by Election : {}", id);
         Page<DistrictDTO> page = districtService.getDistrictsByIdElection(id, pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/elections/districts/{id}");
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/elections/{id}/districts");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 

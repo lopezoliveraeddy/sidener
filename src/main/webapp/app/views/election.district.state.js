@@ -11,7 +11,7 @@
         $stateProvider
         .state('election-district', {
             parent: 'entity',
-            url: '/elections/districts/{id}?page',
+            url: '/election/{id}/district?page',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'sidenerApp.election.home.title'
