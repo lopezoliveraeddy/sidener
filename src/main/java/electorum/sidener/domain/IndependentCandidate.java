@@ -27,19 +27,27 @@ public class IndependentCandidate implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Nombre del Candidato Independiente
+     */
+    @ApiModelProperty(value = "Nombre del Candidato Independiente")
     @Column(name = "name")
     private String name;
 
+    /**
+     * Iniciales
+     */
+    @ApiModelProperty(value = "Iniciales")
     @Column(name = "acronym")
     private String acronym;
 
+    /**
+     * Fotografía del Candidato Independiente
+     */
+    @ApiModelProperty(value = "Fotografía del Candidato Independiente")
     @Column(name = "image")
     private String image;
 
-    /**
-     * Datos Sistema
-     */
-    @ApiModelProperty(value = "Datos Sistema")
     @Column(name = "published")
     private Boolean published;
 

@@ -8,6 +8,10 @@
         <dd>
             <span data-translate="{{'sidenerApp.State.' + vm.election.state}}">{{vm.election.state}}</span>
         </dd>
+        <dt><span data-translate="sidenerApp.election.periodElection">Period Election</span></dt>
+        <dd>
+            <span>{{vm.election.periodElection}}</span>
+        </dd>
         <dt><span data-translate="sidenerApp.election.dateElection">Date Election</span></dt>
         <dd>
             <span>{{vm.election.dateElection | date:'medium'}}</span>
@@ -16,17 +20,21 @@
         <dd>
             <span data-translate="{{'sidenerApp.Status.' + vm.election.status}}">{{vm.election.status}}</span>
         </dd>
-        <dt><span data-translate="sidenerApp.election.prepUrl">Prep Url</span></dt>
+        <dt><span data-translate="sidenerApp.election.dataBase">Data Base</span></dt>
         <dd>
-            <span>{{vm.election.prepUrl}}</span>
-        </dd>
-        <dt><span data-translate="sidenerApp.election.ballotUrl">Ballot Url</span></dt>
-        <dd>
-            <span>{{vm.election.ballotUrl}}</span>
+            <span>{{vm.election.dataBase}}</span>
         </dd>
         <dt><span data-translate="sidenerApp.election.insetUrl">Inset Url</span></dt>
         <dd>
             <span>{{vm.election.insetUrl}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.incidentSheet">Incident Sheet</span></dt>
+        <dd>
+            <span>{{vm.election.incidentSheet}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.dayRecord">Day Record</span></dt>
+        <dd>
+            <span>{{vm.election.dayRecord}}</span>
         </dd>
         <dt><span data-translate="sidenerApp.election.demandTemplateUrl">Demand Template Url</span></dt>
         <dd>
@@ -44,6 +52,22 @@
         <dd>
             <span data-translate="{{'sidenerApp.RecountPollingPlaceRule.' + vm.election.recountPollingPlaceRule}}">{{vm.election.recountPollingPlaceRule}}</span>
         </dd>
+        <dt><span data-translate="sidenerApp.election.nameDemandant">Name Demandant</span></dt>
+        <dd>
+            <span>{{vm.election.nameDemandant}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.recountElectoralInstitute">Recount Electoral Institute</span></dt>
+        <dd>
+            <span>{{vm.election.recountElectoralInstitute}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.recountType">Recount Type</span></dt>
+        <dd>
+            <span>{{vm.election.recountType}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.recountFundamentRequest">Recount Fundament Request</span></dt>
+        <dd>
+            <span>{{vm.election.recountFundamentRequest}}</span>
+        </dd>
         <dt><span data-translate="sidenerApp.election.published">Published</span></dt>
         <dd>
             <span>{{vm.election.published}}</span>
@@ -59,10 +83,6 @@
         <dt><span data-translate="sidenerApp.election.electionType">Election Type</span></dt>
         <dd>
             <a ui-sref="election-type-detail({id:vm.election.electionTypeId})">{{vm.election.electionTypeName}}</a>
-        </dd>
-        <dt><span data-translate="sidenerApp.election.electionPeriod">Election Period</span></dt>
-        <dd>
-            <a ui-sref="election-period-detail({id:vm.election.electionPeriodId})">{{vm.election.electionPeriodName}}</a>
         </dd>
         <dt><span data-translate="sidenerApp.election.politicalPartyAsociated">Political Party Asociated</span></dt>
         <dd>

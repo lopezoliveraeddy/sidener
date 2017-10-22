@@ -38,47 +38,122 @@ public class Election implements Serializable {
     private Long id;
 
     /**
-     * Campos Informativos de la Elección
+     * Entidad Federativa donde se realiza la Elección
      */
-    @ApiModelProperty(value = "Campos Informativos de la Elección")
+    @ApiModelProperty(value = "Entidad Federativa donde se realiza la Elección")
     @Enumerated(EnumType.STRING)
     @Column(name = "state")
     private State state;
 
+    /**
+     * Periodo a realizarse la Elección
+     */
+    @ApiModelProperty(value = "Periodo a realizarse la Elección")
+    @Column(name = "period_election")
+    private String periodElection;
+
+    /**
+     * Fecha de la Elección
+     */
+    @ApiModelProperty(value = "Fecha de la Elección")
     @Column(name = "date_election")
     private ZonedDateTime dateElection;
 
+    /**
+     * Estatus de la Eleccion
+     */
+    @ApiModelProperty(value = "Estatus de la Eleccion")
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private Status status;
 
-    @Column(name = "prep_url")
-    private String prepUrl;
+    /**
+     * Base de Datos del Proceso Electoral (Archivo)
+     */
+    @ApiModelProperty(value = "Base de Datos del Proceso Electoral (Archivo)")
+    @Column(name = "data_base")
+    private String dataBase;
 
-    @Column(name = "ballot_url")
-    private String ballotUrl;
-
+    /**
+     * Encarte (Archivo)
+     */
+    @ApiModelProperty(value = "Encarte (Archivo)")
     @Column(name = "inset_url")
     private String insetUrl;
 
+    /**
+     * Hoja de Incidentes
+     */
+    @ApiModelProperty(value = "Hoja de Incidentes")
+    @Column(name = "incident_sheet")
+    private String incidentSheet;
+
+    /**
+     * Acta de la Jornada
+     */
+    @ApiModelProperty(value = "Acta de la Jornada")
+    @Column(name = "day_record")
+    private String dayRecord;
+
+    /**
+     * Plantilla de Demanda (Archivo)
+     */
+    @ApiModelProperty(value = "Plantilla de Demanda (Archivo)")
     @Column(name = "demand_template_url")
     private String demandTemplateUrl;
 
+    /**
+     * Plantilla de Recuento (Archivo)
+     */
+    @ApiModelProperty(value = "Plantilla de Recuento (Archivo)")
     @Column(name = "recount_template_url")
     private String recountTemplateUrl;
 
+    /**
+     * Regla para recuento de Distritos
+     */
+    @ApiModelProperty(value = "Regla para recuento de Distritos")
     @Enumerated(EnumType.STRING)
     @Column(name = "recount_districts_rule")
     private RecountDistrictsRule recountDistrictsRule;
 
+    /**
+     * Regla para recuento de Casillas
+     */
+    @ApiModelProperty(value = "Regla para recuento de Casillas")
     @Enumerated(EnumType.STRING)
     @Column(name = "recount_polling_place_rule")
     private RecountPollingPlaceRule recountPollingPlaceRule;
 
     /**
-     * Datos Sistema
+     * Nombre del Demandante
      */
-    @ApiModelProperty(value = "Datos Sistema")
+    @ApiModelProperty(value = "Nombre del Demandante")
+    @Column(name = "name_demandant")
+    private String nameDemandant;
+
+    /**
+     * Instituto electoral
+     */
+    @ApiModelProperty(value = "Instituto electoral")
+    @Column(name = "recount_electoral_institute")
+    private String recountElectoralInstitute;
+
+    /**
+     * Tipo de Computo
+     */
+    @ApiModelProperty(value = "Tipo de Computo")
+    @Column(name = "recount_type")
+    private String recountType;
+
+    /**
+     * Fundamento de la Solicitud
+     */
+    @ApiModelProperty(value = "Fundamento de la Solicitud")
+    @Lob
+    @Column(name = "recount_fundament_request")
+    private String recountFundamentRequest;
+
     @Column(name = "published")
     private Boolean published;
 
@@ -90,9 +165,6 @@ public class Election implements Serializable {
 
     @ManyToOne
     private ElectionType electionType;
-
-    @ManyToOne
-    private ElectionPeriod electionPeriod;
 
     @ManyToOne
     private PoliticalParty politicalPartyAsociated;
@@ -153,6 +225,19 @@ public class Election implements Serializable {
         this.state = state;
     }
 
+    public String getPeriodElection() {
+        return periodElection;
+    }
+
+    public Election periodElection(String periodElection) {
+        this.periodElection = periodElection;
+        return this;
+    }
+
+    public void setPeriodElection(String periodElection) {
+        this.periodElection = periodElection;
+    }
+
     public ZonedDateTime getDateElection() {
         return dateElection;
     }
@@ -179,30 +264,17 @@ public class Election implements Serializable {
         this.status = status;
     }
 
-    public String getPrepUrl() {
-        return prepUrl;
+    public String getDataBase() {
+        return dataBase;
     }
 
-    public Election prepUrl(String prepUrl) {
-        this.prepUrl = prepUrl;
+    public Election dataBase(String dataBase) {
+        this.dataBase = dataBase;
         return this;
     }
 
-    public void setPrepUrl(String prepUrl) {
-        this.prepUrl = prepUrl;
-    }
-
-    public String getBallotUrl() {
-        return ballotUrl;
-    }
-
-    public Election ballotUrl(String ballotUrl) {
-        this.ballotUrl = ballotUrl;
-        return this;
-    }
-
-    public void setBallotUrl(String ballotUrl) {
-        this.ballotUrl = ballotUrl;
+    public void setDataBase(String dataBase) {
+        this.dataBase = dataBase;
     }
 
     public String getInsetUrl() {
@@ -216,6 +288,32 @@ public class Election implements Serializable {
 
     public void setInsetUrl(String insetUrl) {
         this.insetUrl = insetUrl;
+    }
+
+    public String getIncidentSheet() {
+        return incidentSheet;
+    }
+
+    public Election incidentSheet(String incidentSheet) {
+        this.incidentSheet = incidentSheet;
+        return this;
+    }
+
+    public void setIncidentSheet(String incidentSheet) {
+        this.incidentSheet = incidentSheet;
+    }
+
+    public String getDayRecord() {
+        return dayRecord;
+    }
+
+    public Election dayRecord(String dayRecord) {
+        this.dayRecord = dayRecord;
+        return this;
+    }
+
+    public void setDayRecord(String dayRecord) {
+        this.dayRecord = dayRecord;
     }
 
     public String getDemandTemplateUrl() {
@@ -270,6 +368,58 @@ public class Election implements Serializable {
         this.recountPollingPlaceRule = recountPollingPlaceRule;
     }
 
+    public String getNameDemandant() {
+        return nameDemandant;
+    }
+
+    public Election nameDemandant(String nameDemandant) {
+        this.nameDemandant = nameDemandant;
+        return this;
+    }
+
+    public void setNameDemandant(String nameDemandant) {
+        this.nameDemandant = nameDemandant;
+    }
+
+    public String getRecountElectoralInstitute() {
+        return recountElectoralInstitute;
+    }
+
+    public Election recountElectoralInstitute(String recountElectoralInstitute) {
+        this.recountElectoralInstitute = recountElectoralInstitute;
+        return this;
+    }
+
+    public void setRecountElectoralInstitute(String recountElectoralInstitute) {
+        this.recountElectoralInstitute = recountElectoralInstitute;
+    }
+
+    public String getRecountType() {
+        return recountType;
+    }
+
+    public Election recountType(String recountType) {
+        this.recountType = recountType;
+        return this;
+    }
+
+    public void setRecountType(String recountType) {
+        this.recountType = recountType;
+    }
+
+    public String getRecountFundamentRequest() {
+        return recountFundamentRequest;
+    }
+
+    public Election recountFundamentRequest(String recountFundamentRequest) {
+        this.recountFundamentRequest = recountFundamentRequest;
+        return this;
+    }
+
+    public void setRecountFundamentRequest(String recountFundamentRequest) {
+        this.recountFundamentRequest = recountFundamentRequest;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -320,19 +470,6 @@ public class Election implements Serializable {
 
     public void setElectionType(ElectionType electionType) {
         this.electionType = electionType;
-    }
-
-    public ElectionPeriod getElectionPeriod() {
-        return electionPeriod;
-    }
-
-    public Election electionPeriod(ElectionPeriod electionPeriod) {
-        this.electionPeriod = electionPeriod;
-        return this;
-    }
-
-    public void setElectionPeriod(ElectionPeriod electionPeriod) {
-        this.electionPeriod = electionPeriod;
     }
 
     public PoliticalParty getPoliticalPartyAsociated() {
@@ -492,15 +629,21 @@ public class Election implements Serializable {
         return "Election{" +
             "id=" + getId() +
             ", state='" + getState() + "'" +
+            ", periodElection='" + getPeriodElection() + "'" +
             ", dateElection='" + getDateElection() + "'" +
             ", status='" + getStatus() + "'" +
-            ", prepUrl='" + getPrepUrl() + "'" +
-            ", ballotUrl='" + getBallotUrl() + "'" +
+            ", dataBase='" + getDataBase() + "'" +
             ", insetUrl='" + getInsetUrl() + "'" +
+            ", incidentSheet='" + getIncidentSheet() + "'" +
+            ", dayRecord='" + getDayRecord() + "'" +
             ", demandTemplateUrl='" + getDemandTemplateUrl() + "'" +
             ", recountTemplateUrl='" + getRecountTemplateUrl() + "'" +
             ", recountDistrictsRule='" + getRecountDistrictsRule() + "'" +
             ", recountPollingPlaceRule='" + getRecountPollingPlaceRule() + "'" +
+            ", nameDemandant='" + getNameDemandant() + "'" +
+            ", recountElectoralInstitute='" + getRecountElectoralInstitute() + "'" +
+            ", recountType='" + getRecountType() + "'" +
+            ", recountFundamentRequest='" + getRecountFundamentRequest() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

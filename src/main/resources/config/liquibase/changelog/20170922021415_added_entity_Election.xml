@@ -26,6 +26,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="period_election" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="date_election" type="timestamp">
                 <constraints nullable="true" />
             </column>
@@ -34,15 +38,19 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="prep_url" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="ballot_url" type="varchar(255)">
+            <column name="data_base" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
             <column name="inset_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="incident_sheet" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="day_record" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -62,6 +70,22 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="name_demandant" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="recount_electoral_institute" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="recount_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="recount_fundament_request" type="clob">
+                <constraints nullable="true" />
+            </column>
+
             <column name="published" type="bit">
                 <constraints nullable="true" />
             </column>
@@ -75,10 +99,6 @@
             </column>
 
             <column name="election_type_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="election_period_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

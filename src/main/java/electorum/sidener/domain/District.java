@@ -29,23 +29,35 @@ public class District implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Número de Distrito (Decimal)
+     */
+    @ApiModelProperty(value = "Número de Distrito (Decimal)")
     @Column(name = "decimal_number")
-    private String decimalNumber;
+    private Long decimalNumber;
 
+    /**
+     * Número de Distrito (Romano)
+     */
+    @ApiModelProperty(value = "Número de Distrito (Romano)")
     @Column(name = "roman_number")
     private String romanNumber;
 
-    @Column(name = "district_identificator")
-    private String districtIdentificator;
+    /**
+     * Cabecera Distrital
+     */
+    @ApiModelProperty(value = "Cabecera Distrital")
+    @Column(name = "district_head")
+    private String districtHead;
 
+    /**
+     * Entidad Federativa donde pertenece el Distrito
+     */
+    @ApiModelProperty(value = "Entidad Federativa donde pertenece el Distrito")
     @Enumerated(EnumType.STRING)
     @Column(name = "state")
     private State state;
 
-    /**
-     * Datos Sistema
-     */
-    @ApiModelProperty(value = "Datos Sistema")
     @Column(name = "published")
     private Boolean published;
 
@@ -67,16 +79,16 @@ public class District implements Serializable {
         this.id = id;
     }
 
-    public String getDecimalNumber() {
+    public Long getDecimalNumber() {
         return decimalNumber;
     }
 
-    public District decimalNumber(String decimalNumber) {
+    public District decimalNumber(Long decimalNumber) {
         this.decimalNumber = decimalNumber;
         return this;
     }
 
-    public void setDecimalNumber(String decimalNumber) {
+    public void setDecimalNumber(Long decimalNumber) {
         this.decimalNumber = decimalNumber;
     }
 
@@ -93,17 +105,17 @@ public class District implements Serializable {
         this.romanNumber = romanNumber;
     }
 
-    public String getDistrictIdentificator() {
-        return districtIdentificator;
+    public String getDistrictHead() {
+        return districtHead;
     }
 
-    public District districtIdentificator(String districtIdentificator) {
-        this.districtIdentificator = districtIdentificator;
+    public District districtHead(String districtHead) {
+        this.districtHead = districtHead;
         return this;
     }
 
-    public void setDistrictIdentificator(String districtIdentificator) {
-        this.districtIdentificator = districtIdentificator;
+    public void setDistrictHead(String districtHead) {
+        this.districtHead = districtHead;
     }
 
     public State getState() {
@@ -198,7 +210,7 @@ public class District implements Serializable {
             "id=" + getId() +
             ", decimalNumber='" + getDecimalNumber() + "'" +
             ", romanNumber='" + getRomanNumber() + "'" +
-            ", districtIdentificator='" + getDistrictIdentificator() + "'" +
+            ", districtHead='" + getDistrictHead() + "'" +
             ", state='" + getState() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +

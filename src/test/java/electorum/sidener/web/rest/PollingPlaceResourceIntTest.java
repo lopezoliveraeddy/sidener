@@ -38,7 +38,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import electorum.sidener.domain.enumeration.PollingPlaceType;
+import electorum.sidener.domain.enumeration.TypePollingPlace;
 /**
  * Test class for the PollingPlaceResource REST controller.
  *
@@ -51,8 +51,8 @@ public class PollingPlaceResourceIntTest {
     private static final String DEFAULT_TOWN = "AAAAAAAAAA";
     private static final String UPDATED_TOWN = "BBBBBBBBBB";
 
-    private static final PollingPlaceType DEFAULT_TYPE_POLLING_PLACE = PollingPlaceType.BASIC;
-    private static final PollingPlaceType UPDATED_TYPE_POLLING_PLACE = PollingPlaceType.CONTIGUOUS;
+    private static final TypePollingPlace DEFAULT_TYPE_POLLING_PLACE = TypePollingPlace.BASIC;
+    private static final TypePollingPlace UPDATED_TYPE_POLLING_PLACE = TypePollingPlace.CONTIGUOUS;
 
     private static final String DEFAULT_TYPE_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_TYPE_NUMBER = "BBBBBBBBBB";

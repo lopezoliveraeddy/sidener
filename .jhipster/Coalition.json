@@ -13,19 +13,21 @@
     "fields": [
         {
             "fieldName": "name",
+            "javadoc": "Nombre de la Coalición",
             "fieldType": "String"
         },
         {
             "fieldName": "acronym",
+            "javadoc": "Iniciales",
             "fieldType": "String"
         },
         {
             "fieldName": "image",
+            "javadoc": "Logo de la Coalición",
             "fieldType": "String"
         },
         {
             "fieldName": "published",
-            "javadoc": "Datos Sistema",
             "fieldType": "Boolean"
         },
         {
@@ -42,5 +44,5 @@
     "entityTableName": "coalition",
     "dto": "mapstruct",
     "pagination": "pagination",
-    "service": "serviceImpl"
+    "service": "serviceClass"
 }

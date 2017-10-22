@@ -37,8 +37,9 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="sidenerApp.electionType.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="electionAmbit"><span data-translate="sidenerApp.electionType.electionAmbit">Election Ambit</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.electionType.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="createdDate"><span data-translate="sidenerApp.electionType.createdDate">Create Dated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span data-translate="sidenerApp.electionType.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.electionType.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
@@ -47,6 +48,7 @@
                 <tr ng-repeat="electionType in vm.electionTypes track by electionType.id">
                     <td><a ui-sref="election-type-detail({id:electionType.id})">{{electionType.id}}</a></td>
                     <td>{{electionType.name}}</td>
+                    <td data-translate="{{'sidenerApp.ElectionAmbit.' + electionType.electionAmbit}}">{{electionType.electionAmbit}}</td>
                     <td>
                         <span ng-if="electionType.published==true">
                             <i class="fa fa-check fa-2x"></i>

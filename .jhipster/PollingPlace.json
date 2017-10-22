@@ -17,109 +17,109 @@
     "fields": [
         {
             "fieldName": "town",
+            "javadoc": "Municipio",
             "fieldType": "String"
         },
         {
             "fieldName": "typePollingPlace",
-            "javadoc": "Municipio",
-            "fieldType": "PollingPlaceType",
+            "javadoc": "Tipo de Casilla",
+            "fieldType": "TypePollingPlace",
             "fieldValues": "BASIC,CONTIGUOUS,EXTRAORDINARY,SPECIAL"
         },
         {
             "fieldName": "typeNumber",
-            "javadoc": "Tipo de Casilla",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "section",
             "javadoc": "Número Tipo de Casilla",
             "fieldType": "String"
         },
         {
-            "fieldName": "address",
+            "fieldName": "section",
             "javadoc": "Sección",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "address",
+            "javadoc": "Dirección",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "text"
         },
         {
             "fieldName": "leftoverBallots",
-            "javadoc": "Dirección",
-            "fieldType": "Long"
-        },
-        {
-            "fieldName": "votingCitizens",
             "javadoc": "Total de Boletas Sobrantes",
             "fieldType": "Long"
         },
         {
-            "fieldName": "exctractedBallots",
+            "fieldName": "votingCitizens",
             "javadoc": "Total de Ciudadanos Votantes",
             "fieldType": "Long"
         },
         {
-            "fieldName": "notRegistered",
+            "fieldName": "exctractedBallots",
             "javadoc": "Total de Boletas Extraídas",
             "fieldType": "Long"
         },
         {
-            "fieldName": "nullVotes",
+            "fieldName": "notRegistered",
             "javadoc": "Total de Votos a Candidatos NO Registrados",
             "fieldType": "Long"
         },
         {
-            "fieldName": "totalVotes",
+            "fieldName": "nullVotes",
             "javadoc": "Total de Votos Nulos",
             "fieldType": "Long"
         },
         {
-            "fieldName": "electoralRoll",
+            "fieldName": "totalVotes",
             "javadoc": "Total de Votos",
             "fieldType": "Long"
         },
         {
-            "fieldName": "observations",
+            "fieldName": "electoralRoll",
             "javadoc": "Ciudadanos en la Lista Nominal",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "observations",
+            "javadoc": "Observaciones",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "text"
         },
         {
             "fieldName": "president",
-            "javadoc": "Observaciones",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "secretary",
             "javadoc": "Presidente",
             "fieldType": "String"
         },
         {
-            "fieldName": "scrutineerOne",
+            "fieldName": "secretary",
             "javadoc": "Secretario",
             "fieldType": "String"
         },
         {
-            "fieldName": "scrutineerTwo",
+            "fieldName": "scrutineerOne",
             "javadoc": "Primer Escrutador",
             "fieldType": "String"
         },
         {
-            "fieldName": "alternateOne",
+            "fieldName": "scrutineerTwo",
             "javadoc": "Segundo Escrutador",
             "fieldType": "String"
         },
         {
-            "fieldName": "alternateTwo",
+            "fieldName": "alternateOne",
             "javadoc": "Primer Alternativo",
             "fieldType": "String"
         },
         {
+            "fieldName": "alternateTwo",
+            "javadoc": "Segundo Alternativo",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "alternateThree",
-            "javadoc": "Segundo ALternativo",
+            "javadoc": "Tercer Alternativo",
             "fieldType": "String"
         },
         {
             "fieldName": "published",
-            "javadoc": "Tercer ALternativo",
             "fieldType": "Boolean"
         },
         {
@@ -136,5 +136,5 @@
     "entityTableName": "polling_place",
     "dto": "mapstruct",
     "pagination": "pagination",
-    "service": "serviceImpl"
+    "service": "serviceClass"
 }

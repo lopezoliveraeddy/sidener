@@ -4,11 +4,17 @@
     "fields": [
         {
             "fieldName": "name",
+            "javadoc": "Nombre del Tipo de Elección",
             "fieldType": "String"
         },
         {
+            "fieldName": "electionAmbit",
+            "javadoc": "Ámbito de la Elección",
+            "fieldType": "ElectionAmbit",
+            "fieldValues": "LOCAL,FEDERAL"
+        },
+        {
             "fieldName": "published",
-            "javadoc": "Datos Sistema",
             "fieldType": "Boolean"
         },
         {
@@ -25,5 +31,5 @@
     "entityTableName": "election_type",
     "dto": "mapstruct",
     "pagination": "pagination",
-    "service": "serviceImpl"
+    "service": "serviceClass"
 }

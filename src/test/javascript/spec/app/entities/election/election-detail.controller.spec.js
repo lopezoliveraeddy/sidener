@@ -4,7 +4,7 @@ describe('Controller Tests', function() {
 
     describe('Election Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockElection, MockElectionType, MockElectionPeriod, MockPoliticalParty, MockCoalition, MockIndependentCandidate, MockCausal;
+        var MockEntity, MockPreviousState, MockElection, MockElectionType, MockPoliticalParty, MockCoalition, MockIndependentCandidate, MockCausal;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -14,7 +14,6 @@ describe('Controller Tests', function() {
             MockPreviousState = jasmine.createSpy('MockPreviousState');
             MockElection = jasmine.createSpy('MockElection');
             MockElectionType = jasmine.createSpy('MockElectionType');
-            MockElectionPeriod = jasmine.createSpy('MockElectionPeriod');
             MockPoliticalParty = jasmine.createSpy('MockPoliticalParty');
             MockCoalition = jasmine.createSpy('MockCoalition');
             MockIndependentCandidate = jasmine.createSpy('MockIndependentCandidate');
@@ -28,7 +27,6 @@ describe('Controller Tests', function() {
                 'previousState': MockPreviousState,
                 'Election': MockElection,
                 'ElectionType': MockElectionType,
-                'ElectionPeriod': MockElectionPeriod,
                 'PoliticalParty': MockPoliticalParty,
                 'Coalition': MockCoalition,
                 'IndependentCandidate': MockIndependentCandidate,

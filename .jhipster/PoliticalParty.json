@@ -4,19 +4,21 @@
     "fields": [
         {
             "fieldName": "name",
+            "javadoc": "Nombre del Partido Político",
             "fieldType": "String"
         },
         {
             "fieldName": "acronym",
+            "javadoc": "Iniciales",
             "fieldType": "String"
         },
         {
             "fieldName": "image",
+            "javadoc": "Logo del Partido Político",
             "fieldType": "String"
         },
         {
             "fieldName": "published",
-            "javadoc": "Datos Sistema",
             "fieldType": "Boolean"
         },
         {
@@ -33,5 +35,5 @@
     "entityTableName": "political_party",
     "dto": "mapstruct",
     "pagination": "pagination",
-    "service": "serviceImpl"
+    "service": "serviceClass"
 }

@@ -128,7 +128,7 @@
                             return {
                                 decimalNumber: null,
                                 romanNumber: null,
-                                districtIdentificator: null,
+                                districtHead: null,
                                 state: null,
                                 published: null,
                                 createdDate: null,

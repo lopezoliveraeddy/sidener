@@ -37,6 +37,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import electorum.sidener.domain.enumeration.ElectionAmbit;
 /**
  * Test class for the ElectionTypeResource REST controller.
  *
@@ -48,6 +49,9 @@ public class ElectionTypeResourceIntTest {
 
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
+
+    private static final ElectionAmbit DEFAULT_ELECTION_AMBIT = ElectionAmbit.LOCAL;
+    private static final ElectionAmbit UPDATED_ELECTION_AMBIT = ElectionAmbit.FEDERAL;
 
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
@@ -105,6 +109,7 @@ public class ElectionTypeResourceIntTest {
     public static ElectionType createEntity(EntityManager em) {
         ElectionType electionType = new ElectionType()
             .name(DEFAULT_NAME)
+            .electionAmbit(DEFAULT_ELECTION_AMBIT)
             .published(DEFAULT_PUBLISHED)
             .createdDate(DEFAULT_CREATED_DATE)
             .updatedDate(DEFAULT_UPDATED_DATE);
@@ -134,6 +139,7 @@ public class ElectionTypeResourceIntTest {
         assertThat(electionTypeList).hasSize(databaseSizeBeforeCreate + 1);
         ElectionType testElectionType = electionTypeList.get(electionTypeList.size() - 1);
         assertThat(testElectionType.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testElectionType.getElectionAmbit()).isEqualTo(DEFAULT_ELECTION_AMBIT);
         assertThat(testElectionType.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
         assertThat(testElectionType.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testElectionType.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
@@ -175,6 +181,7 @@ public class ElectionTypeResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(electionType.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].electionAmbit").value(hasItem(DEFAULT_ELECTION_AMBIT.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
@@ -192,6 +199,7 @@ public class ElectionTypeResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(electionType.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.electionAmbit").value(DEFAULT_ELECTION_AMBIT.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
             .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
             .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
@@ -217,6 +225,7 @@ public class ElectionTypeResourceIntTest {
         ElectionType updatedElectionType = electionTypeRepository.findOne(electionType.getId());
         updatedElectionType
             .name(UPDATED_NAME)
+            .electionAmbit(UPDATED_ELECTION_AMBIT)
             .published(UPDATED_PUBLISHED)
             .createdDate(UPDATED_CREATED_DATE)
             .updatedDate(UPDATED_UPDATED_DATE);
@@ -232,6 +241,7 @@ public class ElectionTypeResourceIntTest {
         assertThat(electionTypeList).hasSize(databaseSizeBeforeUpdate);
         ElectionType testElectionType = electionTypeList.get(electionTypeList.size() - 1);
         assertThat(testElectionType.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testElectionType.getElectionAmbit()).isEqualTo(UPDATED_ELECTION_AMBIT);
         assertThat(testElectionType.isPublished()).isEqualTo(UPDATED_PUBLISHED);
         assertThat(testElectionType.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testElectionType.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
@@ -295,6 +305,7 @@ public class ElectionTypeResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(electionType.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].electionAmbit").value(hasItem(DEFAULT_ELECTION_AMBIT.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));

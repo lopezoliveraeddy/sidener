@@ -5,18 +5,19 @@
         .module('sidenerApp')
         .controller('ElectionDialogController', ElectionDialogController);
 
-    ElectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Election', 'ElectionType', 'ElectionPeriod', 'PoliticalParty', 'Coalition', 'IndependentCandidate', 'Causal'];
+    ElectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Election', 'ElectionType', 'PoliticalParty', 'Coalition', 'IndependentCandidate', 'Causal'];
 
-    function ElectionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Election, ElectionType, ElectionPeriod, PoliticalParty, Coalition, IndependentCandidate, Causal) {
+    function ElectionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Election, ElectionType, PoliticalParty, Coalition, IndependentCandidate, Causal) {
         var vm = this;
 
         vm.election = entity;
         vm.clear = clear;
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
+        vm.byteSize = DataUtils.byteSize;
+        vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.electiontypes = ElectionType.query();
-        vm.electionperiods = ElectionPeriod.query();
         vm.politicalparties = PoliticalParty.query();
         vm.coalitions = Coalition.query();
         vm.independentcandidates = IndependentCandidate.query();

@@ -23,6 +23,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
 import java.time.Instant;
@@ -53,20 +54,26 @@ public class ElectionResourceIntTest {
     private static final State DEFAULT_STATE = State.AGU;
     private static final State UPDATED_STATE = State.BCN;
 
+    private static final String DEFAULT_PERIOD_ELECTION = "AAAAAAAAAA";
+    private static final String UPDATED_PERIOD_ELECTION = "BBBBBBBBBB";
+
     private static final ZonedDateTime DEFAULT_DATE_ELECTION = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_DATE_ELECTION = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     private static final Status DEFAULT_STATUS = Status.NEW;
     private static final Status UPDATED_STATUS = Status.IN_PROGRESS;
 
-    private static final String DEFAULT_PREP_URL = "AAAAAAAAAA";
-    private static final String UPDATED_PREP_URL = "BBBBBBBBBB";
-
-    private static final String DEFAULT_BALLOT_URL = "AAAAAAAAAA";
-    private static final String UPDATED_BALLOT_URL = "BBBBBBBBBB";
+    private static final String DEFAULT_DATA_BASE = "AAAAAAAAAA";
+    private static final String UPDATED_DATA_BASE = "BBBBBBBBBB";
 
     private static final String DEFAULT_INSET_URL = "AAAAAAAAAA";
     private static final String UPDATED_INSET_URL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_INCIDENT_SHEET = "AAAAAAAAAA";
+    private static final String UPDATED_INCIDENT_SHEET = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DAY_RECORD = "AAAAAAAAAA";
+    private static final String UPDATED_DAY_RECORD = "BBBBBBBBBB";
 
     private static final String DEFAULT_DEMAND_TEMPLATE_URL = "AAAAAAAAAA";
     private static final String UPDATED_DEMAND_TEMPLATE_URL = "BBBBBBBBBB";
@@ -79,6 +86,18 @@ public class ElectionResourceIntTest {
 
     private static final RecountPollingPlaceRule DEFAULT_RECOUNT_POLLING_PLACE_RULE = RecountPollingPlaceRule.LESS_1;
     private static final RecountPollingPlaceRule UPDATED_RECOUNT_POLLING_PLACE_RULE = RecountPollingPlaceRule.LESS_EQUAL_1;
+
+    private static final String DEFAULT_NAME_DEMANDANT = "AAAAAAAAAA";
+    private static final String UPDATED_NAME_DEMANDANT = "BBBBBBBBBB";
+
+    private static final String DEFAULT_RECOUNT_ELECTORAL_INSTITUTE = "AAAAAAAAAA";
+    private static final String UPDATED_RECOUNT_ELECTORAL_INSTITUTE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_RECOUNT_TYPE = "AAAAAAAAAA";
+    private static final String UPDATED_RECOUNT_TYPE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_RECOUNT_FUNDAMENT_REQUEST = "AAAAAAAAAA";
+    private static final String UPDATED_RECOUNT_FUNDAMENT_REQUEST = "BBBBBBBBBB";
 
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
@@ -136,15 +155,21 @@ public class ElectionResourceIntTest {
     public static Election createEntity(EntityManager em) {
         Election election = new Election()
             .state(DEFAULT_STATE)
+            .periodElection(DEFAULT_PERIOD_ELECTION)
             .dateElection(DEFAULT_DATE_ELECTION)
             .status(DEFAULT_STATUS)
-            .prepUrl(DEFAULT_PREP_URL)
-            .ballotUrl(DEFAULT_BALLOT_URL)
+            .dataBase(DEFAULT_DATA_BASE)
             .insetUrl(DEFAULT_INSET_URL)
+            .incidentSheet(DEFAULT_INCIDENT_SHEET)
+            .dayRecord(DEFAULT_DAY_RECORD)
             .demandTemplateUrl(DEFAULT_DEMAND_TEMPLATE_URL)
             .recountTemplateUrl(DEFAULT_RECOUNT_TEMPLATE_URL)
             .recountDistrictsRule(DEFAULT_RECOUNT_DISTRICTS_RULE)
             .recountPollingPlaceRule(DEFAULT_RECOUNT_POLLING_PLACE_RULE)
+            .nameDemandant(DEFAULT_NAME_DEMANDANT)
+            .recountElectoralInstitute(DEFAULT_RECOUNT_ELECTORAL_INSTITUTE)
+            .recountType(DEFAULT_RECOUNT_TYPE)
+            .recountFundamentRequest(DEFAULT_RECOUNT_FUNDAMENT_REQUEST)
             .published(DEFAULT_PUBLISHED)
             .createdDate(DEFAULT_CREATED_DATE)
             .updatedDate(DEFAULT_UPDATED_DATE);
@@ -174,15 +199,21 @@ public class ElectionResourceIntTest {
         assertThat(electionList).hasSize(databaseSizeBeforeCreate + 1);
         Election testElection = electionList.get(electionList.size() - 1);
         assertThat(testElection.getState()).isEqualTo(DEFAULT_STATE);
+        assertThat(testElection.getPeriodElection()).isEqualTo(DEFAULT_PERIOD_ELECTION);
         assertThat(testElection.getDateElection()).isEqualTo(DEFAULT_DATE_ELECTION);
         assertThat(testElection.getStatus()).isEqualTo(DEFAULT_STATUS);
-        assertThat(testElection.getPrepUrl()).isEqualTo(DEFAULT_PREP_URL);
-        assertThat(testElection.getBallotUrl()).isEqualTo(DEFAULT_BALLOT_URL);
+        assertThat(testElection.getDataBase()).isEqualTo(DEFAULT_DATA_BASE);
         assertThat(testElection.getInsetUrl()).isEqualTo(DEFAULT_INSET_URL);
+        assertThat(testElection.getIncidentSheet()).isEqualTo(DEFAULT_INCIDENT_SHEET);
+        assertThat(testElection.getDayRecord()).isEqualTo(DEFAULT_DAY_RECORD);
         assertThat(testElection.getDemandTemplateUrl()).isEqualTo(DEFAULT_DEMAND_TEMPLATE_URL);
         assertThat(testElection.getRecountTemplateUrl()).isEqualTo(DEFAULT_RECOUNT_TEMPLATE_URL);
         assertThat(testElection.getRecountDistrictsRule()).isEqualTo(DEFAULT_RECOUNT_DISTRICTS_RULE);
         assertThat(testElection.getRecountPollingPlaceRule()).isEqualTo(DEFAULT_RECOUNT_POLLING_PLACE_RULE);
+        assertThat(testElection.getNameDemandant()).isEqualTo(DEFAULT_NAME_DEMANDANT);
+        assertThat(testElection.getRecountElectoralInstitute()).isEqualTo(DEFAULT_RECOUNT_ELECTORAL_INSTITUTE);
+        assertThat(testElection.getRecountType()).isEqualTo(DEFAULT_RECOUNT_TYPE);
+        assertThat(testElection.getRecountFundamentRequest()).isEqualTo(DEFAULT_RECOUNT_FUNDAMENT_REQUEST);
         assertThat(testElection.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
         assertThat(testElection.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testElection.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
@@ -224,15 +255,21 @@ public class ElectionResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(election.getId().intValue())))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
+            .andExpect(jsonPath("$.[*].periodElection").value(hasItem(DEFAULT_PERIOD_ELECTION.toString())))
             .andExpect(jsonPath("$.[*].dateElection").value(hasItem(sameInstant(DEFAULT_DATE_ELECTION))))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
-            .andExpect(jsonPath("$.[*].prepUrl").value(hasItem(DEFAULT_PREP_URL.toString())))
-            .andExpect(jsonPath("$.[*].ballotUrl").value(hasItem(DEFAULT_BALLOT_URL.toString())))
+            .andExpect(jsonPath("$.[*].dataBase").value(hasItem(DEFAULT_DATA_BASE.toString())))
             .andExpect(jsonPath("$.[*].insetUrl").value(hasItem(DEFAULT_INSET_URL.toString())))
+            .andExpect(jsonPath("$.[*].incidentSheet").value(hasItem(DEFAULT_INCIDENT_SHEET.toString())))
+            .andExpect(jsonPath("$.[*].dayRecord").value(hasItem(DEFAULT_DAY_RECORD.toString())))
             .andExpect(jsonPath("$.[*].demandTemplateUrl").value(hasItem(DEFAULT_DEMAND_TEMPLATE_URL.toString())))
             .andExpect(jsonPath("$.[*].recountTemplateUrl").value(hasItem(DEFAULT_RECOUNT_TEMPLATE_URL.toString())))
             .andExpect(jsonPath("$.[*].recountDistrictsRule").value(hasItem(DEFAULT_RECOUNT_DISTRICTS_RULE.toString())))
             .andExpect(jsonPath("$.[*].recountPollingPlaceRule").value(hasItem(DEFAULT_RECOUNT_POLLING_PLACE_RULE.toString())))
+            .andExpect(jsonPath("$.[*].nameDemandant").value(hasItem(DEFAULT_NAME_DEMANDANT.toString())))
+            .andExpect(jsonPath("$.[*].recountElectoralInstitute").value(hasItem(DEFAULT_RECOUNT_ELECTORAL_INSTITUTE.toString())))
+            .andExpect(jsonPath("$.[*].recountType").value(hasItem(DEFAULT_RECOUNT_TYPE.toString())))
+            .andExpect(jsonPath("$.[*].recountFundamentRequest").value(hasItem(DEFAULT_RECOUNT_FUNDAMENT_REQUEST.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
@@ -250,15 +287,21 @@ public class ElectionResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(election.getId().intValue()))
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
+            .andExpect(jsonPath("$.periodElection").value(DEFAULT_PERIOD_ELECTION.toString()))
             .andExpect(jsonPath("$.dateElection").value(sameInstant(DEFAULT_DATE_ELECTION)))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
-            .andExpect(jsonPath("$.prepUrl").value(DEFAULT_PREP_URL.toString()))
-            .andExpect(jsonPath("$.ballotUrl").value(DEFAULT_BALLOT_URL.toString()))
+            .andExpect(jsonPath("$.dataBase").value(DEFAULT_DATA_BASE.toString()))
             .andExpect(jsonPath("$.insetUrl").value(DEFAULT_INSET_URL.toString()))
+            .andExpect(jsonPath("$.incidentSheet").value(DEFAULT_INCIDENT_SHEET.toString()))
+            .andExpect(jsonPath("$.dayRecord").value(DEFAULT_DAY_RECORD.toString()))
             .andExpect(jsonPath("$.demandTemplateUrl").value(DEFAULT_DEMAND_TEMPLATE_URL.toString()))
             .andExpect(jsonPath("$.recountTemplateUrl").value(DEFAULT_RECOUNT_TEMPLATE_URL.toString()))
             .andExpect(jsonPath("$.recountDistrictsRule").value(DEFAULT_RECOUNT_DISTRICTS_RULE.toString()))
             .andExpect(jsonPath("$.recountPollingPlaceRule").value(DEFAULT_RECOUNT_POLLING_PLACE_RULE.toString()))
+            .andExpect(jsonPath("$.nameDemandant").value(DEFAULT_NAME_DEMANDANT.toString()))
+            .andExpect(jsonPath("$.recountElectoralInstitute").value(DEFAULT_RECOUNT_ELECTORAL_INSTITUTE.toString()))
+            .andExpect(jsonPath("$.recountType").value(DEFAULT_RECOUNT_TYPE.toString()))
+            .andExpect(jsonPath("$.recountFundamentRequest").value(DEFAULT_RECOUNT_FUNDAMENT_REQUEST.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
             .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
             .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
@@ -284,15 +327,21 @@ public class ElectionResourceIntTest {
         Election updatedElection = electionRepository.findOne(election.getId());
         updatedElection
             .state(UPDATED_STATE)
+            .periodElection(UPDATED_PERIOD_ELECTION)
             .dateElection(UPDATED_DATE_ELECTION)
             .status(UPDATED_STATUS)
-            .prepUrl(UPDATED_PREP_URL)
-            .ballotUrl(UPDATED_BALLOT_URL)
+            .dataBase(UPDATED_DATA_BASE)
             .insetUrl(UPDATED_INSET_URL)
+            .incidentSheet(UPDATED_INCIDENT_SHEET)
+            .dayRecord(UPDATED_DAY_RECORD)
             .demandTemplateUrl(UPDATED_DEMAND_TEMPLATE_URL)
             .recountTemplateUrl(UPDATED_RECOUNT_TEMPLATE_URL)
             .recountDistrictsRule(UPDATED_RECOUNT_DISTRICTS_RULE)
             .recountPollingPlaceRule(UPDATED_RECOUNT_POLLING_PLACE_RULE)
+            .nameDemandant(UPDATED_NAME_DEMANDANT)
+            .recountElectoralInstitute(UPDATED_RECOUNT_ELECTORAL_INSTITUTE)
+            .recountType(UPDATED_RECOUNT_TYPE)
+            .recountFundamentRequest(UPDATED_RECOUNT_FUNDAMENT_REQUEST)
             .published(UPDATED_PUBLISHED)
             .createdDate(UPDATED_CREATED_DATE)
             .updatedDate(UPDATED_UPDATED_DATE);
@@ -308,15 +357,21 @@ public class ElectionResourceIntTest {
         assertThat(electionList).hasSize(databaseSizeBeforeUpdate);
         Election testElection = electionList.get(electionList.size() - 1);
         assertThat(testElection.getState()).isEqualTo(UPDATED_STATE);
+        assertThat(testElection.getPeriodElection()).isEqualTo(UPDATED_PERIOD_ELECTION);
         assertThat(testElection.getDateElection()).isEqualTo(UPDATED_DATE_ELECTION);
         assertThat(testElection.getStatus()).isEqualTo(UPDATED_STATUS);
-        assertThat(testElection.getPrepUrl()).isEqualTo(UPDATED_PREP_URL);
-        assertThat(testElection.getBallotUrl()).isEqualTo(UPDATED_BALLOT_URL);
+        assertThat(testElection.getDataBase()).isEqualTo(UPDATED_DATA_BASE);
         assertThat(testElection.getInsetUrl()).isEqualTo(UPDATED_INSET_URL);
+        assertThat(testElection.getIncidentSheet()).isEqualTo(UPDATED_INCIDENT_SHEET);
+        assertThat(testElection.getDayRecord()).isEqualTo(UPDATED_DAY_RECORD);
         assertThat(testElection.getDemandTemplateUrl()).isEqualTo(UPDATED_DEMAND_TEMPLATE_URL);
         assertThat(testElection.getRecountTemplateUrl()).isEqualTo(UPDATED_RECOUNT_TEMPLATE_URL);
         assertThat(testElection.getRecountDistrictsRule()).isEqualTo(UPDATED_RECOUNT_DISTRICTS_RULE);
         assertThat(testElection.getRecountPollingPlaceRule()).isEqualTo(UPDATED_RECOUNT_POLLING_PLACE_RULE);
+        assertThat(testElection.getNameDemandant()).isEqualTo(UPDATED_NAME_DEMANDANT);
+        assertThat(testElection.getRecountElectoralInstitute()).isEqualTo(UPDATED_RECOUNT_ELECTORAL_INSTITUTE);
+        assertThat(testElection.getRecountType()).isEqualTo(UPDATED_RECOUNT_TYPE);
+        assertThat(testElection.getRecountFundamentRequest()).isEqualTo(UPDATED_RECOUNT_FUNDAMENT_REQUEST);
         assertThat(testElection.isPublished()).isEqualTo(UPDATED_PUBLISHED);
         assertThat(testElection.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testElection.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
@@ -380,15 +435,21 @@ public class ElectionResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(election.getId().intValue())))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
+            .andExpect(jsonPath("$.[*].periodElection").value(hasItem(DEFAULT_PERIOD_ELECTION.toString())))
             .andExpect(jsonPath("$.[*].dateElection").value(hasItem(sameInstant(DEFAULT_DATE_ELECTION))))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
-            .andExpect(jsonPath("$.[*].prepUrl").value(hasItem(DEFAULT_PREP_URL.toString())))
-            .andExpect(jsonPath("$.[*].ballotUrl").value(hasItem(DEFAULT_BALLOT_URL.toString())))
+            .andExpect(jsonPath("$.[*].dataBase").value(hasItem(DEFAULT_DATA_BASE.toString())))
             .andExpect(jsonPath("$.[*].insetUrl").value(hasItem(DEFAULT_INSET_URL.toString())))
+            .andExpect(jsonPath("$.[*].incidentSheet").value(hasItem(DEFAULT_INCIDENT_SHEET.toString())))
+            .andExpect(jsonPath("$.[*].dayRecord").value(hasItem(DEFAULT_DAY_RECORD.toString())))
             .andExpect(jsonPath("$.[*].demandTemplateUrl").value(hasItem(DEFAULT_DEMAND_TEMPLATE_URL.toString())))
             .andExpect(jsonPath("$.[*].recountTemplateUrl").value(hasItem(DEFAULT_RECOUNT_TEMPLATE_URL.toString())))
             .andExpect(jsonPath("$.[*].recountDistrictsRule").value(hasItem(DEFAULT_RECOUNT_DISTRICTS_RULE.toString())))
             .andExpect(jsonPath("$.[*].recountPollingPlaceRule").value(hasItem(DEFAULT_RECOUNT_POLLING_PLACE_RULE.toString())))
+            .andExpect(jsonPath("$.[*].nameDemandant").value(hasItem(DEFAULT_NAME_DEMANDANT.toString())))
+            .andExpect(jsonPath("$.[*].recountElectoralInstitute").value(hasItem(DEFAULT_RECOUNT_ELECTORAL_INSTITUTE.toString())))
+            .andExpect(jsonPath("$.[*].recountType").value(hasItem(DEFAULT_RECOUNT_TYPE.toString())))
+            .andExpect(jsonPath("$.[*].recountFundamentRequest").value(hasItem(DEFAULT_RECOUNT_FUNDAMENT_REQUEST.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));

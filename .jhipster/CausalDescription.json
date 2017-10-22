@@ -11,6 +11,6 @@
     "changelogDate": "20171007043201",
     "entityTableName": "causal_description",
     "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl"
+    "pagination": "pagination",
+    "service": "serviceClass"
 }

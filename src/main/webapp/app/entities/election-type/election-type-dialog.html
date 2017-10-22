@@ -20,6 +20,13 @@
                     />
         </div>
         <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.electionType.electionAmbit" for="field_electionAmbit">Election Ambit</label>
+            <select class="form-control" name="electionAmbit" ng-model="vm.electionType.electionAmbit" id="field_electionAmbit">
+                <option value="LOCAL" data-translate="sidenerApp.ElectionAmbit.LOCAL">LOCAL</option>
+                <option value="FEDERAL" data-translate="sidenerApp.ElectionAmbit.FEDERAL">FEDERAL</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.electionType.published" for="field_published">Published</label>
                 <input type="checkbox" name="published" id="field_published"
                           ng-model="vm.electionType.published"/>

@@ -9,12 +9,6 @@
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "electionPeriod",
-            "otherEntityName": "electionPeriod",
-            "otherEntityField": "name"
-        },
-        {
-            "relationshipType": "many-to-one",
             "relationshipName": "politicalPartyAsociated",
             "otherEntityName": "politicalParty",
             "otherEntityField": "id"
@@ -67,52 +61,91 @@
     "fields": [
         {
             "fieldName": "state",
-            "javadoc": "Campos Informativos de la Elección",
+            "javadoc": "Entidad Federativa donde se realiza la Elección",
             "fieldType": "State",
             "fieldValues": "AGU,BCN,BCS,CAM,CHP,CHH,COA,COL,CMX,DUR,GUA,GRO,HID,JAL,MEX,MIC,MOR,NAY,NLE,OAX,PUE,QUE,ROO,SLP,SIN,SON,TAB,TAM,TLA,VER,YUC,ZAC"
         },
         {
+            "fieldName": "periodElection",
+            "javadoc": "Periodo a realizarse la Elección",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "dateElection",
+            "javadoc": "Fecha de la Elección",
             "fieldType": "ZonedDateTime"
         },
         {
             "fieldName": "status",
+            "javadoc": "Estatus de la Eleccion",
             "fieldType": "Status",
             "fieldValues": "NEW,IN_PROGRESS,COMPLETE"
         },
         {
-            "fieldName": "prepUrl",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "ballotUrl",
+            "fieldName": "dataBase",
+            "javadoc": "Base de Datos del Proceso Electoral (Archivo)",
             "fieldType": "String"
         },
         {
             "fieldName": "insetUrl",
+            "javadoc": "Encarte (Archivo)",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "incidentSheet",
+            "javadoc": "Hoja de Incidentes",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dayRecord",
+            "javadoc": "Acta de la Jornada",
             "fieldType": "String"
         },
         {
             "fieldName": "demandTemplateUrl",
+            "javadoc": "Plantilla de Demanda (Archivo)",
             "fieldType": "String"
         },
         {
             "fieldName": "recountTemplateUrl",
+            "javadoc": "Plantilla de Recuento (Archivo)",
             "fieldType": "String"
         },
         {
             "fieldName": "recountDistrictsRule",
+            "javadoc": "Regla para recuento de Distritos",
             "fieldType": "RecountDistrictsRule",
             "fieldValues": "LESS_1,LESS_EQUAL_1"
         },
         {
             "fieldName": "recountPollingPlaceRule",
+            "javadoc": "Regla para recuento de Casillas",
             "fieldType": "RecountPollingPlaceRule",
             "fieldValues": "LESS_1,LESS_EQUAL_1"
         },
         {
+            "fieldName": "nameDemandant",
+            "javadoc": "Nombre del Demandante",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "recountElectoralInstitute",
+            "javadoc": "Instituto electoral",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "recountType",
+            "javadoc": "Tipo de Computo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "recountFundamentRequest",
+            "javadoc": "Fundamento de la Solicitud",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
             "fieldName": "published",
-            "javadoc": "Datos Sistema",
             "fieldType": "Boolean"
         },
         {
@@ -129,5 +162,5 @@
     "entityTableName": "election",
     "dto": "mapstruct",
     "pagination": "pagination",
-    "service": "serviceImpl"
+    "service": "serviceClass"
 }

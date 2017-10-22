@@ -46,7 +46,7 @@
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('pollingPlace');
-                    $translatePartialLoader.addPart('pollingPlaceType');
+                    $translatePartialLoader.addPart('typePollingPlace');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
@@ -69,7 +69,7 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('pollingPlace');
-                    $translatePartialLoader.addPart('pollingPlaceType');
+                    $translatePartialLoader.addPart('typePollingPlace');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'PollingPlace', function($stateParams, PollingPlace) {

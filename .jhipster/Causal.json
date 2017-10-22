@@ -27,7 +27,6 @@
         },
         {
             "fieldName": "published",
-            "javadoc": "Datos Sistema",
             "fieldType": "Boolean"
         },
         {
@@ -44,5 +43,5 @@
     "entityTableName": "causal",
     "dto": "mapstruct",
     "pagination": "pagination",
-    "service": "serviceImpl"
+    "service": "serviceClass"
 }

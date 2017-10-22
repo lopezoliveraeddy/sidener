@@ -47,14 +47,14 @@ import electorum.sidener.domain.enumeration.State;
 @SpringBootTest(classes = SidenerApp.class)
 public class DistrictResourceIntTest {
 
-    private static final String DEFAULT_DECIMAL_NUMBER = "AAAAAAAAAA";
-    private static final String UPDATED_DECIMAL_NUMBER = "BBBBBBBBBB";
+    private static final Long DEFAULT_DECIMAL_NUMBER = 1L;
+    private static final Long UPDATED_DECIMAL_NUMBER = 2L;
 
     private static final String DEFAULT_ROMAN_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_ROMAN_NUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_DISTRICT_IDENTIFICATOR = "AAAAAAAAAA";
-    private static final String UPDATED_DISTRICT_IDENTIFICATOR = "BBBBBBBBBB";
+    private static final String DEFAULT_DISTRICT_HEAD = "AAAAAAAAAA";
+    private static final String UPDATED_DISTRICT_HEAD = "BBBBBBBBBB";
 
     private static final State DEFAULT_STATE = State.AGU;
     private static final State UPDATED_STATE = State.BCN;
@@ -116,7 +116,7 @@ public class DistrictResourceIntTest {
         District district = new District()
             .decimalNumber(DEFAULT_DECIMAL_NUMBER)
             .romanNumber(DEFAULT_ROMAN_NUMBER)
-            .districtIdentificator(DEFAULT_DISTRICT_IDENTIFICATOR)
+            .districtHead(DEFAULT_DISTRICT_HEAD)
             .state(DEFAULT_STATE)
             .published(DEFAULT_PUBLISHED)
             .createdDate(DEFAULT_CREATED_DATE)
@@ -148,7 +148,7 @@ public class DistrictResourceIntTest {
         District testDistrict = districtList.get(districtList.size() - 1);
         assertThat(testDistrict.getDecimalNumber()).isEqualTo(DEFAULT_DECIMAL_NUMBER);
         assertThat(testDistrict.getRomanNumber()).isEqualTo(DEFAULT_ROMAN_NUMBER);
-        assertThat(testDistrict.getDistrictIdentificator()).isEqualTo(DEFAULT_DISTRICT_IDENTIFICATOR);
+        assertThat(testDistrict.getDistrictHead()).isEqualTo(DEFAULT_DISTRICT_HEAD);
         assertThat(testDistrict.getState()).isEqualTo(DEFAULT_STATE);
         assertThat(testDistrict.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
         assertThat(testDistrict.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
@@ -190,9 +190,9 @@ public class DistrictResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(district.getId().intValue())))
-            .andExpect(jsonPath("$.[*].decimalNumber").value(hasItem(DEFAULT_DECIMAL_NUMBER.toString())))
+            .andExpect(jsonPath("$.[*].decimalNumber").value(hasItem(DEFAULT_DECIMAL_NUMBER.intValue())))
             .andExpect(jsonPath("$.[*].romanNumber").value(hasItem(DEFAULT_ROMAN_NUMBER.toString())))
-            .andExpect(jsonPath("$.[*].districtIdentificator").value(hasItem(DEFAULT_DISTRICT_IDENTIFICATOR.toString())))
+            .andExpect(jsonPath("$.[*].districtHead").value(hasItem(DEFAULT_DISTRICT_HEAD.toString())))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
@@ -210,9 +210,9 @@ public class DistrictResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(district.getId().intValue()))
-            .andExpect(jsonPath("$.decimalNumber").value(DEFAULT_DECIMAL_NUMBER.toString()))
+            .andExpect(jsonPath("$.decimalNumber").value(DEFAULT_DECIMAL_NUMBER.intValue()))
             .andExpect(jsonPath("$.romanNumber").value(DEFAULT_ROMAN_NUMBER.toString()))
-            .andExpect(jsonPath("$.districtIdentificator").value(DEFAULT_DISTRICT_IDENTIFICATOR.toString()))
+            .andExpect(jsonPath("$.districtHead").value(DEFAULT_DISTRICT_HEAD.toString()))
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
             .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
@@ -240,7 +240,7 @@ public class DistrictResourceIntTest {
         updatedDistrict
             .decimalNumber(UPDATED_DECIMAL_NUMBER)
             .romanNumber(UPDATED_ROMAN_NUMBER)
-            .districtIdentificator(UPDATED_DISTRICT_IDENTIFICATOR)
+            .districtHead(UPDATED_DISTRICT_HEAD)
             .state(UPDATED_STATE)
             .published(UPDATED_PUBLISHED)
             .createdDate(UPDATED_CREATED_DATE)
@@ -258,7 +258,7 @@ public class DistrictResourceIntTest {
         District testDistrict = districtList.get(districtList.size() - 1);
         assertThat(testDistrict.getDecimalNumber()).isEqualTo(UPDATED_DECIMAL_NUMBER);
         assertThat(testDistrict.getRomanNumber()).isEqualTo(UPDATED_ROMAN_NUMBER);
-        assertThat(testDistrict.getDistrictIdentificator()).isEqualTo(UPDATED_DISTRICT_IDENTIFICATOR);
+        assertThat(testDistrict.getDistrictHead()).isEqualTo(UPDATED_DISTRICT_HEAD);
         assertThat(testDistrict.getState()).isEqualTo(UPDATED_STATE);
         assertThat(testDistrict.isPublished()).isEqualTo(UPDATED_PUBLISHED);
         assertThat(testDistrict.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
@@ -322,9 +322,9 @@ public class DistrictResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(district.getId().intValue())))
-            .andExpect(jsonPath("$.[*].decimalNumber").value(hasItem(DEFAULT_DECIMAL_NUMBER.toString())))
+            .andExpect(jsonPath("$.[*].decimalNumber").value(hasItem(DEFAULT_DECIMAL_NUMBER.intValue())))
             .andExpect(jsonPath("$.[*].romanNumber").value(hasItem(DEFAULT_ROMAN_NUMBER.toString())))
-            .andExpect(jsonPath("$.[*].districtIdentificator").value(hasItem(DEFAULT_DISTRICT_IDENTIFICATOR.toString())))
+            .andExpect(jsonPath("$.[*].districtHead").value(hasItem(DEFAULT_DISTRICT_HEAD.toString())))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))

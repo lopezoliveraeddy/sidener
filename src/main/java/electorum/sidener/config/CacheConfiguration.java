@@ -54,7 +54,6 @@ public class CacheConfiguration {
             cm.createCache(electorum.sidener.domain.Coalition.class.getName(), jcacheConfiguration);
             cm.createCache(electorum.sidener.domain.Coalition.class.getName() + ".politicalParties", jcacheConfiguration);
             cm.createCache(electorum.sidener.domain.ElectionType.class.getName(), jcacheConfiguration);
-            cm.createCache(electorum.sidener.domain.ElectionPeriod.class.getName(), jcacheConfiguration);
             cm.createCache(electorum.sidener.domain.District.class.getName(), jcacheConfiguration);
             cm.createCache(electorum.sidener.domain.PollingPlace.class.getName(), jcacheConfiguration);
             cm.createCache(electorum.sidener.domain.Vote.class.getName(), jcacheConfiguration);

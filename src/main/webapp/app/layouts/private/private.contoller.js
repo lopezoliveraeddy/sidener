@@ -97,14 +97,6 @@
                 isActive: false,
                 isVisible: true
             }, {
-                name: $translate.instant('global.menu.entities.electionPeriod'),
-                action: function() {
-                    $state.go('election-period');
-                },
-                icon: 'glyphicon glyphicon-asterisk',
-                isActive: false,
-                isVisible: true
-            }, {
                 name: $translate.instant('global.menu.entities.district'),
                 action: function() {
                     $state.go('district');

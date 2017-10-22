@@ -1,7 +1,6 @@
 package electorum.sidener.domain;
 
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -42,10 +41,6 @@ public class Causal implements Serializable {
     @Column(name = "color")
     private String color;
 
-    /**
-     * Datos Sistema
-     */
-    @ApiModelProperty(value = "Datos Sistema")
     @Column(name = "published")
     private Boolean published;
 

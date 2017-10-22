@@ -15,11 +15,11 @@ public class DistrictDTO implements Serializable {
 
     private Long id;
 
-    private String decimalNumber;
+    private Long decimalNumber;
 
     private String romanNumber;
 
-    private String districtIdentificator;
+    private String districtHead;
 
     private State state;
 
@@ -39,11 +39,11 @@ public class DistrictDTO implements Serializable {
         this.id = id;
     }
 
-    public String getDecimalNumber() {
+    public Long getDecimalNumber() {
         return decimalNumber;
     }
 
-    public void setDecimalNumber(String decimalNumber) {
+    public void setDecimalNumber(Long decimalNumber) {
         this.decimalNumber = decimalNumber;
     }
 
@@ -55,12 +55,12 @@ public class DistrictDTO implements Serializable {
         this.romanNumber = romanNumber;
     }
 
-    public String getDistrictIdentificator() {
-        return districtIdentificator;
+    public String getDistrictHead() {
+        return districtHead;
     }
 
-    public void setDistrictIdentificator(String districtIdentificator) {
-        this.districtIdentificator = districtIdentificator;
+    public void setDistrictHead(String districtHead) {
+        this.districtHead = districtHead;
     }
 
     public State getState() {
@@ -130,7 +130,7 @@ public class DistrictDTO implements Serializable {
             "id=" + getId() +
             ", decimalNumber='" + getDecimalNumber() + "'" +
             ", romanNumber='" + getRomanNumber() + "'" +
-            ", districtIdentificator='" + getDistrictIdentificator() + "'" +
+            ", districtHead='" + getDistrictHead() + "'" +
             ", state='" + getState() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +

@@ -22,7 +22,7 @@
             "totalVotes": "Votación Total",
             "decimalNumber": "Número de Distrito",
             "romanNumber": "Número de Distrito (Número Romano)",
-            "districtIdentificator": "Identificador de Distrito",
+            "districtHead": "Cabecera Distrital",
             "state": "Estado",
             "published": "Publicado",
             "createdDate": "Creado",

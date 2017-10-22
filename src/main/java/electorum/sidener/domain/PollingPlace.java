@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-import electorum.sidener.domain.enumeration.PollingPlaceType;
+import electorum.sidener.domain.enumeration.TypePollingPlace;
 
 /**
  * Entidad Casillas
@@ -29,149 +29,149 @@ public class PollingPlace implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "town")
-    private String town;
-
     /**
      * Municipio
      */
     @ApiModelProperty(value = "Municipio")
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type_polling_place")
-    private PollingPlaceType typePollingPlace;
+    @Column(name = "town")
+    private String town;
 
     /**
      * Tipo de Casilla
      */
     @ApiModelProperty(value = "Tipo de Casilla")
-    @Column(name = "type_number")
-    private String typeNumber;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type_polling_place")
+    private TypePollingPlace typePollingPlace;
 
     /**
      * Número Tipo de Casilla
      */
     @ApiModelProperty(value = "Número Tipo de Casilla")
-    @Column(name = "section")
-    private String section;
+    @Column(name = "type_number")
+    private String typeNumber;
 
     /**
      * Sección
      */
     @ApiModelProperty(value = "Sección")
-    @Lob
-    @Column(name = "address")
-    private String address;
+    @Column(name = "section")
+    private String section;
 
     /**
      * Dirección
      */
     @ApiModelProperty(value = "Dirección")
-    @Column(name = "leftover_ballots")
-    private Long leftoverBallots;
+    @Lob
+    @Column(name = "address")
+    private String address;
 
     /**
      * Total de Boletas Sobrantes
      */
     @ApiModelProperty(value = "Total de Boletas Sobrantes")
-    @Column(name = "voting_citizens")
-    private Long votingCitizens;
+    @Column(name = "leftover_ballots")
+    private Long leftoverBallots;
 
     /**
      * Total de Ciudadanos Votantes
      */
     @ApiModelProperty(value = "Total de Ciudadanos Votantes")
-    @Column(name = "exctracted_ballots")
-    private Long exctractedBallots;
+    @Column(name = "voting_citizens")
+    private Long votingCitizens;
 
     /**
      * Total de Boletas Extraídas
      */
     @ApiModelProperty(value = "Total de Boletas Extraídas")
-    @Column(name = "not_registered")
-    private Long notRegistered;
+    @Column(name = "exctracted_ballots")
+    private Long exctractedBallots;
 
     /**
      * Total de Votos a Candidatos NO Registrados
      */
     @ApiModelProperty(value = "Total de Votos a Candidatos NO Registrados")
-    @Column(name = "null_votes")
-    private Long nullVotes;
+    @Column(name = "not_registered")
+    private Long notRegistered;
 
     /**
      * Total de Votos Nulos
      */
     @ApiModelProperty(value = "Total de Votos Nulos")
-    @Column(name = "total_votes")
-    private Long totalVotes;
+    @Column(name = "null_votes")
+    private Long nullVotes;
 
     /**
      * Total de Votos
      */
     @ApiModelProperty(value = "Total de Votos")
-    @Column(name = "electoral_roll")
-    private Long electoralRoll;
+    @Column(name = "total_votes")
+    private Long totalVotes;
 
     /**
      * Ciudadanos en la Lista Nominal
      */
     @ApiModelProperty(value = "Ciudadanos en la Lista Nominal")
-    @Lob
-    @Column(name = "observations")
-    private String observations;
+    @Column(name = "electoral_roll")
+    private Long electoralRoll;
 
     /**
      * Observaciones
      */
     @ApiModelProperty(value = "Observaciones")
-    @Column(name = "president")
-    private String president;
+    @Lob
+    @Column(name = "observations")
+    private String observations;
 
     /**
      * Presidente
      */
     @ApiModelProperty(value = "Presidente")
-    @Column(name = "secretary")
-    private String secretary;
+    @Column(name = "president")
+    private String president;
 
     /**
      * Secretario
      */
     @ApiModelProperty(value = "Secretario")
-    @Column(name = "scrutineer_one")
-    private String scrutineerOne;
+    @Column(name = "secretary")
+    private String secretary;
 
     /**
      * Primer Escrutador
      */
     @ApiModelProperty(value = "Primer Escrutador")
-    @Column(name = "scrutineer_two")
-    private String scrutineerTwo;
+    @Column(name = "scrutineer_one")
+    private String scrutineerOne;
 
     /**
      * Segundo Escrutador
      */
     @ApiModelProperty(value = "Segundo Escrutador")
-    @Column(name = "alternate_one")
-    private String alternateOne;
+    @Column(name = "scrutineer_two")
+    private String scrutineerTwo;
 
     /**
      * Primer Alternativo
      */
     @ApiModelProperty(value = "Primer Alternativo")
+    @Column(name = "alternate_one")
+    private String alternateOne;
+
+    /**
+     * Segundo Alternativo
+     */
+    @ApiModelProperty(value = "Segundo Alternativo")
     @Column(name = "alternate_two")
     private String alternateTwo;
 
     /**
-     * Segundo ALternativo
+     * Tercer Alternativo
      */
-    @ApiModelProperty(value = "Segundo ALternativo")
+    @ApiModelProperty(value = "Tercer Alternativo")
     @Column(name = "alternate_three")
     private String alternateThree;
 
-    /**
-     * Tercer ALternativo
-     */
-    @ApiModelProperty(value = "Tercer ALternativo")
     @Column(name = "published")
     private Boolean published;
 
@@ -209,16 +209,16 @@ public class PollingPlace implements Serializable {
         this.town = town;
     }
 
-    public PollingPlaceType getTypePollingPlace() {
+    public TypePollingPlace getTypePollingPlace() {
         return typePollingPlace;
     }
 
-    public PollingPlace typePollingPlace(PollingPlaceType typePollingPlace) {
+    public PollingPlace typePollingPlace(TypePollingPlace typePollingPlace) {
         this.typePollingPlace = typePollingPlace;
         return this;
     }
 
-    public void setTypePollingPlace(PollingPlaceType typePollingPlace) {
+    public void setTypePollingPlace(TypePollingPlace typePollingPlace) {
         this.typePollingPlace = typePollingPlace;
     }
 

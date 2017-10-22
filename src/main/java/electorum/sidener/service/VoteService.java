@@ -1,13 +1,40 @@
 package electorum.sidener.service;
 
+import electorum.sidener.domain.Vote;
+import electorum.sidener.repository.VoteRepository;
+import electorum.sidener.repository.search.VoteSearchRepository;
 import electorum.sidener.service.dto.VoteDTO;
+import electorum.sidener.service.mapper.VoteMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
+import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
- * Service Interface for managing Vote.
+ * Service Implementation for managing Vote.
  */
-public interface VoteService {
+@Service
+@Transactional
+public class VoteService {
+
+    private final Logger log = LoggerFactory.getLogger(VoteService.class);
+
+    private final VoteRepository voteRepository;
+
+    private final VoteMapper voteMapper;
+
+    private final VoteSearchRepository voteSearchRepository;
+
+    public VoteService(VoteRepository voteRepository, VoteMapper voteMapper, VoteSearchRepository voteSearchRepository) {
+        this.voteRepository = voteRepository;
+        this.voteMapper = voteMapper;
+        this.voteSearchRepository = voteSearchRepository;
+    }
 
     /**
      * Save a vote.
@@ -15,7 +42,14 @@ public interface VoteService {
      * @param voteDTO the entity to save
      * @return the persisted entity
      */
-    VoteDTO save(VoteDTO voteDTO);
+    public VoteDTO save(VoteDTO voteDTO) {
+        log.debug("Request to save Vote : {}", voteDTO);
+        Vote vote = voteMapper.toEntity(voteDTO);
+        vote = voteRepository.save(vote);
+        VoteDTO result = voteMapper.toDto(vote);
+        voteSearchRepository.save(vote);
+        return result;
+    }
 
     /**
      *  Get all the votes.
@@ -23,30 +57,48 @@ public interface VoteService {
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    Page<VoteDTO> findAll(Pageable pageable);
+    @Transactional(readOnly = true)
+    public Page<VoteDTO> findAll(Pageable pageable) {
+        log.debug("Request to get all Votes");
+        return voteRepository.findAll(pageable)
+            .map(voteMapper::toDto);
+    }
 
     /**
-     *  Get the "id" vote.
+     *  Get one vote by id.
      *
      *  @param id the id of the entity
      *  @return the entity
      */
-    VoteDTO findOne(Long id);
+    @Transactional(readOnly = true)
+    public VoteDTO findOne(Long id) {
+        log.debug("Request to get Vote : {}", id);
+        Vote vote = voteRepository.findOne(id);
+        return voteMapper.toDto(vote);
+    }
 
     /**
-     *  Delete the "id" vote.
+     *  Delete the  vote by id.
      *
      *  @param id the id of the entity
      */
-    void delete(Long id);
+    public void delete(Long id) {
+        log.debug("Request to delete Vote : {}", id);
+        voteRepository.delete(id);
+        voteSearchRepository.delete(id);
+    }
 
     /**
      * Search for the vote corresponding to the query.
      *
      *  @param query the query of the search
-     *  
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    Page<VoteDTO> search(String query, Pageable pageable);
+    @Transactional(readOnly = true)
+    public Page<VoteDTO> search(String query, Pageable pageable) {
+        log.debug("Request to search for a page of Votes for query {}", query);
+        Page<Vote> result = voteSearchRepository.search(queryStringQuery(query), pageable);
+        return result.map(voteMapper::toDto);
+    }
 }

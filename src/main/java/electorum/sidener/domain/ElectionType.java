@@ -11,6 +11,8 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
+import electorum.sidener.domain.enumeration.ElectionAmbit;
+
 /**
  * Entidad Tipo de Elección (Gobernador, Diputado)
  */
@@ -27,13 +29,21 @@ public class ElectionType implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Nombre del Tipo de Elección
+     */
+    @ApiModelProperty(value = "Nombre del Tipo de Elección")
     @Column(name = "name")
     private String name;
 
     /**
-     * Datos Sistema
+     * Ámbito de la Elección
      */
-    @ApiModelProperty(value = "Datos Sistema")
+    @ApiModelProperty(value = "Ámbito de la Elección")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "election_ambit")
+    private ElectionAmbit electionAmbit;
+
     @Column(name = "published")
     private Boolean published;
 
@@ -63,6 +73,19 @@ public class ElectionType implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ElectionAmbit getElectionAmbit() {
+        return electionAmbit;
+    }
+
+    public ElectionType electionAmbit(ElectionAmbit electionAmbit) {
+        this.electionAmbit = electionAmbit;
+        return this;
+    }
+
+    public void setElectionAmbit(ElectionAmbit electionAmbit) {
+        this.electionAmbit = electionAmbit;
     }
 
     public Boolean isPublished() {
@@ -130,6 +153,7 @@ public class ElectionType implements Serializable {
         return "ElectionType{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", electionAmbit='" + getElectionAmbit() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

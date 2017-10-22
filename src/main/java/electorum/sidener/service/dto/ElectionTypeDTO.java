@@ -4,6 +4,7 @@ package electorum.sidener.service.dto;
 import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.Objects;
+import electorum.sidener.domain.enumeration.ElectionAmbit;
 
 /**
  * A DTO for the ElectionType entity.
@@ -13,6 +14,8 @@ public class ElectionTypeDTO implements Serializable {
     private Long id;
 
     private String name;
+
+    private ElectionAmbit electionAmbit;
 
     private Boolean published;
 
@@ -34,6 +37,14 @@ public class ElectionTypeDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ElectionAmbit getElectionAmbit() {
+        return electionAmbit;
+    }
+
+    public void setElectionAmbit(ElectionAmbit electionAmbit) {
+        this.electionAmbit = electionAmbit;
     }
 
     public Boolean isPublished() {
@@ -86,6 +97,7 @@ public class ElectionTypeDTO implements Serializable {
         return "ElectionTypeDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", electionAmbit='" + getElectionAmbit() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

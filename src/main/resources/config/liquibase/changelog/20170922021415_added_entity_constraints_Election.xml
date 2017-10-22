@@ -14,12 +14,6 @@
                                  referencedColumnNames="id"
                                  referencedTableName="election_type"/>
 
-        <addForeignKeyConstraint baseColumnNames="election_period_id"
-                                 baseTableName="election"
-                                 constraintName="fk_election_election_period_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="election_period"/>
-
         <addForeignKeyConstraint baseColumnNames="political_party_asociated_id"
                                  baseTableName="election"
                                  constraintName="fk_election_political_party_asociated_id"

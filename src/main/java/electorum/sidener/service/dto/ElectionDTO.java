@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
+import javax.persistence.Lob;
 import electorum.sidener.domain.enumeration.State;
 import electorum.sidener.domain.enumeration.Status;
 import electorum.sidener.domain.enumeration.RecountDistrictsRule;
@@ -20,15 +21,19 @@ public class ElectionDTO implements Serializable {
 
     private State state;
 
+    private String periodElection;
+
     private ZonedDateTime dateElection;
 
     private Status status;
 
-    private String prepUrl;
-
-    private String ballotUrl;
+    private String dataBase;
 
     private String insetUrl;
+
+    private String incidentSheet;
+
+    private String dayRecord;
 
     private String demandTemplateUrl;
 
@@ -37,6 +42,15 @@ public class ElectionDTO implements Serializable {
     private RecountDistrictsRule recountDistrictsRule;
 
     private RecountPollingPlaceRule recountPollingPlaceRule;
+
+    private String nameDemandant;
+
+    private String recountElectoralInstitute;
+
+    private String recountType;
+
+    @Lob
+    private String recountFundamentRequest;
 
     private Boolean published;
 
@@ -47,10 +61,6 @@ public class ElectionDTO implements Serializable {
     private Long electionTypeId;
 
     private String electionTypeName;
-
-    private Long electionPeriodId;
-
-    private String electionPeriodName;
 
     private Long politicalPartyAsociatedId;
 
@@ -82,6 +92,14 @@ public class ElectionDTO implements Serializable {
         this.state = state;
     }
 
+    public String getPeriodElection() {
+        return periodElection;
+    }
+
+    public void setPeriodElection(String periodElection) {
+        this.periodElection = periodElection;
+    }
+
     public ZonedDateTime getDateElection() {
         return dateElection;
     }
@@ -98,20 +116,12 @@ public class ElectionDTO implements Serializable {
         this.status = status;
     }
 
-    public String getPrepUrl() {
-        return prepUrl;
+    public String getDataBase() {
+        return dataBase;
     }
 
-    public void setPrepUrl(String prepUrl) {
-        this.prepUrl = prepUrl;
-    }
-
-    public String getBallotUrl() {
-        return ballotUrl;
-    }
-
-    public void setBallotUrl(String ballotUrl) {
-        this.ballotUrl = ballotUrl;
+    public void setDataBase(String dataBase) {
+        this.dataBase = dataBase;
     }
 
     public String getInsetUrl() {
@@ -120,6 +130,22 @@ public class ElectionDTO implements Serializable {
 
     public void setInsetUrl(String insetUrl) {
         this.insetUrl = insetUrl;
+    }
+
+    public String getIncidentSheet() {
+        return incidentSheet;
+    }
+
+    public void setIncidentSheet(String incidentSheet) {
+        this.incidentSheet = incidentSheet;
+    }
+
+    public String getDayRecord() {
+        return dayRecord;
+    }
+
+    public void setDayRecord(String dayRecord) {
+        this.dayRecord = dayRecord;
     }
 
     public String getDemandTemplateUrl() {
@@ -152,6 +178,38 @@ public class ElectionDTO implements Serializable {
 
     public void setRecountPollingPlaceRule(RecountPollingPlaceRule recountPollingPlaceRule) {
         this.recountPollingPlaceRule = recountPollingPlaceRule;
+    }
+
+    public String getNameDemandant() {
+        return nameDemandant;
+    }
+
+    public void setNameDemandant(String nameDemandant) {
+        this.nameDemandant = nameDemandant;
+    }
+
+    public String getRecountElectoralInstitute() {
+        return recountElectoralInstitute;
+    }
+
+    public void setRecountElectoralInstitute(String recountElectoralInstitute) {
+        this.recountElectoralInstitute = recountElectoralInstitute;
+    }
+
+    public String getRecountType() {
+        return recountType;
+    }
+
+    public void setRecountType(String recountType) {
+        this.recountType = recountType;
+    }
+
+    public String getRecountFundamentRequest() {
+        return recountFundamentRequest;
+    }
+
+    public void setRecountFundamentRequest(String recountFundamentRequest) {
+        this.recountFundamentRequest = recountFundamentRequest;
     }
 
     public Boolean isPublished() {
@@ -192,22 +250,6 @@ public class ElectionDTO implements Serializable {
 
     public void setElectionTypeName(String electionTypeName) {
         this.electionTypeName = electionTypeName;
-    }
-
-    public Long getElectionPeriodId() {
-        return electionPeriodId;
-    }
-
-    public void setElectionPeriodId(Long electionPeriodId) {
-        this.electionPeriodId = electionPeriodId;
-    }
-
-    public String getElectionPeriodName() {
-        return electionPeriodName;
-    }
-
-    public void setElectionPeriodName(String electionPeriodName) {
-        this.electionPeriodName = electionPeriodName;
     }
 
     public Long getPoliticalPartyAsociatedId() {
@@ -292,15 +334,21 @@ public class ElectionDTO implements Serializable {
         return "ElectionDTO{" +
             "id=" + getId() +
             ", state='" + getState() + "'" +
+            ", periodElection='" + getPeriodElection() + "'" +
             ", dateElection='" + getDateElection() + "'" +
             ", status='" + getStatus() + "'" +
-            ", prepUrl='" + getPrepUrl() + "'" +
-            ", ballotUrl='" + getBallotUrl() + "'" +
+            ", dataBase='" + getDataBase() + "'" +
             ", insetUrl='" + getInsetUrl() + "'" +
+            ", incidentSheet='" + getIncidentSheet() + "'" +
+            ", dayRecord='" + getDayRecord() + "'" +
             ", demandTemplateUrl='" + getDemandTemplateUrl() + "'" +
             ", recountTemplateUrl='" + getRecountTemplateUrl() + "'" +
             ", recountDistrictsRule='" + getRecountDistrictsRule() + "'" +
             ", recountPollingPlaceRule='" + getRecountPollingPlaceRule() + "'" +
+            ", nameDemandant='" + getNameDemandant() + "'" +
+            ", recountElectoralInstitute='" + getRecountElectoralInstitute() + "'" +
+            ", recountType='" + getRecountType() + "'" +
+            ", recountFundamentRequest='" + getRecountFundamentRequest() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

@@ -38,7 +38,7 @@
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="decimalNumber"><span data-translate="sidenerApp.district.decimalNumber">Decimal Number</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="romanNumber"><span data-translate="sidenerApp.district.romanNumber">Roman Number</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="districtIdentificator"><span data-translate="sidenerApp.district.districtIdentificator">District Identificator</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="districtHead"><span data-translate="sidenerApp.district.districtHead">District Head</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="state"><span data-translate="sidenerApp.district.state">State</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.district.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="createdDate"><span data-translate="sidenerApp.district.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -52,7 +52,7 @@
                     <td><a ui-sref="district-detail({id:district.id})">{{district.id}}</a></td>
                     <td>{{district.decimalNumber}}</td>
                     <td>{{district.romanNumber}}</td>
-                    <td>{{district.districtIdentificator}}</td>
+                    <td>{{district.districtHead}}</td>
                     <td data-translate="{{'sidenerApp.State.' + district.state}}">{{district.state}}</td>
                     <td>{{district.published}}</td>
                     <td>{{district.createdDate | date:'medium'}}</td>

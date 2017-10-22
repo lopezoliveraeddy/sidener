@@ -1,0 +1,9 @@
+{
+    "sidenerApp": {
+        "ElectionAmbit" : {
+            "null": "",
+            "LOCAL": "Local",
+            "FEDERAL": "Federal"
+        }
+    }
+}

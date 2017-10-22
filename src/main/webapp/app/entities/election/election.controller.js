@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('ElectionController', ElectionController);
 
-    ElectionController.$inject = ['$state', 'Election', 'ElectionSearch', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    ElectionController.$inject = ['$state', 'DataUtils', 'Election', 'ElectionSearch', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function ElectionController($state, Election, ElectionSearch, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function ElectionController($state, DataUtils, Election, ElectionSearch, ParseLinks, AlertService, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -21,6 +21,8 @@
         vm.loadAll = loadAll;
         vm.searchQuery = pagingParams.search;
         vm.currentSearch = pagingParams.search;
+        vm.openFile = DataUtils.openFile;
+        vm.byteSize = DataUtils.byteSize;
 
         loadAll();
 

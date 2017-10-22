@@ -68,7 +68,7 @@
                 <tr ng-repeat="pollingPlace in vm.pollingPlaces track by pollingPlace.id">
                     <td><a ui-sref="polling-place-detail({id:pollingPlace.id})">{{pollingPlace.id}}</a></td>
                     <td>{{pollingPlace.town}}</td>
-                    <td data-translate="{{'sidenerApp.PollingPlaceType.' + pollingPlace.typePollingPlace}}">{{pollingPlace.typePollingPlace}}</td>
+                    <td data-translate="{{'sidenerApp.TypePollingPlace.' + pollingPlace.typePollingPlace}}">{{pollingPlace.typePollingPlace}}</td>
                     <td>{{pollingPlace.typeNumber}}</td>
                     <td>{{pollingPlace.section}}</td>
                     <td>{{pollingPlace.address}}</td>

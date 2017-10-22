@@ -27,19 +27,27 @@ public class PoliticalParty implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Nombre del Partido Político
+     */
+    @ApiModelProperty(value = "Nombre del Partido Político")
     @Column(name = "name")
     private String name;
 
+    /**
+     * Iniciales
+     */
+    @ApiModelProperty(value = "Iniciales")
     @Column(name = "acronym")
     private String acronym;
 
+    /**
+     * Logo del Partido Político
+     */
+    @ApiModelProperty(value = "Logo del Partido Político")
     @Column(name = "image")
     private String image;
 
-    /**
-     * Datos Sistema
-     */
-    @ApiModelProperty(value = "Datos Sistema")
     @Column(name = "published")
     private Boolean published;
 

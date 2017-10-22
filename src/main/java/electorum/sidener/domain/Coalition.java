@@ -29,19 +29,27 @@ public class Coalition implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Nombre de la Coalición
+     */
+    @ApiModelProperty(value = "Nombre de la Coalición")
     @Column(name = "name")
     private String name;
 
+    /**
+     * Iniciales
+     */
+    @ApiModelProperty(value = "Iniciales")
     @Column(name = "acronym")
     private String acronym;
 
+    /**
+     * Logo de la Coalición
+     */
+    @ApiModelProperty(value = "Logo de la Coalición")
     @Column(name = "image")
     private String image;
 
-    /**
-     * Datos Sistema
-     */
-    @ApiModelProperty(value = "Datos Sistema")
     @Column(name = "published")
     private Boolean published;
 

@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 import javax.persistence.Lob;
-import electorum.sidener.domain.enumeration.PollingPlaceType;
+import electorum.sidener.domain.enumeration.TypePollingPlace;
 
 /**
  * A DTO for the PollingPlace entity.
@@ -18,7 +18,7 @@ public class PollingPlaceDTO implements Serializable {
 
     private String town;
 
-    private PollingPlaceType typePollingPlace;
+    private TypePollingPlace typePollingPlace;
 
     private String typeNumber;
 
@@ -84,11 +84,11 @@ public class PollingPlaceDTO implements Serializable {
         this.town = town;
     }
 
-    public PollingPlaceType getTypePollingPlace() {
+    public TypePollingPlace getTypePollingPlace() {
         return typePollingPlace;
     }
 
-    public void setTypePollingPlace(PollingPlaceType typePollingPlace) {
+    public void setTypePollingPlace(TypePollingPlace typePollingPlace) {
         this.typePollingPlace = typePollingPlace;
     }
 

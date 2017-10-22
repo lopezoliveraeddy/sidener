@@ -17,6 +17,7 @@
                 "title": "Tipo de Elección"
             },
             "name": "Nombre",
+            "electionAmbit": "Ambito de la Elección",
             "published": "Publicado",
             "createdDate": "Creado",
             "updatedDate": "Actualizado"

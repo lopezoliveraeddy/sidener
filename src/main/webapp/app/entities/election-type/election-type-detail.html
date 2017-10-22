@@ -8,6 +8,10 @@
         <dd>
             <span>{{vm.electionType.name}}</span>
         </dd>
+        <dt><span data-translate="sidenerApp.electionType.electionAmbit">Election Ambit</span></dt>
+        <dd>
+            <span data-translate="{{'sidenerApp.ElectionAmbit.' + vm.electionType.electionAmbit}}">{{vm.electionType.electionAmbit}}</span>
+        </dd>
         <dt><span data-translate="sidenerApp.electionType.published">Published</span></dt>
         <dd>
             <span ng-if="vm.electionType.published==true">

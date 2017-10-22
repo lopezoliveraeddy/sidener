@@ -46,6 +46,7 @@
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('electionType');
+                    $translatePartialLoader.addPart('electionAmbit');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
@@ -125,6 +126,7 @@
                         entity: function () {
                             return {
                                 name: null,
+                                electionAmbit: null,
                                 published: null,
                                 createdDate: null,
                                 updatedDate: null,

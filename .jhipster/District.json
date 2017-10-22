@@ -11,24 +11,27 @@
     "fields": [
         {
             "fieldName": "decimalNumber",
-            "fieldType": "String"
+            "javadoc": "Número de Distrito (Decimal)",
+            "fieldType": "Long"
         },
         {
             "fieldName": "romanNumber",
+            "javadoc": "Número de Distrito (Romano)",
             "fieldType": "String"
         },
         {
-            "fieldName": "districtIdentificator",
+            "fieldName": "districtHead",
+            "javadoc": "Cabecera Distrital",
             "fieldType": "String"
         },
         {
             "fieldName": "state",
+            "javadoc": "Entidad Federativa donde pertenece el Distrito",
             "fieldType": "State",
             "fieldValues": "AGU,BCN,BCS,CAM,CHP,CHH,COA,COL,CMX,DUR,GUA,GRO,HID,JAL,MEX,MIC,MOR,NAY,NLE,OAX,PUE,QUE,ROO,SLP,SIN,SON,TAB,TAM,TLA,VER,YUC,ZAC"
         },
         {
             "fieldName": "published",
-            "javadoc": "Datos Sistema",
             "fieldType": "Boolean"
         },
         {
@@ -45,5 +48,5 @@
     "entityTableName": "district",
     "dto": "mapstruct",
     "pagination": "pagination",
-    "service": "serviceImpl"
+    "service": "serviceClass"
 }

@@ -8,14 +8,11 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Election and its DTO ElectionDTO.
  */
-@Mapper(componentModel = "spring", uses = {ElectionTypeMapper.class, ElectionPeriodMapper.class, PoliticalPartyMapper.class, CoalitionMapper.class, IndependentCandidateMapper.class, CausalMapper.class, })
+@Mapper(componentModel = "spring", uses = {ElectionTypeMapper.class, PoliticalPartyMapper.class, CoalitionMapper.class, IndependentCandidateMapper.class, CausalMapper.class, })
 public interface ElectionMapper extends EntityMapper <ElectionDTO, Election> {
 
     @Mapping(source = "electionType.id", target = "electionTypeId")
     @Mapping(source = "electionType.name", target = "electionTypeName")
-
-    @Mapping(source = "electionPeriod.id", target = "electionPeriodId")
-    @Mapping(source = "electionPeriod.name", target = "electionPeriodName")
 
     @Mapping(source = "politicalPartyAsociated.id", target = "politicalPartyAsociatedId")
 
@@ -25,8 +22,6 @@ public interface ElectionMapper extends EntityMapper <ElectionDTO, Election> {
     ElectionDTO toDto(Election election); 
 
     @Mapping(source = "electionTypeId", target = "electionType")
-
-    @Mapping(source = "electionPeriodId", target = "electionPeriod")
 
     @Mapping(source = "politicalPartyAsociatedId", target = "politicalPartyAsociated")
 
