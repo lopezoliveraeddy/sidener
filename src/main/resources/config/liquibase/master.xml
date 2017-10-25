@@ -10,7 +10,6 @@
     <include file="config/liquibase/changelog/20170922021417_added_entity_IndependentCandidate.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170922021418_added_entity_Coalition.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170922021419_added_entity_ElectionType.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20170922021421_added_entity_ElectionPeriod.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170922021422_added_entity_District.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170922021423_added_entity_PollingPlace.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170922021424_added_entity_Vote.xml" relativeToChangelogFile="false"/>
