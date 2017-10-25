@@ -54,11 +54,22 @@
                     <td>{{district.romanNumber}}</td>
                     <td>{{district.districtHead}}</td>
                     <td data-translate="{{'sidenerApp.State.' + district.state}}">{{district.state}}</td>
-                    <td>{{district.published}}</td>
-                    <td>{{district.createdDate | date:'medium'}}</td>
-                    <td>{{district.updatedDate | date:'medium'}}</td>
+                    <td class="text-center">
+                        <span ng-if="district.published==true">
+                            <i class="fa fa-check fa-2x"></i>
+                        </span>
+                        <span ng-if="district.published!=true">
+                            <i class="fa fa-times fa-2x"></i>
+                        </span>
+                    </td>
+                    <td>{{district.createdDate | date:'short'}}</td>
+                    <td>{{district.updatedDate | date:'short'}}</td>
                     <td>
-                        <a ui-sref="election-detail({id:district.electionId})">{{district.electionId}}</a>
+                        <a ui-sref="election-detail({id:district.electionId})">
+                            <span>{{vm.election[district.id].electionTypeName}}</span>
+                            <span data-translate="{{'sidenerApp.State.' + vm.election[district.id].state}}">{{vm.election[district.id].state}}</span>
+                            <span>{{vm.election[district.id].periodElection}}</span>
+                        </a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

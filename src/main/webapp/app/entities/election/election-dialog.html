@@ -1,5 +1,4 @@
-
-<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" xmlns="http://www.w3.org/1999/html">
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -8,150 +7,243 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.election.id">
-            <label for="id" data-translate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.election.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.election.state" for="field_state">State</label>
-            <select class="form-control" name="state" ng-model="vm.election.state" id="field_state">
-                <option value="AGU" data-translate="sidenerApp.State.AGU">AGU</option>
-                <option value="BCN" data-translate="sidenerApp.State.BCN">BCN</option>
-                <option value="BCS" data-translate="sidenerApp.State.BCS">BCS</option>
-                <option value="CAM" data-translate="sidenerApp.State.CAM">CAM</option>
-                <option value="CHP" data-translate="sidenerApp.State.CHP">CHP</option>
-                <option value="CHH" data-translate="sidenerApp.State.CHH">CHH</option>
-                <option value="COA" data-translate="sidenerApp.State.COA">COA</option>
-                <option value="COL" data-translate="sidenerApp.State.COL">COL</option>
-                <option value="CMX" data-translate="sidenerApp.State.CMX">CMX</option>
-                <option value="DUR" data-translate="sidenerApp.State.DUR">DUR</option>
-                <option value="GUA" data-translate="sidenerApp.State.GUA">GUA</option>
-                <option value="GRO" data-translate="sidenerApp.State.GRO">GRO</option>
-                <option value="HID" data-translate="sidenerApp.State.HID">HID</option>
-                <option value="JAL" data-translate="sidenerApp.State.JAL">JAL</option>
-                <option value="MEX" data-translate="sidenerApp.State.MEX">MEX</option>
-                <option value="MIC" data-translate="sidenerApp.State.MIC">MIC</option>
-                <option value="MOR" data-translate="sidenerApp.State.MOR">MOR</option>
-                <option value="NAY" data-translate="sidenerApp.State.NAY">NAY</option>
-                <option value="NLE" data-translate="sidenerApp.State.NLE">NLE</option>
-                <option value="OAX" data-translate="sidenerApp.State.OAX">OAX</option>
-                <option value="PUE" data-translate="sidenerApp.State.PUE">PUE</option>
-                <option value="QUE" data-translate="sidenerApp.State.QUE">QUE</option>
-                <option value="ROO" data-translate="sidenerApp.State.ROO">ROO</option>
-                <option value="SLP" data-translate="sidenerApp.State.SLP">SLP</option>
-                <option value="SIN" data-translate="sidenerApp.State.SIN">SIN</option>
-                <option value="SON" data-translate="sidenerApp.State.SON">SON</option>
-                <option value="TAB" data-translate="sidenerApp.State.TAB">TAB</option>
-                <option value="TAM" data-translate="sidenerApp.State.TAM">TAM</option>
-                <option value="TLA" data-translate="sidenerApp.State.TLA">TLA</option>
-                <option value="VER" data-translate="sidenerApp.State.VER">VER</option>
-                <option value="YUC" data-translate="sidenerApp.State.YUC">YUC</option>
-                <option value="ZAC" data-translate="sidenerApp.State.ZAC">ZAC</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.election.periodElection" for="field_periodElection">Period Election</label>
-            <input type="text" class="form-control" name="periodElection" id="field_periodElection"
-                    ng-model="vm.election.periodElection"
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Información</div>
+            <div class="panel-body">
+                <div class="form-group" ng-show="vm.election.id" hidden>
+                    <label for="id" data-translate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                           ng-model="vm.election.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" data-translate="sidenerApp.election.state" for="field_state">State</label>
+                    <select class="form-control" name="state" ng-model="vm.election.state" id="field_state">
+                        <option value="AGU" data-translate="sidenerApp.State.AGU">AGU</option>
+                        <option value="BCN" data-translate="sidenerApp.State.BCN">BCN</option>
+                        <option value="BCS" data-translate="sidenerApp.State.BCS">BCS</option>
+                        <option value="CAM" data-translate="sidenerApp.State.CAM">CAM</option>
+                        <option value="CHP" data-translate="sidenerApp.State.CHP">CHP</option>
+                        <option value="CHH" data-translate="sidenerApp.State.CHH">CHH</option>
+                        <option value="COA" data-translate="sidenerApp.State.COA">COA</option>
+                        <option value="COL" data-translate="sidenerApp.State.COL">COL</option>
+                        <option value="CMX" data-translate="sidenerApp.State.CMX">CMX</option>
+                        <option value="DUR" data-translate="sidenerApp.State.DUR">DUR</option>
+                        <option value="GUA" data-translate="sidenerApp.State.GUA">GUA</option>
+                        <option value="GRO" data-translate="sidenerApp.State.GRO">GRO</option>
+                        <option value="HID" data-translate="sidenerApp.State.HID">HID</option>
+                        <option value="JAL" data-translate="sidenerApp.State.JAL">JAL</option>
+                        <option value="MEX" data-translate="sidenerApp.State.MEX">MEX</option>
+                        <option value="MIC" data-translate="sidenerApp.State.MIC">MIC</option>
+                        <option value="MOR" data-translate="sidenerApp.State.MOR">MOR</option>
+                        <option value="NAY" data-translate="sidenerApp.State.NAY">NAY</option>
+                        <option value="NLE" data-translate="sidenerApp.State.NLE">NLE</option>
+                        <option value="OAX" data-translate="sidenerApp.State.OAX">OAX</option>
+                        <option value="PUE" data-translate="sidenerApp.State.PUE">PUE</option>
+                        <option value="QUE" data-translate="sidenerApp.State.QUE">QUE</option>
+                        <option value="ROO" data-translate="sidenerApp.State.ROO">ROO</option>
+                        <option value="SLP" data-translate="sidenerApp.State.SLP">SLP</option>
+                        <option value="SIN" data-translate="sidenerApp.State.SIN">SIN</option>
+                        <option value="SON" data-translate="sidenerApp.State.SON">SON</option>
+                        <option value="TAB" data-translate="sidenerApp.State.TAB">TAB</option>
+                        <option value="TAM" data-translate="sidenerApp.State.TAM">TAM</option>
+                        <option value="TLA" data-translate="sidenerApp.State.TLA">TLA</option>
+                        <option value="VER" data-translate="sidenerApp.State.VER">VER</option>
+                        <option value="YUC" data-translate="sidenerApp.State.YUC">YUC</option>
+                        <option value="ZAC" data-translate="sidenerApp.State.ZAC">ZAC</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label data-translate="sidenerApp.election.electionType" for="field_electionType">Election Type</label>
+                    <select class="form-control" id="field_electionType" name="electionType" ng-model="vm.election.electionTypeId" ng-options="electionType.id as electionType.name for electionType in vm.electiontypes"            >
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" data-translate="sidenerApp.election.periodElection" for="field_periodElection">Period Election</label>
+                    <input type="text" class="form-control" name="periodElection" id="field_periodElection"
+                           ng-model="vm.election.periodElection"
                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.election.dateElection" for="field_dateElection">Date Election</label>
-                <div class="input-group">
-                    <input id="field_dateElection" type="text" class="form-control" name="dateElection" datetime-picker="{{dateformat}}" ng-model="vm.election.dateElection" is-open="vm.datePickerOpenStatus.dateElection"
-                    />
-                    <span class="input-group-btn">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" data-translate="sidenerApp.election.dateElection" for="field_dateElection">Date Election</label>
+                    <div class="input-group">
+                        <input id="field_dateElection" type="text" class="form-control" name="dateElection" datetime-picker="{{dateformat}}" ng-model="vm.election.dateElection" is-open="vm.datePickerOpenStatus.dateElection"
+                        />
+                        <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateElection')"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
+                    </div>
                 </div>
+                <div class="form-group">
+                    <label class="control-label" data-translate="sidenerApp.election.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" ng-model="vm.election.status" id="field_status">
+                        <option value="NEW" data-translate="sidenerApp.Status.NEW">NEW</option>
+                        <option value="IN_PROGRESS" data-translate="sidenerApp.Status.IN_PROGRESS">IN_PROGRESS</option>
+                        <option value="COMPLETE" data-translate="sidenerApp.Status.COMPLETE">COMPLETE</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label data-translate="sidenerApp.election.politicalPartyAsociated" for="field_politicalPartyAsociated">Political Party Asociated</label>
+                    <select class="form-control" id="field_politicalPartyAsociated" name="politicalPartyAsociated" ng-model="vm.election.politicalPartyAsociatedId" ng-options="politicalParty.id as politicalParty.id for politicalParty in vm.politicalparties"            >
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label data-translate="sidenerApp.election.coalitionAsociated" for="field_coalitionAsociated">Coalition Asociated</label>
+                    <select class="form-control" id="field_coalitionAsociated" name="coalitionAsociated" ng-model="vm.election.coalitionAsociatedId" ng-options="coalition.id as coalition.id for coalition in vm.coalitions"            >
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label data-translate="sidenerApp.election.independentCandidateAsociated" for="field_independentCandidateAsociated">Independent Candidate Asociated</label>
+                    <select class="form-control" id="field_independentCandidateAsociated" name="independentCandidateAsociated" ng-model="vm.election.independentCandidateAsociatedId" ng-options="independentCandidate.id as independentCandidate.id for independentCandidate in vm.independentcandidates"            >
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.election.status" for="field_status">Status</label>
-            <select class="form-control" name="status" ng-model="vm.election.status" id="field_status">
-                <option value="NEW" data-translate="sidenerApp.Status.NEW">NEW</option>
-                <option value="IN_PROGRESS" data-translate="sidenerApp.Status.IN_PROGRESS">IN_PROGRESS</option>
-                <option value="COMPLETE" data-translate="sidenerApp.Status.COMPLETE">COMPLETE</option>
-            </select>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label data-translate="sidenerApp.election.politicalParties" for="field_politicalParties">Political Parties</label>
+                    <select class="form-control" id="field_politicalParties" multiple name="politicalParties" ng-model="vm.election.politicalParties" ng-options="politicalParty as politicalParty.name for politicalParty in vm.politicalparties track by politicalParty.id"></select>
+                </div>
+                <div class="form-group">
+                    <label data-translate="sidenerApp.election.independentCandidates" for="field_independentCandidates">Independent Candidates</label>
+                    <select class="form-control" id="field_independentCandidates" multiple name="independentCandidates" ng-model="vm.election.independentCandidates" ng-options="independentCandidate as independentCandidate.name for independentCandidate in vm.independentcandidates track by independentCandidate.id"></select>
+                </div>
+                <div class="form-group">
+                    <label data-translate="sidenerApp.election.coalitions" for="field_coalitions">Coalitions</label>
+                    <select class="form-control" id="field_coalitions" multiple name="coalitions" ng-model="vm.election.coalitions" ng-options="coalition as coalition.name for coalition in vm.coalitions track by coalition.id"></select>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.election.dataBase" for="field_dataBase">Data Base</label>
-            <input type="text" class="form-control" name="dataBase" id="field_dataBase"
-                    ng-model="vm.election.dataBase"
-                    />
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Documentos</div>
+            <div class="panel-body">
+                <div class="form-group">
+                <label class="control-label" data-translate="sidenerApp.election.dataBase" for="field_dataBase">Data Base</label>
+                <input type="text" class="form-control" name="dataBase" id="field_dataBase"
+                        ng-model="vm.election.dataBase"
+                        />
+            </div>
+                <div class="form-group">
+                    <label class="control-label" data-translate="sidenerApp.election.insetUrl" for="field_insetUrl">Inset Url</label>
+                    <input type="text" class="form-control" name="insetUrl" id="field_insetUrl"
+                            ng-model="vm.election.insetUrl"
+                            />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" data-translate="sidenerApp.election.incidentSheet" for="field_incidentSheet">Incident Sheet</label>
+                    <input type="text" class="form-control" name="incidentSheet" id="field_incidentSheet"
+                            ng-model="vm.election.incidentSheet"
+                            />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" data-translate="sidenerApp.election.dayRecord" for="field_dayRecord">Day Record</label>
+                    <input type="text" class="form-control" name="dayRecord" id="field_dayRecord"
+                            ng-model="vm.election.dayRecord"
+                            />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" data-translate="sidenerApp.election.demandTemplateUrl" for="field_demandTemplateUrl">Demand Template Url</label>
+                    <input type="text" class="form-control" name="demandTemplateUrl" id="field_demandTemplateUrl"
+                            ng-model="vm.election.demandTemplateUrl"
+                            />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" data-translate="sidenerApp.election.recountTemplateUrl" for="field_recountTemplateUrl">Recount Template Url</label>
+                    <input type="text" class="form-control" name="recountTemplateUrl" id="field_recountTemplateUrl"
+                            ng-model="vm.election.recountTemplateUrl"
+                            />
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.election.insetUrl" for="field_insetUrl">Inset Url</label>
-            <input type="text" class="form-control" name="insetUrl" id="field_insetUrl"
-                    ng-model="vm.election.insetUrl"
-                    />
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="control-label" data-translate="sidenerApp.election.recountDistrictsRule" for="field_recountDistrictsRule">Recount Districts Rule</label>
+                    <select class="form-control" name="recountDistrictsRule" ng-model="vm.election.recountDistrictsRule" id="field_recountDistrictsRule">
+                        <option value="LESS_1" data-translate="sidenerApp.RecountDistrictsRule.LESS_1">LESS_1</option>
+                        <option value="LESS_EQUAL_1" data-translate="sidenerApp.RecountDistrictsRule.LESS_EQUAL_1">LESS_EQUAL_1</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" data-translate="sidenerApp.election.recountPollingPlaceRule" for="field_recountPollingPlaceRule">Recount Polling Place Rule</label>
+                    <select class="form-control" name="recountPollingPlaceRule" ng-model="vm.election.recountPollingPlaceRule" id="field_recountPollingPlaceRule">
+                        <option value="LESS_1" data-translate="sidenerApp.RecountPollingPlaceRule.LESS_1">LESS_1</option>
+                        <option value="LESS_EQUAL_1" data-translate="sidenerApp.RecountPollingPlaceRule.LESS_EQUAL_1">LESS_EQUAL_1</option>
+                    </select>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.election.incidentSheet" for="field_incidentSheet">Incident Sheet</label>
-            <input type="text" class="form-control" name="incidentSheet" id="field_incidentSheet"
-                    ng-model="vm.election.incidentSheet"
-                    />
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Demandas</div>
+            <div class="panel-body">
+                <div class="form-group">
+                <label class="control-label" data-translate="sidenerApp.election.nameDemandant" for="field_nameDemandant">Name Demandant</label>
+                <input type="text" class="form-control" name="nameDemandant" id="field_nameDemandant"
+                       ng-model="vm.election.nameDemandant"
+                />
+            </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.election.dayRecord" for="field_dayRecord">Day Record</label>
-            <input type="text" class="form-control" name="dayRecord" id="field_dayRecord"
-                    ng-model="vm.election.dayRecord"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.election.demandTemplateUrl" for="field_demandTemplateUrl">Demand Template Url</label>
-            <input type="text" class="form-control" name="demandTemplateUrl" id="field_demandTemplateUrl"
-                    ng-model="vm.election.demandTemplateUrl"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.election.recountTemplateUrl" for="field_recountTemplateUrl">Recount Template Url</label>
-            <input type="text" class="form-control" name="recountTemplateUrl" id="field_recountTemplateUrl"
-                    ng-model="vm.election.recountTemplateUrl"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.election.recountDistrictsRule" for="field_recountDistrictsRule">Recount Districts Rule</label>
-            <select class="form-control" name="recountDistrictsRule" ng-model="vm.election.recountDistrictsRule" id="field_recountDistrictsRule">
-                <option value="LESS_1" data-translate="sidenerApp.RecountDistrictsRule.LESS_1">LESS_1</option>
-                <option value="LESS_EQUAL_1" data-translate="sidenerApp.RecountDistrictsRule.LESS_EQUAL_1">LESS_EQUAL_1</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.election.recountPollingPlaceRule" for="field_recountPollingPlaceRule">Recount Polling Place Rule</label>
-            <select class="form-control" name="recountPollingPlaceRule" ng-model="vm.election.recountPollingPlaceRule" id="field_recountPollingPlaceRule">
-                <option value="LESS_1" data-translate="sidenerApp.RecountPollingPlaceRule.LESS_1">LESS_1</option>
-                <option value="LESS_EQUAL_1" data-translate="sidenerApp.RecountPollingPlaceRule.LESS_EQUAL_1">LESS_EQUAL_1</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.election.nameDemandant" for="field_nameDemandant">Name Demandant</label>
-            <input type="text" class="form-control" name="nameDemandant" id="field_nameDemandant"
-                    ng-model="vm.election.nameDemandant"
-                    />
-        </div>
-        <div class="form-group">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Nulidad</div>
+            <div class="panel-body">
+                <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.election.recountElectoralInstitute" for="field_recountElectoralInstitute">Recount Electoral Institute</label>
             <input type="text" class="form-control" name="recountElectoralInstitute" id="field_recountElectoralInstitute"
                     ng-model="vm.election.recountElectoralInstitute"
                     />
         </div>
-        <div class="form-group">
+                <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.election.recountType" for="field_recountType">Recount Type</label>
             <input type="text" class="form-control" name="recountType" id="field_recountType"
                     ng-model="vm.election.recountType"
                     />
         </div>
-        <div class="form-group">
+                <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.election.recountFundamentRequest" for="field_recountFundamentRequest">Recount Fundament Request</label>
                 <textarea class="form-control" name="recountFundamentRequest" id="field_recountFundamentRequest"
                     ng-model="vm.election.recountFundamentRequest" ></textarea>
         </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label data-translate="sidenerApp.election.causals" for="field_causals">Causals</label>
+                    <ui-select multiple ng-model="vm.election.causals" id="field_causals" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true" class="causal">
+                        <ui-select-match placeholder="Seleccion de causales:">
+                            <div class="causal-color" ng-style="{'background-color': $item.color}">
+                                <span>{{$item.name}}</span>
+                            </div>
+                        </ui-select-match>
+                        <ui-select-choices repeat="causal in vm.causals | propsFilter: {name: $select.search}" position='down'>
+                            <div class="causal-color" ng-style="{'background-color': causal.color}">
+                                <span ng-bind-html="causal.name | highlight: $select.search"></span>
+                            </div>
+                        </ui-select-choices>
+                    </ui-select>
+
+                </div>
+            </div>
+        </div>
+
         <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.election.published" for="field_published">Published</label>
-                <input type="checkbox" name="published" id="field_published"
-                          ng-model="vm.election.published"/>
+            <input type="checkbox" name="published" id="field_published"
+                   ng-model="vm.election.published"/>
         </div>
+        <!--
         <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.election.createdDate" for="field_createdDate">Created Date</label>
                 <div class="input-group">
@@ -172,47 +264,7 @@
                     </span>
                 </div>
         </div>
-
-        <div class="form-group">
-            <label data-translate="sidenerApp.election.electionType" for="field_electionType">Election Type</label>
-            <select class="form-control" id="field_electionType" name="electionType" ng-model="vm.election.electionTypeId" ng-options="electionType.id as electionType.name for electionType in vm.electiontypes"            >
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label data-translate="sidenerApp.election.politicalPartyAsociated" for="field_politicalPartyAsociated">Political Party Asociated</label>
-            <select class="form-control" id="field_politicalPartyAsociated" name="politicalPartyAsociated" ng-model="vm.election.politicalPartyAsociatedId" ng-options="politicalParty.id as politicalParty.id for politicalParty in vm.politicalparties"            >
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label data-translate="sidenerApp.election.coalitionAsociated" for="field_coalitionAsociated">Coalition Asociated</label>
-            <select class="form-control" id="field_coalitionAsociated" name="coalitionAsociated" ng-model="vm.election.coalitionAsociatedId" ng-options="coalition.id as coalition.id for coalition in vm.coalitions"            >
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label data-translate="sidenerApp.election.independentCandidateAsociated" for="field_independentCandidateAsociated">Independent Candidate Asociated</label>
-            <select class="form-control" id="field_independentCandidateAsociated" name="independentCandidateAsociated" ng-model="vm.election.independentCandidateAsociatedId" ng-options="independentCandidate.id as independentCandidate.id for independentCandidate in vm.independentcandidates"            >
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label data-translate="sidenerApp.election.politicalParties" for="field_politicalParties">Political Parties</label>
-            <select class="form-control" id="field_politicalParties" multiple name="politicalParties" ng-model="vm.election.politicalParties" ng-options="politicalParty as politicalParty.name for politicalParty in vm.politicalparties track by politicalParty.id"></select>
-        </div>
-        <div class="form-group">
-            <label data-translate="sidenerApp.election.independentCandidates" for="field_independentCandidates">Independent Candidates</label>
-            <select class="form-control" id="field_independentCandidates" multiple name="independentCandidates" ng-model="vm.election.independentCandidates" ng-options="independentCandidate as independentCandidate.name for independentCandidate in vm.independentcandidates track by independentCandidate.id"></select>
-        </div>
-        <div class="form-group">
-            <label data-translate="sidenerApp.election.coalitions" for="field_coalitions">Coalitions</label>
-            <select class="form-control" id="field_coalitions" multiple name="coalitions" ng-model="vm.election.coalitions" ng-options="coalition as coalition.name for coalition in vm.coalitions track by coalition.id"></select>
-        </div>
-        <div class="form-group">
-            <label data-translate="sidenerApp.election.causals" for="field_causals">Causals</label>
-            <select class="form-control" id="field_causals" multiple name="causals" ng-model="vm.election.causals" ng-options="causal as causal.name for causal in vm.causals track by causal.id"></select>
-        </div>
+        -->
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

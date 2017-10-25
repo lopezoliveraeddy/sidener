@@ -18,11 +18,11 @@
                 "title": "Elección"
             },
             "state": "Estado",
-            "periodElection": "Period Election",
+            "periodElection": "Periodo de la Elección",
             "dateElection": "Fecha",
             "status": "Estatus",
             "dataBase": "Base de Datos",
-            "insetUrl": "Inset Url",
+            "insetUrl": "Encarte",
             "incidentSheet": "Hoja de Incidentes",
             "dayRecord": "Acta de la Jornada",
             "demandTemplateUrl": "Plantilla de Demanda",

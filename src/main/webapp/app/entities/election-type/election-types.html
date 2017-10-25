@@ -49,7 +49,7 @@
                     <td><a ui-sref="election-type-detail({id:electionType.id})">{{electionType.id}}</a></td>
                     <td>{{electionType.name}}</td>
                     <td data-translate="{{'sidenerApp.ElectionAmbit.' + electionType.electionAmbit}}">{{electionType.electionAmbit}}</td>
-                    <td>
+                    <td class="text-center">
                         <span ng-if="electionType.published==true">
                             <i class="fa fa-check fa-2x"></i>
                         </span>
@@ -57,8 +57,8 @@
                             <i class="fa fa-times fa-2x"></i>
                         </span>
                     </td>
-                    <td>{{electionType.createdDate | date:'medium'}}</td>
-                    <td>{{electionType.updatedDate | date:'medium'}}</td>
+                    <td>{{electionType.createdDate | date:'short'}}</td>
+                    <td>{{electionType.updatedDate | date:'short'}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

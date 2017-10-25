@@ -1,4 +1,7 @@
-id,name,published,created_date,updated_date
-1,Presidente de la República,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995
-2,Gobernador,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995
-3,Presidente Municipal,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995
+id,name,election_ambit,published,created_date,updated_date
+1,Presidente de la República,FEDERAL,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995
+2,Diputados Federales,FEDERAL,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995,
+3,Senadores,FEDERAL,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995
+4,Gobernador,LOCAL,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995,
+4,Diputados Locales,LOCAL,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995,
+3,Presidente Municipal,LOCAL,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995
