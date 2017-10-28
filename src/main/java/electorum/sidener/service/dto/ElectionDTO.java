@@ -64,9 +64,15 @@ public class ElectionDTO implements Serializable {
 
     private Long politicalPartyAsociatedId;
 
+    private String politicalPartyAsociatedName;
+
     private Long coalitionAsociatedId;
 
+    private String coalitionAsociatedName;
+
     private Long independentCandidateAsociatedId;
+
+    private String independentCandidateAsociatedName;
 
     private Set<PoliticalPartyDTO> politicalParties = new HashSet<>();
 
@@ -75,6 +81,8 @@ public class ElectionDTO implements Serializable {
     private Set<CoalitionDTO> coalitions = new HashSet<>();
 
     private Set<CausalDTO> causals = new HashSet<>();
+
+    private Set<UserDTO> users = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -260,6 +268,14 @@ public class ElectionDTO implements Serializable {
         this.politicalPartyAsociatedId = politicalPartyId;
     }
 
+    public String getPoliticalPartyAsociatedName() {
+        return politicalPartyAsociatedName;
+    }
+
+    public void setPoliticalPartyAsociatedName(String politicalPartyName) {
+        this.politicalPartyAsociatedName = politicalPartyName;
+    }
+
     public Long getCoalitionAsociatedId() {
         return coalitionAsociatedId;
     }
@@ -268,12 +284,28 @@ public class ElectionDTO implements Serializable {
         this.coalitionAsociatedId = coalitionId;
     }
 
+    public String getCoalitionAsociatedName() {
+        return coalitionAsociatedName;
+    }
+
+    public void setCoalitionAsociatedName(String coalitionName) {
+        this.coalitionAsociatedName = coalitionName;
+    }
+
     public Long getIndependentCandidateAsociatedId() {
         return independentCandidateAsociatedId;
     }
 
     public void setIndependentCandidateAsociatedId(Long independentCandidateId) {
         this.independentCandidateAsociatedId = independentCandidateId;
+    }
+
+    public String getIndependentCandidateAsociatedName() {
+        return independentCandidateAsociatedName;
+    }
+
+    public void setIndependentCandidateAsociatedName(String independentCandidateName) {
+        this.independentCandidateAsociatedName = independentCandidateName;
     }
 
     public Set<PoliticalPartyDTO> getPoliticalParties() {
@@ -306,6 +338,14 @@ public class ElectionDTO implements Serializable {
 
     public void setCausals(Set<CausalDTO> causals) {
         this.causals = causals;
+    }
+
+    public Set<UserDTO> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<UserDTO> users) {
+        this.users = users;
     }
 
     @Override

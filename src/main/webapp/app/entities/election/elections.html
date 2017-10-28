@@ -56,9 +56,9 @@
                     <th jh-sort-by="createdDate"><span data-translate="sidenerApp.election.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.election.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="electionTypeName"><span data-translate="sidenerApp.election.electionType">Election Type</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="politicalPartyAsociatedId"><span data-translate="sidenerApp.election.politicalPartyAsociated">Political Party Asociated</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="coalitionAsociatedId"><span data-translate="sidenerApp.election.coalitionAsociated">Coalition Asociated</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="independentCandidateAsociatedId"><span data-translate="sidenerApp.election.independentCandidateAsociated">Independent Candidate Asociated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="politicalPartyAsociatedName"><span data-translate="sidenerApp.election.politicalPartyAsociated">Political Party Asociated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="coalitionAsociatedName"><span data-translate="sidenerApp.election.coalitionAsociated">Coalition Asociated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="independentCandidateAsociatedName"><span data-translate="sidenerApp.election.independentCandidateAsociated">Independent Candidate Asociated</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -88,13 +88,13 @@
                         <a ui-sref="election-type-detail({id:election.electionTypeId})">{{election.electionTypeName}}</a>
                     </td>
                     <td>
-                        <a ui-sref="political-party-detail({id:election.politicalPartyAsociatedId})">{{election.politicalPartyAsociatedId}}</a>
+                        <a ui-sref="political-party-detail({id:election.politicalPartyAsociatedId})">{{election.politicalPartyAsociatedName}}</a>
                     </td>
                     <td>
-                        <a ui-sref="coalition-detail({id:election.coalitionAsociatedId})">{{election.coalitionAsociatedId}}</a>
+                        <a ui-sref="coalition-detail({id:election.coalitionAsociatedId})">{{election.coalitionAsociatedName}}</a>
                     </td>
                     <td>
-                        <a ui-sref="independent-candidate-detail({id:election.independentCandidateAsociatedId})">{{election.independentCandidateAsociatedId}}</a>
+                        <a ui-sref="independent-candidate-detail({id:election.independentCandidateAsociatedId})">{{election.independentCandidateAsociatedName}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

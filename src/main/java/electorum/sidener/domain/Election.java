@@ -203,6 +203,13 @@ public class Election implements Serializable {
                inverseJoinColumns = @JoinColumn(name="causals_id", referencedColumnName="id"))
     private Set<Causal> causals = new HashSet<>();
 
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "election_user",
+               joinColumns = @JoinColumn(name="elections_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="users_id", referencedColumnName="id"))
+    private Set<User> users = new HashSet<>();
+
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -601,6 +608,29 @@ public class Election implements Serializable {
 
     public void setCausals(Set<Causal> causals) {
         this.causals = causals;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public Election users(Set<User> users) {
+        this.users = users;
+        return this;
+    }
+
+    public Election addUser(User user) {
+        this.users.add(user);
+        return this;
+    }
+
+    public Election removeUser(User user) {
+        this.users.remove(user);
+        return this;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
     // jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not remove
 

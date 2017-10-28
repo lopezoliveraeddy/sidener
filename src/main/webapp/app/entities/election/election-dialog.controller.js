@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('ElectionDialogController', ElectionDialogController);
 
-    ElectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Election', 'ElectionType', 'PoliticalParty', 'Coalition', 'IndependentCandidate', 'Causal'];
+    ElectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Election', 'ElectionType', 'PoliticalParty', 'Coalition', 'IndependentCandidate', 'Causal', 'User'];
 
-    function ElectionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Election, ElectionType, PoliticalParty, Coalition, IndependentCandidate, Causal) {
+    function ElectionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Election, ElectionType, PoliticalParty, Coalition, IndependentCandidate, Causal, User) {
         var vm = this;
 
         vm.election = entity;
@@ -22,6 +22,7 @@
         vm.coalitions = Coalition.query();
         vm.independentcandidates = IndependentCandidate.query();
         vm.causals = Causal.query();
+        vm.users = User.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -56,6 +57,22 @@
 
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;
+        }
+
+        $scope.change = function(value) {
+            console.log(value);
+            if(value === 'politicalPartyAsociated') {
+                vm.election.coalitionAsociatedId = null;
+                vm.election.independentCandidateAsociatedId = null;
+            }
+            else if(value === 'coalitionAsociated') {
+                vm.election.politicalPartyAsociatedId = null;
+                vm.election.independentCandidateAsociatedId = null;
+            }
+            else if(value === 'independentCandidateAsociated') {
+                vm.election.politicalPartyAsociatedId = null;
+                vm.election.coalitionAsociatedId = null;
+            }
         }
     }
 })();

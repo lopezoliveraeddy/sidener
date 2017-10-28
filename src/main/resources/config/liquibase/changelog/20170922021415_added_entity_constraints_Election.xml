@@ -76,5 +76,16 @@
                                  referencedColumnNames="id"
                                  referencedTableName="causal"/>
         
+        <addForeignKeyConstraint baseColumnNames="elections_id"
+                                 baseTableName="election_user"
+                                 constraintName="fk_election_user_elections_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="election"/>
+        <addForeignKeyConstraint baseColumnNames="users_id"
+                                 baseTableName="election_user"
+                                 constraintName="fk_election_user_users_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+        
     </changeSet>
 </databaseChangeLog>

@@ -11,19 +11,19 @@
             "relationshipType": "many-to-one",
             "relationshipName": "politicalPartyAsociated",
             "otherEntityName": "politicalParty",
-            "otherEntityField": "id"
+            "otherEntityField": "name"
         },
         {
             "relationshipType": "many-to-one",
             "relationshipName": "coalitionAsociated",
             "otherEntityName": "coalition",
-            "otherEntityField": "id"
+            "otherEntityField": "name"
         },
         {
             "relationshipType": "many-to-one",
             "relationshipName": "independentCandidateAsociated",
             "otherEntityName": "independentCandidate",
-            "otherEntityField": "id"
+            "otherEntityField": "name"
         },
         {
             "relationshipType": "many-to-many",
@@ -55,6 +55,14 @@
             "relationshipName": "causals",
             "otherEntityName": "causal",
             "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login",
             "ownerSide": true
         }
     ],

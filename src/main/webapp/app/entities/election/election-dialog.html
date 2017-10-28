@@ -83,23 +83,38 @@
                         <option value="COMPLETE" data-translate="sidenerApp.Status.COMPLETE">COMPLETE</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label data-translate="sidenerApp.election.politicalPartyAsociated" for="field_politicalPartyAsociated">Political Party Asociated</label>
-                    <select class="form-control" id="field_politicalPartyAsociated" name="politicalPartyAsociated" ng-model="vm.election.politicalPartyAsociatedId" ng-options="politicalParty.id as politicalParty.id for politicalParty in vm.politicalparties"            >
-                        <option value=""></option>
-                    </select>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <input type="radio" ng-model="asociated" ng-change="change(asociated)" value="politicalPartyAsociated"><span data-translate="sidenerApp.election.politicalPartyAsociated">Political Party Asociated</span>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <input type="radio" ng-model="asociated" ng-change="change(asociated)" value="coalitionAsociated"><span data-translate="sidenerApp.election.coalitionAsociated">Coalition Asociated</span>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <input type="radio" ng-model="asociated" ng-change="change(asociated)" value="independentCandidateAsociated"><span data-translate="sidenerApp.election.independentCandidateAsociated">Independent Candidate Asociated</span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label data-translate="sidenerApp.election.coalitionAsociated" for="field_coalitionAsociated">Coalition Asociated</label>
-                    <select class="form-control" id="field_coalitionAsociated" name="coalitionAsociated" ng-model="vm.election.coalitionAsociatedId" ng-options="coalition.id as coalition.id for coalition in vm.coalitions"            >
-                        <option value=""></option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label data-translate="sidenerApp.election.independentCandidateAsociated" for="field_independentCandidateAsociated">Independent Candidate Asociated</label>
-                    <select class="form-control" id="field_independentCandidateAsociated" name="independentCandidateAsociated" ng-model="vm.election.independentCandidateAsociatedId" ng-options="independentCandidate.id as independentCandidate.id for independentCandidate in vm.independentcandidates"            >
-                        <option value=""></option>
-                    </select>
+
+                <div ng-switch="asociated">
+                    <div class="form-group" ng-switch-when="politicalPartyAsociated">
+                        <label data-translate="sidenerApp.election.politicalPartyAsociated" for="field_politicalPartyAsociated">Political Party Asociated</label>
+                        <select class="form-control" id="field_politicalPartyAsociated" name="politicalPartyAsociated" ng-model="vm.election.politicalPartyAsociatedId" ng-options="politicalParty.id as politicalParty.name for politicalParty in vm.politicalparties"            >
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="form-group" ng-switch-when="coalitionAsociated">
+                        <label data-translate="sidenerApp.election.coalitionAsociated" for="field_coalitionAsociated">Coalition Asociated</label>
+                        <select class="form-control" id="field_coalitionAsociated" name="coalitionAsociated" ng-model="vm.election.coalitionAsociatedId" ng-options="coalition.id as coalition.name for coalition in vm.coalitions"            >
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="form-group" ng-switch-when="independentCandidateAsociated">
+                        <label data-translate="sidenerApp.election.independentCandidateAsociated" for="field_independentCandidateAsociated">Independent Candidate Asociated</label>
+                        <select class="form-control" id="field_independentCandidateAsociated" name="independentCandidateAsociated" ng-model="vm.election.independentCandidateAsociatedId" ng-options="independentCandidate.id as independentCandidate.name for independentCandidate in vm.independentcandidates"            >
+                            <option value=""></option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -108,15 +123,33 @@
             <div class="panel-body">
                 <div class="form-group">
                     <label data-translate="sidenerApp.election.politicalParties" for="field_politicalParties">Political Parties</label>
-                    <select class="form-control" id="field_politicalParties" multiple name="politicalParties" ng-model="vm.election.politicalParties" ng-options="politicalParty as politicalParty.name for politicalParty in vm.politicalparties track by politicalParty.id"></select>
+                    <ui-select multiple ng-model="vm.election.politicalParties" id="field_politicalParties" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true">
+                        <ui-select-match placeholder="Seleccion de Partidos Políticos:">{{$item.name}}</ui-select-match>
+                        <ui-select-choices repeat="politicalParty in vm.politicalparties | propsFilter: {name: $select.search}" position='down'>
+                            <div ng-bind-html="politicalParty.name | highlight: $select.search"></div>
+                            <small>{{politicalParty.acronym}}</small>
+                        </ui-select-choices>
+                    </ui-select>
                 </div>
                 <div class="form-group">
                     <label data-translate="sidenerApp.election.independentCandidates" for="field_independentCandidates">Independent Candidates</label>
-                    <select class="form-control" id="field_independentCandidates" multiple name="independentCandidates" ng-model="vm.election.independentCandidates" ng-options="independentCandidate as independentCandidate.name for independentCandidate in vm.independentcandidates track by independentCandidate.id"></select>
+                    <ui-select multiple ng-model="vm.election.independentCandidates" id="field_independentCandidates" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true">
+                        <ui-select-match placeholder="Seleccion de Candidatos Independientes:">{{$item.name}}</ui-select-match>
+                        <ui-select-choices repeat="independentCandidate in vm.independentcandidates | propsFilter: {name: $select.search}" position='down'>
+                            <div ng-bind-html="independentCandidate.name | highlight: $select.search"></div>
+                            <small>{{independentCandidate.acronym}}</small>
+                        </ui-select-choices>
+                    </ui-select>
                 </div>
                 <div class="form-group">
                     <label data-translate="sidenerApp.election.coalitions" for="field_coalitions">Coalitions</label>
-                    <select class="form-control" id="field_coalitions" multiple name="coalitions" ng-model="vm.election.coalitions" ng-options="coalition as coalition.name for coalition in vm.coalitions track by coalition.id"></select>
+                    <ui-select multiple ng-model="vm.election.coalitions" id="field_coalitions" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true">
+                        <ui-select-match placeholder="Seleccion de Coaliciones:">{{$item.name}}</ui-select-match>
+                        <ui-select-choices repeat="coalitions in vm.coalitions | propsFilter: {name: $select.search}" position='down'>
+                            <div ng-bind-html="coalitions.name | highlight: $select.search"></div>
+                            <small>{{coalitions.acronym}}</small>
+                        </ui-select-choices>
+                    </ui-select>
                 </div>
             </div>
         </div>
@@ -265,6 +298,12 @@
                 </div>
         </div>
         -->
+
+        <div class="form-group">
+            <label data-translate="sidenerApp.election.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" multiple name="user" ng-model="vm.election.users" ng-options="user as user.login for user in vm.users track by user.id"></select>
+        </div>
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

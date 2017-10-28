@@ -13,7 +13,7 @@
             parent: 'entity',
             url: '/election?page&sort&search',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_ADMIN'],
                 pageTitle: 'sidenerApp.election.home.title'
             },
             views: {

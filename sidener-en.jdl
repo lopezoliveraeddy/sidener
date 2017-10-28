@@ -214,14 +214,15 @@ relationship ManyToMany {
 	Election{coalitions(name)} to Coalition,
 	Election{causals(name)} to Causal,
 	Coalition{politicalParties(name)} to PoliticalParty,
-    Causal{causalDescription(text)} to CausalDescription
+    Causal{causalDescription(text)} to CausalDescription,
+    Election{user(login)} to User
 }
 
 relationship ManyToOne {
     Election{electionType(name)} to ElectionType,
-    Election{politicalPartyAsociated} to PoliticalParty,
-    Election{coalitionAsociated} to Coalition,
-    Election{independentCandidateAsociated} to IndependentCandidate,
+    Election{politicalPartyAsociated(name)} to PoliticalParty,
+    Election{coalitionAsociated(name)} to Coalition,
+    Election{independentCandidateAsociated(name)} to IndependentCandidate,
 	District{election} to Election,
     PollingPlace{election} to Election,
 	PollingPlace{district} to District,

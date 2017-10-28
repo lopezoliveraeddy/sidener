@@ -94,7 +94,7 @@ public class ElectionResource {
     @Timed
     public ResponseEntity<List<ElectionDTO>> getAllElections(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of Elections");
-        Page<ElectionDTO> page = electionService.findAll(pageable);
+        Page<ElectionDTO> page = electionService.findByUserIsCurrentUser(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/elections");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

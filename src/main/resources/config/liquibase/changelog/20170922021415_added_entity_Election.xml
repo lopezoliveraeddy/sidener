@@ -164,6 +164,17 @@
 
         <addPrimaryKey columnNames="elections_id, causals_id" tableName="election_causals"/>
         
+        <createTable tableName="election_user">
+            <column name="users_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="elections_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="elections_id, users_id" tableName="election_user"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>
