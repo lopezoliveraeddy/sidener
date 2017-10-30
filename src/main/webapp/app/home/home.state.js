@@ -9,13 +9,13 @@
 
     function stateConfig($stateProvider) {
         $stateProvider.state('home', {
-            parent: 'public',
+            parent: 'private',
             url: '/',
             data: {
                 authorities: []
             },
             views: {
-                'content@public': {
+                'content@private': {
                     templateUrl: 'app/home/home.html',
                     controller: 'HomeController',
                     controllerAs: 'vm'

@@ -9,13 +9,13 @@
 
     function stateConfig($stateProvider) {
         $stateProvider.state('requestReset', {
-            parent: 'account',
+            parent: 'public',
             url: '/reset/request',
             data: {
                 authorities: []
             },
             views: {
-                'content@private': {
+                'content@public': {
                     templateUrl: 'app/account/reset/request/reset.request.html',
                     controller: 'RequestResetController',
                     controllerAs: 'vm'

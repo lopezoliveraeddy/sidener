@@ -11,7 +11,7 @@
         $stateProvider.state('app', {
             abstract: true,
             views: {
-                'navbar@public': {
+                'navbar@private': {
                     templateUrl: 'app/layouts/navbar/navbar.html',
                     controller: 'NavbarController',
                     controllerAs: 'vm'
@@ -25,6 +25,27 @@
                 ],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('global');
+                }]
+            }
+        }),
+        $stateProvider.state('login', {
+            parent: 'public',
+            url: '/login',
+            data: {
+                authorities: []
+            },
+            views: {
+                'content@public': {
+                    templateUrl: 'app/components/login/login.html',
+                    controller: 'LoginController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    $translatePartialLoader.addPart('home');
+                    $translatePartialLoader.addPart('login');
+                    return $translate.refresh();
                 }]
             }
         });

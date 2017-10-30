@@ -5,11 +5,12 @@
         .module('sidenerApp')
         .factory('LoginService', LoginService);
 
-    LoginService.$inject = ['$uibModal'];
+    LoginService.$inject = ['$state', '$uibModal'];
 
-    function LoginService ($uibModal) {
+    function LoginService ($state, $uibModal) {
         var service = {
-            open: open
+            open: open,
+            go: go
         };
 
         var modalInstance = null;
@@ -37,6 +38,10 @@
                 resetModal,
                 resetModal
             );
+        }
+
+        function go () {
+            $state.go('login');
         }
     }
 })();

@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('RequestResetController', RequestResetController);
 
-    RequestResetController.$inject = ['$timeout', 'Auth'];
+    RequestResetController.$inject = ['$timeout', 'Auth', 'LoginService'];
 
-    function RequestResetController ($timeout, Auth) {
+    function RequestResetController ($timeout, Auth, LoginService) {
         var vm = this;
 
         vm.error = null;
@@ -15,6 +15,8 @@
         vm.requestReset = requestReset;
         vm.resetAccount = {};
         vm.success = null;
+
+        vm.login = LoginService.go;
 
         $timeout(function (){angular.element('#email').focus();});
 

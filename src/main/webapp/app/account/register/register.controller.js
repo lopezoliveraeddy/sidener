@@ -14,7 +14,7 @@
         vm.doNotMatch = null;
         vm.error = null;
         vm.errorUserExists = null;
-        vm.login = LoginService.open;
+        vm.login = LoginService.go;
         vm.register = register;
         vm.registerAccount = {};
         vm.success = null;

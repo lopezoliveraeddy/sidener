@@ -1,7 +1,8 @@
 @import "custom-bootstrap";
 
+$electorum: #b0b536;
+
 body {
-    background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
 }
@@ -347,6 +348,36 @@ ui bootstrap tweaks
 Estilos Generales
 ========================================================================== */
 
+#main {
+    position: absolute;
+    background-color: #fafafa;
+    height: 100%;
+}
+#main-public {
+    position: absolute;
+    background-color: $electorum;
+    height: 100%;
+}
+
+.navbar {
+    margin-bottom: 0;
+    background-color: #dddddd;
+}
+
+.navbar-brand {
+    padding: 15px 0 !important;
+}
+
+.form-public {
+    background-color: #fafafa;
+    margin-top: 50px;
+    padding: 20px;
+    h1 {
+        font-size: 25px;
+        margin: 20px 0;
+    }
+}
+
 table.jh-table {
     thead {
         tr {
@@ -391,14 +422,8 @@ Causales
     .btn-xs {
         padding: 5px 5px;
     }
-
-
-
     .close {
         font-size: 2em;
         line-height: 1;
     }
-
-
-
 }
