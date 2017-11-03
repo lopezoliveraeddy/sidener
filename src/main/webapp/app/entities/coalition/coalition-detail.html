@@ -37,9 +37,9 @@
         </dd>
         <dt><span data-translate="sidenerApp.coalition.politicalParties">Political Parties</span></dt>
         <dd>
-            <span ng-repeat="politicalParties in vm.coalition.politicalParties">
-                <a ui-sref="political-party-detail({id: politicalParties.id})">{{politicalParties.name}}</a><br ng-if="!$last"/>
-            </span>
+            <ul ng-repeat="politicalParties in vm.coalition.politicalParties">
+                <li><a ui-sref="political-party-detail({id: politicalParties.id})">{{politicalParties.name}}</a></li>
+            </ul>
         </dd>
     </dl>
 

@@ -13,8 +13,8 @@
             <span data-translate="{{'sidenerApp.CausalType.' + vm.causal.typeCausal}}">{{vm.causal.typeCausal}}</span>
         </dd>
         <dt><span data-translate="sidenerApp.causal.color">Color</span></dt>
-        <dd>
-            <span>{{vm.causal.color}}</span>
+        <dd id="field-causal">
+            <span class="causal-color" ng-style="{'background-color': vm.causal.color}"></span>
         </dd>
         <dt><span data-translate="sidenerApp.causal.published">Published</span></dt>
         <dd>

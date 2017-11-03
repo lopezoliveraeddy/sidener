@@ -27,9 +27,12 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.causal.color" for="field_color">Color</label>
-            <input colorpicker colorpicker-position="right" type="text" class="form-control" name="color" id="field_color"
-                    ng-model="vm.causal.color" ng-style="{ 'background-color': vm.causal.color }"
+            <div id="field-causal">
+                <span class="causal-color" ng-style="{ 'background-color': vm.causal.color }"></span>
+                <input colorpicker colorpicker-position="right" type="text" class="form-control" name="color" id="field_color"
+                    ng-model="vm.causal.color"
                     />
+            </div>
         </div>
 
         <div class="form-group">

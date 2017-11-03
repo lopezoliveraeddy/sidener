@@ -84,36 +84,38 @@
                     </select>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <input type="radio" ng-model="asociated" ng-change="change(asociated)" value="politicalPartyAsociated"><span data-translate="sidenerApp.election.politicalPartyAsociated">Political Party Asociated</span>
+                <div class="form-group">
+                    <label class="control-label">Partido/alianza asociad(a)</label>
+                    <div class="row" ng-init="asociated = checked()">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <input type="radio" ng-model="asociated" ng-change="change(asociated)" value="politicalPartyAsociated"><span data-translate="sidenerApp.election.politicalPartyAsociated">Political Party Asociated</span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <input type="radio" ng-model="asociated" ng-change="change(asociated)" value="coalitionAsociated"><span data-translate="sidenerApp.election.coalitionAsociated">Coalition Asociated</span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <input type="radio" ng-model="asociated" ng-change="change(asociated)" value="independentCandidateAsociated"><span data-translate="sidenerApp.election.independentCandidateAsociated">Independent Candidate Asociated</span>
+                        </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <input type="radio" ng-model="asociated" ng-change="change(asociated)" value="coalitionAsociated"><span data-translate="sidenerApp.election.coalitionAsociated">Coalition Asociated</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <input type="radio" ng-model="asociated" ng-change="change(asociated)" value="independentCandidateAsociated"><span data-translate="sidenerApp.election.independentCandidateAsociated">Independent Candidate Asociated</span>
-                    </div>
-                </div>
-
-                <div ng-switch="asociated">
-                    <div class="form-group" ng-switch-when="politicalPartyAsociated">
-                        <label data-translate="sidenerApp.election.politicalPartyAsociated" for="field_politicalPartyAsociated">Political Party Asociated</label>
-                        <select class="form-control" id="field_politicalPartyAsociated" name="politicalPartyAsociated" ng-model="vm.election.politicalPartyAsociatedId" ng-options="politicalParty.id as politicalParty.name for politicalParty in vm.politicalparties"            >
-                            <option value=""></option>
-                        </select>
-                    </div>
-                    <div class="form-group" ng-switch-when="coalitionAsociated">
-                        <label data-translate="sidenerApp.election.coalitionAsociated" for="field_coalitionAsociated">Coalition Asociated</label>
-                        <select class="form-control" id="field_coalitionAsociated" name="coalitionAsociated" ng-model="vm.election.coalitionAsociatedId" ng-options="coalition.id as coalition.name for coalition in vm.coalitions"            >
-                            <option value=""></option>
-                        </select>
-                    </div>
-                    <div class="form-group" ng-switch-when="independentCandidateAsociated">
-                        <label data-translate="sidenerApp.election.independentCandidateAsociated" for="field_independentCandidateAsociated">Independent Candidate Asociated</label>
-                        <select class="form-control" id="field_independentCandidateAsociated" name="independentCandidateAsociated" ng-model="vm.election.independentCandidateAsociatedId" ng-options="independentCandidate.id as independentCandidate.name for independentCandidate in vm.independentcandidates"            >
-                            <option value=""></option>
-                        </select>
+                    <div>
+                        <div class="form-group" ng-show="asociated == 'politicalPartyAsociated'">
+                            <label data-translate="sidenerApp.election.politicalPartyAsociated" for="field_politicalPartyAsociated">Political Party Asociated</label>
+                            <select class="form-control" id="field_politicalPartyAsociated" name="politicalPartyAsociated" ng-model="vm.election.politicalPartyAsociatedId" ng-options="politicalParty.id as politicalParty.name for politicalParty in vm.politicalparties">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="form-group" ng-show="asociated == 'coalitionAsociated'">
+                            <label data-translate="sidenerApp.election.coalitionAsociated" for="field_coalitionAsociated">Coalition Asociated</label>
+                            <select class="form-control" id="field_coalitionAsociated" name="coalitionAsociated" ng-model="vm.election.coalitionAsociatedId" ng-options="coalition.id as coalition.name for coalition in vm.coalitions">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="form-group" ng-show="asociated == 'independentCandidateAsociated'">
+                            <label data-translate="sidenerApp.election.independentCandidateAsociated" for="field_independentCandidateAsociated">Independent Candidate Asociated</label>
+                            <select class="form-control" id="field_independentCandidateAsociated" name="independentCandidateAsociated" ng-model="vm.election.independentCandidateAsociatedId" ng-options="independentCandidate.id as independentCandidate.name for independentCandidate in vm.independentcandidates">
+                                <option value=""></option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>

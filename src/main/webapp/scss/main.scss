@@ -348,11 +348,6 @@ ui bootstrap tweaks
 Estilos Generales
 ========================================================================== */
 
-#main {
-    position: absolute;
-    background-color: #fafafa;
-    height: 100%;
-}
 #main-public {
     position: absolute;
     background-color: $electorum;
@@ -399,6 +394,10 @@ table.jh-table {
     padding-bottom: 15px;
 }
 
+input[type="radio"] {
+    margin: 10px 10px 10px;
+}
+
 /* ==========================================================================
 Causales
 ========================================================================== */
@@ -415,7 +414,7 @@ Causales
             margin-left: 50px;
         }
     }
-     .ui-select-match-item {
+    .ui-select-match-item {
         display: block;
         text-align: left;
     }
@@ -425,5 +424,19 @@ Causales
     .close {
         font-size: 2em;
         line-height: 1;
+    }
+}
+
+#field-causal {
+    .causal-color {
+        width: 8%;
+        height: 34px;
+        display: inline-block;
+        text-align: center;
+        border: 1px solid #000000;
+    }
+    input {
+        width: 90%;
+        float: right;
     }
 }

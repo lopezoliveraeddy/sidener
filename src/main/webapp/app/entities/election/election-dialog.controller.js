@@ -24,6 +24,26 @@
         vm.causals = Causal.query();
         vm.users = User.query();
 
+        ini();
+
+        function ini() {
+            if(vm.election.politicalPartyAsociatedId !== null) {
+                $scope.checked = function() {
+                    return 'politicalPartyAsociated';
+                }
+            }
+            if(vm.election.coalitionAsociatedId !== null) {
+                $scope.checked = function() {
+                    return 'coalitionAsociated';
+                }
+            }
+            if(vm.election.independentCandidateAsociatedId !== null) {
+                $scope.checked = function() {
+                    return 'independentCandidateAsociated';
+                }
+            }
+        }
+
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
@@ -63,15 +83,21 @@
             console.log(value);
             if(value === 'politicalPartyAsociated') {
                 vm.election.coalitionAsociatedId = null;
+                vm.election.coalitionAsociatedName = null;
                 vm.election.independentCandidateAsociatedId = null;
+                vm.election.independentCandidateAsociatedName = null;
             }
             else if(value === 'coalitionAsociated') {
                 vm.election.politicalPartyAsociatedId = null;
+                vm.election.politicalPartyAsociatedName = null;
                 vm.election.independentCandidateAsociatedId = null;
+                vm.election.independentCandidateAsociatedName = null;
             }
             else if(value === 'independentCandidateAsociated') {
                 vm.election.politicalPartyAsociatedId = null;
+                vm.election.politicalPartyAsociatedName = null;
                 vm.election.coalitionAsociatedId = null;
+                vm.election.coalitionAsociatedName = null;
             }
         }
     }

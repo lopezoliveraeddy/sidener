@@ -1,6 +1,6 @@
 
 <div>
-    <h2>{{vm.election.electionTypeName}} - <span data-translate="{{'sidenerApp.State.' + vm.election.state}}">{{vm.election.state}}</span></h2>
+    <h2>{{vm.election.electionTypeName}} - <span data-translate="{{'sidenerApp.State.' + vm.election.state}}">{{vm.election.state}}</span> -  <span>{{vm.election.periodElection}}</span></h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
@@ -68,10 +68,6 @@
         <dd>
             <span>{{vm.election.recountFundamentRequest}}</span>
         </dd>
-        <dt><span data-translate="sidenerApp.election.published">Published</span></dt>
-        <dd>
-            <span>{{vm.election.published}}</span>
-        </dd>
         <dt><span data-translate="sidenerApp.election.createdDate">Created Date</span></dt>
         <dd>
             <span>{{vm.election.createdDate | date:'medium'}}</span>
@@ -116,8 +112,19 @@
         </dd>
         <dt><span data-translate="sidenerApp.election.causals">Causals</span></dt>
         <dd>
-            <span ng-repeat="causals in vm.election.causals">
-                <a ui-sref="causal-detail({id: causals.id})">{{causals.name}}</a>{{$last ? '' : ', '}}
+            <ul ng-repeat="causals in vm.election.causals">
+                <li><a ui-sref="causal-detail({id: causals.id})">{{causals.name}}</a></li>
+            </ul>
+        </dd>
+        <dt><span data-translate="sidenerApp.election.published">Published</span></dt>
+        <dd>
+            <span>
+                <span ng-if="vm.election.published==true">
+                <i class="fa fa-check fa-2x"></i>
+            </span>
+            <span ng-if="vm.election.published!=true">
+                <i class="fa fa-times fa-2x"></i>
+            </span>
             </span>
         </dd>
         <dt><span data-translate="sidenerApp.election.user">User</span></dt>
