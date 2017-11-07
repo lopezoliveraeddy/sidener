@@ -37,28 +37,9 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="state"><span data-translate="sidenerApp.election.state">State</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="periodElection"><span data-translate="sidenerApp.election.periodElection">Period Election</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="dateElection"><span data-translate="sidenerApp.election.dateElection">Date Election</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="status"><span data-translate="sidenerApp.election.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="dataBase"><span data-translate="sidenerApp.election.dataBase">Data Base</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="insetUrl"><span data-translate="sidenerApp.election.insetUrl">Inset Url</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="incidentSheet"><span data-translate="sidenerApp.election.incidentSheet">Incident Sheet</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="dayRecord"><span data-translate="sidenerApp.election.dayRecord">Day Record</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="demandTemplateUrl"><span data-translate="sidenerApp.election.demandTemplateUrl">Demand Template Url</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="recountTemplateUrl"><span data-translate="sidenerApp.election.recountTemplateUrl">Recount Template Url</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="recountDistrictsRule"><span data-translate="sidenerApp.election.recountDistrictsRule">Recount Districts Rule</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="recountPollingPlaceRule"><span data-translate="sidenerApp.election.recountPollingPlaceRule">Recount Polling Place Rule</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="nameDemandant"><span data-translate="sidenerApp.election.nameDemandant">Name Demandant</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="recountElectoralInstitute"><span data-translate="sidenerApp.election.recountElectoralInstitute">Recount Electoral Institute</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="recountType"><span data-translate="sidenerApp.election.recountType">Recount Type</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="recountFundamentRequest"><span data-translate="sidenerApp.election.recountFundamentRequest">Recount Fundament Request</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="published"><span data-translate="sidenerApp.election.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="createdDate"><span data-translate="sidenerApp.election.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.election.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="electionTypeName"><span data-translate="sidenerApp.election.electionType">Election Type</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="politicalPartyAsociatedName"><span data-translate="sidenerApp.election.politicalPartyAsociated">Political Party Asociated</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="coalitionAsociatedName"><span data-translate="sidenerApp.election.coalitionAsociated">Coalition Asociated</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="independentCandidateAsociatedName"><span data-translate="sidenerApp.election.independentCandidateAsociated">Independent Candidate Asociated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="periodElection"><span data-translate="sidenerApp.election.periodElection">Period Election</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span data-translate="sidenerApp.election.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -66,36 +47,9 @@
                 <tr ng-repeat="election in vm.elections track by election.id">
                     <td><a ui-sref="election-detail({id:election.id})">{{election.id}}</a></td>
                     <td data-translate="{{'sidenerApp.State.' + election.state}}">{{election.state}}</td>
+                    <td><a ui-sref="election-type-detail({id:election.electionTypeId})">{{election.electionTypeName}}</a></td>
                     <td>{{election.periodElection}}</td>
-                    <td>{{election.dateElection | date:'medium'}}</td>
                     <td data-translate="{{'sidenerApp.Status.' + election.status}}">{{election.status}}</td>
-                    <td>{{election.dataBase}}</td>
-                    <td>{{election.insetUrl}}</td>
-                    <td>{{election.incidentSheet}}</td>
-                    <td>{{election.dayRecord}}</td>
-                    <td>{{election.demandTemplateUrl}}</td>
-                    <td>{{election.recountTemplateUrl}}</td>
-                    <td data-translate="{{'sidenerApp.RecountDistrictsRule.' + election.recountDistrictsRule}}">{{election.recountDistrictsRule}}</td>
-                    <td data-translate="{{'sidenerApp.RecountPollingPlaceRule.' + election.recountPollingPlaceRule}}">{{election.recountPollingPlaceRule}}</td>
-                    <td>{{election.nameDemandant}}</td>
-                    <td>{{election.recountElectoralInstitute}}</td>
-                    <td>{{election.recountType}}</td>
-                    <td>{{election.recountFundamentRequest}}</td>
-                    <td>{{election.published}}</td>
-                    <td>{{election.createdDate | date:'medium'}}</td>
-                    <td>{{election.updatedDate | date:'medium'}}</td>
-                    <td>
-                        <a ui-sref="election-type-detail({id:election.electionTypeId})">{{election.electionTypeName}}</a>
-                    </td>
-                    <td>
-                        <a ui-sref="political-party-detail({id:election.politicalPartyAsociatedId})">{{election.politicalPartyAsociatedName}}</a>
-                    </td>
-                    <td>
-                        <a ui-sref="coalition-detail({id:election.coalitionAsociatedId})">{{election.coalitionAsociatedName}}</a>
-                    </td>
-                    <td>
-                        <a ui-sref="independent-candidate-detail({id:election.independentCandidateAsociatedId})">{{election.independentCandidateAsociatedName}}</a>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
@@ -103,18 +57,6 @@
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.view"></span>
-                            </button>
-                            <button type="submit"
-                                    ui-sref="election.edit({id:election.id})"
-                                    class="btn btn-primary btn-sm">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
-                            </button>
-                            <button type="submit"
-                                    ui-sref="election.delete({id:election.id})"
-                                    class="btn btn-danger btn-sm">
-                                <span class="glyphicon glyphicon-remove-circle"></span>
-                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
                             </button>
                             <button type="submit"
                                     ui-sref="election-district({id:election.id})"

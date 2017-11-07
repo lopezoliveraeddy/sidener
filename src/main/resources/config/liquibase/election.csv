@@ -1,2 +1,2 @@
 id,state,period_election,date_election,status,data_base,inset_url,incident_sheet,day_record,demand_template_url,recount_template_url,recount_districts_rule,recount_polling_place_rule,published,created_date,updated_date,election_type_id
-1,AGU,2015-2016,2017-07-05 00:00:00.000,COMPLETE,null,null,null,null,null,null,LESS_1,LESS_1,true,2018-12-31 23:59:59.999,2018-12-31 23:59:59.999,2
+1,AGU,2015-2016,2017-07-05 00:00:00.000,COMPLETE,null,null,null,null,null,null,LESS_1,LESS_1,true,2018-12-31 23:59:59.999,2018-12-31 23:59:59.999,4

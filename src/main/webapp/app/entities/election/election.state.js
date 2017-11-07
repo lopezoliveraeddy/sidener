@@ -188,7 +188,7 @@
             }]
         })
         .state('election.delete', {
-            parent: 'election',
+            parent: 'election-detail',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']
@@ -205,7 +205,7 @@
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('election', null, { reload: 'election' });
+                    $state.go('^', null, { reload: 'election' });
                 }, function() {
                     $state.go('^');
                 });

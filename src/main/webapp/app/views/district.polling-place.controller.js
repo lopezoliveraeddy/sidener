@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('DistrictPollingPlaceController', DistrictPollingPlaceController);
 
-    DistrictPollingPlaceController.$inject = ['$state', '$stateParams', 'DistrictPollingPlaces', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    DistrictPollingPlaceController.$inject = ['$state', '$stateParams', 'District', 'Election', 'DistrictPollingPlaces', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function DistrictPollingPlaceController($state, $stateParams, DistrictPollingPlaces, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function DistrictPollingPlaceController($state, $stateParams, District, Election, DistrictPollingPlaces, ParseLinks, AlertService, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -18,6 +18,20 @@
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.loadAll = loadAll;
 
+        // Datos del Distrito
+        vm.loadDistrct = loadDistrict;
+        vm.district = [];
+
+        // Datos de la Elección
+        vm.loadElection = loadElection;
+        vm.election = [];
+
+        // Causales
+        vm.causals = [];
+        vm.causalsRecount = [];
+        vm.causalsNullity = [];
+
+        loadDistrict();
         loadAll();
 
         function loadAll () {
@@ -45,6 +59,37 @@
                 page: vm.page,
                 id: $stateParams.id
             });
+        }
+
+        function loadDistrict() {
+            District.get({ id : $stateParams.id }, onSuccess, onError);
+            function onSuccess(data) {
+                vm.district = data;
+                // Cargamos Datos de la Elección
+                loadElection(vm.district.electionId);
+            }
+            function onError(error) {
+                AlertService.error(error.data.message);
+            }
+        }
+
+        function loadElection(idElection) {
+            Election.get({ id : idElection }, onSuccess, onError);
+            function onSuccess(data) {
+                vm.election = data;
+                vm.causals = vm.election.causals;
+                for(var i = 0; i < vm.causals.length; i++) {
+                    if(vm.causals[i].typeCausal === "RECOUNT") {
+                        vm.causalsRecount.push(vm.causals[i]);
+                    }
+                    if(vm.causals[i].typeCausal === "NULLITY") {
+                        vm.causalsNullity.push(vm.causals[i]);
+                    }
+                }
+            }
+            function onError(error) {
+                AlertService.error(error.data.message);
+            }
         }
 
     }

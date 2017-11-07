@@ -112,8 +112,11 @@
         </dd>
         <dt><span data-translate="sidenerApp.election.causals">Causals</span></dt>
         <dd>
-            <ul ng-repeat="causals in vm.election.causals">
-                <li><a ui-sref="causal-detail({id: causals.id})">{{causals.name}}</a></li>
+            <ul ng-repeat="causals in vm.election.causals" id="field-causals">
+                <li>
+                    <span class="causal-color" ng-style="{'background-color': causals.color}"></span>
+                    <span class="causal-description">{{causals.name}}</span>
+                </li>
             </ul>
         </dd>
         <dt><span data-translate="sidenerApp.election.published">Published</span></dt>
@@ -144,5 +147,11 @@
     <button type="button" ui-sref="election-detail.edit({id:vm.election.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+    <button type="submit"
+            ui-sref="election.delete({id:vm.election.id})"
+            class="btn btn-danger btn-sm">
+        <span class="glyphicon glyphicon-remove-circle"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
     </button>
 </div>

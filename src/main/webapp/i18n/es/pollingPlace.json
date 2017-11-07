@@ -40,7 +40,12 @@
             "createdDate": "Creado",
             "updatedDate": "Actualizado",
             "election": "Elección",
-            "district": "Distrito"
+            "district": "Distrito",
+            "politicalPartyFirstPlace": "Partido Político 1er Lugar",
+            "politicalPartySecondPlace": "Partido Político 2do Lugar",
+            "difference": "Diferencia",
+            "description": "Descripción",
+            "causals": "Causales"
         }
     }
 }

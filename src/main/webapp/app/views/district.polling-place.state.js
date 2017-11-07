@@ -41,6 +41,7 @@
                     $translatePartialLoader.addPart('pollingPlace');
                     $translatePartialLoader.addPart('district');
                     $translatePartialLoader.addPart('pollingPlaceType');
+                    $translatePartialLoader.addPart('election');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]

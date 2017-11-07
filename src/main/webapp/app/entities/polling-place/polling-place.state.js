@@ -46,7 +46,7 @@
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('pollingPlace');
-                    $translatePartialLoader.addPart('typePollingPlace');
+                    $translatePartialLoader.addPart('pollingPlaceType');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]

@@ -255,20 +255,17 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="form-group">
-                    <label data-translate="sidenerApp.election.causals" for="field_causals">Causals</label>
-                    <ui-select multiple ng-model="vm.election.causals" id="field_causals" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true" class="causal">
+                    <label data-translate="sidenerApp.election.causals" for="field-causals">Causals</label>
+                    <ui-select multiple ng-model="vm.election.causals" id="field-causals" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true" class="causal">
                         <ui-select-match placeholder="Seleccion de causales:">
-                            <div class="causal-color" ng-style="{'background-color': $item.color}">
-                                <span>{{$item.name}}</span>
-                            </div>
+                            <span class="causal-color" ng-style="{'background-color': $item.color}"></span>
+                            <span class="causal-description">{{$item.name}}</span>
                         </ui-select-match>
                         <ui-select-choices repeat="causal in vm.causals | propsFilter: {name: $select.search}" position='down'>
-                            <div class="causal-color" ng-style="{'background-color': causal.color}">
-                                <span ng-bind-html="causal.name | highlight: $select.search"></span>
-                            </div>
+                            <span class="causal-color" ng-style="{'background-color': causal.color}"></span>
+                            <span class="causal-description" ng-bind-html="causal.name | highlight: $select.search"></span>
                         </ui-select-choices>
                     </ui-select>
-
                 </div>
             </div>
         </div>

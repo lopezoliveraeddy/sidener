@@ -17,6 +17,7 @@
         vm.loadAll = loadAll;
 
         // Datos de la Elección
+        vm.loadElection = loadElection;
         vm.election = [];
 
         loadElection();

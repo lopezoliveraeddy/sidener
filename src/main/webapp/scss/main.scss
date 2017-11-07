@@ -402,7 +402,8 @@ input[type="radio"] {
 Causales
 ========================================================================== */
 
-#field_causals {
+#field-causals {
+    list-style: none;
     .causal-color {
         width: 30px;
         height: 30px;
@@ -410,16 +411,57 @@ Causales
         border-radius: 50%;
         text-align: center;
         line-height: 30px;
-        span {
-            margin-left: 50px;
-        }
+        border: 1px solid #CCCCCC;
+    }
+    .causal-description {
+        display: inline-block;
+        line-height: 30px;
+        vertical-align: top;
+        margin-left: 15px;
+        width: 90%;
+        white-space: normal;
     }
     .ui-select-match-item {
         display: block;
         text-align: left;
     }
     .btn-xs {
-        padding: 5px 5px;
+        padding: 5px 5px 0;
+    }
+    .close {
+        font-size: 2em;
+        line-height: 1;
+    }
+}
+
+#select-field-causals {
+    list-style: none;
+    padding-left: 20px;
+    .causal-color {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 30px;
+        border: 1px solid #CCCCCC;
+    }
+    .causal-description {
+        display: inline-block;
+        line-height: 30px;
+        vertical-align: top;
+        margin-left: 15px;
+        width: 90%;
+        white-space: normal;
+    }
+    .ui-select-match-item {
+        float: left;
+    }
+    .ui-select-choices-row-inner {
+        padding: 5px 20px;
+    }
+    .btn-xs {
+        padding: 5px 5px 0;
     }
     .close {
         font-size: 2em;
@@ -433,7 +475,7 @@ Causales
         height: 34px;
         display: inline-block;
         text-align: center;
-        border: 1px solid #000000;
+        border: 1px solid #CCCCCC;
     }
     input {
         width: 90%;
