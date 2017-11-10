@@ -28,7 +28,7 @@
                 if(vm.account === null) {
                     $state.go('login');
                 }
-                $state.go('election');
+                $state.go('election-list');
             });
 
         }

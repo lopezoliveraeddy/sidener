@@ -1,6 +1,7 @@
 {
     "global": {
         "title": "SIDENER",
+        "description": "Sistema de Detección de Nulidades Electorales en Casilla y Recuento",
         "browsehappy": "Está usando un navegador <strong>no actualizado</strong>. Por favor, <a href=\"http://browsehappy.com/?locale=en\">actualice su navegador</a> para mejorar su experiencia.",
         "menu": {
             "home": "Inicio",

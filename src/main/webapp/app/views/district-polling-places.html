@@ -19,7 +19,8 @@
             <tr ng-repeat="pollingPlace in vm.pollingPlaces track by pollingPlace.id">
                 <td>{{pollingPlace.section}}</td>
                 <td>{{pollingPlace.town}}</td>
-                <td><span data-translate="{{'sidenerApp.PollingPlaceType.' + pollingPlace.typePollingPlace}}">{{pollingPlace.typePollingPlace</span><span> - {{pollingPlace.typeNumber}}</span></td>
+                <!--<td><span data-translate="{{'sidenerApp.PollingPlaceType.' + pollingPlace.typePollingPlace}}">{{pollingPlace.typePollingPlace</span><span> - {{pollingPlace.typeNumber}}</span></td>-->
+                <td><span ng-bind="pollingPlaceType(pollingPlace.typePollingPlace, pollingPlace.typeNumber)"></span></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -36,7 +37,6 @@
                                 <span class="causal-description" ng-bind-html="causal.name | highlight: $select.search"></span>
                             </ui-select-choices>
                         </ui-select>
-
                     </div>
                 </td>
                 <td class="text-right">

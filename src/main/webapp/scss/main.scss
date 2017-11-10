@@ -1,6 +1,7 @@
 @import "custom-bootstrap";
 
 $electorum: #b0b536;
+$electorumBold: #7D8203;
 
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -356,11 +357,40 @@ Estilos Generales
 
 .navbar {
     margin-bottom: 0;
-    background-color: #dddddd;
+    background-color: $electorum;
 }
 
 .navbar-brand {
     padding: 15px 0 !important;
+    .navbar-title {
+        color: #FFFFFF;
+    }
+    .navbar-description {
+        font-size: 12px;
+        padding: 0 10px;
+        color: #FFFFFF;
+    }
+}
+
+.navbar-default {
+    .navbar-nav > li > a {
+        color: #FFFFFF;
+    }
+}
+
+.navbar-default {
+    .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+        background-color: $electorumBold;
+        color: #FFFFFF;
+    }
+    .navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
+        background-color: $electorumBold;
+        color: #FFFFFF;
+    }
+}
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    background-color: $electorumBold;
 }
 
 .form-public {
@@ -396,6 +426,12 @@ table.jh-table {
 
 input[type="radio"] {
     margin: 10px 10px 10px;
+}
+
+.fa {
+    &.medium {
+        font-size: 2em;
+    }
 }
 
 /* ==========================================================================
@@ -482,3 +518,4 @@ Causales
         float: right;
     }
 }
+

@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('DistrictPollingPlaceController', DistrictPollingPlaceController);
 
-    DistrictPollingPlaceController.$inject = ['$state', '$stateParams', 'District', 'Election', 'DistrictPollingPlaces', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    DistrictPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'District', 'Election', 'DistrictPollingPlaces', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function DistrictPollingPlaceController($state, $stateParams, District, Election, DistrictPollingPlaces, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function DistrictPollingPlaceController($scope, $state, $stateParams, District, Election, DistrictPollingPlaces, ParseLinks, AlertService, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -35,7 +35,10 @@
         loadAll();
 
         function loadAll () {
-            DistrictPollingPlaces.get({ id : $stateParams.id }, onSuccess, onError);
+            DistrictPollingPlaces.get({
+                id : $stateParams.id,
+                page: pagingParams.page - 1
+            }, onSuccess, onError);
 
             function onSuccess(data, headers) {
                 vm.links = ParseLinks.parse(headers('link'));
@@ -91,6 +94,23 @@
                 AlertService.error(error.data.message);
             }
         }
+
+        $scope.pollingPlaceType = function (typePollingPlace, typeNumber) {
+            switch (typePollingPlace) {
+                case 'BASIC':
+                    return 'B';
+                    break;
+                case 'CONTIGUOUS':
+                    return 'C'+typeNumber;
+                    break;
+                case 'EXTRAORDINARY':
+                    return 'E'+typeNumber;
+                    break;
+                case 'SPECIAL':
+                    return 'S'+typeNumber;
+                    break;
+            }
+        };
 
     }
 })();
