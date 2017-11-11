@@ -61,6 +61,7 @@ public class CacheConfiguration {
             cm.createCache(electorum.sidener.domain.Causal.class.getName() + ".causalDescriptions", jcacheConfiguration);
             cm.createCache(electorum.sidener.domain.CausalDescription.class.getName(), jcacheConfiguration);
             cm.createCache(electorum.sidener.domain.Election.class.getName() + ".users", jcacheConfiguration);
+            cm.createCache(electorum.sidener.domain.PollingPlace.class.getName() + ".causals", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

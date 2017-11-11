@@ -9,6 +9,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 import electorum.sidener.domain.enumeration.TypePollingPlace;
@@ -172,6 +174,13 @@ public class PollingPlace implements Serializable {
     @Column(name = "alternate_three")
     private String alternateThree;
 
+    /**
+     * Acta de Escrutinio y Cómputo
+     */
+    @ApiModelProperty(value = "Acta de Escrutinio y Cómputo")
+    @Column(name = "record_count")
+    private String recordCount;
+
     @Column(name = "published")
     private Boolean published;
 
@@ -186,6 +195,13 @@ public class PollingPlace implements Serializable {
 
     @ManyToOne
     private District district;
+
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "polling_place_causals",
+               joinColumns = @JoinColumn(name="polling_places_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="causals_id", referencedColumnName="id"))
+    private Set<Causal> causals = new HashSet<>();
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
     public Long getId() {
@@ -456,6 +472,19 @@ public class PollingPlace implements Serializable {
         this.alternateThree = alternateThree;
     }
 
+    public String getRecordCount() {
+        return recordCount;
+    }
+
+    public PollingPlace recordCount(String recordCount) {
+        this.recordCount = recordCount;
+        return this;
+    }
+
+    public void setRecordCount(String recordCount) {
+        this.recordCount = recordCount;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -520,6 +549,29 @@ public class PollingPlace implements Serializable {
     public void setDistrict(District district) {
         this.district = district;
     }
+
+    public Set<Causal> getCausals() {
+        return causals;
+    }
+
+    public PollingPlace causals(Set<Causal> causals) {
+        this.causals = causals;
+        return this;
+    }
+
+    public PollingPlace addCausals(Causal causal) {
+        this.causals.add(causal);
+        return this;
+    }
+
+    public PollingPlace removeCausals(Causal causal) {
+        this.causals.remove(causal);
+        return this;
+    }
+
+    public void setCausals(Set<Causal> causals) {
+        this.causals = causals;
+    }
     // jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not remove
 
     @Override
@@ -566,6 +618,7 @@ public class PollingPlace implements Serializable {
             ", alternateOne='" + getAlternateOne() + "'" +
             ", alternateTwo='" + getAlternateTwo() + "'" +
             ", alternateThree='" + getAlternateThree() + "'" +
+            ", recordCount='" + getRecordCount() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

@@ -28,7 +28,7 @@
     <!--[if lt IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <page-ribbon></page-ribbon>
+    <!--<page-ribbon></page-ribbon>-->
     <div ui-view="navbar" ng-cloak></div>
     <div ui-view="content">
         <!-- Angular views -->
@@ -91,15 +91,15 @@
     <!-- build:js app/app.js  -->
     <!-- inject:js -->
     <script src="app/app.module.js"></script>
+    <script src="app/views/polling-place.recount.state.js"></script>
+    <script src="app/views/polling-place.recount.service.js"></script>
+    <script src="app/views/polling-place.recount.controller.js"></script>
     <script src="app/views/election.list.state.js"></script>
     <script src="app/views/election.list.service.js"></script>
     <script src="app/views/election.list.controller.js"></script>
-    <script src="app/views/election.district.state.js"></script>
-    <script src="app/views/election.district.service.js"></script>
-    <script src="app/views/election.district.controller.js"></script>
-    <script src="app/views/district.polling-place.state.js"></script>
-    <script src="app/views/district.polling-place.service.js"></script>
-    <script src="app/views/district.polling-place.controller.js"></script>
+    <script src="app/views/district.recount.state.js"></script>
+    <script src="app/views/district.recount.service.js"></script>
+    <script src="app/views/district.recount.controller.js"></script>
     <script src="app/services/user/user.service.js"></script>
     <script src="app/services/profiles/profile.service.js"></script>
     <script src="app/services/profiles/page-ribbon.directive.js"></script>

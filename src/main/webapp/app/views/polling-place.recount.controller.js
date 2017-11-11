@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('DistrictPollingPlaceController', DistrictPollingPlaceController);
 
-    DistrictPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'District', 'Election', 'DistrictPollingPlaces', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    DistrictPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'District', 'Election', 'DistrictPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
 
-    function DistrictPollingPlaceController($scope, $state, $stateParams, District, Election, DistrictPollingPlaces, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function DistrictPollingPlaceController($scope, $state, $stateParams, AlertService, District, Election, DistrictPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -111,6 +111,21 @@
                     break;
             }
         };
+
+        // Actualización dada la selección de causales
+        $scope.updateCausals = function (pollingPlace) {
+            vm.isSaving = true;
+            PollingPlace.update(pollingPlace, onSaveSuccess, onSaveError);
+        };
+
+        function onSaveSuccess (result) {
+            $scope.$emit('sidenerApp:pollingPlaceUpdate', result);
+            vm.isSaving = false;
+        }
+
+        function onSaveError () {
+            vm.isSaving = false;
+        }
 
     }
 })();

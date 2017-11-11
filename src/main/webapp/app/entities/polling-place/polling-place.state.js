@@ -46,7 +46,7 @@
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('pollingPlace');
-                    $translatePartialLoader.addPart('pollingPlaceType');
+                    $translatePartialLoader.addPart('typePollingPlace');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
@@ -146,6 +146,7 @@
                                 alternateOne: null,
                                 alternateTwo: null,
                                 alternateThree: null,
+                                recordCount: null,
                                 published: null,
                                 createdDate: null,
                                 updatedDate: null,

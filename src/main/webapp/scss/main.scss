@@ -355,6 +355,7 @@ Estilos Generales
     height: 100%;
 }
 
+/* Menú Principal */
 .navbar {
     margin-bottom: 0;
     background-color: $electorum;
@@ -403,6 +404,8 @@ Estilos Generales
     }
 }
 
+/* Tablas */
+
 table.jh-table {
     thead {
         tr {
@@ -412,6 +415,14 @@ table.jh-table {
         }
     }
 }
+
+.table-container {
+    background-color: #FFFFFF;
+    border: 1px solid #E6E9ED;
+    padding: 15px;
+}
+
+/* Selector Múltiple */
 
 .ui-select-match-item.btn:hover {
     transform: none !important;

@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('PollingPlaceDialogController', PollingPlaceDialogController);
 
-    PollingPlaceDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'PollingPlace', 'Election', 'District'];
+    PollingPlaceDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'PollingPlace', 'Election', 'District', 'Causal'];
 
-    function PollingPlaceDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, PollingPlace, Election, District) {
+    function PollingPlaceDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, PollingPlace, Election, District, Causal) {
         var vm = this;
 
         vm.pollingPlace = entity;
@@ -19,6 +19,7 @@
         vm.save = save;
         vm.elections = Election.query();
         vm.districts = District.query();
+        vm.causals = Causal.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

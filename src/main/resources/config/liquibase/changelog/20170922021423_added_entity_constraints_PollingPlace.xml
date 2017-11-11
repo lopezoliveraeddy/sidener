@@ -20,5 +20,16 @@
                                  referencedColumnNames="id"
                                  referencedTableName="district"/>
 
+        <addForeignKeyConstraint baseColumnNames="polling_places_id"
+                                 baseTableName="polling_place_causals"
+                                 constraintName="fk_polling_place_causals_polling_places_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="polling_place"/>
+        <addForeignKeyConstraint baseColumnNames="causals_id"
+                                 baseTableName="polling_place_causals"
+                                 constraintName="fk_polling_place_causals_causals_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="causal"/>
+        
     </changeSet>
 </databaseChangeLog>

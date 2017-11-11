@@ -73,7 +73,7 @@ public class PollingPlaceService {
     @Transactional(readOnly = true)
     public PollingPlaceDTO findOne(Long id) {
         log.debug("Request to get PollingPlace : {}", id);
-        PollingPlace pollingPlace = pollingPlaceRepository.findOne(id);
+        PollingPlace pollingPlace = pollingPlaceRepository.findOneWithEagerRelationships(id);
         return pollingPlaceMapper.toDto(pollingPlace);
     }
 

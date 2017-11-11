@@ -58,6 +58,8 @@ public class PollingPlaceDTO implements Serializable {
 
     private String alternateThree;
 
+    private String recordCount;
+
     private Boolean published;
 
     private ZonedDateTime createdDate;
@@ -67,6 +69,8 @@ public class PollingPlaceDTO implements Serializable {
     private Long electionId;
 
     private Long districtId;
+
+    private Set<CausalDTO> causals = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -236,6 +240,14 @@ public class PollingPlaceDTO implements Serializable {
         this.alternateThree = alternateThree;
     }
 
+    public String getRecordCount() {
+        return recordCount;
+    }
+
+    public void setRecordCount(String recordCount) {
+        this.recordCount = recordCount;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -274,6 +286,14 @@ public class PollingPlaceDTO implements Serializable {
 
     public void setDistrictId(Long districtId) {
         this.districtId = districtId;
+    }
+
+    public Set<CausalDTO> getCausals() {
+        return causals;
+    }
+
+    public void setCausals(Set<CausalDTO> causals) {
+        this.causals = causals;
     }
 
     @Override
@@ -321,6 +341,7 @@ public class PollingPlaceDTO implements Serializable {
             ", alternateOne='" + getAlternateOne() + "'" +
             ", alternateTwo='" + getAlternateTwo() + "'" +
             ", alternateThree='" + getAlternateThree() + "'" +
+            ", recordCount='" + getRecordCount() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

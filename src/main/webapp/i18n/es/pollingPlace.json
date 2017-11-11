@@ -45,7 +45,11 @@
             "politicalPartySecondPlace": "Partido Político 2do Lugar",
             "difference": "Diferencia",
             "description": "Descripción",
-            "causals": "Causales"
+            "causals": "Causales",
+            "recordCount": "Acta de Escutinio y Cómputo",
+            "recordCount": {
+                "watch": "Ver acta"
+            }
         }
     }
 }

@@ -84,6 +84,10 @@
         <dd>
             <span>{{vm.pollingPlace.alternateThree}}</span>
         </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.recordCount">Record Count</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.recordCount}}</span>
+        </dd>
         <dt><span data-translate="sidenerApp.pollingPlace.published">Published</span></dt>
         <dd>
             <span>{{vm.pollingPlace.published}}</span>
@@ -103,6 +107,12 @@
         <dt><span data-translate="sidenerApp.pollingPlace.district">District</span></dt>
         <dd>
             <a ui-sref="district-detail({id:vm.pollingPlace.districtId})">{{vm.pollingPlace.districtId}}</a>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.causals">Causals</span></dt>
+        <dd>
+            <span ng-repeat="causals in vm.pollingPlace.causals">
+                <a ui-sref="causal-detail({id: causals.id})">{{causals.name}}</a>{{$last ? '' : ', '}}
+            </span>
         </dd>
     </dl>
 

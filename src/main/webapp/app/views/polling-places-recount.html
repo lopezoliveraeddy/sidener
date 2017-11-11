@@ -1,0 +1,66 @@
+<div>
+    <h2><span data-translate="sidenerApp.district.detail.title">District</span> - {{vm.district.romanNumber + ' ' + vm.district.districtHead}}</h2>
+    <jhi-alert></jhi-alert>
+
+    <div class="table-container">
+        <div class="table-responsive table-bordered">
+            <table class="jh-table table table-striped table-bordered">
+                <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th><span data-translate="sidenerApp.pollingPlace.section">Section</span></th>
+                    <th><span data-translate="sidenerApp.pollingPlace.town">Town</span></th>
+                    <th><span data-translate="sidenerApp.pollingPlace.typePollingPlace">Type Polling Place</span></th>
+                    <th><span data-translate="sidenerApp.pollingPlace.politicalPartyFirstPlace">Political Party First Place</span></th>
+                    <th><span data-translate="sidenerApp.pollingPlace.politicalPartySecondPlace">Political Party Second Place</span></th>
+                    <th><span data-translate="sidenerApp.pollingPlace.difference">Difference</span></th>
+                    <th><span data-translate="sidenerApp.pollingPlace.nullVotes">Null Votes</span></th>
+                    <th><span data-translate="sidenerApp.pollingPlace.description">Description</span>
+                    <th><span data-translate="sidenerApp.pollingPlace.recordCount.watch">Watch Record Count</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="pollingPlace in vm.pollingPlaces track by pollingPlace.id">
+                    <td><a ui-sref="polling-place-detail({id:pollingPlace.id})" class="btn btn-info">{{pollingPlace.section}}</a></td>
+                    <!--<td><span data-translate="{{'sidenerApp.PollingPlaceType.' + pollingPlace.typePollingPlace}}">{{pollingPlace.typePollingPlace</span><span> - {{pollingPlace.typeNumber}}</span></td>-->
+                    <td><span ng-bind="pollingPlaceType(pollingPlace.typePollingPlace, pollingPlace.typeNumber)"></span></td>
+                    <td>{{pollingPlace.town}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{pollingPlace.nullVotes}}</td>
+                    <td>
+                        <div class="form-group">
+                            <label data-translate="sidenerApp.pollingPlace.causals" for="select-field-causals">Causals</label>
+                            <ui-select multiple ng-model="pollingPlace.causals" id="select-field-causals" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true">
+                                <ui-select-match>
+                                    <span class="causal-color" ng-style="{'background-color': $item.color}" uib-tooltip="{{$item.name}}" tooltip-placement="left"></span>
+                                </ui-select-match>
+                                <ui-select-choices repeat="causal in vm.causalsRecount" position='down'>
+                                    <span class="causal-color" ng-style="{'background-color': causal.color}"></span>
+                                    <span class="causal-description" ng-bind-html="causal.name | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <button type="submit" ng-click="updateCausals(pollingPlace)" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+                        </button>
+                    </td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    ui-sref="polling-place-detail({id:pollingPlace.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+            <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+        </div>
+    </div>
+</div>

@@ -18,7 +18,7 @@
             },
             views: {
                 'content@private': {
-                    templateUrl: 'app/views/district-polling-places.html',
+                    templateUrl: 'app/views/polling-places-recount.html',
                     controller: 'DistrictPollingPlaceController',
                     controllerAs: 'vm'
                 }

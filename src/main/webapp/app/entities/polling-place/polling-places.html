@@ -37,8 +37,7 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="town"><span data-translate="sidenerApp.pollingPlace.town">Town</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="typePollingPlace"><span data-translate="sidenerApp.pollingPlace.typePollingPlace">Type Polling Place</span></th>
-
+                    <th jh-sort-by="typePollingPlace"><span data-translate="sidenerApp.pollingPlace.typePollingPlace">Type Polling Place</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="typeNumber"><span data-translate="sidenerApp.pollingPlace.typeNumber">Type Number</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="section"><span data-translate="sidenerApp.pollingPlace.section">Section</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="address"><span data-translate="sidenerApp.pollingPlace.address">Address</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -57,6 +56,7 @@
                     <th jh-sort-by="alternateOne"><span data-translate="sidenerApp.pollingPlace.alternateOne">Alternate One</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="alternateTwo"><span data-translate="sidenerApp.pollingPlace.alternateTwo">Alternate Two</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="alternateThree"><span data-translate="sidenerApp.pollingPlace.alternateThree">Alternate Three</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="recordCount"><span data-translate="sidenerApp.pollingPlace.recordCount">Record Count</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.pollingPlace.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="createdDate"><span data-translate="sidenerApp.pollingPlace.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.pollingPlace.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -69,7 +69,7 @@
                 <tr ng-repeat="pollingPlace in vm.pollingPlaces track by pollingPlace.id">
                     <td><a ui-sref="polling-place-detail({id:pollingPlace.id})">{{pollingPlace.id}}</a></td>
                     <td>{{pollingPlace.town}}</td>
-                    <td data-translate="{{'sidenerApp.PollingPlaceType.' + pollingPlace.typePollingPlace}}">{{pollingPlace.typePollingPlace}}</td>
+                    <td data-translate="{{'sidenerApp.TypePollingPlace.' + pollingPlace.typePollingPlace}}">{{pollingPlace.typePollingPlace}}</td>
                     <td>{{pollingPlace.typeNumber}}</td>
                     <td>{{pollingPlace.section}}</td>
                     <td>{{pollingPlace.address}}</td>
@@ -88,6 +88,7 @@
                     <td>{{pollingPlace.alternateOne}}</td>
                     <td>{{pollingPlace.alternateTwo}}</td>
                     <td>{{pollingPlace.alternateThree}}</td>
+                    <td>{{pollingPlace.recordCount}}</td>
                     <td>{{pollingPlace.published}}</td>
                     <td>{{pollingPlace.createdDate | date:'medium'}}</td>
                     <td>{{pollingPlace.updatedDate | date:'medium'}}</td>

@@ -102,6 +102,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="record_count" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="published" type="bit">
                 <constraints nullable="true" />
             </column>
@@ -126,6 +130,17 @@
         </createTable>
         <dropDefaultValue tableName="polling_place" columnName="created_date" columnDataType="datetime"/>
         <dropDefaultValue tableName="polling_place" columnName="updated_date" columnDataType="datetime"/>
+        
+        <createTable tableName="polling_place_causals">
+            <column name="causals_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="polling_places_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="polling_places_id, causals_id" tableName="polling_place_causals"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

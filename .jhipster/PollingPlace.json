@@ -12,6 +12,14 @@
             "relationshipName": "district",
             "otherEntityName": "district",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "causals",
+            "otherEntityName": "causal",
+            "otherEntityField": "name",
+            "ownerSide": true
         }
     ],
     "fields": [
@@ -116,6 +124,11 @@
         {
             "fieldName": "alternateThree",
             "javadoc": "Tercer Alternativo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "recordCount",
+            "javadoc": "Acta de Escrutinio y Cómputo",
             "fieldType": "String"
         },
         {

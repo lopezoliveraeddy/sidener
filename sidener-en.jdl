@@ -150,6 +150,8 @@ entity PollingPlace {
     alternateTwo String,
     /* Tercer Alternativo */
     alternateThree String,
+    /* Acta de Escrutinio y Cómputo */
+    recordCount String,
 
     published Boolean,
     createdDate ZonedDateTime,
@@ -213,6 +215,7 @@ relationship ManyToMany {
   	Election{independentCandidates(name)} to IndependentCandidate,
 	Election{coalitions(name)} to Coalition,
 	Election{causals(name)} to Causal,
+	PollingPlace{causals(name)} to Causal,
 	Coalition{politicalParties(name)} to PoliticalParty,
     Causal{causalDescription(text)} to CausalDescription,
     Election{user(login)} to User

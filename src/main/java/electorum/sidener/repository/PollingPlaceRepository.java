@@ -6,7 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
-
+import org.springframework.data.repository.query.Param;
+import java.util.List;
 
 /**
  * Spring Data JPA repository for the PollingPlace entity.
@@ -14,6 +15,11 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface PollingPlaceRepository extends JpaRepository<PollingPlace, Long> {
+    @Query("select distinct polling_place from PollingPlace polling_place left join fetch polling_place.causals")
+    List<PollingPlace> findAllWithEagerRelationships();
+
+    @Query("select polling_place from PollingPlace polling_place left join fetch polling_place.causals where polling_place.id =:id")
+    PollingPlace findOneWithEagerRelationships(@Param("id") Long id);
 
     Page<PollingPlace> findByDistrictId(Long id, Pageable pageable);
 
