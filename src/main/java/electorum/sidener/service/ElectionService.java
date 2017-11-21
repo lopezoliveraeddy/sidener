@@ -58,9 +58,9 @@ public class ElectionService {
      *  @return the list of entities
      */
     @Transactional(readOnly = true)
-    public Page<ElectionDTO> findByUserIsCurrentUser(Pageable pageable) {
+    public Page<ElectionDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Elections");
-        return electionRepository.findByUserIsCurrentUser(pageable)
+        return electionRepository.findAll(pageable)
             .map(electionMapper::toDto);
     }
 
