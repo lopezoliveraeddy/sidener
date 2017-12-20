@@ -1,9 +1,0 @@
-{
-    "sidenerApp": {
-        "DocumentStatus" : {
-            "null": "",
-            "TEMPORARY": "TEMPORARY",
-            "PERMANENT": "PERMANENT"
-        }
-    }
-}

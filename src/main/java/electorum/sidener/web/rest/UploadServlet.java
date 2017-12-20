@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import electorum.sidener.config.ApplicationProperties;
 import electorum.sidener.domain.enumeration.ArchiveStatus;
-import electorum.sidener.domain.enumeration.DocumentStatus;
 import electorum.sidener.service.FileManagerService;
 import electorum.sidener.service.StorageException;
 import electorum.sidener.service.dto.ArchiveDTO;

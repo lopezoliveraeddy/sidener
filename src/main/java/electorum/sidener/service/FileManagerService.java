@@ -18,7 +18,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import electorum.sidener.config.ApplicationProperties;
 import electorum.sidener.domain.FlowInfo;
 import electorum.sidener.domain.enumeration.ArchiveStatus;
-import electorum.sidener.domain.enumeration.DocumentStatus;
 import electorum.sidener.service.dto.ArchiveDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -171,7 +170,7 @@ public class FileManagerService {
             ArchiveDTO archiveDTO = (ArchiveDTO) iterator.next();
             try {
                 File file = new File(archiveDTO.getPath());
-                if(!file.isDirectory() && archiveDTO.getStatus().equals(DocumentStatus.TEMPORARY)) {
+                if(!file.isDirectory() && archiveDTO.getStatus().equals(ArchiveStatus.TEMPORARY)) {
                     if(file.exists()) {
                         if(file.delete()) {
                             log.debug("Delete file: success. File: {}", file.getName());
