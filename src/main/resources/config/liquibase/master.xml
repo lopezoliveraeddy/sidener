@@ -15,6 +15,7 @@
     <include file="config/liquibase/changelog/20170922021424_added_entity_Vote.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170922021425_added_entity_Causal.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171007043201_added_entity_CausalDescription.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171122045234_added_entity_Archive.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20170922021415_added_entity_constraints_Election.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170922021418_added_entity_constraints_Coalition.xml" relativeToChangelogFile="false"/>
@@ -22,6 +23,8 @@
     <include file="config/liquibase/changelog/20170922021423_added_entity_constraints_PollingPlace.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170922021424_added_entity_constraints_Vote.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170922021425_added_entity_constraints_Causal.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021416_added_entity_constraints_PoliticalParty.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170922021417_added_entity_constraints_IndependentCandidate.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <include file="config/liquibase/changelog/20171107180500_load_default_data.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

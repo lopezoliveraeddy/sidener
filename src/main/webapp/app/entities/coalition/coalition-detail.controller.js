@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('CoalitionDetailController', CoalitionDetailController);
 
-    CoalitionDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Coalition', 'PoliticalParty'];
+    CoalitionDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Coalition', 'Archive', 'PoliticalParty'];
 
-    function CoalitionDetailController($scope, $rootScope, $stateParams, previousState, entity, Coalition, PoliticalParty) {
+    function CoalitionDetailController($scope, $rootScope, $stateParams, previousState, entity, Coalition, Archive, PoliticalParty) {
         var vm = this;
 
         vm.coalition = entity;

@@ -1,0 +1,27 @@
+{
+    "sidenerApp": {
+        "archive" : {
+            "home": {
+                "title": "Archives",
+                "createLabel": "Crear nuevo Archive",
+                "createOrEditLabel": "Crear o editar Archive",
+                "search": "Search for Archive"
+            },
+            "created": "Un nuevo Archive ha sido creado con el identificador {{ param }}",
+            "updated": "Un Archive ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Archive ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Archive {{ id }}?"
+            },
+            "detail": {
+                "title": "Archive"
+            },
+            "name": "Name",
+            "description": "Description",
+            "mimeType": "Mime Type",
+            "sizeLength": "Size Length",
+            "path": "Path",
+            "status": "Status"
+        }
+    }
+}

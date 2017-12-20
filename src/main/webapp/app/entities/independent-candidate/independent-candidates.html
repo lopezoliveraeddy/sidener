@@ -38,10 +38,10 @@
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="sidenerApp.independentCandidate.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="acronym"><span data-translate="sidenerApp.independentCandidate.acronym">Acronym</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="image"><span data-translate="sidenerApp.independentCandidate.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.independentCandidate.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="createdDate"><span data-translate="sidenerApp.independentCandidate.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.independentCandidate.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imageId"><span data-translate="sidenerApp.independentCandidate.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -50,7 +50,6 @@
                     <td><a ui-sref="independent-candidate-detail({id:independentCandidate.id})">{{independentCandidate.id}}</a></td>
                     <td>{{independentCandidate.name}}</td>
                     <td>{{independentCandidate.acronym}}</td>
-                    <td>{{independentCandidate.image}}</td>
                     <td>
                         <span ng-if="independentCandidate.published==true">
                             <i class="fa fa-check fa-2x"></i>
@@ -61,6 +60,9 @@
                     </td>
                     <td>{{independentCandidate.createdDate | date:'medium'}}</td>
                     <td>{{independentCandidate.updatedDate | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="archive-detail({id:independentCandidate.imageId})">{{independentCandidate.imageId}}</a>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

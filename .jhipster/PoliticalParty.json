@@ -1,6 +1,15 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "image",
+            "otherEntityName": "archive",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "politicalParty"
+        }
+    ],
     "fields": [
         {
             "fieldName": "name",
@@ -10,11 +19,6 @@
         {
             "fieldName": "acronym",
             "javadoc": "Iniciales",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "image",
-            "javadoc": "Logo del Partido Político",
             "fieldType": "String"
         },
         {

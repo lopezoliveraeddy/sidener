@@ -2,6 +2,14 @@
     "fluentMethods": true,
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "relationshipName": "image",
+            "otherEntityName": "archive",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "coalition"
+        },
+        {
             "relationshipType": "many-to-many",
             "otherEntityRelationshipName": "",
             "relationshipName": "politicalParties",
@@ -19,11 +27,6 @@
         {
             "fieldName": "acronym",
             "javadoc": "Iniciales",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "image",
-            "javadoc": "Logo de la Coalición",
             "fieldType": "String"
         },
         {

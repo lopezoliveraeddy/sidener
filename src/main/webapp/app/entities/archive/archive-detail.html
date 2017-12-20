@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span data-translate="sidenerApp.archive.detail.title">Archive</span> {{vm.archive.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="sidenerApp.archive.name">Name</span></dt>
+        <dd>
+            <span>{{vm.archive.name}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.archive.description">Description</span></dt>
+        <dd>
+            <span>{{vm.archive.description}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.archive.mimeType">Mime Type</span></dt>
+        <dd>
+            <span>{{vm.archive.mimeType}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.archive.sizeLength">Size Length</span></dt>
+        <dd>
+            <span>{{vm.archive.sizeLength}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.archive.path">Path</span></dt>
+        <dd>
+            <span>{{vm.archive.path}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.archive.status">Status</span></dt>
+        <dd>
+            <span data-translate="{{'sidenerApp.ArchiveStatus.' + vm.archive.status}}">{{vm.archive.status}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="archive-detail.edit({id:vm.archive.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

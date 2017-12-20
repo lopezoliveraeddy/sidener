@@ -18,13 +18,13 @@ public class CoalitionDTO implements Serializable {
 
     private String acronym;
 
-    private String image;
-
     private Boolean published;
 
     private ZonedDateTime createdDate;
 
     private ZonedDateTime updatedDate;
+
+    private Long imageId;
 
     private Set<PoliticalPartyDTO> politicalParties = new HashSet<>();
 
@@ -52,14 +52,6 @@ public class CoalitionDTO implements Serializable {
         this.acronym = acronym;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public Boolean isPublished() {
         return published;
     }
@@ -82,6 +74,14 @@ public class CoalitionDTO implements Serializable {
 
     public void setUpdatedDate(ZonedDateTime updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public Long getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(Long archiveId) {
+        this.imageId = archiveId;
     }
 
     public Set<PoliticalPartyDTO> getPoliticalParties() {
@@ -119,7 +119,6 @@ public class CoalitionDTO implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", acronym='" + getAcronym() + "'" +
-            ", image='" + getImage() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
