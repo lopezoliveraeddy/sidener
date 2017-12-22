@@ -159,12 +159,29 @@
         <div class="panel panel-default">
             <div class="panel-heading">Documentos</div>
             <div class="panel-body">
-                <div class="form-group">
+            		<!--  Database  -->
+                <div class="form-group" ngf-drop ngf-change="vm.setDatabase($file, vm.election)">
                 <label class="control-label" data-translate="sidenerApp.election.dataBase" for="field_dataBase">Data Base</label>
-                <input type="text" class="form-control" name="dataBase" id="field_dataBase"
-                        ng-model="vm.election.dataBase"
-                        />
+                <div>
+	                	<div ng-if="vm.election.dataBase" class="help-block clearfix">
+	                		<span class="pull-left">{{vm.election.cvFileContentType}}, {{vm.byteSize(vm.election.cvFile)}}</span>
+                         <button type="button" ng-click="vm.election.dbFile=null;vm.election.dbFileContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        		<span class="glyphicon glyphicon-remove"></span>
+                    		</button>
+	                	</div>
+	                	<button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setDatabase($file, vm.election)">
+                    Agregar Archivo
+                		</button>
+	            </div>
+	            <input type="hidden" class="form-control" name="cvFile" id="field_cvFile"
+                   ng-model="vm.election.dbFile"
+            />
+            <input type="hidden" class="form-control" name="cvFileContentType" id="field_cvFileContentType"
+                   ng-model="vm.election.dbFileContentType" />
             </div>
+            <!-- Termina database -->
                 <div class="form-group">
                     <label class="control-label" data-translate="sidenerApp.election.insetUrl" for="field_insetUrl">Inset Url</label>
                     <input type="text" class="form-control" name="insetUrl" id="field_insetUrl"

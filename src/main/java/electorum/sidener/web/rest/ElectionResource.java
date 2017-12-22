@@ -1,6 +1,7 @@
 package electorum.sidener.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+
 import electorum.sidener.service.ElectionService;
 import electorum.sidener.web.rest.util.HeaderUtil;
 import electorum.sidener.web.rest.util.PaginationUtil;
@@ -15,13 +16,19 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
+import java.util.stream.Collectors;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
@@ -56,7 +63,18 @@ public class ElectionResource {
         if (electionDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new election cannot already have an ID")).body(null);
         }
+        /*Start Database file management*/
+        byte[] dbFile = electionDTO.getDbFile();
         ElectionDTO result = electionService.save(electionDTO);
+        if(dbFile != null) {
+        		try {
+        			FileUtils.writeByteArrayToFile(new File("/files/database/" + result.getId() + ".csv"), dbFile);
+        		}catch (IOException e) {
+        			e.printStackTrace();
+				}
+        }
+        /*end database file management*/
+    
         return ResponseEntity.created(new URI("/api/elections/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -75,9 +93,26 @@ public class ElectionResource {
     @Timed
     public ResponseEntity<ElectionDTO> updateElection(@RequestBody ElectionDTO electionDTO) throws URISyntaxException {
         log.debug("REST request to update Election : {}", electionDTO);
+        /*Start Database file management*/
         if (electionDTO.getId() == null) {
             return createElection(electionDTO);
         }
+        if(electionDTO.getDbFile() != null) {
+        		Path dbExisting = Paths.get("/files/database/" + electionDTO.getId() + ".csv");
+        		if(Files.exists(dbExisting)) {
+        			try {
+        				Files.delete(dbExisting);
+        			}catch(IOException e) {
+        				e.printStackTrace();
+        			}
+        		}
+        }
+        try {
+        	FileUtils.writeByteArrayToFile(new File("/files/database/" + electionDTO.getId() + ".csv"), electionDTO.getDbFile());
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        /*end database file management*/
         ElectionDTO result = electionService.save(electionDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, electionDTO.getId().toString()))
@@ -123,6 +158,16 @@ public class ElectionResource {
     @Timed
     public ResponseEntity<Void> deleteElection(@PathVariable Long id) {
         log.debug("REST request to delete Election : {}", id);
+        /*Start Database file management*/
+        Path dbFile = Paths.get("/files/database/" + id + ".csv");
+        if(Files.exists(dbFile)){
+            try {
+                Files.delete(dbFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        /*end database file management*/
         electionService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }

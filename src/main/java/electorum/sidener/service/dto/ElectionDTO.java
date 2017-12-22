@@ -26,8 +26,29 @@ public class ElectionDTO implements Serializable {
     private ZonedDateTime dateElection;
 
     private Status status;
+    
+    @Lob
+    private byte[] dbFile;
+    
+    private String dbFileContentType;
 
-    private String dataBase;
+    public byte[] getDbFile() {
+		return dbFile;
+	}
+
+	public void setDbFile(byte[] dbFile) {
+		this.dbFile = dbFile;
+	}
+
+	public String getDbFileContentType() {
+		return dbFileContentType;
+	}
+
+	public void setDbFileContentType(String dbFileContentType) {
+		this.dbFileContentType = dbFileContentType;
+	}
+
+	private String dataBase;
 
     private String insetUrl;
 

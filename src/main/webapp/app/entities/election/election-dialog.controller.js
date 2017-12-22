@@ -5,7 +5,7 @@
         .module('sidenerApp')
         .controller('ElectionDialogController', ElectionDialogController);
 
-    ElectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Election', 'ElectionType', 'PoliticalParty', 'Coalition', 'IndependentCandidate', 'Causal', 'User'];
+    ElectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Election', 'ElectionType', 'PoliticalParty', 'Coalition', 'IndependentCandidate', 'Causal', 'User','Upload'];
 
     function ElectionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Election, ElectionType, PoliticalParty, Coalition, IndependentCandidate, Causal, User) {
         var vm = this;
@@ -23,6 +23,9 @@
         vm.independentcandidates = IndependentCandidate.query();
         vm.causals = Causal.query();
         vm.users = User.query();
+        /*Files*/
+        vm.byteSize = DataUtils.byteSize;
+        vm.openFile = DataUtils.openFile;
 
         ini();
 
@@ -78,6 +81,21 @@
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;
         }
+        
+        /*files dataBase*/
+        vm.setDatabase = function($file , election){
+            if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                    	   election.dbFile = base64Data;
+                        election.dbFileContentType = $file.type;
+                    });
+                });
+            }
+            console.log(vm.election);
+        };
+        
+
 
         $scope.change = function(value) {
             console.log(value);
