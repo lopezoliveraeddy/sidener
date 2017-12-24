@@ -26,29 +26,19 @@ public class ElectionDTO implements Serializable {
     private ZonedDateTime dateElection;
 
     private Status status;
-    
+    //dataBase attributes
     @Lob
     private byte[] dbFile;
-    
     private String dbFileContentType;
-
-    public byte[] getDbFile() {
-		return dbFile;
-	}
-
-	public void setDbFile(byte[] dbFile) {
-		this.dbFile = dbFile;
-	}
-
-	public String getDbFileContentType() {
-		return dbFileContentType;
-	}
-
-	public void setDbFileContentType(String dbFileContentType) {
-		this.dbFileContentType = dbFileContentType;
-	}
-
-	private String dataBase;
+    // end database attributes
+    
+    //insertUrl attributes
+    @Lob
+    private byte[] iuFile;
+	private String iuFileContentType;
+    //end insertUrl attributes
+	
+    private String dataBase;
 
     private String insetUrl;
 
@@ -368,6 +358,41 @@ public class ElectionDTO implements Serializable {
     public void setUsers(Set<UserDTO> users) {
         this.users = users;
     }
+    // start database setter and getter
+    public byte[] getDbFile() {
+		return dbFile;
+	}
+
+	public void setDbFile(byte[] dbFile) {
+		this.dbFile = dbFile;
+	}
+
+	public String getDbFileContentType() {
+		return dbFileContentType;
+	}
+
+	public void setDbFileContentType(String dbFileContentType) {
+		this.dbFileContentType = dbFileContentType;
+	}
+	// end database setter and getter
+	
+	// start insetUrl
+    public byte[] getIuFile() {
+		return iuFile;
+	}
+
+	public void setIuFile(byte[] iuFile) {
+		this.iuFile = iuFile;
+	}
+
+	public String getIuFileContentType() {
+		return iuFileContentType;
+	}
+
+	public void setIuFileContentType(String iuFileContentType) {
+		this.iuFileContentType = iuFileContentType;
+	}
+	// end insetUrl
 
     @Override
     public boolean equals(Object o) {

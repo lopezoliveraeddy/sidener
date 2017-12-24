@@ -182,12 +182,27 @@
                    ng-model="vm.election.dbFileContentType" />
             </div>
             <!-- Termina database -->
-                <div class="form-group">
+            <!--  Inicia Encarte -->
+                <div class="form-group" ngf-drop ngf-change="vm.setEncarte($file, vm.election)">
                     <label class="control-label" data-translate="sidenerApp.election.insetUrl" for="field_insetUrl">Inset Url</label>
-                    <input type="text" class="form-control" name="insetUrl" id="field_insetUrl"
-                            ng-model="vm.election.insetUrl"
-                            />
+                    <div>
+                    		<div ng-if="vm.election.insetUrl" class="help-block clearfix">
+                    			<span class="pull-left">{{vm.election.iuFileContentType}}, {{vm.byteSize(vm.election.iuFile)}}</span>
+                    			<button type="button" ng-click="vm.election.iuFile=null;vm.election.iuFileContentType=null;"
+                           		class="btn btn-default btn-xs pull-right">
+                           		<span class="glyphicon glyphicon-remove"></span>
+                       		</button>
+                    		</div>
+                    		<button type="button" ngf-select class="btn btn-default btn-block"
+                       		ngf-change="vm.setEncarte($file, vm.election)">
+                   			Agregar Archivo
+                 		</button>
+                    </div>
+                    <input type="hidden" class="form-control" name="iuFile" id="field_iuFile" ng-model="vm.election.iuFile" />
+                    <input type="hidden" class="form-control" name="iuFileContentType" id="field_iuFileContentType" ng-model="vm.election.iuFileContentType" />
+                    
                 </div>
+                <!--  termina encarte -->
                 <div class="form-group">
                     <label class="control-label" data-translate="sidenerApp.election.incidentSheet" for="field_incidentSheet">Incident Sheet</label>
                     <input type="text" class="form-control" name="incidentSheet" id="field_incidentSheet"

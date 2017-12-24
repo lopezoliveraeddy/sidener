@@ -63,17 +63,38 @@ public class ElectionResource {
         if (electionDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new election cannot already have an ID")).body(null);
         }
-        /*Start Database file management*/
+        
         byte[] dbFile = electionDTO.getDbFile();
+        byte[] iuFile = electionDTO.getIuFile();
+        
+        /*Start Database file management*/
         ElectionDTO result = electionService.save(electionDTO);
+        electionDTO.setId(result.getId());
         if(dbFile != null) {
         		try {
         			FileUtils.writeByteArrayToFile(new File("/files/database/" + result.getId() + ".csv"), dbFile);
+        			electionDTO.setDataBase("/files/database/" + result.getId() + ".csv");
+            		updateElection(electionDTO);
         		}catch (IOException e) {
         			e.printStackTrace();
 				}
+        		
         }
         /*end database file management*/
+        
+        
+        /*start insetUrl*/
+        if(iuFile != null ) {
+        		try {
+        			FileUtils.writeByteArrayToFile(new File("/files/insetUrl/"+ result.getId() + "pdf"), iuFile);
+        			electionDTO.setInsetUrl("/files/insetUrl/" + result.getId() + ".pdf");
+        			updateElection(electionDTO);
+        		}catch (IOException e) {
+					// TODO: handle exception
+        				e.printStackTrace();
+				}
+        }
+        /*end insetUrl*/
     
         return ResponseEntity.created(new URI("/api/elections/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -93,26 +114,55 @@ public class ElectionResource {
     @Timed
     public ResponseEntity<ElectionDTO> updateElection(@RequestBody ElectionDTO electionDTO) throws URISyntaxException {
         log.debug("REST request to update Election : {}", electionDTO);
-        /*Start Database file management*/
+        
         if (electionDTO.getId() == null) {
             return createElection(electionDTO);
         }
+        /*Start Database file management*/
         if(electionDTO.getDbFile() != null) {
         		Path dbExisting = Paths.get("/files/database/" + electionDTO.getId() + ".csv");
         		if(Files.exists(dbExisting)) {
         			try {
         				Files.delete(dbExisting);
+        				electionDTO.setDataBase("");
         			}catch(IOException e) {
         				e.printStackTrace();
         			}
         		}
+        		try {
+                	FileUtils.writeByteArrayToFile(new File("/files/database/" + electionDTO.getId() + ".csv"), electionDTO.getDbFile());
+                	electionDTO.setDataBase("/files/database/" + electionDTO.getId() + ".csv");
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }
         }
-        try {
-        	FileUtils.writeByteArrayToFile(new File("/files/database/" + electionDTO.getId() + ".csv"), electionDTO.getDbFile());
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
+        
         /*end database file management*/
+        
+        /*start insetURL file management*/
+        if( electionDTO.getIuFile() != null ) {
+        		Path ioExisting = Paths.get("/files/insetUrl/"+ electionDTO.getId() + "pdf");
+        		if(Files.exists(ioExisting)) {
+        			try {
+        				Files.delete(ioExisting);
+        				electionDTO.setInsetUrl("");
+        			}catch(IOException e) {
+        				e.printStackTrace();
+        			}
+        		}
+            try {
+            		FileUtils.writeByteArrayToFile(new File("/files/insetUrl/" + electionDTO.getId() + ".pdf"), electionDTO.getIuFile());
+            		electionDTO.setInsetUrl("/files/insetUrl/" + electionDTO.getId() + ".pdf");
+            
+            }catch (IOException e) {
+    			// TODO: handle exception
+            	e.printStackTrace();
+    			}
+        }
+        
+
+        /*end insetURL file management*/
+        
         ElectionDTO result = electionService.save(electionDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, electionDTO.getId().toString()))
@@ -125,6 +175,7 @@ public class ElectionResource {
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of elections in body
      */
+         
     @GetMapping("/elections")
     @Timed
     public ResponseEntity<List<ElectionDTO>> getAllElections(@ApiParam Pageable pageable) {

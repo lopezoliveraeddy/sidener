@@ -84,7 +84,7 @@
         
         /*files dataBase*/
         vm.setDatabase = function($file , election){
-            if ($file) {
+        	    if ($file) {
                 DataUtils.toBase64($file, function(base64Data) {
                     $scope.$apply(function() {
                     	   election.dbFile = base64Data;
@@ -92,8 +92,20 @@
                     });
                 });
             }
-            console.log(vm.election);
+           
         };
+        
+        /*files Encarte*/
+        vm.setEncarte = function ($file, election){
+        	if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                    	     election.iuFile = base64Data;
+                        election.iuFileContentType = $file.type;
+                    });
+                });
+            }
+        }
         
 
 
