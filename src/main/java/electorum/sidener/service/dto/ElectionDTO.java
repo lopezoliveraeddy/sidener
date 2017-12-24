@@ -38,6 +38,26 @@ public class ElectionDTO implements Serializable {
 	private String iuFileContentType;
     //end insertUrl attributes
 	
+	//incidentSheet attributes
+	private byte[] isFile;
+	private String isFileContentType;
+    //end incidentSheet attributes
+	
+	//dayRecord attributes
+	private byte[] drFile;
+	private String drFileContentType;
+    //end dayRecord attributes
+	
+	//demandTemplate attributes
+	private byte[] dmFile;
+	private String dmFileContentType;
+    //end demandTemplate attributes
+	
+	//recountTemplate attributes
+	private byte[] rtFile;
+	private String rtFileContentType;
+    //end recountTemplate attributes 
+	
     private String dataBase;
 
     private String insetUrl;
@@ -393,6 +413,72 @@ public class ElectionDTO implements Serializable {
 		this.iuFileContentType = iuFileContentType;
 	}
 	// end insetUrl
+	
+	// start incidentSheet 
+	public byte[] getIsFile() {
+		return isFile;
+	}
+
+	public void setIsFile(byte[] isFile) {
+		this.isFile = isFile;
+	}
+
+	public String getIsFileContentType() {
+		return isFileContentType;
+	}
+
+	public void setIsFileContentType(String isFileContentType) {
+		this.isFileContentType = isFileContentType;
+	}
+	// end incidentSheet 
+	
+    public byte[] getDrFile() {
+		return drFile;
+	}
+
+	public void setDrFile(byte[] drFile) {
+		this.drFile = drFile;
+	}
+
+	public String getDrFileContentType() {
+		return drFileContentType;
+	}
+
+	public void setDrFileContentType(String drFileContentType) {
+		this.drFileContentType = drFileContentType;
+	}
+
+	public byte[] getDmFile() {
+		return dmFile;
+	}
+
+	public void setDmFile(byte[] dmFile) {
+		this.dmFile = dmFile;
+	}
+
+	public String getDmFileContentType() {
+		return dmFileContentType;
+	}
+
+	public void setDmFileContentType(String dmFileContentType) {
+		this.dmFileContentType = dmFileContentType;
+	}
+
+	public byte[] getRtFile() {
+		return rtFile;
+	}
+
+	public void setRtFile(byte[] rtFile) {
+		this.rtFile = rtFile;
+	}
+
+	public String getRtFileContentType() {
+		return rtFileContentType;
+	}
+
+	public void setRtFileContentType(String rtFileContentType) {
+		this.rtFileContentType = rtFileContentType;
+	}	
 
     @Override
     public boolean equals(Object o) {
@@ -410,7 +496,9 @@ public class ElectionDTO implements Serializable {
         return Objects.equals(getId(), electionDTO.getId());
     }
 
-    @Override
+
+
+	@Override
     public int hashCode() {
         return Objects.hashCode(getId());
     }

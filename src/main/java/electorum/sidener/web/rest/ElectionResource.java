@@ -66,6 +66,11 @@ public class ElectionResource {
         
         byte[] dbFile = electionDTO.getDbFile();
         byte[] iuFile = electionDTO.getIuFile();
+        byte[] isFile = electionDTO.getIsFile();
+        byte[] drFile = electionDTO.getDrFile();
+        byte[] dmFile = electionDTO.getDmFile();
+        byte[] rtFile = electionDTO.getRtFile();
+        
         
         /*Start Database file management*/
         ElectionDTO result = electionService.save(electionDTO);
@@ -86,7 +91,7 @@ public class ElectionResource {
         /*start insetUrl*/
         if(iuFile != null ) {
         		try {
-        			FileUtils.writeByteArrayToFile(new File("/files/insetUrl/"+ result.getId() + "pdf"), iuFile);
+        			FileUtils.writeByteArrayToFile(new File("/files/insetUrl/"+ result.getId() + ".pdf"), iuFile);
         			electionDTO.setInsetUrl("/files/insetUrl/" + result.getId() + ".pdf");
         			updateElection(electionDTO);
         		}catch (IOException e) {
@@ -95,7 +100,55 @@ public class ElectionResource {
 				}
         }
         /*end insetUrl*/
-    
+        
+        /*start incidentSheet file management*/
+        if( isFile != null ) {
+        		try {
+        			FileUtils.writeByteArrayToFile(new File("/files/incidentSheet/"+ result.getId() + ".docx"),isFile );
+        			electionDTO.setIncidentSheet("/files/incidentSheet/"+ result.getId() + ".docx");
+        			updateElection(electionDTO);
+        		}catch(IOException e) {
+        			e.printStackTrace();
+        		}
+        }
+        /*end incidentSheet file management*/
+       
+        /*start dayRecord file management */
+        if( drFile != null ) {
+	    		try {
+	    			FileUtils.writeByteArrayToFile(new File("/files/dayRecord/"+ result.getId() + ".docx"),drFile );
+	    			electionDTO.setIncidentSheet("/files/dayRecord/"+ result.getId() + ".docx");
+	    			updateElection(electionDTO);
+	    		}catch(IOException e) {
+	    			e.printStackTrace();
+	    		}
+	    } 
+        /*end dayRecord file management */
+        
+        /*start demandTemplate file management */
+        if( dmFile != null ) {
+	    		try {
+	    			FileUtils.writeByteArrayToFile(new File("/files/demandTemplate/"+ result.getId() + ".docx"),dmFile );
+	    			electionDTO.setIncidentSheet("/files/demandTemplate/"+ result.getId() + ".docx");
+	    			updateElection(electionDTO);
+	    		}catch(IOException e) {
+	    			e.printStackTrace();
+	    		}
+	    } 
+        /*end demandTemplate file management */
+
+        /*start recountTemplate file management */
+        if( rtFile != null ) {
+	    		try {
+	    			FileUtils.writeByteArrayToFile(new File("/files/recountTemplate/"+ result.getId() + ".docx"),rtFile );
+	    			electionDTO.setIncidentSheet("/files/recountTemplate/"+ result.getId() + ".docx");
+	    			updateElection(electionDTO);
+	    		}catch(IOException e) {
+	    			e.printStackTrace();
+	    		}
+	    } 
+        /*end recountTemplate file management */
+  
         return ResponseEntity.created(new URI("/api/elections/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -159,10 +212,99 @@ public class ElectionResource {
             	e.printStackTrace();
     			}
         }
-        
-
         /*end insetURL file management*/
         
+        /*start incidentSheet file management*/
+        if( electionDTO.getIsFile() != null) {
+        		Path isExisting = Paths.get("/files/incidentSheet/"+ electionDTO.getId() + "docx");
+        		if(Files.exists(isExisting)) {
+	    			try {
+	    				Files.delete(isExisting);
+	    				electionDTO.setIncidentSheet("");
+	    			}catch(IOException e) {
+	    				e.printStackTrace();
+	    			}
+	    		}
+	        try {
+	        		FileUtils.writeByteArrayToFile(new File("/files/incidentSheet/"+ electionDTO.getId() + "docx"), electionDTO.getIuFile());
+	        		electionDTO.setInsetUrl("/files/incidentSheet/"+ electionDTO.getId() + "docx");
+	        
+	        }catch (IOException e) {
+				// TODO: handle exception
+	        	e.printStackTrace();
+			}
+        		
+        }
+        /*end incidentSheet file management*/
+
+        /*start dayRecord file management*/
+        if( electionDTO.getIsFile() != null) {
+        		Path drExisting = Paths.get("/files/dayRecord/"+ electionDTO.getId() + "docx");
+        		if(Files.exists(drExisting)) {
+	    			try {
+	    				Files.delete(drExisting);
+	    				electionDTO.setDayRecord("");
+	    			}catch(IOException e) {
+	    				e.printStackTrace();
+	    			}
+	    		}
+	        try {
+	        		FileUtils.writeByteArrayToFile(new File("/files/dayRecord/"+ electionDTO.getId() + "docx"), electionDTO.getIuFile());
+	        		electionDTO.setDayRecord("/files/dayRecord/"+ electionDTO.getId() + "docx");
+	        
+	        }catch (IOException e) {
+				// TODO: handle exception
+	        	e.printStackTrace();
+			}
+        		
+        }
+        /*end dayRecord file management*/
+      
+        /*start demandTemplate file management*/
+        if( electionDTO.getDmFile() != null) {
+	    		Path dmExisting = Paths.get("/files/demandTemplate/"+ electionDTO.getId() + "docx");
+	    		if(Files.exists(dmExisting)) {
+	    			try {
+	    				Files.delete(dmExisting);
+	    				electionDTO.setDemandTemplateUrl("");
+	    			}catch(IOException e) {
+	    				e.printStackTrace();
+	    			}
+	    		}
+	        try {
+	        		FileUtils.writeByteArrayToFile(new File("/files/demandTemplate/"+ electionDTO.getId() + "docx"), electionDTO.getIuFile());
+	        		electionDTO.setDemandTemplateUrl("/files/demandTemplate/"+ electionDTO.getId() + "docx");
+	        
+	        }catch (IOException e) {
+				// TODO: handle exception
+	        	e.printStackTrace();
+			}
+	    		
+	    }          
+        /*end demandTemplate file management*/
+
+        /*start recountTemplate file management*/
+        if( electionDTO.getRtFile() != null) {
+	    		Path rtExisting = Paths.get("/files/recountTemplate/"+ electionDTO.getId() + "docx");
+	    		if(Files.exists(rtExisting)) {
+	    			try {
+	    				Files.delete(rtExisting);
+	    				electionDTO.setRecountTemplateUrl("");;
+	    			}catch(IOException e) {
+	    				e.printStackTrace();
+	    			}
+	    		}
+	        try {
+	        		FileUtils.writeByteArrayToFile(new File("/files/recountTemplate/"+ electionDTO.getId() + "docx"), electionDTO.getIuFile());
+	        		electionDTO.setRecountTemplateUrl("/files/recountTemplate/"+ electionDTO.getId() + "docx");
+	        
+	        }catch (IOException e) {
+				// TODO: handle exception
+	        	e.printStackTrace();
+			}
+	    		
+	    }
+        /*end recountTemplate file management*/
         ElectionDTO result = electionService.save(electionDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, electionDTO.getId().toString()))
@@ -209,8 +351,14 @@ public class ElectionResource {
     @Timed
     public ResponseEntity<Void> deleteElection(@PathVariable Long id) {
         log.debug("REST request to delete Election : {}", id);
-        /*Start Database file management*/
+ 
         Path dbFile = Paths.get("/files/database/" + id + ".csv");
+        Path ioExisting = Paths.get("/files/insetUrl/"+ id + "pdf");
+        Path isExisting = Paths.get("/files/incidentSheet/"+ id + "docx");
+        Path drExisting = Paths.get("/files/dayRecord/"+ id + "docx");
+        Path dmExisting = Paths.get("/files/demandTemplate/"+ id + "docx");
+        Path rtExisting = Paths.get("/files/recountTemplate/"+ id + "docx");
+
         if(Files.exists(dbFile)){
             try {
                 Files.delete(dbFile);
@@ -218,7 +366,41 @@ public class ElectionResource {
                 e.printStackTrace();
             }
         }
-        /*end database file management*/
+        if(Files.exists(ioExisting)){
+            try {
+                Files.delete(ioExisting);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if(Files.exists(isExisting)){
+            try {
+                Files.delete(isExisting);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if(Files.exists(drExisting)){
+            try {
+                Files.delete(drExisting);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if(Files.exists(dmExisting)){
+            try {
+                Files.delete(dmExisting);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if(Files.exists(rtExisting)){
+            try {
+                Files.delete(rtExisting);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         electionService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
