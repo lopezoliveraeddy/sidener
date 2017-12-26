@@ -1,23 +1,5 @@
 package electorum.sidener.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-
-import electorum.sidener.service.ElectionService;
-import electorum.sidener.web.rest.util.HeaderUtil;
-import electorum.sidener.web.rest.util.PaginationUtil;
-import electorum.sidener.service.dto.ElectionDTO;
-import io.swagger.annotations.ApiParam;
-import io.github.jhipster.web.util.ResponseUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.apache.commons.io.FileUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -25,12 +7,35 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.codahale.metrics.annotation.Timed;
+
+import electorum.sidener.service.ElectionService;
+import electorum.sidener.service.dto.ElectionDTO;
+import electorum.sidener.web.rest.util.HeaderUtil;
+import electorum.sidener.web.rest.util.PaginationUtil;
+import io.github.jhipster.web.util.ResponseUtil;
+import io.swagger.annotations.ApiParam;
 
 /**
  * REST controller for managing Election.
@@ -263,7 +268,7 @@ public class ElectionResource {
       
         /*start demandTemplate file management*/
         if( electionDTO.getDmFile() != null) {
-	    		Path dmExisting = Paths.get("/files/demandTemplate/"+ electionDTO.getId() + "docx");
+	    		Path dmExisting = Paths.get("/files/demandTemplate/"+ electionDTO.getId() + ".docx");
 	    		if(Files.exists(dmExisting)) {
 	    			try {
 	    				Files.delete(dmExisting);
@@ -273,8 +278,8 @@ public class ElectionResource {
 	    			}
 	    		}
 	        try {
-	        		FileUtils.writeByteArrayToFile(new File("/files/demandTemplate/"+ electionDTO.getId() + "docx"), electionDTO.getIuFile());
-	        		electionDTO.setDemandTemplateUrl("/files/demandTemplate/"+ electionDTO.getId() + "docx");
+	        		FileUtils.writeByteArrayToFile(new File("/files/demandTemplate/"+ electionDTO.getId() + ".docx"), electionDTO.getDmFile());
+	        		electionDTO.setDemandTemplateUrl("/files/demandTemplate/"+ electionDTO.getId() + ".docx");
 	        
 	        }catch (IOException e) {
 				// TODO: handle exception
@@ -286,7 +291,7 @@ public class ElectionResource {
 
         /*start recountTemplate file management*/
         if( electionDTO.getRtFile() != null) {
-	    		Path rtExisting = Paths.get("/files/recountTemplate/"+ electionDTO.getId() + "docx");
+	    		Path rtExisting = Paths.get("/files/recountTemplate/"+ electionDTO.getId() + ".docx");
 	    		if(Files.exists(rtExisting)) {
 	    			try {
 	    				Files.delete(rtExisting);
@@ -296,8 +301,8 @@ public class ElectionResource {
 	    			}
 	    		}
 	        try {
-	        		FileUtils.writeByteArrayToFile(new File("/files/recountTemplate/"+ electionDTO.getId() + "docx"), electionDTO.getIuFile());
-	        		electionDTO.setRecountTemplateUrl("/files/recountTemplate/"+ electionDTO.getId() + "docx");
+	        		FileUtils.writeByteArrayToFile(new File("/files/recountTemplate/"+ electionDTO.getId() + ".docx"), electionDTO.getRtFile());
+	        		electionDTO.setRecountTemplateUrl("/files/recountTemplate/"+ electionDTO.getId() + ".docx");
 	        
 	        }catch (IOException e) {
 				// TODO: handle exception

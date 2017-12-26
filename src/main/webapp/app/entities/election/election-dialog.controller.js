@@ -117,7 +117,7 @@
 	                });
 	            }
 	        }      	
-
+        /* files acta de la jornada*/
         vm.setActaJornada = function ($file, election){
         	if ($file) {
                 DataUtils.toBase64($file, function(base64Data) {
@@ -128,9 +128,29 @@
                 });
             }
         }   
+        /* plantilla de la demanda */
+        vm.setPlantillaDemanda = function ($file, election){
+        	if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                    	    election.dmFile = base64Data;
+                        election.dmFileContentType = $file.type;
+                    });
+                });
+            }
+        }   
+        /*plantilla de recuento*/
+        vm.setPlantillaRecuento = function ($file, election){
+        	if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                    	    election.rtFile = base64Data;
+                        election.rtFileContentType = $file.type;
+                    });
+                });
+            }
+        }   
         
-
-
         $scope.change = function(value) {
             console.log(value);
             if(value === 'politicalPartyAsociated') {
