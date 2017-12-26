@@ -117,7 +117,7 @@ public class ElectionResource {
         if( drFile != null ) {
 	    		try {
 	    			FileUtils.writeByteArrayToFile(new File("/files/dayRecord/"+ result.getId() + ".docx"),drFile );
-	    			electionDTO.setIncidentSheet("/files/dayRecord/"+ result.getId() + ".docx");
+	    			electionDTO.setDayRecord("/files/dayRecord/"+ result.getId() + ".docx");
 	    			updateElection(electionDTO);
 	    		}catch(IOException e) {
 	    			e.printStackTrace();
@@ -129,7 +129,7 @@ public class ElectionResource {
         if( dmFile != null ) {
 	    		try {
 	    			FileUtils.writeByteArrayToFile(new File("/files/demandTemplate/"+ result.getId() + ".docx"),dmFile );
-	    			electionDTO.setIncidentSheet("/files/demandTemplate/"+ result.getId() + ".docx");
+	    			electionDTO.setDemandTemplateUrl("/files/demandTemplate/"+ result.getId() + ".docx");
 	    			updateElection(electionDTO);
 	    		}catch(IOException e) {
 	    			e.printStackTrace();
@@ -141,7 +141,7 @@ public class ElectionResource {
         if( rtFile != null ) {
 	    		try {
 	    			FileUtils.writeByteArrayToFile(new File("/files/recountTemplate/"+ result.getId() + ".docx"),rtFile );
-	    			electionDTO.setIncidentSheet("/files/recountTemplate/"+ result.getId() + ".docx");
+	    			electionDTO.setRecountTemplateUrl("/files/recountTemplate/"+ result.getId() + ".docx");
 	    			updateElection(electionDTO);
 	    		}catch(IOException e) {
 	    			e.printStackTrace();
@@ -194,7 +194,7 @@ public class ElectionResource {
         
         /*start insetURL file management*/
         if( electionDTO.getIuFile() != null ) {
-        		Path ioExisting = Paths.get("/files/insetUrl/"+ electionDTO.getId() + "pdf");
+        		Path ioExisting = Paths.get("/files/insetUrl/"+ electionDTO.getId() + ".pdf");
         		if(Files.exists(ioExisting)) {
         			try {
         				Files.delete(ioExisting);
@@ -216,7 +216,7 @@ public class ElectionResource {
         
         /*start incidentSheet file management*/
         if( electionDTO.getIsFile() != null) {
-        		Path isExisting = Paths.get("/files/incidentSheet/"+ electionDTO.getId() + "docx");
+        		Path isExisting = Paths.get("/files/incidentSheet/"+ electionDTO.getId() + ".docx");
         		if(Files.exists(isExisting)) {
 	    			try {
 	    				Files.delete(isExisting);
@@ -225,9 +225,10 @@ public class ElectionResource {
 	    				e.printStackTrace();
 	    			}
 	    		}
+        		
 	        try {
-	        		FileUtils.writeByteArrayToFile(new File("/files/incidentSheet/"+ electionDTO.getId() + "docx"), electionDTO.getIuFile());
-	        		electionDTO.setInsetUrl("/files/incidentSheet/"+ electionDTO.getId() + "docx");
+	        		FileUtils.writeByteArrayToFile(new File("/files/incidentSheet/"+ electionDTO.getId() + ".docx"), electionDTO.getIsFile());
+	        		electionDTO.setIncidentSheet("/files/incidentSheet/"+ electionDTO.getId() + ".docx");
 	        
 	        }catch (IOException e) {
 				// TODO: handle exception
@@ -238,8 +239,8 @@ public class ElectionResource {
         /*end incidentSheet file management*/
 
         /*start dayRecord file management*/
-        if( electionDTO.getIsFile() != null) {
-        		Path drExisting = Paths.get("/files/dayRecord/"+ electionDTO.getId() + "docx");
+        if( electionDTO.getDrFile() != null) {
+        		Path drExisting = Paths.get("/files/dayRecord/"+ electionDTO.getId() + ".docx");
         		if(Files.exists(drExisting)) {
 	    			try {
 	    				Files.delete(drExisting);
@@ -249,8 +250,8 @@ public class ElectionResource {
 	    			}
 	    		}
 	        try {
-	        		FileUtils.writeByteArrayToFile(new File("/files/dayRecord/"+ electionDTO.getId() + "docx"), electionDTO.getIuFile());
-	        		electionDTO.setDayRecord("/files/dayRecord/"+ electionDTO.getId() + "docx");
+	        		FileUtils.writeByteArrayToFile(new File("/files/dayRecord/"+ electionDTO.getId() + ".docx"), electionDTO.getDrFile());
+	        		electionDTO.setDayRecord("/files/dayRecord/"+ electionDTO.getId() + ".docx");
 	        
 	        }catch (IOException e) {
 				// TODO: handle exception

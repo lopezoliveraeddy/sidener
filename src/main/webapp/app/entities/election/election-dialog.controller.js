@@ -106,6 +106,28 @@
                 });
             }
         }
+        /* files hojas de incidentes*/
+        vm.setHojaIncidentes = function ($file, election){
+	        	if ($file) {
+	                DataUtils.toBase64($file, function(base64Data) {
+	                    $scope.$apply(function() {
+	                    	    election.isFile = base64Data;
+	                        election.isFileContentType = $file.type;
+	                    });
+	                });
+	            }
+	        }      	
+
+        vm.setActaJornada = function ($file, election){
+        	if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                    	    election.drFile = base64Data;
+                        election.drFileContentType = $file.type;
+                    });
+                });
+            }
+        }   
         
 
 
