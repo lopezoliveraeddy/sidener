@@ -12,10 +12,6 @@
         <dd>
             <span>{{vm.coalition.acronym}}</span>
         </dd>
-        <dt><span data-translate="sidenerApp.coalition.image">Image</span></dt>
-        <dd>
-            <span>{{vm.coalition.image}}</span>
-        </dd>
         <dt><span data-translate="sidenerApp.coalition.published">Published</span></dt>
         <dd>
             <span>
@@ -34,6 +30,10 @@
         <dt><span data-translate="sidenerApp.coalition.updatedDate">Updated Date</span></dt>
         <dd>
             <span>{{vm.coalition.updatedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.coalition.image">Image</span></dt>
+        <dd>
+            <a ui-sref="archive-detail({id:vm.coalition.imageId})">{{vm.coalition.imageId}}</a>
         </dd>
         <dt><span data-translate="sidenerApp.coalition.politicalParties">Political Parties</span></dt>
         <dd>

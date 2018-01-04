@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('IndependentCandidateDialogController', IndependentCandidateDialogController);
 
-    IndependentCandidateDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'IndependentCandidate'];
+    IndependentCandidateDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'IndependentCandidate', 'Archive'];
 
-    function IndependentCandidateDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, IndependentCandidate) {
+    function IndependentCandidateDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, IndependentCandidate, Archive) {
         var vm = this;
 
         vm.independentCandidate = entity;
@@ -15,6 +15,17 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
+
+        vm.images = Archive.query({filter: 'independentcandidate-is-null'});
+
+        $q.all([vm.independentCandidate.$promise, vm.images.$promise]).then(function() {
+            if (!vm.independentCandidate.imageId) {
+                return $q.reject();
+            }
+            return Archive.get({id : vm.independentCandidate.imageId}).$promise;
+        }).then(function(image) {
+            vm.images.push(image);
+        });
 
         ini();
 

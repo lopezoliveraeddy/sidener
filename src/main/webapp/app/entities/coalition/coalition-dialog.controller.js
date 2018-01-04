@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('CoalitionDialogController', CoalitionDialogController);
 
-    CoalitionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Coalition', 'PoliticalParty'];
+    CoalitionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Coalition', 'Archive', 'PoliticalParty'];
 
-    function CoalitionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Coalition, PoliticalParty) {
+    function CoalitionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Coalition, Archive, PoliticalParty) {
         var vm = this;
 
         vm.coalition = entity;
@@ -15,6 +15,17 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
+
+        vm.images = Archive.query({filter: 'coalition-is-null'});
+        $q.all([vm.coalition.$promise, vm.images.$promise]).then(function() {
+            if (!vm.coalition.imageId) {
+                return $q.reject();
+            }
+            return Archive.get({id : vm.coalition.imageId}).$promise;
+        }).then(function(image) {
+            vm.images.push(image);
+        });
+
         vm.politicalparties = PoliticalParty.query();
 
         ini();

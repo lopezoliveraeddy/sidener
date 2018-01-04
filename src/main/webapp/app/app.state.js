@@ -5,9 +5,25 @@
         .module('sidenerApp')
         .config(stateConfig);
 
-    stateConfig.$inject = ['$stateProvider'];
+    stateConfig.$inject = ['$stateProvider', 'flowFactoryProvider'];
 
-    function stateConfig($stateProvider) {
+    function stateConfig($stateProvider, flowFactoryProvider) {
+        flowFactoryProvider.defaults = {
+            target : 'upload',
+            permanentErrors : [ 500, 501 ],
+            maxChunkRetries : 3,
+            chunkRetryInterval : 5000,
+            forceChunkSize : true,
+            simultaneousUploads : 4,
+            progressCallbacksInterval : 1,
+            withCredentials : true,
+            method : "octet"
+        };
+
+        flowFactoryProvider.on('catchAll', function(event) {
+            console.log('catchAll', arguments);
+        });
+
         $stateProvider.state('app', {
             abstract: true,
             views: {

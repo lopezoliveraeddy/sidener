@@ -3,6 +3,8 @@ package electorum.sidener.service.dto;
 
 import java.time.ZonedDateTime;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -16,13 +18,13 @@ public class IndependentCandidateDTO implements Serializable {
 
     private String acronym;
 
-    private String image;
-
     private Boolean published;
 
     private ZonedDateTime createdDate;
 
     private ZonedDateTime updatedDate;
+
+    private Long imageId;
 
     public Long getId() {
         return id;
@@ -48,14 +50,6 @@ public class IndependentCandidateDTO implements Serializable {
         this.acronym = acronym;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public Boolean isPublished() {
         return published;
     }
@@ -78,6 +72,14 @@ public class IndependentCandidateDTO implements Serializable {
 
     public void setUpdatedDate(ZonedDateTime updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public Long getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(Long archiveId) {
+        this.imageId = archiveId;
     }
 
     @Override
@@ -107,7 +109,6 @@ public class IndependentCandidateDTO implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", acronym='" + getAcronym() + "'" +
-            ", image='" + getImage() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

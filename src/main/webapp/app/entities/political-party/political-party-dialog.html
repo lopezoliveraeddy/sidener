@@ -1,5 +1,5 @@
 
-<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" flow-init="{testChunks:false}">
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -26,15 +26,48 @@
                     />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.politicalParty.image" for="field_image">Image</label>
-            <input type="text" class="form-control" name="image" id="field_image"
-                    ng-model="vm.politicalParty.image"
-                    />
-        </div>
-        <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.politicalParty.published" for="field_published">Published</label>
                 <input type="checkbox" name="published" id="field_published"
                           ng-model="vm.politicalParty.published"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Imagen</label>
+            <div class="alert alert-danger" ng-if="vm.error == true">
+                <strong>Error. </strong>{{vm.error_message}}
+            </div>
+            <div class="form-group">
+                <div flow-files-submitted="$flow.upload();"
+                     flow-upload-started="vm.uploadStart($flow);"
+                     flow-file-success="vm.successUpload($file, $message, $flow);"
+                     flow-complete="vm.completeUpload($flow);"
+                     flow-file-error="vm.errorUpload($file, $message, $flow );">
+
+                    <div ng-if="!vm.politicalParty.imageId">
+                        <span class="btn btn-default btn-block" data-translate="entity.action.addblob" flow-btn>Upload File</span>
+                    </div>
+                    <div ng-if="vm.image.length > 0">
+                        <div ng-repeat="file in vm.image track by $index">
+                            <table>
+                                <td><img src="public/api/archives/download?filename={{file.path}}"/></td>
+                                <td>
+                                    <button type="button" ng-disabled="vm.loading" ng-click="vm.removeFiles($flow)" class="btn  btn-xs pull-right remove_btn">
+                                        <span class="glyphicon glyphicon-remove "></span>
+                                    </button>
+                                </td>
+                            </table>
+                            <br/>
+                            <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
+                                <div class="progress-bar" role="progressbar"
+                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                     ng-style="{width: (file.progress() * 100) + '%'}"
+                                     style="width: 100%;">
+                                    <span class="sr-only ng-binding">1% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!--
         <div class="form-group">
@@ -58,7 +91,6 @@
                 </div>
         </div>
         -->
-
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

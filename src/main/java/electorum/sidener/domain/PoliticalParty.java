@@ -41,13 +41,6 @@ public class PoliticalParty implements Serializable {
     @Column(name = "acronym")
     private String acronym;
 
-    /**
-     * Logo del Partido Político
-     */
-    @ApiModelProperty(value = "Logo del Partido Político")
-    @Column(name = "image")
-    private String image;
-
     @Column(name = "published")
     private Boolean published;
 
@@ -56,6 +49,10 @@ public class PoliticalParty implements Serializable {
 
     @Column(name = "updated_date")
     private ZonedDateTime updatedDate;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Archive image;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
     public Long getId() {
@@ -90,19 +87,6 @@ public class PoliticalParty implements Serializable {
 
     public void setAcronym(String acronym) {
         this.acronym = acronym;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public PoliticalParty image(String image) {
-        this.image = image;
-        return this;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public Boolean isPublished() {
@@ -143,6 +127,19 @@ public class PoliticalParty implements Serializable {
     public void setUpdatedDate(ZonedDateTime updatedDate) {
         this.updatedDate = updatedDate;
     }
+
+    public Archive getImage() {
+        return image;
+    }
+
+    public PoliticalParty image(Archive archive) {
+        this.image = archive;
+        return this;
+    }
+
+    public void setImage(Archive archive) {
+        this.image = archive;
+    }
     // jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not remove
 
     @Override
@@ -171,7 +168,6 @@ public class PoliticalParty implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", acronym='" + getAcronym() + "'" +
-            ", image='" + getImage() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

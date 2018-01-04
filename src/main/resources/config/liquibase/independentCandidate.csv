@@ -1,2 +1,2 @@
-id,name,acronym,image,published,created_date,updated_date
+id,name,acronym,image_id,published,created_date,updated_date
 1,Gabriel Arellano Espinosa,CI_GAE,null,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995

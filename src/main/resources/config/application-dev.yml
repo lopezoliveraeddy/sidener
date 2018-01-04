@@ -163,3 +163,8 @@ jhipster:
 # ===================================================================
 
 application:
+    storage:
+      location: target/files
+      temporal: target/tmp
+    scheduled:
+      deletefiles: 0 0 12 * * *    # second ,minute, hour, daymonth, month, dayweek

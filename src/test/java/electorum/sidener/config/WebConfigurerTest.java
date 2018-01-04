@@ -50,6 +50,8 @@ public class WebConfigurerTest {
 
     private JHipsterProperties props;
 
+    private ApplicationProperties applicationProperties;
+
     private MetricRegistry metricRegistry;
 
     @Before
@@ -62,8 +64,9 @@ public class WebConfigurerTest {
 
         env = new MockEnvironment();
         props = new JHipsterProperties();
+        applicationProperties = new ApplicationProperties();
 
-        webConfigurer = new WebConfigurer(env, props);
+        webConfigurer = new WebConfigurer(env, props, applicationProperties);
         metricRegistry = new MetricRegistry();
         webConfigurer.setMetricRegistry(metricRegistry);
     }

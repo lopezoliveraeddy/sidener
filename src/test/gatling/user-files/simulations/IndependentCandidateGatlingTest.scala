@@ -68,7 +68,7 @@ class IndependentCandidateGatlingTest extends Simulation {
             .exec(http("Create new independentCandidate")
             .post("/api/independent-candidates")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "acronym":"SAMPLE_TEXT", "image":"SAMPLE_TEXT", "published":null, "createdDate":"2020-01-01T00:00:00.000Z", "updatedDate":"2020-01-01T00:00:00.000Z"}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "acronym":"SAMPLE_TEXT", "published":null, "createdDate":"2020-01-01T00:00:00.000Z", "updatedDate":"2020-01-01T00:00:00.000Z"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_independentCandidate_url"))).exitHereIfFailed
             .pause(10)
