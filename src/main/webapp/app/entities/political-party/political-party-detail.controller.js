@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('PoliticalPartyDetailController', PoliticalPartyDetailController);
 
-    PoliticalPartyDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'PoliticalParty', 'Archive', 'PublicArchive'];
+    PoliticalPartyDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'PoliticalParty', 'Archive'];
 
-    function PoliticalPartyDetailController($scope, $rootScope, $stateParams, previousState, entity, PoliticalParty, Archive, PublicArchive) {
+    function PoliticalPartyDetailController($scope, $rootScope, $stateParams, previousState, entity, PoliticalParty, Archive) {
         var vm = this;
 
         vm.politicalParty = entity;
@@ -23,7 +23,7 @@
         ini();
 
         function ini() {
-            PublicArchive.get({ id: vm.politicalParty.imageId }, onSuccess, onError);
+            Archive.get({ id: vm.politicalParty.imageId }, onSuccess, onError);
         }
         function onSuccess(data, headers) {
             vm.image = data;

@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('PoliticalPartyDialogController', PoliticalPartyDialogController);
 
-    PoliticalPartyDialogController.$inject = ['$rootElement', '$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'AuthServerProvider', 'entity', 'Archive', 'PoliticalParty'];
+    PoliticalPartyDialogController.$inject = ['$rootElement', '$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'AuthServerProvider', 'entity', 'PublicArchive', 'PoliticalParty'];
 
-    function PoliticalPartyDialogController ($rootElement, $timeout, $scope, $stateParams, $uibModalInstance, $q, AuthServerProvider, entity, Archive, PoliticalParty) {
+    function PoliticalPartyDialogController ($rootElement, $timeout, $scope, $stateParams, $uibModalInstance, $q, AuthServerProvider, entity, PublicArchive, PoliticalParty) {
         var vm = this;
 
         vm.politicalParty = entity;
@@ -19,27 +19,17 @@
         /* Upload Files */
         vm.uploadStart = uploadStart;
         vm.successUpload = successUpload;
-        vm.removeFiles = removeFiles;
+        vm.removeFile = removeFile;
         vm.loading = false;
         vm.error = false;
         vm.completeUpload = completeUpload;
         vm.errorUpload = errorUpload;
         vm.flow = null;
         vm.deleteFile = deleteFile;
-        vm.filesToRemove = [];
 
         vm.imageId = "";
-
-        vm.images = Archive.query({filter: 'politicalparty-is-null'});
-
-        $q.all([vm.politicalParty.$promise, vm.images.$promise]).then(function() {
-            if (!vm.politicalParty.imageId) {
-                return $q.reject();
-            }
-            return Archive.get({id : vm.politicalParty.imageId}).$promise;
-        }).then(function(image) {
-            vm.images.push(image);
-        });
+        vm.promises = [];
+        vm.image = [];
 
         ini();
 
@@ -47,7 +37,29 @@
             if(vm.politicalParty.id == null) {
                 vm.politicalParty.published = true;
             }
+            if(vm.politicalParty.imageId != null) {
+                vm.promises.push(makePromiseImagen(vm.politicalParty.imageId));
+            }
         }
+
+        function makePromiseImagen(imageId) {
+            var deferred = $q.defer();
+            PublicArchive.get({ id : imageId}).$promise.then(function(data) {
+                vm.image.push(data);
+                angular.forEach(vm.image, function(value, key) {
+                    var arrayTmp = value.path.split("/files");
+                    if(arrayTmp.length > 1) {
+                        value.path = arrayTmp[arrayTmp.length - 1];
+                    }
+                });
+                deferred.resolve(data);
+            }).catch(function() {
+                deferred.reject("error");
+            });
+            return deferred.promise;
+
+        }
+
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -124,9 +136,18 @@
             console.log("size total: " + $flow.sizeUploaded());
         }
 
-        function removeFiles($flow, index) {
-            $flow.removeFile($flow.files[index]);
+        function removeFile(file) {
+            var index = vm.politicalParty.imageId.indexOf(file.id);
+            var indexImagen = vm.image.indexOf(file);
+            if(index >= 0){
+                vm.politicalParty.imageId.splice(index, 1);
+            }
+            if(indexImagen >= 0) {
+                vm.trash.push(file);
+                vm.image.splice(indexImagen, 1);
+            }
         }
+
 
         function deleteFile(file) {
             vm.filesToRemove.push(file);
@@ -136,15 +157,6 @@
                     break;
                 }
             }
-        }
-
-        function removeLoadedFiles() {
-            for (var i = 0; i < vm.filesToRemove.length; i++) {
-                console.log(vm.filesToRemove[i].nombre);
-                Documento.delete({
-                    id: vm.filesToRemove[i].id
-                }, onDeleteFileSuccess, onDeleteFileError);
-            };
         }
 
         function onDeleteFileSuccess() {
