@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="bower_components/angular-object-diff/dist/angular-object-diff.css">
     <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css">
     <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css">
+    <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css">
     <!-- endinject -->
     <link rel="stylesheet" href="content/css/vendor.css">
     <!-- endbuild -->
@@ -54,6 +55,99 @@
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
         ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>-->
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChartA);
+
+      function drawChartA() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['PARTIDO POLITICO', 'VOTOS'],
+          ['PRI',     11],
+          ['PAN',      2],
+          ['PRD',  2],
+          ['PT', 2],
+          ['MORENA',    7]
+        ]);
+
+        var options = {
+          title: 'Resultados a nivel Distrito'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChartB);
+
+      function drawChartB() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Status', 'VOTOS'],
+          ['anuladas',  11],
+          ['Impugnadas',1],
+          ['Sin Recuento o Impugnación',198]
+        ]);
+
+        var options = {
+          title: 'Resultados a nivel Distrito'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    
+        <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChartC);
+
+      function drawChartC() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Status', 'VOTOS'],
+          ['A',  11],
+          ['B',1],
+          ['C',2],
+          ['C',200]
+        ]);
+
+        var options = {
+          title: 'Nulidades'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+        <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChartD);
+
+      function drawChartD() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Status', 'Distritos'],
+          ['Ganados',  11],
+          ['Perdidos',1]
+        ]);
+
+        var options = {
+          title: 'Ganados / Perdidos'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
+
+        chart.draw(data, options);
+      }
+    </script>
 
     <!-- build:js app/vendor.js -->
     <!-- bower:js -->
@@ -85,6 +179,7 @@
     <script src="bower_components/ng-flow/dist/ng-flow.js"></script>
     <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
     <script src="bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+    <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
 
@@ -143,8 +238,11 @@
     <script src="app/entities/political-party/political-party.service.js"></script>
     <script src="app/entities/political-party/political-party.search.service.js"></script>
     <script src="app/entities/political-party/political-party.controller.js"></script>
+    <script src="app/entities/load-election/show-election.controller.js"></script>
+    <script src="app/entities/load-election/nul-review.controller.js"></script>
     <script src="app/entities/load-election/load-election.state.js"></script>
     <script src="app/entities/load-election/load-election.service.js"></script>
+    <script src="app/entities/load-election/load-election.directive.js"></script>
     <script src="app/entities/load-election/load-election.controller.js"></script>
     <script src="app/entities/independent-candidate/independent-candidate-dialog.controller.js"></script>
     <script src="app/entities/independent-candidate/independent-candidate-detail.controller.js"></script>

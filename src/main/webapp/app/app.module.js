@@ -14,6 +14,7 @@
             'ui.bootstrap',
             'ui.bootstrap.datetimepicker',
             'ui.router',
+            'ui.grid',
             'infinite-scroll',
 			'ui.select',
             'ngSanitize',

@@ -4,9 +4,11 @@ import com.codahale.metrics.annotation.Timed;
 import electorum.sidener.service.PollingPlaceService;
 import electorum.sidener.web.rest.util.HeaderUtil;
 import electorum.sidener.web.rest.util.PaginationUtil;
+import electorum.sidener.service.dto.LoadDTO;
 import electorum.sidener.service.dto.PollingPlaceDTO;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -16,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -82,6 +85,24 @@ public class PollingPlaceResource {
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, pollingPlaceDTO.getId().toString()))
             .body(result);
+    }
+    
+    @PutMapping("/process-places")
+    @Timed
+    public ResponseEntity<List<PollingPlaceDTO>> createPollingPlaces (@RequestBody LoadDTO loadDTO) throws URISyntaxException{
+    		log.debug("REST request to process a bunch of records");
+    		byte[] dbFile = loadDTO.getDbFile();
+    		try {
+				String decoded = new String(dbFile, "UTF-8");
+				log.debug("CSV {}", decoded);
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		
+    	
+    		return null;
+    	
     }
 
     /**
