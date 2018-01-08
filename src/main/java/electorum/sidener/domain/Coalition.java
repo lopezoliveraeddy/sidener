@@ -43,13 +43,6 @@ public class Coalition implements Serializable {
     @Column(name = "acronym")
     private String acronym;
 
-    /**
-     * Logo de la Coalición
-     */
-    @ApiModelProperty(value = "Logo de la Coalición")
-    @Column(name = "image")
-    private String image;
-
     @Column(name = "published")
     private Boolean published;
 
@@ -58,6 +51,10 @@ public class Coalition implements Serializable {
 
     @Column(name = "updated_date")
     private ZonedDateTime updatedDate;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Archive image;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -101,19 +98,6 @@ public class Coalition implements Serializable {
         this.acronym = acronym;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public Coalition image(String image) {
-        this.image = image;
-        return this;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public Boolean isPublished() {
         return published;
     }
@@ -151,6 +135,19 @@ public class Coalition implements Serializable {
 
     public void setUpdatedDate(ZonedDateTime updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public Archive getImage() {
+        return image;
+    }
+
+    public Coalition image(Archive archive) {
+        this.image = archive;
+        return this;
+    }
+
+    public void setImage(Archive archive) {
+        this.image = archive;
     }
 
     public Set<PoliticalParty> getPoliticalParties() {
@@ -203,7 +200,6 @@ public class Coalition implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", acronym='" + getAcronym() + "'" +
-            ", image='" + getImage() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

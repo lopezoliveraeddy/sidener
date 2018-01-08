@@ -126,7 +126,6 @@
                             return {
                                 name: null,
                                 acronym: null,
-                                image: null,
                                 published: null,
                                 createdDate: null,
                                 updatedDate: null,

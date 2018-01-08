@@ -44,8 +44,6 @@ entity PoliticalParty {
 	name String,
 	/* Iniciales */
     acronym String,
-    /* Logo del Partido Político */
-    image String,
 
     published Boolean,
     createdDate ZonedDateTime,
@@ -58,8 +56,6 @@ entity IndependentCandidate {
 	name String,
 	/* Iniciales */
 	acronym String,
-	/* Fotografía del Candidato Independiente */
-    image String,
 
     published Boolean,
     createdDate ZonedDateTime,
@@ -72,8 +68,6 @@ entity Coalition {
 	name String,
 	/* Iniciales */
 	acronym String,
-	/* Logo de la Coalición */
-	image String,
 
     published Boolean,
     createdDate ZonedDateTime,
@@ -182,6 +176,22 @@ entity CausalDescription {
 	text TextBlob
 }
 
+entity Archive {
+    /* Nombre del Archivo */
+	name String,
+	/* Descripción del Archivo */
+    description String,
+    /* Tipo MIME del Archivo */
+    mimeType String,
+    /* Tamaño en Bytes del Archivo */
+    sizeLength Long,
+    /* Ruta donde fue almacenado el Archivo */
+    path String,
+    /* Estado del Archivo Almacenado */
+    status ArchiveStatus
+}
+
+
 enum ElectionAmbit {
 	LOCAL, FEDERAL
 }
@@ -204,6 +214,10 @@ enum TypePollingPlace {
 
 enum CausalType {
 	RECOUNT, NULLITY
+}
+
+enum ArchiveStatus {
+    TEMPORARY, PERMANENT
 }
 
 enum State {
@@ -236,8 +250,14 @@ relationship ManyToOne {
     Vote{pollingPlace} to PollingPlace
 }
 
+relationship OneToOne {
+    PoliticalParty{image} to Archive,
+    Coalition{image} to Archive,
+    IndependentCandidate{image} to Archive
+}
+
 // Set pagination options
-paginate Election, PoliticalParty, IndependentCandidate, Coalition, ElectionType, District, PollingPlace, Vote, Causal, CausalDescription with pagination
+paginate Election, PoliticalParty, IndependentCandidate, Coalition, ElectionType, District, PollingPlace, Vote, Causal, CausalDescription, Archive with pagination
 
 dto * with mapstruct
 

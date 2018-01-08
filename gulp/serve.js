@@ -16,10 +16,12 @@ module.exports = function () {
     // to correctly handle them.
     var proxyRoutes = [
         '/api',
+        '/public',
         '/management',
         '/swagger-resources',
         '/v2/api-docs',
-        '/h2-console'
+        '/h2-console',
+        '/upload'
     ];
 
     var requireTrailingSlash = proxyRoutes.filter(function (r) {

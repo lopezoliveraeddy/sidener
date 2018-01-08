@@ -52,9 +52,6 @@ public class CoalitionResourceIntTest {
     private static final String DEFAULT_ACRONYM = "AAAAAAAAAA";
     private static final String UPDATED_ACRONYM = "BBBBBBBBBB";
 
-    private static final String DEFAULT_IMAGE = "AAAAAAAAAA";
-    private static final String UPDATED_IMAGE = "BBBBBBBBBB";
-
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
 
@@ -112,7 +109,6 @@ public class CoalitionResourceIntTest {
         Coalition coalition = new Coalition()
             .name(DEFAULT_NAME)
             .acronym(DEFAULT_ACRONYM)
-            .image(DEFAULT_IMAGE)
             .published(DEFAULT_PUBLISHED)
             .createdDate(DEFAULT_CREATED_DATE)
             .updatedDate(DEFAULT_UPDATED_DATE);
@@ -143,7 +139,6 @@ public class CoalitionResourceIntTest {
         Coalition testCoalition = coalitionList.get(coalitionList.size() - 1);
         assertThat(testCoalition.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testCoalition.getAcronym()).isEqualTo(DEFAULT_ACRONYM);
-        assertThat(testCoalition.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testCoalition.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
         assertThat(testCoalition.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testCoalition.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
@@ -186,7 +181,6 @@ public class CoalitionResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(coalition.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].acronym").value(hasItem(DEFAULT_ACRONYM.toString())))
-            .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
@@ -205,7 +199,6 @@ public class CoalitionResourceIntTest {
             .andExpect(jsonPath("$.id").value(coalition.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.acronym").value(DEFAULT_ACRONYM.toString()))
-            .andExpect(jsonPath("$.image").value(DEFAULT_IMAGE.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
             .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
             .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
@@ -232,7 +225,6 @@ public class CoalitionResourceIntTest {
         updatedCoalition
             .name(UPDATED_NAME)
             .acronym(UPDATED_ACRONYM)
-            .image(UPDATED_IMAGE)
             .published(UPDATED_PUBLISHED)
             .createdDate(UPDATED_CREATED_DATE)
             .updatedDate(UPDATED_UPDATED_DATE);
@@ -249,7 +241,6 @@ public class CoalitionResourceIntTest {
         Coalition testCoalition = coalitionList.get(coalitionList.size() - 1);
         assertThat(testCoalition.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testCoalition.getAcronym()).isEqualTo(UPDATED_ACRONYM);
-        assertThat(testCoalition.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testCoalition.isPublished()).isEqualTo(UPDATED_PUBLISHED);
         assertThat(testCoalition.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testCoalition.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
@@ -314,7 +305,6 @@ public class CoalitionResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(coalition.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].acronym").value(hasItem(DEFAULT_ACRONYM.toString())))
-            .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));

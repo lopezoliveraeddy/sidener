@@ -19,6 +19,8 @@
                 "causal": "Causal",
                 "causalDescription": "Causal Description",
                 "election": "Elección",
+                "document": "Documento",
+                "archive": "Archive",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

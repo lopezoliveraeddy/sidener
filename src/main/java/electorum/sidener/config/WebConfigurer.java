@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.*;
 import org.springframework.boot.context.embedded.undertow.UndertowEmbeddedServletContainerFactory;
 import io.undertow.UndertowOptions;
+import electorum.sidener.web.rest.UploadServlet;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,10 +42,13 @@ public class WebConfigurer implements ServletContextInitializer, EmbeddedServlet
 
     private MetricRegistry metricRegistry;
 
-    public WebConfigurer(Environment env, JHipsterProperties jHipsterProperties) {
+    private final ApplicationProperties applicationProperties;
+
+    public WebConfigurer(Environment env, JHipsterProperties jHipsterProperties, ApplicationProperties applicationProperties) {
 
         this.env = env;
         this.jHipsterProperties = jHipsterProperties;
+        this.applicationProperties = applicationProperties;
     }
 
     @Override
@@ -60,6 +64,7 @@ public class WebConfigurer implements ServletContextInitializer, EmbeddedServlet
         if (env.acceptsProfiles(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT)) {
             initH2Console(servletContext);
         }
+        initUpload(servletContext, this.applicationProperties);
         log.info("Web application fully configured");
     }
 
@@ -158,6 +163,17 @@ public class WebConfigurer implements ServletContextInitializer, EmbeddedServlet
         metricsAdminServlet.addMapping("/management/metrics/*");
         metricsAdminServlet.setAsyncSupported(true);
         metricsAdminServlet.setLoadOnStartup(2);
+    }
+
+    private void initUpload(ServletContext servletContext, ApplicationProperties applicationProperties) {
+        log.debug("Initializing Upload servlet");
+
+        ServletRegistration.Dynamic uploadServlet = servletContext.addServlet("upload", new UploadServlet(this.applicationProperties));
+        uploadServlet.addMapping("/upload/*");
+        uploadServlet.setLoadOnStartup(3);
+
+        log.debug("End Upload servlet");
+
     }
 
     @Bean

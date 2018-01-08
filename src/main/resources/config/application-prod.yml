@@ -147,3 +147,9 @@ jhipster:
 # ===================================================================
 
 application:
+    storage:
+        location: /files
+        temporal: /tmp
+    scheduled:
+        deletefiles:  "0 0 23 * * *"    # second ,minute, hour, daymonth, month, dayweek
+

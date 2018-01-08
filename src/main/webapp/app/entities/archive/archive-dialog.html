@@ -1,0 +1,63 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myArchiveLabel" data-translate="sidenerApp.archive.home.createOrEditLabel">Create or edit a Archive</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.archive.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.archive.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.archive.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.archive.name"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.archive.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.archive.description"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.archive.mimeType" for="field_mimeType">Mime Type</label>
+            <input type="text" class="form-control" name="mimeType" id="field_mimeType"
+                    ng-model="vm.archive.mimeType"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.archive.sizeLength" for="field_sizeLength">Size Length</label>
+            <input type="number" class="form-control" name="sizeLength" id="field_sizeLength"
+                    ng-model="vm.archive.sizeLength"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.archive.path" for="field_path">Path</label>
+            <input type="text" class="form-control" name="path" id="field_path"
+                    ng-model="vm.archive.path"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.archive.status" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.archive.status" id="field_status">
+                <option value="TEMPORARY" data-translate="sidenerApp.ArchiveStatus.TEMPORARY">TEMPORARY</option>
+                <option value="PERMANENT" data-translate="sidenerApp.ArchiveStatus.PERMANENT">PERMANENT</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('IndependentCandidateDetailController', IndependentCandidateDetailController);
 
-    IndependentCandidateDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'IndependentCandidate'];
+    IndependentCandidateDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'IndependentCandidate', 'Archive'];
 
-    function IndependentCandidateDetailController($scope, $rootScope, $stateParams, previousState, entity, IndependentCandidate) {
+    function IndependentCandidateDetailController($scope, $rootScope, $stateParams, previousState, entity, IndependentCandidate, Archive) {
         var vm = this;
 
         vm.independentCandidate = entity;

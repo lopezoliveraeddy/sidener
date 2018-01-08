@@ -18,10 +18,10 @@
             },
             "name": "Nombre",
             "acronym": "Iniciales",
-            "image": "Imagen",
             "published": "Publicado",
             "createdDate": "Creado",
             "updatedDate": "Actualizado",
+            "image": "Imagen",
             "politicalParties": "Partidos Políticos"
         }
     }
