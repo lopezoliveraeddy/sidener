@@ -5,7 +5,7 @@
         .module('sidenerApp')
         .controller('ElectionDialogController', ElectionDialogController);
 
-    ElectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Election', 'ElectionType', 'PoliticalParty', 'Coalition', 'IndependentCandidate', 'Causal', 'User'];
+    ElectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Election', 'ElectionType', 'PoliticalParty', 'Coalition', 'IndependentCandidate', 'Causal', 'User','Upload'];
 
     function ElectionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Election, ElectionType, PoliticalParty, Coalition, IndependentCandidate, Causal, User) {
         var vm = this;
@@ -23,6 +23,9 @@
         vm.independentcandidates = IndependentCandidate.query();
         vm.causals = Causal.query();
         vm.users = User.query();
+        /*Files*/
+        vm.byteSize = DataUtils.byteSize;
+        vm.openFile = DataUtils.openFile;
 
         ini();
 
@@ -78,7 +81,76 @@
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;
         }
-
+        
+        /*files dataBase*/
+        vm.setDatabase = function($file , election){
+        	    if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                    	   election.dbFile = base64Data;
+                        election.dbFileContentType = $file.type;
+                    });
+                });
+            }
+           
+        };
+        
+        /*files Encarte*/
+        vm.setEncarte = function ($file, election){
+        	if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                    	     election.iuFile = base64Data;
+                        election.iuFileContentType = $file.type;
+                    });
+                });
+            }
+        }
+        /* files hojas de incidentes*/
+        vm.setHojaIncidentes = function ($file, election){
+	        	if ($file) {
+	                DataUtils.toBase64($file, function(base64Data) {
+	                    $scope.$apply(function() {
+	                    	    election.isFile = base64Data;
+	                        election.isFileContentType = $file.type;
+	                    });
+	                });
+	            }
+	        }      	
+        /* files acta de la jornada*/
+        vm.setActaJornada = function ($file, election){
+        	if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                    	    election.drFile = base64Data;
+                        election.drFileContentType = $file.type;
+                    });
+                });
+            }
+        }   
+        /* plantilla de la demanda */
+        vm.setPlantillaDemanda = function ($file, election){
+        	if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                    	    election.dmFile = base64Data;
+                        election.dmFileContentType = $file.type;
+                    });
+                });
+            }
+        }   
+        /*plantilla de recuento*/
+        vm.setPlantillaRecuento = function ($file, election){
+        	if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                    	    election.rtFile = base64Data;
+                        election.rtFileContentType = $file.type;
+                    });
+                });
+            }
+        }   
+        
         $scope.change = function(value) {
             console.log(value);
             if(value === 'politicalPartyAsociated') {

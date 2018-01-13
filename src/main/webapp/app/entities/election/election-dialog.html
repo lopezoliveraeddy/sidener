@@ -159,42 +159,135 @@
         <div class="panel panel-default">
             <div class="panel-heading">Documentos</div>
             <div class="panel-body">
-                <div class="form-group">
+            		<!--  Database  -->
+                <div class="form-group" ngf-drop ngf-change="vm.setDatabase($file, vm.election)">
                 <label class="control-label" data-translate="sidenerApp.election.dataBase" for="field_dataBase">Data Base</label>
-                <input type="text" class="form-control" name="dataBase" id="field_dataBase"
-                        ng-model="vm.election.dataBase"
-                        />
+                <div>
+	                	<div ng-if="vm.election.dataBase" class="help-block clearfix">
+	                		<span class="pull-left">{{vm.election.cvFileContentType}}, {{vm.byteSize(vm.election.cvFile)}}</span>
+                         <button type="button" ng-click="vm.election.dbFile=null;vm.election.dbFileContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        		<span class="glyphicon glyphicon-remove"></span>
+                    		</button>
+	                	</div>
+	                	<button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setDatabase($file, vm.election)">
+                    Agregar Archivo
+                		</button>
+	            </div>
+	            <input type="hidden" class="form-control" name="cvFile" id="field_cvFile"
+                   ng-model="vm.election.dbFile"
+            />
+            <input type="hidden" class="form-control" name="cvFileContentType" id="field_cvFileContentType"
+                   ng-model="vm.election.dbFileContentType" />
             </div>
-                <div class="form-group">
+            <!-- Termina database -->
+            <!--  Inicia Encarte -->
+                <div class="form-group" ngf-drop ngf-change="vm.setEncarte($file, vm.election)">
                     <label class="control-label" data-translate="sidenerApp.election.insetUrl" for="field_insetUrl">Inset Url</label>
-                    <input type="text" class="form-control" name="insetUrl" id="field_insetUrl"
-                            ng-model="vm.election.insetUrl"
-                            />
+                    <div>
+                    		<div ng-if="vm.election.insetUrl" class="help-block clearfix">
+                    			<span class="pull-left">{{vm.election.iuFileContentType}}, {{vm.byteSize(vm.election.iuFile)}}</span>
+                    			<button type="button" ng-click="vm.election.iuFile=null;vm.election.iuFileContentType=null;"
+                           		class="btn btn-default btn-xs pull-right">
+                           		<span class="glyphicon glyphicon-remove"></span>
+                       		</button>
+                    		</div>
+                    		<button type="button" ngf-select class="btn btn-default btn-block"
+                       		ngf-change="vm.setEncarte($file, vm.election)">
+                   			Agregar Archivo
+                 		</button>
+                    </div>
+                    <input type="hidden" class="form-control" name="iuFile" id="field_iuFile" ng-model="vm.election.iuFile" />
+                    <input type="hidden" class="form-control" name="iuFileContentType" id="field_iuFileContentType" ng-model="vm.election.iuFileContentType" />
+                    
                 </div>
-                <div class="form-group">
+                <!--  termina encarte -->
+                <!--  inicia hoja de incidentes -->
+               <div class="form-group" ngf-drop ngf-change="vm.setHojaIncidentes($file, vm.election)">
                     <label class="control-label" data-translate="sidenerApp.election.incidentSheet" for="field_incidentSheet">Incident Sheet</label>
-                    <input type="text" class="form-control" name="incidentSheet" id="field_incidentSheet"
-                            ng-model="vm.election.incidentSheet"
-                            />
-                </div>
-                <div class="form-group">
+                    <div>
+                    		<div ng-if="vm.election.incidentSheet" class="help-block clearfix">
+                    			<span class="pull-left">{{vm.election.isFileContentType}}, {{vm.byteSize(vm.election.isFile)}}</span>
+                    			<button type="button" ng-click="vm.election.isFile=null;vm.election.isFileContentType=null;"
+                           		class="btn btn-default btn-xs pull-right">
+                           		<span class="glyphicon glyphicon-remove"></span>
+                       		</button>
+                    		</div>
+                    		<button type="button" ngf-select class="btn btn-default btn-block"
+                       		ngf-change="vm.setHojaIncidentes($file, vm.election)">
+                   			Agregar Archivo
+                 		</button>
+                    </div>
+                    <input type="hidden" class="form-control" name="isFile" id="field_isFile" ng-model="vm.election.isFile" />
+                    <input type="hidden" class="form-control" name="isFileContentType" id="field_isFileContentType" ng-model="vm.election.isFileContentType" />
+                    
+                </div>               
+                <!--  termina hoja de incidentes -->
+                
+				<!-- inicia  Acta de la jornada -->
+	               <div class="form-group" ngf-drop ngf-change="vm.setActaJornada($file, vm.election)">
                     <label class="control-label" data-translate="sidenerApp.election.dayRecord" for="field_dayRecord">Day Record</label>
-                    <input type="text" class="form-control" name="dayRecord" id="field_dayRecord"
-                            ng-model="vm.election.dayRecord"
-                            />
-                </div>
-                <div class="form-group">
+                    <div>
+                    		<div ng-if="vm.election.dayRecord" class="help-block clearfix">
+                    			<span class="pull-left">{{vm.election.drFileContentType}}, {{vm.byteSize(vm.election.drFile)}}</span>
+                    			<button type="button" ng-click="vm.election.drFile=null;vm.election.drFileContentType=null;"
+                           		class="btn btn-default btn-xs pull-right">
+                           		<span class="glyphicon glyphicon-remove"></span>
+                       		</button>
+                    		</div>
+                    		<button type="button" ngf-select class="btn btn-default btn-block"
+                       		ngf-change="vm.setActaJornada($file, vm.election)">
+                   			Agregar Archivo
+                 		</button>
+                    </div>
+                    <input type="hidden" class="form-control" name="drFile" id="field_drFile" ng-model="vm.election.drFile" />
+                    <input type="hidden" class="form-control" name="drFileContentType" id="field_drFileContentType" ng-model="vm.election.drFileContentType" />
+                    
+                </div>			
+				<!-- termina acta de la jornada -->
+
+				<!-- inicia plantilla de la demanda -->
+	               <div class="form-group" ngf-drop ngf-change="vm.setPlantillaDemanda($file, vm.election)">
                     <label class="control-label" data-translate="sidenerApp.election.demandTemplateUrl" for="field_demandTemplateUrl">Demand Template Url</label>
-                    <input type="text" class="form-control" name="demandTemplateUrl" id="field_demandTemplateUrl"
-                            ng-model="vm.election.demandTemplateUrl"
-                            />
-                </div>
-                <div class="form-group">
+                    <div>
+                    		<div ng-if="vm.election.demandTemplateUrl" class="help-block clearfix">
+                    			<span class="pull-left">{{vm.election.dmFileContentType}}, {{vm.byteSize(vm.election.dmFile)}}</span>
+                    			<button type="button" ng-click="vm.election.dmFile=null;vm.election.dmFileContentType=null;"
+                           		class="btn btn-default btn-xs pull-right">
+                           		<span class="glyphicon glyphicon-remove"></span>
+                       		</button>
+                    		</div>
+                    		<button type="button" ngf-select class="btn btn-default btn-block"
+                       		ngf-change="vm.setPlantillaDemanda($file, vm.election)">
+                   			Agregar Archivo
+                 		</button>
+                    </div>
+                    <input type="hidden" class="form-control" name="dmFile" id="field_dmFile" ng-model="vm.election.dmFile" />
+                    <input type="hidden" class="form-control" name="dmFileContentType" id="field_dmFileContentType" ng-model="vm.election.dmFileContentType" />
+                    
+                </div>			
+				<!-- termina plantilla de la demanda  -->
+				<!-- inicia plantilla de recuento -->
+	               <div class="form-group" ngf-drop ngf-change="vm.setPlantillaRecuento($file, vm.election)">
                     <label class="control-label" data-translate="sidenerApp.election.recountTemplateUrl" for="field_recountTemplateUrl">Recount Template Url</label>
-                    <input type="text" class="form-control" name="recountTemplateUrl" id="field_recountTemplateUrl"
-                            ng-model="vm.election.recountTemplateUrl"
-                            />
-                </div>
+                    <div>
+                    		<div ng-if="vm.election.recountTemplateUrl" class="help-block clearfix">
+                    			<span class="pull-left">{{vm.election.rtFileContentType}}, {{vm.byteSize(vm.election.rtFile)}}</span>
+                    			<button type="button" ng-click="vm.election.rtFile=null;vm.election.rtFileContentType=null;"
+                           		class="btn btn-default btn-xs pull-right">
+                           		<span class="glyphicon glyphicon-remove"></span>
+                       		</button>
+                    		</div>
+                    		<button type="button" ngf-select class="btn btn-default btn-block"
+                       		ngf-change="vm.setPlantillaRecuento($file, vm.election)">
+                   			Agregar Archivo
+                 		</button>
+                    </div>
+                    <input type="hidden" class="form-control" name="rtFile" id="field_dmFile" ng-model="vm.election.rtFile" />
+                    <input type="hidden" class="form-control" name="rtFileContentType" id="field_rtFileContentType" ng-model="vm.election.rtFileContentType" />
+                </div>			
+				<!-- termina plantilla de la demanda  -->				
             </div>
         </div>
 
