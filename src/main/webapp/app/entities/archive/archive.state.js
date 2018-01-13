@@ -17,7 +17,7 @@
                 pageTitle: 'sidenerApp.archive.home.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/archive/archives.html',
                     controller: 'ArchiveController',
                     controllerAs: 'vm'
@@ -60,7 +60,7 @@
                 pageTitle: 'sidenerApp.archive.detail.title'
             },
             views: {
-                'content@': {
+                'content@private': {
                     templateUrl: 'app/entities/archive/archive-detail.html',
                     controller: 'ArchiveDetailController',
                     controllerAs: 'vm'

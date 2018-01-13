@@ -31,7 +31,9 @@
         </dd>
         <dt><span data-translate="sidenerApp.independentCandidate.image">Image</span></dt>
         <dd>
-            <a ui-sref="archive-detail({id:vm.independentCandidate.imageId})">{{vm.independentCandidate.imageId}}</a>
+            <span ng-if="vm.independentCandidate.imageId!=null">
+                <img src="public/api/archives/download?filename={{vm.image.path}}" width="70px" height="70px"/>
+            </span>
         </dd>
     </dl>
 

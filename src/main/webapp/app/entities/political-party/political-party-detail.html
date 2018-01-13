@@ -30,13 +30,10 @@
             <span>{{vm.politicalParty.updatedDate | date:'medium'}}</span>
         </dd>
         <dt><span data-translate="sidenerApp.politicalParty.image">Image</span></dt>
-
-        <!--<dd>
-            <a ui-sref="archive-detail({id:vm.politicalParty.imageId})">{{vm.politicalParty.imageId}}</a>
-        </dd>-->
-
         <dd>
-            <img src="public/api/archives/download?filename={{vm.image.path}}"/>
+            <span ng-if="vm.politicalParty.imageId!=null">
+                <img src="public/api/archives/download?filename={{vm.image.path}}" width="70px" height="70px"/>
+            </span>
         </dd>
     </dl>
 

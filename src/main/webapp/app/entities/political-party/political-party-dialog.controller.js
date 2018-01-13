@@ -5,7 +5,7 @@
         .module('sidenerApp')
         .controller('PoliticalPartyDialogController', PoliticalPartyDialogController);
 
-    PoliticalPartyDialogController.$inject = ['$rootElement', '$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q',  'Archive', 'AuthServerProvider', 'entity', 'PublicArchive', 'PoliticalParty'];
+    PoliticalPartyDialogController.$inject = ['$rootElement', '$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'Archive', 'AuthServerProvider', 'entity', 'PublicArchive', 'PoliticalParty'];
 
     function PoliticalPartyDialogController ($rootElement, $timeout, $scope, $stateParams, $uibModalInstance, $q, Archive, AuthServerProvider, entity, PublicArchive, PoliticalParty) {
         var vm = this;
@@ -40,11 +40,11 @@
                 vm.politicalParty.published = true;
             }
             if(vm.politicalParty.imageId != null) {
-                vm.promises.push(makePromiseImagen(vm.politicalParty.imageId));
+                vm.promises.push(makePromiseImage(vm.politicalParty.imageId));
             }
         }
 
-        function makePromiseImagen(imageId) {
+        function makePromiseImage(imageId) {
             var deferred = $q.defer();
             PublicArchive.get({ id : imageId}).$promise.then(function(data) {
                 vm.image.push(data);
@@ -61,7 +61,6 @@
             return deferred.promise;
         }
 
-
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
@@ -75,7 +74,6 @@
             if(vm.image.length > 0) {
                 angular.forEach(vm.image, function (image, key) {
                     vm.politicalParty.imageId = image.id;
-                    console.log(vm.politicalParty.imageId);
                 });
             } else {
                 vm.politicalParty.imageId = null;
