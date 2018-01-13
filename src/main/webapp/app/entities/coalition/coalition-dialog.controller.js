@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('CoalitionDialogController', CoalitionDialogController);
 
-    CoalitionDialogController.$inject = ['$rootElement', '$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'Archive', 'AuthServerProvider', 'entity', 'Coalition', 'PoliticalParty'];
+    CoalitionDialogController.$inject = ['$rootElement', '$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'Archive', 'AuthServerProvider', 'entity', 'Coalition', 'PoliticalParty', 'PublicArchive'];
 
-    function CoalitionDialogController ($rootElement, $timeout, $scope, $stateParams, $uibModalInstance, $q, Archive, AuthServerProvider, entity, Coalition, PoliticalParty) {
+    function CoalitionDialogController ($rootElement, $timeout, $scope, $stateParams, $uibModalInstance, $q, Archive, AuthServerProvider, entity, Coalition, PoliticalParty, PublicArchive) {
         var vm = this;
 
         vm.coalition = entity;
