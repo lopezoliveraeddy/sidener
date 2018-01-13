@@ -31,15 +31,17 @@
         <dd>
             <span>{{vm.coalition.updatedDate | date:'medium'}}</span>
         </dd>
-        <dt><span data-translate="sidenerApp.coalition.image">Image</span></dt>
-        <dd>
-            <a ui-sref="archive-detail({id:vm.coalition.imageId})">{{vm.coalition.imageId}}</a>
-        </dd>
         <dt><span data-translate="sidenerApp.coalition.politicalParties">Political Parties</span></dt>
         <dd>
             <ul ng-repeat="politicalParties in vm.coalition.politicalParties">
                 <li><a ui-sref="political-party-detail({id: politicalParties.id})">{{politicalParties.name}}</a></li>
             </ul>
+        </dd>
+        <dt><span data-translate="sidenerApp.coalition.image">Image</span></dt>
+        <dd>
+            <span ng-if="vm.coalition.imageId!=null">
+                <img src="public/api/archives/download?filename={{vm.image.path}}" width="70px" height="70px"/>
+            </span>
         </dd>
     </dl>
 
