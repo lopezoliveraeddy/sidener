@@ -1,0 +1,9 @@
+{
+    "sidenerApp": {
+        "ArchiveStatus" : {
+            "null": "",
+            "TEMPORARY": "TEMPORARY",
+            "PERMANENT": "PERMANENT"
+        }
+    }
+}

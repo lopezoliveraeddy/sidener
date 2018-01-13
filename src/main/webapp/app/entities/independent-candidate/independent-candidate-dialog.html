@@ -1,5 +1,5 @@
 
-<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" flow-init="{testChunks:false}">
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -26,38 +26,50 @@
                     />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.independentCandidate.image" for="field_image">Image</label>
-            <input type="text" class="form-control" name="image" id="field_image"
-                    ng-model="vm.independentCandidate.image"
-                    />
-        </div>
-        <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.independentCandidate.published" for="field_published">Published</label>
                 <input type="checkbox" name="published" id="field_published"
                           ng-model="vm.independentCandidate.published"/>
         </div>
-        <!--
         <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.independentCandidate.createdDate" for="field_createdDate">Created Date</label>
-                <div class="input-group">
-                    <input id="field_createdDate" type="text" class="form-control" name="createdDate" datetime-picker="{{dateformat}}" ng-model="vm.independentCandidate.createdDate" is-open="vm.datePickerOpenStatus.createdDate"
-                    />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createdDate')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
+            <label class="control-label">Imagen</label>
+            <div class="alert alert-danger" ng-if="vm.error == true">
+                <strong>Error. </strong>{{vm.error_message}}
+            </div>
+            <div class="form-group">
+                <div flow-files-submitted="$flow.upload();"
+                     flow-upload-started="vm.uploadStart($flow);"
+                     flow-file-success="vm.successUpload($file, $message, $flow);"
+                     flow-complete="vm.completeUpload($flow);"
+                     flow-file-error="vm.errorUpload($file, $message, $flow );">
+
+                    <div ng-if="vm.image.length == 0">
+                        <span class="btn btn-default btn-block" data-translate="entity.action.addblob" flow-btn>Upload File</span>
+                    </div>
+                    <div ng-if="vm.image.length > 0">
+                        <div ng-repeat="file in vm.image track by $index">
+                            <table>
+                                <td><img src="public/api/archives/download?filename={{file.path}}" width="70px" height="70px"/></td>
+                                <td>
+                                    <button type="button" ng-disabled="vm.loading" ng-click="vm.removeFile(file)" class="btn  btn-xs pull-right remove_btn">
+                                        <span class="glyphicon glyphicon-remove "></span>
+                                    </button>
+                                </td>
+                            </table>
+                            <br/>
+                            <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
+                                <div class="progress-bar" role="progressbar"
+                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                     ng-style="{width: (file.progress() * 100) + '%'}"
+                                     style="width: 100%;">
+                                    <span class="sr-only ng-binding">1% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.independentCandidate.updatedDate" for="field_updatedDate">Updated Date</label>
-                <div class="input-group">
-                    <input id="field_updatedDate" type="text" class="form-control" name="updatedDate" datetime-picker="{{dateformat}}" ng-model="vm.independentCandidate.updatedDate" is-open="vm.datePickerOpenStatus.updatedDate"
-                    />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('updatedDate')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </div>
-        </div>
-        -->
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

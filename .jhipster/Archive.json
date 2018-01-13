@@ -1,0 +1,42 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "javadoc": "Nombre del Archivo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "javadoc": "Descripción del Archivo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mimeType",
+            "javadoc": "Tipo MIME del Archivo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sizeLength",
+            "javadoc": "Tamaño en Bytes del Archivo",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "path",
+            "javadoc": "Ruta donde fue almacenado el Archivo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "javadoc": "Estado del Archivo Almacenado",
+            "fieldType": "ArchiveStatus",
+            "fieldValues": "TEMPORARY,PERMANENT"
+        }
+    ],
+    "changelogDate": "20171122045234",
+    "entityTableName": "archive",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass"
+}

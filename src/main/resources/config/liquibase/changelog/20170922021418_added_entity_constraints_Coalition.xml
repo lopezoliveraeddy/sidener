@@ -8,6 +8,12 @@
     -->
     <changeSet id="20170922021418-2" author="jhipster">
         
+        <addForeignKeyConstraint baseColumnNames="image_id"
+                                 baseTableName="coalition"
+                                 constraintName="fk_coalition_image_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="archive"/>
+
         <addForeignKeyConstraint baseColumnNames="coalitions_id"
                                  baseTableName="coalition_political_parties"
                                  constraintName="fk_coalition_political_parties_coalitions_id"

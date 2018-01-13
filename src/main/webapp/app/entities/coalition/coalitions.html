@@ -38,11 +38,11 @@
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="sidenerApp.coalition.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="acronym"><span data-translate="sidenerApp.coalition.acronym">Acronym</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="image"><span data-translate="sidenerApp.coalition.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th><span data-translate="sidenerApp.coalition.politicalParties">Political Parties</span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.coalition.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="createdDate"><span data-translate="sidenerApp.coalition.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.coalition.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imageId"><span data-translate="sidenerApp.coalition.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -67,6 +67,9 @@
                     </td>
                     <td>{{coalition.createdDate | date:'short'}}</td>
                     <td>{{coalition.updatedDate | date:'short'}}</td>
+                    <td>
+                        <a ui-sref="archive-detail({id:coalition.imageId})">{{coalition.imageId}}</a>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

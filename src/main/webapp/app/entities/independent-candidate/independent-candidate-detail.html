@@ -12,10 +12,6 @@
         <dd>
             <span>{{vm.independentCandidate.acronym}}</span>
         </dd>
-        <dt><span data-translate="sidenerApp.independentCandidate.image">Image</span></dt>
-        <dd>
-            <span>{{vm.independentCandidate.image}}</span>
-        </dd>
         <dt><span data-translate="sidenerApp.independentCandidate.published">Published</span></dt>
         <dd>
             <span ng-if="vm.independentCandidate.published==true">
@@ -32,6 +28,12 @@
         <dt><span data-translate="sidenerApp.independentCandidate.updatedDate">Updated Date</span></dt>
         <dd>
             <span>{{vm.independentCandidate.updatedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.independentCandidate.image">Image</span></dt>
+        <dd>
+            <span ng-if="vm.independentCandidate.imageId!=null">
+                <img src="public/api/archives/download?filename={{vm.image.path}}" width="70px" height="70px"/>
+            </span>
         </dd>
     </dl>
 
