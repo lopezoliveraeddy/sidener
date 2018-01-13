@@ -33,7 +33,6 @@ import javax.annotation.PostConstruct;
 public class FileManagerService {
     private final Logger log = LoggerFactory.getLogger(FileManagerService.class);
 
-    private static final String ENTITY_NAME = "document";
     final static Pattern PATTERN = Pattern.compile("(.*?)(?:\\((\\d+)\\))?(\\.[^.]*)?");
     final static int NUM_ITEMS_PER_PAGE_CRON = 50;
     private final ObjectMapper objectMapper ;
@@ -130,7 +129,7 @@ public class FileManagerService {
         archive.setPath(file.getAbsolutePath());
         archive.setSizeLength(flowInfo.getFlowTotalSize());
         archive.setId(null);
-        archive.setStatus(archive.getStatus());
+        archive.setStatus(ArchiveStatus.TEMPORARY);
         ArchiveDTO result = archiveService.save(archive);
         String jsonResult = objectMapper.writeValueAsString(result);
         return jsonResult;

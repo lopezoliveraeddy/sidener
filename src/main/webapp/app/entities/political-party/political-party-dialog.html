@@ -42,7 +42,7 @@
                      flow-complete="vm.completeUpload($flow);"
                      flow-file-error="vm.errorUpload($file, $message, $flow );">
 
-                    <div ng-if="!vm.politicalParty.imageId">
+                    <div ng-if="vm.image.length == 0">
                         <span class="btn btn-default btn-block" data-translate="entity.action.addblob" flow-btn>Upload File</span>
                     </div>
                     <div ng-if="vm.image.length > 0">
@@ -50,7 +50,7 @@
                             <table>
                                 <td><img src="public/api/archives/download?filename={{file.path}}"/></td>
                                 <td>
-                                    <button type="button" ng-disabled="vm.loading" ng-click="vm.removeFiles($flow)" class="btn  btn-xs pull-right remove_btn">
+                                    <button type="button" ng-disabled="vm.loading" ng-click="vm.removeFile(file)" class="btn  btn-xs pull-right remove_btn">
                                         <span class="glyphicon glyphicon-remove "></span>
                                     </button>
                                 </td>
