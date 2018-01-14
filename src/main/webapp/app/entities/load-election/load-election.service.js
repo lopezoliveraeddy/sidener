@@ -2,12 +2,12 @@
     'use strict';
     angular
         .module('sidenerApp')
-        .factory('PollingPlace', PollingPlace);
+        .factory('LoadElection', LoadElection);
 
-    PollingPlace.$inject = ['$resource', 'DateUtils'];
+    LoadElection.$inject = ['$resource', 'DateUtils'];
 
-    function PollingPlace ($resource, DateUtils) {
-        var resourceUrl =  'api/elections/:id';
+    function LoadElection ($resource, DateUtils) {
+        var resourceUrl =  'api/election';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},

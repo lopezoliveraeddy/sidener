@@ -1,14 +1,22 @@
 package electorum.sidener.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.opencsv.CSVReader;
+
 import electorum.sidener.service.PollingPlaceService;
 import electorum.sidener.web.rest.util.HeaderUtil;
 import electorum.sidener.web.rest.util.PaginationUtil;
+import electorum.sidener.service.dto.ElectionDTO;
 import electorum.sidener.service.dto.LoadDTO;
 import electorum.sidener.service.dto.PollingPlaceDTO;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.ArrayUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -18,10 +26,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
@@ -179,6 +192,139 @@ public class PollingPlaceResource {
         Page<PollingPlaceDTO> page = pollingPlaceService.getPollingPlacesByIdDistrict(id, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/districts/{id}/polling-places");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+    
+    /**
+     * Post /election : Create a new election data from file
+     * @param loadDTO the loadDTO to create
+     * @return ResponseEntity with status 201 (Created) and with body the new loadDTO
+     * @trhows URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PostMapping("/election")
+    @Timed
+	@SuppressWarnings("null")
+    public ResponseEntity<List<ElectionDTO>> createElectionFile(@RequestBody LoadDTO loadDTO ) throws URISyntaxException {
+    		log.debug("---> REST request to save LoadDTO : {}", loadDTO);	
+    		byte[] csvFile = loadDTO.getDbFile();    
+    		int it                  = 0;
+    		int topeDatos           = 0;
+    		int topePartidos        = 0;
+    		int topeCoaliciones     = 0;
+    		int topeCandidatosInd   = 0;
+    		List<String>  partidos = new ArrayList<String>();
+    		
+    		
+        //se carga en un temporal
+    		if(csvFile != null) {
+	    		try {
+	    			FileUtils.writeByteArrayToFile(new File("/files/tmp/" + loadDTO.getEleccion() + ".csv"), csvFile);
+	    		}catch (IOException e) {
+	    			e.printStackTrace();
+			}
+        }
+    		/*se procesa el archivo temporal*/
+		try {
+			Reader reader = Files.newBufferedReader(Paths.get("/files/tmp/" + loadDTO.getEleccion() + ".csv"));
+			CSVReader csvReader = new CSVReader(reader);
+			String[] nextRecord;
+		
+			if (it <= 0) {
+				nextRecord        = csvReader.readNext();
+				topeDatos         = ArrayUtils.indexOf(nextRecord,"S1");
+				topePartidos      = ArrayUtils.indexOf(nextRecord,"S2");
+				topeCoaliciones   = ArrayUtils.indexOf(nextRecord,"S3");
+				topeCandidatosInd = ArrayUtils.indexOf(nextRecord,"S4");
+				
+				for (int k = topeDatos +1 ; k <= topePartidos-1 ; k++) {
+					partidos.add(nextRecord[k]);
+	    			}
+				it+=1;
+				
+			}
+            while ((nextRecord = csvReader.readNext()) != null) {
+            		PollingPlaceDTO pollingPlaceDTO = new PollingPlaceDTO();
+            		pollingPlaceDTO.setDistrictId(Long.valueOf(nextRecord[0]));
+            		pollingPlaceDTO.setSection(nextRecord[1]);
+            		pollingPlaceDTO.setTown(nextRecord[2]);
+            		pollingPlaceDTO.setTypePollingPlace(null);
+            		pollingPlaceDTO.setAddress(nextRecord[4]);
+            		pollingPlaceDTO.setLeftoverBallots(Long.valueOf(nextRecord[5]));
+            		pollingPlaceDTO.setVotingCitizens(Long.valueOf(nextRecord[6]));
+            		pollingPlaceDTO.setTotalVotes((Long.valueOf(nextRecord[8])));
+            		
+            		
+            		/**
+            		 * Procesamiento de votos por partido 
+            		 * */
+            		JSONArray votaciones = new JSONArray();
+            		JSONObject partidosVotos = new JSONObject();
+            		JSONObject partidosJson = new JSONObject();
+            		JSONObject resultadosPrimerLugar = new JSONObject();
+            		JSONObject resultadosSegundoLugar = new JSONObject();
+            		int j = 0;
+            		int primerLugarNumber      = 0;
+            		int segundoLugarNumber     = 0;
+            		String primerLugarPartido  = "";
+            		String segundoLugarPartido = "";
+        			
+            		for (int k = topeDatos +1 ; k <= topePartidos-1 ; k++) {
+        				
+        				
+            			try {
+            					if(nextRecord[k] == "") {
+            						nextRecord[k] = "0";
+            					}
+            					if ( Integer.parseInt(nextRecord[k]) > primerLugarNumber ) {
+            						segundoLugarNumber  = primerLugarNumber;
+            						segundoLugarPartido = primerLugarPartido;
+            						
+            						primerLugarNumber   = Integer.parseInt(nextRecord[k]);
+            						primerLugarPartido  = partidos.get(j);
+            					}
+            					if( Integer.parseInt(nextRecord[k]) > segundoLugarNumber  &&  Integer.parseInt(nextRecord[k]) < primerLugarNumber ) {
+            						segundoLugarNumber = Integer.parseInt(nextRecord[k]);
+            						segundoLugarPartido = partidos.get(j);
+            					}
+            					partidosJson.put( partidos.get(j), nextRecord[k] );
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+            			j++;
+            		}
+            		try {
+            				resultadosPrimerLugar.put(primerLugarPartido,primerLugarNumber);
+            				resultadosSegundoLugar.put(segundoLugarPartido,segundoLugarNumber);
+						partidosVotos.put("partidos", partidosJson);
+						partidosVotos.put("primer-lugar", resultadosPrimerLugar);
+						partidosVotos.put("segundo-lugar", resultadosSegundoLugar);
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+            		votaciones.put(partidosVotos);
+            		log.debug("---> REST request to save LoadDTO : {}", votaciones.toString());	
+            	
+            		
+            		
+            		
+            		log.debug("--->  save LoadDTO : {}", pollingPlaceDTO.toString());
+            		pollingPlaceService.save(pollingPlaceDTO);
+            		
+            		/*if(pollingPlaceDTO.getDistrictId() != null) {
+        				@SuppressWarnings("null")
+						PollingPlaceDTO result = pollingPlaceService.save(pollingPlaceDTO);
+            		}*/
+            		log.debug("<---- NextRecord : {}", nextRecord.toString());
+            }
+
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+    		/*se almacena la elección*/
+    		
+    		/*regresa resultados*/
+    		return null;
     }
 
 }
