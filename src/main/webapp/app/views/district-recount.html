@@ -19,12 +19,12 @@
             </thead>
             <tbody>
             <tr ng-repeat="district in vm.districts track by district.id">
-                <td><a ui-sref="district-detail({id:district.id})" class="btn btn-info">{{district.romanNumber}}</a></td>
+                <td ><a ui-sref="district-detail({id:district.id})" class="btn btn-info">{{district.romanNumber}}</a></td>
                 <td>{{district.districtHead}}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><strong>{{vm.lugares[$index][0]}}</strong> | {{vm.lugares[$index][3]}} </td>
+                <td><strong>{{vm.lugares[$index][2]}}</strong> | {{vm.lugares[$index][1]}}</td>
+                <td>{{vm.lugares[$index][3]-vm.lugares[$index][1]}}</td>
+                <td>{{100*(vm.lugares[$index][3]-vm.lugares[$index][1])/vm.lugares[$index][4]}}</td>
                 <td class="text-center">
                     <div class="btn-group">
                         <button type="submit"

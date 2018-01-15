@@ -24,9 +24,9 @@
                     <!--<td><span data-translate="{{'sidenerApp.PollingPlaceType.' + pollingPlace.typePollingPlace}}">{{pollingPlace.typePollingPlace</span><span> - {{pollingPlace.typeNumber}}</span></td>-->
                     <td><span ng-bind="pollingPlaceType(pollingPlace.typePollingPlace, pollingPlace.typeNumber)"></span></td>
                     <td>{{pollingPlace.town}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><strong>{{pollingPlace.entityFirstPlace }}</strong> | {{pollingPlace.totalFirstPlace}}</td>
+                    <td><strong>{{pollingPlace.entitySecondPlace }}</strong> | {{pollingPlace.totalSecondPlace}}</td>
+                    <td>{{(pollingPlace.totalFirstPlace -  pollingPlace.totalSecondPlace ) /100}} </td>
                     <td>{{pollingPlace.nullVotes}}</td>
                     <td>
                         <div class="form-group">
