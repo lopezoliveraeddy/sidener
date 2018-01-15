@@ -58,6 +58,34 @@ public class District implements Serializable {
     @Column(name = "state")
     private State state;
 
+    /**
+     * Entidad 1er Lugar
+     */
+    @ApiModelProperty(value = "Entidad 1er Lugar")
+    @Column(name = "entity_first_place")
+    private String entityFirstPlace;
+
+    /**
+     * Total de votos para el Primer Lugar
+     */
+    @ApiModelProperty(value = "Total de votos para el Primer Lugar")
+    @Column(name = "total_first_place")
+    private Long totalFirstPlace;
+
+    /**
+     * Entidad 2do Lugar
+     */
+    @ApiModelProperty(value = "Entidad 2do Lugar")
+    @Column(name = "entity_second_place")
+    private String entitySecondPlace;
+
+    /**
+     * Total de votos para el Segundo Lugar
+     */
+    @ApiModelProperty(value = "Total de votos para el Segundo Lugar")
+    @Column(name = "total_second_place")
+    private Long totalSecondPlace;
+
     @Column(name = "published")
     private Boolean published;
 
@@ -129,6 +157,58 @@ public class District implements Serializable {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public String getEntityFirstPlace() {
+        return entityFirstPlace;
+    }
+
+    public District entityFirstPlace(String entityFirstPlace) {
+        this.entityFirstPlace = entityFirstPlace;
+        return this;
+    }
+
+    public void setEntityFirstPlace(String entityFirstPlace) {
+        this.entityFirstPlace = entityFirstPlace;
+    }
+
+    public Long getTotalFirstPlace() {
+        return totalFirstPlace;
+    }
+
+    public District totalFirstPlace(Long totalFirstPlace) {
+        this.totalFirstPlace = totalFirstPlace;
+        return this;
+    }
+
+    public void setTotalFirstPlace(Long totalFirstPlace) {
+        this.totalFirstPlace = totalFirstPlace;
+    }
+
+    public String getEntitySecondPlace() {
+        return entitySecondPlace;
+    }
+
+    public District entitySecondPlace(String entitySecondPlace) {
+        this.entitySecondPlace = entitySecondPlace;
+        return this;
+    }
+
+    public void setEntitySecondPlace(String entitySecondPlace) {
+        this.entitySecondPlace = entitySecondPlace;
+    }
+
+    public Long getTotalSecondPlace() {
+        return totalSecondPlace;
+    }
+
+    public District totalSecondPlace(Long totalSecondPlace) {
+        this.totalSecondPlace = totalSecondPlace;
+        return this;
+    }
+
+    public void setTotalSecondPlace(Long totalSecondPlace) {
+        this.totalSecondPlace = totalSecondPlace;
     }
 
     public Boolean isPublished() {
@@ -212,6 +292,10 @@ public class District implements Serializable {
             ", romanNumber='" + getRomanNumber() + "'" +
             ", districtHead='" + getDistrictHead() + "'" +
             ", state='" + getState() + "'" +
+            ", entityFirstPlace='" + getEntityFirstPlace() + "'" +
+            ", totalFirstPlace='" + getTotalFirstPlace() + "'" +
+            ", entitySecondPlace='" + getEntitySecondPlace() + "'" +
+            ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

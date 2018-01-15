@@ -9,6 +9,7 @@
     "src/main/webapp/bower_components"
   ],
   "devDependencies": {
+    "angular-datatables": "^0.6.2",
     "bower": "1.7.9",
     "browser-sync": "2.17.0",
     "del": "2.2.2",
@@ -66,5 +67,9 @@
   },
   "scripts": {
     "test": "gulp test"
+  },
+  "dependencies": {
+    "angular-csv-import": "0.0.27",
+    "angular-data-table": "^0.7.0"
   }
 }

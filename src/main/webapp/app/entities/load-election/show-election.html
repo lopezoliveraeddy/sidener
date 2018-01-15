@@ -1,0 +1,268 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<h2>Detalle de la Elección</h2>
+		<hr />
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="col-xs-3 col-sm-3 col-md-3">
+			<div id="piechart"></div>
+		</div>
+		<div class="col-xs-3 col-sm-3 col-md-3">
+			<div id="piechart1"></div>
+		</div>
+		<div class="col-xs-3 col-sm-3 col-md-3">
+			<div id="piechart2"></div>
+		</div>
+		<div class="col-xs-3 col-sm-3 col-md-3">
+			<div id="piechart3"></div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<h3>Distritos a impugnar</h3>
+			<table class="jh-table table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>Distrito</th>
+						<th>Nombre</th>
+						<th>Partido 1er lugar</th>
+						<th>Partido 2do lugar</th>
+						<th>Diferencia</th>
+						<th>Votaci&oacute;n Total</th>
+						<th>Impugnar</th>
+						<th>Revisión Manuel</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>I</td>
+						<td>ACATLAN DE PEREZ FIGUEROA</td>
+						<td>
+							<p>
+								<strong>PRI | PVEM</strong><br />30,431 votos | 43.05%
+							</p>
+						</td>
+						<td>
+							<p>
+								<strong>PAN | PRD</strong><br />23,325 votos | 33.00%
+							</p>
+						</td>
+						<td>7,106 (.05%)</td>
+						<td>
+							<div>
+								<div>70,681 (0.44%)</div>
+							</div>
+						</td>
+						<td><a
+							href="https://docs.google.com/open?id=1Rxkrel5tHlE_NdKVda6h1Sr0f1HXh8-OUkrH--rWdfo">Revisar
+						</a></td>
+						<td><a href="/#/election/2/district" target="_blank"><span
+								class="glyphicon glyphicon-search"></span></a></td>
+					</tr>
+					<tr>
+						<td>II</td>
+						<td>SAN JUAN BAUTISTA TUXTEPEC</td>
+						<td>
+							<p>
+								<strong>PAN | PRD</strong><br />12,626 votos | .64%
+							</p>
+						</td>
+						<td>
+							<p>
+								<strong>PRI | PVEM</strong><br />12,046 votos | 0.64%
+							</p>
+						</td>
+						<td>580 (0.99%)</td>
+						<td>
+							<div>
+								<div>58,358 (.06%)</div>
+							</div>
+						</td>
+						<td><a
+							href="https://docs.google.com/open?id=1aSU7qTLTt6DkU5d-YO53DhmFk1F8T7RqVIRndzW4vno">Revisar
+						</a></td>
+						<td><a href="/#/election/1/district" target="_blank"><span
+								class="glyphicon glyphicon-search"></span></a></td>
+					</tr>
+					<tr>
+				</tbody>
+			</table>
+			<a class="btn btn-default" href="/#/district/1/polling-places"><span
+				class="glyphicon glyphicon-pencil"></span>Revisión manual por
+				casilla</a>
+		</div>
+	</div>
+	<div class="col-xs-9 col-sm-9 col-md-9">
+		<h3>Revisión de causales</h3>
+		<a class="btn btn-default" href="election-review"><span
+			class="glyphicon glyphicon-pencil"></span>Comenzar una revisión manual</a>
+		<table class="table">
+			<caption>Causales de Nulidad</caption>
+			<tr>
+				<th>Causal</th>
+				<th>A</th>
+				<th>B</th>
+				<th>C</th>
+				<th>D</th>
+				<th>E</th>
+				<th>F</th>
+				<th>G</th>
+				<th>H</th>
+				<th>I</th>
+				<th>J</th>
+				<th>K</th>
+				<th>Otro</th>
+			</tr>
+			<tr>
+				<td>#</td>
+				<td><a href="" ng-click="showme=true; otro=false">2</a></td>
+				<td><a href="" ng-click="otro=true;showme=false">3</a></td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+			</tr>
+		</table>
+
+		<table ng-show="showme" class="table">
+			<thead>
+				<tr>
+					<th>Registro</th>
+					<th>Número de Casilla</th>
+					<th>Total Causales</th>
+					<th>Votación Total</th>
+					<th>Primer lugar	</th>
+					<th>Segundo lugar</th>
+					<th>Revisión</th>
+					<th>Impugnar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="#/polling-place/polling-place/1">2</a></td>
+					<td>C01</td>
+					<td>6</td>
+					<td>506</td>
+					<td>
+						PAN 193 votos | 38%
+					</td>
+					<td>PRI 186 votos | 37%</td>
+					<td><a class="btn btn-default" href="#/nul-review"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a
+							href="https://docs.google.com/open?id=1aSU7qTLTt6DkU5d-YO53DhmFk1F8T7RqVIRndzW4vno">Impugnar
+						</a></td>
+					
+				</tr>
+				<tr>
+					<td><a href="#/polling-place/polling-place/1">2</a></td>
+					<td>A</td>
+					<td>8</td>
+					<td>506</td>
+					<td>
+						PAN 193 votos | 38%
+					</td>
+					<td>PRI 186 votos | 37%</td>
+					<td><a class="btn btn-default" href="#/nul-review"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a
+							href="https://docs.google.com/open?id=1aSU7qTLTt6DkU5d-YO53DhmFk1F8T7RqVIRndzW4vno">Impugnar
+						</a></td>
+				</tr>
+	
+				
+			</tbody>
+		</table>
+		
+				<table ng-show="otro" class="table">
+			<thead>
+				<tr>
+					<th>Registro</th>
+					<th>Número de Casilla</th>
+					<th>Total Causales</th>
+					<th>Votación Total</th>
+					<th>Primer lugar	</th>
+					<th>Segundo lugar</th>
+					<th>Revisión</th>
+					<th>Impugnar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="#/polling-place/polling-place/1">2</a></td>
+					<td>B</td>
+					<td>4</td>
+					<td>506</td>
+					<td>
+						PAN 193 votos | 38%
+					</td>
+					<td>PRI 186 votos | 37%</td>
+					<td><a class="btn btn-default" href="nul-review"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a
+							href="https://docs.google.com/open?id=1aSU7qTLTt6DkU5d-YO53DhmFk1F8T7RqVIRndzW4vno">Impugnar
+						</a></td>
+					
+				</tr>
+				<tr>
+					<td><a href="#/polling-place/polling-place/1">2</a></td>
+					<td>B</td>
+					<td>4</td>
+					<td>506</td>
+					<td>
+						PAN 193 votos | 38%
+					</td>
+					<td>PRI 186 votos | 37%</td>
+					<td><a class="btn btn-default" href="nul-review"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a
+							href="https://docs.google.com/open?id=1aSU7qTLTt6DkU5d-YO53DhmFk1F8T7RqVIRndzW4vno">Impugnar
+						</a></td>
+				</tr>
+	
+				
+			</tbody>
+		</table>
+
+	</div>
+	<div class="col-xs-3 col-sm-3 col-md-3">
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">Causales de Nulidad</div>
+			<!-- List group -->
+			<ul class="list-group">
+				<li class="list-group-item"><a href="" ng-click="showme=true; otro=false">A. Instalar la casilla en un lugar
+					distinto al autorizado</a></li>
+				<li class="list-group-item"><a href="" ng-click="showme=false; otro=true">B. Entregar el paquete electoral de
+					la casilla fuera de los plazos que marca la ley</a></li>
+				<li class="list-group-item">C. Realizar el escrutinio y cómputo
+					de la votación en un local diferente al autorizado</li>
+				<li class="list-group-item">D. Que la votación se reciba en una
+					fecha distinta a la señalada para la celebración de la elección</li>
+				<li class="list-group-item">E. Que la votación se reciba por
+					personas diferentes a los autorizados</li>
+				<li class="list-group-item">F. Que exista error o dolo en el
+					cómputo de los votos</li>
+				<li class="list-group-item">G. Permitir votar a ciudadanos sin
+					credencial de elector o cuyo nombre no aparezca en la lista nominal
+					de electores</li>
+				<li class="list-group-item">H. Impedir el acceso a los
+					representantes de los partidos políticos o haberlos expulsado</li>
+				<li class="list-group-item">I. Ejercer violencia física o
+					presión sobre los miembros de la mesa directiva de casilla o sobre
+					los electores</li>
+				<li class="list-group-item">J. Impedir, sin causa justificada,
+					votar a los ciudadanos</li>
+				<li class="list-group-item">K. Existir irregularidades graves</li>
+				<li class="list-group-item">OTRO. Causal genérica. Violación
+					cometida durante el recuento de votos, inconsistencia en los
+					resultados. No se apegó al Art. 295 COFIPE Inconsistencias durante
+					la sesión de cómputo Distrital. Violación a los principios rectores
+					de la materia electoral como equidad en la contienda, libertad del
+					voto y autenticidad de los comicios Entre otros</li>
+
+			</ul>
+		</div>
+
+	</div>
+</div>

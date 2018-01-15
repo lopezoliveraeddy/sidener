@@ -7,8 +7,11 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -31,11 +34,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codahale.metrics.annotation.Timed;
 
 import electorum.sidener.service.ElectionService;
+import electorum.sidener.service.PollingPlaceService;
 import electorum.sidener.service.dto.ElectionDTO;
+import electorum.sidener.service.dto.LoadDTO;
+import electorum.sidener.service.dto.PollingPlaceDTO;
 import electorum.sidener.web.rest.util.HeaderUtil;
 import electorum.sidener.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import io.swagger.annotations.ApiParam;
+import com.opencsv.CSVReader;
+import java.io.Reader;
+import org.apache.commons.lang.ArrayUtils;
+
+
 
 /**
  * REST controller for managing Election.
@@ -49,11 +60,16 @@ public class ElectionResource {
     private static final String ENTITY_NAME = "election";
 
     private final ElectionService electionService;
-
+    
+    public static final String[] SEPARADORES =  {"S1","S2","S3","S4"} ;
+    
+    			
     public ElectionResource(ElectionService electionService) {
         this.electionService = electionService;
     }
+    
 
+    
     /**
      * POST  /elections : Create a new election.
      *

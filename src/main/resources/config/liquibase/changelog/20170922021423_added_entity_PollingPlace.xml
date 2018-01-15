@@ -106,6 +106,22 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="entity_first_place" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="total_first_place" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="entity_second_place" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="total_second_place" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <column name="published" type="bit">
                 <constraints nullable="true" />
             </column>
