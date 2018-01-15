@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('PoliticalPartyDialogController', PoliticalPartyDialogController);
 
-    PoliticalPartyDialogController.$inject = ['$rootElement', '$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'AuthServerProvider', 'entity', 'PublicArchive', 'PoliticalParty'];
+    PoliticalPartyDialogController.$inject = ['$rootElement', '$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'Archive', 'AuthServerProvider', 'entity', 'PublicArchive', 'PoliticalParty'];
 
-    function PoliticalPartyDialogController ($rootElement, $timeout, $scope, $stateParams, $uibModalInstance, $q, AuthServerProvider, entity, PublicArchive, PoliticalParty) {
+    function PoliticalPartyDialogController ($rootElement, $timeout, $scope, $stateParams, $uibModalInstance, $q, Archive, AuthServerProvider, entity, PublicArchive, PoliticalParty) {
         var vm = this;
 
         vm.politicalParty = entity;
@@ -25,11 +25,13 @@
         vm.completeUpload = completeUpload;
         vm.errorUpload = errorUpload;
         vm.flow = null;
-        vm.deleteFile = deleteFile;
 
-        vm.imageId = "";
         vm.promises = [];
         vm.image = [];
+        vm.trash = [];
+
+        var archiveTemporary = "TEMPORARY";
+        var archivePermanent = "PERMANENT";
 
         ini();
 
@@ -38,18 +40,18 @@
                 vm.politicalParty.published = true;
             }
             if(vm.politicalParty.imageId != null) {
-                vm.promises.push(makePromiseImagen(vm.politicalParty.imageId));
+                vm.promises.push(makePromiseImage(vm.politicalParty.imageId));
             }
         }
 
-        function makePromiseImagen(imageId) {
+        function makePromiseImage(imageId) {
             var deferred = $q.defer();
             PublicArchive.get({ id : imageId}).$promise.then(function(data) {
                 vm.image.push(data);
-                angular.forEach(vm.image, function(value, key) {
-                    var arrayTmp = value.path.split("/files");
+                angular.forEach(vm.image, function(image, key) {
+                    var arrayTmp = image.path.split("/files");
                     if(arrayTmp.length > 1) {
-                        value.path = arrayTmp[arrayTmp.length - 1];
+                        image.path = arrayTmp[arrayTmp.length - 1];
                     }
                 });
                 deferred.resolve(data);
@@ -57,9 +59,7 @@
                 deferred.reject("error");
             });
             return deferred.promise;
-
         }
-
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -71,7 +71,13 @@
 
         function save () {
             vm.isSaving = true;
-            vm.politicalParty.imageId = vm.imageId;
+            if(vm.image.length > 0) {
+                angular.forEach(vm.image, function (image, key) {
+                    vm.politicalParty.imageId = image.id;
+                });
+            } else {
+                vm.politicalParty.imageId = null;
+            }
             if (vm.politicalParty.id !== null) {
                 vm.politicalParty.updatedDate = new Date();
                 PoliticalParty.update(vm.politicalParty, onSaveSuccess, onSaveError);
@@ -82,15 +88,37 @@
             }
         }
 
+
+
+        // Saving Entity
         function onSaveSuccess (result) {
             console.log("OnSaveSuccess");
             $scope.$emit('sidenerApp:politicalPartyUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
-        }
 
+            angular.forEach(vm.image, function(image, key) {
+                if (image.id !== null) {
+                    image.status = archivePermanent;
+                    Archive.update(image, onSaveArchiveSuccess, onSaveArchiveError);
+                }
+            });
+            angular.forEach(vm.trash, function(trash, key) {
+                if (trash.id !== null) {
+                    trash.status = archiveTemporary;
+                    Archive.update(trash, onSaveArchiveSuccess, onSaveArchiveError);
+                }
+            });
+        }
+        // Error Entity
         function onSaveError () {
             vm.isSaving = false;
+        }
+        // Saving Archive
+        function onSaveArchiveSuccess (result) {
+        }
+        // Error Archive
+        function onSaveArchiveError () {
         }
 
         vm.datePickerOpenStatus.createdDate = false;
@@ -132,41 +160,21 @@
         function successUpload($file, $message, $flow) {
             console.log("SuccessUpload");
             var imagen = angular.fromJson($message);
+            vm.image.push(imagen);
             vm.imageId = imagen.id;
+            angular.forEach(vm.image, function(value, key) {
+                var arrayTmp = value.path.split("/files");
+                if(arrayTmp.length > 1) {
+                    value.path = arrayTmp[arrayTmp.length - 1];
+                }
+            });
             console.log("size total: " + $flow.sizeUploaded());
         }
 
-        function removeFile(file) {
-            var index = vm.politicalParty.imageId.indexOf(file.id);
-            var indexImagen = vm.image.indexOf(file);
-            if(index >= 0){
-                vm.politicalParty.imageId.splice(index, 1);
-            }
-            if(indexImagen >= 0) {
-                vm.trash.push(file);
-                vm.image.splice(indexImagen, 1);
-            }
+        function removeFile(image) {
+            console.log(image);
+            vm.image.length = 0;
+            vm.trash.push(image);
         }
-
-
-        function deleteFile(file) {
-            vm.filesToRemove.push(file);
-            for (var i = 0; i < vm.documentosResponse.length; i++) {
-                if (vm.documentosResponse[i].id == file.id) {
-                    vm.documentosResponse.splice(i, 1);
-                    break;
-                }
-            }
-        }
-
-        function onDeleteFileSuccess() {
-            console.log("onDeleteFileSuccess");
-        }
-
-        function onDeleteFileError() {
-            console.log("onDeleteFileError");
-        }
-
-
     }
 })();
