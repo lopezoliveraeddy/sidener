@@ -1,3 +1,66 @@
-<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-3">
-	hola que hace
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<h2>Carga de Datos</h2>
+		<hr />
+		<div class="col-md-11 col-md-offset-1">
+			<jhi-alert-error></jhi-alert-error>
+		</div>
+		<form name="editForm" role="form" novalidate ng-submit="vm.save()" xmlns="http://www.w3.org/1999/html">
+		<div class="form-group">
+			<div class="row">
+				<div class="col-md-2">
+					<label class="control-label"  for="field_electionSelect">Seleccione una elección</label>
+					
+				</div>
+				<div class="col-md-10">
+				<ui-select ng-model="vm.electionSel" 
+							theme="bootstrap"   
+							title="Choose a country"
+							reset-search-input="false"
+							>
+				    <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.state}}</ui-select-match>
+				    <ui-select-choices repeat="election in vm.elections  track by $index">
+				      <span ng-bind-html="election.state | highlight: $select.search"></span>
+				      <small ng-bind-html="election.electionTypeName | highlight: $select.search"></small>
+				    </ui-select-choices>
+				  </ui-select>
+				</div>
+			</div>
+		</div>
+	    <div class="form-group" ngf-drop ngf-change="vm.loadFile($file, vm.election)">
+	        <div class="row">
+		        <div class="col-md-12">
+		        		<label class="control-label"  for="field_dataBase">Seleccione un archivo para procesar el recuento</label>
+		        </div>
+		        <div class="col-md-12">
+			        <div ng-if="vm.election.dataBase">
+			     		<span class="pull-left">{{vm.election.dbFileContentType}}, {{vm.byteSize(vm.election.dbFile)}}</span>
+			             <button type="button" ng-click="vm.election.dbFile=null;vm.election.dbFileContentType=null;"
+			                class="btn btn-default">
+			            		<span class="glyphicon glyphicon-remove"></span>
+			        		</button>
+			     	</div>
+			     	<button type="button" ngf-select class="btn btn-default"
+			            ngf-change="vm.loadFile($file, vm.election)">
+			        Agregar Archivo
+			    		</button>
+		        </div>
+		 	</div>
+	 	</div>
+	 	<div class="form-group">
+	 		<div class="row">
+	 			<div class="col-md-6 col-md-offset-3">
+					<button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+					<span class="glyphicon glyphicon-save"></span>&nbsp;<span>Procesar Información</span>
+					</a>
+	 			</div>
+	 		</div>
+	 	</div>
+		</form>
+		
+
+    
+    
+  
+	</div>
 </div>
