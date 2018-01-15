@@ -60,6 +60,14 @@ public class PollingPlaceDTO implements Serializable {
 
     private String recordCount;
 
+    private String entityFirstPlace;
+
+    private Long totalFirstPlace;
+
+    private String entitySecondPlace;
+
+    private Long totalSecondPlace;
+
     private Boolean published;
 
     private ZonedDateTime createdDate;
@@ -248,6 +256,38 @@ public class PollingPlaceDTO implements Serializable {
         this.recordCount = recordCount;
     }
 
+    public String getEntityFirstPlace() {
+        return entityFirstPlace;
+    }
+
+    public void setEntityFirstPlace(String entityFirstPlace) {
+        this.entityFirstPlace = entityFirstPlace;
+    }
+
+    public Long getTotalFirstPlace() {
+        return totalFirstPlace;
+    }
+
+    public void setTotalFirstPlace(Long totalFirstPlace) {
+        this.totalFirstPlace = totalFirstPlace;
+    }
+
+    public String getEntitySecondPlace() {
+        return entitySecondPlace;
+    }
+
+    public void setEntitySecondPlace(String entitySecondPlace) {
+        this.entitySecondPlace = entitySecondPlace;
+    }
+
+    public Long getTotalSecondPlace() {
+        return totalSecondPlace;
+    }
+
+    public void setTotalSecondPlace(Long totalSecondPlace) {
+        this.totalSecondPlace = totalSecondPlace;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -342,6 +382,10 @@ public class PollingPlaceDTO implements Serializable {
             ", alternateTwo='" + getAlternateTwo() + "'" +
             ", alternateThree='" + getAlternateThree() + "'" +
             ", recordCount='" + getRecordCount() + "'" +
+            ", entityFirstPlace='" + getEntityFirstPlace() + "'" +
+            ", totalFirstPlace='" + getTotalFirstPlace() + "'" +
+            ", entitySecondPlace='" + getEntitySecondPlace() + "'" +
+            ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

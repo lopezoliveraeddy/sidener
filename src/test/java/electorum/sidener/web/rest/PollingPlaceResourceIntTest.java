@@ -111,6 +111,18 @@ public class PollingPlaceResourceIntTest {
     private static final String DEFAULT_RECORD_COUNT = "AAAAAAAAAA";
     private static final String UPDATED_RECORD_COUNT = "BBBBBBBBBB";
 
+    private static final String DEFAULT_ENTITY_FIRST_PLACE = "AAAAAAAAAA";
+    private static final String UPDATED_ENTITY_FIRST_PLACE = "BBBBBBBBBB";
+
+    private static final Long DEFAULT_TOTAL_FIRST_PLACE = 1L;
+    private static final Long UPDATED_TOTAL_FIRST_PLACE = 2L;
+
+    private static final String DEFAULT_ENTITY_SECOND_PLACE = "AAAAAAAAAA";
+    private static final String UPDATED_ENTITY_SECOND_PLACE = "BBBBBBBBBB";
+
+    private static final Long DEFAULT_TOTAL_SECOND_PLACE = 1L;
+    private static final Long UPDATED_TOTAL_SECOND_PLACE = 2L;
+
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
 
@@ -187,6 +199,10 @@ public class PollingPlaceResourceIntTest {
             .alternateTwo(DEFAULT_ALTERNATE_TWO)
             .alternateThree(DEFAULT_ALTERNATE_THREE)
             .recordCount(DEFAULT_RECORD_COUNT)
+            .entityFirstPlace(DEFAULT_ENTITY_FIRST_PLACE)
+            .totalFirstPlace(DEFAULT_TOTAL_FIRST_PLACE)
+            .entitySecondPlace(DEFAULT_ENTITY_SECOND_PLACE)
+            .totalSecondPlace(DEFAULT_TOTAL_SECOND_PLACE)
             .published(DEFAULT_PUBLISHED)
             .createdDate(DEFAULT_CREATED_DATE)
             .updatedDate(DEFAULT_UPDATED_DATE);
@@ -236,6 +252,10 @@ public class PollingPlaceResourceIntTest {
         assertThat(testPollingPlace.getAlternateTwo()).isEqualTo(DEFAULT_ALTERNATE_TWO);
         assertThat(testPollingPlace.getAlternateThree()).isEqualTo(DEFAULT_ALTERNATE_THREE);
         assertThat(testPollingPlace.getRecordCount()).isEqualTo(DEFAULT_RECORD_COUNT);
+        assertThat(testPollingPlace.getEntityFirstPlace()).isEqualTo(DEFAULT_ENTITY_FIRST_PLACE);
+        assertThat(testPollingPlace.getTotalFirstPlace()).isEqualTo(DEFAULT_TOTAL_FIRST_PLACE);
+        assertThat(testPollingPlace.getEntitySecondPlace()).isEqualTo(DEFAULT_ENTITY_SECOND_PLACE);
+        assertThat(testPollingPlace.getTotalSecondPlace()).isEqualTo(DEFAULT_TOTAL_SECOND_PLACE);
         assertThat(testPollingPlace.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
         assertThat(testPollingPlace.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testPollingPlace.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
@@ -297,6 +317,10 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.[*].alternateTwo").value(hasItem(DEFAULT_ALTERNATE_TWO.toString())))
             .andExpect(jsonPath("$.[*].alternateThree").value(hasItem(DEFAULT_ALTERNATE_THREE.toString())))
             .andExpect(jsonPath("$.[*].recordCount").value(hasItem(DEFAULT_RECORD_COUNT.toString())))
+            .andExpect(jsonPath("$.[*].entityFirstPlace").value(hasItem(DEFAULT_ENTITY_FIRST_PLACE.toString())))
+            .andExpect(jsonPath("$.[*].totalFirstPlace").value(hasItem(DEFAULT_TOTAL_FIRST_PLACE.intValue())))
+            .andExpect(jsonPath("$.[*].entitySecondPlace").value(hasItem(DEFAULT_ENTITY_SECOND_PLACE.toString())))
+            .andExpect(jsonPath("$.[*].totalSecondPlace").value(hasItem(DEFAULT_TOTAL_SECOND_PLACE.intValue())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
@@ -334,6 +358,10 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.alternateTwo").value(DEFAULT_ALTERNATE_TWO.toString()))
             .andExpect(jsonPath("$.alternateThree").value(DEFAULT_ALTERNATE_THREE.toString()))
             .andExpect(jsonPath("$.recordCount").value(DEFAULT_RECORD_COUNT.toString()))
+            .andExpect(jsonPath("$.entityFirstPlace").value(DEFAULT_ENTITY_FIRST_PLACE.toString()))
+            .andExpect(jsonPath("$.totalFirstPlace").value(DEFAULT_TOTAL_FIRST_PLACE.intValue()))
+            .andExpect(jsonPath("$.entitySecondPlace").value(DEFAULT_ENTITY_SECOND_PLACE.toString()))
+            .andExpect(jsonPath("$.totalSecondPlace").value(DEFAULT_TOTAL_SECOND_PLACE.intValue()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
             .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
             .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
@@ -379,6 +407,10 @@ public class PollingPlaceResourceIntTest {
             .alternateTwo(UPDATED_ALTERNATE_TWO)
             .alternateThree(UPDATED_ALTERNATE_THREE)
             .recordCount(UPDATED_RECORD_COUNT)
+            .entityFirstPlace(UPDATED_ENTITY_FIRST_PLACE)
+            .totalFirstPlace(UPDATED_TOTAL_FIRST_PLACE)
+            .entitySecondPlace(UPDATED_ENTITY_SECOND_PLACE)
+            .totalSecondPlace(UPDATED_TOTAL_SECOND_PLACE)
             .published(UPDATED_PUBLISHED)
             .createdDate(UPDATED_CREATED_DATE)
             .updatedDate(UPDATED_UPDATED_DATE);
@@ -414,6 +446,10 @@ public class PollingPlaceResourceIntTest {
         assertThat(testPollingPlace.getAlternateTwo()).isEqualTo(UPDATED_ALTERNATE_TWO);
         assertThat(testPollingPlace.getAlternateThree()).isEqualTo(UPDATED_ALTERNATE_THREE);
         assertThat(testPollingPlace.getRecordCount()).isEqualTo(UPDATED_RECORD_COUNT);
+        assertThat(testPollingPlace.getEntityFirstPlace()).isEqualTo(UPDATED_ENTITY_FIRST_PLACE);
+        assertThat(testPollingPlace.getTotalFirstPlace()).isEqualTo(UPDATED_TOTAL_FIRST_PLACE);
+        assertThat(testPollingPlace.getEntitySecondPlace()).isEqualTo(UPDATED_ENTITY_SECOND_PLACE);
+        assertThat(testPollingPlace.getTotalSecondPlace()).isEqualTo(UPDATED_TOTAL_SECOND_PLACE);
         assertThat(testPollingPlace.isPublished()).isEqualTo(UPDATED_PUBLISHED);
         assertThat(testPollingPlace.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testPollingPlace.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
@@ -497,6 +533,10 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.[*].alternateTwo").value(hasItem(DEFAULT_ALTERNATE_TWO.toString())))
             .andExpect(jsonPath("$.[*].alternateThree").value(hasItem(DEFAULT_ALTERNATE_THREE.toString())))
             .andExpect(jsonPath("$.[*].recordCount").value(hasItem(DEFAULT_RECORD_COUNT.toString())))
+            .andExpect(jsonPath("$.[*].entityFirstPlace").value(hasItem(DEFAULT_ENTITY_FIRST_PLACE.toString())))
+            .andExpect(jsonPath("$.[*].totalFirstPlace").value(hasItem(DEFAULT_TOTAL_FIRST_PLACE.intValue())))
+            .andExpect(jsonPath("$.[*].entitySecondPlace").value(hasItem(DEFAULT_ENTITY_SECOND_PLACE.toString())))
+            .andExpect(jsonPath("$.[*].totalSecondPlace").value(hasItem(DEFAULT_TOTAL_SECOND_PLACE.intValue())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));

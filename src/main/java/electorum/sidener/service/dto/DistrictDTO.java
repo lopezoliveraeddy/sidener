@@ -23,6 +23,14 @@ public class DistrictDTO implements Serializable {
 
     private State state;
 
+    private String entityFirstPlace;
+
+    private Long totalFirstPlace;
+
+    private String entitySecondPlace;
+
+    private Long totalSecondPlace;
+
     private Boolean published;
 
     private ZonedDateTime createdDate;
@@ -69,6 +77,38 @@ public class DistrictDTO implements Serializable {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public String getEntityFirstPlace() {
+        return entityFirstPlace;
+    }
+
+    public void setEntityFirstPlace(String entityFirstPlace) {
+        this.entityFirstPlace = entityFirstPlace;
+    }
+
+    public Long getTotalFirstPlace() {
+        return totalFirstPlace;
+    }
+
+    public void setTotalFirstPlace(Long totalFirstPlace) {
+        this.totalFirstPlace = totalFirstPlace;
+    }
+
+    public String getEntitySecondPlace() {
+        return entitySecondPlace;
+    }
+
+    public void setEntitySecondPlace(String entitySecondPlace) {
+        this.entitySecondPlace = entitySecondPlace;
+    }
+
+    public Long getTotalSecondPlace() {
+        return totalSecondPlace;
+    }
+
+    public void setTotalSecondPlace(Long totalSecondPlace) {
+        this.totalSecondPlace = totalSecondPlace;
     }
 
     public Boolean isPublished() {
@@ -132,6 +172,10 @@ public class DistrictDTO implements Serializable {
             ", romanNumber='" + getRomanNumber() + "'" +
             ", districtHead='" + getDistrictHead() + "'" +
             ", state='" + getState() + "'" +
+            ", entityFirstPlace='" + getEntityFirstPlace() + "'" +
+            ", totalFirstPlace='" + getTotalFirstPlace() + "'" +
+            ", entitySecondPlace='" + getEntitySecondPlace() + "'" +
+            ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

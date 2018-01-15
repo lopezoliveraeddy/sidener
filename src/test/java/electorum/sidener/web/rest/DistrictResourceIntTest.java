@@ -59,6 +59,18 @@ public class DistrictResourceIntTest {
     private static final State DEFAULT_STATE = State.AGU;
     private static final State UPDATED_STATE = State.BCN;
 
+    private static final String DEFAULT_ENTITY_FIRST_PLACE = "AAAAAAAAAA";
+    private static final String UPDATED_ENTITY_FIRST_PLACE = "BBBBBBBBBB";
+
+    private static final Long DEFAULT_TOTAL_FIRST_PLACE = 1L;
+    private static final Long UPDATED_TOTAL_FIRST_PLACE = 2L;
+
+    private static final String DEFAULT_ENTITY_SECOND_PLACE = "AAAAAAAAAA";
+    private static final String UPDATED_ENTITY_SECOND_PLACE = "BBBBBBBBBB";
+
+    private static final Long DEFAULT_TOTAL_SECOND_PLACE = 1L;
+    private static final Long UPDATED_TOTAL_SECOND_PLACE = 2L;
+
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
 
@@ -118,6 +130,10 @@ public class DistrictResourceIntTest {
             .romanNumber(DEFAULT_ROMAN_NUMBER)
             .districtHead(DEFAULT_DISTRICT_HEAD)
             .state(DEFAULT_STATE)
+            .entityFirstPlace(DEFAULT_ENTITY_FIRST_PLACE)
+            .totalFirstPlace(DEFAULT_TOTAL_FIRST_PLACE)
+            .entitySecondPlace(DEFAULT_ENTITY_SECOND_PLACE)
+            .totalSecondPlace(DEFAULT_TOTAL_SECOND_PLACE)
             .published(DEFAULT_PUBLISHED)
             .createdDate(DEFAULT_CREATED_DATE)
             .updatedDate(DEFAULT_UPDATED_DATE);
@@ -150,6 +166,10 @@ public class DistrictResourceIntTest {
         assertThat(testDistrict.getRomanNumber()).isEqualTo(DEFAULT_ROMAN_NUMBER);
         assertThat(testDistrict.getDistrictHead()).isEqualTo(DEFAULT_DISTRICT_HEAD);
         assertThat(testDistrict.getState()).isEqualTo(DEFAULT_STATE);
+        assertThat(testDistrict.getEntityFirstPlace()).isEqualTo(DEFAULT_ENTITY_FIRST_PLACE);
+        assertThat(testDistrict.getTotalFirstPlace()).isEqualTo(DEFAULT_TOTAL_FIRST_PLACE);
+        assertThat(testDistrict.getEntitySecondPlace()).isEqualTo(DEFAULT_ENTITY_SECOND_PLACE);
+        assertThat(testDistrict.getTotalSecondPlace()).isEqualTo(DEFAULT_TOTAL_SECOND_PLACE);
         assertThat(testDistrict.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
         assertThat(testDistrict.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testDistrict.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
@@ -194,6 +214,10 @@ public class DistrictResourceIntTest {
             .andExpect(jsonPath("$.[*].romanNumber").value(hasItem(DEFAULT_ROMAN_NUMBER.toString())))
             .andExpect(jsonPath("$.[*].districtHead").value(hasItem(DEFAULT_DISTRICT_HEAD.toString())))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
+            .andExpect(jsonPath("$.[*].entityFirstPlace").value(hasItem(DEFAULT_ENTITY_FIRST_PLACE.toString())))
+            .andExpect(jsonPath("$.[*].totalFirstPlace").value(hasItem(DEFAULT_TOTAL_FIRST_PLACE.intValue())))
+            .andExpect(jsonPath("$.[*].entitySecondPlace").value(hasItem(DEFAULT_ENTITY_SECOND_PLACE.toString())))
+            .andExpect(jsonPath("$.[*].totalSecondPlace").value(hasItem(DEFAULT_TOTAL_SECOND_PLACE.intValue())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
@@ -214,6 +238,10 @@ public class DistrictResourceIntTest {
             .andExpect(jsonPath("$.romanNumber").value(DEFAULT_ROMAN_NUMBER.toString()))
             .andExpect(jsonPath("$.districtHead").value(DEFAULT_DISTRICT_HEAD.toString()))
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
+            .andExpect(jsonPath("$.entityFirstPlace").value(DEFAULT_ENTITY_FIRST_PLACE.toString()))
+            .andExpect(jsonPath("$.totalFirstPlace").value(DEFAULT_TOTAL_FIRST_PLACE.intValue()))
+            .andExpect(jsonPath("$.entitySecondPlace").value(DEFAULT_ENTITY_SECOND_PLACE.toString()))
+            .andExpect(jsonPath("$.totalSecondPlace").value(DEFAULT_TOTAL_SECOND_PLACE.intValue()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
             .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
             .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
@@ -242,6 +270,10 @@ public class DistrictResourceIntTest {
             .romanNumber(UPDATED_ROMAN_NUMBER)
             .districtHead(UPDATED_DISTRICT_HEAD)
             .state(UPDATED_STATE)
+            .entityFirstPlace(UPDATED_ENTITY_FIRST_PLACE)
+            .totalFirstPlace(UPDATED_TOTAL_FIRST_PLACE)
+            .entitySecondPlace(UPDATED_ENTITY_SECOND_PLACE)
+            .totalSecondPlace(UPDATED_TOTAL_SECOND_PLACE)
             .published(UPDATED_PUBLISHED)
             .createdDate(UPDATED_CREATED_DATE)
             .updatedDate(UPDATED_UPDATED_DATE);
@@ -260,6 +292,10 @@ public class DistrictResourceIntTest {
         assertThat(testDistrict.getRomanNumber()).isEqualTo(UPDATED_ROMAN_NUMBER);
         assertThat(testDistrict.getDistrictHead()).isEqualTo(UPDATED_DISTRICT_HEAD);
         assertThat(testDistrict.getState()).isEqualTo(UPDATED_STATE);
+        assertThat(testDistrict.getEntityFirstPlace()).isEqualTo(UPDATED_ENTITY_FIRST_PLACE);
+        assertThat(testDistrict.getTotalFirstPlace()).isEqualTo(UPDATED_TOTAL_FIRST_PLACE);
+        assertThat(testDistrict.getEntitySecondPlace()).isEqualTo(UPDATED_ENTITY_SECOND_PLACE);
+        assertThat(testDistrict.getTotalSecondPlace()).isEqualTo(UPDATED_TOTAL_SECOND_PLACE);
         assertThat(testDistrict.isPublished()).isEqualTo(UPDATED_PUBLISHED);
         assertThat(testDistrict.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testDistrict.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
@@ -326,6 +362,10 @@ public class DistrictResourceIntTest {
             .andExpect(jsonPath("$.[*].romanNumber").value(hasItem(DEFAULT_ROMAN_NUMBER.toString())))
             .andExpect(jsonPath("$.[*].districtHead").value(hasItem(DEFAULT_DISTRICT_HEAD.toString())))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
+            .andExpect(jsonPath("$.[*].entityFirstPlace").value(hasItem(DEFAULT_ENTITY_FIRST_PLACE.toString())))
+            .andExpect(jsonPath("$.[*].totalFirstPlace").value(hasItem(DEFAULT_TOTAL_FIRST_PLACE.intValue())))
+            .andExpect(jsonPath("$.[*].entitySecondPlace").value(hasItem(DEFAULT_ENTITY_SECOND_PLACE.toString())))
+            .andExpect(jsonPath("$.[*].totalSecondPlace").value(hasItem(DEFAULT_TOTAL_SECOND_PLACE.intValue())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));

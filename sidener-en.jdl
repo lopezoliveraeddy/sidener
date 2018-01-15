@@ -96,6 +96,14 @@ entity District {
     districtHead String,
     /* Entidad Federativa donde pertenece el Distrito */
     state State,
+    /* Entidad 1er Lugar */
+    entityFirstPlace String,
+    /* Total de votos para el Primer Lugar */
+    totalFirstPlace Long,
+    /* Entidad 2do Lugar */
+    entitySecondPlace String,
+    /* Total de votos para el Segundo Lugar */
+    totalSecondPlace Long,
 
     published Boolean,
     createdDate ZonedDateTime,
@@ -146,6 +154,14 @@ entity PollingPlace {
     alternateThree String,
     /* Acta de Escrutinio y Cómputo */
     recordCount String,
+    /* Entidad 1er Lugar */
+    entityFirstPlace String,
+    /* Total de votos para el Primer Lugar */
+    totalFirstPlace Long,
+    /* Entidad 2do Lugar */
+    entitySecondPlace String,
+    /* Total de votos para el Segundo Lugar */
+    totalSecondPlace Long,
 
     published Boolean,
     createdDate ZonedDateTime,

@@ -31,6 +31,26 @@
             "fieldValues": "AGU,BCN,BCS,CAM,CHP,CHH,COA,COL,CMX,DUR,GUA,GRO,HID,JAL,MEX,MIC,MOR,NAY,NLE,OAX,PUE,QUE,ROO,SLP,SIN,SON,TAB,TAM,TLA,VER,YUC,ZAC"
         },
         {
+            "fieldName": "entityFirstPlace",
+            "javadoc": "Entidad 1er Lugar",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "totalFirstPlace",
+            "javadoc": "Total de votos para el Primer Lugar",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "entitySecondPlace",
+            "javadoc": "Entidad 2do Lugar",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "totalSecondPlace",
+            "javadoc": "Total de votos para el Segundo Lugar",
+            "fieldType": "Long"
+        },
+        {
             "fieldName": "published",
             "fieldType": "Boolean"
         },
