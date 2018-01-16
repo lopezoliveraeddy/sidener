@@ -51,7 +51,6 @@
                     <td><a ui-sref="coalition-detail({id:coalition.id})">{{coalition.id}}</a></td>
                     <td>{{coalition.name}}</td>
                     <td>{{coalition.acronym}}</td>
-                    <td>{{coalition.image}}</td>
                     <td>
                         <span ng-repeat="politicalParties in coalition.politicalParties">
                             <a ui-sref="political-party-detail({id: politicalParties.id})">{{politicalParties.acronym}}</a>{{$last ? '' : ', '}}

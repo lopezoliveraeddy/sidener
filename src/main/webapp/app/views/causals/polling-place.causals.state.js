@@ -9,17 +9,17 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('election-district', {
+        .state('district-causals-pollingPlaces', {
             parent: 'entity',
-            url: '/election/{id}/district?page',
+            url: '/district/causals/{id}/polling-places?page',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'sidenerApp.election.home.title'
+                pageTitle: 'sidenerApp.district.home.title'
             },
             views: {
                 'content@private': {
-                    templateUrl: 'app/views/district-recount.html',
-                    controller: 'ElectionDistrictController',
+                    templateUrl: 'app/views/causals/polling-places-causals.html',
+                    controller: 'DistrictCausalsPollingPlaceController',
                     controllerAs: 'vm'
                 }
             },
@@ -38,12 +38,10 @@
                     };
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('election');
+                    $translatePartialLoader.addPart('pollingPlace');
                     $translatePartialLoader.addPart('district');
-                    $translatePartialLoader.addPart('state');
-                    $translatePartialLoader.addPart('status');
-                    $translatePartialLoader.addPart('recountDistrictsRule');
-                    $translatePartialLoader.addPart('recountPollingPlaceRule');
+                    $translatePartialLoader.addPart('pollingPlaceType');
+                    $translatePartialLoader.addPart('election');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]

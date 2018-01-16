@@ -9,47 +9,39 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('election-list', {
-            parent: 'private',
-            url: '/elections-list?page&sort&search',
+        .state('district-recount-pollingPlaces', {
+            parent: 'entity',
+            url: '/district/recount/{id}/polling-places?page',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'sidenerApp.election.home.title'
+                pageTitle: 'sidenerApp.district.home.title'
             },
             views: {
                 'content@private': {
-                    templateUrl: 'app/views/elections.list.html',
-                    controller: 'ElectionListController',
+                    templateUrl: 'app/views/recount/polling-places-recount.html',
+                    controller: 'DistrictRecountPollingPlaceController',
                     controllerAs: 'vm'
                 }
             },
             params: {
+                id: null,
                 page: {
                     value: '1',
                     squash: true
-                },
-                sort: {
-                    value: 'id,asc',
-                    squash: true
-                },
-                search: null
+                }
             },
             resolve: {
                 pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
                     return {
+                        id: $stateParams.id,
                         page: PaginationUtil.parsePage($stateParams.page),
-                        sort: $stateParams.sort,
-                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
-                        ascending: PaginationUtil.parseAscending($stateParams.sort),
-                        search: $stateParams.search
                     };
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('pollingPlace');
+                    $translatePartialLoader.addPart('district');
+                    $translatePartialLoader.addPart('pollingPlaceType');
                     $translatePartialLoader.addPart('election');
-                    $translatePartialLoader.addPart('state');
-                    $translatePartialLoader.addPart('status');
-                    $translatePartialLoader.addPart('recountDistrictsRule');
-                    $translatePartialLoader.addPart('recountPollingPlaceRule');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]

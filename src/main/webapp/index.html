@@ -102,7 +102,7 @@
         chart.draw(data, options);
       }
     </script>
-    
+
         <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChartC);
@@ -186,15 +186,21 @@
     <!-- build:js app/app.js  -->
     <!-- inject:js -->
     <script src="app/app.module.js"></script>
-    <script src="app/views/polling-place.recount.state.js"></script>
-    <script src="app/views/polling-place.recount.service.js"></script>
-    <script src="app/views/polling-place.recount.controller.js"></script>
-    <script src="app/views/election.list.state.js"></script>
-    <script src="app/views/election.list.service.js"></script>
-    <script src="app/views/election.list.controller.js"></script>
-    <script src="app/views/district.recount.state.js"></script>
-    <script src="app/views/district.recount.service.js"></script>
-    <script src="app/views/district.recount.controller.js"></script>
+    <script src="app/views/recount/polling-place.recount.state.js"></script>
+    <script src="app/views/recount/polling-place.recount.service.js"></script>
+    <script src="app/views/recount/polling-place.recount.controller.js"></script>
+    <script src="app/views/recount/district.recount.state.js"></script>
+    <script src="app/views/recount/district.recount.service.js"></script>
+    <script src="app/views/recount/district.recount.controller.js"></script>
+    <script src="app/views/election/election.list.state.js"></script>
+    <script src="app/views/election/election.list.service.js"></script>
+    <script src="app/views/election/election.list.controller.js"></script>
+    <script src="app/views/causals/polling-place.causals.state.js"></script>
+    <script src="app/views/causals/polling-place.causals.service.js"></script>
+    <script src="app/views/causals/polling-place.causals.controller.js"></script>
+    <script src="app/views/causals/district.causals.state.js"></script>
+    <script src="app/views/causals/district.causals.service.js"></script>
+    <script src="app/views/causals/district.causals.controller.js"></script>
     <script src="app/services/user/user.service.js"></script>
     <script src="app/services/profiles/profile.service.js"></script>
     <script src="app/services/profiles/page-ribbon.directive.js"></script>

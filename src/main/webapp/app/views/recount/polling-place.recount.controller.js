@@ -3,11 +3,11 @@
 
     angular
         .module('sidenerApp')
-        .controller('DistrictPollingPlaceController', DistrictPollingPlaceController);
+        .controller('DistrictRecountPollingPlaceController', DistrictRecountPollingPlaceController);
 
-    DistrictPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'District', 'Election', 'DistrictPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
+    DistrictRecountPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'District', 'Election', 'DistrictRecountPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
 
-    function DistrictPollingPlaceController($scope, $state, $stateParams, AlertService, District, Election, DistrictPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
+    function DistrictRecountPollingPlaceController($scope, $state, $stateParams, AlertService, District, Election, DistrictRecountPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -35,7 +35,7 @@
         loadAll();
 
         function loadAll () {
-            DistrictPollingPlaces.get({
+            DistrictRecountPollingPlaces.get({
                 id : $stateParams.id,
                 page: pagingParams.page - 1
             }, onSuccess, onError);

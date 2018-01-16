@@ -4,15 +4,7 @@
     <div class="table-container">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-4 no-padding-left">
-                    <button class="btn btn-primary" ui-sref="election.new" >
-                        <span class="glyphicon glyphicon-plus"></span>
-                        <span class="hidden-xs-down"  data-translate="sidenerApp.election.home.createLabel">
-                            Create new Election
-                        </span>
-                    </button>
-                </div>
-                <div class="col-xs-8 no-padding-right">
+                <div class="col-xs-8 col-xs-offset-4 no-padding-right">
                     <form name="searchForm" class="form-inline">
                         <div class="input-group pull-right" >
                             <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'sidenerApp.election.home.search' | translate }}">
@@ -55,7 +47,7 @@
                     <td class="text-center">
                         <div class="btn-group">
                             <button type="submit"
-                                    ui-sref="election-district({id:election.id})"
+                                    ui-sref="election-recount-district({id:election.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="fa medium fa-bar-chart"></span>
                             </button>
@@ -64,6 +56,7 @@
                     <td class="text-center">
                         <div class="btn-group">
                             <button type="submit"
+                                    ui-sref="election-causals-district({id:election.id})"
                                     class="btn btn-success btn-sm">
                                 <span class="fa medium fa-address-card-o"></span>
                             </button>

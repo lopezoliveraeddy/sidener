@@ -1,0 +1,54 @@
+<div>
+    <h2><span>{{vm.election.electionTypeName}}</span> - <span data-translate="{{'sidenerApp.State.' + vm.election.state}}"></span> - <span>{{vm.election.periodElection}}</span></h2>
+    <h3 data-translate="sidenerApp.district.home.title">Districts</h3>
+    <jhi-alert></jhi-alert>
+    <div class="table-container">
+        <div class="table-responsive">
+        <table class="jh-table table table-striped table-bordered">
+            <thead>
+            <tr callback="vm.transition()">
+                <th><span data-translate="sidenerApp.district.romanNumber">Roman Number</span></th>
+                <th><span data-translate="sidenerApp.district.districtHead">District Head</span></th>
+                <th><span data-translate="sidenerApp.district.firstPlace">Partido 1er Lugar</span></th>
+                <th><span data-translate="sidenerApp.district.secondPlace">Partido 2do Lugar</span></th>
+                <th><span data-translate="sidenerApp.district.difference">Diferencia</span></th>
+                <th><span data-translate="sidenerApp.district.totalVotes">Votación Total</span></th>
+                <th>Detalle</th>
+                <th>Recuento Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="district in vm.districts track by district.id">
+                <td ><a ui-sref="district-detail({id:district.id})" class="btn btn-info">{{district.romanNumber}}</a></td>
+                <td>{{district.districtHead}}</td>
+                <td><strong>{{vm.lugares[$index][0]}}</strong> | {{vm.lugares[$index][3]}} </td>
+                <td><strong>{{vm.lugares[$index][2]}}</strong> | {{vm.lugares[$index][1]}}</td>
+                <td>{{vm.lugares[$index][3]-vm.lugares[$index][1]}}</td>
+                <td>{{100*(vm.lugares[$index][3]-vm.lugares[$index][1])/vm.lugares[$index][4]}}</td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button type="submit"
+                                ui-sref="district-recount-pollingPlaces({id:district.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button type="submit"
+                                class="btn btn-info btn-sm">
+                            <span class="fa medium fa-file-text-o"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div class="text-center">
+            <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+            <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+        </div>
+    </div>
+</div>

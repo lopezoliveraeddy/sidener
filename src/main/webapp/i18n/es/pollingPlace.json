@@ -53,7 +53,8 @@
             "recordCount": "Acta de Escutinio y Cómputo",
             "recordCount": {
                 "watch": "Ver acta"
-            }
+            },
+            "totalCausals": "Total de Causales"
         }
     }
 }
