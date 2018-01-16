@@ -255,10 +255,10 @@ public class PollingPlaceResource {
 
 			if (it <= 0) {
 				nextRecord = csvReader.readNext();
-				topeDatos = ArrayUtils.indexOf(nextRecord, "S1");
-				topePartidos = ArrayUtils.indexOf(nextRecord, "S2");
-				topeCoaliciones = ArrayUtils.indexOf(nextRecord, "S3");
-				topeCandidatosInd = ArrayUtils.indexOf(nextRecord, "S4");
+				topeDatos            = ArrayUtils.indexOf(nextRecord, "S1");
+				topePartidos         = ArrayUtils.indexOf(nextRecord, "S2");
+				topeCoaliciones      = ArrayUtils.indexOf(nextRecord, "S3");
+				topeCandidatosInd    = ArrayUtils.indexOf(nextRecord, "S4");
 				//participantes partidos
 				for (int k = topeDatos + 1; k <= topePartidos - 1; k++) {
 					partidos.add(nextRecord[k]);
@@ -313,16 +313,35 @@ public class PollingPlaceResource {
 						}
 						//primer y segundo lugar
 						if (Integer.parseInt(nextRecord[k]) > primerLugarNumber) {
+							pollingPlaceDTO.setTotalSecondPlace((long) primerLugarNumber);
+							pollingPlaceDTO.setEntitySecondPlace(primerLugarPartido);
+							/**
+							 * @todo eliminar
+							 */
 							segundoLugarNumber = primerLugarNumber;
 							segundoLugarPartido = primerLugarPartido;
-
+							
+							pollingPlaceDTO.setTotalFirstPlace( Long.parseLong(nextRecord[k]));
+							pollingPlaceDTO.setEntityFirstPlace(partidos.get(j));
+							/**
+							 * @todo eliminar
+							 */
 							primerLugarNumber = Integer.parseInt(nextRecord[k]);
 							primerLugarPartido = partidos.get(j);
+							
 						}
 						if (Integer.parseInt(nextRecord[k]) > segundoLugarNumber
 								&& Integer.parseInt(nextRecord[k]) < primerLugarNumber) {
+							
+							pollingPlaceDTO.setTotalSecondPlace(Long.parseLong(nextRecord[k]));
+							pollingPlaceDTO.setEntitySecondPlace( partidos.get(j));
+							/**
+							 * @todo eliminar
+							 */
 							segundoLugarNumber = Integer.parseInt(nextRecord[k]);
 							segundoLugarPartido = partidos.get(j);
+							
+							
 						}
 						partidosJson.put(partidos.get(j), nextRecord[k]);
 					} catch (JSONException e) {
@@ -343,6 +362,7 @@ public class PollingPlaceResource {
 					m++;
 					
 				}
+				
 				//inicia votos candidatos
 				for(int k = topeCoaliciones +1 ; k <= topeCandidatosInd - 1 ; k++ ) {
 					try {
@@ -353,8 +373,6 @@ public class PollingPlaceResource {
 					}
 					n++;
 				}
-				
-				
 				
 				
 				try {
@@ -372,7 +390,7 @@ public class PollingPlaceResource {
 				votaciones.put(partidosVotos);
 				pollingPlaceDTO.setRecordCount(votaciones.toString());
 				pollingPlaceDTO.setElectionId(Long.parseLong(nextRecord[9]));
-				pollingPlaceDTO.setNullVotes(Long.parseLong(nextRecord[30]));
+				pollingPlaceDTO.setNullVotes(Long.parseLong(nextRecord[29]));
 				pollingPlaceService.save(pollingPlaceDTO);
 
 			}
