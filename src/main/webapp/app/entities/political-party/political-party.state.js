@@ -55,7 +55,7 @@
             parent: 'political-party',
             url: '/political-party/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_ADMIN'],
                 pageTitle: 'sidenerApp.politicalParty.detail.title'
             },
             views: {

@@ -1,4 +1,3 @@
-
 <div>
     <h2>{{vm.election.electionTypeName}} - <span data-translate="{{'sidenerApp.State.' + vm.election.state}}">{{vm.election.state}}</span> -  <span>{{vm.election.periodElection}}</span></h2>
     <hr>
@@ -144,13 +143,17 @@
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
     </button>
 
-    <button type="button" ui-sref="election-detail.edit({id:vm.election.id})" class="btn btn-primary">
+    <button type="button"
+            ui-sref="election-detail.edit({id:vm.election.id})"
+            class="btn btn-primary"
+            has-authority="ROLE_ADMIN">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
     </button>
     <button type="submit"
             ui-sref="election.delete({id:vm.election.id})"
-            class="btn btn-danger btn-sm">
+            class="btn btn-danger btn-sm"
+            has-authority="ROLE_ADMIN">
         <span class="glyphicon glyphicon-remove-circle"></span>
         <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
     </button>

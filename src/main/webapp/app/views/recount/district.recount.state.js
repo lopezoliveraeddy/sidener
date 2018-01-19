@@ -13,7 +13,7 @@
             parent: 'entity',
             url: '/election/recount/{id}/district?page',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_ADMIN'],
                 pageTitle: 'sidenerApp.election.home.title'
             },
             views: {

@@ -13,7 +13,7 @@
             parent: 'private',
             url: '/elections-list?page&sort&search',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_ADMIN', 'ROLE_ABT', 'ROLE_ABR', 'ROLE_AI', 'ROLE_IS', 'ROLE_SD'],
                 pageTitle: 'sidenerApp.election.home.title'
             },
             views: {
