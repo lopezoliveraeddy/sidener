@@ -3,6 +3,7 @@
     "relationships": [
         {
             "relationshipType": "one-to-one",
+            "javadoc": "Imagen Partido Político",
             "relationshipName": "image",
             "otherEntityName": "archive",
             "otherEntityField": "id",

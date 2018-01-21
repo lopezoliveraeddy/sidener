@@ -84,9 +84,21 @@
         <dd>
             <span>{{vm.pollingPlace.alternateThree}}</span>
         </dd>
-        <dt><span data-translate="sidenerApp.pollingPlace.recordCount">Record Count</span></dt>
+        <dt><span data-translate="sidenerApp.pollingPlace.entityFirstPlace">Entity First Place</span></dt>
         <dd>
-            <span>{{vm.pollingPlace.recordCount}}</span>
+            <span>{{vm.pollingPlace.entityFirstPlace}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.totalFirstPlace">Total First Place</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.totalFirstPlace}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.entitySecondPlace">Entity Second Place</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.entitySecondPlace}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.totalSecondPlace">Total Second Place</span></dt>
+        <dd>
+            <span>{{vm.pollingPlace.totalSecondPlace}}</span>
         </dd>
         <dt><span data-translate="sidenerApp.pollingPlace.published">Published</span></dt>
         <dd>
@@ -99,6 +111,10 @@
         <dt><span data-translate="sidenerApp.pollingPlace.updatedDate">Updated Date</span></dt>
         <dd>
             <span>{{vm.pollingPlace.updatedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="sidenerApp.pollingPlace.recordCount">Record Count</span></dt>
+        <dd>
+            <a ui-sref="archive-detail({id:vm.pollingPlace.recordCountId})">{{vm.pollingPlace.recordCountId}}</a>
         </dd>
         <dt><span data-translate="sidenerApp.pollingPlace.election">Election</span></dt>
         <dd>

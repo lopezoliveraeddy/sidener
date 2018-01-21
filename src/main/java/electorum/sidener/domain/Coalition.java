@@ -52,6 +52,10 @@ public class Coalition implements Serializable {
     @Column(name = "updated_date")
     private ZonedDateTime updatedDate;
 
+    /**
+     * Imagen Coalición
+     */
+    @ApiModelProperty(value = "Imagen Coalición")
     @OneToOne
     @JoinColumn(unique = true)
     private Archive image;

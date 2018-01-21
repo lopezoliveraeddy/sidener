@@ -50,6 +50,10 @@ public class PoliticalParty implements Serializable {
     @Column(name = "updated_date")
     private ZonedDateTime updatedDate;
 
+    /**
+     * Imagen Partido Político
+     */
+    @ApiModelProperty(value = "Imagen Partido Político")
     @OneToOne
     @JoinColumn(unique = true)
     private Archive image;

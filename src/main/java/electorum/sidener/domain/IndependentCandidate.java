@@ -50,6 +50,10 @@ public class IndependentCandidate implements Serializable {
     @Column(name = "updated_date")
     private ZonedDateTime updatedDate;
 
+    /**
+     * Imagen Candidato Independiente
+     */
+    @ApiModelProperty(value = "Imagen Candidato Independiente")
     @OneToOne
     @JoinColumn(unique = true)
     private Archive image;

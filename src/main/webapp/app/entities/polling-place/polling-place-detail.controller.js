@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('PollingPlaceDetailController', PollingPlaceDetailController);
 
-    PollingPlaceDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'PollingPlace', 'Election', 'District', 'Causal'];
+    PollingPlaceDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'PollingPlace', 'Archive', 'Election', 'District', 'Causal'];
 
-    function PollingPlaceDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, PollingPlace, Election, District, Causal) {
+    function PollingPlaceDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, PollingPlace, Archive, Election, District, Causal) {
         var vm = this;
 
         vm.pollingPlace = entity;

@@ -56,10 +56,14 @@
                     <th jh-sort-by="alternateOne"><span data-translate="sidenerApp.pollingPlace.alternateOne">Alternate One</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="alternateTwo"><span data-translate="sidenerApp.pollingPlace.alternateTwo">Alternate Two</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="alternateThree"><span data-translate="sidenerApp.pollingPlace.alternateThree">Alternate Three</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="recordCount"><span data-translate="sidenerApp.pollingPlace.recordCount">Record Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="entityFirstPlace"><span data-translate="sidenerApp.pollingPlace.entityFirstPlace">Entity First Place</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalFirstPlace"><span data-translate="sidenerApp.pollingPlace.totalFirstPlace">Total First Place</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="entitySecondPlace"><span data-translate="sidenerApp.pollingPlace.entitySecondPlace">Entity Second Place</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalSecondPlace"><span data-translate="sidenerApp.pollingPlace.totalSecondPlace">Total Second Place</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.pollingPlace.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="createdDate"><span data-translate="sidenerApp.pollingPlace.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.pollingPlace.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="recordCountId"><span data-translate="sidenerApp.pollingPlace.recordCount">Record Count</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="electionId"><span data-translate="sidenerApp.pollingPlace.election">Election</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="districtId"><span data-translate="sidenerApp.pollingPlace.district">District</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
@@ -88,10 +92,16 @@
                     <td>{{pollingPlace.alternateOne}}</td>
                     <td>{{pollingPlace.alternateTwo}}</td>
                     <td>{{pollingPlace.alternateThree}}</td>
-                    <td>{{pollingPlace.recordCount}}</td>
+                    <td>{{pollingPlace.entityFirstPlace}}</td>
+                    <td>{{pollingPlace.totalFirstPlace}}</td>
+                    <td>{{pollingPlace.entitySecondPlace}}</td>
+                    <td>{{pollingPlace.totalSecondPlace}}</td>
                     <td>{{pollingPlace.published}}</td>
                     <td>{{pollingPlace.createdDate | date:'medium'}}</td>
                     <td>{{pollingPlace.updatedDate | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="archive-detail({id:pollingPlace.recordCountId})">{{pollingPlace.recordCountId}}</a>
+                    </td>
                     <td>
                         <a ui-sref="election-detail({id:pollingPlace.electionId})">{{pollingPlace.electionId}}</a>
                     </td>

@@ -135,9 +135,27 @@
                     />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="sidenerApp.pollingPlace.recordCount" for="field_recordCount">Record Count</label>
-            <input type="text" class="form-control" name="recordCount" id="field_recordCount"
-                    ng-model="vm.pollingPlace.recordCount"
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.entityFirstPlace" for="field_entityFirstPlace">Entity First Place</label>
+            <input type="text" class="form-control" name="entityFirstPlace" id="field_entityFirstPlace"
+                    ng-model="vm.pollingPlace.entityFirstPlace"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.totalFirstPlace" for="field_totalFirstPlace">Total First Place</label>
+            <input type="number" class="form-control" name="totalFirstPlace" id="field_totalFirstPlace"
+                    ng-model="vm.pollingPlace.totalFirstPlace"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.entitySecondPlace" for="field_entitySecondPlace">Entity Second Place</label>
+            <input type="text" class="form-control" name="entitySecondPlace" id="field_entitySecondPlace"
+                    ng-model="vm.pollingPlace.entitySecondPlace"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.pollingPlace.totalSecondPlace" for="field_totalSecondPlace">Total Second Place</label>
+            <input type="number" class="form-control" name="totalSecondPlace" id="field_totalSecondPlace"
+                    ng-model="vm.pollingPlace.totalSecondPlace"
                     />
         </div>
         <div class="form-group">
@@ -166,6 +184,12 @@
                 </div>
         </div>
 
+        <div class="form-group">
+            <label data-translate="sidenerApp.pollingPlace.recordCount" for="field_recordCount">Record Count</label>
+            <select class="form-control" id="field_recordCount" name="recordCount" ng-model="vm.pollingPlace.recordCountId" ng-options="archive.id as archive.id for archive in vm.recordcounts | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
         <div class="form-group">
             <label data-translate="sidenerApp.pollingPlace.election" for="field_election">Election</label>
             <select class="form-control" id="field_election" name="election" ng-model="vm.pollingPlace.electionId" ng-options="election.id as election.id for election in vm.elections"            >

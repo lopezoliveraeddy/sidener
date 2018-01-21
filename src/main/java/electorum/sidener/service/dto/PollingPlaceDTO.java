@@ -58,8 +58,6 @@ public class PollingPlaceDTO implements Serializable {
 
     private String alternateThree;
 
-    private String recordCount;
-
     private String entityFirstPlace;
 
     private Long totalFirstPlace;
@@ -73,6 +71,8 @@ public class PollingPlaceDTO implements Serializable {
     private ZonedDateTime createdDate;
 
     private ZonedDateTime updatedDate;
+
+    private Long recordCountId;
 
     private Long electionId;
 
@@ -248,14 +248,6 @@ public class PollingPlaceDTO implements Serializable {
         this.alternateThree = alternateThree;
     }
 
-    public String getRecordCount() {
-        return recordCount;
-    }
-
-    public void setRecordCount(String recordCount) {
-        this.recordCount = recordCount;
-    }
-
     public String getEntityFirstPlace() {
         return entityFirstPlace;
     }
@@ -310,6 +302,14 @@ public class PollingPlaceDTO implements Serializable {
 
     public void setUpdatedDate(ZonedDateTime updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public Long getRecordCountId() {
+        return recordCountId;
+    }
+
+    public void setRecordCountId(Long archiveId) {
+        this.recordCountId = archiveId;
     }
 
     public Long getElectionId() {
@@ -381,7 +381,6 @@ public class PollingPlaceDTO implements Serializable {
             ", alternateOne='" + getAlternateOne() + "'" +
             ", alternateTwo='" + getAlternateTwo() + "'" +
             ", alternateThree='" + getAlternateThree() + "'" +
-            ", recordCount='" + getRecordCount() + "'" +
             ", entityFirstPlace='" + getEntityFirstPlace() + "'" +
             ", totalFirstPlace='" + getTotalFirstPlace() + "'" +
             ", entitySecondPlace='" + getEntitySecondPlace() + "'" +

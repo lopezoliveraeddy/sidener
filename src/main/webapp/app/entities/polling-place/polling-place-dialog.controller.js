@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('PollingPlaceDialogController', PollingPlaceDialogController);
 
-    PollingPlaceDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'PollingPlace', 'Election', 'District', 'Causal'];
+    PollingPlaceDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'DataUtils', 'entity', 'PollingPlace', 'Archive', 'Election', 'District', 'Causal'];
 
-    function PollingPlaceDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, PollingPlace, Election, District, Causal) {
+    function PollingPlaceDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, DataUtils, entity, PollingPlace, Archive, Election, District, Causal) {
         var vm = this;
 
         vm.pollingPlace = entity;
@@ -17,6 +17,15 @@
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
         vm.save = save;
+        vm.recordcounts = Archive.query({filter: 'pollingplace-is-null'});
+        $q.all([vm.pollingPlace.$promise, vm.recordcounts.$promise]).then(function() {
+            if (!vm.pollingPlace.recordCountId) {
+                return $q.reject();
+            }
+            return Archive.get({id : vm.pollingPlace.recordCountId}).$promise;
+        }).then(function(recordCount) {
+            vm.recordcounts.push(recordCount);
+        });
         vm.elections = Election.query();
         vm.districts = District.query();
         vm.causals = Causal.query();

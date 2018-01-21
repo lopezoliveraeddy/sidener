@@ -146,7 +146,6 @@
                                 alternateOne: null,
                                 alternateTwo: null,
                                 alternateThree: null,
-                                recordCount: null,
                                 entityFirstPlace: null,
                                 totalFirstPlace: null,
                                 entitySecondPlace: null,

@@ -102,10 +102,6 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="record_count" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="entity_first_place" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -133,7 +129,9 @@
             <column name="updated_date" type="timestamp">
                 <constraints nullable="true" />
             </column>
-
+            <column name="record_count_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>
             <column name="election_id" type="bigint">
                 <constraints nullable="true" />
             </column>

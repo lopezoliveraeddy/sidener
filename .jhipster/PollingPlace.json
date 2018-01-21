@@ -2,6 +2,15 @@
     "fluentMethods": true,
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "javadoc": "Acta de Escrutinio y Cómputo",
+            "relationshipName": "recordCount",
+            "otherEntityName": "archive",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "pollingPlace"
+        },
+        {
             "relationshipType": "many-to-one",
             "relationshipName": "election",
             "otherEntityName": "election",
@@ -124,11 +133,6 @@
         {
             "fieldName": "alternateThree",
             "javadoc": "Tercer Alternativo",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "recordCount",
-            "javadoc": "Acta de Escrutinio y Cómputo",
             "fieldType": "String"
         },
         {

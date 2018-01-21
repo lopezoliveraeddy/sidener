@@ -216,7 +216,7 @@ public class PollingPlaceResource {
 
 	/**
 	 * Post /election : Create a new election data from file
-	 * 
+	 *
 	 * @param loadDTO
 	 *            the loadDTO to create
 	 * @return ResponseEntity with status 201 (Created) and with body the new
@@ -237,7 +237,7 @@ public class PollingPlaceResource {
 		int topeCandidatosInd    = 0;
 		List<String> partidos    = new ArrayList<String>();
 		List<String> coaliciones = new ArrayList<String>();
-		List<String> candidatos  = new ArrayList<String>(); 
+		List<String> candidatos  = new ArrayList<String>();
 
 		// se carga en un temporal
 		if (csvFile != null) {
@@ -275,7 +275,7 @@ public class PollingPlaceResource {
 				log.debug("---> REST request to save coaliciones : {}", coaliciones.toString());
 
 			}
-			
+
 			while ((nextRecord = csvReader.readNext()) != null) {
 				PollingPlaceDTO pollingPlaceDTO = new PollingPlaceDTO();
 				pollingPlaceDTO.setDistrictId(Long.valueOf(nextRecord[0]));
@@ -320,7 +320,7 @@ public class PollingPlaceResource {
 							 */
 							segundoLugarNumber = primerLugarNumber;
 							segundoLugarPartido = primerLugarPartido;
-							
+
 							pollingPlaceDTO.setTotalFirstPlace( Long.parseLong(nextRecord[k]));
 							pollingPlaceDTO.setEntityFirstPlace(partidos.get(j));
 							/**
@@ -328,11 +328,11 @@ public class PollingPlaceResource {
 							 */
 							primerLugarNumber = Integer.parseInt(nextRecord[k]);
 							primerLugarPartido = partidos.get(j);
-							
+
 						}
 						if (Integer.parseInt(nextRecord[k]) > segundoLugarNumber
 								&& Integer.parseInt(nextRecord[k]) < primerLugarNumber) {
-							
+
 							pollingPlaceDTO.setTotalSecondPlace(Long.parseLong(nextRecord[k]));
 							pollingPlaceDTO.setEntitySecondPlace( partidos.get(j));
 							/**
@@ -340,8 +340,8 @@ public class PollingPlaceResource {
 							 */
 							segundoLugarNumber = Integer.parseInt(nextRecord[k]);
 							segundoLugarPartido = partidos.get(j);
-							
-							
+
+
 						}
 						partidosJson.put(partidos.get(j), nextRecord[k]);
 					} catch (JSONException e) {
@@ -352,7 +352,7 @@ public class PollingPlaceResource {
 				}
 				// inicia votos coaliciones
 				for (int k = topePartidos +1 ; k <= topeCoaliciones - 1 ; k++ ) {
-					
+
 					try {
 						coalicionesJson.put(coaliciones.get(m),nextRecord[k]);
 					} catch (JSONException e) {
@@ -360,9 +360,9 @@ public class PollingPlaceResource {
 						e.printStackTrace();
 					}
 					m++;
-					
+
 				}
-				
+
 				//inicia votos candidatos
 				for(int k = topeCoaliciones +1 ; k <= topeCandidatosInd - 1 ; k++ ) {
 					try {
@@ -373,8 +373,8 @@ public class PollingPlaceResource {
 					}
 					n++;
 				}
-				
-				
+
+
 				try {
 					resultadosPrimerLugar.put(primerLugarPartido, primerLugarNumber);
 					resultadosSegundoLugar.put(segundoLugarPartido, segundoLugarNumber);
@@ -388,7 +388,7 @@ public class PollingPlaceResource {
 					e.printStackTrace();
 				}
 				votaciones.put(partidosVotos);
-				pollingPlaceDTO.setRecordCount(votaciones.toString());
+				//pollingPlaceDTO.setRecordCount(votaciones.toString());
 				pollingPlaceDTO.setElectionId(Long.parseLong(nextRecord[9]));
 				pollingPlaceDTO.setNullVotes(Long.parseLong(nextRecord[29]));
 				pollingPlaceService.save(pollingPlaceDTO);

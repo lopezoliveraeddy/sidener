@@ -3,6 +3,7 @@
     "relationships": [
         {
             "relationshipType": "one-to-one",
+            "javadoc": "Imagen Candidato Independiente",
             "relationshipName": "image",
             "otherEntityName": "archive",
             "otherEntityField": "id",

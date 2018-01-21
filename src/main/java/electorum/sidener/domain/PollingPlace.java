@@ -175,13 +175,6 @@ public class PollingPlace implements Serializable {
     private String alternateThree;
 
     /**
-     * Acta de Escrutinio y Cómputo
-     */
-    @ApiModelProperty(value = "Acta de Escrutinio y Cómputo")
-    @Column(name = "record_count")
-    private String recordCount;
-
-    /**
      * Entidad 1er Lugar
      */
     @ApiModelProperty(value = "Entidad 1er Lugar")
@@ -217,6 +210,14 @@ public class PollingPlace implements Serializable {
 
     @Column(name = "updated_date")
     private ZonedDateTime updatedDate;
+
+    /**
+     * Acta de Escrutinio y Cómputo
+     */
+    @ApiModelProperty(value = "Acta de Escrutinio y Cómputo")
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Archive recordCount;
 
     @ManyToOne
     private Election election;
@@ -500,19 +501,6 @@ public class PollingPlace implements Serializable {
         this.alternateThree = alternateThree;
     }
 
-    public String getRecordCount() {
-        return recordCount;
-    }
-
-    public PollingPlace recordCount(String recordCount) {
-        this.recordCount = recordCount;
-        return this;
-    }
-
-    public void setRecordCount(String recordCount) {
-        this.recordCount = recordCount;
-    }
-
     public String getEntityFirstPlace() {
         return entityFirstPlace;
     }
@@ -602,6 +590,19 @@ public class PollingPlace implements Serializable {
 
     public void setUpdatedDate(ZonedDateTime updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public Archive getRecordCount() {
+        return recordCount;
+    }
+
+    public PollingPlace recordCount(Archive archive) {
+        this.recordCount = archive;
+        return this;
+    }
+
+    public void setRecordCount(Archive archive) {
+        this.recordCount = archive;
     }
 
     public Election getElection() {
@@ -698,7 +699,6 @@ public class PollingPlace implements Serializable {
             ", alternateOne='" + getAlternateOne() + "'" +
             ", alternateTwo='" + getAlternateTwo() + "'" +
             ", alternateThree='" + getAlternateThree() + "'" +
-            ", recordCount='" + getRecordCount() + "'" +
             ", entityFirstPlace='" + getEntityFirstPlace() + "'" +
             ", totalFirstPlace='" + getTotalFirstPlace() + "'" +
             ", entitySecondPlace='" + getEntitySecondPlace() + "'" +

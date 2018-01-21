@@ -152,8 +152,6 @@ entity PollingPlace {
     alternateTwo String,
     /* Tercer Alternativo */
     alternateThree String,
-    /* Acta de Escrutinio y Cómputo */
-    recordCount String,
     /* Entidad 1er Lugar */
     entityFirstPlace String,
     /* Total de votos para el Primer Lugar */
@@ -267,9 +265,14 @@ relationship ManyToOne {
 }
 
 relationship OneToOne {
+    /* Imagen Partido Político */
     PoliticalParty{image} to Archive,
+    /* Imagen Coalición */
     Coalition{image} to Archive,
-    IndependentCandidate{image} to Archive
+    /* Imagen Candidato Independiente */
+    IndependentCandidate{image} to Archive,
+    /* Acta de Escrutinio y Cómputo */
+    PollingPlace{recordCount} to Archive
 }
 
 // Set pagination options
