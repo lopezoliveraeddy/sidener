@@ -266,13 +266,13 @@ relationship ManyToOne {
 
 relationship OneToOne {
     /* Imagen Partido Político */
-    PoliticalParty{image} to Archive,
+    PoliticalParty{image(path)} to Archive,
     /* Imagen Coalición */
-    Coalition{image} to Archive,
+    Coalition{image(path)} to Archive,
     /* Imagen Candidato Independiente */
-    IndependentCandidate{image} to Archive,
+    IndependentCandidate{image(path)} to Archive,
     /* Acta de Escrutinio y Cómputo */
-    PollingPlace{recordCount} to Archive
+    PollingPlace{recordCount(path)} to Archive
 }
 
 // Set pagination options

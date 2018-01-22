@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface PollingPlaceMapper extends EntityMapper <PollingPlaceDTO, PollingPlace> {
 
     @Mapping(source = "recordCount.id", target = "recordCountId")
+    @Mapping(source = "recordCount.path", target = "recordCountPath")
 
     @Mapping(source = "election.id", target = "electionId")
 

@@ -47,12 +47,14 @@
                         </button>
                     </td>
                     <td class="text-center">
-                        <div class="btn-group">
-                            <button type="submit"
-                                    ui-sref="polling-place-detail({id:pollingPlace.id})"
-                                    class="btn btn-info btn-sm">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
+                        <div ng-if="pollingPlace.recordCountId!=null">
+                            <div class="btn-group">
+                                <a href="public/api/archives/download?filename={{pollingPlace.recordCountPath}}" target="_blank"
+                                   class="btn btn-info btn-sm"
+                                    role="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </a>
+                            </div>
                         </div>
                     </td>
                 </tr>

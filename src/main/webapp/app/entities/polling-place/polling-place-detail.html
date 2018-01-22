@@ -114,7 +114,11 @@
         </dd>
         <dt><span data-translate="sidenerApp.pollingPlace.recordCount">Record Count</span></dt>
         <dd>
-            <a ui-sref="archive-detail({id:vm.pollingPlace.recordCountId})">{{vm.pollingPlace.recordCountId}}</a>
+            <span ng-if="vm.pollingPlace.recordCountId!=null">
+                <a href="public/api/archives/download?filename={{vm.pollingPlace.recordCountPath}}" target="_blank">
+                    <img src="public/api/archives/download?filename={{vm.pollingPlace.recordCountPath}}" width="70px" height="70px"/>
+                </a>
+            </span>
         </dd>
         <dt><span data-translate="sidenerApp.pollingPlace.election">Election</span></dt>
         <dd>

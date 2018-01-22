@@ -74,6 +74,8 @@ public class PollingPlaceDTO implements Serializable {
 
     private Long recordCountId;
 
+    private String recordCountPath;
+
     private Long electionId;
 
     private Long districtId;
@@ -310,6 +312,14 @@ public class PollingPlaceDTO implements Serializable {
 
     public void setRecordCountId(Long archiveId) {
         this.recordCountId = archiveId;
+    }
+
+    public String getRecordCountPath() {
+        return recordCountPath;
+    }
+
+    public void setRecordCountPath(String archivePath) {
+        this.recordCountPath = archivePath;
     }
 
     public Long getElectionId() {
