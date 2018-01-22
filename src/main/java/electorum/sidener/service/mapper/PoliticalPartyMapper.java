@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface PoliticalPartyMapper extends EntityMapper <PoliticalPartyDTO, PoliticalParty> {
 
     @Mapping(source = "image.id", target = "imageId")
+    @Mapping(source = "image.path", target = "imagePath")
     PoliticalPartyDTO toDto(PoliticalParty politicalParty); 
 
     @Mapping(source = "imageId", target = "image")

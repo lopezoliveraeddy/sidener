@@ -125,30 +125,48 @@
                 <div class="form-group">
                     <label data-translate="sidenerApp.election.politicalParties" for="field_politicalParties">Political Parties</label>
                     <ui-select multiple ng-model="vm.election.politicalParties" id="field_politicalParties" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true">
-                        <ui-select-match placeholder="Seleccion de Partidos Políticos:">{{$item.name}}</ui-select-match>
+                        <ui-select-match placeholder="Seleccion de Partidos Políticos:">
+                            <img src="public/api/archives/download?filename={{$item.imagePath}}" width="30px" height="30px" ng-if="$item.imagePath"/>
+                            {{$item.name}}
+                        </ui-select-match>
                         <ui-select-choices repeat="politicalParty in vm.politicalparties | propsFilter: {name: $select.search}" position='down'>
-                            <div ng-bind-html="politicalParty.name | highlight: $select.search"></div>
-                            <small>{{politicalParty.acronym}}</small>
+                            <div class="political-party">
+                                <img src="public/api/archives/download?filename={{politicalParty.imagePath}}" width="30px" height="30px" ng-if="politicalParty.imagePath"/>
+                                <span ng-bind-html="politicalParty.name | highlight: $select.search"></span>
+                                <small>-<strong>{{politicalParty.acronym}}</strong>-</small>
+                            </div>
                         </ui-select-choices>
                     </ui-select>
                 </div>
                 <div class="form-group">
                     <label data-translate="sidenerApp.election.independentCandidates" for="field_independentCandidates">Independent Candidates</label>
                     <ui-select multiple ng-model="vm.election.independentCandidates" id="field_independentCandidates" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true">
-                        <ui-select-match placeholder="Seleccion de Candidatos Independientes:">{{$item.name}}</ui-select-match>
+                        <ui-select-match placeholder="Seleccion de Candidatos Independientes:">
+                            <img src="public/api/archives/download?filename={{$item.imagePath}}" width="30px" height="30px" ng-if="$item.imagePath"/>
+                            {{$item.name}}
+                        </ui-select-match>
                         <ui-select-choices repeat="independentCandidate in vm.independentcandidates | propsFilter: {name: $select.search}" position='down'>
-                            <div ng-bind-html="independentCandidate.name | highlight: $select.search"></div>
-                            <small>{{independentCandidate.acronym}}</small>
+                            <div class="independent-candidate">
+                                <img src="public/api/archives/download?filename={{independentCandidate.imagePath}}" width="30px" height="30px" ng-if="independentCandidate.imagePath"/>
+                                <span ng-bind-html="independentCandidate.name | highlight: $select.search"></span>
+                                <small>-<strong>{{independentCandidate.acronym}}</strong>-</small>
+                            </div>
                         </ui-select-choices>
                     </ui-select>
                 </div>
                 <div class="form-group">
                     <label data-translate="sidenerApp.election.coalitions" for="field_coalitions">Coalitions</label>
                     <ui-select multiple ng-model="vm.election.coalitions" id="field_coalitions" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true">
-                        <ui-select-match placeholder="Seleccion de Coaliciones:">{{$item.name}}</ui-select-match>
-                        <ui-select-choices repeat="coalitions in vm.coalitions | propsFilter: {name: $select.search}" position='down'>
-                            <div ng-bind-html="coalitions.name | highlight: $select.search"></div>
-                            <small>{{coalitions.acronym}}</small>
+                        <ui-select-match placeholder="Seleccion de Coaliciones:">
+                            <img src="public/api/archives/download?filename={{$item.imagePath}}" width="30px" height="30px" ng-if="$item.imagePath"/>
+                            {{$item.name}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="coalition in vm.coalitions | propsFilter: {name: $select.search}" position='down'>
+                            <div class="coalition">
+                                <img src="public/api/archives/download?filename={{coalition.imagePath}}" width="30px" height="30px" ng-if="coalition.imagePath"/>
+                                <span ng-bind-html="coalition.name | highlight: $select.search"></span>
+                                <small>-<strong>{{coalition.acronym}}</strong>-</small>
+                            </div>
                         </ui-select-choices>
                     </ui-select>
                 </div>

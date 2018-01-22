@@ -61,7 +61,9 @@
                     <td>{{politicalParty.createdDate | date:'short'}}</td>
                     <td>{{politicalParty.updatedDate | date:'short'}}</td>
                     <td>
-                        <a ui-sref="archive-detail({id:politicalParty.imageId})">{{politicalParty.imageId}}</a>
+                        <span ng-if="politicalParty.imageId!=null">
+                            <img src="public/api/archives/download?filename={{politicalParty.imagePath}}" width="70px" height="70px"/>
+                        </span>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

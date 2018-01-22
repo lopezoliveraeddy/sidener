@@ -61,7 +61,9 @@
                     <td>{{independentCandidate.createdDate | date:'medium'}}</td>
                     <td>{{independentCandidate.updatedDate | date:'medium'}}</td>
                     <td>
-                        <a ui-sref="archive-detail({id:independentCandidate.imageId})">{{independentCandidate.imageId}}</a>
+                        <span ng-if="independentCandidate.imageId!=null">
+                            <img src="public/api/archives/download?filename={{independentCandidate.imagePath}}" width="70px" height="70px"/>
+                        </span>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

@@ -26,6 +26,8 @@ public class CoalitionDTO implements Serializable {
 
     private Long imageId;
 
+    private String imagePath;
+
     private Set<PoliticalPartyDTO> politicalParties = new HashSet<>();
 
     public Long getId() {
@@ -82,6 +84,14 @@ public class CoalitionDTO implements Serializable {
 
     public void setImageId(Long archiveId) {
         this.imageId = archiveId;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String archivePath) {
+        this.imagePath = archivePath;
     }
 
     public Set<PoliticalPartyDTO> getPoliticalParties() {

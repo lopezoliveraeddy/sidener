@@ -6,7 +6,7 @@
             "javadoc": "Imagen Candidato Independiente",
             "relationshipName": "image",
             "otherEntityName": "archive",
-            "otherEntityField": "id",
+            "otherEntityField": "path",
             "ownerSide": true,
             "otherEntityRelationshipName": "independentCandidate"
         }

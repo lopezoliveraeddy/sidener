@@ -67,7 +67,9 @@
                     <td>{{coalition.createdDate | date:'short'}}</td>
                     <td>{{coalition.updatedDate | date:'short'}}</td>
                     <td>
-                        <a ui-sref="archive-detail({id:coalition.imageId})">{{coalition.imageId}}</a>
+                        <span ng-if="coalition.imageId!=null">
+                            <img src="public/api/archives/download?filename={{coalition.imagePath}}" width="70px" height="70px"/>
+                        </span>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface CoalitionMapper extends EntityMapper <CoalitionDTO, Coalition> {
 
     @Mapping(source = "image.id", target = "imageId")
+    @Mapping(source = "image.path", target = "imagePath")
     CoalitionDTO toDto(Coalition coalition); 
 
     @Mapping(source = "imageId", target = "image")

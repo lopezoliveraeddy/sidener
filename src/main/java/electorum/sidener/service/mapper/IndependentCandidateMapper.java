@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface IndependentCandidateMapper extends EntityMapper <IndependentCandidateDTO, IndependentCandidate> {
 
     @Mapping(source = "image.id", target = "imageId")
+    @Mapping(source = "image.path", target = "imagePath")
     IndependentCandidateDTO toDto(IndependentCandidate independentCandidate); 
 
     @Mapping(source = "imageId", target = "image")

@@ -32,11 +32,17 @@
         </div>
         <div class="form-group">
             <label data-translate="sidenerApp.coalition.politicalParties" for="field_politicalParties">Political Parties</label>
-            <ui-select multiple ng-model="vm.coalition.politicalParties" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true">
-                <ui-select-match placeholder="Selecciona un Partido Político...">{{$item.name}}</ui-select-match>
+            <ui-select multiple ng-model="vm.coalition.politicalParties" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true" id="field_politicalParties">
+                <ui-select-match placeholder="Selecciona un Partido Político...">
+                    <img src="public/api/archives/download?filename={{$item.imagePath}}" width="30px" height="30px" ng-if="$item.imagePath"/>
+                    {{$item.name}}
+                </ui-select-match>
                 <ui-select-choices repeat="politicalParty in vm.politicalparties | propsFilter: {name: $select.search}" position='down'>
-                    <div ng-bind-html="politicalParty.name | highlight: $select.search"></div>
-                    <small>{{politicalParty.acronym}}</small>
+                    <div class="political-party">
+                        <img src="public/api/archives/download?filename={{politicalParty.imagePath}}" width="30px" height="30px" ng-if="politicalParty.imagePath"/>
+                        <span ng-bind-html="politicalParty.name | highlight: $select.search"></span>
+                        <small>-<strong>{{politicalParty.acronym}}</strong>-</small>
+                    </div>
                 </ui-select-choices>
             </ui-select>
         </div>
@@ -46,7 +52,6 @@
                  flow-file-success="vm.successUpload($file, $message, $flow);"
                  flow-complete="vm.completeUpload($flow);"
                  flow-file-error="vm.errorUpload($file, $message, $flow );">
-
                 <div ng-if="vm.image.length == 0">
                     <span class="btn btn-default btn-block" data-translate="entity.action.addblob" flow-btn>Upload File</span>
                 </div>
@@ -55,7 +60,7 @@
                         <table>
                             <td><img src="public/api/archives/download?filename={{file.path}}" width="70px" height="70px"/></td>
                             <td>
-                                <button type="button" ng-disabled="vm.loading" ng-click="vm.removeFile(file)" class="btn  btn-xs pull-right remove_btn">
+                                <button type="button" ng-disabled="vm.loading" ng-click="vm.removeFile(file)" class="btn btn-xs pull-right remove_btn">
                                     <span class="glyphicon glyphicon-remove "></span>
                                 </button>
                             </td>

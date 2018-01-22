@@ -26,6 +26,8 @@ public class IndependentCandidateDTO implements Serializable {
 
     private Long imageId;
 
+    private String imagePath;
+
     public Long getId() {
         return id;
     }
@@ -80,6 +82,14 @@ public class IndependentCandidateDTO implements Serializable {
 
     public void setImageId(Long archiveId) {
         this.imageId = archiveId;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String archivePath) {
+        this.imagePath = archivePath;
     }
 
     @Override
