@@ -50,7 +50,9 @@
                     <td><a ui-sref="causal-detail({id:causal.id})">{{causal.id}}</a></td>
                     <td>{{causal.name}}</td>
                     <td data-translate="{{'sidenerApp.CausalType.' + causal.typeCausal}}">{{causal.typeCausal}}</td>
-                    <td ng-style="{ 'background-color': causal.color }"></td>
+                    <td id="field-causals">
+                        <span class="causal-color" ng-style="{'background-color': causal.color}"></span>
+                    </td>
                     <td class="text-center">
                         <span ng-if="causal.published==true">
                             <i class="fa fa-check fa-2x"></i>

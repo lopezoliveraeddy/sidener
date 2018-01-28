@@ -81,14 +81,14 @@
             function onSuccess(data) {
                 vm.election = data;
                 vm.causals = vm.election.causals;
-                for(var i = 0; i < vm.causals.length; i++) {
-                    if(vm.causals[i].typeCausal === "RECOUNT") {
-                        vm.causalsRecount.push(vm.causals[i]);
+                angular.forEach(vm.election.causals, function(causal, key) {
+                    if(causal.typeCausal === 'RECOUNT') {
+                        vm.causalsRecount.push(causal);
                     }
-                    if(vm.causals[i].typeCausal === "NULLITY") {
-                        vm.causalsNullity.push(vm.causals[i]);
+                    else if(causal.typeCausal === 'NULLITY') {
+                        vm.causalsNullity.push(causal);
                     }
-                }
+                });
             }
             function onError(error) {
                 AlertService.error(error.data.message);

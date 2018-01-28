@@ -93,30 +93,52 @@
         </dd>
         <dt><span data-translate="sidenerApp.election.politicalParties">Political Parties</span></dt>
         <dd>
-            <ul ng-repeat="politicalParties in vm.election.politicalParties">
-                <li><a ui-sref="political-party-detail({id: politicalParties.id})">{{politicalParties.name}}</a></li>
+            <ul>
+                <li ng-repeat="politicalParties in vm.election.politicalParties">
+                    <a ui-sref="political-party-detail({id: politicalParties.id})">{{politicalParties.name}}</a>
+                </li>
             </ul>
         </dd>
         <dt><span data-translate="sidenerApp.election.independentCandidates">Independent Candidates</span></dt>
         <dd>
-            <ul ng-repeat="independentCandidates in vm.election.independentCandidates">
-                <li><a ui-sref="independent-candidate-detail({id: independentCandidates.id})">{{independentCandidates.name}}</a></li>
+            <ul>
+                <li ng-repeat="independentCandidates in vm.election.independentCandidates">
+                    <a ui-sref="independent-candidate-detail({id: independentCandidates.id})">{{independentCandidates.name}}</a>
+                </li>
             </ul>
         </dd>
         <dt><span data-translate="sidenerApp.election.coalitions">Coalitions</span></dt>
         <dd>
-            <ul ng-repeat="coalitions in vm.election.coalitions">
-                <li><a ui-sref="coalition-detail({id: coalitions.id})">{{coalitions.name}}</a></li>
+            <ul>
+                <li ng-repeat="coalitions in vm.election.coalitions">
+                    <a ui-sref="coalition-detail({id: coalitions.id})">{{coalitions.name}}</a>
+                </li>
             </ul>
         </dd>
         <dt><span data-translate="sidenerApp.election.causals">Causals</span></dt>
         <dd>
-            <ul ng-repeat="causals in vm.election.causals" id="field-causals">
-                <li>
-                    <span class="causal-color" ng-style="{'background-color': causals.color}"></span>
-                    <span class="causal-description">{{causals.name}}</span>
-                </li>
-            </ul>
+            <div class="panel panel-default">
+                <div class="panel-heading" data-translate="sidenerApp.election.recount">Recount</div>
+                <div class="panel-body">
+                    <ul id="field-causals-recount" class="list-group">
+                        <li ng-repeat="causals in vm.causalsRecount" class="list-group-item">
+                            <span class="causal-color" ng-style="{'background-color': causals.color}"></span>
+                            <span class="causal-description">{{causals.name}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" data-translate="sidenerApp.election.nullity">Nullity</div>
+                <div class="panel-body">
+                    <ul id="field-causals-nullity" class="list-group">
+                        <li ng-repeat="causals in vm.causalsNullity" class="list-group-item">
+                            <span class="causal-color" ng-style="{'background-color': causals.color}"></span>
+                            <span class="causal-description">{{causals.name}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </dd>
         <dt><span data-translate="sidenerApp.election.published">Published</span></dt>
         <dd>

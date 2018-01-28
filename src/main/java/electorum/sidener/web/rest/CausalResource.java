@@ -1,6 +1,7 @@
 package electorum.sidener.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import electorum.sidener.domain.enumeration.CausalType;
 import electorum.sidener.service.CausalService;
 import electorum.sidener.web.rest.util.HeaderUtil;
 import electorum.sidener.web.rest.util.PaginationUtil;
@@ -144,4 +145,18 @@ public class CausalResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+    /**
+     * GET  /causals:causalType : get for the causalType
+     *
+     * @param causalType the causalType of the causal
+     * @return the ResponseEntity with status 200 (OK) and the list of causals in body
+     */
+    @GetMapping("/causals/type/{causalType}")
+    @Timed
+    public ResponseEntity<List<CausalDTO>> getCausalsByTypeCausal(@PathVariable CausalType causalType) {
+        log.debug("REST request to get Causals for typeCausal {}", causalType);
+        List<CausalDTO> list = causalService.getCausalsByTypeCausal(causalType);
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(list, headers, HttpStatus.OK);
+    }
 }
