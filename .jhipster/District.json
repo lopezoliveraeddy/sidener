@@ -51,6 +51,11 @@
             "fieldType": "Long"
         },
         {
+            "fieldName": "totalVotes",
+            "javadoc": "Total Votos",
+            "fieldType": "Long"
+        },
+        {
             "fieldName": "published",
             "fieldType": "Boolean"
         },

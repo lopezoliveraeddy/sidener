@@ -104,6 +104,8 @@ entity District {
     entitySecondPlace String,
     /* Total de votos para el Segundo Lugar */
     totalSecondPlace Long,
+    /* Total Votos */
+    totalVotes Long
 
     published Boolean,
     createdDate ZonedDateTime,

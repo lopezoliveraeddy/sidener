@@ -86,6 +86,13 @@ public class District implements Serializable {
     @Column(name = "total_second_place")
     private Long totalSecondPlace;
 
+    /**
+     * Total Votos
+     */
+    @ApiModelProperty(value = "Total Votos")
+    @Column(name = "total_votes")
+    private Long totalVotes;
+
     @Column(name = "published")
     private Boolean published;
 
@@ -211,6 +218,19 @@ public class District implements Serializable {
         this.totalSecondPlace = totalSecondPlace;
     }
 
+    public Long getTotalVotes() {
+        return totalVotes;
+    }
+
+    public District totalVotes(Long totalVotes) {
+        this.totalVotes = totalVotes;
+        return this;
+    }
+
+    public void setTotalVotes(Long totalVotes) {
+        this.totalVotes = totalVotes;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -296,6 +316,7 @@ public class District implements Serializable {
             ", totalFirstPlace='" + getTotalFirstPlace() + "'" +
             ", entitySecondPlace='" + getEntitySecondPlace() + "'" +
             ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
+            ", totalVotes='" + getTotalVotes() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

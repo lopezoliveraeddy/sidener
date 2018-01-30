@@ -54,6 +54,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="total_votes" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <column name="published" type="bit">
                 <constraints nullable="true" />
             </column>
