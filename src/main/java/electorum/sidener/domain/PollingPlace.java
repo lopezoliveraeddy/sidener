@@ -202,6 +202,13 @@ public class PollingPlace implements Serializable {
     @Column(name = "total_second_place")
     private Long totalSecondPlace;
 
+    /**
+     * Url Acta de Escrutinio y Cómputo
+     */
+    @ApiModelProperty(value = "Url Acta de Escrutinio y Cómputo")
+    @Column(name = "url_record_count")
+    private String urlRecordCount;
+
     @Column(name = "published")
     private Boolean published;
 
@@ -553,6 +560,19 @@ public class PollingPlace implements Serializable {
         this.totalSecondPlace = totalSecondPlace;
     }
 
+    public String getUrlRecordCount() {
+        return urlRecordCount;
+    }
+
+    public PollingPlace urlRecordCount(String urlRecordCount) {
+        this.urlRecordCount = urlRecordCount;
+        return this;
+    }
+
+    public void setUrlRecordCount(String urlRecordCount) {
+        this.urlRecordCount = urlRecordCount;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -703,6 +723,7 @@ public class PollingPlace implements Serializable {
             ", totalFirstPlace='" + getTotalFirstPlace() + "'" +
             ", entitySecondPlace='" + getEntitySecondPlace() + "'" +
             ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
+            ", urlRecordCount='" + getUrlRecordCount() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

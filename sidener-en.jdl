@@ -162,6 +162,8 @@ entity PollingPlace {
     entitySecondPlace String,
     /* Total de votos para el Segundo Lugar */
     totalSecondPlace Long,
+    /* Url Acta de Escrutinio y Cómputo */
+    urlRecordCount String
 
     published Boolean,
     createdDate ZonedDateTime,

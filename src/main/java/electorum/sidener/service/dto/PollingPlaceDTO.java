@@ -66,6 +66,8 @@ public class PollingPlaceDTO implements Serializable {
 
     private Long totalSecondPlace;
 
+    private String urlRecordCount;
+
     private Boolean published;
 
     private ZonedDateTime createdDate;
@@ -282,6 +284,14 @@ public class PollingPlaceDTO implements Serializable {
         this.totalSecondPlace = totalSecondPlace;
     }
 
+    public String getUrlRecordCount() {
+        return urlRecordCount;
+    }
+
+    public void setUrlRecordCount(String urlRecordCount) {
+        this.urlRecordCount = urlRecordCount;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -395,6 +405,7 @@ public class PollingPlaceDTO implements Serializable {
             ", totalFirstPlace='" + getTotalFirstPlace() + "'" +
             ", entitySecondPlace='" + getEntitySecondPlace() + "'" +
             ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
+            ", urlRecordCount='" + getUrlRecordCount() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
