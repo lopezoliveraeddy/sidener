@@ -93,6 +93,13 @@ public class District implements Serializable {
     @Column(name = "total_votes")
     private Long totalVotes;
 
+    /**
+     * Ciudadanos en la Lista Nominal
+     */
+    @ApiModelProperty(value = "Ciudadanos en la Lista Nominal")
+    @Column(name = "electoral_roll")
+    private Long electoralRoll;
+
     @Column(name = "published")
     private Boolean published;
 
@@ -231,6 +238,19 @@ public class District implements Serializable {
         this.totalVotes = totalVotes;
     }
 
+    public Long getElectoralRoll() {
+        return electoralRoll;
+    }
+
+    public District electoralRoll(Long electoralRoll) {
+        this.electoralRoll = electoralRoll;
+        return this;
+    }
+
+    public void setElectoralRoll(Long electoralRoll) {
+        this.electoralRoll = electoralRoll;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -317,6 +337,7 @@ public class District implements Serializable {
             ", entitySecondPlace='" + getEntitySecondPlace() + "'" +
             ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
             ", totalVotes='" + getTotalVotes() + "'" +
+            ", electoralRoll='" + getElectoralRoll() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

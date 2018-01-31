@@ -33,6 +33,8 @@ public class DistrictDTO implements Serializable {
 
     private Long totalVotes;
 
+    private Long electoralRoll;
+
     private Boolean published;
 
     private ZonedDateTime createdDate;
@@ -121,6 +123,14 @@ public class DistrictDTO implements Serializable {
         this.totalVotes = totalVotes;
     }
 
+    public Long getElectoralRoll() {
+        return electoralRoll;
+    }
+
+    public void setElectoralRoll(Long electoralRoll) {
+        this.electoralRoll = electoralRoll;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -187,6 +197,7 @@ public class DistrictDTO implements Serializable {
             ", entitySecondPlace='" + getEntitySecondPlace() + "'" +
             ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
             ", totalVotes='" + getTotalVotes() + "'" +
+            ", electoralRoll='" + getElectoralRoll() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

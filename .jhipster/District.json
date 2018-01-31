@@ -56,6 +56,11 @@
             "fieldType": "Long"
         },
         {
+            "fieldName": "electoralRoll",
+            "javadoc": "Ciudadanos en la Lista Nominal",
+            "fieldType": "Long"
+        },
+        {
             "fieldName": "published",
             "fieldType": "Boolean"
         },

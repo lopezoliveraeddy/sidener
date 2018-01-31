@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('ElectionRecountDistrictController', ElectionRecountDistrictController);
 
-    ElectionRecountDistrictController.$inject = ['$state', '$stateParams', 'Election', 'ElectionRecountDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    ElectionRecountDistrictController.$inject = ['$scope', '$state', '$stateParams', 'Election', 'ElectionRecountDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function ElectionRecountDistrictController($state, $stateParams, Election, ElectionRecountDistrict, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function ElectionRecountDistrictController($scope, $state, $stateParams, Election, ElectionRecountDistrict, ParseLinks, AlertService, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -61,7 +61,11 @@
             });
         }
 
-
-
+        $scope.supuestoRecuento = function(totalFirstPlace, totalSecondPlace, totalVotes) {
+            var difference = ((totalFirstPlace - totalSecondPlace) / totalVotes);
+            if(difference < .01) {
+                return "total-recount";
+            }
+        };
     }
 })();

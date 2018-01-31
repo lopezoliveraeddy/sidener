@@ -535,3 +535,16 @@ td#field-causals {
         float: right;
     }
 }
+
+/* ==========================================================================
+Recuento
+========================================================================== */
+.table-container {
+    table {
+        tbody {
+            tr.total-recount {
+                border-left: 10px solid $electorum;
+            }
+        }
+    }
+}

@@ -106,6 +106,8 @@ entity District {
     totalSecondPlace Long,
     /* Total Votos */
     totalVotes Long
+    /* Ciudadanos en la Lista Nominal */
+    electoralRoll Long,
 
     published Boolean,
     createdDate ZonedDateTime,
