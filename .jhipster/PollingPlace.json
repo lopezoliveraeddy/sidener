@@ -156,6 +156,11 @@
             "fieldType": "Long"
         },
         {
+            "fieldName": "urlRecordCount",
+            "javadoc": "Url Acta de Escrutinio y Cómputo",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "published",
             "fieldType": "Boolean"
         },

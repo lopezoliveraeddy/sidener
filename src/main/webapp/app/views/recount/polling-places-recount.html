@@ -47,9 +47,9 @@
                         </button>
                     </td>
                     <td class="text-center">
-                        <div ng-if="pollingPlace.recordCountId!=null">
+                        <div ng-if="pollingPlace.urlRecordCount!=null">
                             <div class="btn-group">
-                                <a href="public/api/archives/download?filename={{pollingPlace.recordCountPath}}" target="_blank"
+                                <a href="{{pollingPlace.urlRecordCount}}" target="_blank"
                                    class="btn btn-info btn-sm"
                                     role="button">
                                     <span class="glyphicon glyphicon-search"></span>
