@@ -1,0 +1,129 @@
+
+<div class="col-md-3">
+  <div class="row">
+    <div class="col-md-3">
+      <label>Autoridad: </label>
+    </div>
+    <div class="col-md-9">
+      <input type="text" ng-model="autoridad" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <label>Instituto: </label>
+    </div>
+    <div class="col-md-9">
+      <input type="text" ng-model="instituto" class="form-control">
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <label>Demandante: </label>
+    </div>
+    <div class="col-md-9">
+        <input type="text" ng-model="demandante" class="form-control">
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <label>Partido: </label>
+    </div>
+    <div class="col-md-9">
+      <input type="text" ng-model="partido" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+        <label>Elección: </label>
+    </div>
+    <div class="col-md-9">
+        <input type="text" ng-model="eleccion" class="form-control">
+    </div>
+
+
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+        <label>legislación: </label>
+    </div>
+    <div class="col-md-9">
+        <input type="text" ng-model="legislacion" class="form-control">
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <label>Cargo del representante </label>
+    </div>
+    <div class="col-md-9">
+        <input type="text" ng-model="cargo_representante" class="form-control">
+    </div>
+  </div>
+</div>
+<div class="col-md-9">
+  <p>&nbsp;</p>
+<p><strong>{{autoridad}}</strong></p>
+<p><strong>DEL {{instituto}}</strong></p>
+<p><strong>PRESENTE.-</strong></p>
+<p><span style="font-weight: 400;">{{demandante}} en mi calidad de representante del {{partido}}, registrado formalmente ante este Consejo Distrital, en la presente sesi&oacute;n de c&oacute;mputo Distrital de la elecci&oacute;n de {{eleccion}}, con fundamento en lo dispuesto en {{legislacion}}, me permito solicitar a usted lo siguiente:</span></p>
+<p><strong>Se solicita realizar el recuento de votos en la totalidad de las casillas correspondientes al Distrito Electoral II con cabecera en SAN JUAN BAUTISTA TUXTEPEC,</strong><span style="font-weight: 400;"> al existir una diferencia menor a un punto porcentual entre el primer y segundo lugar, tal y como se observa en la tabla siguiente:</span></p>
+<table>
+<tbody>
+<tr>
+<td>
+<p><strong>Primer lugar</strong></p>
+</td>
+<td>&nbsp;</td>
+<td>
+<p><strong>Segundo lugar</strong></p>
+</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<table>
+<tbody>
+<tr>
+<td>
+<p><strong>Partido o coalici&oacute;n</strong></p>
+</td>
+<td>
+<p><strong>Votaci&oacute;n</strong></p>
+</td>
+<td>
+<p><strong>Partido o coalici&oacute;n</strong></p>
+</td>
+<td>
+<p><strong>Votaci&oacute;n</strong></p>
+</td>
+<td>
+<p><strong>Diferencia porcentual</strong></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><strong>PAN | PRD</strong></p>
+</td>
+<td>
+<p><strong>12626</strong></p>
+</td>
+<td>
+<p><strong>PRI | PVEM</strong></p>
+</td>
+<td>
+<p><strong>12046</strong></p>
+</td>
+<td>
+<p><strong>0.99%</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><strong>ATENTAMENTE</strong></p>
+<p><strong>{{demandante}}</strong></p>
+<p><strong>{{cargo_representante}}</strong></p>
+</div>

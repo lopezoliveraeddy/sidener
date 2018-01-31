@@ -94,6 +94,23 @@ angular-csv-import@0.0.27:
   dependencies:
     grunt-bump "0.0.14"
 
+angular-data-table@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/angular-data-table/-/angular-data-table-0.7.0.tgz#a53e99cc169548402169821805d8f9b00975c497"
+
+angular-datatables@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/angular-datatables/-/angular-datatables-0.6.2.tgz#c01880afb79e5b27682e0ed12b1dc1a2f980f4de"
+  dependencies:
+    angular ">=1.6.0"
+    datatables.net "^1.10.11"
+    datatables.net-dt "^1.10.11"
+    jquery ">=1.11.0"
+
+angular@>=1.6.0:
+  version "1.6.8"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.8.tgz#5be378a58be91a5489e78b59c4518cd9fd273ffb"
+
 ansi-escapes@^1.1.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
@@ -1255,6 +1272,19 @@ dashdash@^1.12.0:
   resolved "https://registry.yarnpkg.com/dashdash/-/dashdash-1.14.1.tgz#853cfa0f7cbe2fed5de20326b8dd581035f6e2f0"
   dependencies:
     assert-plus "^1.0.0"
+
+datatables.net-dt@^1.10.11:
+  version "1.10.16"
+  resolved "https://registry.yarnpkg.com/datatables.net-dt/-/datatables.net-dt-1.10.16.tgz#6758a308fb9e5f9629fb6541cc301e48ec9ec555"
+  dependencies:
+    datatables.net "1.10.16"
+    jquery ">=1.7"
+
+datatables.net@1.10.16, datatables.net@^1.10.11:
+  version "1.10.16"
+  resolved "https://registry.yarnpkg.com/datatables.net/-/datatables.net-1.10.16.tgz#4b052d1082824261b68eed9d22741b711d3d2469"
+  dependencies:
+    jquery ">=1.7"
 
 dateformat@^1.0.11, dateformat@^1.0.6, dateformat@^1.0.7-1.2.3:
   version "1.0.12"
@@ -4003,6 +4033,10 @@ jpegtran-bin@^3.0.0:
     bin-build "^2.0.0"
     bin-wrapper "^3.0.0"
     logalot "^2.0.0"
+
+jquery@>=1.11.0, jquery@>=1.7:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
 
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.3.2"

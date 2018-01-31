@@ -9,6 +9,24 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
+        .state('documento',{
+          parent: 'entity',
+          url: '/election/documento/{id}',
+          data: {
+            authorities: ['ROLE_ADMIN'],
+            pageTitle: 'sidenerApp.election.home.title'
+          },
+          params: {
+              id: null
+          },
+          views: {
+            'content@private': {
+                templateUrl: 'app/views/recount/documento.html',
+                controller: 'DocumentoController',
+                controllerAs: 'vm'
+            }
+          }
+        })
         .state('election-recount-district', {
             parent: 'entity',
             url: '/election/recount/{id}/district?page',
