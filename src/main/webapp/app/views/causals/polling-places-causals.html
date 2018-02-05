@@ -23,9 +23,19 @@
                     <td><span ng-bind="pollingPlaceType(pollingPlace.typePollingPlace, pollingPlace.typeNumber)"></span></td>
                     <td>{{pollingPlace.town}}</td>
                     <td></td>
-                    <td></td>
-                    <td><strong>{{pollingPlace.entityFirstPlace }}</strong> | {{pollingPlace.totalFirstPlace}}</td>
-                    <td><strong>{{pollingPlace.entitySecondPlace }}</strong> | {{pollingPlace.totalSecondPlace}}</td>
+                    <td>{{pollingPlace.totalVotes | number}}</td>
+                    <td>
+                        <div ng-if="pollingPlace.totalVotes">
+                            <span><strong>{{pollingPlace.entityFirstPlace }}</strong></span><br>
+                            <span>{{pollingPlace.totalFirstPlace | number}} votos | {{(pollingPlace.totalFirstPlace / pollingPlace.totalVotes) | percentage:2 }}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="pollingPlace.totalVotes">
+                            <span><strong>{{pollingPlace.entitySecondPlace }}</strong></span><br>
+                            <span>{{pollingPlace.totalSecondPlace | number}} votos | {{(pollingPlace.totalSecondPlace / pollingPlace.totalVotes) | percentage:2 }}</span>
+                        </div>
+                    </td>
                     <td class="text-center">
                         <div class="btn-group">
                             <button type="submit"

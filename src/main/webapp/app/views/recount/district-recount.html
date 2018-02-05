@@ -22,11 +22,11 @@
                 <td ><a ui-sref="district-detail({id:district.id})" class="btn btn-info">{{district.romanNumber}}</a></td>
                 <td>{{district.districtHead}}</td>
                 <td>
-                    <span><strong>{{district.entityFirstPlace}}</strong><br></span>
+                    <span><strong>{{district.entityFirstPlace}}</strong></span><br>
                     <span>{{district.totalFirstPlace | number}} votos | {{(district.totalFirstPlace / district.totalVotes) | percentage:2 }}</span>
                 </td>
                 <td>
-                    <span><strong>{{district.entitySecondPlace}}</strong><br></span>
+                    <span><strong>{{district.entitySecondPlace}}</strong></span><br>
                     <span>{{district.totalSecondPlace | number}} votos | {{(district.totalSecondPlace / district.totalVotes) | percentage:2 }}</span>
                 </td>
                 <td>
