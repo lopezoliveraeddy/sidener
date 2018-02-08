@@ -267,4 +267,19 @@ public class PollingPlaceResource {
 		return null;
 	}
 
+    /**
+     * GET POLLING PLACES /election/{id}/polling-pñaces : get PollingPlacs by "id" Election
+     * @param id
+     * @param pageable
+     * @return
+     */
+	@GetMapping("/electiong/{id}")
+    @Timed
+    public ResponseEntity<List<PollingPlaceDTO>> getPollingPlaceByIdElection(@PathVariable Long id , @ApiParam Pageable pageable){
+        Page<PollingPlaceDTO> page = pollingPlaceService.getPollingPlacesByIdElection(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/electiong/{id}");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+
+    }
+
 }

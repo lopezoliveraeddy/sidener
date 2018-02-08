@@ -50,12 +50,21 @@
 
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-3 col-md-offset-4">
+                    <div class="col-md-3 col-md-offset-3">
                         <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
                             <span class="glyphicon glyphicon-file"></span>&nbsp;<span>Procesar Información</span>
                         </button>
 
                     </div>
+                    <div class="col-md-3">
+                        <!-- ng-show="vm.bandera == 1"  -->
+                        <button ng-click="vm.processDistrict(vm.electionSel.id)" class="btn btn-danger" type="button">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span>Realiza el computo distrital</span>
+
+                        </button>
+
+                    </div>
+
                 </div>
             </div>
         </form>

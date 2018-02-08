@@ -23,6 +23,12 @@
     				}
     			},
     			resolve: {
+                    pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
+                        return {
+                            id: $stateParams.id,
+                            page: PaginationUtil.parsePage($stateParams.page),
+                        };
+                    }],
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('global');
                         return $translate.refresh();

@@ -115,4 +115,21 @@ public class PollingPlaceService {
         Page<PollingPlace> result = pollingPlaceRepository.findByDistrictId(id, pageable);
         return result.map(pollingPlaceMapper::toDto);
     }
+
+
+    /**
+     *  Get pollingPlaces of district by id.
+     *
+     *  @param id the id of the entity
+     *  @param pageable the pagination information
+     *  @return the entity
+     */
+    @Transactional(readOnly = true)
+    public Page<PollingPlaceDTO> getPollingPlacesByIdElection(Long id, Pageable pageable) {
+        log.debug("Request to get PollingPlaces by Election : {}", id);
+        Page<PollingPlace> result = pollingPlaceRepository.findByElectionId(id, pageable);
+        return result.map(pollingPlaceMapper::toDto);
+    }
+
+
 }
