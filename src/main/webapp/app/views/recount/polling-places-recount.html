@@ -22,13 +22,30 @@
                 <tbody>
                 <tr ng-repeat="pollingPlace in vm.pollingPlaces track by pollingPlace.id">
                     <td><a ui-sref="polling-place-detail({id:pollingPlace.id})" class="btn btn-info">{{pollingPlace.section}}</a></td>
-                    <!--<td><span data-translate="{{'sidenerApp.PollingPlaceType.' + pollingPlace.typePollingPlace}}">{{pollingPlace.typePollingPlace</span><span> - {{pollingPlace.typeNumber}}</span></td>-->
                     <td><span ng-bind="pollingPlaceType(pollingPlace.typePollingPlace, pollingPlace.typeNumber)"></span></td>
                     <td>{{pollingPlace.town}}</td>
-                    <td><strong>{{pollingPlace.entityFirstPlace }}</strong> | {{pollingPlace.totalFirstPlace}}</td>
-                    <td><strong>{{pollingPlace.entitySecondPlace }}</strong> | {{pollingPlace.totalSecondPlace}}</td>
-                    <td>{{(pollingPlace.totalFirstPlace -  pollingPlace.totalSecondPlace ) /100}} </td>
-                    <td>{{pollingPlace.nullVotes}}</td>
+                    <td>
+                        <div ng-if="pollingPlace.totalVotes">
+                            <span><strong>{{pollingPlace.entityFirstPlace }}</strong></span><br>
+                            <span>{{pollingPlace.totalFirstPlace | number}} votos | {{(pollingPlace.totalFirstPlace / pollingPlace.totalVotes) | percentage:2 }}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="pollingPlace.totalVotes">
+                            <span><strong>{{pollingPlace.entitySecondPlace }}</strong></span><br>
+                            <span>{{pollingPlace.totalSecondPlace | number}} votos | {{(pollingPlace.totalSecondPlace / pollingPlace.totalVotes) | percentage:2 }}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="pollingPlace.totalVotes">
+                            {{(pollingPlace.totalFirstPlace -  pollingPlace.totalSecondPlace )}}
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="pollingPlace.totalVotes">
+                            {{pollingPlace.nullVotes}}
+                        </div>
+                    </td>
                     <td>
                         <div class="form-group">
                             <label data-translate="sidenerApp.pollingPlace.causals" for="select-field-causals">Causals</label>
