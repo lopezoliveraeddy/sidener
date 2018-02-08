@@ -7,12 +7,11 @@
     GenerateDistrict.$inject = ['$resource', 'DateUtils'];
 
     function GenerateDistrict ($resource, DateUtils) {
-        var resourceUrl =  'api/electiong';
+        var resourceUrl =  '/api/elections/:id/polling-places';
 
         return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true},
             'get': {
-                method: 'GET',
+                method: 'GET', isArray: true,
                 transformResponse: function (data) {
                     if (data) {
                         data = angular.fromJson(data);
@@ -22,8 +21,7 @@
                     }
                     return data;
                 }
-            },
-            'update': { method:'PUT' }
+            }
         });
     }
 

@@ -59,7 +59,7 @@
             /*Obtener las casillas por Id*/
             console.log(idDistrito);
             GenerateDistrict.get({
-                id : idDistrito,
+                id: idDistrito,
                 page: 1
             }, onSuccess, onError);
 

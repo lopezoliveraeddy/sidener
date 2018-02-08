@@ -273,11 +273,11 @@ public class PollingPlaceResource {
      * @param pageable
      * @return
      */
-	@GetMapping("/electiong/{id}")
+	@GetMapping("/elections/{id}/polling-places")
     @Timed
     public ResponseEntity<List<PollingPlaceDTO>> getPollingPlaceByIdElection(@PathVariable Long id , @ApiParam Pageable pageable){
         Page<PollingPlaceDTO> page = pollingPlaceService.getPollingPlacesByIdElection(id, pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/electiong/{id}");
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/elections/{id}/polling-places");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
 
     }
