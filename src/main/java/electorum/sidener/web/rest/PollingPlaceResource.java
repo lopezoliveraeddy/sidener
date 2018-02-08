@@ -1,31 +1,5 @@
 package electorum.sidener.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-import com.opencsv.CSVReader;
-
-import electorum.sidener.service.PollingPlaceService;
-import electorum.sidener.web.rest.util.HeaderUtil;
-import electorum.sidener.web.rest.util.PaginationUtil;
-import electorum.sidener.service.dto.ElectionDTO;
-import electorum.sidener.service.dto.LoadDTO;
-import electorum.sidener.service.dto.PollingPlaceDTO;
-import io.swagger.annotations.ApiParam;
-import io.github.jhipster.web.util.ResponseUtil;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.ArrayUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
@@ -35,11 +9,40 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.codahale.metrics.annotation.Timed;
+import com.opencsv.CSVReader;
+
+import electorum.sidener.service.PollingPlaceService;
+import electorum.sidener.service.dto.ElectionDTO;
+import electorum.sidener.service.dto.LoadDTO;
+import electorum.sidener.service.dto.PollingPlaceDTO;
+import electorum.sidener.web.rest.util.ElectionFromFile;
+import electorum.sidener.web.rest.util.HeaderUtil;
+import electorum.sidener.web.rest.util.PaginationUtil;
+import io.github.jhipster.web.util.ResponseUtil;
+import io.swagger.annotations.ApiParam;
 
 /**
  * REST controller for managing PollingPlace.
@@ -229,15 +232,9 @@ public class PollingPlaceResource {
 	public ResponseEntity<List<ElectionDTO>> createElectionFile(@RequestBody LoadDTO loadDTO)
 			throws URISyntaxException {
 		log.debug("---> REST request to save LoadDTO : {}", loadDTO);
+		ElectionFromFile electionFromFile = new ElectionFromFile();
 		byte[] csvFile = loadDTO.getDbFile();
-		int it = 0;
-		int topeDatos            = 0;
-		int topePartidos         = 0;
-		int topeCoaliciones      = 0;
-		int topeCandidatosInd    = 0;
-		List<String> partidos    = new ArrayList<String>();
-		List<String> coaliciones = new ArrayList<String>();
-		List<String> candidatos  = new ArrayList<String>();
+		List<PollingPlaceDTO> pollingPlaceDTOList = new ArrayList<PollingPlaceDTO>();
 
 		// se carga en un temporal
 		if (csvFile != null) {
@@ -247,158 +244,24 @@ public class PollingPlaceResource {
 				e.printStackTrace();
 			}
 		}
-		/* se procesa el archivo temporal */
 		try {
 			Reader reader = Files.newBufferedReader(Paths.get("/files/tmp/" + loadDTO.getEleccion() + ".csv"));
 			CSVReader csvReader = new CSVReader(reader);
-			String[] nextRecord;
+			pollingPlaceDTOList = electionFromFile.processFile(csvReader, loadDTO.getEleccion());
+			for (Iterator iterator = pollingPlaceDTOList.iterator(); iterator.hasNext();) {
+				PollingPlaceDTO pollingPlaceDTO = (PollingPlaceDTO) iterator.next();
+				log.debug("pollingPlace : {} ",pollingPlaceDTO.toString());
+                pollingPlaceService.save(pollingPlaceDTO);
 
-			if (it <= 0) {
-				nextRecord = csvReader.readNext();
-				topeDatos            = ArrayUtils.indexOf(nextRecord, "S1");
-				topePartidos         = ArrayUtils.indexOf(nextRecord, "S2");
-				topeCoaliciones      = ArrayUtils.indexOf(nextRecord, "S3");
-				topeCandidatosInd    = ArrayUtils.indexOf(nextRecord, "S4");
-				//participantes partidos
-				for (int k = topeDatos + 1; k <= topePartidos - 1; k++) {
-					partidos.add(nextRecord[k]);
-				}
-				it += 1;
-				//participantes coaliciones
-				for(int k = topePartidos +1 ; k <= topeCoaliciones - 1 ; k++ ) {
-					coaliciones.add(nextRecord[k]);
-				}
-				//candidatos independientes
-				for(int k = topeCoaliciones +1 ; k <= topeCandidatosInd - 1 ; k++ ) {
-					candidatos.add(nextRecord[k]);
-				}
-				log.debug("---> REST request to save coaliciones : {}", coaliciones.toString());
-
-			}
-
-			while ((nextRecord = csvReader.readNext()) != null) {
-				PollingPlaceDTO pollingPlaceDTO = new PollingPlaceDTO();
-				pollingPlaceDTO.setDistrictId(Long.valueOf(nextRecord[0]));
-				pollingPlaceDTO.setSection(nextRecord[1]);
-				pollingPlaceDTO.setTown(nextRecord[2]);
-				pollingPlaceDTO.setTypePollingPlace(null);
-				pollingPlaceDTO.setAddress(nextRecord[4]);
-				pollingPlaceDTO.setLeftoverBallots(Long.valueOf(nextRecord[5]));
-				pollingPlaceDTO.setVotingCitizens(Long.valueOf(nextRecord[6]));
-				pollingPlaceDTO.setTotalVotes((Long.valueOf(nextRecord[8])));
-
-				/**
-				 * Procesamiento de votos por partido
-				 */
-				JSONArray votaciones = new JSONArray();
-				JSONObject partidosVotos = new JSONObject();
-				JSONObject partidosJson = new JSONObject();
-				JSONObject coalicionesJson = new JSONObject();
-				JSONObject candidatosJson = new JSONObject();
-				JSONObject resultadosPrimerLugar = new JSONObject();
-				JSONObject resultadosSegundoLugar = new JSONObject();
-				int j = 0;
-				int m = 0;
-				int n = 0;
-				int primerLugarNumber = 0;
-				int segundoLugarNumber = 0;
-				String primerLugarPartido = "";
-				String segundoLugarPartido = "";
-				// inicia votos de partidos
-				for (int k = topeDatos + 1; k <= topePartidos - 1; k++) {
-
-					try {
-						if (nextRecord[k] == "") {
-							nextRecord[k] = "0";
-						}
-						//primer y segundo lugar
-						if (Integer.parseInt(nextRecord[k]) > primerLugarNumber) {
-							pollingPlaceDTO.setTotalSecondPlace((long) primerLugarNumber);
-							pollingPlaceDTO.setEntitySecondPlace(primerLugarPartido);
-							/**
-							 * @todo eliminar
-							 */
-							segundoLugarNumber = primerLugarNumber;
-							segundoLugarPartido = primerLugarPartido;
-
-							pollingPlaceDTO.setTotalFirstPlace( Long.parseLong(nextRecord[k]));
-							pollingPlaceDTO.setEntityFirstPlace(partidos.get(j));
-							/**
-							 * @todo eliminar
-							 */
-							primerLugarNumber = Integer.parseInt(nextRecord[k]);
-							primerLugarPartido = partidos.get(j);
-
-						}
-						if (Integer.parseInt(nextRecord[k]) > segundoLugarNumber
-								&& Integer.parseInt(nextRecord[k]) < primerLugarNumber) {
-
-							pollingPlaceDTO.setTotalSecondPlace(Long.parseLong(nextRecord[k]));
-							pollingPlaceDTO.setEntitySecondPlace( partidos.get(j));
-							/**
-							 * @todo eliminar
-							 */
-							segundoLugarNumber = Integer.parseInt(nextRecord[k]);
-							segundoLugarPartido = partidos.get(j);
+            }
 
 
-						}
-						partidosJson.put(partidos.get(j), nextRecord[k]);
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					j++;
-				}
-				// inicia votos coaliciones
-				for (int k = topePartidos +1 ; k <= topeCoaliciones - 1 ; k++ ) {
-
-					try {
-						coalicionesJson.put(coaliciones.get(m),nextRecord[k]);
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					m++;
-
-				}
-
-				//inicia votos candidatos
-				for(int k = topeCoaliciones +1 ; k <= topeCandidatosInd - 1 ; k++ ) {
-					try {
-						candidatosJson.put(candidatos.get(n), nextRecord[k]);
-					}catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					n++;
-				}
-
-
-				try {
-					resultadosPrimerLugar.put(primerLugarPartido, primerLugarNumber);
-					resultadosSegundoLugar.put(segundoLugarPartido, segundoLugarNumber);
-					partidosVotos.put("partidos", partidosJson);
-					partidosVotos.put("coaliciones", coalicionesJson);
-					partidosVotos.put("candidatos", candidatosJson);
-					partidosVotos.put("primer-lugar", resultadosPrimerLugar);
-					partidosVotos.put("segundo-lugar", resultadosSegundoLugar);
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				votaciones.put(partidosVotos);
-				//pollingPlaceDTO.setRecordCount(votaciones.toString());
-				pollingPlaceDTO.setElectionId(Long.parseLong(nextRecord[9]));
-				pollingPlaceDTO.setNullVotes(Long.parseLong(nextRecord[29]));
-				pollingPlaceService.save(pollingPlaceDTO);
-
-			}
-
-		} catch (IOException e) {
+		}catch(IOException e) {
 			e.printStackTrace();
 		}
-		/* se almacena la elección */
+
+
+
 
 		/* regresa resultados */
 		return null;

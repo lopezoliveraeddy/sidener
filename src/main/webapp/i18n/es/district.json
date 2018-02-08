@@ -2,7 +2,7 @@
     "sidenerApp": {
         "district" : {
             "home": {
-                "title": "Distritos",
+                "title": "Recuento Distrital",
                 "createLabel": "Crear nuevo Distrito",
                 "createOrEditLabel": "Crear o editar Distrito",
                 "search": "Buscar Distrito"
