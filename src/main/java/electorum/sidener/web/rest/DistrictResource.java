@@ -1,12 +1,17 @@
 package electorum.sidener.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.opencsv.CSVReader;
 import electorum.sidener.service.DistrictService;
+import electorum.sidener.service.dto.LoadDTO;
+import electorum.sidener.web.rest.util.DistrictFromFile;
+import electorum.sidener.web.rest.util.ElectionFromFile;
 import electorum.sidener.web.rest.util.HeaderUtil;
 import electorum.sidener.web.rest.util.PaginationUtil;
 import electorum.sidener.service.dto.DistrictDTO;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -16,9 +21,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
@@ -158,6 +170,49 @@ public class DistrictResource {
         Page<DistrictDTO> page = districtService.getDistrictsByIdElection(id, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/elections/{id}/districts");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * Post /district : Create a new election data from file
+     *
+     * @param loadDTO
+     *            the loadDTO to create
+     * @return ResponseEntity with status 201 (Created) and with body the new
+     *         loadDTO
+     * @trhows URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PostMapping("/district")
+    @Timed
+    public ResponseEntity<List<DistrictDTO>> createDistrictByFile(@RequestBody LoadDTO loadDTO) throws URISyntaxException {
+        log.debug("---> REST request to createDistrictByFile : {}", loadDTO);
+        DistrictFromFile districtFromFile = new DistrictFromFile();
+        byte[] csvFile = loadDTO.getDbFile();
+        List<DistrictDTO> districtDTOList = new ArrayList<DistrictDTO>();
+        if (csvFile != null) {
+            try {
+                FileUtils.writeByteArrayToFile(new File("/files/district/" + loadDTO.getEleccion() + ".csv"), csvFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            Reader reader = Files.newBufferedReader(Paths.get("/files/district/" + loadDTO.getEleccion() + ".csv"));
+            CSVReader csvReader = new CSVReader(reader);
+            districtDTOList = districtFromFile.processFile(csvReader,loadDTO.getEleccion());
+            for (Iterator iterator = districtDTOList.iterator(); iterator.hasNext();) {
+                DistrictDTO districtDTO = (DistrictDTO) iterator.next();
+                log.debug("DistrictDTO : {} ",districtDTO.toString());
+                districtService.save(districtDTO);
+
+            }
+
+
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
 }
