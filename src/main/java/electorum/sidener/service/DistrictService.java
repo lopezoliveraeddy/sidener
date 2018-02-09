@@ -4,14 +4,20 @@ import electorum.sidener.domain.District;
 import electorum.sidener.repository.DistrictRepository;
 import electorum.sidener.repository.search.DistrictSearchRepository;
 import electorum.sidener.service.dto.DistrictDTO;
+import electorum.sidener.service.dto.DistrictExtDTO;
 import electorum.sidener.service.mapper.DistrictMapper;
+import electorum.sidener.service.mapper.DistrictExtMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
@@ -28,11 +34,14 @@ public class DistrictService {
 
     private final DistrictMapper districtMapper;
 
+    private final DistrictExtMapper districtExtMapper;
+
     private final DistrictSearchRepository districtSearchRepository;
 
-    public DistrictService(DistrictRepository districtRepository, DistrictMapper districtMapper, DistrictSearchRepository districtSearchRepository) {
+    public DistrictService(DistrictRepository districtRepository, DistrictMapper districtMapper, DistrictExtMapper districtExtMapper,DistrictSearchRepository districtSearchRepository) {
         this.districtRepository = districtRepository;
         this.districtMapper = districtMapper;
+        this.districtExtMapper = districtExtMapper;
         this.districtSearchRepository = districtSearchRepository;
     }
 
@@ -62,6 +71,25 @@ public class DistrictService {
         log.debug("Request to get all Districts");
         return districtRepository.findAll(pageable)
             .map(districtMapper::toDto);
+    }
+
+    private Page<DistrictExtDTO> resultsExtDTO(Page<DistrictDTO> page, Pageable pageable){
+        List<DistrictExtDTO>  content = new ArrayList<>();
+        for (DistrictDTO districtDTO : page) {
+            DistrictExtDTO district = districtExtMapper.toDto(districtDTO);
+            if(district.getId() != null){
+                if(district.getTotalFirstPlace() != null && district.getTotalSecondPlace() != null && district.getTotalVotes() != null && district.getElectoralRoll() != null ) {
+                    district.setDifference(district.getTotalFirstPlace() - district.getTotalSecondPlace());
+                    district.setPercentageDifference(((district.getDifference().doubleValue() / district.getTotalVotes().doubleValue()) * 100));
+                    district.setPercentageFirstPlace(((district.getTotalFirstPlace().doubleValue() / district.getTotalVotes().doubleValue()) * 100));
+                    district.setPercentageSecondPlace(((district.getTotalSecondPlace().doubleValue() / district.getTotalVotes().doubleValue()) * 100));
+                    district.setPercentageTotalVotes(((district.getTotalVotes().doubleValue() / district.getElectoralRoll().doubleValue()) * 100));
+                }
+            }
+            content.add(district);
+        }
+        Page<DistrictExtDTO> resultpage = new PageImpl<>(content, pageable, page.getTotalElements());
+        return resultpage;
     }
 
     /**
@@ -110,9 +138,10 @@ public class DistrictService {
      *  @return the entity
      */
     @Transactional(readOnly = true)
-    public Page<DistrictDTO> getDistrictsByIdElection(Long id, Pageable pageable) {
+    public Page<DistrictExtDTO> getDistrictsByIdElection(Long id, Pageable pageable) {
         log.debug("Request to get Districts by Election : {}", id);
-        Page<District> result = districtRepository.findByElectionId(id, pageable);
-        return result.map(districtMapper::toDto);
+        Page<DistrictDTO> page = districtRepository.findByElectionId(id, pageable).map(districtMapper::toDto);
+        Page<DistrictExtDTO> resultPage = resultsExtDTO(page, pageable);
+        return resultPage;
     }
 }

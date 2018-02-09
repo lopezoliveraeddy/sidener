@@ -23,19 +23,19 @@
                 <td>{{district.districtHead}}</td>
                 <td>
                     <span><strong>{{district.entityFirstPlace}}</strong></span><br>
-                    <span>{{district.totalFirstPlace | number}} votos | {{(district.totalFirstPlace / district.totalVotes) | percentage:2 }}</span>
+                    <span>{{district.totalFirstPlace | number}} votos | {{district.percentageFirstPlace | number:2 }}%</span>
                 </td>
                 <td>
                     <span><strong>{{district.entitySecondPlace}}</strong></span><br>
-                    <span>{{district.totalSecondPlace | number}} votos | {{(district.totalSecondPlace / district.totalVotes) | percentage:2 }}</span>
+                    <span>{{district.totalSecondPlace | number}} votos | {{district.percentageSecondPlace | number:2 }}%</span>
                 </td>
                 <td>
-                    <span>{{district.totalFirstPlace - district.totalSecondPlace | number}}</span>
-                    <span>({{((district.totalFirstPlace - district.totalSecondPlace) / district.totalVotes) | percentage:2  }})</span>
+                    <span>{{district.difference | number:2}}</span>
+                    <span>({{district.percentageDifference | number:2}}%)</span>
                 </td>
                 <td>
                     <uib-progressbar animate="false" max="district.electoralRoll" value="district.totalVotes" type="success">{{district.totalVotes | number}}</uib-progressbar>
-                    <span>{{(district.totalVotes / district.electoralRoll) | percentage:2}}</span>
+                    <span>{{district.percentageTotalVotes | number:2 }}%</span>
                 </td>
                 <td class="text-center">
                     <div class="btn-group">

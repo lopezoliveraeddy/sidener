@@ -2,9 +2,11 @@ package electorum.sidener.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import electorum.sidener.service.DistrictService;
+import electorum.sidener.service.dto.DistrictExtDTO;
 import electorum.sidener.web.rest.util.HeaderUtil;
 import electorum.sidener.web.rest.util.PaginationUtil;
 import electorum.sidener.service.dto.DistrictDTO;
+import electorum.sidener.service.dto.DistrictExtDTO;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -153,9 +155,9 @@ public class DistrictResource {
      */
     @GetMapping("/elections/{id}/districts")
     @Timed
-    public ResponseEntity<List<DistrictDTO>> getDistrictsByIdElection(@PathVariable Long id, @ApiParam Pageable pageable) {
+    public ResponseEntity<List<DistrictExtDTO>> getDistrictsByIdElection(@PathVariable Long id, @ApiParam Pageable pageable) {
         log.debug("REST request to get Districts by Election : {}", id);
-        Page<DistrictDTO> page = districtService.getDistrictsByIdElection(id, pageable);
+        Page<DistrictExtDTO> page = districtService.getDistrictsByIdElection(id, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/elections/{id}/districts");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
