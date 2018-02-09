@@ -1,10 +1,10 @@
 (function() {
 	'use strict';
-	
+
 	angular
 	    .module('sidenerApp')
 	    .controller('LoadElectionController', LoadElectionController);
-	
+
 	LoadElectionController.$inject = ['$timeout', '$scope', '$stateParams','DataUtils', 'ParseLinks', 'AlertService', 'paginationConstants','Election','LoadElection'];
 	function LoadElectionController ($timeout, $scope, $stateParams,DataUtils,ParseLinks, AlertService, paginationConstants,Election,LoadElection) {
 		var vm = this;
@@ -15,9 +15,10 @@
         vm.elections = null;
         vm.save = save;
         vm.loadElectionDto = [];
-       
+        vm.bandera = 0;
+
         loadAll();
-        
+
         function loadAll () {
 	        	Election.query({}, onSuccess, onError);
         }
@@ -29,9 +30,10 @@
         function onError(error) {
             AlertService.error(error.data.message);
         }
-        
+
         function save () {
         		if( angular.isDefined(vm.electionSel) ){
+                    vm.bandera = 1;
         			LoadElection.save(
         					{
         		            		 "dbFile": vm.election.dbFile,
@@ -39,25 +41,31 @@
         		            		 "eleccion" :vm.electionSel.id
         		             }
 				);
-        			
+
         		}
-        		
-        		
+
+
+        }
+        vm.processDistrict = function (idEleccion){
+            console.log("llegamos");
+            console.log(vm.electionSel);
+            console.log(idEleccion);
         }
 
         vm.loadFile = function($file , election){
+
 	        if ($file) {
 	            DataUtils.toBase64($file, function(base64Data) {
 	                $scope.$apply(function() {
 	                	   election.dbFile = base64Data;
 	                    election.dbFileContentType = $file.type;
-	                    
+
 	                });
 	            });
 	        }
         };
-		
+
 	}
-	
-	
+
+
 })();
