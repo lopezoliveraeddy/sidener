@@ -15,6 +15,6 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface DistrictRepository extends JpaRepository<District, Long> {
 
-    Page<District> findByElectionId(Long id, Pageable pageable);
+    Page<District> findByElectionId(Long idElection, Pageable pageable);
 
 }

@@ -34,7 +34,7 @@
         }
 
         function loadAll () {
-            ElectionRecountDistrict.get({ id : $stateParams.id
+            ElectionRecountDistrict.get({ idElection : $stateParams.id
             }, onSuccess, onError);
 
             function onSuccess(data, headers) {

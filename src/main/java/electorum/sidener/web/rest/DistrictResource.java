@@ -3,14 +3,12 @@ package electorum.sidener.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.opencsv.CSVReader;
 import electorum.sidener.service.DistrictService;
-import electorum.sidener.service.dto.DistrictExtDTO;
+import electorum.sidener.service.dto.DistrictRecountDTO;
 import electorum.sidener.service.dto.LoadDTO;
 import electorum.sidener.web.rest.util.DistrictFromFile;
-import electorum.sidener.web.rest.util.ElectionFromFile;
 import electorum.sidener.web.rest.util.HeaderUtil;
 import electorum.sidener.web.rest.util.PaginationUtil;
 import electorum.sidener.service.dto.DistrictDTO;
-import electorum.sidener.service.dto.DistrictExtDTO;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.apache.commons.io.FileUtils;
@@ -35,9 +33,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
  * REST controller for managing District.
@@ -159,17 +154,18 @@ public class DistrictResource {
     }
 
     /**
-     * GET DISTRICTS  /elections/{id}/districts : get disctricts by "id" election
+     * GET DISTRICTS  /recount/{idElection}/districts : get disctricts by "idElection"
      * to the query.
      *
+     * @param idElection the "idElection" of the district
      * @param pageable the pagination information
      * @return the result of the search
      */
-    @GetMapping("/elections/{id}/districts")
+    @GetMapping("/recount/{idElection}/districts")
     @Timed
-    public ResponseEntity<List<DistrictExtDTO>> getDistrictsByIdElection(@PathVariable Long id, @ApiParam Pageable pageable) {
-        log.debug("REST request to get Districts by Election : {}", id);
-        Page<DistrictExtDTO> page = districtService.getDistrictsByIdElection(id, pageable);
+    public ResponseEntity<List<DistrictRecountDTO>> getDistrictsByIdElection(@PathVariable Long idElection, @ApiParam Pageable pageable) {
+        log.debug("REST request to get Districts by Election : {}", idElection);
+        Page<DistrictRecountDTO> page = districtService.getDistrictsByIdElection(idElection, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/elections/{id}/districts");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

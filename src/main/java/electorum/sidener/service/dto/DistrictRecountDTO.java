@@ -3,7 +3,7 @@ package electorum.sidener.service.dto;
 /**
  * A Extend DTO for the District entity.
  */
-public class DistrictExtDTO extends DistrictDTO {
+public class DistrictRecountDTO extends DistrictDTO {
 
     private Long difference;
 
@@ -41,7 +41,7 @@ public class DistrictExtDTO extends DistrictDTO {
 
     @Override
     public String toString() {
-        return "DistrictExtDTO{" +
+        return "DistrictRecountDTO{" +
             "id=" + getId() +
             ", decimalNumber='" + getDecimalNumber() + "'" +
             ", romanNumber='" + getRomanNumber() + "'" +
@@ -53,9 +53,6 @@ public class DistrictExtDTO extends DistrictDTO {
             ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
             ", totalVotes='" + getTotalVotes() + "'" +
             ", electoralRoll='" + getElectoralRoll() + "'" +
-            ", published='" + isPublished() + "'" +
-            ", createdDate='" + getCreatedDate() + "'" +
-            ", updatedDate='" + getUpdatedDate() + "'" +
             ", difference='" + getDifference() + "'" +
             ", percentageDifference='" + getPercentageDifference() + "'" +
             ", percentageFirstPlace='" + getPercentageFirstPlace() + "'" +

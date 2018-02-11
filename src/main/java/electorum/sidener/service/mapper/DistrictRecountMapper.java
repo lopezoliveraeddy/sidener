@@ -3,14 +3,14 @@ package electorum.sidener.service.mapper;
 import electorum.sidener.domain.*;
 import electorum.sidener.service.dto.DistrictDTO;
 
-import electorum.sidener.service.dto.DistrictExtDTO;
+import electorum.sidener.service.dto.DistrictRecountDTO;
 import org.mapstruct.*;
 
 /**
  * Mapper for the entity District and its DTO DistrictDTO.
  */
 @Mapper(componentModel = "spring", uses = {ElectionMapper.class, })
-public interface DistrictExtMapper extends EntityMapper <DistrictExtDTO, DistrictDTO> {
+public interface DistrictRecountMapper extends EntityMapper <DistrictRecountDTO, DistrictDTO> {
 
     @Mapping(source = "election.id", target = "electionId")
     DistrictDTO toDto(District district);
