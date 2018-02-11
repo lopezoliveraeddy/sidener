@@ -15,6 +15,9 @@ public class DistrictRecountDTO extends DistrictDTO {
 
     private Double percentageTotalVotes;
 
+    private Boolean countingAssumption;
+
+
     public Long getDifference() {
         return difference;
     }
@@ -39,6 +42,10 @@ public class DistrictRecountDTO extends DistrictDTO {
 
     public void setPercentageTotalVotes(Double percentageTotalVotes) { this.percentageTotalVotes = percentageTotalVotes; }
 
+    public Boolean getCountingAssumption() { return countingAssumption; }
+
+    public void setCountingAssumption(Boolean countingAssumption) { this.countingAssumption = countingAssumption; }
+
     @Override
     public String toString() {
         return "DistrictRecountDTO{" +
@@ -58,6 +65,7 @@ public class DistrictRecountDTO extends DistrictDTO {
             ", percentageFirstPlace='" + getPercentageFirstPlace() + "'" +
             ", percentageSecondPlace='" + getPercentageSecondPlace() + "'" +
             ", percentageTotalVotes='" + getPercentageTotalVotes() + "'" +
+            ", countingAssumption='" + getCountingAssumption() + "'" +
             "}";
     }
 }

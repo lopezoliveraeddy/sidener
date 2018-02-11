@@ -2,6 +2,7 @@
 
 $electorum: #b0b536;
 $electorumBold: #7D8203;
+$electorumOpacity: #b0b5367a;
 
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -544,6 +545,10 @@ Recuento
         tbody {
             tr.total-recount {
                 border-left: 10px solid $electorum;
+
+                td {
+                    background-color: $electorumOpacity;
+                }
             }
         }
     }

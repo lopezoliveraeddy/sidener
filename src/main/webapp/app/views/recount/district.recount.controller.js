@@ -61,9 +61,8 @@
             });
         }
 
-        $scope.supuestoRecuento = function(totalFirstPlace, totalSecondPlace, totalVotes) {
-            var difference = ((totalFirstPlace - totalSecondPlace) / totalVotes);
-            if(difference < .01) {
+        $scope.countingAssumption = function(countingAssumption) {
+            if (countingAssumption === true) {
                 return "total-recount";
             }
         };

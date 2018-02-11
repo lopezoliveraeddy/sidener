@@ -36,7 +36,8 @@
             "election": "Elección",
             "pollingPlacesTotal": "Total de Casillas",
             "nullVotes": "Votos Nulos",
-            "detectCausalsOfNullity": "Detectar Causales de Nulidad"
+            "detectCausalsOfNullity": "Detectar Causales de Nulidad",
+            "districts": "Distritos"
         }
     }
 }

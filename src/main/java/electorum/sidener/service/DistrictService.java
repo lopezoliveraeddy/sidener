@@ -1,10 +1,12 @@
 package electorum.sidener.service;
 
 import electorum.sidener.domain.District;
+import electorum.sidener.domain.enumeration.RecountDistrictsRule;
 import electorum.sidener.repository.DistrictRepository;
 import electorum.sidener.repository.search.DistrictSearchRepository;
 import electorum.sidener.service.dto.DistrictDTO;
 import electorum.sidener.service.dto.DistrictRecountDTO;
+import electorum.sidener.service.dto.ElectionDTO;
 import electorum.sidener.service.mapper.DistrictMapper;
 import electorum.sidener.service.mapper.DistrictRecountMapper;
 import org.slf4j.Logger;
@@ -38,11 +40,14 @@ public class DistrictService {
 
     private final DistrictSearchRepository districtSearchRepository;
 
-    public DistrictService(DistrictRepository districtRepository, DistrictMapper districtMapper, DistrictRecountMapper districtRecountMapper, DistrictSearchRepository districtSearchRepository) {
+    private final ElectionService electionService;
+
+    public DistrictService(DistrictRepository districtRepository, DistrictMapper districtMapper, DistrictRecountMapper districtRecountMapper, DistrictSearchRepository districtSearchRepository, ElectionService electionService) {
         this.districtRepository = districtRepository;
         this.districtMapper = districtMapper;
         this.districtRecountMapper = districtRecountMapper;
         this.districtSearchRepository = districtSearchRepository;
+        this.electionService = electionService;
     }
 
     /**
@@ -131,12 +136,34 @@ public class DistrictService {
         for (DistrictDTO districtDTO : page) {
             DistrictRecountDTO district = districtRecountMapper.toDto(districtDTO);
             if(district.getId() != null){
+                ElectionDTO election = electionService.findOne(district.getElectionId());
+                RecountDistrictsRule recountDistrictsRule = election.getRecountDistrictsRule();
                 if(district.getTotalFirstPlace() != null && district.getTotalSecondPlace() != null && district.getTotalVotes() != null && district.getElectoralRoll() != null ) {
                     district.setDifference(district.getTotalFirstPlace() - district.getTotalSecondPlace());
                     district.setPercentageDifference(((district.getDifference().doubleValue() / district.getTotalVotes().doubleValue()) * 100));
                     district.setPercentageFirstPlace(((district.getTotalFirstPlace().doubleValue() / district.getTotalVotes().doubleValue()) * 100));
                     district.setPercentageSecondPlace(((district.getTotalSecondPlace().doubleValue() / district.getTotalVotes().doubleValue()) * 100));
                     district.setPercentageTotalVotes(((district.getTotalVotes().doubleValue() / district.getElectoralRoll().doubleValue()) * 100));
+
+                    switch (recountDistrictsRule) {
+                        case LESS_1:
+                            if (district.getPercentageDifference() < 1) {
+                                district.setCountingAssumption(true);
+                            } else {
+                                district.setCountingAssumption(false);
+                            }
+                            break;
+                        case LESS_EQUAL_1:
+                            if (district.getPercentageDifference() <= 1) {
+                                district.setCountingAssumption(true);
+                            } else {
+                                district.setCountingAssumption(false);
+                            }
+                            break;
+                            default:
+                                district.setCountingAssumption(false);
+
+                    }
                 }
             }
             content.add(district);

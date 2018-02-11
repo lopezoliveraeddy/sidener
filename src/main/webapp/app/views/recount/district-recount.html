@@ -3,6 +3,22 @@
     <h3 data-translate="sidenerApp.district.home.title">Recuento Distrital</h3>
     <jhi-alert></jhi-alert>
     <div class="table-container">
+        <div class="table-header">
+            <div class="row">
+                <div class="col-md-4 text-left">
+                    <span class="fa medium fa-certificate">Posición final del partido o coalición</span>
+                </div>
+                <div class="col-md-4 text-left">
+                    <p class="up-aux"><strong><span class="color-green">10 distritos ganados</span>, <span class="color-orange">8 distritos perdidos</span></strong></p>
+                </div>
+                <div class="col-md-4 text-right">
+                    <div class="line-spec">
+                        <div class="line"></div>
+                        <span>Supuestos de recuento total</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="table-responsive">
         <table class="jh-table table table-striped table-bordered">
             <thead>
@@ -18,7 +34,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="district in vm.districts track by district.id" ng-class="supuestoRecuento(district.totalFirstPlace, district.totalSecondPlace, district.totalVotes)">
+            <tr ng-repeat="district in vm.districts track by district.id" ng-class="countingAssumption(district.countingAssumption)">
                 <td ><a ui-sref="district-detail({id:district.id})" class="btn btn-info">{{district.romanNumber}}</a></td>
                 <td>{{district.districtHead}}</td>
                 <td>
