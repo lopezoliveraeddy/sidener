@@ -36,7 +36,7 @@
 
         function loadAll () {
             DistrictRecountPollingPlaces.get({
-                id : $stateParams.id,
+                idDistrict : $stateParams.id,
                 page: pagingParams.page - 1
             }, onSuccess, onError);
 
@@ -126,6 +126,12 @@
         function onSaveError () {
             vm.isSaving = false;
         }
+
+        $scope.countingAssumption = function(countingAssumption) {
+            if (countingAssumption === true) {
+                return "total-recount";
+            }
+        };
 
     }
 })();

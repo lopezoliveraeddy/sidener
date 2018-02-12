@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+import electorum.sidener.service.dto.PollingPlaceRecountDTO;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -203,17 +204,17 @@ public class PollingPlaceResource {
 	 * GET DISTRICTS /districts/{id}/polling-places : get pollingPlaces by "id"
 	 * district to the query.
 	 *
-	 * @param pageable
-	 *            the pagination information
+     * @param idDistrict the "id" of the District
+	 * @param pageable the pagination information
 	 * @return the result of the search
 	 */
-	@GetMapping("/districts/{id}/polling-places")
+	@GetMapping("/recount/{idDistrict}/polling-places")
 	@Timed
-	public ResponseEntity<List<PollingPlaceDTO>> getDistrictsByIdElection(@PathVariable Long id,
+	public ResponseEntity<List<PollingPlaceRecountDTO>> getPollingPlacesByIdDistrict(@PathVariable Long idDistrict,
 			@ApiParam Pageable pageable) {
-		log.debug("REST request to get PollingPlaces by District : {}", id);
-		Page<PollingPlaceDTO> page = pollingPlaceService.getPollingPlacesByIdDistrict(id, pageable);
-		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/districts/{id}/polling-places");
+		log.debug("REST request to get PollingPlaces by District : {}", idDistrict);
+		Page<PollingPlaceRecountDTO> page = pollingPlaceService.getPollingPlacesByIdDistrict(idDistrict, pageable);
+		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/recount/{id}/polling-places");
 		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
 	}
 

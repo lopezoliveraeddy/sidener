@@ -1,5 +1,5 @@
 <div>
-    <h2 data-translate="sidenerApp.election.home.title">Elections</h2>
+    <h1 data-translate="sidenerApp.election.home.title">Elections</h1>
     <jhi-alert></jhi-alert>
     <div class="table-container">
         <div class="container-fluid">
@@ -33,8 +33,8 @@
                     <th jh-sort-by="electionTypeName"><span data-translate="sidenerApp.election.electionType">Election Type</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="periodElection"><span data-translate="sidenerApp.election.periodElection">Period Election</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="status"><span data-translate="sidenerApp.election.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th><span data-translate="sidenerApp.election.recount">Recuento</th>
-                    <th><span data-translate="sidenerApp.election.causals">Causales</th>
+                    <th><span data-translate="sidenerApp.election.recount">Recuento</span></th>
+                    <th><span data-translate="sidenerApp.election.causals">Causales</span></th>
                 </tr>
             </thead>
             <tbody>
@@ -43,7 +43,9 @@
                     <td data-translate="{{'sidenerApp.State.' + election.state}}">{{election.state}}</td>
                     <td>{{election.electionTypeName}}</td>
                     <td>{{election.periodElection}}</td>
-                    <td data-translate="{{'sidenerApp.Status.' + election.status}}">{{election.status}}</td>
+                    <td>
+                        <span class="{{election.status | removeSpaces}}" data-translate="{{'sidenerApp.Status.' + election.status}}">{{election.status}}</span>
+                    </td>
                     <td class="text-center">
                         <div class="btn-group">
                             <button type="submit"

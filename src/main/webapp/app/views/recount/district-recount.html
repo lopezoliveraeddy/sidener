@@ -1,20 +1,37 @@
 <div>
+    <h1 data-translate="sidenerApp.election.detail.title"></h1>
     <h2><span>{{vm.election.electionTypeName}}</span> - <span data-translate="{{'sidenerApp.State.' + vm.election.state}}"></span> - <span>{{vm.election.periodElection}}</span></h2>
-    <h3 data-translate="sidenerApp.district.home.title">Recuento Distrital</h3>
+    <h3 data-translate="sidenerApp.district.districts"></h3>
     <jhi-alert></jhi-alert>
     <div class="table-container">
         <div class="table-header">
             <div class="row">
-                <div class="col-md-4 text-left">
-                    <span class="fa medium fa-certificate">Posición final del partido o coalición</span>
+                <div id="position" class="col-lg-4 col-md-4 col-sm-12 text-left">
+                    <div class="media">
+                        <div class="media-left">
+                            <i class="fa medium fa-certificate" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body media-middle">Posición final del partido o coalición</div>
+                    </div>
                 </div>
-                <div class="col-md-4 text-left">
-                    <p class="up-aux"><strong><span class="color-green">10 distritos ganados</span>, <span class="color-orange">8 distritos perdidos</span></strong></p>
+                <div id="win-lose" class="col-lg-4 col-md-4 col-sm-12 text-left">
+                    <div class="media">
+                        <div class="media-left">
+                            <i class="fa medium fa-trophy" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body media-middle">
+                            <strong><span class="color-green">10 distritos ganados</span>, <span class="color-orange">8 distritos perdidos</span></strong>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4 text-right">
-                    <div class="line-spec">
-                        <div class="line"></div>
-                        <span>Supuestos de recuento total</span>
+                <div id="counting-assumption" class="col-lg-4 col-md-4 col-sm-12 text-left">
+                    <div class="media">
+                        <div class="media-left media-middle">
+                            <i class="fa medium fa-bar-chart" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body media-middle">
+                            Supuestos de recuento total
+                        </div>
                     </div>
                 </div>
             </div>

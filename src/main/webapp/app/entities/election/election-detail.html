@@ -16,7 +16,7 @@
             <span>{{vm.election.dateElection | date:'medium'}}</span>
         </dd>
         <dt><span data-translate="sidenerApp.election.status">Status</span></dt>
-        <dd>
+        <dd class="{{vm.election.status | removeSpaces}}">
             <span data-translate="{{'sidenerApp.Status.' + vm.election.status}}">{{vm.election.status}}</span>
         </dd>
         <dt><span data-translate="sidenerApp.election.dataBase">Data Base</span></dt>

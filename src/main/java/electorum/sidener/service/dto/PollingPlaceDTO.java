@@ -409,10 +409,6 @@ public class PollingPlaceDTO implements Serializable {
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
-            ", firstPlaceParty ='" + getEntityFirstPlace() + "'" +
-            ", secondPlaceParty ='" + getEntitySecondPlace() + "'" +
-            ", firstPlace Total Votes ='" + getTotalFirstPlace() + "'" +
-            ", secondPlace Total Votes ='" + getTotalSecondPlace() + "'" +
             "}";
     }
 }

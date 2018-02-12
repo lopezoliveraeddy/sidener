@@ -33,6 +33,12 @@
         return function (input, decimals) {
             return $filter('number')(input * 100, decimals) + '%';
         };
+    }]).filter('removeSpaces', [function() {
+        return function(string) {
+            if (!angular.isString(string)) {
+                    return string;
+            }
+            return string.replace(/[\s]/g, '').toLowerCase();
+        };
     }]);
-
 })();

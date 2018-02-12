@@ -9,6 +9,16 @@ body {
     color: #333;
 }
 
+h1 {
+    font-size: 28px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 20px;
+}
+
 /* ==========================================================================
 Hide ng-cloak on page load, https://docs.angularjs.org/api/ng/directive/ngCloak
 ========================================================================== */
@@ -447,6 +457,19 @@ input[type="radio"] {
 }
 
 /* ==========================================================================
+Listado de Elecciones
+========================================================================== */
+.in_progress {
+    color: orange;
+}
+.complete {
+    color: red;
+}
+.new {
+    color: green;
+}
+
+/* ==========================================================================
 Causales
 ========================================================================== */
 
@@ -540,6 +563,19 @@ td#field-causals {
 /* ==========================================================================
 Recuento
 ========================================================================== */
+.table-header {
+    margin-bottom: 30px;
+    i {
+        color: $electorum;
+    }
+    #counting-assumption {
+        .media-body {
+            background-color: $electorumOpacity;
+            padding: 10px;
+            border-left: 5px solid $electorum;
+        }
+    }
+}
 .table-container {
     table {
         tbody {
@@ -552,4 +588,11 @@ Recuento
             }
         }
     }
+}
+
+.color-green {
+    color: green;
+}
+.color-orange {
+    color: orange;
 }

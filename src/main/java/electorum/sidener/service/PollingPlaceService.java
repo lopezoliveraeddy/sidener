@@ -1,17 +1,23 @@
 package electorum.sidener.service;
 
 import electorum.sidener.domain.PollingPlace;
+import electorum.sidener.domain.enumeration.RecountDistrictsRule;
 import electorum.sidener.repository.PollingPlaceRepository;
 import electorum.sidener.repository.search.PollingPlaceSearchRepository;
-import electorum.sidener.service.dto.PollingPlaceDTO;
+import electorum.sidener.service.dto.*;
 import electorum.sidener.service.mapper.PollingPlaceMapper;
+import electorum.sidener.service.mapper.PollingPlaceRecountMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
@@ -28,11 +34,14 @@ public class PollingPlaceService {
 
     private final PollingPlaceMapper pollingPlaceMapper;
 
+    private final PollingPlaceRecountMapper pollingPlaceRecountMapper;
+
     private final PollingPlaceSearchRepository pollingPlaceSearchRepository;
 
-    public PollingPlaceService(PollingPlaceRepository pollingPlaceRepository, PollingPlaceMapper pollingPlaceMapper, PollingPlaceSearchRepository pollingPlaceSearchRepository) {
+    public PollingPlaceService(PollingPlaceRepository pollingPlaceRepository, PollingPlaceMapper pollingPlaceMapper, PollingPlaceRecountMapper pollingPlaceRecountMapper,  PollingPlaceSearchRepository pollingPlaceSearchRepository) {
         this.pollingPlaceRepository = pollingPlaceRepository;
         this.pollingPlaceMapper = pollingPlaceMapper;
+        this.pollingPlaceRecountMapper = pollingPlaceRecountMapper;
         this.pollingPlaceSearchRepository = pollingPlaceSearchRepository;
     }
 
@@ -105,15 +114,38 @@ public class PollingPlaceService {
     /**
      *  Get pollingPlaces of district by id.
      *
-     *  @param id the id of the entity
+     *  @param idDistrict the "id" of the district
      *  @param pageable the pagination information
      *  @return the entity
      */
     @Transactional(readOnly = true)
-    public Page<PollingPlaceDTO> getPollingPlacesByIdDistrict(Long id, Pageable pageable) {
-        log.debug("Request to get PollingPlaces by District : {}", id);
-        Page<PollingPlace> result = pollingPlaceRepository.findByDistrictId(id, pageable);
-        return result.map(pollingPlaceMapper::toDto);
+    public Page<PollingPlaceRecountDTO> getPollingPlacesByIdDistrict(Long idDistrict, Pageable pageable) {
+        log.debug("Request to get PollingPlaces by District : {}", idDistrict);
+        Page<PollingPlaceDTO> page = pollingPlaceRepository.findByDistrictId(idDistrict, pageable).map(pollingPlaceMapper::toDto);
+        Page<PollingPlaceRecountDTO> resultPage = resultsRecountDTO(page, pageable);
+        return resultPage;
+    }
+
+    private Page<PollingPlaceRecountDTO> resultsRecountDTO(Page<PollingPlaceDTO> page, Pageable pageable){
+        List<PollingPlaceRecountDTO> content = new ArrayList<>();
+        for (PollingPlaceDTO pollingPlaceDTO : page) {
+            PollingPlaceRecountDTO pollingPlace = pollingPlaceRecountMapper.toDto(pollingPlaceDTO);
+            if(pollingPlace.getId() != null){
+                if (pollingPlace.getTotalVotes() != null && pollingPlace.getTotalFirstPlace() != null && pollingPlace.getTotalSecondPlace() != null) {
+                    pollingPlace.setDifference(pollingPlace.getTotalFirstPlace() - pollingPlace.getTotalSecondPlace());
+                    pollingPlace.setPercentageFirstPlace(((pollingPlace.getTotalFirstPlace().doubleValue() / pollingPlace.getTotalVotes().doubleValue()) * 100));
+                    pollingPlace.setPercentageSecondPlace(((pollingPlace.getTotalSecondPlace().doubleValue() / pollingPlace.getTotalVotes().doubleValue()) * 100));
+                    if (pollingPlace.getNullVotes() > pollingPlace.getDifference()) {
+                        pollingPlace.setCountingAssumption(true);
+                    } else {
+                        pollingPlace.setCountingAssumption(false);
+                    }
+                }
+            }
+            content.add(pollingPlace);
+        }
+        Page<PollingPlaceRecountDTO> resultpage = new PageImpl<>(content, pageable, page.getTotalElements());
+        return resultpage;
     }
 
 
