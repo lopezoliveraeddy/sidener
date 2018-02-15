@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codahale.metrics.annotation.Timed;
-import com.opencsv.CSVReader;
+import com.opencsv.*;
 
 import electorum.sidener.service.PollingPlaceService;
 import electorum.sidener.service.dto.ElectionDTO;

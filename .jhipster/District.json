@@ -61,6 +61,16 @@
             "fieldType": "Long"
         },
         {
+            "fieldName": "totalPollingPlaces",
+            "javadoc": "Total de Casillas",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nullVotes",
+            "javadoc": "Votos Nulos",
+            "fieldType": "Long"
+        },
+        {
             "fieldName": "published",
             "fieldType": "Boolean"
         },

@@ -62,6 +62,14 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="total_polling_places" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="null_votes" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <column name="published" type="bit">
                 <constraints nullable="true" />
             </column>

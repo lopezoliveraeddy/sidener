@@ -100,6 +100,20 @@ public class District implements Serializable {
     @Column(name = "electoral_roll")
     private Long electoralRoll;
 
+    /**
+     * Total de Casillas
+     */
+    @ApiModelProperty(value = "Total de Casillas")
+    @Column(name = "total_polling_places")
+    private Long totalPollingPlaces;
+
+    /**
+     * Votos Nulos
+     */
+    @ApiModelProperty(value = "Votos Nulos")
+    @Column(name = "null_votes")
+    private Long nullVotes;
+
     @Column(name = "published")
     private Boolean published;
 
@@ -251,6 +265,32 @@ public class District implements Serializable {
         this.electoralRoll = electoralRoll;
     }
 
+    public Long getTotalPollingPlaces() {
+        return totalPollingPlaces;
+    }
+
+    public District totalPollingPlaces(Long totalPollingPlaces) {
+        this.totalPollingPlaces = totalPollingPlaces;
+        return this;
+    }
+
+    public void setTotalPollingPlaces(Long totalPollingPlaces) {
+        this.totalPollingPlaces = totalPollingPlaces;
+    }
+
+    public Long getNullVotes() {
+        return nullVotes;
+    }
+
+    public District nullVotes(Long nullVotes) {
+        this.nullVotes = nullVotes;
+        return this;
+    }
+
+    public void setNullVotes(Long nullVotes) {
+        this.nullVotes = nullVotes;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -338,6 +378,8 @@ public class District implements Serializable {
             ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
             ", totalVotes='" + getTotalVotes() + "'" +
             ", electoralRoll='" + getElectoralRoll() + "'" +
+            ", totalPollingPlaces='" + getTotalPollingPlaces() + "'" +
+            ", nullVotes='" + getNullVotes() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

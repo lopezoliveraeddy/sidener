@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('DistrictRecountPollingPlaceController', DistrictRecountPollingPlaceController);
 
-    DistrictRecountPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'District', 'Election', 'DistrictRecountPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
+    DistrictRecountPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'CausalType', 'District', 'Election', 'DistrictRecountPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
 
-    function DistrictRecountPollingPlaceController($scope, $state, $stateParams, AlertService, District, Election, DistrictRecountPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
+    function DistrictRecountPollingPlaceController($scope, $state, $stateParams, AlertService, CausalType, District, Election, DistrictRecountPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -28,8 +28,9 @@
 
         // Causales
         vm.causals = [];
-        vm.causalsRecount = [];
-        vm.causalsNullity = [];
+        vm.causalsRecount = CausalType.get({
+            typeCausal: 'RECOUNT'
+        });
 
         loadDistrict();
         loadAll();
@@ -80,15 +81,6 @@
             Election.get({ id : idElection }, onSuccess, onError);
             function onSuccess(data) {
                 vm.election = data;
-                vm.causals = vm.election.causals;
-                angular.forEach(vm.election.causals, function(causal, key) {
-                    if(causal.typeCausal === 'RECOUNT') {
-                        vm.causalsRecount.push(causal);
-                    }
-                    else if(causal.typeCausal === 'NULLITY') {
-                        vm.causalsNullity.push(causal);
-                    }
-                });
             }
             function onError(error) {
                 AlertService.error(error.data.message);

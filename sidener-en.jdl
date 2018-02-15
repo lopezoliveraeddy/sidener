@@ -108,6 +108,10 @@ entity District {
     totalVotes Long
     /* Ciudadanos en la Lista Nominal */
     electoralRoll Long,
+    /* Total de Casillas */
+    totalPollingPlaces Long,
+    /* Votos Nulos */
+    nullVotes Long,
 
     published Boolean,
     createdDate ZonedDateTime,
