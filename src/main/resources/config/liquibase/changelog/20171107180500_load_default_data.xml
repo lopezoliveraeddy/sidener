@@ -72,5 +72,11 @@
                   separator=","
                   tableName="vote">
         </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/pollingPlace_causals.csv"
+                  separator=","
+                  tableName="polling_place_causals">
+        </loadData>
+
     </changeSet>
 </databaseChangeLog>

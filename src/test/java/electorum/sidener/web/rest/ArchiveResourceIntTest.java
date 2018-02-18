@@ -6,6 +6,7 @@ import electorum.sidener.domain.Archive;
 import electorum.sidener.repository.ArchiveRepository;
 import electorum.sidener.service.ArchiveService;
 import electorum.sidener.repository.search.ArchiveSearchRepository;
+import electorum.sidener.service.FileManagerService;
 import electorum.sidener.service.dto.ArchiveDTO;
 import electorum.sidener.service.mapper.ArchiveMapper;
 import electorum.sidener.web.rest.errors.ExceptionTranslator;
@@ -61,6 +62,9 @@ public class ArchiveResourceIntTest {
     private static final ArchiveStatus UPDATED_STATUS = ArchiveStatus.PERMANENT;
 
     @Autowired
+    private FileManagerService fileManagerService;
+
+    @Autowired
     private ArchiveRepository archiveRepository;
 
     @Autowired
@@ -91,7 +95,7 @@ public class ArchiveResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ArchiveResource archiveResource = new ArchiveResource(archiveService);
+        final ArchiveResource archiveResource = new ArchiveResource(archiveService, fileManagerService);
         this.restArchiveMockMvc = MockMvcBuilders.standaloneSetup(archiveResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

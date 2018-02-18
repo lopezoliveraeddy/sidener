@@ -2,6 +2,7 @@ package electorum.sidener.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import electorum.sidener.service.ArchiveService;
+import electorum.sidener.service.FileManagerService;
 import electorum.sidener.web.rest.util.HeaderUtil;
 import electorum.sidener.web.rest.util.PaginationUtil;
 import electorum.sidener.service.dto.ArchiveDTO;
@@ -16,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -38,8 +40,11 @@ public class ArchiveResource {
 
     private final ArchiveService archiveService;
 
-    public ArchiveResource(ArchiveService archiveService) {
+    private final FileManagerService fileManagerService;
+
+    public ArchiveResource(ArchiveService archiveService, FileManagerService fileManagerService) {
         this.archiveService = archiveService;
+        this.fileManagerService = fileManagerService;
     }
 
     /**
