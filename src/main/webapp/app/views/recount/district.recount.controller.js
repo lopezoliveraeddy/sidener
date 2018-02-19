@@ -5,12 +5,12 @@
         .module('sidenerApp')
         .controller('ElectionRecountDistrictController', ElectionRecountDistrictController);
 
-    ElectionRecountDistrictController.$inject = ['$scope', '$state', '$stateParams', 'Election', 'ElectionRecountDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    ElectionRecountDistrictController.$inject = ['$scope', '$state', '$stateParams', 'Election', 'ElectionRecountDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams','DocumentDownload'];
 
-    function ElectionRecountDistrictController($scope, $state, $stateParams, Election, ElectionRecountDistrict, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function ElectionRecountDistrictController($scope, $state, $stateParams, Election, ElectionRecountDistrict, ParseLinks, AlertService, paginationConstants, pagingParams,DocumentDownload) {
 
         var vm = this;
-
+        console.log("eddy");
         vm.loadPage = loadPage;
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
@@ -19,6 +19,7 @@
         vm.districts = [];
         // Datos de la Elección
         vm.loadElection = loadElection;
+        vm.openLink = openLink;
 
         loadElection();
         loadAll();
@@ -58,6 +59,30 @@
             $state.transitionTo($state.$current, {
                 id: $stateParams.id,
                 page: vm.page
+            });
+        }
+
+        function openLink(file){
+            console.log(file);
+            DocumentDownload.get(file).then(function(response) {
+
+                var contentDisposition = response.headers("content-disposition");
+                var tmp = contentDisposition.split("filename=");
+                var filename = "";
+
+                if(tmp.length>1){
+                    filename = tmp[1].replace(/\"/g, '');
+                }
+
+                var a = document.createElement("a");
+                document.body.appendChild(a);
+                var file = new Blob([response.data], {type: 'application/octet-stream'});
+                var fileURL = URL.createObjectURL(file);
+                a.href = fileURL;
+                a.download = filename;
+                a.click();
+            }).catch(function(error) {
+                AlertService.error(error);
             });
         }
 
