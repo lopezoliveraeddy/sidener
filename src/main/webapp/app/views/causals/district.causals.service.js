@@ -7,7 +7,7 @@
     ElectionCausalsDistrict.$inject = ['$resource', 'DateUtils'];
 
     function ElectionCausalsDistrict ($resource, DateUtils) {
-        var resourceUrl =  'api/elections/:id/districts';
+        var resourceUrl =  'api/nullity/:id/districts';
 
         return $resource(resourceUrl, {}, {
             'get': {

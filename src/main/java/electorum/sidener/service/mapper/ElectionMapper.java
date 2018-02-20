@@ -16,13 +16,18 @@ public interface ElectionMapper extends EntityMapper <ElectionDTO, Election> {
 
     @Mapping(source = "politicalPartyAsociated.id", target = "politicalPartyAsociatedId")
     @Mapping(source = "politicalPartyAsociated.name", target = "politicalPartyAsociatedName")
+    @Mapping(source = "politicalPartyAsociated.acronym", target = "politicalPartyAsociatedAcronym")
+
 
     @Mapping(source = "coalitionAsociated.id", target = "coalitionAsociatedId")
     @Mapping(source = "coalitionAsociated.name", target = "coalitionAsociatedName")
+    @Mapping(source = "coalitionAsociated.acronym", target = "coalitionAsociatedAcronym")
 
     @Mapping(source = "independentCandidateAsociated.id", target = "independentCandidateAsociatedId")
     @Mapping(source = "independentCandidateAsociated.name", target = "independentCandidateAsociatedName")
-    ElectionDTO toDto(Election election); 
+    @Mapping(source = "independentCandidateAsociated.acronym", target = "independentCandidateAsociatedAcronym")
+
+    ElectionDTO toDto(Election election);
 
     @Mapping(source = "electionTypeId", target = "electionType")
 
@@ -31,7 +36,7 @@ public interface ElectionMapper extends EntityMapper <ElectionDTO, Election> {
     @Mapping(source = "coalitionAsociatedId", target = "coalitionAsociated")
 
     @Mapping(source = "independentCandidateAsociatedId", target = "independentCandidateAsociated")
-    Election toEntity(ElectionDTO electionDTO); 
+    Election toEntity(ElectionDTO electionDTO);
     default Election fromId(Long id) {
         if (id == null) {
             return null;

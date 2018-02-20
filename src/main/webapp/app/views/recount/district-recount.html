@@ -55,12 +55,26 @@
                 <td ><a ui-sref="district-detail({id:district.id})" class="btn btn-info">{{district.romanNumber}}</a></td>
                 <td>{{district.districtHead}}</td>
                 <td>
-                    <span><strong>{{district.entityFirstPlace}}</strong></span><br>
-                    <span>{{district.totalFirstPlace | number}} votos | {{district.percentageFirstPlace | number:2 }}%</span>
+                    <div class="media">
+                        <div class="media-left media-middle">
+                            <span><strong>{{district.entityFirstPlace}}</strong></span><br>
+                            <span>{{district.totalFirstPlace | number}} votos | {{district.percentageFirstPlace | number:2 }}%</span>
+                        </div>
+                        <div class="media-right media-middle">
+                            <span ng-bind-html="asociatedPosition(district.entityFirstPlace)"></span>
+                        </div>
+                    </div>
                 </td>
                 <td>
-                    <span><strong>{{district.entitySecondPlace}}</strong></span><br>
-                    <span>{{district.totalSecondPlace | number}} votos | {{district.percentageSecondPlace | number:2 }}%</span>
+                    <div class="media">
+                        <div class="media-left media-middle">
+                            <span><strong>{{district.entitySecondPlace}}</strong></span><br>
+                            <span>{{district.totalSecondPlace | number}} votos | {{district.percentageSecondPlace | number:2 }}%</span>
+                        </div>
+                        <div class="media-right media-middle">
+                            <span ng-bind-html="asociatedPosition(district.entitySecondPlace)"></span>
+                        </div>
+                    </div>
                 </td>
                 <td>
                     <span>{{district.difference | number:2}}</span>

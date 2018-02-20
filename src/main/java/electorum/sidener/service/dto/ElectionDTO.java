@@ -31,33 +31,33 @@ public class ElectionDTO implements Serializable {
     private byte[] dbFile;
     private String dbFileContentType;
     // end database attributes
-    
+
     //insertUrl attributes
     @Lob
     private byte[] iuFile;
 	private String iuFileContentType;
     //end insertUrl attributes
-	
+
 	//incidentSheet attributes
 	private byte[] isFile;
 	private String isFileContentType;
     //end incidentSheet attributes
-	
+
 	//dayRecord attributes
 	private byte[] drFile;
 	private String drFileContentType;
     //end dayRecord attributes
-	
+
 	//demandTemplate attributes
 	private byte[] dmFile;
 	private String dmFileContentType;
     //end demandTemplate attributes
-	
+
 	//recountTemplate attributes
 	private byte[] rtFile;
 	private String rtFileContentType;
-    //end recountTemplate attributes 
-	
+    //end recountTemplate attributes
+
     private String dataBase;
 
     private String insetUrl;
@@ -97,13 +97,19 @@ public class ElectionDTO implements Serializable {
 
     private String politicalPartyAsociatedName;
 
+    private String politicalPartyAsociatedAcronym;
+
     private Long coalitionAsociatedId;
 
     private String coalitionAsociatedName;
 
+    private String coalitionAsociatedAcronym;
+
     private Long independentCandidateAsociatedId;
 
     private String independentCandidateAsociatedName;
+
+    private String independentCandidateAsociatedAcronym;
 
     private Set<PoliticalPartyDTO> politicalParties = new HashSet<>();
 
@@ -307,6 +313,14 @@ public class ElectionDTO implements Serializable {
         this.politicalPartyAsociatedName = politicalPartyName;
     }
 
+    public String getPoliticalPartyAsociatedAcronym() {
+        return politicalPartyAsociatedAcronym;
+    }
+
+    public void setPoliticalPartyAsociatedAcronym(String politicalPartyAcronym) {
+        this.politicalPartyAsociatedAcronym = politicalPartyAcronym;
+    }
+
     public Long getCoalitionAsociatedId() {
         return coalitionAsociatedId;
     }
@@ -323,12 +337,28 @@ public class ElectionDTO implements Serializable {
         this.coalitionAsociatedName = coalitionName;
     }
 
+    public String getCoalitionAsociatedAcronym() {
+        return coalitionAsociatedAcronym;
+    }
+
+    public void setCoalitionAsociatedAcronym(String coalitionAcronym) {
+        this.coalitionAsociatedAcronym = coalitionAcronym;
+    }
+
     public Long getIndependentCandidateAsociatedId() {
         return independentCandidateAsociatedId;
     }
 
     public void setIndependentCandidateAsociatedId(Long independentCandidateId) {
         this.independentCandidateAsociatedId = independentCandidateId;
+    }
+
+    public String getIndependentCandidateAsociatedAcronym() {
+        return independentCandidateAsociatedAcronym;
+    }
+
+    public void setIndependentCandidateAsociatedAcronym(String independentCandidateAcronym) {
+        this.independentCandidateAsociatedAcronym = independentCandidateAcronym;
     }
 
     public String getIndependentCandidateAsociatedName() {
@@ -395,7 +425,7 @@ public class ElectionDTO implements Serializable {
 		this.dbFileContentType = dbFileContentType;
 	}
 	// end database setter and getter
-	
+
 	// start insetUrl
     public byte[] getIuFile() {
 		return iuFile;
@@ -413,8 +443,8 @@ public class ElectionDTO implements Serializable {
 		this.iuFileContentType = iuFileContentType;
 	}
 	// end insetUrl
-	
-	// start incidentSheet 
+
+	// start incidentSheet
 	public byte[] getIsFile() {
 		return isFile;
 	}
@@ -430,8 +460,8 @@ public class ElectionDTO implements Serializable {
 	public void setIsFileContentType(String isFileContentType) {
 		this.isFileContentType = isFileContentType;
 	}
-	// end incidentSheet 
-	
+	// end incidentSheet
+
     public byte[] getDrFile() {
 		return drFile;
 	}
@@ -478,7 +508,7 @@ public class ElectionDTO implements Serializable {
 
 	public void setRtFileContentType(String rtFileContentType) {
 		this.rtFileContentType = rtFileContentType;
-	}	
+	}
 
     @Override
     public boolean equals(Object o) {

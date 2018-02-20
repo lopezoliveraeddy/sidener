@@ -91,5 +91,23 @@
                 return "total-recount";
             }
         };
+
+        $scope.asociatedPosition = function(entity) {
+            if (vm.election.coalitionAsociatedId !== null) {
+                if (entity == vm.election.coalitionAsociatedAcronym) {
+                    return '<i class="fa medium fa-certificate" aria-hidden="true"></i>';
+                }
+            }
+            else if(vm.election.politicalPartyAsociatedId !== null) {
+                if (entity == vm.election.politicalPartyAsociatedAcronym) {
+                    return '<i class="fa medium fa-certificate" aria-hidden="true"></i>';
+                }
+            }
+            else if (vm.election.independentCandidateAsociatedId !== null) {
+                if (entity == vm.election.independentCandidateAsociatedAcronym) {
+                    return '<i class="fa medium fa-certificate" aria-hidden="true"></i>';
+                }
+            }
+        }
     }
 })();
