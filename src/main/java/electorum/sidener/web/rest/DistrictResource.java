@@ -159,7 +159,6 @@ public class DistrictResource {
 
     /**
      * GET DISTRICTS  /recount/{idElection}/districts : get disctricts by "idElection"
-     * to the query.
      *
      * @param idElection the "idElection" of the district
      * @param pageable the pagination information
@@ -176,7 +175,6 @@ public class DistrictResource {
 
     /**
      * GET DISTRICTS  /nullity/{idElection}/districts : get disctricts by "idElection"
-     * to the query.
      *
      * @param idElection the "idElection" of the district
      * @param pageable the pagination information
@@ -190,6 +188,23 @@ public class DistrictResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/nullity/{idElection}/districts");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    /**
+     * GET DISTRICTS WON  /recount/{idElection}/districts-won/{districtWon} : get disctricts-won by "idElection"
+     *
+     * @param idElection the "idElection" of the district
+     * @param districtWon Win or Lose
+     * @return the result of the search
+     */
+    @GetMapping("/recount/{idElection}/districts-won/{districtWon}")
+    @Timed
+    public ResponseEntity<Long> districtsWon(@PathVariable Long idElection, @PathVariable Boolean districtWon) {
+        log.debug("REST request to get the Districts {} by Election : {}", districtWon, idElection);
+        Long districtsWon = districtService.districtsWon(idElection, districtWon);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(districtsWon));
+    }
+
+
 
     /**
      * Post /district : Create a new election data from file

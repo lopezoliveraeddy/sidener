@@ -70,6 +70,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="district_won" type="bit">
+                <constraints nullable="true" />
+            </column>
+
             <column name="published" type="bit">
                 <constraints nullable="true" />
             </column>

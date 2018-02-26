@@ -114,6 +114,9 @@ public class District implements Serializable {
     @Column(name = "null_votes")
     private Long nullVotes;
 
+    @Column(name = "district_won")
+    private Boolean districtWon;
+
     @Column(name = "published")
     private Boolean published;
 
@@ -291,6 +294,19 @@ public class District implements Serializable {
         this.nullVotes = nullVotes;
     }
 
+    public Boolean isDistrictWon() {
+        return districtWon;
+    }
+
+    public District districtWon(Boolean districtWon) {
+        this.districtWon = districtWon;
+        return this;
+    }
+
+    public void setDistrictWon(Boolean districtWon) {
+        this.districtWon = districtWon;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -380,6 +396,7 @@ public class District implements Serializable {
             ", electoralRoll='" + getElectoralRoll() + "'" +
             ", totalPollingPlaces='" + getTotalPollingPlaces() + "'" +
             ", nullVotes='" + getNullVotes() + "'" +
+            ", districtWon='" + isDistrictWon() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

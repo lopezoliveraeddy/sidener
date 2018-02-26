@@ -5,12 +5,11 @@
         .module('sidenerApp')
         .controller('ElectionRecountDistrictController', ElectionRecountDistrictController);
 
-    ElectionRecountDistrictController.$inject = ['$scope', '$state', '$stateParams', 'Election', 'ElectionRecountDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams','DocumentDownload'];
+    ElectionRecountDistrictController.$inject = ['$scope', '$state', '$stateParams', 'Election', 'ElectionDistrictsWonLose', 'ElectionRecountDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams','DocumentDownload'];
 
-    function ElectionRecountDistrictController($scope, $state, $stateParams, Election, ElectionRecountDistrict, ParseLinks, AlertService, paginationConstants, pagingParams,DocumentDownload) {
+    function ElectionRecountDistrictController($scope, $state, $stateParams, Election, ElectionDistrictsWonLose, ElectionRecountDistrict, ParseLinks, AlertService, paginationConstants, pagingParams,DocumentDownload) {
 
         var vm = this;
-        console.log("eddy");
         vm.loadPage = loadPage;
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
@@ -20,9 +19,17 @@
         // Datos de la Elección
         vm.loadElection = loadElection;
         vm.openLink = openLink;
+        // Distritos Ganados - Perdidos
+        vm.districtsWon = "";
+        vm.districtsLose = "";
+
+        vm.miInvento = ElectionDistrictsWonLose.get({ idElection : $stateParams.id, districtWon : true });
 
         loadElection();
         loadAll();
+        loadDistrictsWon();
+        loadDistrictsLose();
+
 
         function loadElection () {
             Election.get({ id : $stateParams.id }, onSuccess, onError);
@@ -44,6 +51,29 @@
                 vm.queryCount = vm.totalItems;
                 vm.districts = data;
                 vm.page = pagingParams.page;
+            }
+            function onError(error) {
+                AlertService.error(error.data.message);
+            }
+        }
+
+        function loadDistrictsWon() {
+            ElectionDistrictsWonLose.get({ idElection : $stateParams.id, districtWon : true }, onSuccess, onError);
+
+            function onSuccess(data) {
+                console.log(data);
+                vm.districtsWon = data;
+            }
+            function onError(error) {
+                AlertService.error(error.data.message);
+            }
+        }
+        function loadDistrictsLose() {
+            ElectionDistrictsWonLose.get({ idElection : $stateParams.id, districtWon : false }, onSuccess, onError);
+
+            function onSuccess(data) {
+                console.log(data);
+                vm.districtsLose = data;
             }
             function onError(error) {
                 AlertService.error(error.data.message);

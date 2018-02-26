@@ -71,6 +71,10 @@
             "fieldType": "Long"
         },
         {
+            "fieldName": "districtWon",
+            "fieldType": "Boolean"
+        },
+        {
             "fieldName": "published",
             "fieldType": "Boolean"
         },

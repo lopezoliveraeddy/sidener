@@ -39,6 +39,8 @@ public class DistrictDTO implements Serializable {
 
     private Long nullVotes;
 
+    private Boolean districtWon;
+
     private Boolean published;
 
     private ZonedDateTime createdDate;
@@ -151,6 +153,14 @@ public class DistrictDTO implements Serializable {
         this.nullVotes = nullVotes;
     }
 
+    public Boolean isDistrictWon() {
+        return districtWon;
+    }
+
+    public void setDistrictWon(Boolean districtWon) {
+        this.districtWon = districtWon;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -220,6 +230,7 @@ public class DistrictDTO implements Serializable {
             ", electoralRoll='" + getElectoralRoll() + "'" +
             ", totalPollingPlaces='" + getTotalPollingPlaces() + "'" +
             ", nullVotes='" + getNullVotes() + "'" +
+            ", districtWon='" + isDistrictWon() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

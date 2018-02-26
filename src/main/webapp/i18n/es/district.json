@@ -30,13 +30,13 @@
             "totalVotes": "Total de Votos",
             "electoralRoll": "Total de Ciudadanos en la Lista Nominal",
             "totalPollingPlaces": "Total de Casillas",
-            "nullVotes": "Null Votes",
+            "nullVotes": "Votos Nulos",
+            "districtWon": "Distrito Ganado",
             "published": "Publicado",
             "createdDate": "Creado",
             "updatedDate": "Actualizado",
             "election": "Elección",
             "pollingPlacesTotal": "Total de Casillas",
-            "nullVotes": "Votos Nulos",
             "detectCausalsOfNullity": "Detectar Causales de Nulidad",
             "districts": "Distritos"
         }

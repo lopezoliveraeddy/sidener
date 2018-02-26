@@ -191,6 +191,20 @@ public class DistrictService {
         return resultPage;
     }
 
+    /**
+     *  Get districts won by idElection.
+     *
+     *  @param idElection the "idElection" of the district
+     *  @param districtWon Win or Lose
+     *  @return the districtsWon
+     */
+    @Transactional(readOnly = true)
+    public Long districtsWon(Long idElection, Boolean districtWon) {
+        log.debug("Request to get the Districts {} by Election : {}", districtWon, idElection);
+        Long districtsWon = districtRepository.countByElectionIdAndDistrictWonIs(idElection, districtWon);
+        return districtsWon;
+    }
+
     private Page<DistrictNullityDTO> resultsNullityDTO(Page<DistrictDTO> page, Pageable pageable) {
         List<DistrictNullityDTO> content = new ArrayList<>();
         for (DistrictDTO districtDTO : page) {
