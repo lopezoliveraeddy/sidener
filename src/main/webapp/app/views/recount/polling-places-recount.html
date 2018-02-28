@@ -58,15 +58,25 @@
                     <td><span ng-bind="pollingPlaceType(pollingPlace.typePollingPlace, pollingPlace.typeNumber)"></span></td>
                     <td>{{pollingPlace.town}}</td>
                     <td>
-                        <div ng-if="pollingPlace.totalVotes">
-                            <span><strong>{{pollingPlace.entityFirstPlace }}</strong></span><br>
-                            <span>{{pollingPlace.totalFirstPlace | number}} votos | {{pollingPlace.percentageFirstPlace | number:2 }}</span>
+                        <div class="media" ng-if="pollingPlace.totalVotes">
+                            <div class="media-left media-middle">
+                                <span><strong>{{pollingPlace.entityFirstPlace }}</strong></span><br>
+                                <span>{{pollingPlace.totalFirstPlace | number}} votos | {{pollingPlace.percentageFirstPlace | number:2 }}</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <span class="associated-position" ng-bind-html="asociatedPosition(pollingPlace.entityFirstPlace)"></span>
+                            </div>
                         </div>
                     </td>
                     <td>
-                        <div ng-if="pollingPlace.totalVotes">
-                            <span><strong>{{pollingPlace.entitySecondPlace }}</strong></span><br>
-                            <span>{{pollingPlace.totalSecondPlace | number}} votos | {{pollingPlace.percentageSecondPlace | number:2 }}</span>
+                        <div class="media" ng-if="pollingPlace.totalVotes">
+                            <div class="media-left media-middle">
+                                <span><strong>{{pollingPlace.entitySecondPlace }}</strong></span><br>
+                                <span>{{pollingPlace.totalSecondPlace | number}} votos | {{pollingPlace.percentageSecondPlace | number:2 }}</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <span class="associated-position" ng-bind-html="asociatedPosition(pollingPlace.entitySecondPlace)"></span>
+                            </div>
                         </div>
                     </td>
                     <td>

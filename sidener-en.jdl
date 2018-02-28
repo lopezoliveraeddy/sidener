@@ -107,6 +107,7 @@ entity District {
     totalPollingPlaces Long,
     /* Votos Nulos */
     nullVotes Long,
+    /* Distrito Ganado o Perdido */
     districtWon Boolean,
     published Boolean,
     createdDate ZonedDateTime,
@@ -165,6 +166,8 @@ entity PollingPlace {
     totalSecondPlace Long,
     /* Url Acta de Escrutinio y Cómputo */
     urlRecordCount String,
+    /* Casilla Ganada o Perdida */
+    pollingPlaceWon Boolean,
     published Boolean,
     createdDate ZonedDateTime,
     updatedDate ZonedDateTime

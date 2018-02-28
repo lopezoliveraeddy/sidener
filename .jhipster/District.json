@@ -72,6 +72,7 @@
         },
         {
             "fieldName": "districtWon",
+            "javadoc": "Distrito Ganado o Perdido",
             "fieldType": "Boolean"
         },
         {

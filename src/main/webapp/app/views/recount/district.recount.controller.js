@@ -52,29 +52,6 @@
             }
         }
 
-        function loadDistrictsWon() {
-            ElectionDistrictsWonLose.get({ idElection : $stateParams.id, districtWon : true }, onSuccess, onError);
-
-            function onSuccess(data) {
-                console.log(data);
-                vm.districtsWon = data;
-            }
-            function onError(error) {
-                AlertService.error(error.data.message);
-            }
-        }
-        function loadDistrictsLose() {
-            ElectionDistrictsWonLose.get({ idElection : $stateParams.id, districtWon : false }, onSuccess, onError);
-
-            function onSuccess(data) {
-                console.log(data);
-                vm.districtsLose = data;
-            }
-            function onError(error) {
-                AlertService.error(error.data.message);
-            }
-        }
-
         function loadPage(page) {
             vm.page = page;
             vm.transition();

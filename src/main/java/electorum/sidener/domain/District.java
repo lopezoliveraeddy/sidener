@@ -114,6 +114,10 @@ public class District implements Serializable {
     @Column(name = "null_votes")
     private Long nullVotes;
 
+    /**
+     * Distrito Ganado o Perdido
+     */
+    @ApiModelProperty(value = "Distrito Ganado o Perdido")
     @Column(name = "district_won")
     private Boolean districtWon;
 

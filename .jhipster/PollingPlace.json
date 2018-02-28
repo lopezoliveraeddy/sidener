@@ -161,6 +161,11 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "pollingPlaceWon",
+            "javadoc": "Casilla Ganada o Perdida",
+            "fieldType": "Boolean"
+        },
+        {
             "fieldName": "published",
             "fieldType": "Boolean"
         },

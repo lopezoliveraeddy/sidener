@@ -209,6 +209,13 @@ public class PollingPlace implements Serializable {
     @Column(name = "url_record_count")
     private String urlRecordCount;
 
+    /**
+     * Casilla Ganada o Perdida
+     */
+    @ApiModelProperty(value = "Casilla Ganada o Perdida")
+    @Column(name = "polling_place_won")
+    private Boolean pollingPlaceWon;
+
     @Column(name = "published")
     private Boolean published;
 
@@ -573,6 +580,19 @@ public class PollingPlace implements Serializable {
         this.urlRecordCount = urlRecordCount;
     }
 
+    public Boolean isPollingPlaceWon() {
+        return pollingPlaceWon;
+    }
+
+    public PollingPlace pollingPlaceWon(Boolean pollingPlaceWon) {
+        this.pollingPlaceWon = pollingPlaceWon;
+        return this;
+    }
+
+    public void setPollingPlaceWon(Boolean pollingPlaceWon) {
+        this.pollingPlaceWon = pollingPlaceWon;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -724,6 +744,7 @@ public class PollingPlace implements Serializable {
             ", entitySecondPlace='" + getEntitySecondPlace() + "'" +
             ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
             ", urlRecordCount='" + getUrlRecordCount() + "'" +
+            ", pollingPlaceWon='" + isPollingPlaceWon() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
