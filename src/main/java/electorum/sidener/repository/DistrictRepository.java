@@ -21,7 +21,9 @@ public interface DistrictRepository extends JpaRepository<District, Long> {
 
     Page<District> findByElectionId(Long idElection, Pageable pageable);
 
-    Long countByElectionIdAndDistrictWonIs(Long idElection, Boolean districtWon);
+    Long countByElectionIdAndDistrictWonIsTrue(Long idElection);
+
+    Long countByElectionIdAndDistrictWonIsFalse(Long idElection);
 
     // @Query("select count(district) from District district where district.election_id =:election_id and district.district_won =:district_won")
     // District districtsWon(@Param("election_id") Long election_id, @Param("district_won") Boolean district_won);

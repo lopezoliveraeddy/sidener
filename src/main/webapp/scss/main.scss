@@ -2,7 +2,7 @@
 
 $electorum: #b0b536;
 $electorumBold: #7D8203;
-$electorumOpacity: #b0b5367a;
+$electorumOpacity: #b0b5364f;
 
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -595,4 +595,7 @@ Recuento
 }
 .color-orange {
     color: orange;
+}
+.associated-position {
+    color: $electorum;
 }

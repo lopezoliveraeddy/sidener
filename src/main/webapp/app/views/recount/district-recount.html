@@ -20,7 +20,7 @@
                             <i class="fa medium fa-trophy" aria-hidden="true"></i>
                         </div>
                         <div class="media-body media-middle">
-                            <strong><span class="color-green">{{vm.districtsWon}} distritos ganados</span>, <span class="color-orange">{{vm.districtsLose}} distritos perdidos</span></strong>
+                            <strong><span class="color-green">{{vm.districtsWonLose.districtsWon}} distritos ganados</span>, <span class="color-orange">{{vm.districtsWonLose.districtsLose}} distritos perdidos</span></strong>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                             <span>{{district.totalFirstPlace | number}} votos | {{district.percentageFirstPlace | number:2 }}%</span>
                         </div>
                         <div class="media-right media-middle">
-                            <span ng-bind-html="asociatedPosition(district.entityFirstPlace)"></span>
+                            <span class="associated-position" ng-bind-html="asociatedPosition(district.entityFirstPlace)"></span>
                         </div>
                     </div>
                 </td>
@@ -72,7 +72,7 @@
                             <span>{{district.totalSecondPlace | number}} votos | {{district.percentageSecondPlace | number:2 }}%</span>
                         </div>
                         <div class="media-right media-middle">
-                            <span ng-bind-html="asociatedPosition(district.entitySecondPlace)"></span>
+                            <span class="associated-position" ng-bind-html="asociatedPosition(district.entitySecondPlace)"></span>
                         </div>
                     </div>
                 </td>

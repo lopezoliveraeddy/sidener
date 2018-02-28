@@ -4,10 +4,7 @@ import electorum.sidener.domain.District;
 import electorum.sidener.domain.enumeration.RecountDistrictsRule;
 import electorum.sidener.repository.DistrictRepository;
 import electorum.sidener.repository.search.DistrictSearchRepository;
-import electorum.sidener.service.dto.DistrictDTO;
-import electorum.sidener.service.dto.DistrictNullityDTO;
-import electorum.sidener.service.dto.DistrictRecountDTO;
-import electorum.sidener.service.dto.ElectionDTO;
+import electorum.sidener.service.dto.*;
 import electorum.sidener.service.mapper.DistrictMapper;
 import electorum.sidener.service.mapper.DistrictNullityMapper;
 import electorum.sidener.service.mapper.DistrictRecountMapper;
@@ -192,17 +189,22 @@ public class DistrictService {
     }
 
     /**
-     *  Get districts won by idElection.
+     *  Get districts won and lose by idElection.
      *
      *  @param idElection the "idElection" of the district
-     *  @param districtWon Win or Lose
      *  @return the districtsWon
      */
     @Transactional(readOnly = true)
-    public Long districtsWon(Long idElection, Boolean districtWon) {
-        log.debug("Request to get the Districts {} by Election : {}", districtWon, idElection);
-        Long districtsWon = districtRepository.countByElectionIdAndDistrictWonIs(idElection, districtWon);
-        return districtsWon;
+    public DistrictWonLoseDTO districtsWonLose(Long idElection) {
+        log.debug("Request to get the Districts won-lose by Election : {}", idElection);
+        Long districtWon = districtRepository.countByElectionIdAndDistrictWonIsTrue(idElection);
+        Long districtLose = districtRepository.countByElectionIdAndDistrictWonIsFalse(idElection);
+
+        DistrictWonLoseDTO district = new DistrictWonLoseDTO();
+        district.setDistrictsLose(districtLose);
+        district.setDistrictsWon(districtWon);
+
+        return district;
     }
 
     private Page<DistrictNullityDTO> resultsNullityDTO(Page<DistrictDTO> page, Pageable pageable) {

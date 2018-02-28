@@ -3,13 +3,10 @@ package electorum.sidener.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.opencsv.CSVReader;
 import electorum.sidener.service.DistrictService;
-import electorum.sidener.service.dto.DistrictRecountDTO;
-import electorum.sidener.service.dto.DistrictNullityDTO;
-import electorum.sidener.service.dto.LoadDTO;
+import electorum.sidener.service.dto.*;
 import electorum.sidener.web.rest.util.DistrictFromFile;
 import electorum.sidener.web.rest.util.HeaderUtil;
 import electorum.sidener.web.rest.util.PaginationUtil;
-import electorum.sidener.service.dto.DistrictDTO;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.apache.commons.io.FileUtils;
@@ -190,17 +187,16 @@ public class DistrictResource {
     }
 
     /**
-     * GET DISTRICTS WON  /recount/{idElection}/districts-won/{districtWon} : get disctricts-won by "idElection"
+     * GET DISTRICTS WON AND LOSE  /recount/{idElection}/districts-won-lose : get disctricts-won-lose by "idElection"
      *
      * @param idElection the "idElection" of the district
-     * @param districtWon Win or Lose
      * @return the result of the search
      */
-    @GetMapping("/recount/{idElection}/districts-won/{districtWon}")
+    @GetMapping("/recount/{idElection}/districts-won-lose")
     @Timed
-    public ResponseEntity<Long> districtsWon(@PathVariable Long idElection, @PathVariable Boolean districtWon) {
-        log.debug("REST request to get the Districts {} by Election : {}", districtWon, idElection);
-        Long districtsWon = districtService.districtsWon(idElection, districtWon);
+    public ResponseEntity<DistrictWonLoseDTO> districtsWonLose(@PathVariable Long idElection) {
+        log.debug("REST request to get the Districts won-lose by Election : {}", idElection);
+        DistrictWonLoseDTO districtsWon = districtService.districtsWonLose(idElection);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(districtsWon));
     }
 

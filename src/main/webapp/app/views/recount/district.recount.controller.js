@@ -20,15 +20,10 @@
         vm.loadElection = loadElection;
         vm.openLink = openLink;
         // Distritos Ganados - Perdidos
-        vm.districtsWon = "";
-        vm.districtsLose = "";
-
-        vm.miInvento = ElectionDistrictsWonLose.get({ idElection : $stateParams.id, districtWon : true });
+        vm.districtsWonLose = ElectionDistrictsWonLose.get({ idElection : $stateParams.id });
 
         loadElection();
         loadAll();
-        loadDistrictsWon();
-        loadDistrictsLose();
 
 
         function loadElection () {
