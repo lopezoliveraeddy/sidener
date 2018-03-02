@@ -7,7 +7,7 @@
     ElectionDistrictsWonLose.$inject = ['$resource', 'DateUtils'];
 
     function ElectionDistrictsWonLose ($resource, DateUtils) {
-        var resourceUrl =  'api/recount/:idElection/districts-won';
+        var resourceUrl =  'api/recount/:idElection/districts-won-lose';
 
         return $resource(resourceUrl, {}, {
             'get': {

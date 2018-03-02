@@ -11,7 +11,10 @@
 
         var vm = this;
         vm.loadPage = loadPage;
+        vm.predicate = pagingParams.predicate;
+        vm.reverse = pagingParams.ascending;
         vm.transition = transition;
+        vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.loadAll = loadAll;
         vm.lugares= [];
@@ -25,7 +28,6 @@
         loadElection();
         loadAll();
 
-
         function loadElection () {
             Election.get({ id : $stateParams.id }, onSuccess, onError);
             function onSuccess(data) {
@@ -37,8 +39,21 @@
         }
 
         function loadAll () {
-            ElectionRecountDistrict.get({ idElection : $stateParams.id
+            ElectionRecountDistrict.get({
+                idElection : $stateParams.id,
+                page: pagingParams.page -1,
+                size: vm.itemsPerPage,
+                sort: sort()
             }, onSuccess, onError);
+
+            function sort() {
+                console.log(vm.predicate);
+                var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
+                if (vm.predicate !== 'id') {
+                    result.push('id');
+                }
+                return result;
+            }
 
             function onSuccess(data, headers) {
                 vm.links = ParseLinks.parse(headers('link'));
@@ -60,7 +75,8 @@
         function transition() {
             $state.transitionTo($state.$current, {
                 id: $stateParams.id,
-                page: vm.page
+                page: vm.page,
+                sort: vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')
             });
         }
 
