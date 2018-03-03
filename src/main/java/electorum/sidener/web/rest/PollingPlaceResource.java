@@ -13,7 +13,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
-import electorum.sidener.service.dto.PollingPlaceRecountDTO;
+import electorum.sidener.domain.PollingPlace;
+import electorum.sidener.service.dto.*;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,9 +37,6 @@ import com.codahale.metrics.annotation.Timed;
 import com.opencsv.*;
 
 import electorum.sidener.service.PollingPlaceService;
-import electorum.sidener.service.dto.ElectionDTO;
-import electorum.sidener.service.dto.LoadDTO;
-import electorum.sidener.service.dto.PollingPlaceDTO;
 import electorum.sidener.web.rest.util.ElectionFromFile;
 import electorum.sidener.web.rest.util.HeaderUtil;
 import electorum.sidener.web.rest.util.PaginationUtil;
@@ -201,12 +199,12 @@ public class PollingPlaceResource {
 	}
 
 	/**
-	 * GET DISTRICTS /districts/{id}/polling-places : get pollingPlaces by "id"
-	 * district to the query.
+	 * GET POLLING PLACES /districts/{id}/polling-places : get pollingPlaces by "idDistrict".
 	 *
      * @param idDistrict the "id" of the District
 	 * @param pageable the pagination information
-	 * @return the result of the search
+	 * @return the ResponseEntity with status 200 (OK) and the list of pollingPlaces
+     *         in body
 	 */
 	@GetMapping("/recount/{idDistrict}/polling-places")
 	@Timed
@@ -217,6 +215,20 @@ public class PollingPlaceResource {
 		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/recount/{id}/polling-places");
 		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
 	}
+
+    /**
+     * GET POLLING PLACES WON AND LOSE  /recount/{idDistrict}/polling-places-won-lose : get pollingPlaces-won-lose by "idDistrict"
+     *
+     * @param idDistrict the "idDistrict" of the pollingPlace
+     * @return the ResponseEntity with status 200 (OK)
+     */
+    @GetMapping("/recount/{idDistrict}/polling-places-won-lose")
+    @Timed
+    public ResponseEntity<PollingPlaceWonLoseDTO> pollingPlacesWonLose(@PathVariable Long idDistrict) {
+        log.debug("REST request to get the PollingPlaces won-lose by District : {}", idDistrict);
+        PollingPlaceWonLoseDTO pollingPlaceWonLoseDTO = pollingPlaceService.pollingPlaceWonLose(idDistrict);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(pollingPlaceWonLoseDTO));
+    }
 
 	/**
 	 * Post /election : Create a new election data from file
@@ -282,5 +294,4 @@ public class PollingPlaceResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
 
     }
-
 }

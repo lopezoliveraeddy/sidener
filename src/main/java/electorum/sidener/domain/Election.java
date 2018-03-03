@@ -198,13 +198,6 @@ public class Election implements Serializable {
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "election_causals",
-               joinColumns = @JoinColumn(name="elections_id", referencedColumnName="id"),
-               inverseJoinColumns = @JoinColumn(name="causals_id", referencedColumnName="id"))
-    private Set<Causal> causals = new HashSet<>();
-
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "election_user",
                joinColumns = @JoinColumn(name="elections_id", referencedColumnName="id"),
                inverseJoinColumns = @JoinColumn(name="users_id", referencedColumnName="id"))
@@ -585,29 +578,6 @@ public class Election implements Serializable {
 
     public void setCoalitions(Set<Coalition> coalitions) {
         this.coalitions = coalitions;
-    }
-
-    public Set<Causal> getCausals() {
-        return causals;
-    }
-
-    public Election causals(Set<Causal> causals) {
-        this.causals = causals;
-        return this;
-    }
-
-    public Election addCausals(Causal causal) {
-        this.causals.add(causal);
-        return this;
-    }
-
-    public Election removeCausals(Causal causal) {
-        this.causals.remove(causal);
-        return this;
-    }
-
-    public void setCausals(Set<Causal> causals) {
-        this.causals = causals;
     }
 
     public Set<User> getUsers() {

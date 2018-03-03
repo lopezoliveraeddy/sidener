@@ -332,38 +332,6 @@
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div data-translate="sidenerApp.election.causals" class="panel-heading">Causales</div>
-            <div class="panel-body">
-                <div class="form-group">
-                    <label data-translate="sidenerApp.election.recount" for="field-causals-recount">Recuento</label>
-                    <ui-select multiple ng-model="vm.tempCausalsRecount" id="field-causals-recount" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true" class="causal">
-                        <ui-select-match placeholder="Seleccion de causales:">
-                            <span class="causal-color" ng-style="{'background-color': $item.color}"></span>
-                            <span class="causal-description">{{$item.name}}</span>
-                        </ui-select-match>
-                        <ui-select-choices repeat="causal in vm.causalsRecount | propsFilter: {name: $select.search}" position='down'>
-                            <span class="causal-color" ng-style="{'background-color': causal.color}"></span>
-                            <span class="causal-description" ng-bind-html="causal.name | highlight: $select.search"></span>
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-                <div class="form-group">
-                    <label data-translate="sidenerApp.election.nullity" for="field-causals-nullity">Nulidad</label>
-                    <ui-select multiple ng-model="vm.tempCausalsNullity" id="field-causals-nullity" theme="bootstrap" sortable="true" close-on-select="false" search-enabled="true" class="causal">
-                        <ui-select-match placeholder="Seleccion de causales:">
-                            <span class="causal-color" ng-style="{'background-color': $item.color}"></span>
-                            <span class="causal-description">{{$item.name}}</span>
-                        </ui-select-match>
-                        <ui-select-choices repeat="causal in vm.causalsNullity | propsFilter: {name: $select.search}" position='down'>
-                            <span class="causal-color" ng-style="{'background-color': causal.color}"></span>
-                            <span class="causal-description" ng-bind-html="causal.name | highlight: $select.search"></span>
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-            </div>
-        </div>
-
         <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.election.published" for="field_published">Published</label>
             <input type="checkbox" name="published" id="field_published"

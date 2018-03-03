@@ -247,7 +247,6 @@ relationship ManyToMany {
 	Election{politicalParties(name)} to PoliticalParty,
   	Election{independentCandidates(name)} to IndependentCandidate,
 	Election{coalitions(name)} to Coalition,
-	Election{causals(name)} to Causal,
 	PollingPlace{causals(name)} to Causal,
 	Coalition{politicalParties(name)} to PoliticalParty,
     Causal{causalDescription(text)} to CausalDescription,

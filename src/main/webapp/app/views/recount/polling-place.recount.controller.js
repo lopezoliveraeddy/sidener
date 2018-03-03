@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('DistrictRecountPollingPlaceController', DistrictRecountPollingPlaceController);
 
-    DistrictRecountPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'CausalType', 'District', 'Election', 'DistrictRecountPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
+    DistrictRecountPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'CausalType', 'District', 'Election', 'ElectionPollingPlacesWonLose', 'DistrictRecountPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
 
-    function DistrictRecountPollingPlaceController($scope, $state, $stateParams, AlertService, CausalType, District, Election, DistrictRecountPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
+    function DistrictRecountPollingPlaceController($scope, $state, $stateParams, AlertService, CausalType, District, Election, ElectionPollingPlacesWonLose, DistrictRecountPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -26,6 +26,9 @@
         vm.loadElection = loadElection;
         vm.election = [];
 
+        // Casillas Ganadas - Perdidas
+        vm.pollingPlacesWonLose = ElectionPollingPlacesWonLose.get({ idDistrict : $stateParams.id });
+
         // Causales
         vm.causals = [];
         vm.causalsRecount = CausalType.get({
@@ -38,9 +41,18 @@
         function loadAll () {
             DistrictRecountPollingPlaces.get({
                 idDistrict : $stateParams.id,
-                page: pagingParams.page - 1
+                page: pagingParams.page - 1,
+                size: vm.itemsPerPage,
+                sort: sort()
             }, onSuccess, onError);
 
+            function sort() {
+                var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
+                if (vm.predicate !== 'id') {
+                    result.push('id');
+                }
+                return result;
+            }
             function onSuccess(data, headers) {
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');

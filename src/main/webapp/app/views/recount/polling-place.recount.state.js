@@ -28,6 +28,10 @@
                 page: {
                     value: '1',
                     squash: true
+                },
+                sort: {
+                    value: 'pollingPlaceWon,desc',
+                    squash: true
                 }
             },
             resolve: {
@@ -35,6 +39,9 @@
                     return {
                         id: $stateParams.id,
                         page: PaginationUtil.parsePage($stateParams.page),
+                        sort: $stateParams.sort,
+                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                        ascending: PaginationUtil.parseAscending($stateParams.sort)
                     };
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {

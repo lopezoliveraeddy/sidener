@@ -159,7 +159,7 @@ public class DistrictResource {
      *
      * @param idElection the "idElection" of the district
      * @param pageable the pagination information
-     * @return the result of the search
+     * @return the ResponseEntity with status 200 (OK) and the list of districts in body
      */
     @GetMapping("/recount/{idElection}/districts")
     @Timed
@@ -175,7 +175,7 @@ public class DistrictResource {
      *
      * @param idElection the "idElection" of the district
      * @param pageable the pagination information
-     * @return the result of the search
+     * @return the ResponseEntity with status 200 (OK) and the list of districts in body
      */
     @GetMapping("/nullity/{idElection}/districts")
     @Timed
@@ -190,7 +190,7 @@ public class DistrictResource {
      * GET DISTRICTS WON AND LOSE  /recount/{idElection}/districts-won-lose : get disctricts-won-lose by "idElection"
      *
      * @param idElection the "idElection" of the district
-     * @return the result of the search
+     * @return the ResponseEntity with status 200 (OK)
      */
     @GetMapping("/recount/{idElection}/districts-won-lose")
     @Timed
