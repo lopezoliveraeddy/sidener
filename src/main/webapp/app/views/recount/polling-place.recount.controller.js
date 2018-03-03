@@ -48,8 +48,10 @@
 
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
-                if (vm.predicate !== 'id') {
-                    result.push('id');
+                if (vm.predicate == 'pollingPlaceWon') {
+                    result.push('section');
+                    result.push('typePollingPlace');
+                    result.push('typeNumber');
                 }
                 return result;
             }
@@ -73,7 +75,8 @@
         function transition() {
             $state.transitionTo($state.$current, {
                 page: vm.page,
-                id: $stateParams.id
+                id: $stateParams.id,
+                sort: vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')
             });
         }
 
@@ -118,6 +121,7 @@
 
         // Actualización dada la selección de causales
         $scope.updateCausals = function (pollingPlace) {
+            console.log(pollingPlace);
             vm.isSaving = true;
             PollingPlace.update(pollingPlace, onSaveSuccess, onSaveError);
         };

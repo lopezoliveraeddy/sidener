@@ -7,7 +7,7 @@
 
     ElectionRecountDistrictController.$inject = ['$scope', '$state', '$stateParams', 'Election', 'ElectionDistrictsWonLose', 'ElectionRecountDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams','DocumentDownload'];
 
-    function ElectionRecountDistrictController($scope, $state, $stateParams, Election, ElectionDistrictsWonLose, ElectionRecountDistrict, ParseLinks, AlertService, paginationConstants, pagingParams,DocumentDownload) {
+    function ElectionRecountDistrictController($scope, $state, $stateParams, Election, ElectionDistrictsWonLose, ElectionRecountDistrict, ParseLinks, AlertService, paginationConstants, pagingParams, DocumentDownload) {
 
         var vm = this;
 
@@ -48,8 +48,8 @@
 
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
-                if (vm.predicate !== 'id') {
-                    result.push('id');
+                if (vm.predicate == 'districtWon') {
+                    result.push('decimalNumber');
                 }
                 return result;
             }
