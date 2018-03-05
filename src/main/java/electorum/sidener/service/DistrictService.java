@@ -123,7 +123,7 @@ public class DistrictService {
      *
      *  @param idElection the "idElection" of the district
      *  @param pageable the pagination information
-     *  @return the entity
+     *  @return the list of entities
      */
     @Transactional(readOnly = true)
     public Page<DistrictRecountDTO> getDistrictsByIdElectionRecount(Long idElection, Pageable pageable) {
@@ -178,7 +178,7 @@ public class DistrictService {
      *
      *  @param idElection the "idElection" of the district
      *  @param pageable the pagination information
-     *  @return the entity
+     *  @return the list of entities
      */
     @Transactional(readOnly = true)
     public Page<DistrictNullityDTO> getDistrictsByIdElectionNullity(Long idElection, Pageable pageable) {
@@ -186,25 +186,6 @@ public class DistrictService {
         Page<DistrictDTO> page = districtRepository.findByElectionId(idElection, pageable).map(districtMapper::toDto);
         Page<DistrictNullityDTO> resultPage = resultsNullityDTO(page, pageable);
         return resultPage;
-    }
-
-    /**
-     *  Get districts won and lose by idElection.
-     *
-     *  @param idElection the "idElection" of the district
-     *  @return the districtsWon
-     */
-    @Transactional(readOnly = true)
-    public DistrictWonLoseDTO districtsWonLose(Long idElection) {
-        log.debug("Request to get the Districts won-lose by Election : {}", idElection);
-        Long districtWon = districtRepository.countByElectionIdAndDistrictWonIsTrue(idElection);
-        Long districtLose = districtRepository.countByElectionIdAndDistrictWonIsFalse(idElection);
-
-        DistrictWonLoseDTO district = new DistrictWonLoseDTO();
-        district.setDistrictsLose(districtLose);
-        district.setDistrictsWon(districtWon);
-
-        return district;
     }
 
     private Page<DistrictNullityDTO> resultsNullityDTO(Page<DistrictDTO> page, Pageable pageable) {
@@ -217,5 +198,24 @@ public class DistrictService {
         }
         Page<DistrictNullityDTO> resultpage = new PageImpl<>(content, pageable, page.getTotalElements());
         return resultpage;
+    }
+
+    /**
+     *  Get districts won and lose by idElection.
+     *
+     *  @param idElection the "idElection" of the district
+     *  @return the entity
+     */
+    @Transactional(readOnly = true)
+    public DistrictWonLoseDTO districtsWonLose(Long idElection) {
+        log.debug("Request to get the Districts won-lose by Election : {}", idElection);
+        Long districtWon = districtRepository.countByElectionIdAndDistrictWonIsTrue(idElection);
+        Long districtLose = districtRepository.countByElectionIdAndDistrictWonIsFalse(idElection);
+
+        DistrictWonLoseDTO district = new DistrictWonLoseDTO();
+        district.setDistrictsLose(districtLose);
+        district.setDistrictsWon(districtWon);
+
+        return district;
     }
 }

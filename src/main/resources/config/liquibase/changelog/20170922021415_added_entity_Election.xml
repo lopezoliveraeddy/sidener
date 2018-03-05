@@ -153,17 +153,6 @@
 
         <addPrimaryKey columnNames="elections_id, coalitions_id" tableName="election_coalitions"/>
         
-        <createTable tableName="election_causals">
-            <column name="causals_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="elections_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="elections_id, causals_id" tableName="election_causals"/>
-        
         <createTable tableName="election_user">
             <column name="users_id" type="bigint">
                 <constraints nullable="false"/>

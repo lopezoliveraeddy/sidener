@@ -205,7 +205,7 @@
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('^', null, { reload: 'election' });
+                    $state.go('election', null, { reload: 'election' });
                 }, function() {
                     $state.go('^');
                 });

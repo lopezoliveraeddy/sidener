@@ -21,7 +21,7 @@
                             <i class="fa medium fa-trophy" aria-hidden="true"></i>
                         </div>
                         <div class="media-body media-middle">
-                            <strong><span class="color-green">50 casillas ganadas</span>, <span class="color-orange">140 casillas perdidas</span></strong>
+                            <strong><span class="color-green">{{vm.pollingPlacesWonLose.pollingPlacesWon}} distritos ganados</span>, <span class="color-orange">{{vm.pollingPlacesWonLose.pollingPlacesLose}} distritos perdidos</span></strong>
                         </div>
                     </div>
                 </div>
@@ -41,8 +41,8 @@
             <table class="jh-table table table-striped table-bordered">
                 <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th><span data-translate="sidenerApp.pollingPlace.section">Section</span></th>
-                    <th><span data-translate="sidenerApp.pollingPlace.town">Town</span></th>
+                    <th jh-sort-by="section"><span data-translate="sidenerApp.pollingPlace.section">Section</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="town"><span data-translate="sidenerApp.pollingPlace.town">Town</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th><span data-translate="sidenerApp.pollingPlace.typePollingPlace">Type Polling Place</span></th>
                     <th><span data-translate="sidenerApp.pollingPlace.politicalPartyFirstPlace">Political Party First Place</span></th>
                     <th><span data-translate="sidenerApp.pollingPlace.politicalPartySecondPlace">Political Party Second Place</span></th>
@@ -55,8 +55,8 @@
                 <tbody>
                 <tr ng-repeat="pollingPlace in vm.pollingPlaces track by pollingPlace.id" ng-class="countingAssumption(pollingPlace.countingAssumption)">
                     <td><a ui-sref="polling-place-detail({id:pollingPlace.id})" class="btn btn-info">{{pollingPlace.section}}</a></td>
-                    <td><span ng-bind="pollingPlaceType(pollingPlace.typePollingPlace, pollingPlace.typeNumber)"></span></td>
                     <td>{{pollingPlace.town}}</td>
+                    <td><span ng-bind="pollingPlaceType(pollingPlace.typePollingPlace, pollingPlace.typeNumber)"></span></td>
                     <td>
                         <div class="media" ng-if="pollingPlace.totalVotes">
                             <div class="media-left media-middle">

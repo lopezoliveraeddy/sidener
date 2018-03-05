@@ -52,14 +52,6 @@
         {
             "relationshipType": "many-to-many",
             "otherEntityRelationshipName": "",
-            "relationshipName": "causals",
-            "otherEntityName": "causal",
-            "otherEntityField": "name",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "",
             "relationshipName": "user",
             "otherEntityName": "user",
             "otherEntityField": "login",

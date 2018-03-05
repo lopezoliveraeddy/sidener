@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('DistrictRecountPollingPlaceController', DistrictRecountPollingPlaceController);
 
-    DistrictRecountPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'CausalType', 'District', 'Election', 'DistrictRecountPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
+    DistrictRecountPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'CausalType', 'District', 'Election', 'ElectionPollingPlacesWonLose', 'DistrictRecountPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
 
-    function DistrictRecountPollingPlaceController($scope, $state, $stateParams, AlertService, CausalType, District, Election, DistrictRecountPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
+    function DistrictRecountPollingPlaceController($scope, $state, $stateParams, AlertService, CausalType, District, Election, ElectionPollingPlacesWonLose, DistrictRecountPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -26,6 +26,9 @@
         vm.loadElection = loadElection;
         vm.election = [];
 
+        // Casillas Ganadas - Perdidas
+        vm.pollingPlacesWonLose = ElectionPollingPlacesWonLose.get({ idDistrict : $stateParams.id });
+
         // Causales
         vm.causals = [];
         vm.causalsRecount = CausalType.get({
@@ -38,9 +41,20 @@
         function loadAll () {
             DistrictRecountPollingPlaces.get({
                 idDistrict : $stateParams.id,
-                page: pagingParams.page - 1
+                page: pagingParams.page - 1,
+                size: vm.itemsPerPage,
+                sort: sort()
             }, onSuccess, onError);
 
+            function sort() {
+                var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
+                if (vm.predicate == 'pollingPlaceWon') {
+                    result.push('section');
+                    result.push('typePollingPlace');
+                    result.push('typeNumber');
+                }
+                return result;
+            }
             function onSuccess(data, headers) {
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
@@ -61,7 +75,8 @@
         function transition() {
             $state.transitionTo($state.$current, {
                 page: vm.page,
-                id: $stateParams.id
+                id: $stateParams.id,
+                sort: vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')
             });
         }
 
@@ -106,6 +121,7 @@
 
         // Actualización dada la selección de causales
         $scope.updateCausals = function (pollingPlace) {
+            console.log(pollingPlace);
             vm.isSaving = true;
             PollingPlace.update(pollingPlace, onSaveSuccess, onSaveError);
         };

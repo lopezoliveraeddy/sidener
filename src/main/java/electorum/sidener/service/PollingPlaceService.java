@@ -1,7 +1,6 @@
 package electorum.sidener.service;
 
 import electorum.sidener.domain.PollingPlace;
-import electorum.sidener.domain.enumeration.RecountDistrictsRule;
 import electorum.sidener.repository.PollingPlaceRepository;
 import electorum.sidener.repository.search.PollingPlaceSearchRepository;
 import electorum.sidener.service.dto.*;
@@ -116,7 +115,7 @@ public class PollingPlaceService {
      *
      *  @param idDistrict the "id" of the district
      *  @param pageable the pagination information
-     *  @return the entity
+     *  @return the list of entities
      */
     @Transactional(readOnly = true)
     public Page<PollingPlaceRecountDTO> getPollingPlacesByIdDistrict(Long idDistrict, Pageable pageable) {
@@ -154,13 +153,32 @@ public class PollingPlaceService {
      *
      *  @param id the id of the entity
      *  @param pageable the pagination information
-     *  @return the entity
+     *  @return the list of entities
      */
     @Transactional(readOnly = true)
     public Page<PollingPlaceDTO> getPollingPlacesByIdElection(Long id, Pageable pageable) {
         log.debug("Request to get PollingPlaces by Election : {}", id);
         Page<PollingPlace> result = pollingPlaceRepository.findByElectionId(id, pageable);
         return result.map(pollingPlaceMapper::toDto);
+    }
+
+    /**
+     *  Get pollingPlaces won and lose by idDistrict.
+     *
+     *  @param idDistrict the "idDistrict" of the pollingPlace
+     *  @return the entity
+     */
+    @Transactional(readOnly = true)
+    public PollingPlaceWonLoseDTO pollingPlaceWonLose(Long idDistrict) {
+        log.debug("Request to get the PollingPlaces won-lose by District : {}", idDistrict);
+        Long pollingPlaceWon = pollingPlaceRepository.countByDistrictIdAndPollingPlaceWonIsTrue(idDistrict);
+        Long pollingPlaceLose = pollingPlaceRepository.countByDistrictIdAndPollingPlaceWonIsFalse(idDistrict);
+
+        PollingPlaceWonLoseDTO pollingPlaceWonLoseDTO = new PollingPlaceWonLoseDTO();
+        pollingPlaceWonLoseDTO.setPollingPlacesWon(pollingPlaceWon);
+        pollingPlaceWonLoseDTO.setPollingPlacesLose(pollingPlaceLose);
+
+        return pollingPlaceWonLoseDTO;
     }
 
 

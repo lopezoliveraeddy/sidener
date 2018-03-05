@@ -117,8 +117,6 @@ public class ElectionDTO implements Serializable {
 
     private Set<CoalitionDTO> coalitions = new HashSet<>();
 
-    private Set<CausalDTO> causals = new HashSet<>();
-
     private Set<UserDTO> users = new HashSet<>();
 
     public Long getId() {
@@ -391,14 +389,6 @@ public class ElectionDTO implements Serializable {
 
     public void setCoalitions(Set<CoalitionDTO> coalitions) {
         this.coalitions = coalitions;
-    }
-
-    public Set<CausalDTO> getCausals() {
-        return causals;
-    }
-
-    public void setCausals(Set<CausalDTO> causals) {
-        this.causals = causals;
     }
 
     public Set<UserDTO> getUsers() {

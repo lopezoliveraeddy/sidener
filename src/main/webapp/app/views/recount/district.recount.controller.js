@@ -7,10 +7,13 @@
 
     ElectionRecountDistrictController.$inject = ['$scope', '$state', '$stateParams', 'Election', 'ElectionDistrictsWonLose', 'ElectionRecountDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams','DocumentDownload'];
 
-    function ElectionRecountDistrictController($scope, $state, $stateParams, Election, ElectionDistrictsWonLose, ElectionRecountDistrict, ParseLinks, AlertService, paginationConstants, pagingParams,DocumentDownload) {
+    function ElectionRecountDistrictController($scope, $state, $stateParams, Election, ElectionDistrictsWonLose, ElectionRecountDistrict, ParseLinks, AlertService, paginationConstants, pagingParams, DocumentDownload) {
 
         var vm = this;
+
         vm.loadPage = loadPage;
+        vm.predicate = pagingParams.predicate;
+        vm.reverse = pagingParams.ascending;
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.loadAll = loadAll;
@@ -25,7 +28,6 @@
         loadElection();
         loadAll();
 
-
         function loadElection () {
             Election.get({ id : $stateParams.id }, onSuccess, onError);
             function onSuccess(data) {
@@ -37,9 +39,20 @@
         }
 
         function loadAll () {
-            ElectionRecountDistrict.get({ idElection : $stateParams.id
+            ElectionRecountDistrict.get({
+                idElection : $stateParams.id,
+                page: pagingParams.page - 1,
+                size: vm.itemsPerPage,
+                sort: sort()
             }, onSuccess, onError);
 
+            function sort() {
+                var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
+                if (vm.predicate == 'districtWon') {
+                    result.push('decimalNumber');
+                }
+                return result;
+            }
             function onSuccess(data, headers) {
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
@@ -60,7 +73,8 @@
         function transition() {
             $state.transitionTo($state.$current, {
                 id: $stateParams.id,
-                page: vm.page
+                page: vm.page,
+                sort: vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')
             });
         }
 

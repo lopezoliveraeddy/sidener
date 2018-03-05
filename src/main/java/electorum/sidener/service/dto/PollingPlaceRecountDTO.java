@@ -27,6 +27,7 @@ public class PollingPlaceRecountDTO implements Serializable {
     private String entitySecondPlace;
     private Long totalSecondPlace;
     private String urlRecordCount;
+    private Boolean pollingPlaceWon;
 
     private Long electionId;
     private Long districtId;
@@ -113,6 +114,8 @@ public class PollingPlaceRecountDTO implements Serializable {
     public void setUrlRecordCount(String urlRecordCount) {
         this.urlRecordCount = urlRecordCount;
     }
+    public Boolean getPollingPlaceWon() { return pollingPlaceWon; }
+    public void setPollingPlaceWon(Boolean pollingPlaceWon) { this.pollingPlaceWon = pollingPlaceWon; }
 
     public Long getElectionId() {
         return electionId;
@@ -164,6 +167,7 @@ public class PollingPlaceRecountDTO implements Serializable {
             ", entitySecondPlace='" + getEntitySecondPlace() + "'" +
             ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
             ", urlRecordCount='" + getUrlRecordCount() + "'" +
+            ", pollingPlaceWon='" + getPollingPlaceWon() + "'" +
             ", difference='" + getDifference() + "'" +
             ", percentageFirstPlace='" + getPercentageFirstPlace() + "'" +
             ", percentageSecondPlace='" + getPercentageSecondPlace() + "'" +

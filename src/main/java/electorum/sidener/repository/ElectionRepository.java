@@ -15,10 +15,10 @@ import java.util.List;
 @SuppressWarnings("unused")
 @Repository
 public interface ElectionRepository extends JpaRepository<Election, Long> {
-    @Query("select distinct election from Election election left join fetch election.politicalParties left join fetch election.independentCandidates left join fetch election.coalitions left join fetch election.causals left join fetch election.users")
+    @Query("select distinct election from Election election left join fetch election.politicalParties left join fetch election.independentCandidates left join fetch election.coalitions left join fetch election.users")
     List<Election> findAllWithEagerRelationships();
 
-    @Query("select election from Election election left join fetch election.politicalParties left join fetch election.independentCandidates left join fetch election.coalitions left join fetch election.causals left join fetch election.users where election.id =:id")
+    @Query("select election from Election election left join fetch election.politicalParties left join fetch election.independentCandidates left join fetch election.coalitions left join fetch election.users where election.id =:id")
     Election findOneWithEagerRelationships(@Param("id") Long id);
 
     @Query("select election from Election election inner join election.users as users where users.login = ?#{principal.username}")

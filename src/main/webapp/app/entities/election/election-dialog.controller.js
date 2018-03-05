@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('ElectionDialogController', ElectionDialogController);
 
-    ElectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Election', 'ElectionType', 'PoliticalParty', 'Coalition', 'IndependentCandidate', 'Causal', 'CausalType', 'User','Upload'];
+    ElectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Election', 'ElectionType', 'PoliticalParty', 'Coalition', 'IndependentCandidate', 'User','Upload'];
 
-    function ElectionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Election, ElectionType, PoliticalParty, Coalition, IndependentCandidate, Causal, CausalType, User) {
+    function ElectionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Election, ElectionType, PoliticalParty, Coalition, IndependentCandidate, User) {
         var vm = this;
 
         vm.election = entity;
@@ -22,16 +22,7 @@
         vm.coalitions = Coalition.query();
         vm.independentcandidates = IndependentCandidate.query();
         vm.users = User.query();
-        /* Causales */
-        vm.causals = Causal.query();
-        vm.tempCausalsRecount = [];
-        vm.tempCausalsNullity = [];
-        vm.causalsRecount = CausalType.get({
-            typeCausal: 'RECOUNT'
-        });
-        vm.causalsNullity = CausalType.get({
-            typeCausal: 'NULLITY'
-        });
+
         /*Files*/
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
@@ -39,15 +30,6 @@
         ini();
 
         function ini() {
-            angular.forEach(vm.election.causals, function(causal, key) {
-                if(causal.typeCausal === 'RECOUNT') {
-                    vm.tempCausalsRecount.push(causal);
-                }
-                else if(causal.typeCausal === 'NULLITY') {
-                    vm.tempCausalsNullity.push(causal);
-                }
-            });
-
             if(vm.election.politicalPartyAsociatedId !== null) {
                 $scope.checked = function() {
                     return 'politicalPartyAsociated';
@@ -75,8 +57,6 @@
 
         function save () {
             vm.isSaving = true;
-            /* Uniendo Causales */
-            vm.election.causals = vm.tempCausalsRecount.concat(vm.tempCausalsNullity);
             if (vm.election.id !== null) {
                 Election.update(vm.election, onSaveSuccess, onSaveError);
             } else {

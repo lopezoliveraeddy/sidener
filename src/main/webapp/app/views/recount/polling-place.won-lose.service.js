@@ -2,12 +2,12 @@
     'use strict';
     angular
         .module('sidenerApp')
-        .factory('ElectionDistrictsWonLose', ElectionDistrictsWonLose);
+        .factory('ElectionPollingPlacesWonLose', ElectionPollingPlacesWonLose);
 
-    ElectionDistrictsWonLose.$inject = ['$resource', 'DateUtils'];
+    ElectionPollingPlacesWonLose.$inject = ['$resource', 'DateUtils'];
 
-    function ElectionDistrictsWonLose ($resource, DateUtils) {
-        var resourceUrl =  'api/recount/:idElection/districts-won-lose';
+    function ElectionPollingPlacesWonLose ($resource, DateUtils) {
+        var resourceUrl =  'api/recount/:idDistrict/polling-places-won-lose';
 
         return $resource(resourceUrl, {}, {
             'get': {

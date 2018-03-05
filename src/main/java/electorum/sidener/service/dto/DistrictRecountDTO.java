@@ -17,6 +17,7 @@ public class DistrictRecountDTO implements Serializable {
     private Long totalSecondPlace;
     private Long totalVotes;
     private Long electoralRoll;
+    private Boolean districtWon;
     private Long electionId;
 
     private Long difference;
@@ -87,6 +88,12 @@ public class DistrictRecountDTO implements Serializable {
     public void setElectoralRoll(Long electoralRoll) {
         this.electoralRoll = electoralRoll;
     }
+    public Boolean isDistrictWon() {
+        return districtWon;
+    }
+    public void setDistrictWon(Boolean districtWon) {
+        this.districtWon = districtWon;
+    }
 
     public Long getElectionId() {
         return electionId;
@@ -124,6 +131,7 @@ public class DistrictRecountDTO implements Serializable {
             ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
             ", totalVotes='" + getTotalVotes() + "'" +
             ", electoralRoll='" + getElectoralRoll() + "'" +
+            ", districtWon='" + isDistrictWon() + "'" +
             ", difference='" + getDifference() + "'" +
             ", percentageDifference='" + getPercentageDifference() + "'" +
             ", percentageFirstPlace='" + getPercentageFirstPlace() + "'" +

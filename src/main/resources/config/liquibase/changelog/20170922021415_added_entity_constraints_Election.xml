@@ -66,17 +66,6 @@
                                  referencedTableName="coalition"/>
         
         <addForeignKeyConstraint baseColumnNames="elections_id"
-                                 baseTableName="election_causals"
-                                 constraintName="fk_election_causals_elections_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="election"/>
-        <addForeignKeyConstraint baseColumnNames="causals_id"
-                                 baseTableName="election_causals"
-                                 constraintName="fk_election_causals_causals_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="causal"/>
-        
-        <addForeignKeyConstraint baseColumnNames="elections_id"
                                  baseTableName="election_user"
                                  constraintName="fk_election_user_elections_id"
                                  referencedColumnNames="id"

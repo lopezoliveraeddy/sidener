@@ -10,26 +10,26 @@
     function stateConfig($stateProvider) {
         $stateProvider
         .state('documento',{
-          parent: 'entity',
-          url: '/election/documento/{id}',
-          data: {
-            authorities: ['ROLE_ADMIN'],
-            pageTitle: 'sidenerApp.election.home.title'
-          },
-          params: {
-              id: null
-          },
-          views: {
-            'content@private': {
-                templateUrl: 'app/views/recount/documento.html',
-                controller: 'DocumentoController',
-                controllerAs: 'vm'
+            parent: 'entity',
+            url: '/election/documento/{id}',
+            data: {
+                authorities: ['ROLE_ADMIN'],
+                pageTitle: 'sidenerApp.election.home.title'
+            },
+            params: {
+                id: null
+            },
+            views: {
+                'content@private': {
+                    templateUrl: 'app/views/recount/documento.html',
+                    controller: 'DocumentoController',
+                    controllerAs: 'vm'
+                }
             }
-          }
         })
         .state('election-recount-district', {
             parent: 'entity',
-            url: '/election/recount/{id}/district?page',
+            url: '/election/recount/{id}/district?page&sort',
             data: {
                 authorities: ['ROLE_ADMIN'],
                 pageTitle: 'sidenerApp.election.home.title'
@@ -46,6 +46,10 @@
                 page: {
                     value: '1',
                     squash: true
+                },
+                sort: {
+                    value: 'districtWon,desc',
+                    squash: true
                 }
             },
             resolve: {
@@ -53,6 +57,9 @@
                     return {
                         id: $stateParams.id,
                         page: PaginationUtil.parsePage($stateParams.page),
+                        sort: $stateParams.sort,
+                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                        ascending: PaginationUtil.parseAscending($stateParams.sort)
                     };
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
