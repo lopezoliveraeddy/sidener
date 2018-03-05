@@ -53,6 +53,7 @@
             "causals": "Causales",
             "recordCount": "Acta de Escutinio y Cómputo",
             "watchRecordCount": "Ver acta",
+            "detectnregister":"Detectar y registrar causales en acta",
             "totalCausals": "Total de Causales"
         }
     }

@@ -55,99 +55,10 @@
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
         ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>-->
-     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChartA);
 
-      function drawChartA() {
 
-        var data = google.visualization.arrayToDataTable([
-          ['PARTIDO POLITICO', 'VOTOS'],
-          ['PRI',     11],
-          ['PAN',      2],
-          ['PRD',  2],
-          ['PT', 2],
-          ['MORENA',    7]
-        ]);
 
-        var options = {
-          title: 'Resultados a nivel Distrito'
-        };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChartB);
-
-      function drawChartB() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Status', 'VOTOS'],
-          ['anuladas',  11],
-          ['Impugnadas',1],
-          ['Sin Recuento o Impugnación',198]
-        ]);
-
-        var options = {
-          title: 'Resultados a nivel Distrito'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
-
-        chart.draw(data, options);
-      }
-    </script>
-
-        <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChartC);
-
-      function drawChartC() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Status', 'VOTOS'],
-          ['A',  11],
-          ['B',1],
-          ['C',2],
-          ['C',200]
-        ]);
-
-        var options = {
-          title: 'Nulidades'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
-
-        chart.draw(data, options);
-      }
-    </script>
-
-        <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChartD);
-
-      function drawChartD() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Status', 'Distritos'],
-          ['Ganados',  11],
-          ['Perdidos',1]
-        ]);
-
-        var options = {
-          title: 'Ganados / Perdidos'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
-
-        chart.draw(data, options);
-      }
-    </script>
 
     <!-- build:js app/vendor.js -->
     <!-- bower:js -->
@@ -185,6 +96,14 @@
 
     <!-- build:js app/app.js  -->
     <!-- inject:js -->
+    <script src="app/views/src/main/webapp/bower_components/angular-native-dragdrop/index.js"></script>
+    <script src="app/views/src/main/webapp/bower_components/angular-native-dragdrop/Gulpfile.js"></script>
+    <script src="app/views/src/main/webapp/bower_components/angular-native-dragdrop/draganddrop.min.js"></script>
+    <script src="app/views/src/main/webapp/bower_components/angular-native-dragdrop/draganddrop.js"></script>
+    <script src="app/views/src/main/webapp/bower_components/angular-native-dragdrop/demo/js/app.js"></script>
+    <script src="app/views/src/main/webapp/bower_components/angular/index.js"></script>
+    <script src="app/views/src/main/webapp/bower_components/angular/angular.min.js"></script>
+    <script src="app/views/src/main/webapp/bower_components/angular/angular.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/views/recount/polling-place.recount.state.js"></script>
     <script src="app/views/recount/polling-place.recount.service.js"></script>
@@ -204,6 +123,8 @@
     <script src="app/views/district-load/district-load.directive.js"></script>
     <script src="app/views/district-load/district-load.controller.js"></script>
     <script src="app/views/district-load/district-generate.service.js"></script>
+    <script src="app/views/causals/register.causals.state.js"></script>
+    <script src="app/views/causals/register.causals.controller.js"></script>
     <script src="app/views/causals/polling-place.causals.state.js"></script>
     <script src="app/views/causals/polling-place.causals.service.js"></script>
     <script src="app/views/causals/polling-place.causals.controller.js"></script>

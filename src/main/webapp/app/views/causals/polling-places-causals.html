@@ -14,7 +14,7 @@
                     <th><span data-translate="sidenerApp.pollingPlace.totalVotes"></span></th>
                     <th><span data-translate="sidenerApp.pollingPlace.politicalPartyFirstPlace"></span></th>
                     <th><span data-translate="sidenerApp.pollingPlace.politicalPartySecondPlace"></span></th>
-                    <th><span data-translate="sidenerApp.pollingPlace.watchRecordCount"></span></th>
+                    <th><span data-translate="sidenerApp.pollingPlace.detectnregister"></span></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -22,7 +22,7 @@
                     <td><a ui-sref="polling-place-detail({id:pollingPlace.id})" class="btn btn-info">{{pollingPlace.section}}</a></td>
                     <td><span ng-bind="pollingPlaceType(pollingPlace.typePollingPlace, pollingPlace.typeNumber)"></span></td>
                     <td>{{pollingPlace.town}}</td>
-                    <td></td>
+                    <td>{{pollingPlace.totalCausals.length }}</td>
                     <td>{{pollingPlace.totalVotes | number}}</td>
                     <td>
                         <div ng-if="pollingPlace.totalVotes">

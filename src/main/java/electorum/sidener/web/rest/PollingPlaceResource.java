@@ -214,7 +214,7 @@ public class PollingPlaceResource {
 			@ApiParam Pageable pageable) {
 		log.debug("REST request to get PollingPlaces by District : {}", idDistrict);
 		Page<PollingPlaceRecountDTO> page = pollingPlaceService.getPollingPlacesByIdDistrict(idDistrict, pageable);
-		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/recount/{id}/polling-places");
+		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/recount/{idDistrict}/polling-places");
 		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
 	}
 

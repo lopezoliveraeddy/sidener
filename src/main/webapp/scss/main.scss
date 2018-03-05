@@ -599,3 +599,58 @@ Recuento
 .associated-position {
     color: $electorum;
 }
+
+/** drag and drop*/
+.drag-return drag-item,
+.drag-return .drag-item {
+    -webkit-transition: all ease-in-out 0.5s;
+    transition: all ease-in-out 0.5s;
+}
+drag-item,
+[drag-item],
+.drag-item {
+    position: relative;
+    display: inline-block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: -webkit-grab;
+    cursor: grab;
+    z-index: 10;
+}
+drag-item:active,
+[drag-item]:active,
+.drag-item:active {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+}
+.drag-transform {
+    -webkit-transition: -webkit-transform 0.25s ease-out;
+    transition: transform 0.25s ease-out;
+    -webkit-transform-origin: center center;
+    -ms-transform-origin: center center;
+    transform-origin: center center;
+}
+.drag-transform.drag-active {
+    -webkit-transition: -webkit-transform 0.25s cubic-bezier(0, 0.5, 0, 1);
+    transition: transform 0.25s cubic-bezier(0, 0.5, 0, 1);
+}
+.drag-content {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+.drag-active {
+    z-index: 20;
+}
+.clone {
+    opacity: 0;
+    z-index: 0;
+}
+.clone-active {
+    opacity: 1;
+    z-index: 9999;
+}

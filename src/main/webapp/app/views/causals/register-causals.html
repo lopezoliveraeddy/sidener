@@ -1,0 +1,115 @@
+<div>
+    <h2><span>{{vm.election.electionTypeName}}</span> - <span data-translate="{{'sidenerApp.State.' + vm.election.state}}"></span> - <span>{{vm.election.periodElection}}</span></h2>
+    <h3 >Recuento de Nulidades</h3>
+    <jhi-alert></jhi-alert>
+    <!--{{vm.pollingPlace}}-->
+    <div class="col-md-4">
+        <ul class="list-group">
+            <li  class="list-group-item">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Lugar</strong> {{ vm.pollingPlace.town}}
+                        <br>
+                        <strong>Dirección</strong>{{vm.pollingPlace.address }}
+                        <br>
+                        <strong>Localidad</strong>{{vm.pollingPlace.address }}
+                    </div>
+                    <div class="col-md-6">
+                        <select multiple class="form-control">
+                            <option>Causal A</option>
+                            <option>Causal B</option>
+                            <option>Causal C</option>
+                        </select>
+                        <textarea name="" id=""  rows="10" class="form-control">
+                            Descripción
+                        </textarea>
+                        <button class="btn-info btn">Registrar</button>
+                        <button class="btn-info btn">Reiniciar</button>
+
+                    </div>
+                </div>
+            </li>
+            <li  class="list-group-item">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Numero de Votos</strong> {{ vm.pollingPlace.totalVotes}}
+                    </div>
+                    <div class="col-md-6">
+                        <select multiple class="form-control">
+                            <option>Causal A</option>
+                            <option>Causal B</option>
+                            <option>Causal C</option>
+                        </select>
+                        <textarea name="" id=""  rows="10" class="form-control">
+                            Descripción
+                        </textarea>
+                        <button class="btn-info btn">Registrar</button>
+                        <button class="btn-info btn">Reiniciar</button>
+
+                    </div>
+                </div>
+
+            </li>
+            <li  class="list-group-item">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Incidente</strong>
+                    </div>
+                    <div class="col-md-6">
+                        <select multiple class="form-control">
+                            <option>Causal A</option>
+                            <option>Causal B</option>
+                            <option>Causal C</option>
+                        </select>
+                        <textarea name="" id=""  rows="10" class="form-control">
+                            Descripción
+                        </textarea>
+                        <button class="btn-info btn">Registrar</button>
+                        <button class="btn-info btn">Reiniciar</button>
+
+                    </div>
+                </div>
+
+            </li>
+            <li  class="list-group-item">
+                <strong>Representantes</strong>
+                <ul>
+                    <li>Juan Carlos Nava</li>
+                    <li>Antonia Camarena</li>
+                    <li>Juan Roberto Perez Fuentes</li>
+                </ul>
+            </li>
+        </ul>
+<!--
+        <ul ui-on-Drop="vm.onDrop($event,$data,vm.pollingPlace)" class="list-group">
+            <li  class="list-group-item" ui-draggable="true" drag="element"
+                on-drop-success="vm.dropSuccessHandler($event,$index,vm.pollingPlace)"
+                ng-repeat="element in vm.pollingPlace track by $index">
+                {{element}}
+            </li>
+        </ul>
+        -->
+
+    </div>
+    <div class="col-md-8">
+        <div  >
+            <img src="{{vm.pollingPlace.urlRecordCount}}" class="img-responsive"/>
+         </div>
+
+    </div>
+    <div>
+        <!--<div class="row">
+
+            <div class="col-xs-6">
+                <ul ui-on-Drop="vm.onDrop($event,$data,vm.women)">
+                    <li ui-draggable="true" drag="woman"
+                        on-drop-success="vm.dropSuccessHandler($event,$index,vm.women)"
+                        ng-repeat="woman in vm.women track by $index">
+                        {{woman}}
+                    </li>
+                </ul>
+            </div>
+
+    </div>-->
+</div>
