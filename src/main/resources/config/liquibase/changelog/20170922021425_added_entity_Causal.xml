@@ -30,6 +30,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="sub_type_causal" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="color" type="varchar(255)">
                 <constraints nullable="true" />
             </column>

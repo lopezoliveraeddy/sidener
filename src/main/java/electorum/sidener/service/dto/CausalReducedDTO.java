@@ -1,6 +1,6 @@
 package electorum.sidener.service.dto;
 
-import electorum.sidener.domain.enumeration.CausalType;
+import electorum.sidener.domain.enumeration.TypeCausal;
 
 import javax.persistence.Lob;
 import java.io.Serializable;
@@ -11,7 +11,7 @@ public class CausalReducedDTO implements Serializable {
     private Long id;
     @Lob
     private String name;
-    private CausalType typeCausal;
+    private TypeCausal typeCausal;
     private String color;
 
     public Long getId() {
@@ -26,10 +26,10 @@ public class CausalReducedDTO implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public CausalType getTypeCausal() {
+    public TypeCausal getTypeCausal() {
         return typeCausal;
     }
-    public void setTypeCausal(CausalType typeCausal) {
+    public void setTypeCausal(TypeCausal typeCausal) {
         this.typeCausal = typeCausal;
     }
     public String getColor() {

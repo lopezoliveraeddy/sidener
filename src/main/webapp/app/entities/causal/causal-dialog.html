@@ -21,8 +21,15 @@
         <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.causal.typeCausal" for="field_typeCausal">Type Causal</label>
             <select class="form-control" name="typeCausal" ng-model="vm.causal.typeCausal" id="field_typeCausal">
-                <option value="RECOUNT" data-translate="sidenerApp.CausalType.RECOUNT">RECOUNT</option>
-                <option value="NULLITY" data-translate="sidenerApp.CausalType.NULLITY">NULLITY</option>
+                <option value="RECOUNT" data-translate="sidenerApp.TypeCausal.RECOUNT">RECOUNT</option>
+                <option value="NULLITY" data-translate="sidenerApp.TypeCausal.NULLITY">NULLITY</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.causal.subTypeCausal" for="field_subTypeCausal">Sub Type Causal</label>
+            <select class="form-control" name="subTypeCausal" ng-model="vm.causal.subTypeCausal" id="field_subTypeCausal">
+                <option value="QUANTITATIVE" data-translate="sidenerApp.SubTypeCausal.QUANTITATIVE">QUANTITATIVE</option>
+                <option value="QUALITATIVE" data-translate="sidenerApp.SubTypeCausal.QUALITATIVE">QUALITATIVE</option>
             </select>
         </div>
         <div class="form-group">

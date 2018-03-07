@@ -184,7 +184,8 @@ entity Vote {
 /* Entidad Causales */
 entity Causal {
 	name TextBlob,
-	typeCausal CausalType,
+	typeCausal TypeCausal,
+	subTypeCausal SubTypeCausal,
     color String,
     published Boolean,
     createdDate ZonedDateTime,
@@ -231,8 +232,12 @@ enum TypePollingPlace {
 	BASIC, CONTIGUOUS, EXTRAORDINARY, SPECIAL
 }
 
-enum CausalType {
+enum TypeCausal {
 	RECOUNT, NULLITY
+}
+
+enum SubTypeCausal {
+    QUANTITATIVE, QUALITATIVE
 }
 
 enum ArchiveStatus {

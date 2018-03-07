@@ -38,7 +38,8 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import electorum.sidener.domain.enumeration.CausalType;
+import electorum.sidener.domain.enumeration.TypeCausal;
+import electorum.sidener.domain.enumeration.SubTypeCausal;
 /**
  * Test class for the CausalResource REST controller.
  *
@@ -51,8 +52,11 @@ public class CausalResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final CausalType DEFAULT_TYPE_CAUSAL = CausalType.RECOUNT;
-    private static final CausalType UPDATED_TYPE_CAUSAL = CausalType.NULLITY;
+    private static final TypeCausal DEFAULT_TYPE_CAUSAL = TypeCausal.RECOUNT;
+    private static final TypeCausal UPDATED_TYPE_CAUSAL = TypeCausal.NULLITY;
+
+    private static final SubTypeCausal DEFAULT_SUB_TYPE_CAUSAL = SubTypeCausal.QUANTITATIVE;
+    private static final SubTypeCausal UPDATED_SUB_TYPE_CAUSAL = SubTypeCausal.QUALITATIVE;
 
     private static final String DEFAULT_COLOR = "AAAAAAAAAA";
     private static final String UPDATED_COLOR = "BBBBBBBBBB";
@@ -114,6 +118,7 @@ public class CausalResourceIntTest {
         Causal causal = new Causal()
             .name(DEFAULT_NAME)
             .typeCausal(DEFAULT_TYPE_CAUSAL)
+            .subTypeCausal(DEFAULT_SUB_TYPE_CAUSAL)
             .color(DEFAULT_COLOR)
             .published(DEFAULT_PUBLISHED)
             .createdDate(DEFAULT_CREATED_DATE)
@@ -145,6 +150,7 @@ public class CausalResourceIntTest {
         Causal testCausal = causalList.get(causalList.size() - 1);
         assertThat(testCausal.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testCausal.getTypeCausal()).isEqualTo(DEFAULT_TYPE_CAUSAL);
+        assertThat(testCausal.getSubTypeCausal()).isEqualTo(DEFAULT_SUB_TYPE_CAUSAL);
         assertThat(testCausal.getColor()).isEqualTo(DEFAULT_COLOR);
         assertThat(testCausal.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
         assertThat(testCausal.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
@@ -188,6 +194,7 @@ public class CausalResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(causal.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].typeCausal").value(hasItem(DEFAULT_TYPE_CAUSAL.toString())))
+            .andExpect(jsonPath("$.[*].subTypeCausal").value(hasItem(DEFAULT_SUB_TYPE_CAUSAL.toString())))
             .andExpect(jsonPath("$.[*].color").value(hasItem(DEFAULT_COLOR.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
@@ -207,6 +214,7 @@ public class CausalResourceIntTest {
             .andExpect(jsonPath("$.id").value(causal.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.typeCausal").value(DEFAULT_TYPE_CAUSAL.toString()))
+            .andExpect(jsonPath("$.subTypeCausal").value(DEFAULT_SUB_TYPE_CAUSAL.toString()))
             .andExpect(jsonPath("$.color").value(DEFAULT_COLOR.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
             .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
@@ -234,6 +242,7 @@ public class CausalResourceIntTest {
         updatedCausal
             .name(UPDATED_NAME)
             .typeCausal(UPDATED_TYPE_CAUSAL)
+            .subTypeCausal(UPDATED_SUB_TYPE_CAUSAL)
             .color(UPDATED_COLOR)
             .published(UPDATED_PUBLISHED)
             .createdDate(UPDATED_CREATED_DATE)
@@ -251,6 +260,7 @@ public class CausalResourceIntTest {
         Causal testCausal = causalList.get(causalList.size() - 1);
         assertThat(testCausal.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testCausal.getTypeCausal()).isEqualTo(UPDATED_TYPE_CAUSAL);
+        assertThat(testCausal.getSubTypeCausal()).isEqualTo(UPDATED_SUB_TYPE_CAUSAL);
         assertThat(testCausal.getColor()).isEqualTo(UPDATED_COLOR);
         assertThat(testCausal.isPublished()).isEqualTo(UPDATED_PUBLISHED);
         assertThat(testCausal.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
@@ -316,6 +326,7 @@ public class CausalResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(causal.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].typeCausal").value(hasItem(DEFAULT_TYPE_CAUSAL.toString())))
+            .andExpect(jsonPath("$.[*].subTypeCausal").value(hasItem(DEFAULT_SUB_TYPE_CAUSAL.toString())))
             .andExpect(jsonPath("$.[*].color").value(hasItem(DEFAULT_COLOR.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))

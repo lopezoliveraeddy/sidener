@@ -18,8 +18,13 @@
         },
         {
             "fieldName": "typeCausal",
-            "fieldType": "CausalType",
+            "fieldType": "TypeCausal",
             "fieldValues": "RECOUNT,NULLITY"
+        },
+        {
+            "fieldName": "subTypeCausal",
+            "fieldType": "SubTypeCausal",
+            "fieldValues": "QUANTITATIVE,QUALITATIVE"
         },
         {
             "fieldName": "color",

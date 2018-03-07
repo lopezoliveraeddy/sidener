@@ -46,7 +46,8 @@
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('causal');
-                    $translatePartialLoader.addPart('causalType');
+                    $translatePartialLoader.addPart('typeCausal');
+                    $translatePartialLoader.addPart('subTypeCausal');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
@@ -69,7 +70,8 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('causal');
-                    $translatePartialLoader.addPart('causalType');
+                    $translatePartialLoader.addPart('typeCausal');
+                    $translatePartialLoader.addPart('subTypeCausal');
                     $translatePartialLoader.addPart('causalDescription');
                     return $translate.refresh();
                 }],
@@ -129,6 +131,7 @@
                             return {
                                 name: null,
                                 typeCausal: null,
+                                subTypeCausal: null,
                                 color: null,
                                 published: null,
                                 createdDate: null,

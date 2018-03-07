@@ -1,8 +1,8 @@
 package electorum.sidener.domain.enumeration;
 
 /**
- * The CausalType enumeration.
+ * The TypeCausal enumeration.
  */
-public enum CausalType {
+public enum TypeCausal {
     RECOUNT, NULLITY
 }

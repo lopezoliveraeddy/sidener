@@ -1,6 +1,6 @@
 {
     "sidenerApp": {
-        "CausalType" : {
+        "TypeCausal" : {
             "null": "",
             "RECOUNT": "Recuento",
             "NULLITY": "Nulidad"

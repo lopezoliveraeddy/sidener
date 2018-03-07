@@ -18,6 +18,7 @@
             },
             "name": "Nombre",
             "typeCausal": "Tipo",
+            "subTypeCausal": "Sub-Tipo Causal",
             "description": "Descripción",
             "color": "Color",
             "published": "Publicado",

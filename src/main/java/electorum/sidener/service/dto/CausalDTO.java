@@ -7,7 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 import javax.persistence.Lob;
-import electorum.sidener.domain.enumeration.CausalType;
+import electorum.sidener.domain.enumeration.TypeCausal;
+import electorum.sidener.domain.enumeration.SubTypeCausal;
 
 /**
  * A DTO for the Causal entity.
@@ -19,7 +20,9 @@ public class CausalDTO implements Serializable {
     @Lob
     private String name;
 
-    private CausalType typeCausal;
+    private TypeCausal typeCausal;
+
+    private SubTypeCausal subTypeCausal;
 
     private String color;
 
@@ -47,12 +50,20 @@ public class CausalDTO implements Serializable {
         this.name = name;
     }
 
-    public CausalType getTypeCausal() {
+    public TypeCausal getTypeCausal() {
         return typeCausal;
     }
 
-    public void setTypeCausal(CausalType typeCausal) {
+    public void setTypeCausal(TypeCausal typeCausal) {
         this.typeCausal = typeCausal;
+    }
+
+    public SubTypeCausal getSubTypeCausal() {
+        return subTypeCausal;
+    }
+
+    public void setSubTypeCausal(SubTypeCausal subTypeCausal) {
+        this.subTypeCausal = subTypeCausal;
     }
 
     public String getColor() {
@@ -122,6 +133,7 @@ public class CausalDTO implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", typeCausal='" + getTypeCausal() + "'" +
+            ", subTypeCausal='" + getSubTypeCausal() + "'" +
             ", color='" + getColor() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +

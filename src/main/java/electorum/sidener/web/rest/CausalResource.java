@@ -1,7 +1,8 @@
 package electorum.sidener.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import electorum.sidener.domain.enumeration.CausalType;
+import electorum.sidener.domain.enumeration.SubTypeCausal;
+import electorum.sidener.domain.enumeration.TypeCausal;
 import electorum.sidener.service.CausalService;
 import electorum.sidener.web.rest.util.HeaderUtil;
 import electorum.sidener.web.rest.util.PaginationUtil;
@@ -22,9 +23,6 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
  * REST controller for managing Causal.
@@ -146,16 +144,17 @@ public class CausalResource {
     }
 
     /**
-     * GET  /causals:causalType : get for the causalType
+     * GET  /causals/type/:typeCausal/:subTypeCausal : get for the causal corresponding
      *
-     * @param causalType the causalType of the causal
+     * @param typeCausal the typeCausal of the causal
+     * @param subTypeCausal the subTypeCausal of the causal
      * @return the ResponseEntity with status 200 (OK) and the list of causals in body
      */
-    @GetMapping("/causals/type/{causalType}")
+    @GetMapping("/causals/type/{typeCausal}/{subTypeCausal}")
     @Timed
-    public ResponseEntity<List<CausalDTO>> getCausalsByTypeCausal(@PathVariable CausalType causalType) {
-        log.debug("REST request to get Causals for typeCausal {}", causalType);
-        List<CausalDTO> list = causalService.getCausalsByTypeCausal(causalType);
+    public ResponseEntity<List<CausalDTO>> getCausalsByTypeCausal(@PathVariable TypeCausal typeCausal, @PathVariable SubTypeCausal subTypeCausal) {
+        log.debug("REST request to get Causals for typeCausal {} and subCausalType {}", typeCausal, subTypeCausal);
+        List<CausalDTO> list = causalService.getCausalsByTypeCausal(typeCausal, subTypeCausal);
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>(list, headers, HttpStatus.OK);
     }

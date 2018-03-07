@@ -1,20 +1,20 @@
-id,type_causal,name,color,published,created_date,updated_date
-1,RECOUNT,"Inexistencia del acta de escrutinio y cómputo",#191970,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995
-2,RECOUNT,"Existir alteraciones evidentes en el paquete electoral",#00008B,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995
-3,RECOUNT,"Errores o inconsistencias evidentes",#0000FF,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.996
-4,RECOUNT,"El número de votos nulos es mayor a la diferencia entre el primer y segundo lugar",#000000,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.997
-5,RECOUNT,"Todos los votos son para una misma opción política",#1E90FF,true,2017-10-07 18:13:34.997,2017-10-07 18:13:34.998
-6,RECOUNT,"Son ilegibles los resultados",#87CEFA,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.999
-7,RECOUNT,"Están en blanco los resultados",#ADD8E6,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.995
-8,NULLITY,"Instalación de casilla en lugar distinto al asignado por autoridad Electoral",#483D8B,true,2017-10-07 18:13:34.997,2017-10-07 18:13:34.996
-9,NULLITY,"Existir violencia física o presión sobre los electores o los integrantes de las mesas directivas de casilla",#7B68EE,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.997
-10,NULLITY,"Mediar error y/o dolo en el cómputo de la votación recibida en casilla",#6A5ACD,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
-11,NULLITY,"Entrega extemporánea de paquete electoral",#4B0082,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
-12,NULLITY,"Realizar, sin causa justificada el escrutinio y cómputo de una casilla en local diferente al autorizado por la autoridad electoral o que no reúna las condiciones legales",#800080,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
-13,NULLITY,"Permitit sufragar a persona sin credencial para votar o que no aparecen en la lista nominal",#8B008B,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
-14,NULLITY,"Recibir la votación en fecha distinta a aquella en la que se llevó a cabo la elección",#9932CC,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
-15,NULLITY,"Recibir la votación persona u organismos distintos a los facultados para el efecto",#9400D3,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
-16,NULLITY,"Impedir el acceso de los representantes de partidos políticos a las casillas o se les expulse injustificadamente",#8A2BE2,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
-17,NULLITY,"Impedir, sin causa justificada, el ejercicio del voto de los ciudadanos",#9966CC,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
-18,NULLITY,"Existir irregularidades graves, plenamente acreditadas y no reparables durante la jornada electoral o en las actas, que pongan en duda el resultado de la votación",#9370DB,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
-19,NULLITY,"Realizar, sin causa justificada el escrutinio y cómputo de una casilla en local diferente al autorizado por la autoridad electoral o que no reúna las condiciones legales",#BA55D3,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
+id,name,type_causal,sub_type_causal,color,published,created_date,updated_date
+null,Inexistencia del acta de escrutinio y cómputo,RECOUNT,QUALITATIVE,#191970,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995
+null,Existir alteraciones evidentes en el paquete electoral,RECOUNT,QUALITATIVE,#00008B,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.995
+null,Errores o inconsistencias evidentes,RECOUNT,QUALITATIVE,#0000FF,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.996
+null,El número de votos nulos es mayor a la diferencia entre el primer y segundo lugar,RECOUNT,QUANTITATIVE,#000000,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.997
+null,Todos los votos son para una misma opción política,RECOUNT,QUALITATIVE,#1E90FF,true,2017-10-07 18:13:34.997,2017-10-07 18:13:34.998
+null,Son ilegibles los resultados,RECOUNT,QUALITATIVE,#87CEFA,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.999
+null,Están en blanco los resultados,RECOUNT,QUALITATIVE,#ADD8E6,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.995
+null,Instalación de casilla en lugar distinto al asignado por autoridad Electoral,NULLITY,null,#483D8B,true,2017-10-07 18:13:34.997,2017-10-07 18:13:34.996
+null,Existir violencia física o presión sobre los electores o los integrantes de las mesas directivas de casilla,NULLITY,null,#7B68EE,true,2017-10-07 18:13:34.995,2017-10-07 18:13:34.997
+null,Mediar error y/o dolo en el cómputo de la votación recibida en casilla,NULLITY,null,#6A5ACD,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
+null,Entrega extemporánea de paquete electoral,NULLITY,null,#4B0082,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
+null,"Realizar, sin causa justificada el escrutinio y cómputo de una casilla en local diferente al autorizado por la autoridad electoral o que no reúna las condiciones legales",NULLITY,null,#800080,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
+null,Permitit sufragar a persona sin credencial para votar o que no aparecen en la lista nominal,NULLITY,null,#8B008B,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
+null,Recibir la votación en fecha distinta a aquella en la que se llevó a cabo la elección,NULLITY,null,#9932CC,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
+null,Recibir la votación persona u organismos distintos a los facultados para el efecto,NULLITY,null,#9400D3,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
+null,Impedir el acceso de los representantes de partidos políticos a las casillas o se les expulse injustificadamente,NULLITY,null,#8A2BE2,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
+null,"Impedir, sin causa justificada, el ejercicio del voto de los ciudadanos",NULLITY,null,#9966CC,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
+null,"Existir irregularidades graves, plenamente acreditadas y no reparables durante la jornada electoral o en las actas, que pongan en duda el resultado de la votación",NULLITY,null,#9370DB,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998
+null,"Realizar, sin causa justificada el escrutinio y cómputo de una casilla en local diferente al autorizado por la autoridad electoral o que no reúna las condiciones legales",NULLITY,null,#BA55D3,true,2017-10-07 18:13:34.996,2017-10-07 18:13:34.998

@@ -12,7 +12,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 
-import electorum.sidener.domain.enumeration.CausalType;
+import electorum.sidener.domain.enumeration.TypeCausal;
+
+import electorum.sidener.domain.enumeration.SubTypeCausal;
 
 /**
  * Entidad Causales
@@ -36,7 +38,11 @@ public class Causal implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "type_causal")
-    private CausalType typeCausal;
+    private TypeCausal typeCausal;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "sub_type_causal")
+    private SubTypeCausal subTypeCausal;
 
     @Column(name = "color")
     private String color;
@@ -50,7 +56,7 @@ public class Causal implements Serializable {
     @Column(name = "updated_date")
     private ZonedDateTime updatedDate;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "causal_causal_description",
                joinColumns = @JoinColumn(name="causals_id", referencedColumnName="id"),
@@ -79,17 +85,30 @@ public class Causal implements Serializable {
         this.name = name;
     }
 
-    public CausalType getTypeCausal() {
+    public TypeCausal getTypeCausal() {
         return typeCausal;
     }
 
-    public Causal typeCausal(CausalType typeCausal) {
+    public Causal typeCausal(TypeCausal typeCausal) {
         this.typeCausal = typeCausal;
         return this;
     }
 
-    public void setTypeCausal(CausalType typeCausal) {
+    public void setTypeCausal(TypeCausal typeCausal) {
         this.typeCausal = typeCausal;
+    }
+
+    public SubTypeCausal getSubTypeCausal() {
+        return subTypeCausal;
+    }
+
+    public Causal subTypeCausal(SubTypeCausal subTypeCausal) {
+        this.subTypeCausal = subTypeCausal;
+        return this;
+    }
+
+    public void setSubTypeCausal(SubTypeCausal subTypeCausal) {
+        this.subTypeCausal = subTypeCausal;
     }
 
     public String getColor() {
@@ -194,6 +213,7 @@ public class Causal implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", typeCausal='" + getTypeCausal() + "'" +
+            ", subTypeCausal='" + getSubTypeCausal() + "'" +
             ", color='" + getColor() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +

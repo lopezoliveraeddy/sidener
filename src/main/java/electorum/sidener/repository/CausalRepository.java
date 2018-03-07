@@ -1,7 +1,8 @@
 package electorum.sidener.repository;
 
 import electorum.sidener.domain.Causal;
-import electorum.sidener.domain.enumeration.CausalType;
+import electorum.sidener.domain.enumeration.SubTypeCausal;
+import electorum.sidener.domain.enumeration.TypeCausal;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
@@ -20,6 +21,6 @@ public interface CausalRepository extends JpaRepository<Causal, Long> {
     @Query("select causal from Causal causal left join fetch causal.causalDescriptions where causal.id =:id")
     Causal findOneWithEagerRelationships(@Param("id") Long id);
 
-    List<Causal> findAllByTypeCausal(CausalType causalType);
+    List<Causal> findAllByTypeCausalAndSubTypeCausal(TypeCausal typeCausal, SubTypeCausal subTypeCausal);
 
 }

@@ -1,7 +1,8 @@
 package electorum.sidener.service;
 
 import electorum.sidener.domain.Causal;
-import electorum.sidener.domain.enumeration.CausalType;
+import electorum.sidener.domain.enumeration.SubTypeCausal;
+import electorum.sidener.domain.enumeration.TypeCausal;
 import electorum.sidener.repository.CausalRepository;
 import electorum.sidener.repository.search.CausalSearchRepository;
 import electorum.sidener.service.dto.CausalDTO;
@@ -14,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-import java.util.Enumeration;
 import java.util.List;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
@@ -109,13 +109,14 @@ public class CausalService {
     /**
      *  Get all the causals by causalType.
      *
-     *  @param causalType the typeCausal of the causal
+     *  @param typeCausal the typeCausal of the causal
+     *  @param subTypeCausal the subCausalType of the causal
      *  @return the list of entities
      */
     @Transactional(readOnly = true)
-    public List<CausalDTO> getCausalsByTypeCausal(CausalType causalType) {
-        log.debug("Request to get a page of Causals for causalType {}", causalType);
-        List<Causal> result = causalRepository.findAllByTypeCausal(causalType);
+    public List<CausalDTO> getCausalsByTypeCausal(TypeCausal typeCausal, SubTypeCausal subTypeCausal) {
+        log.debug("Request to get a list of Causals for typeCausal {} and subTypeCausal {}", typeCausal, subTypeCausal);
+        List<Causal> result = causalRepository.findAllByTypeCausalAndSubTypeCausal(typeCausal, subTypeCausal);
         return causalMapper.toDto(result);
     }
 
