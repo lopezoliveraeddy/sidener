@@ -107,6 +107,10 @@ angular-datatables@^0.6.2:
     datatables.net-dt "^1.10.11"
     jquery ">=1.11.0"
 
+angular-dragdrop@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/angular-dragdrop/-/angular-dragdrop-1.0.13.tgz#e0e240c73cd93ca17ad7cd8f6e701480319d01dc"
+
 angular@>=1.6.0:
   version "1.6.8"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.8.tgz#5be378a58be91a5489e78b59c4518cd9fd273ffb"

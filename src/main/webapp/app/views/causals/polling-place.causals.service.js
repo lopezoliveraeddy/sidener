@@ -7,7 +7,7 @@
     DistrictCausalsPollingPlaces.$inject = ['$resource', 'DateUtils'];
 
     function DistrictCausalsPollingPlaces ($resource, DateUtils) {
-        var resourceUrl =  '/api/districts/:id/polling-places';
+        var resourceUrl =  '/api/recount/:id/polling-places';
 
         return $resource(resourceUrl, {}, {
             'get': {

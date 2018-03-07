@@ -23,7 +23,8 @@
             // jhipster-needle-angularjs-add-module JHipster will add new module here
             'angular-loading-bar',
             'colorpicker.module',
-            'ui.select'
+            'ui.select',
+            'ang-drag-drop'
         ])
         .run(run);
 

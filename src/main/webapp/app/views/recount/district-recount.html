@@ -4,6 +4,7 @@
     <h3 data-translate="sidenerApp.district.districts"></h3>
     <jhi-alert></jhi-alert>
     <div class="table-container">
+
         <div class="table-header">
             <div class="row">
                 <div id="position" class="col-lg-4 col-md-4 col-sm-12 text-left">
@@ -20,7 +21,7 @@
                             <i class="fa medium fa-trophy" aria-hidden="true"></i>
                         </div>
                         <div class="media-body media-middle">
-                            <strong><span class="color-green">{{vm.districtsWonLose.districtsWon}} distritos ganados</span>, <span class="color-orange">{{vm.districtsWonLose.districtsLose}} distritos perdidos</span></strong>
+                            <strong><span class="color-green">58 distritos ganados</span>, <span class="color-orange">96 distritos perdidos</span></strong>
                         </div>
                     </div>
                 </div>
@@ -30,7 +31,24 @@
                             <i class="fa medium fa-bar-chart" aria-hidden="true"></i>
                         </div>
                         <div class="media-body media-middle">
-                            Supuestos de recuento total
+                            Recuento Cualitativo: <strong>2</strong>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="media-left media-middle">
+                            <i class="fa medium fa-bar-chart" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body media-middle">
+                            Recuento Cuantitativo: <strong>5</strong>
+                        </div>
+                    </div>
+
+                    <div class="media">
+                        <div class="media-left media-middle">
+                            <i class="fa medium fa-file" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body media-middle">
+                            <a href="#" class="btn btn-info btn-sm">Descarga de Demanda</a>
                         </div>
                     </div>
                 </div>
@@ -48,6 +66,7 @@
                 <th><span data-translate="sidenerApp.district.totalVotes">Votación Total</span></th>
                 <th>Detalle</th>
                 <th>Demanda</th>
+                <th>X</th>
             </tr>
             </thead>
             <tbody>
@@ -99,6 +118,9 @@
                             <span class="fa medium fa-file-text-o"></span>
                         </a>
                     </div>
+                </td>
+                <td class="text-center">
+                        <input type="checkbox" class="form-control" checked name="{{district.id}}" ng-checked="val=1">
                 </td>
             </tr>
             </tbody>
