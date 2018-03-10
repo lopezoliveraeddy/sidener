@@ -34,7 +34,6 @@
         vm.causalsRecount = CausalType.get({
             typeCausal: 'RECOUNT'
         });
-        console.log("eddy");
         loadDistrict();
         loadAll();
 

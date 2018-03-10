@@ -28,6 +28,7 @@ module.exports = function (config) {
             'src/main/webapp/bower_components/json3/lib/json3.js',
             'src/main/webapp/bower_components/flow.js/dist/flow.js',
             'src/main/webapp/bower_components/chart.js/dist/Chart.js',
+            'src/main/webapp/bower_components/clipboard/dist/clipboard.js',
             'src/main/webapp/bower_components/angular/angular.js',
             'src/main/webapp/bower_components/angular-aria/angular-aria.js',
             'src/main/webapp/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
@@ -53,6 +54,7 @@ module.exports = function (config) {
             'src/main/webapp/bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js',
             'src/main/webapp/bower_components/angular-ui-grid/ui-grid.js',
             'src/main/webapp/bower_components/angular-native-dragdrop/draganddrop.js',
+            'src/main/webapp/bower_components/ngclipboard/dist/ngclipboard.js',
             'src/main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'src/main/webapp/app/app.module.js',

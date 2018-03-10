@@ -24,7 +24,8 @@
             'angular-loading-bar',
             'colorpicker.module',
             'ui.select',
-            'ang-drag-drop'
+            'ang-drag-drop',
+            'ngclipboard'
         ])
         .run(run);
 

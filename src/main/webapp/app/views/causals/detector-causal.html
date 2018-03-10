@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col-md-12" style="margin-top: 30px;">
+        <div class="col-md-3" >
+            <!-- Single button using append-to-body -->
+            <p class="alert alert-success" ng-if="vm.guardado" >Almacenado</p>
+            <p>Distrito: {{vm.pollingPlace.town}}</p>
+            <p>Sección: {{vm.pollingPlace.section}} - Tipo {{vm.pollingPlace.typePollingPlace}}</p>
+
+            <div class="btn-group" uib-dropdown dropdown-append-to-body>
+                <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
+                    Revisión <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+                    <li role="menuitem"><a ng-click="vm.lugar = true; vm.integrantes= false; vm.guardado=false">Instalación de casilla en lugar distinto al asignado por autoridad Electoral </a></li>
+                    <li role="menuitem"><a <a ng-click="vm.integrantes = true; vm.lugar= false; vm.guardado=false" >Recibir la votación por personas u órganos
+                        distintos a los facultados</a></li>
+                    <li role="menuitem"><a <a ng-click="vm.otros=true; vm.integrantes = false; vm.lugar= false; vm.guardado=false" >Otros</a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-12" ng-if="vm.lugar">
+
+
+                <strong>
+                    {{ vm.pollingPlace.address}}
+                    <button class="btn" ngclipboard data-clipboard-text="{{ vm.pollingPlace.address}}" ><span class="glyphicon glyphicon-copy"></span></button>
+                </strong>
+                <textarea class="form-control" rows="5" ng-model="vm.direccion" >{{vm.direccion}}</textarea>
+                <button class="btn-default" ng-click="vm.integrantes = false; vm.lugar= false ;vm.guardado=true" >Almacenar</button>
+
+            </div>
+            <div class="col-md-12" ng-if="vm.integrantes">
+
+                    <table class=" table-striped table-condensed">
+                        <tr><td>Presidente</td><td><strong>{{vm.pollingPlace.president}} </strong><button class="btn" ngclipboard data-clipboard-text="{{ vm.pollingPlace.president}}" ><span class="glyphicon glyphicon-copy"></span></button></td></tr>
+                        <tr><td>Secretario</td><td><strong>{{vm.pollingPlace.secretary}} </strong><button class="btn" ngclipboard data-clipboard-text="{{ vm.pollingPlace.secretary}}" ><span class="glyphicon glyphicon-copy"></span></button></td></tr>
+                        <tr><td>Primer Escrutinador</td><td><strong>{{vm.pollingPlace.scrutineerOne}}</strong> <button class="btn" ngclipboard data-clipboard-text="{{ vm.pollingPlace.scrutineerOne}}" ><span class="glyphicon glyphicon-copy"></span></button></td></tr>
+                        <tr><td>Segundo Escrutinador</td><td><strong>{{vm.pollingPlace.alternateTwo}}</strong> <button class="btn" ngclipboard data-clipboard-text="{{ vm.pollingPlace.alternateTwo}}" ><span class="glyphicon glyphicon-copy"></span></button></td></tr>
+                        <tr><td>Tercer Escrutinador</td><td><strong>{{vm.pollingPlace.alternateThree}}</strong> <button class="btn" ngclipboard data-clipboard-text="{{ vm.pollingPlace.alternateThree}}" ><span class="glyphicon glyphicon-copy"></span></button></td></tr>
+                    </table>
+
+
+                <textarea class="form-control" rows="5" ng-model="vm.texto" >
+                   {{vm.texto}}
+                </textarea>
+                <button class="btn-default" ng-click="vm.integrantes = false; vm.lugar= false; vm.guardado=true">Almacenar</button>
+
+            </div>
+            <div class="col-md-12" ng-if="vm.otros">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+
+                        <li><a ng-click="vm.causalA=true; vm.causalB=false; vm.causalC=false; vm.causalD=false; vm.causalE=false;">A</a></li>
+                        <li><a ng-click="vm.causalB=true; vm.causalA=false; vm.causalC=false; vm.causalD=false; vm.causalE=false;">B</a></li>
+                        <li><a ng-click="vm.causalC=true; vm.causalA=false; vm.causalB=false; vm.causalD=false; vm.causalE=false;">C</a></li>
+                        <li><a ng-click="vm.causalD=true; vm.causalA=false; vm.causalB=false; vm.causalC=false; vm.causalE=false;">D</a></li>
+                        <li><a ng-click="vm.causalE=true; vm.causalA=false; vm.causalB=false; vm.causalC=false; vm.causalD=false;">E</a></li>
+                    </ul>
+                </nav>
+                <p ng-if="vm.causalA">Inexistencia del acta de escrutinio y cómputo</p>
+                <p ng-if="vm.causalB">Existir alteraciones evidentes en el paquete electoral
+                </p>
+                <p ng-if="vm.causalC">Inexistencias evidentes</p>
+                <p ng-if="vm.causalD">Todos los votos son para una misma opción política
+                </p>
+                <p ng-if="vm.causalE">Entrega extemporánea de paquete electoral
+
+                </p>
+
+
+
+                <textarea class="form-control" rows="5" ng-model="vm.texto" >
+                   {{vm.texto}}
+                </textarea>
+                <button class="btn-default" ng-click="vm.integrantes = false; vm.lugar= false; vm.guardado=true; vm.otros=false;">Almacenar</button>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-9">
+            <img src="{{vm.pollingPlace.urlRecordCount}}" alt="" class="img-responsive">
+
+        </div>
+    </div>
+
+</div>

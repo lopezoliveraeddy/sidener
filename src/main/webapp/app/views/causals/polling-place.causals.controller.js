@@ -94,6 +94,11 @@
                 AlertService.error(error.data.message);
             }
         }
+        $scope.countingAssumption = function(countingAssumption) {
+            if (countingAssumption === true) {
+                return "total-recount";
+            }
+        };
 
         $scope.pollingPlaceType = function (typePollingPlace, typeNumber) {
             switch (typePollingPlace) {
