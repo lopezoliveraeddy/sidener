@@ -32,7 +32,8 @@
         // Causales
         vm.causals = [];
         vm.causalsRecount = CausalType.get({
-            typeCausal: 'RECOUNT'
+            typeCausal: 'RECOUNT',
+            subTypeCausal: 'QUALITATIVE'
         });
         loadDistrict();
         loadAll();
