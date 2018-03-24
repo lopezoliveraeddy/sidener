@@ -25,4 +25,6 @@ public interface DistrictRepository extends JpaRepository<District, Long> {
 
     Long countByElectionIdAndDistrictWonIsFalse(Long idElection);
 
+    Page<District> findByElectionIdAndTotalRecountIsTrue(Long idElection, Pageable pageable);
+
 }

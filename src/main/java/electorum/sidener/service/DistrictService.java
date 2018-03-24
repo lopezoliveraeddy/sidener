@@ -218,4 +218,17 @@ public class DistrictService {
 
         return district;
     }
+
+    /**
+     * Get districts with recount by idElection
+     *  @param idElection the "idElection" of the district
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public Page<DistrictRecountDTO>getDistrictsWithRecount(Long idElection,Pageable pageable){
+        Page<DistrictDTO> page = districtRepository.findByElectionIdAndTotalRecountIsTrue(idElection, pageable).map(districtMapper::toDto);
+        Page<DistrictRecountDTO> resultPage = resultsRecountDTO(page, pageable);
+        return  resultPage;
+    }
 }

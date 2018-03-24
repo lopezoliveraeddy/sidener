@@ -41,6 +41,8 @@ public class DistrictDTO implements Serializable {
 
     private Boolean districtWon;
 
+    private Boolean totalRecount;
+
     private Boolean published;
 
     private ZonedDateTime createdDate;
@@ -161,6 +163,14 @@ public class DistrictDTO implements Serializable {
         this.districtWon = districtWon;
     }
 
+    public Boolean isTotalRecount() {
+        return totalRecount;
+    }
+
+    public void setTotalRecount(Boolean totalRecount) {
+        this.totalRecount = totalRecount;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -218,19 +228,20 @@ public class DistrictDTO implements Serializable {
     public String toString() {
         return "DistrictDTO{" +
             "id=" + getId() +
-            ", decimalNumber='" + getDecimalNumber() + "'" +
+            ", decimalNumber=" + getDecimalNumber() +
             ", romanNumber='" + getRomanNumber() + "'" +
             ", districtHead='" + getDistrictHead() + "'" +
             ", state='" + getState() + "'" +
             ", entityFirstPlace='" + getEntityFirstPlace() + "'" +
-            ", totalFirstPlace='" + getTotalFirstPlace() + "'" +
+            ", totalFirstPlace=" + getTotalFirstPlace() +
             ", entitySecondPlace='" + getEntitySecondPlace() + "'" +
-            ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
-            ", totalVotes='" + getTotalVotes() + "'" +
-            ", electoralRoll='" + getElectoralRoll() + "'" +
-            ", totalPollingPlaces='" + getTotalPollingPlaces() + "'" +
-            ", nullVotes='" + getNullVotes() + "'" +
+            ", totalSecondPlace=" + getTotalSecondPlace() +
+            ", totalVotes=" + getTotalVotes() +
+            ", electoralRoll=" + getElectoralRoll() +
+            ", totalPollingPlaces=" + getTotalPollingPlaces() +
+            ", nullVotes=" + getNullVotes() +
             ", districtWon='" + isDistrictWon() + "'" +
+            ", totalRecount='" + isTotalRecount() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

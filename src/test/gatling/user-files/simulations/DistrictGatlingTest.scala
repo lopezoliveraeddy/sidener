@@ -17,7 +17,7 @@ class DistrictGatlingTest extends Simulation {
     // Log failed HTTP requests
     //context.getLogger("io.gatling.http").setLevel(Level.valueOf("DEBUG"))
 
-    val baseURL = Option(System.getProperty("baseURL")) getOrElse """http://127.0.0.1:8080"""
+    val baseURL = Option(System.getProperty("baseURL")) getOrElse """http://localhost:8080"""
 
     val httpConf = http
         .baseURL(baseURL)
@@ -68,7 +68,7 @@ class DistrictGatlingTest extends Simulation {
             .exec(http("Create new district")
             .post("/api/districts")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "decimalNumber":null, "romanNumber":"SAMPLE_TEXT", "districtHead":"SAMPLE_TEXT", "state":null, "entityFirstPlace":"SAMPLE_TEXT", "totalFirstPlace":null, "entitySecondPlace":"SAMPLE_TEXT", "totalSecondPlace":null, "totalVotes":null, "electoralRoll":null, "totalPollingPlaces":null, "nullVotes":null, "districtWon":null, "published":null, "createdDate":"2020-01-01T00:00:00.000Z", "updatedDate":"2020-01-01T00:00:00.000Z"}""")).asJSON
+            .body(StringBody("""{"id":null, "decimalNumber":null, "romanNumber":"SAMPLE_TEXT", "districtHead":"SAMPLE_TEXT", "state":null, "entityFirstPlace":"SAMPLE_TEXT", "totalFirstPlace":null, "entitySecondPlace":"SAMPLE_TEXT", "totalSecondPlace":null, "totalVotes":null, "electoralRoll":null, "totalPollingPlaces":null, "nullVotes":null, "districtWon":null, "totalRecount":null, "published":null, "createdDate":"2020-01-01T00:00:00.000Z", "updatedDate":"2020-01-01T00:00:00.000Z"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_district_url"))).exitHereIfFailed
             .pause(10)

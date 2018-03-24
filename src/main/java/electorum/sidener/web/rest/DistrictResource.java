@@ -202,6 +202,22 @@ public class DistrictResource {
 
 
 
+
+    /**
+     * GET DISTRICTS /recount/{idElection}/districtsrecount : get districts by IdElection and with a total recount
+     * @param idElection the "idElection" of the district
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of districts in body
+     */
+    @GetMapping("/recount/{idElection}/districtsrecount")
+    @Timed
+    public ResponseEntity<List<DistrictRecountDTO>> getDistrictsWithRecountByIdElectionRecount(@PathVariable Long idElection, @ApiParam Pageable pageable) {
+        log.debug("REST request to get Districts with total recount by Election : {}", idElection);
+        Page<DistrictRecountDTO> page = districtService.getDistrictsWithRecount(idElection, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/recount/{idElection}/districtsrecount");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
     /**
      * Post /district : Create a new election data from file
      *

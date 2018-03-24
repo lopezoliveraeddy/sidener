@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('ElectionRecountDistrictController', ElectionRecountDistrictController);
 
-    ElectionRecountDistrictController.$inject = ['$scope', '$state', '$stateParams', 'Election', 'ElectionDistrictsWonLose', 'ElectionRecountDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams','DocumentDownload','DemandDownload'];
+    ElectionRecountDistrictController.$inject = ['$scope', '$state', '$stateParams', 'Election', 'ElectionDistrictsWonLose','ElectionDistrictsRecount', 'ElectionRecountDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams','DocumentDownload','DemandDownload'];
 
-    function ElectionRecountDistrictController($scope, $state, $stateParams, Election, ElectionDistrictsWonLose, ElectionRecountDistrict, ParseLinks, AlertService, paginationConstants, pagingParams, DocumentDownload,DemandDownload) {
+    function ElectionRecountDistrictController($scope, $state, $stateParams, Election, ElectionDistrictsWonLose,ElectionDistrictsRecount, ElectionRecountDistrict, ParseLinks, AlertService, paginationConstants, pagingParams, DocumentDownload,DemandDownload) {
 
         var vm = this;
 
@@ -24,10 +24,10 @@
         vm.openLink = openLink;
         // Distritos Ganados - Perdidos
         vm.districtsWonLose = ElectionDistrictsWonLose.get({ idElection : $stateParams.id });
+        vm.districtsForTotalRecount = ElectionDistrictsRecount.get({ idElection : $stateParams.id });
         vm.enableDistricts = [];
         vm.trulyEnabledDIstricts = [];
         vm.districtsForDemand = '';
-        vm.setEnabledDistricts = setEnabledDistricts;
         vm.generateAllWord = generateAllWord;
 
         loadElection();
@@ -81,11 +81,7 @@
 
             }
 
-        function setEnabledDistricts(district) {
-            console.log(district);
-            //vm.enableDistricts.push(district);
-            console.log(vm.enableDistricts);
-        }
+
 
         function loadAll () {
             ElectionRecountDistrict.get({
