@@ -1,0 +1,147 @@
+<div>
+    <h2 data-translate="sidenerApp.pollingplace.home.title">Pollingplaces</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="pollingplace.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down"  data-translate="sidenerApp.pollingplace.home.createLabel">
+                        Create new Pollingplace
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'sidenerApp.pollingplace.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="town"><span data-translate="sidenerApp.pollingplace.town">Town</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="typePollingPlace"><span data-translate="sidenerApp.pollingplace.typePollingPlace">Type Polling Place</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="typeNumber"><span data-translate="sidenerApp.pollingplace.typeNumber">Type Number</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="section"><span data-translate="sidenerApp.pollingplace.section">Section</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address"><span data-translate="sidenerApp.pollingplace.address">Address</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="leftoverBallots"><span data-translate="sidenerApp.pollingplace.leftoverBallots">Leftover Ballots</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="votingCitizens"><span data-translate="sidenerApp.pollingplace.votingCitizens">Voting Citizens</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="exctractedBallots"><span data-translate="sidenerApp.pollingplace.exctractedBallots">Exctracted Ballots</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="notRegistered"><span data-translate="sidenerApp.pollingplace.notRegistered">Not Registered</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="nullVotes"><span data-translate="sidenerApp.pollingplace.nullVotes">Null Votes</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalVotes"><span data-translate="sidenerApp.pollingplace.totalVotes">Total Votes</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="electoralRoll"><span data-translate="sidenerApp.pollingplace.electoralRoll">Electoral Roll</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations"><span data-translate="sidenerApp.pollingplace.observations">Observations</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="president"><span data-translate="sidenerApp.pollingplace.president">President</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="secretary"><span data-translate="sidenerApp.pollingplace.secretary">Secretary</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="scrutineerOne"><span data-translate="sidenerApp.pollingplace.scrutineerOne">Scrutineer One</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="scrutineerTwo"><span data-translate="sidenerApp.pollingplace.scrutineerTwo">Scrutineer Two</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="alternateOne"><span data-translate="sidenerApp.pollingplace.alternateOne">Alternate One</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="alternateTwo"><span data-translate="sidenerApp.pollingplace.alternateTwo">Alternate Two</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="alternateThree"><span data-translate="sidenerApp.pollingplace.alternateThree">Alternate Three</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="entityFirstPlace"><span data-translate="sidenerApp.pollingplace.entityFirstPlace">Entity First Place</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalFirstPlace"><span data-translate="sidenerApp.pollingplace.totalFirstPlace">Total First Place</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="entitySecondPlace"><span data-translate="sidenerApp.pollingplace.entitySecondPlace">Entity Second Place</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalSecondPlace"><span data-translate="sidenerApp.pollingplace.totalSecondPlace">Total Second Place</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="urlRecordCount"><span data-translate="sidenerApp.pollingplace.urlRecordCount">Url Record Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pollingPlaceWon"><span data-translate="sidenerApp.pollingplace.pollingPlaceWon">Polling Place Won</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="challengedPollingPlace"><span data-translate="sidenerApp.pollingplace.challengedPollingPlace">Challenged Polling Place</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="published"><span data-translate="sidenerApp.pollingplace.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span data-translate="sidenerApp.pollingplace.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.pollingplace.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="recordCountPath"><span data-translate="sidenerApp.pollingplace.recordCount">Record Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="electionId"><span data-translate="sidenerApp.pollingplace.election">Election</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="districtId"><span data-translate="sidenerApp.pollingplace.district">District</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pollingplace in vm.pollingplaces track by pollingplace.id">
+                    <td><a ui-sref="pollingplace-detail({id:pollingplace.id})">{{pollingplace.id}}</a></td>
+                    <td>{{pollingplace.town}}</td>
+                    <td data-translate="{{'sidenerApp.TypePollingPlace.' + pollingplace.typePollingPlace}}">{{pollingplace.typePollingPlace}}</td>
+                    <td>{{pollingplace.typeNumber}}</td>
+                    <td>{{pollingplace.section}}</td>
+                    <td>{{pollingplace.address}}</td>
+                    <td>{{pollingplace.leftoverBallots}}</td>
+                    <td>{{pollingplace.votingCitizens}}</td>
+                    <td>{{pollingplace.exctractedBallots}}</td>
+                    <td>{{pollingplace.notRegistered}}</td>
+                    <td>{{pollingplace.nullVotes}}</td>
+                    <td>{{pollingplace.totalVotes}}</td>
+                    <td>{{pollingplace.electoralRoll}}</td>
+                    <td>{{pollingplace.observations}}</td>
+                    <td>{{pollingplace.president}}</td>
+                    <td>{{pollingplace.secretary}}</td>
+                    <td>{{pollingplace.scrutineerOne}}</td>
+                    <td>{{pollingplace.scrutineerTwo}}</td>
+                    <td>{{pollingplace.alternateOne}}</td>
+                    <td>{{pollingplace.alternateTwo}}</td>
+                    <td>{{pollingplace.alternateThree}}</td>
+                    <td>{{pollingplace.entityFirstPlace}}</td>
+                    <td>{{pollingplace.totalFirstPlace}}</td>
+                    <td>{{pollingplace.entitySecondPlace}}</td>
+                    <td>{{pollingplace.totalSecondPlace}}</td>
+                    <td>{{pollingplace.urlRecordCount}}</td>
+                    <td>{{pollingplace.pollingPlaceWon}}</td>
+                    <td>{{pollingplace.challengedPollingPlace}}</td>
+                    <td>{{pollingplace.published}}</td>
+                    <td>{{pollingplace.createdDate | date:'medium'}}</td>
+                    <td>{{pollingplace.updatedDate | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="archive-detail({id:pollingplace.recordCountId})">{{pollingplace.recordCountPath}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="election-detail({id:pollingplace.electionId})">{{pollingplace.electionId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="district-detail({id:pollingplace.districtId})">{{pollingplace.districtId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="pollingplace-detail({id:pollingplace.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="pollingplace.edit({id:pollingplace.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="pollingplace.delete({id:pollingplace.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

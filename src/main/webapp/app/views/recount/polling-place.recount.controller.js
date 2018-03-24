@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('DistrictRecountPollingPlaceController', DistrictRecountPollingPlaceController);
 
-    DistrictRecountPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'CausalType', 'District', 'Election', 'ElectionPollingPlacesWonLose', 'DistrictRecountPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
+    DistrictRecountPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'CausalType', 'Causal','District', 'Election', 'ElectionPollingPlacesWonLose', 'DistrictRecountPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
 
-    function DistrictRecountPollingPlaceController($scope, $state, $stateParams, AlertService, CausalType, District, Election, ElectionPollingPlacesWonLose, DistrictRecountPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
+    function DistrictRecountPollingPlaceController($scope, $state, $stateParams, AlertService, CausalType,Causal, District, Election, ElectionPollingPlacesWonLose, DistrictRecountPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -17,6 +17,7 @@
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.loadAll = loadAll;
+        vm.getPollingPlaceCausals = getPollingPlaceCausals;
 
         // Datos del Distrito
         vm.loadDistrct = loadDistrict;
@@ -31,11 +32,31 @@
 
         // Causales
         vm.causals = [];
-        vm.causalsRecount = CausalType.get({
-            typeCausal: 'RECOUNT'
-        });
+
         loadDistrict();
+        getPollingPlaceCausals();
+
         loadAll();
+
+        function getPollingPlaceCausals() {
+
+            Causal.query({
+                query: pagingParams.search,
+                page: pagingParams.page - 1,
+                size: vm.itemsPerPage
+            }, onSuccess, onError);
+            function onSuccess(data, headers) {
+                console.log(data);
+                vm.links = ParseLinks.parse(headers('link'));
+                vm.totalItems = headers('X-Total-Count');
+                vm.queryCount = vm.totalItems;
+                vm.causals = data;
+                vm.page = pagingParams.page;
+            }
+            function onError(error) {
+                AlertService.error(error.data.message);
+            }
+        }
 
         function loadAll () {
             DistrictRecountPollingPlaces.get({
@@ -134,8 +155,8 @@
             vm.isSaving = false;
         }
 
-        $scope.countingAssumption = function(countingAssumption) {
-            if (countingAssumption === true) {
+        $scope.countingAssumption = function(countingAssumption,causalSize) {
+            if (countingAssumption === true || causalSize > 0) {
                 return "total-recount";
             }
         };
