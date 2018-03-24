@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('ElectionRecountDistrictController', ElectionRecountDistrictController);
 
-    ElectionRecountDistrictController.$inject = ['$scope', '$state', '$stateParams', 'Election', 'ElectionDistrictsWonLose', 'ElectionRecountDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams','DocumentDownload'];
+    ElectionRecountDistrictController.$inject = ['$scope', '$state', '$stateParams', 'Election', 'ElectionDistrictsWonLose', 'ElectionRecountDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams','DocumentDownload','DemandDownload'];
 
-    function ElectionRecountDistrictController($scope, $state, $stateParams, Election, ElectionDistrictsWonLose, ElectionRecountDistrict, ParseLinks, AlertService, paginationConstants, pagingParams, DocumentDownload) {
+    function ElectionRecountDistrictController($scope, $state, $stateParams, Election, ElectionDistrictsWonLose, ElectionRecountDistrict, ParseLinks, AlertService, paginationConstants, pagingParams, DocumentDownload,DemandDownload) {
 
         var vm = this;
 
@@ -24,6 +24,11 @@
         vm.openLink = openLink;
         // Distritos Ganados - Perdidos
         vm.districtsWonLose = ElectionDistrictsWonLose.get({ idElection : $stateParams.id });
+        vm.enableDistricts = [];
+        vm.trulyEnabledDIstricts = [];
+        vm.districtsForDemand = '';
+        vm.setEnabledDistricts = setEnabledDistricts;
+        vm.generateAllWord = generateAllWord;
 
         loadElection();
         loadAll();
@@ -36,6 +41,50 @@
             function onError(error) {
                 AlertService.error(error.data.message);
             }
+        }
+
+        function generateAllWord() {
+
+            console.log("generate All word");
+            console.log(vm.enableDistricts);
+            angular.forEach(vm.enableDistricts , function (value,key) {
+                if(angular.equals(value,true)){
+                    vm.trulyEnabledDIstricts.push(key);
+                }
+            });
+            vm.districtsForDemand  = vm.trulyEnabledDIstricts.join("-");
+
+            DemandDownload.get(vm.districtsForDemand).then(function (response) {
+
+                var contentDisposition = response.headers("content-disposition");
+                var tmp = contentDisposition.split("filename=");
+                var filename = "";
+
+                if(tmp.length>1){
+                    filename = tmp[1].replace(/\"/g, '');
+                }
+
+                var a = document.createElement("a");
+                document.body.appendChild(a);
+                var file = new Blob([response.data], {type: 'application/octet-stream'});
+                var fileURL = URL.createObjectURL(file);
+                a.href = fileURL;
+                a.download = filename;
+                a.click();
+            }).catch(function(error) {
+                AlertService.error(error);
+            });
+
+
+
+
+
+            }
+
+        function setEnabledDistricts(district) {
+            console.log(district);
+            //vm.enableDistricts.push(district);
+            console.log(vm.enableDistricts);
         }
 
         function loadAll () {

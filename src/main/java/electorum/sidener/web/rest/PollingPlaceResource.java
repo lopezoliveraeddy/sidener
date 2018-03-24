@@ -252,13 +252,13 @@ public class PollingPlaceResource {
 		// se carga en un temporal
 		if (csvFile != null) {
 			try {
-				FileUtils.writeByteArrayToFile(new File("/files/tmp/" + loadDTO.getEleccion() + ".csv"), csvFile);
+				FileUtils.writeByteArrayToFile(new File("/Desarrollo/tmp/" + loadDTO.getEleccion() + ".csv"), csvFile);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		try {
-			Reader reader = Files.newBufferedReader(Paths.get("/files/tmp/" + loadDTO.getEleccion() + ".csv"));
+			Reader reader = Files.newBufferedReader(Paths.get("/Desarrollo/tmp/" + loadDTO.getEleccion() + ".csv"));
 			CSVReader csvReader = new CSVReader(reader);
 			pollingPlaceDTOList = electionFromFile.processFile(csvReader, loadDTO.getEleccion());
 			for (Iterator iterator = pollingPlaceDTOList.iterator(); iterator.hasNext();) {

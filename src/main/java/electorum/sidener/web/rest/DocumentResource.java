@@ -9,6 +9,7 @@ import electorum.sidener.service.dto.DistrictDTO;
 import electorum.sidener.service.dto.ElectionDTO;
 import electorum.sidener.service.dto.ElectionTypeDTO;
 import electorum.sidener.service.util.Documents;
+import electorum.sidener.service.util.RecountDemand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ByteArrayResource;
@@ -25,6 +26,8 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -63,7 +66,7 @@ public class DocumentResource {
         String filename = "demanda-distrito-"+districtDTO.getId()+"-eleccion-"+electionDTO.getId()+".doc";
         documents.generateWord(districtDTO,electionDTO, filename);
 
-        File file = new File("/files/" + filename);
+        File file = new File("/Desarrollo/files/" + filename);
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -97,4 +100,52 @@ public class DocumentResource {
 
     }
 
+    @PostMapping("/file/demand")
+    @Timed
+    public ResponseEntity<Resource> getDemand(@RequestParam String districts) throws IOException{
+         String[] districtsList = districts.split("-");
+         List<DistrictDTO> districtDTOList = new ArrayList<DistrictDTO>();
+         Long election = 0L;
+         RecountDemand recountDemand= new RecountDemand();
+         String filename = "demanda-distrito-"+districts+"-"+election+"-eleccion.doc";
+         File file = new File("/Desarrollo/files/demandas/" + filename);
+
+
+        for (String s:
+            districtsList) {
+            districtDTOList.add(districtService.findOne(Long.parseLong(s)));
+            election = districtService.findOne(Long.parseLong(s)).getElectionId();
+        }
+
+        ElectionDTO electionDTO = electionService.findOne(election);
+        recountDemand.generateRecountDemand(districtDTOList, electionDTO,filename);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+
+        headers.add("Content-Disposition", "inline; filename=\"" + filename + "\"");
+
+        Path path = Paths.get(file.getAbsolutePath());
+
+        try{
+            ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
+
+            String mimeType = MimetypesFileTypeMap
+                .getDefaultFileTypeMap()
+                .getContentType(file);
+
+            MediaType mediaType = MediaType.parseMediaType(mimeType);
+            log.debug("MediaType {}",mediaType.toString());
+            return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(file.length())
+                .contentType(mediaType)
+                .body(resource);
+        }catch (NoSuchFileException e) {
+            return ResponseEntity.notFound().headers(headers).build();
+        }
+
+    }
 }

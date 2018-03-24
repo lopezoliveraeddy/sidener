@@ -20,7 +20,7 @@
                             <i class="fa medium fa-trophy" aria-hidden="true"></i>
                         </div>
                         <div class="media-body media-middle">
-                            <strong><span class="color-green">8 distritos ganados</span>, <span class="color-orange">10 distritos perdidos</span></strong>
+                            <strong><span class="color-green">{{vm.districtsWonLose.districtsWon}} distritos ganados</span>, <span class="color-orange">{{vm.districtsWonLose.districtsLose}} distritos perdidos</span></strong>
                         </div>
                     </div>
                 </div>
@@ -30,24 +30,15 @@
                             <i class="fa medium fa-bar-chart" aria-hidden="true"></i>
                         </div>
                         <div class="media-body media-middle">
-                            Recuento Cualitativo: <strong>2</strong>
+                            Distritos contabilizados para Recuento total: <strong>{{}}</strong>
                         </div>
                     </div>
-                    <div class="media">
-                        <div class="media-left media-middle">
-                            <i class="fa medium fa-bar-chart" aria-hidden="true"></i>
-                        </div>
-                        <div class="media-body media-middle">
-                            Recuento Cuantitativo: <strong>5</strong>
-                        </div>
-                    </div>
-
                     <div class="media">
                         <div class="media-left media-middle">
                             <i class="fa medium fa-file" aria-hidden="true"></i>
                         </div>
                         <div class="media-body media-middle">
-                            <a href="#" class="btn btn-info btn-sm">Descarga de Demanda</a>
+                            <a class="btn btn-info btn-sm" ng-click="vm.generateAllWord()">Descarga de Demanda</a>
                         </div>
                     </div>
                 </div>
@@ -120,9 +111,10 @@
                     </div>
                 </td>
                 <td class="text-center">
-                        <input type="checkbox" class="form-control" checked name="{{district.id}}" ng-checked="district.districtWon== true">
+                        <input type="checkbox" class="form-control"  ng-change="vm.setEnabledDistricts(district.id)" ng-model="vm.enableDistricts[district.id]" name="{{district.id}}" ng-checked="district.districtWon==false &&  district.percentageDifference < 1 " >
+                        <span ng-if="district.percentageDifference < 1"><div ng-init="vm.enableDistricts[district.id]=true"></div></span>
                 </td>
-            </tr>
+            </tr>f
             </tbody>
         </table>
     </div>

@@ -22,20 +22,20 @@ public class Documents {
 
     public void generateWord(DistrictDTO districtDTO, ElectionDTO electionDTO, String filename) throws IOException {
 
-		FileOutputStream out = new FileOutputStream(new File("/files/"+filename));
+		FileOutputStream out = new FileOutputStream(new File("/Desarrollo/files/"+filename));
 		try {
 			XWPFDocument  document = new XWPFDocument();
 			XWPFParagraph paragraph = document.createParagraph();
 			XWPFRun encabezado = paragraph.createRun();
             XWPFParagraph paragraphTwo = document.createParagraph();
-            XWPFTable table = document.createTable();
             XWPFParagraph paragraphThree = document.createParagraph();
             paragraph.setAlignment(ParagraphAlignment.LEFT);
             paragraphTwo.setAlignment(ParagraphAlignment.BOTH);
             XWPFRun introduccion = paragraphTwo.createRun();
             XWPFRun solicitud = paragraphTwo.createRun();
             XWPFRun regla = paragraphTwo.createRun();
-            XWPFRun despedida = paragraphThree.createRun();
+
+            XWPFTable table = document.createTable();
             paragraphThree.setAlignment(ParagraphAlignment.CENTER);
             Long diferenciaPorcentual = (districtDTO.getTotalFirstPlace()- districtDTO.getTotalSecondPlace())/districtDTO.getTotalVotes();
 
@@ -84,6 +84,7 @@ public class Documents {
             tableRowThree.getCell(2).setText(districtDTO.getEntitySecondPlace());
             tableRowThree.getCell(3).setText(districtDTO.getTotalSecondPlace().toString());
             tableRowThree.getCell(4).setText(String.valueOf(diferenciaPorcentual));
+            XWPFRun despedida = paragraphThree.createRun();
             despedida.addCarriageReturn();
             despedida.addCarriageReturn();
             despedida.setText("ATENTAMENTE");

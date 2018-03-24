@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import electorum.sidener.domain.PollingPlace;
+import electorum.sidener.domain.enumeration.TypePollingPlace;
 import org.apache.commons.lang.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +32,7 @@ public class ElectionFromFile {
 	private static final String SEPARADORDATOS = "S1";
 	private static final String SEPARADORPARTIDOS = "S2";
 	private static final String SEPARADORCOALICIONES="S3";
-	private static final String SEPARADORCANDIDATOSIND = "S4";
+	//private static final String SEPARADORCANDIDATOSIND = "S4";
 	private static final String PRIMERLUGAR = "primerLugar";
 	private static final String SEGUNDOLUGAR = "segundoLugar";
 	private final Logger log = LoggerFactory.getLogger(PollingPlaceResource.class);
@@ -55,13 +57,16 @@ public class ElectionFromFile {
 			int marcaDatos = ArrayUtils.indexOf(nextRecord, SEPARADORDATOS);
 			int marcaPartidos =ArrayUtils.indexOf(nextRecord, SEPARADORPARTIDOS);
 			int marcaCoaliciones=ArrayUtils.indexOf(nextRecord, SEPARADORCOALICIONES);
-			int marcaCandidatos  = ArrayUtils.indexOf(nextRecord, SEPARADORCANDIDATOSIND);
+			//int marcaCandidatos  = ArrayUtils.indexOf(nextRecord, SEPARADORCANDIDATOSIND);
+            log.debug("--marca datos -- {}", marcaDatos);
+            log.debug("--marca partidos -- {}", marcaPartidos);
+            log.debug("--marca coaliciones -- {}", marcaCoaliciones);
 
 			partidos = this.processHeader(nextRecord,marcaDatos,marcaPartidos);
 			coaliciones = this.processHeader(nextRecord,marcaPartidos, marcaCoaliciones);
-			candidatosi = this.processHeader(nextRecord,marcaCoaliciones,marcaCandidatos);
+			//candidatosi = this.processHeader(nextRecord,marcaCoaliciones,marcaCandidatos);
 			while ((nextRecord = csvFile.readNext()) != null) {
-				pollingPlaceDTOList.add(this.processPollingPlaceInfo(nextRecord, eleccion,partidos,marcaDatos, marcaPartidos, marcaCoaliciones, marcaCandidatos)) ;
+				pollingPlaceDTOList.add(this.processPollingPlaceInfo(nextRecord, eleccion,partidos,marcaDatos, marcaPartidos, marcaCoaliciones)) ;
 			}
 
 		} catch (IOException e1) {
@@ -80,16 +85,90 @@ public class ElectionFromFile {
 	 * @param marcaDatos
 	 * @param marcaPartidos
 	 * @param marcaCoaliciones
-	 * @param marcaCandidatos
 	 * @return
 	 */
 	@SuppressWarnings("null")
 	@Autowired
-	private PollingPlaceDTO processPollingPlaceInfo(String[] nextRecord, Long eleccion, List<String> partidos, int marcaDatos, int marcaPartidos, int marcaCoaliciones, int marcaCandidatos) {
+	private PollingPlaceDTO processPollingPlaceInfo(String[] nextRecord, Long eleccion, List<String> partidos, int marcaDatos, int marcaPartidos, int marcaCoaliciones) {
 
 		// TODO Auto-generated method stub
 		Map<String, WinnersDTO> ganadoresPartidos = new HashMap<String, WinnersDTO>();
-		ganadoresPartidos = this.processWinnersByPollingPlace(nextRecord, partidos, marcaDatos,marcaPartidos);
+        PollingPlaceDTO pollingPlaceDTO = new PollingPlaceDTO();
+
+        String textoTipo = nextRecord[4];
+        TypePollingPlace tipo = TypePollingPlace.BASIC;
+        String numberPollingPlace = "";
+
+        if(textoTipo.contains("B")){
+            tipo = TypePollingPlace.BASIC;
+            numberPollingPlace = textoTipo.replace("B","");
+        }
+        if(textoTipo.contains("C")) {
+            tipo = TypePollingPlace.CONTIGUOUS;
+            numberPollingPlace = textoTipo.replace("C","");
+        }
+        if(textoTipo.contains("E")) {
+            tipo = TypePollingPlace.EXTRAORDINARY;
+            numberPollingPlace = textoTipo.replace("E","");
+        }
+        if(textoTipo.contains(("S"))) {
+            tipo = TypePollingPlace.SPECIAL;
+            numberPollingPlace = textoTipo.replace("S","");
+        }
+        log.debug("DEBUG -->{}", nextRecord.toString());
+
+        pollingPlaceDTO.setTown(nextRecord[1]);
+        pollingPlaceDTO.setTypePollingPlace(tipo);
+        pollingPlaceDTO.setTypeNumber(numberPollingPlace);
+        pollingPlaceDTO.setSection(nextRecord[3]);
+        pollingPlaceDTO.setAddress(nextRecord[12]);
+
+        if(!(nextRecord[marcaCoaliciones+3] == "" || nextRecord[marcaCoaliciones+3] == null)){
+            pollingPlaceDTO.setLeftoverBallots(Long.valueOf(nextRecord[marcaCoaliciones+3]));
+
+        }
+        if(!(nextRecord[marcaCoaliciones+4] == "" || nextRecord[marcaCoaliciones+4] == null)){
+            pollingPlaceDTO.setVotingCitizens(Long.valueOf(nextRecord[marcaCoaliciones+4]));
+
+        }
+        if(!(nextRecord[marcaCoaliciones+5] == "" || nextRecord[marcaCoaliciones+5] == null)){
+            pollingPlaceDTO.setExctractedBallots(Long.valueOf(nextRecord[marcaCoaliciones+5]));
+
+        }
+
+        if(!(nextRecord[marcaCoaliciones+1] == "" || nextRecord[marcaCoaliciones+1] == null)){
+            pollingPlaceDTO.setNotRegistered(Long.valueOf(nextRecord[marcaCoaliciones+1]));
+
+
+        }
+
+        if(!(nextRecord[marcaCoaliciones+2] == "" || nextRecord[marcaCoaliciones+2] == null)){
+            pollingPlaceDTO.setNullVotes(Long.valueOf(nextRecord[marcaCoaliciones+2]));
+        }
+
+        if(!(nextRecord[marcaCoaliciones+6] == "" || nextRecord[marcaCoaliciones+6] == null)){
+            log.debug("---- {} -----", nextRecord[marcaCoaliciones+6] );
+            pollingPlaceDTO.setTotalVotes(Long.valueOf(nextRecord[marcaCoaliciones+6]));
+        }
+
+
+
+        pollingPlaceDTO.setPresident(nextRecord[5]);
+        pollingPlaceDTO.setSecretary(nextRecord[6]);
+        pollingPlaceDTO.setScrutineerOne(nextRecord[7]);
+        pollingPlaceDTO.setScrutineerTwo(nextRecord[8]);
+        pollingPlaceDTO.setAlternateOne(nextRecord[9]);
+        pollingPlaceDTO.setAlternateTwo(nextRecord[10]);
+        pollingPlaceDTO.setAlternateThree(nextRecord[11]);
+
+
+
+
+
+
+
+
+		/*ganadoresPartidos = this.processWinnersByPollingPlace(nextRecord, partidos, marcaDatos,marcaPartidos);
 		PollingPlaceDTO pollingPlaceDTO = new PollingPlaceDTO();
 		pollingPlaceDTO.setDistrictId(Long.valueOf(nextRecord[0]));
 		pollingPlaceDTO.setSection(nextRecord[1]);
@@ -106,7 +185,7 @@ public class ElectionFromFile {
 
 		pollingPlaceDTO.setTotalFirstPlace(ganadoresPartidos.get(PRIMERLUGAR).getCantidad());
 		pollingPlaceDTO.setTotalSecondPlace(ganadoresPartidos.get(SEGUNDOLUGAR).getCantidad());
-
+*/
 //		log.debug("CASILLA : {} ",pollingPlaceDTO.toString());
 		return pollingPlaceDTO;
 
