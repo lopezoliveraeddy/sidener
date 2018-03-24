@@ -166,6 +166,11 @@
             "fieldType": "Boolean"
         },
         {
+           "fieldName": "challengedPollingPlace",
+           "javadoc" :  "Casilla a impugnar",
+           "fieldType": "Boolean"
+        },
+        {
             "fieldName": "published",
             "fieldType": "Boolean"
         },

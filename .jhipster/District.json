@@ -76,6 +76,11 @@
             "fieldType": "Boolean"
         },
         {
+	   "fieldName": "totalRecount",
+           "javadoc" :  "Distrito con recuento total",
+           "fieldType": "Boolean"
+        },
+        {
             "fieldName": "published",
             "fieldType": "Boolean"
         },
