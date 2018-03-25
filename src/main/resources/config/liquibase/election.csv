@@ -1,2 +1,3 @@
 id,state,period_election,date_election,status,data_base,inset_url,incident_sheet,day_record,demand_template_url,recount_template_url,recount_districts_rule,recount_polling_place_rule,published,created_date,updated_date,election_type_id,political_party_asociated_id,coalition_asociated_id,Independent_candidate_asociated_id
 1,AGU,2015-2016,2017-07-05 00:00:00.000,COMPLETE,null,null,null,null,null,null,LESS_1,LESS_1,true,2018-12-31 23:59:59.999,2018-12-31 23:59:59.999,4,null,1,null
+2,OAX,2015-2016,2017-06-05 00:00:00.000,COMPLETE,null,null,null,null,null,null,LESS_1,LESS_1,true,2018-12-31 23:59:59.999,2018-12-31 23:59:59.999,4,null,3,null

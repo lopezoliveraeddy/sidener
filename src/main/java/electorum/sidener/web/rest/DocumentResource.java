@@ -117,7 +117,7 @@ public class DocumentResource {
         for (String s:
             pollingPlaceList) {
             pollingPlaceDTOList.add(pollingPlaceService.findOne(Long.parseLong(s)));
-            election = pollingPlaceService.findOne(Long.parseLong(s)).getElectionId();
+            election = districtService.findOne(Long.parseLong(s)).getElectionId();
         }
 
         ElectionDTO electionDTO = electionService.findOne(election);
