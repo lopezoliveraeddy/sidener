@@ -218,6 +218,8 @@ public class DistrictResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+
+
     /**
      * Post /district : Create a new election data from file
      *

@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('DistrictRecountPollingPlaceController', DistrictRecountPollingPlaceController);
 
-    DistrictRecountPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'CausalType', 'Causal','District', 'Election', 'ElectionPollingPlacesWonLose', 'DistrictRecountPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
+    DistrictRecountPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'CausalType', 'Causal','District', 'Election', 'ElectionPollingPlacesWonLose', 'DistrictRecountPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams','DemandDownloadPolling'];
 
-    function DistrictRecountPollingPlaceController($scope, $state, $stateParams, AlertService, CausalType,Causal, District, Election, ElectionPollingPlacesWonLose, DistrictRecountPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
+    function DistrictRecountPollingPlaceController($scope, $state, $stateParams, AlertService, CausalType,Causal, District, Election, ElectionPollingPlacesWonLose, DistrictRecountPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams,DemandDownloadPolling) {
 
         var vm = this;
 
@@ -18,10 +18,11 @@
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.loadAll = loadAll;
         vm.getPollingPlaceCausals = getPollingPlaceCausals;
-
+        vm.pollingPlacesWithCausals = [];
         // Datos del Distrito
         vm.loadDistrct = loadDistrict;
         vm.district = [];
+        vm.generateAllWordDemand = generateAllWordDemand;
 
         // Datos de la Elección
         vm.loadElection = loadElection;
@@ -37,7 +38,7 @@
         getPollingPlaceCausals();
 
         loadAll();
-
+        console.log(vm.pollingPlacesWithCausals);
         function getPollingPlaceCausals() {
 
             Causal.query({
@@ -46,7 +47,6 @@
                 size: vm.itemsPerPage
             }, onSuccess, onError);
             function onSuccess(data, headers) {
-                console.log(data);
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
@@ -80,6 +80,11 @@
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
                 vm.pollingPlaces = data;
+                for(var i = 0 ; i < data.length; i++){
+                    if(data[i].causals.length > 0 ){
+                        vm.pollingPlacesWithCausals.push(data[i]);
+                    }
+                }
                 vm.page = pagingParams.page;
             }
             function onError(error) {
@@ -122,6 +127,42 @@
             }
         }
 
+        function generateAllWordDemand() {
+            var pollingPlaces= [];
+            var strPollingPlaces = '';
+            console.log("eddy");
+
+            for(var i = 0; i < vm.pollingPlacesWithCausals.length; i++){
+                console.log(vm.pollingPlacesWithCausals[i]);
+                pollingPlaces.push(vm.pollingPlacesWithCausals[i].id);
+
+                console.log(pollingPlaces);
+            }
+
+
+
+            DemandDownloadPolling.get(pollingPlaces.join("-")).then(function (response) {
+
+                var contentDisposition = response.headers("content-disposition");
+                var tmp = contentDisposition.split("filename=");
+                var filename = "";
+
+                if(tmp.length>1){
+                    filename = tmp[1].replace(/\"/g, '');
+                }
+
+                var a = document.createElement("a");
+                document.body.appendChild(a);
+                var file = new Blob([response.data], {type: 'application/octet-stream'});
+                var fileURL = URL.createObjectURL(file);
+                a.href = fileURL;
+                a.download = filename;
+                a.click();
+            }).catch(function(error) {
+                AlertService.error(error);
+            });
+
+        }
         $scope.pollingPlaceType = function (typePollingPlace, typeNumber) {
             switch (typePollingPlace) {
                 case 'BASIC':
@@ -141,7 +182,6 @@
 
         // Actualización dada la selección de causales
         $scope.updateCausals = function (pollingPlace) {
-            console.log(pollingPlace);
             vm.isSaving = true;
             PollingPlace.update(pollingPlace, onSaveSuccess, onSaveError);
         };

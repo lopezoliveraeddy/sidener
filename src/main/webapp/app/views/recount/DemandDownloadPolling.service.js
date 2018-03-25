@@ -14,7 +14,7 @@
         function get(file) {
             console.log(file);
             var deferred = $q.defer();
-            var url = "api/file/demandpolling/?districts=" + file;
+            var url = "api/file/demandpolling/?pollingplaces=" + file;
             var token = AuthServerProvider.getToken();
             console.log(token);
             if (token ) {

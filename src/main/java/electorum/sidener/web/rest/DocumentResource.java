@@ -1,13 +1,14 @@
 package electorum.sidener.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import electorum.sidener.domain.ElectionType;
+import electorum.sidener.domain.PollingPlace;
 import electorum.sidener.service.DistrictService;
 import electorum.sidener.service.ElectionService;
-import electorum.sidener.service.ElectionTypeService;
+import electorum.sidener.service.PollingPlaceService;
 import electorum.sidener.service.dto.DistrictDTO;
 import electorum.sidener.service.dto.ElectionDTO;
 import electorum.sidener.service.dto.ElectionTypeDTO;
+import electorum.sidener.service.dto.PollingPlaceDTO;
 import electorum.sidener.service.util.Documents;
 import electorum.sidener.service.util.RecountDemand;
 import org.slf4j.Logger;
@@ -38,10 +39,12 @@ public class DocumentResource {
     private final Logger log = LoggerFactory.getLogger(DocumentResource.class);
     private final DistrictService districtService;
     private final ElectionService electionService;
+    private final PollingPlaceService pollingPlaceService;
 
-    public DocumentResource(DistrictService districtService, ElectionService electionService) {
+    public DocumentResource(DistrictService districtService, ElectionService electionService, PollingPlaceService pollingPlaceService) {
         this.districtService = districtService;
         this.electionService = electionService;
+        this.pollingPlaceService = pollingPlaceService;
     }
 
 
@@ -100,15 +103,65 @@ public class DocumentResource {
 
     }
 
+    @PostMapping("/file/demandpolling")
+    @Timed
+    public ResponseEntity<Resource> getDemandPolling(@RequestParam String pollingplaces) throws IOException{
+         String[] pollingPlaceList = pollingplaces.split("-");
+         List<PollingPlaceDTO> pollingPlaceDTOList = new ArrayList<PollingPlaceDTO>();
+         Long election = 0L;
+         RecountDemand recountDemand= new RecountDemand();
+         String filename = "demanda-distrito-"+pollingplaces+"-"+election+"-eleccion.doc";
+         File file = new File("/Desarrollo/files/demandas/" + filename);
+
+
+        for (String s:
+            pollingPlaceList) {
+            pollingPlaceDTOList.add(pollingPlaceService.findOne(Long.parseLong(s)));
+            election = pollingPlaceService.findOne(Long.parseLong(s)).getElectionId();
+        }
+
+        ElectionDTO electionDTO = electionService.findOne(election);
+        recountDemand.generateRecountDemandPollingPlace(pollingPlaceDTOList , electionDTO,filename);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+
+        headers.add("Content-Disposition", "inline; filename=\"" + filename + "\"");
+
+        Path path = Paths.get(file.getAbsolutePath());
+
+        try{
+            ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
+
+            String mimeType = MimetypesFileTypeMap
+                .getDefaultFileTypeMap()
+                .getContentType(file);
+
+            MediaType mediaType = MediaType.parseMediaType(mimeType);
+            log.debug("MediaType {}",mediaType.toString());
+            return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(file.length())
+                .contentType(mediaType)
+                .body(resource);
+        }catch (NoSuchFileException e) {
+            return ResponseEntity.notFound().headers(headers).build();
+        }
+
+    }
+
+
     @PostMapping("/file/demand")
     @Timed
     public ResponseEntity<Resource> getDemand(@RequestParam String districts) throws IOException{
-         String[] districtsList = districts.split("-");
-         List<DistrictDTO> districtDTOList = new ArrayList<DistrictDTO>();
-         Long election = 0L;
-         RecountDemand recountDemand= new RecountDemand();
-         String filename = "demanda-distrito-"+districts+"-"+election+"-eleccion.doc";
-         File file = new File("/Desarrollo/files/demandas/" + filename);
+        String[] districtsList = districts.split("-");
+        List<DistrictDTO> districtDTOList = new ArrayList<DistrictDTO>();
+        Long election = 0L;
+        RecountDemand recountDemand= new RecountDemand();
+        String filename = "demanda-distrito-"+districts+"-"+election+"-eleccion.doc";
+        File file = new File("/Desarrollo/files/demandas/" + filename);
 
 
         for (String s:
