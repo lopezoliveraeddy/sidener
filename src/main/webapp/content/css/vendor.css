@@ -2941,7 +2941,7 @@ fieldset[disabled] a.btn {
 
 .btn-info {
   color: #fff;
-  background-color: #5bc0de;
+  background-color: #b0b536;
   border-color: #46b8da; }
   .btn-info:focus, .btn-info.focus {
     color: #fff;
@@ -2970,10 +2970,10 @@ fieldset[disabled] a.btn {
   fieldset[disabled] .btn-info:hover,
   fieldset[disabled] .btn-info:focus,
   fieldset[disabled] .btn-info.focus {
-    background-color: #5bc0de;
+    background-color: #b0b536;
     border-color: #46b8da; }
   .btn-info .badge {
-    color: #5bc0de;
+    color: #b0b536;
     background-color: #fff; }
 
 .btn-warning {
@@ -4230,7 +4230,7 @@ a.label:hover, a.label:focus {
     background-color: #449d44; }
 
 .label-info {
-  background-color: #5bc0de; }
+  background-color: #b0b536; }
   .label-info[href]:hover, .label-info[href]:focus {
     background-color: #31b0d5; }
 
@@ -4462,7 +4462,7 @@ a.thumbnail.active {
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
 
 .progress-bar-info {
-  background-color: #5bc0de; }
+  background-color: #b0b536; }
   .progress-striped .progress-bar-info {
     background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
     background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -8342,7 +8342,7 @@ button.close {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom: 1px solid transparent;
-  background-color: #63bbb2; }
+  background-color: #323430; }
   .nav.nav-tabs a {
     color: #ffffff; }
     .nav.nav-tabs a:hover {
@@ -8357,7 +8357,7 @@ button.close {
       background-color: #63bbb2; }
   .nav.nav-tabs > li.active > a {
     color: #ffffff;
-    background-color: #209e91; }
+    background-color: #b0b536; }
   .nav.nav-tabs > li:first-of-type a {
     border-top-left-radius: 5px; }
   .nav.nav-tabs .dropdown-menu > li > a {
@@ -9361,7 +9361,7 @@ a {
   border-color: #7a9d00; }
 
 .open > .btn.dropdown-toggle.btn-info {
-  background: #2dacd1;
+  background: #b0b536;
   border-color: #1594b9;
   background-color: #2692b2;
   border-color: #2692b2; }
@@ -9436,19 +9436,19 @@ button.btn.btn-success {
     background-color: #7a9d00; }
 
 button.btn.btn-info {
-  background: #2dacd1;
-  border-color: #2dacd1; }
+  background: #b0b536;
+  border-color: #b0b536; }
   button.btn.btn-info.disabled, button.btn.btn-info[disabled], fieldset[disabled] button.btn.btn-info, button.btn.btn-info.disabled:hover, button.btn.btn-info[disabled]:hover,
   fieldset[disabled] button.btn.btn-info:hover, button.btn.btn-info.disabled:focus, button.btn.btn-info[disabled]:focus, fieldset[disabled] button.btn.btn-info:focus, button.btn.btn-info.disabled.focus, button.btn.btn-info[disabled].focus, fieldset[disabled] button.btn.btn-info.focus, button.btn.btn-info.disabled:active, button.btn.btn-info[disabled]:active, fieldset[disabled] button.btn.btn-info:active, button.btn.btn-info.disabled.active, button.btn.btn-info[disabled].active,
   fieldset[disabled] button.btn.btn-info.active {
-    background: #2dacd1;
+    background: #b0b536;
     border-color: #39b8dd; }
     button.btn.btn-info.disabled:hover, button.btn.btn-info[disabled]:hover, fieldset[disabled] button.btn.btn-info:hover, button.btn.btn-info.disabled:hover:hover, button.btn.btn-info[disabled]:hover:hover,
     fieldset[disabled] button.btn.btn-info:hover:hover, button.btn.btn-info.disabled:focus:hover, button.btn.btn-info[disabled]:focus:hover, fieldset[disabled] button.btn.btn-info:focus:hover, button.btn.btn-info.disabled.focus:hover, button.btn.btn-info[disabled].focus:hover, fieldset[disabled] button.btn.btn-info.focus:hover, button.btn.btn-info.disabled:active:hover, button.btn.btn-info[disabled]:active:hover, fieldset[disabled] button.btn.btn-info:active:hover, button.btn.btn-info.disabled.active:hover, button.btn.btn-info[disabled].active:hover,
     fieldset[disabled] button.btn.btn-info.active:hover {
       transform: none; }
   button.btn.btn-info:hover, button.btn.btn-info:focus, button.btn.btn-info.focus, button.btn.btn-info:active, button.btn.btn-info.active {
-    background: #2dacd1;
+    background: #b0b536;
     border-color: #1594b9; }
   button.btn.btn-info:active, button.btn.btn-info:target {
     background-color: #2692b2; }
@@ -9636,7 +9636,7 @@ button.progress-button.btn.btn-info {
   button.progress-button.btn.btn-info.progress-button-perspective {
     background: none; }
     button.progress-button.btn.btn-info.progress-button-perspective .content {
-      background-color: #2dacd1; }
+      background-color: #b0b536; }
 
 button.progress-button.btn.btn-warning {
   border-radius: 0; }

@@ -43,19 +43,31 @@ public class DistrictFromFile {
      */
     private DistrictDTO districtInfo(String[] nextRecord) {
         DistrictDTO districtDTO = new DistrictDTO();
+        log.debug("--------->{}",nextRecord[0]);
+        log.debug("--------->{}",nextRecord[2]);
+        log.debug("--------->{}",nextRecord[3]);
+        log.debug("--------->{}",nextRecord[4]);
+        log.debug("--------->{}",nextRecord[5]);
+        log.debug("--------->{}",nextRecord[6]);
+        log.debug("--------->{}",nextRecord[7]);
+        log.debug("--------->{}",nextRecord[8]);
+        log.debug("--------->{}",nextRecord[9]);
+
         //districtDTO.setId(Long.valueOf(nextRecord[0]));
-        districtDTO.setDecimalNumber(Long.valueOf(nextRecord[1]));
-        districtDTO.setRomanNumber(nextRecord[2]);
-        districtDTO.setDistrictHead(nextRecord[3]);
-        districtDTO.setEntityFirstPlace("");
-        districtDTO.setTotalFirstPlace(0L);
-        districtDTO.setTotalSecondPlace(0L);
-        districtDTO.setTotalVotes(Long.valueOf(nextRecord[8]));
-        districtDTO.setElectoralRoll(Long.valueOf(nextRecord[9]));
-        districtDTO.setPublished(Boolean.valueOf(nextRecord[10]));
+        districtDTO.setDecimalNumber(Long.valueOf(nextRecord[0]));
+        districtDTO.setRomanNumber(nextRecord[1]);
+        districtDTO.setDistrictHead(nextRecord[2]);
+        districtDTO.setEntityFirstPlace(nextRecord[3]);
+        districtDTO.setEntitySecondPlace(nextRecord[4]);
+
+        districtDTO.setTotalFirstPlace(Long.valueOf(nextRecord[5]));
+        districtDTO.setTotalSecondPlace(Long.valueOf(nextRecord[6]));
+        districtDTO.setTotalVotes(Long.valueOf(nextRecord[7]));
+        //districtDTO.setElectoralRoll(Long.valueOf(nextRecord[9]));
+        districtDTO.setPublished(true);
         districtDTO.setCreatedDate(ZonedDateTime.now());
         districtDTO.setUpdatedDate(ZonedDateTime.now());
-        districtDTO.setElectionId(Long.valueOf(nextRecord[14]));
+        districtDTO.setElectionId(2L);
 
 
 

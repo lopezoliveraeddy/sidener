@@ -44,7 +44,7 @@
             }
 
             function generateAllWord() {
-                console.log("eddy");
+
                  angular.forEach(vm.enableDistricts , function (value,key) {
                     if(angular.equals(value,true)){
                         vm.trulyEnabledDIstricts.push(key);
@@ -118,7 +118,6 @@
             }
 
             function openLink(file){
-                console.log(file);
                 DocumentDownload.get(file).then(function(response) {
 
                     var contentDisposition = response.headers("content-disposition");

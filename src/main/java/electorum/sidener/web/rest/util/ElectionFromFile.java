@@ -127,14 +127,8 @@ public class ElectionFromFile {
             pollingPlaceDTO.setLeftoverBallots(Long.valueOf(nextRecord[marcaCoaliciones+3]));
 
         }
-        if(!(nextRecord[marcaCoaliciones+4] == "" || nextRecord[marcaCoaliciones+4] == null)){
-            pollingPlaceDTO.setVotingCitizens(Long.valueOf(nextRecord[marcaCoaliciones+4]));
 
-        }
-        if(!(nextRecord[marcaCoaliciones+5] == "" || nextRecord[marcaCoaliciones+5] == null)){
-            pollingPlaceDTO.setExctractedBallots(Long.valueOf(nextRecord[marcaCoaliciones+5]));
 
-        }
 
         if(!(nextRecord[marcaCoaliciones+1] == "" || nextRecord[marcaCoaliciones+1] == null)){
             pollingPlaceDTO.setNotRegistered(Long.valueOf(nextRecord[marcaCoaliciones+1]));
@@ -145,11 +139,33 @@ public class ElectionFromFile {
         if(!(nextRecord[marcaCoaliciones+2] == "" || nextRecord[marcaCoaliciones+2] == null)){
             pollingPlaceDTO.setNullVotes(Long.valueOf(nextRecord[marcaCoaliciones+2]));
         }
+        if(!(nextRecord[marcaCoaliciones+3] == "" || nextRecord[marcaCoaliciones+3] == null)){
+            pollingPlaceDTO.setLeftoverBallots(Long.valueOf(nextRecord[marcaCoaliciones+3]));
+
+        }
+        if(!(nextRecord[marcaCoaliciones+4] == "" || nextRecord[marcaCoaliciones+4] == null)){
+            pollingPlaceDTO.setVotingCitizens(Long.valueOf(nextRecord[marcaCoaliciones+4]));
+
+        }
+        if(!(nextRecord[marcaCoaliciones+5] == "" || nextRecord[marcaCoaliciones+5] == null)){
+            pollingPlaceDTO.setExctractedBallots(Long.valueOf(nextRecord[marcaCoaliciones+5]));
+
+        }
+
 
         if(!(nextRecord[marcaCoaliciones+6] == "" || nextRecord[marcaCoaliciones+6] == null)){
             log.debug("---- {} -----", nextRecord[marcaCoaliciones+6] );
             pollingPlaceDTO.setTotalVotes(Long.valueOf(nextRecord[marcaCoaliciones+6]));
         }
+        pollingPlaceDTO.setTotalFirstPlace(Long.valueOf(nextRecord[marcaCoaliciones+7]));
+        pollingPlaceDTO.setTotalSecondPlace(Long.valueOf(nextRecord[marcaCoaliciones+8]));
+        pollingPlaceDTO.setEntityFirstPlace(nextRecord[marcaCoaliciones+9]);
+        pollingPlaceDTO.setEntitySecondPlace(nextRecord[marcaCoaliciones+10]);
+        pollingPlaceDTO.setPublished(true);
+        pollingPlaceDTO.setElectionId(2L);
+        pollingPlaceDTO.setDistrictId(Long.valueOf(nextRecord[0]));
+
+
 
 
 
