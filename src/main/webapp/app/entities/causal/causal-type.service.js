@@ -7,7 +7,7 @@
     CausalType.$inject = ['$resource', 'DateUtils'];
 
     function CausalType ($resource) {
-        var resourceUrl =  'api/causals/type/:typeCausal';
+        var resourceUrl =  'api/causals/type/:typeCausal/:subTypeCausal';
 
         return $resource(resourceUrl, {}, {
             'get': {
