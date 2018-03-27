@@ -25,10 +25,8 @@
             // Distritos Ganados - Perdidos
             vm.districtsWonLose = ElectionDistrictsWonLose.get({ idElection : $stateParams.id });
             vm.districtsForTotalRecount = ElectionDistrictsRecount.get({ idElection : $stateParams.id });
-            vm.enableDistricts = [];
             vm.trulyEnabledDIstricts = [];
             vm.districtsForDemand = '';
-            vm.generateAllWord = generateAllWord;
 
             loadElection();
             loadAll();
@@ -43,37 +41,6 @@
                 }
             }
 
-            function generateAllWord() {
-
-                 angular.forEach(vm.enableDistricts , function (value,key) {
-                    if(angular.equals(value,true)){
-                        vm.trulyEnabledDIstricts.push(key);
-                    }
-                });
-                vm.districtsForDemand  = vm.trulyEnabledDIstricts.join("-");
-
-                DemandDownload.get(vm.districtsForDemand).then(function (response) {
-
-                    var contentDisposition = response.headers("content-disposition");
-                    var tmp = contentDisposition.split("filename=");
-                    var filename = "";
-
-                    if(tmp.length>1){
-                        filename = tmp[1].replace(/\"/g, '');
-                    }
-
-                    var a = document.createElement("a");
-                    document.body.appendChild(a);
-                    var file = new Blob([response.data], {type: 'application/octet-stream'});
-                    var fileURL = URL.createObjectURL(file);
-                    a.href = fileURL;
-                    a.download = filename;
-                    a.click();
-                }).catch(function(error) {
-                    AlertService.error(error);
-                });
-
-            }
 
 
 
