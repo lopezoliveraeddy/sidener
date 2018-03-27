@@ -14,7 +14,8 @@
                 "question": "¿Seguro que quiere eliminar el Distrito {{ id }}?"
             },
             "detail": {
-                "title": "Distrito"
+                "title": "Distrito",
+                "label": "Detalle"
             },
             "firstPlace": "Partido 1er Lugar",
             "secondPlace": "Partido 2do Lugar",
@@ -38,7 +39,8 @@
             "election": "Elección",
             "pollingPlacesTotal": "Total de Casillas",
             "detectCausalsOfNullity": "Detectar Causales de Nulidad",
-            "districts": "Distritos"
+            "districts": "Distritos",
+            "recountDocument":"Escrito de Recuento"
         }
     }
 }
