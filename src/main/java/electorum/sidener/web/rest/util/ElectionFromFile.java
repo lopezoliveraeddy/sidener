@@ -120,7 +120,7 @@ public class ElectionFromFile {
         pollingPlaceDTO.setTown(nextRecord[1]);
         pollingPlaceDTO.setTypePollingPlace(tipo);
         pollingPlaceDTO.setTypeNumber(numberPollingPlace);
-        pollingPlaceDTO.setSection(nextRecord[3]);
+        pollingPlaceDTO.setSection(Long.valueOf(nextRecord[3]));
         pollingPlaceDTO.setAddress(nextRecord[12]);
 
         if(!(nextRecord[marcaCoaliciones+3] == "" || nextRecord[marcaCoaliciones+3] == null)){
@@ -187,7 +187,7 @@ public class ElectionFromFile {
 		/*ganadoresPartidos = this.processWinnersByPollingPlace(nextRecord, partidos, marcaDatos,marcaPartidos);
 		PollingPlaceDTO pollingPlaceDTO = new PollingPlaceDTO();
 		pollingPlaceDTO.setDistrictId(Long.valueOf(nextRecord[0]));
-		pollingPlaceDTO.setSection(nextRecord[1]);
+		pollingPlaceDTO.setSection(Long.valueOf(nextRecord[1]));
 		pollingPlaceDTO.setTown(nextRecord[2]);
 		pollingPlaceDTO.setTypePollingPlace(null);
 		pollingPlaceDTO.setAddress(nextRecord[4]);

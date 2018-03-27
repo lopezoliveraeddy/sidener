@@ -70,6 +70,7 @@
                     $translatePartialLoader.addPart('recountDistrictsRule');
                     $translatePartialLoader.addPart('recountPollingPlaceRule');
                     $translatePartialLoader.addPart('global');
+                    $translatePartialLoader.addPart('recount');
                     return $translate.refresh();
                 }]
             }

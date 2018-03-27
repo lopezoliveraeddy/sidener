@@ -50,6 +50,7 @@
                     $translatePartialLoader.addPart('pollingPlaceType');
                     $translatePartialLoader.addPart('election');
                     $translatePartialLoader.addPart('global');
+                    $translatePartialLoader.addPart('recount');
                     return $translate.refresh();
                 }]
             }

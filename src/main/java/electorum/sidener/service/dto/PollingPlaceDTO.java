@@ -22,7 +22,7 @@ public class PollingPlaceDTO implements Serializable {
 
     private String typeNumber;
 
-    private String section;
+    private Long section;
 
     @Lob
     private String address;
@@ -118,11 +118,11 @@ public class PollingPlaceDTO implements Serializable {
         this.typeNumber = typeNumber;
     }
 
-    public String getSection() {
+    public Long getSection() {
         return section;
     }
 
-    public void setSection(String section) {
+    public void setSection(Long section) {
         this.section = section;
     }
 

@@ -57,8 +57,8 @@ public class PollingPlaceResourceIntTest {
     private static final String DEFAULT_TYPE_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_TYPE_NUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_SECTION = "AAAAAAAAAA";
-    private static final String UPDATED_SECTION = "BBBBBBBBBB";
+    private static final Long DEFAULT_SECTION = 1L;
+    private static final Long UPDATED_SECTION = 2L;
 
     private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
     private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
@@ -304,7 +304,7 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN.toString())))
             .andExpect(jsonPath("$.[*].typePollingPlace").value(hasItem(DEFAULT_TYPE_POLLING_PLACE.toString())))
             .andExpect(jsonPath("$.[*].typeNumber").value(hasItem(DEFAULT_TYPE_NUMBER.toString())))
-            .andExpect(jsonPath("$.[*].section").value(hasItem(DEFAULT_SECTION.toString())))
+            .andExpect(jsonPath("$.[*].section").value(hasItem(DEFAULT_SECTION.intValue())))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
             .andExpect(jsonPath("$.[*].leftoverBallots").value(hasItem(DEFAULT_LEFTOVER_BALLOTS.intValue())))
             .andExpect(jsonPath("$.[*].votingCitizens").value(hasItem(DEFAULT_VOTING_CITIZENS.intValue())))
@@ -346,7 +346,7 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.town").value(DEFAULT_TOWN.toString()))
             .andExpect(jsonPath("$.typePollingPlace").value(DEFAULT_TYPE_POLLING_PLACE.toString()))
             .andExpect(jsonPath("$.typeNumber").value(DEFAULT_TYPE_NUMBER.toString()))
-            .andExpect(jsonPath("$.section").value(DEFAULT_SECTION.toString()))
+            .andExpect(jsonPath("$.section").value(DEFAULT_SECTION.intValue()))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
             .andExpect(jsonPath("$.leftoverBallots").value(DEFAULT_LEFTOVER_BALLOTS.intValue()))
             .andExpect(jsonPath("$.votingCitizens").value(DEFAULT_VOTING_CITIZENS.intValue()))
@@ -524,7 +524,7 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN.toString())))
             .andExpect(jsonPath("$.[*].typePollingPlace").value(hasItem(DEFAULT_TYPE_POLLING_PLACE.toString())))
             .andExpect(jsonPath("$.[*].typeNumber").value(hasItem(DEFAULT_TYPE_NUMBER.toString())))
-            .andExpect(jsonPath("$.[*].section").value(hasItem(DEFAULT_SECTION.toString())))
+            .andExpect(jsonPath("$.[*].section").value(hasItem(DEFAULT_SECTION.intValue())))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
             .andExpect(jsonPath("$.[*].leftoverBallots").value(hasItem(DEFAULT_LEFTOVER_BALLOTS.intValue())))
             .andExpect(jsonPath("$.[*].votingCitizens").value(hasItem(DEFAULT_VOTING_CITIZENS.intValue())))

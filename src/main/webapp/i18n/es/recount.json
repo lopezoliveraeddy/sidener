@@ -1,0 +1,16 @@
+{
+    "sidenerApp": {
+        "recount": {
+            "total": "Recuento Total",
+            "final-position": "Posición final del partido o coalición",
+            "districts-won": "distritos ganados",
+            "districts-lose": "distritos perdidos",
+            "difference": "Diferencia",
+            "total-votes": "Total de Votos",
+            "detail": "Detalle",
+            "statement-claim": "Escrito de Demanda",
+            "partial": "Recuento parcial en Casillas",
+            "statement-recount": "Escrito de Recuento"
+        }
+    }
+}

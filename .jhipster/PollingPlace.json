@@ -51,7 +51,7 @@
         {
             "fieldName": "section",
             "javadoc": "Sección",
-            "fieldType": "String"
+            "fieldType": "Long"
         },
         {
             "fieldName": "address",

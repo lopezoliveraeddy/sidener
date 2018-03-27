@@ -58,7 +58,7 @@ public class PollingPlace implements Serializable {
      */
     @ApiModelProperty(value = "Sección")
     @Column(name = "section")
-    private String section;
+    private Long section;
 
     /**
      * Dirección
@@ -294,16 +294,16 @@ public class PollingPlace implements Serializable {
         this.typeNumber = typeNumber;
     }
 
-    public String getSection() {
+    public Long getSection() {
         return section;
     }
 
-    public PollingPlace section(String section) {
+    public PollingPlace section(Long section) {
         this.section = section;
         return this;
     }
 
-    public void setSection(String section) {
+    public void setSection(Long section) {
         this.section = section;
     }
 
