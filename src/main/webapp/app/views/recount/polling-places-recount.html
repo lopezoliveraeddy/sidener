@@ -1,28 +1,57 @@
 <div>
-    <h1><span data-translate="sidenerApp.district.detail.title">District</span> - {{vm.district.romanNumber + ' ' + vm.district.districtHead}}</h1>
+
+        <div class="breadcrumb">
+                <a >
+                    <span class="breadcrumb__inner">
+                        <span class="breadcrumb__title"><span><h1  data-translate="sidenerApp.recount.partial"></h1></span></span>
+                    </span>
+                </a>
+                <a>
+                        <span class="breadcrumb__inner">
+                            <span class="breadcrumb__title"><span>{{vm.election.electionTypeName}}</span></span>
+                            <span class="breadcrumb__desc">{{vm.election.periodElection}}</span>
+    
+                        </span>
+                    </a>
+                <a >
+                    <span class="breadcrumb__inner">
+                        <span class="breadcrumb__title"><span data-translate="{{'sidenerApp.State.' + vm.election.state}}"></span></span>
+                    </span>
+                </a>
+                <a>
+                        <span class="breadcrumb__inner">
+                            <span class="breadcrumb__title"><span data-translate="{{vm.district.districtHead}}"></span></span>
+                            <span class="breadcrumb__desc">{{vm.district.romanNumber}}</span>
+                        </span>
+                    </a>
+            </div>
+
+
     <jhi-alert></jhi-alert>
-    <h2 data-translate="sidenerApp.recount.partial">Recuento parcial en Casillas</h2>
 
     <div class="table-container">
         <div class="table-header">
             <div class="row">
                 <div id="position" class="col-lg-4 col-md-4 col-sm-12 text-left">
-                    <div class="media">
-                        <div class="media-left">
-                            <i class="fa medium fa-certificate" aria-hidden="true"></i>
-                        </div>
-                        <div class="media-body media-middle" data-translate="sidenerApp.recount.final-position">Posición final del partido o coalición</div>
-                    </div>
+                        <div class="media">
+                                <div class="media-left">
+                                    <i class="fa medium fa-certificate associated-position" aria-hidden="true"></i>
+                                    <strong>
+                                            <span class="associated-position">{{vm.pollingPlacesWonLose.pollingPlacesWon}} casillas ganadas</span>
+                                        </strong>
+                                </div>
+                                <div class="media-left">
+                                        &nbsp;<i class="fa medium fa-certificate color-blue" aria-hidden="true"></i>
+                                        <strong>
+                                            <span class="color-blue">{{vm.pollingPlacesWonLose.pollingPlacesLose}} casillas perdidas</span>
+                                        </strong>
+                                </div>
+    
+                                
+                            </div>
                 </div>
                 <div id="win-lose" class="col-lg-4 col-md-4 col-sm-12 text-left">
-                    <div class="media">
-                        <div class="media-left">
-                            <i class="fa medium fa-trophy" aria-hidden="true"></i>
-                        </div>
-                        <div class="media-body media-middle">
-                            <strong><span class="color-green">{{vm.pollingPlacesWonLose.pollingPlacesWon}} casillas ganadas</span>, <span class="color-orange">{{vm.pollingPlacesWonLose.pollingPlacesLose}} casillas perdidas</span></strong>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div id="counting-assumption" class="col-lg-4 col-md-4 col-sm-12 text-left">
                     <div class="media">
@@ -30,15 +59,18 @@
                             <i class="fa medium fa-bar-chart" aria-hidden="true"></i>
                         </div>
                         <div class="media-body media-middle">
-                            Casillas con Supuestos de recuento <strong>{{vm.pollingPlacesWithCausals.length}}</strong>
+                            Casillas con recuentos cuantitativos <strong>{{vm.pollingPlacesWithCausals.length}}</strong>
                         </div>
+                        <div class="media-body media-middle">
+                                Casillas con recuentos cualitativos <strong>{{vm.pollingPlacesWithCausals.length}}</strong>
+                            </div>
                     </div>
                     <div class="media">
                         <div class="media-left media-middle">
                             <i class="fa medium fa-file" aria-hidden="true"></i>
                         </div>
                         <div class="media-body media-middle">
-                            <a class="btn btn-info btn-sm" ng-click="vm.generateAllWordDemand()" data-translate="sidenerApp.recount.statement-recount">Escrito de Recuento</a>
+                            <a class="btn btn-info btn-sm" ng-click="vm.generateAllWordDemand()" data-translate="sidenerApp.recount.statement-recount"></a>
                         </div>
                     </div>
                 </div>
@@ -57,6 +89,8 @@
                     <th><span data-translate="sidenerApp.pollingPlace.nullVotes">Null Votes</span></th>
                     <th><span data-translate="sidenerApp.pollingPlace.description">Description</span>
                     <th><span data-translate="sidenerApp.pollingPlace.watchRecordCount">Watch Record Count</span></th>
+                    <th><span data-translate="sidenerApp.pollingPlace.enablePollingPlace"></span></th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -82,7 +116,7 @@
                                 <span>{{pollingPlace.totalSecondPlace | number}} votos | {{pollingPlace.percentageSecondPlace | number:2 }}</span>
                             </div>
                             <div class="media-right media-middle">
-                                <span class="associated-position" ng-bind-html="asociatedPosition(pollingPlace.entitySecondPlace)"></span>
+                                <span class="color-blue" ng-bind-html="asociatedPosition(pollingPlace.entitySecondPlace)"></span>
                             </div>
                         </div>
                     </td>
@@ -127,6 +161,13 @@
                                 </a>
                             </div>
                         </div>
+                    </td>
+                    <td>
+                        <div class="checkbox">
+                            <label>
+                              <input type="checkbox" ng-model="oneAtATime">
+                            </label>
+                          </div>
                     </td>
                 </tr>
                 </tbody>

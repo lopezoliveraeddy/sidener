@@ -10,7 +10,7 @@
             "detail": "Detalle",
             "statement-claim": "Escrito de Demanda",
             "partial": "Recuento parcial en Casillas",
-            "statement-recount": "Escrito de Recuento"
+            "statement-recount": "Generar el Escrito de Recuento"
         }
     }
 }
