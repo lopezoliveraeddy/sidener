@@ -1,6 +1,24 @@
 <div xmlns="http://www.w3.org/1999/html">
-    <h1 data-translate="sidenerApp.recount.total"></h1>
-    <h2><span>{{vm.election.electionTypeName}}</span> - <span data-translate="{{'sidenerApp.State.' + vm.election.state}}"></span> - <span>{{vm.election.periodElection}}</span></h2>
+    <div class="breadcrumb">
+            <a href="#">
+                <span class="breadcrumb__inner">
+                    <span class="breadcrumb__title"><span><h1  data-translate="sidenerApp.recount.total"></h1></span></span>
+                </span>
+            </a>
+            <a href="#">
+                    <span class="breadcrumb__inner">
+                        <span class="breadcrumb__title"><span>{{vm.election.electionTypeName}}</span></span>
+                        <span class="breadcrumb__desc">{{vm.election.periodElection}}</span>
+
+                    </span>
+                </a>
+            <a href="#">
+                <span class="breadcrumb__inner">
+                    <span class="breadcrumb__title"><span data-translate="{{'sidenerApp.State.' + vm.election.state}}"></span></span>
+                </span>
+            </a>
+        </div>
+
     <jhi-alert></jhi-alert>
     <div class="table-container">
         <div class="table-header">
@@ -24,12 +42,7 @@
 
                             
                         </div>
-                   <!--<div class="media">
-                        <div class="media-left">
-                            <i class="fa medium fa-certificate" aria-hidden="true"></i>
-                        </div>
-                        <div class="media-body media-middle" data-translate="sidenerApp.recount.final-position">Posición final del partido o coalición</div>
-                    </div>-->
+  
                 </div>
                 <div id="win-lose" class="col-lg-4 col-md-4 col-sm-12 text-left">
 
