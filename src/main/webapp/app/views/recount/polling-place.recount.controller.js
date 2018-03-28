@@ -17,8 +17,6 @@
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.loadAll = loadAll;
-        vm.getPollingPlaceCausals = getPollingPlaceCausals;
-        vm.pollingPlacesWithCausals = [];
         // Datos del Distrito
         vm.loadDistrct = loadDistrict;
         vm.district = [];
@@ -33,30 +31,15 @@
 
         // Causales
         vm.causals = [];
+        // Causales
+        vm.causals = [];
+        vm.causalsRecount = CausalType.get({
+            typeCausal: 'RECOUNT',
+            subTypeCausal: 'QUALITATIVE'
+        });
 
         loadDistrict();
-        getPollingPlaceCausals();
-
         loadAll();
-        console.log(vm.pollingPlacesWithCausals);
-        function getPollingPlaceCausals() {
-
-            Causal.query({
-                query: pagingParams.search,
-                page: pagingParams.page - 1,
-                size: vm.itemsPerPage
-            }, onSuccess, onError);
-            function onSuccess(data, headers) {
-                vm.links = ParseLinks.parse(headers('link'));
-                vm.totalItems = headers('X-Total-Count');
-                vm.queryCount = vm.totalItems;
-                vm.causals = data;
-                vm.page = pagingParams.page;
-            }
-            function onError(error) {
-                AlertService.error(error.data.message);
-            }
-        }
 
         function loadAll () {
             DistrictRecountPollingPlaces.get({
@@ -80,11 +63,6 @@
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
                 vm.pollingPlaces = data;
-                for(var i = 0 ; i < data.length; i++){
-                    if(data[i].causals.length > 0 ){
-                        vm.pollingPlacesWithCausals.push(data[i]);
-                    }
-                }
                 vm.page = pagingParams.page;
             }
             function onError(error) {
