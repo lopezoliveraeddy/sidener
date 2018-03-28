@@ -137,13 +137,9 @@
                                 <ui-select-match>
                                     <span class="causal-color" ng-style="{'background-color': $item.color}" uib-tooltip="{{$item.name}}" tooltip-placement="left"></span>
                                 </ui-select-match>
-
-                                <ui-select-choices repeat="causal in vm.causals" position='down'>
-
-                                        <span ng-if="causal.typeCausal == 'RECOUNT'" class="causal-color" ng-style="{'background-color': causal.color}"></span>
-                                        <span ng-if="causal.typeCausal == 'RECOUNT'" class="causal-description" ng-bind-html="causal.name | highlight: $select.search"></span>
-
-
+                                <ui-select-choices repeat="causal in vm.causalsRecount" position='down'>
+                                    <span class="causal-color" ng-style="{'background-color': causal.color}"></span>
+                                    <span class="causal-description" ng-bind-html="causal.name | highlight: $select.search"></span>
                                 </ui-select-choices>
                             </ui-select>
                         </div>
