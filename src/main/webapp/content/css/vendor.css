@@ -9436,8 +9436,8 @@ button.btn.btn-success {
     background-color: #7a9d00; }
 
 button.btn.btn-info {
-  background: #2dacd1;
-  border-color: #2dacd1; }
+  background: #B1B44D;
+  border-color: #B1B44D; }
   button.btn.btn-info.disabled, button.btn.btn-info[disabled], fieldset[disabled] button.btn.btn-info, button.btn.btn-info.disabled:hover, button.btn.btn-info[disabled]:hover,
   fieldset[disabled] button.btn.btn-info:hover, button.btn.btn-info.disabled:focus, button.btn.btn-info[disabled]:focus, fieldset[disabled] button.btn.btn-info:focus, button.btn.btn-info.disabled.focus, button.btn.btn-info[disabled].focus, fieldset[disabled] button.btn.btn-info.focus, button.btn.btn-info.disabled:active, button.btn.btn-info[disabled]:active, fieldset[disabled] button.btn.btn-info:active, button.btn.btn-info.disabled.active, button.btn.btn-info[disabled].active,
   fieldset[disabled] button.btn.btn-info.active {
@@ -9526,7 +9526,7 @@ button.btn.btn-inverse {
     border-color: #d03e3e; }
 
 .btn-group button.btn.btn-info {
-  border-color: #21a0c5; }
+  border-color: #B1B44D; }
   .btn-group button.btn.btn-info:hover {
     border-color: #1594b9; }
 
