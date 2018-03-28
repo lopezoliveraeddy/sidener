@@ -110,13 +110,12 @@ public class CausalService {
      *  Get all the causals by causalType.
      *
      *  @param typeCausal the typeCausal of the causal
-     *  @param subTypeCausal the subCausalType of the causal
      *  @return the list of entities
      */
     @Transactional(readOnly = true)
-    public List<CausalDTO> getCausalsByTypeCausal(TypeCausal typeCausal, SubTypeCausal subTypeCausal) {
-        log.debug("Request to get a list of Causals for typeCausal {} and subTypeCausal {}", typeCausal, subTypeCausal);
-        List<Causal> result = causalRepository.findAllByTypeCausalAndSubTypeCausal(typeCausal, subTypeCausal);
+    public List<CausalDTO> getCausalsByTypeCausal(TypeCausal typeCausal) {
+        log.debug("Request to get a list of Causals for typeCausal {}", typeCausal);
+        List<Causal> result = causalRepository.findAllByTypeCausal(typeCausal);
         return causalMapper.toDto(result);
     }
 

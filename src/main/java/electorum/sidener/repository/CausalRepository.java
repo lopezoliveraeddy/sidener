@@ -21,6 +21,6 @@ public interface CausalRepository extends JpaRepository<Causal, Long> {
     @Query("select causal from Causal causal left join fetch causal.causalDescriptions where causal.id =:id")
     Causal findOneWithEagerRelationships(@Param("id") Long id);
 
-    List<Causal> findAllByTypeCausalAndSubTypeCausal(TypeCausal typeCausal, SubTypeCausal subTypeCausal);
+    List<Causal> findAllByTypeCausal(TypeCausal typeCausal);
 
 }

@@ -600,6 +600,41 @@ Recuento
     color: $electorum;
 }
 
+/* ==========================================================================
+Detector de Causales
+========================================================================== */
+#detector-causal {
+    #table-causals {
+        > tbody > tr > td {
+            text-align: center;
+        }
+        .causal-color {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid #CCCCCC;
+        }
+    }
+    #save-causals {
+        .panel-heading {
+            height: auto;
+            font-size: 14px;
+        }
+        .causal-color {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid #CCCCCC;
+        }
+    }
+}
+
 /** drag and drop*/
 .drag-return drag-item,
 .drag-return .drag-item {

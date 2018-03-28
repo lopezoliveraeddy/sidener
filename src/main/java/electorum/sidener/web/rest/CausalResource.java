@@ -147,14 +147,13 @@ public class CausalResource {
      * GET  /causals/type/:typeCausal/:subTypeCausal : get for the causal corresponding
      *
      * @param typeCausal the typeCausal of the causal
-     * @param subTypeCausal the subTypeCausal of the causal
      * @return the ResponseEntity with status 200 (OK) and the list of causals in body
      */
-    @GetMapping("/causals/type/{typeCausal}/{subTypeCausal}")
+    @GetMapping("/causals/type/{typeCausal}")
     @Timed
-    public ResponseEntity<List<CausalDTO>> getCausalsByTypeCausal(@PathVariable TypeCausal typeCausal, @PathVariable SubTypeCausal subTypeCausal) {
-        log.debug("REST request to get Causals for typeCausal {} and subCausalType {}", typeCausal, subTypeCausal);
-        List<CausalDTO> list = causalService.getCausalsByTypeCausal(typeCausal, subTypeCausal);
+    public ResponseEntity<List<CausalDTO>> getCausalsByTypeCausal(@PathVariable TypeCausal typeCausal) {
+        log.debug("REST request to get Causals for typeCausal {}", typeCausal);
+        List<CausalDTO> list = causalService.getCausalsByTypeCausal(typeCausal);
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>(list, headers, HttpStatus.OK);
     }
