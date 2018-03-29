@@ -1,5 +1,6 @@
 package electorum.sidener.service.util;
 
+import electorum.sidener.domain.Election;
 import electorum.sidener.domain.PollingPlace;
 import electorum.sidener.service.dto.*;
 import electorum.sidener.web.rest.PollingPlaceResource;
@@ -11,6 +12,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -61,12 +63,13 @@ public class RecountDemand {
                 XWPFParagraph paragraphTitle = document.createParagraph();
                 XWPFRun tituloDistrito = paragraphTitle.createRun();
                 tituloDistrito.setBold(true);
+
                 tituloDistrito.setText("Distrito "+actualDistrict.getRomanNumber()+" "+actualDistrict.getDistrictHead());
                 XWPFTable table = document.createTable();
                 XWPFRun textoTabla = paragraphTwo.createRun();
                 textoTabla.setCapitalized(true);
                 textoTabla.addCarriageReturn();
-                Long diferenciaPorcentual = (actualDistrict.getTotalFirstPlace()- actualDistrict.getTotalSecondPlace())/actualDistrict.getTotalVotes();
+                Double diferenciaPorcentual = (((double)actualDistrict.getTotalFirstPlace()- (double)actualDistrict.getTotalSecondPlace())/(double)actualDistrict.getTotalVotes())*100;
 
                 //create first row
                 XWPFTableRow tableRowOne = table.getRow(0);
@@ -144,6 +147,12 @@ public class RecountDemand {
             encabezado.setBold(true);
             encabezado.setCapitalized(true);
             encabezado.addBreak();
+            log.debug("electionDTO.getRecountElectoralInstitute().isEmpty() {}", electionDTO.getRecountElectoralInstitute());
+
+            if(  electionDTO.getRecountElectoralInstitute() == null){
+                electionDTO.setRecountElectoralInstitute("INSTITUTO NACIONAL ELECTORAL");
+            }
+
             encabezado.setText(electionDTO.getRecountElectoralInstitute().toUpperCase());
             encabezado.addBreak();
             encabezado.addBreak();
@@ -179,8 +188,12 @@ public class RecountDemand {
                 XWPFParagraph contenidoCasillas = document.createParagraph();
                 XWPFRun tituloCasilla = contenidoCasillas.createRun();
                 tituloCasilla.setBold(true);
-                tituloCasilla.setText(pollingPlaceDTO.getTown()+"\n");
-                tituloCasilla.setText(" Sección: "+ pollingPlaceDTO.getSection()+", "+tipo+"\n");
+                contenidoCasillas.setAlignment(ParagraphAlignment.CENTER);
+
+                tituloCasilla.setText(pollingPlaceDTO.getTown());
+                tituloCasilla.addCarriageReturn();
+                tituloCasilla.addCarriageReturn();
+                tituloCasilla.setText(" Sección: "+ pollingPlaceDTO.getSection()+", "+tipo+ " "+ pollingPlaceDTO.getTypeNumber());
                 tituloCasilla.addCarriageReturn();
                 Set<CausalDTO> causalDTOS = pollingPlaceDTO.getCausals();
 
@@ -194,6 +207,48 @@ public class RecountDemand {
                         cadenaDescripcion += causalDescriptionDTO.getText();
                     }
                     causalCasilla.setText(causalDTO.getName()+". "+cadenaDescripcion);
+                    if(causalDTO.getId() == 4){
+                        XWPFTable table = document.createTable();
+                        XWPFRun textoTabla = paragraphTwo.createRun();
+                        textoTabla.setCapitalized(true);
+                        textoTabla.addCarriageReturn();
+                        Double diferenciaPorcentual = ((double)pollingPlaceDTO.getTotalFirstPlace()- (double)pollingPlaceDTO.getTotalSecondPlace())/(double)pollingPlaceDTO.getTotalVotes();
+                        log.debug("PRIMER LUGAR {}",pollingPlaceDTO.getTotalFirstPlace());
+                        log.debug("SEGUNDO LUGAR {}", pollingPlaceDTO.getTotalSecondPlace());
+                        log.debug("TOTAL DE VOTOS {}",pollingPlaceDTO.getTotalVotes());
+                        log.debug("diferenciaPorcentual ----> {}",diferenciaPorcentual);
+                        log.debug("RESTA ----> {}",((double)pollingPlaceDTO.getTotalFirstPlace()- (double)pollingPlaceDTO.getTotalSecondPlace())/(double)pollingPlaceDTO.getTotalVotes());
+                        //create first row
+                        XWPFTableRow tableRowOne = table.getRow(0);
+                        tableRowOne.getCell(0).setText("PRIMER LUGAR");
+                        tableRowOne.addNewTableCell().setText("");
+                        tableRowOne.addNewTableCell().setText("SEGUNDO LUGAR");
+                        tableRowOne.addNewTableCell().setText("");
+                        tableRowOne.addNewTableCell().setText("");
+
+                        //create second row
+                        XWPFTableRow tableRowTwo = table.createRow();
+                        tableRowTwo.getCell(0).setText("Patido o Coalición");
+                        tableRowTwo.getCell(1).setText("Votación");
+                        tableRowTwo.getCell(2).setText("Partido o Coalición");
+                        tableRowTwo.getCell(3).setText("Votación");
+                        tableRowTwo.getCell(4).setText("Diferencia Porcentual");
+
+                        //create third row
+                        XWPFTableRow tableRowThree = table.createRow();
+                        tableRowThree.getCell(0).setText(pollingPlaceDTO.getEntityFirstPlace());
+                        tableRowThree.getCell(1).setText(pollingPlaceDTO.getTotalFirstPlace().toString());
+                        tableRowThree.getCell(2).setText(pollingPlaceDTO.getEntitySecondPlace());
+                        tableRowThree.getCell(3).setText(pollingPlaceDTO.getTotalSecondPlace().toString());
+                        tableRowThree.getCell(4).setText(String.valueOf( new DecimalFormat("#.##").format(diferenciaPorcentual)));
+
+
+
+
+
+                    }
+                    log.debug("--- CAUSAL DTO--- {}",causalDTO.toString());
+                    causalCasilla.addCarriageReturn();
                     causalCasilla.addBreak();
                 }
             }

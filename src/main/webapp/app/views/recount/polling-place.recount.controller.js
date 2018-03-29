@@ -25,6 +25,8 @@
         vm.pollingPlaceCualitative = [];
         vm.generateCausals = generateCausals;
         vm.downloadDocument = downloadDocument;
+        vm.addThisPollingPlace = addThisPollingPlace;
+        vm.tmpObject = '';
 
         // Datos de la Elección
         vm.loadElection = loadElection;
@@ -133,6 +135,7 @@
         }
 
         function downloadDocument(){
+            console.log(vm.pollingPlacesEnabled);
             DemandDownloadPolling.get(vm.pollingPlacesEnabled.join("-")).then(function (response) {
                 var contentDisposition = response.headers("content-disposition");
                 var tmp = contentDisposition.split("filename=");
@@ -152,6 +155,37 @@
             }).catch(function(error) {
                 AlertService.error(error);
             });
+        }
+
+        function addThisPollingPlace(pollingPlace){
+            console.log(vm.pollingPlacesEnabled);
+            var value = true;
+
+            if(vm.pollingPlacesEnabled.indexOf(pollingPlace.id) === -1){
+                vm.pollingPlacesEnabled.push(pollingPlace.id);
+                console.log(vm.tmpObject);
+                value = true;
+
+            }else{
+                var index = vm.pollingPlacesEnabled.indexOf(pollingPlace.id);
+                vm.pollingPlacesEnabled.splice(index, 1);
+                value = false;
+            }
+            console.log(pollingPlace);
+            pollingPlace.challengedPollingPlace = value;
+            PollingPlace.update(pollingPlace, onSaveSuccess, onSaveError);
+            function onSaveSuccess(data){
+                pollingPlace = data;
+            }
+            function onSaveError(error) {
+                AlertService.error(error.data.message);
+            }
+
+            
+
+
+
+            
         }
 
         $scope.pollingPlaceType = function (typePollingPlace, typeNumber) {

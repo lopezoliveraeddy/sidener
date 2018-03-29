@@ -160,12 +160,13 @@
                     </td>
                     <td>
                         <div class="checkbox">
-                            <span ng-if="pollingPlace.causals.length > 0">
+                            <span ng-if="pollingPlace.causals.length > 0 ">
                                     {{vm.generateCausals(pollingPlace)}}
                             </span> 
-                            
+                            {{pollingPlace.challengedPollingPlace}}
                             <label>
-                              <input type="checkbox" ng-model="oneAtATime" ng-checked="pollingPlace.causals.length > 0 ">
+                              <input type="checkbox" ng-model="confirmed[pollingPlace.id]" ng-change="vm.addThisPollingPlace(pollingPlace)" id='ng-change-"pollingPlace.id"'  ng-checked="pollingPlace.causals.length > 0 " />
+
                             </label>
                           </div>
                     </td>

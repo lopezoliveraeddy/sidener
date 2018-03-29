@@ -110,16 +110,19 @@ public class DocumentResource {
          List<PollingPlaceDTO> pollingPlaceDTOList = new ArrayList<PollingPlaceDTO>();
          Long election = 0L;
          RecountDemand recountDemand= new RecountDemand();
-         String filename = "demanda-distrito-"+pollingplaces+"-"+election+"-eleccion.doc";
-         File file = new File("/Desarrollo/files/demandas/" + filename);
+
 
 
         for (String s:
             pollingPlaceList) {
+            log.debug("----- pollingPlaceList {}", s);
             pollingPlaceDTOList.add(pollingPlaceService.findOne(Long.parseLong(s)));
-            election = districtService.findOne(Long.parseLong(s)).getElectionId();
+            election = pollingPlaceService.findOne(Long.parseLong(s)).getElectionId();
         }
+        log.debug("E L E C C I O N {}",election);
 
+        String filename = "demanda-distrito-"+pollingplaces+"-"+election+"-eleccion.doc";
+        File file = new File("/Desarrollo/files/demandas/" + filename);
         ElectionDTO electionDTO = electionService.findOne(election);
         recountDemand.generateRecountDemandPollingPlace(pollingPlaceDTOList , electionDTO,filename);
 
