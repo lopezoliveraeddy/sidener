@@ -20,6 +20,9 @@
         // Datos del Distrito
         vm.loadDistrct = loadDistrict;
         vm.district = [];
+        vm.pollingPlacesEnabled = [];
+        vm.pollingPlaceCuantitative = [];
+        vm.pollingPlaceCualitative = [];
         vm.generateAllWordDemand = generateAllWordDemand;
 
         // Datos de la Elección
@@ -34,7 +37,8 @@
         vm.causalsRecount = CausalType.get({
             typeCausal: 'RECOUNT'
         });
-
+        // funciona para agregar casillas al documento
+        vm.generateAllWordDemand = generateAllWordDemand;
         loadDistrict();
         loadAll();
 
@@ -48,7 +52,7 @@
 
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
-                if (vm.predicate == 'pollingPlaceWon') {
+                if (vm.predicate === 'pollingPlaceWon') {
                     result.push('section');
                     result.push('typePollingPlace');
                     result.push('typeNumber');
@@ -102,7 +106,34 @@
             }
         }
 
-        function generateAllWordDemand() {
+        function generateAllWordDemand(pollingPlace) {
+            
+            
+            if(vm.pollingPlacesEnabled.indexOf(pollingPlace.id) === -1 ){
+                vm.pollingPlacesEnabled.push(pollingPlace.id);
+                angular.forEach(pollingPlace.causals,function(value,key){
+
+                    if(value.typeCausal === "RECOUNT" &&  value.subTypeCausal === "QUANTITATIVE"){
+                        if(vm.pollingPlaceCuantitative.indexOf(pollingPlace.id) === -1){
+                            vm.pollingPlaceCuantitative.push(pollingPlace.id);
+                        }
+                    }
+
+                    if(value.typeCausal === "RECOUNT" &&  value.subTypeCausal === "QUALITATIVE"){
+                        if(vm.pollingPlaceCuantitative.indexOf(pollingPlace.id) === -1){
+                            vm.pollingPlaceCualitative.push(pollingPlace.id);
+                        }
+                    }
+
+
+                    
+                });
+            }
+            console.log(vm.pollingPlaceCuantitative);   
+            console.log(vm.pollingPlaceCualitative);   
+            
+           
+            /*
             var pollingPlaces= [];
             var strPollingPlaces = '';
             console.log("eddy");
@@ -136,7 +167,7 @@
             }).catch(function(error) {
                 AlertService.error(error);
             });
-
+        */
         }
         $scope.pollingPlaceType = function (typePollingPlace, typeNumber) {
             switch (typePollingPlace) {
