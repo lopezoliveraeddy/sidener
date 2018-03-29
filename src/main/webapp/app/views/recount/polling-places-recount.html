@@ -70,7 +70,7 @@
                             <i class="fa medium fa-file" aria-hidden="true"></i>
                         </div>
                         <div class="media-body media-middle">
-                            <a class="btn btn-info btn-sm color-oscuro" ng-click="vm.generateAllWordDemand()" data-translate="sidenerApp.recount.statement-recount"></a>
+                            <a class="btn btn-info btn-sm color-oscuro" ng-click="vm.downloadDocument()" data-translate="sidenerApp.recount.statement-recount"></a>
                         </div>
                     </div>
                 </div>
@@ -161,7 +161,7 @@
                     <td>
                         <div class="checkbox">
                             <span ng-if="pollingPlace.causals.length > 0">
-                                    {{vm.generateAllWordDemand(pollingPlace)}}
+                                    {{vm.generateCausals(pollingPlace)}}
                             </span> 
                             
                             <label>

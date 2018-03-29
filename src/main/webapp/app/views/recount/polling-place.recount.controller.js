@@ -23,7 +23,8 @@
         vm.pollingPlacesEnabled = [];
         vm.pollingPlaceCuantitative = [];
         vm.pollingPlaceCualitative = [];
-        vm.generateAllWordDemand = generateAllWordDemand;
+        vm.generateCausals = generateCausals;
+        vm.downloadDocument = downloadDocument;
 
         // Datos de la Elección
         vm.loadElection = loadElection;
@@ -38,7 +39,7 @@
             typeCausal: 'RECOUNT'
         });
         // funciona para agregar casillas al documento
-        vm.generateAllWordDemand = generateAllWordDemand;
+        vm.generateCausals = generateCausals;
         loadDistrict();
         loadAll();
 
@@ -106,7 +107,7 @@
             }
         }
 
-        function generateAllWordDemand(pollingPlace) {
+        function generateCausals(pollingPlace) {
             
             
             if(vm.pollingPlacesEnabled.indexOf(pollingPlace.id) === -1 ){
@@ -129,26 +130,10 @@
                     
                 });
             }
-            console.log(vm.pollingPlaceCuantitative);   
-            console.log(vm.pollingPlaceCualitative);   
-            
-           
-            /*
-            var pollingPlaces= [];
-            var strPollingPlaces = '';
-            console.log("eddy");
+        }
 
-            for(var i = 0; i < vm.pollingPlacesWithCausals.length; i++){
-                console.log(vm.pollingPlacesWithCausals[i]);
-                pollingPlaces.push(vm.pollingPlacesWithCausals[i].id);
-
-                console.log(pollingPlaces);
-            }
-
-
-
-            DemandDownloadPolling.get(pollingPlaces.join("-")).then(function (response) {
-
+        function downloadDocument(){
+            DemandDownloadPolling.get(vm.pollingPlacesEnabled.join("-")).then(function (response) {
                 var contentDisposition = response.headers("content-disposition");
                 var tmp = contentDisposition.split("filename=");
                 var filename = "";
@@ -167,8 +152,8 @@
             }).catch(function(error) {
                 AlertService.error(error);
             });
-        */
         }
+
         $scope.pollingPlaceType = function (typePollingPlace, typeNumber) {
             switch (typePollingPlace) {
                 case 'BASIC':
@@ -200,6 +185,8 @@
         function onSaveError () {
             vm.isSaving = false;
         }
+
+        
 
         $scope.countingAssumption = function(countingAssumption,causalSize) {
             if (countingAssumption === true || causalSize > 0) {
