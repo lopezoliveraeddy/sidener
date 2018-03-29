@@ -59,10 +59,10 @@
                             <i class="fa medium fa-bar-chart" aria-hidden="true"></i>
                         </div>
                         <div class="media-body media-middle">
-                            Casillas con recuentos cuantitativos <strong>{{vm.pollingPlacesWithCausals.length}}</strong>
+                            Casillas con recuentos cuantitativos <strong>{{vm.pollingPlaceCualitative.length}}</strong>
                         </div>
                         <div class="media-body media-middle">
-                                Casillas con recuentos cualitativos <strong>{{vm.pollingPlacesWithCausals.length}}</strong>
+                                Casillas con recuentos cualitativos <strong>{{vm.pollingPlaceCuantitative.length}}</strong>
                             </div>
                     </div>
                     <div class="media">
@@ -70,7 +70,7 @@
                             <i class="fa medium fa-file" aria-hidden="true"></i>
                         </div>
                         <div class="media-body media-middle">
-                            <a class="btn btn-info btn-sm" ng-click="vm.generateAllWordDemand()" data-translate="sidenerApp.recount.statement-recount"></a>
+                            <a class="btn btn-info btn-sm color-oscuro" ng-click="vm.generateAllWordDemand()" data-translate="sidenerApp.recount.statement-recount"></a>
                         </div>
                     </div>
                 </div>
@@ -160,8 +160,12 @@
                     </td>
                     <td>
                         <div class="checkbox">
+                            <span ng-if="pollingPlace.causals.length > 0">
+                                    {{vm.generateAllWordDemand(pollingPlace)}}
+                            </span> 
+                            
                             <label>
-                              <input type="checkbox" ng-model="oneAtATime">
+                              <input type="checkbox" ng-model="oneAtATime" ng-checked="pollingPlace.causals.length > 0 ">
                             </label>
                           </div>
                     </td>
