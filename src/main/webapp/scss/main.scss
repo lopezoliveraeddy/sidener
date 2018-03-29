@@ -3,6 +3,10 @@
 $electorum: #333431;
 $electorumBold: #7D8203;
 $electorumOpacity: #b0b5364f;
+$blue: #6698C0;
+$red:#672927;
+$lightred: #812D2A;
+
 
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -433,6 +437,7 @@ table.jh-table {
     padding: 15px;
 }
 
+
 /* Selector Múltiple */
 
 .ui-select-match-item.btn:hover {
@@ -565,9 +570,7 @@ Recuento
 ========================================================================== */
 .table-header {
     margin-bottom: 30px;
-    i {
-        color: $electorum;
-    }
+   
     #counting-assumption {
         .media-body {
             background-color: $electorumOpacity;
@@ -597,9 +600,11 @@ Recuento
     color: orange;
 }
 .associated-position {
-    color: $electorum;
+    color: $red;
 }
-
+.color-blue{
+    color: $blue;
+}
 /* ==========================================================================
 Detector de Causales
 ========================================================================== */
@@ -634,7 +639,9 @@ Detector de Causales
         }
     }
 }
-
+.btn-electorum{
+    background:$electorumOpacity;
+}
 /** drag and drop*/
 .drag-return drag-item,
 .drag-return .drag-item {
@@ -689,3 +696,72 @@ drag-item:active,
     opacity: 1;
     z-index: 9999;
 }
+/* ==========================================================================
+Breadcrumb
+========================================================================== */
+.breadcrumb {
+    display: flex;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    height: 57px;
+    background-color: #E7E8C8;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.breadcrumb a {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    text-decoration: none;
+    margin: auto;
+    height: 100%;
+    padding-left: 38px;
+    padding-right: 0;
+    color: #666;
+}
+.breadcrumb h1{
+    font-size: 18px;
+}
+
+.breadcrumb a:first-child {
+    padding-left: 15.2px;
+}
+
+.breadcrumb a:last-child {
+    padding-right: 15.2px;
+}
+
+.breadcrumb a:after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 57px;
+    height: 57px;
+    top: 0;
+    right: -28.14815px;
+    background-color: #E7E8C8;
+    border-top-right-radius: 5px;
+    transform: scale(0.707) rotate(45deg);
+    box-shadow: 1px -1px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+}
+
+.breadcrumb a:last-child:after {
+    content: none;
+}
+
+.breadcrumb__inner {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    z-index: 2;
+}
+
+.breadcrumb__title {
+    font-weight: bold;
+}
+
