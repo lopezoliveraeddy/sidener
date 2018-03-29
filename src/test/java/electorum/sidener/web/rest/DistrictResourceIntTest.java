@@ -86,6 +86,9 @@ public class DistrictResourceIntTest {
     private static final Boolean DEFAULT_DISTRICT_WON = false;
     private static final Boolean UPDATED_DISTRICT_WON = true;
 
+    private static final Boolean DEFAULT_TOTAL_RECOUNT = false;
+    private static final Boolean UPDATED_TOTAL_RECOUNT = true;
+
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
 
@@ -154,6 +157,7 @@ public class DistrictResourceIntTest {
             .totalPollingPlaces(DEFAULT_TOTAL_POLLING_PLACES)
             .nullVotes(DEFAULT_NULL_VOTES)
             .districtWon(DEFAULT_DISTRICT_WON)
+            .totalRecount(DEFAULT_TOTAL_RECOUNT)
             .published(DEFAULT_PUBLISHED)
             .createdDate(DEFAULT_CREATED_DATE)
             .updatedDate(DEFAULT_UPDATED_DATE);
@@ -195,6 +199,7 @@ public class DistrictResourceIntTest {
         assertThat(testDistrict.getTotalPollingPlaces()).isEqualTo(DEFAULT_TOTAL_POLLING_PLACES);
         assertThat(testDistrict.getNullVotes()).isEqualTo(DEFAULT_NULL_VOTES);
         assertThat(testDistrict.isDistrictWon()).isEqualTo(DEFAULT_DISTRICT_WON);
+        assertThat(testDistrict.isTotalRecount()).isEqualTo(DEFAULT_TOTAL_RECOUNT);
         assertThat(testDistrict.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
         assertThat(testDistrict.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testDistrict.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
@@ -248,6 +253,7 @@ public class DistrictResourceIntTest {
             .andExpect(jsonPath("$.[*].totalPollingPlaces").value(hasItem(DEFAULT_TOTAL_POLLING_PLACES.intValue())))
             .andExpect(jsonPath("$.[*].nullVotes").value(hasItem(DEFAULT_NULL_VOTES.intValue())))
             .andExpect(jsonPath("$.[*].districtWon").value(hasItem(DEFAULT_DISTRICT_WON.booleanValue())))
+            .andExpect(jsonPath("$.[*].totalRecount").value(hasItem(DEFAULT_TOTAL_RECOUNT.booleanValue())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
@@ -277,6 +283,7 @@ public class DistrictResourceIntTest {
             .andExpect(jsonPath("$.totalPollingPlaces").value(DEFAULT_TOTAL_POLLING_PLACES.intValue()))
             .andExpect(jsonPath("$.nullVotes").value(DEFAULT_NULL_VOTES.intValue()))
             .andExpect(jsonPath("$.districtWon").value(DEFAULT_DISTRICT_WON.booleanValue()))
+            .andExpect(jsonPath("$.totalRecount").value(DEFAULT_TOTAL_RECOUNT.booleanValue()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
             .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
             .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
@@ -314,6 +321,7 @@ public class DistrictResourceIntTest {
             .totalPollingPlaces(UPDATED_TOTAL_POLLING_PLACES)
             .nullVotes(UPDATED_NULL_VOTES)
             .districtWon(UPDATED_DISTRICT_WON)
+            .totalRecount(UPDATED_TOTAL_RECOUNT)
             .published(UPDATED_PUBLISHED)
             .createdDate(UPDATED_CREATED_DATE)
             .updatedDate(UPDATED_UPDATED_DATE);
@@ -341,6 +349,7 @@ public class DistrictResourceIntTest {
         assertThat(testDistrict.getTotalPollingPlaces()).isEqualTo(UPDATED_TOTAL_POLLING_PLACES);
         assertThat(testDistrict.getNullVotes()).isEqualTo(UPDATED_NULL_VOTES);
         assertThat(testDistrict.isDistrictWon()).isEqualTo(UPDATED_DISTRICT_WON);
+        assertThat(testDistrict.isTotalRecount()).isEqualTo(UPDATED_TOTAL_RECOUNT);
         assertThat(testDistrict.isPublished()).isEqualTo(UPDATED_PUBLISHED);
         assertThat(testDistrict.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testDistrict.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
@@ -416,6 +425,7 @@ public class DistrictResourceIntTest {
             .andExpect(jsonPath("$.[*].totalPollingPlaces").value(hasItem(DEFAULT_TOTAL_POLLING_PLACES.intValue())))
             .andExpect(jsonPath("$.[*].nullVotes").value(hasItem(DEFAULT_NULL_VOTES.intValue())))
             .andExpect(jsonPath("$.[*].districtWon").value(hasItem(DEFAULT_DISTRICT_WON.booleanValue())))
+            .andExpect(jsonPath("$.[*].totalRecount").value(hasItem(DEFAULT_TOTAL_RECOUNT.booleanValue())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));

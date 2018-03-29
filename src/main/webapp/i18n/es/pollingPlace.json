@@ -41,6 +41,7 @@
             "entitySecondPlace": "Entidad en Segundo Lugar",
             "totalSecondPlace": "Total de Votos para Segundo Lugar",
             "pollingPlaceWon": "Casilla Ganada",
+            "challengedPollingPlace": "Casilla a Impugnar",
             "published": "Publicado",
             "createdDate": "Creado",
             "updatedDate": "Actualizado",

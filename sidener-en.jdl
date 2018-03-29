@@ -109,6 +109,8 @@ entity District {
     nullVotes Long,
     /* Distrito Ganado o Perdido */
     districtWon Boolean,
+    /* Distrito con recuento total */
+    totalRecount Boolean,
     published Boolean,
     createdDate ZonedDateTime,
     updatedDate ZonedDateTime
@@ -168,6 +170,8 @@ entity PollingPlace {
     urlRecordCount String,
     /* Casilla Ganada o Perdida */
     pollingPlaceWon Boolean,
+    /* Casilla a impugnar */
+    challengedPollingPlace Boolean,
     published Boolean,
     createdDate ZonedDateTime,
     updatedDate ZonedDateTime
@@ -211,6 +215,11 @@ entity Archive {
     status ArchiveStatus
 }
 
+entity DetectorCausals {
+    idPollingPlace Long,
+    idCausal Long,
+    observations TextBlob
+}
 
 enum ElectionAmbit {
 	LOCAL, FEDERAL

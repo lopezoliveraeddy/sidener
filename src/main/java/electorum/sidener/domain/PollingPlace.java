@@ -216,6 +216,13 @@ public class PollingPlace implements Serializable {
     @Column(name = "polling_place_won")
     private Boolean pollingPlaceWon;
 
+    /**
+     * Casilla a impugnar
+     */
+    @ApiModelProperty(value = "Casilla a impugnar")
+    @Column(name = "challenged_polling_place")
+    private Boolean challengedPollingPlace;
+
     @Column(name = "published")
     private Boolean published;
 
@@ -593,6 +600,19 @@ public class PollingPlace implements Serializable {
         this.pollingPlaceWon = pollingPlaceWon;
     }
 
+    public Boolean isChallengedPollingPlace() {
+        return challengedPollingPlace;
+    }
+
+    public PollingPlace challengedPollingPlace(Boolean challengedPollingPlace) {
+        this.challengedPollingPlace = challengedPollingPlace;
+        return this;
+    }
+
+    public void setChallengedPollingPlace(Boolean challengedPollingPlace) {
+        this.challengedPollingPlace = challengedPollingPlace;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -745,6 +765,7 @@ public class PollingPlace implements Serializable {
             ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
             ", urlRecordCount='" + getUrlRecordCount() + "'" +
             ", pollingPlaceWon='" + isPollingPlaceWon() + "'" +
+            ", challengedPollingPlace='" + isChallengedPollingPlace() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

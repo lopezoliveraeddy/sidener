@@ -4,10 +4,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
-
-import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
@@ -141,7 +140,7 @@ public class District implements Serializable {
     @ManyToOne
     private Election election;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
     public Long getId() {
         return id;
     }
@@ -383,7 +382,7 @@ public class District implements Serializable {
     public void setElection(Election election) {
         this.election = election;
     }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+    // jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not remove
 
     @Override
     public boolean equals(Object o) {
@@ -409,18 +408,18 @@ public class District implements Serializable {
     public String toString() {
         return "District{" +
             "id=" + getId() +
-            ", decimalNumber=" + getDecimalNumber() +
+            ", decimalNumber='" + getDecimalNumber() + "'" +
             ", romanNumber='" + getRomanNumber() + "'" +
             ", districtHead='" + getDistrictHead() + "'" +
             ", state='" + getState() + "'" +
             ", entityFirstPlace='" + getEntityFirstPlace() + "'" +
-            ", totalFirstPlace=" + getTotalFirstPlace() +
+            ", totalFirstPlace='" + getTotalFirstPlace() + "'" +
             ", entitySecondPlace='" + getEntitySecondPlace() + "'" +
-            ", totalSecondPlace=" + getTotalSecondPlace() +
-            ", totalVotes=" + getTotalVotes() +
-            ", electoralRoll=" + getElectoralRoll() +
-            ", totalPollingPlaces=" + getTotalPollingPlaces() +
-            ", nullVotes=" + getNullVotes() +
+            ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
+            ", totalVotes='" + getTotalVotes() + "'" +
+            ", electoralRoll='" + getElectoralRoll() + "'" +
+            ", totalPollingPlaces='" + getTotalPollingPlaces() + "'" +
+            ", nullVotes='" + getNullVotes() + "'" +
             ", districtWon='" + isDistrictWon() + "'" +
             ", totalRecount='" + isTotalRecount() + "'" +
             ", published='" + isPublished() + "'" +

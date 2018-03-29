@@ -1,0 +1,24 @@
+{
+    "sidenerApp": {
+        "detectorCausals" : {
+            "home": {
+                "title": "Detector de Causales",
+                "createLabel": "Crear nuevo Detector de Causales",
+                "createOrEditLabel": "Crear o editar Detector de Causales",
+                "search": "Buscar Detector de Causales"
+            },
+            "created": "Un nuevo Detector de Causales ha sido creado con el identificador {{ param }}",
+            "updated": "Un Detector de Causales ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Detector de Causales ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Detector de Causales {{ id }}?"
+            },
+            "detail": {
+                "title": "Detector de Causales"
+            },
+            "idPollingPlace": "Id Casilla",
+            "idCausal": "Id Causal",
+            "observations": "Observaciones"
+        }
+    }
+}
