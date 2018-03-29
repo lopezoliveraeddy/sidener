@@ -2,24 +2,25 @@
     'use strict';
     angular
         .module('sidenerApp')
-        .factory('CausalType', CausalType);
+        .factory('DetectorCausals', DetectorCausals);
 
-    CausalType.$inject = ['$resource', 'DateUtils'];
+    DetectorCausals.$inject = ['$resource'];
 
-    function CausalType ($resource) {
-        var resourceUrl =  'api/causals/type/:typeCausal';
+    function DetectorCausals ($resource) {
+        var resourceUrl =  'api/detector-causals/:id';
 
         return $resource(resourceUrl, {}, {
+            'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
-                isArray: true,
                 transformResponse: function (data) {
                     if (data) {
                         data = angular.fromJson(data);
                     }
                     return data;
                 }
-            }
+            },
+            'update': { method:'PUT' }
         });
     }
 })();

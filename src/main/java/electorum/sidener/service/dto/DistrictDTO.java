@@ -228,18 +228,18 @@ public class DistrictDTO implements Serializable {
     public String toString() {
         return "DistrictDTO{" +
             "id=" + getId() +
-            ", decimalNumber=" + getDecimalNumber() +
+            ", decimalNumber='" + getDecimalNumber() + "'" +
             ", romanNumber='" + getRomanNumber() + "'" +
             ", districtHead='" + getDistrictHead() + "'" +
             ", state='" + getState() + "'" +
             ", entityFirstPlace='" + getEntityFirstPlace() + "'" +
-            ", totalFirstPlace=" + getTotalFirstPlace() +
+            ", totalFirstPlace='" + getTotalFirstPlace() + "'" +
             ", entitySecondPlace='" + getEntitySecondPlace() + "'" +
-            ", totalSecondPlace=" + getTotalSecondPlace() +
-            ", totalVotes=" + getTotalVotes() +
-            ", electoralRoll=" + getElectoralRoll() +
-            ", totalPollingPlaces=" + getTotalPollingPlaces() +
-            ", nullVotes=" + getNullVotes() +
+            ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
+            ", totalVotes='" + getTotalVotes() + "'" +
+            ", electoralRoll='" + getElectoralRoll() + "'" +
+            ", totalPollingPlaces='" + getTotalPollingPlaces() + "'" +
+            ", nullVotes='" + getNullVotes() + "'" +
             ", districtWon='" + isDistrictWon() + "'" +
             ", totalRecount='" + isTotalRecount() + "'" +
             ", published='" + isPublished() + "'" +

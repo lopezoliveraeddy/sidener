@@ -21,6 +21,7 @@
                 "election": "Elección",
                 "document": "Documento",
                 "archive": "Archive",
+                "detectorCausals": "Detector de Causales",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

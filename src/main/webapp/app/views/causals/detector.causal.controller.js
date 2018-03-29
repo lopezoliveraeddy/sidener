@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('DetectorCausalController', DetectorCausalController);
 
-    DetectorCausalController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'District', 'Election', 'DistrictCausalsPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
+    DetectorCausalController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'CausalType', 'District', 'Election', 'DistrictCausalsPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
 
-    function DetectorCausalController($scope, $state, $stateParams, AlertService, District, Election, DistrictCausalsPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
+    function DetectorCausalController($scope, $state, $stateParams, AlertService, CausalType, District, Election, DistrictCausalsPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
         var vm = this;
 
         vm.loadPage = loadPage;
@@ -26,12 +26,16 @@
         vm.causalD= false;
         vm.causalE= false;
 
+        // Causales
+        vm.causals = [];
+        vm.causalsNullity = CausalType.get({
+            typeCausal: 'NULLITY'
+        });
+        vm.causalName = '';
+        vm.causalColor = '';
 
         loadAll();
         vm.lugar = false;
-
-
-
 
         function loadAll () {
             PollingPlace.get({ id : $stateParams.id
@@ -60,5 +64,10 @@
                 page: vm.page
             });
         }
+
+        $scope.bindCausal = function(color, name) {
+            vm.causalColor = color;
+            vm.causalName = name
+        };
     }
 })();

@@ -34,11 +34,8 @@
 
         // Causales
         vm.causals = [];
-        // Causales
-        vm.causals = [];
         vm.causalsRecount = CausalType.get({
-            typeCausal: 'RECOUNT',
-            subTypeCausal: 'QUALITATIVE'
+            typeCausal: 'RECOUNT'
         });
         // funciona para agregar casillas al documento
         vm.generateAllWordDemand = generateAllWordDemand;

@@ -40,10 +40,12 @@
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('election');
                         $translatePartialLoader.addPart('district');
+                        $translatePartialLoader.addPart('pollingPlace');
                         $translatePartialLoader.addPart('state');
                         $translatePartialLoader.addPart('status');
                         $translatePartialLoader.addPart('recountDistrictsRule');
                         $translatePartialLoader.addPart('recountPollingPlaceRule');
+                        $translatePartialLoader.addPart('nullity');
                         $translatePartialLoader.addPart('global');
                         return $translate.refresh();
                     }]

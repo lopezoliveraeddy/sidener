@@ -70,6 +70,8 @@ public class PollingPlaceDTO implements Serializable {
 
     private Boolean pollingPlaceWon;
 
+    private Boolean challengedPollingPlace;
+
     private Boolean published;
 
     private ZonedDateTime createdDate;
@@ -302,6 +304,14 @@ public class PollingPlaceDTO implements Serializable {
         this.pollingPlaceWon = pollingPlaceWon;
     }
 
+    public Boolean isChallengedPollingPlace() {
+        return challengedPollingPlace;
+    }
+
+    public void setChallengedPollingPlace(Boolean challengedPollingPlace) {
+        this.challengedPollingPlace = challengedPollingPlace;
+    }
+
     public Boolean isPublished() {
         return published;
     }
@@ -417,6 +427,7 @@ public class PollingPlaceDTO implements Serializable {
             ", totalSecondPlace='" + getTotalSecondPlace() + "'" +
             ", urlRecordCount='" + getUrlRecordCount() + "'" +
             ", pollingPlaceWon='" + isPollingPlaceWon() + "'" +
+            ", challengedPollingPlace='" + isChallengedPollingPlace() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

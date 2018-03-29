@@ -16,6 +16,7 @@
     <include file="config/liquibase/changelog/20170922021425_added_entity_Causal.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171007043201_added_entity_CausalDescription.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171122045234_added_entity_Archive.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180328232344_added_entity_DetectorCausals.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20170922021415_added_entity_constraints_Election.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170922021418_added_entity_constraints_Coalition.xml" relativeToChangelogFile="false"/>
