@@ -5,9 +5,10 @@
         .module('sidenerApp')
         .controller('DetectorCausalController', DetectorCausalController);
 
-    DetectorCausalController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'CausalType', 'District', 'Election', 'DistrictCausalsPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
+    DetectorCausalController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'CausalType', 'DetectorCausals', 'DetectorCausalsPollingPlace', 'District', 'Election', 'DistrictCausalsPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
 
-    function DetectorCausalController($scope, $state, $stateParams, AlertService, CausalType, District, Election, DistrictCausalsPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
+    function DetectorCausalController($scope, $state, $stateParams, AlertService, CausalType, DetectorCausals, DetectorCausalsPollingPlace, District, Election, DistrictCausalsPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
+
         var vm = this;
 
         vm.loadPage = loadPage;
@@ -18,31 +19,25 @@
         vm.election = [];
         vm.pollingPlace=[];
 
-        vm.texto= '';
-        vm.direccion= '';
-        vm.causalA= false;
-        vm.causalB= false;
-        vm.causalC= false;
-        vm.causalD= false;
-        vm.causalE= false;
-
         // Causales
         vm.causals = [];
         vm.causalsNullity = CausalType.get({
             typeCausal: 'NULLITY'
         });
+        vm.causalId = '';
         vm.causalName = '';
         vm.causalColor = '';
+        vm.detectorCausals = {};
+        vm.stateDetectorCausals = '';
+
 
         loadAll();
-        vm.lugar = false;
 
         function loadAll () {
             PollingPlace.get({ id : $stateParams.id
             }, onSuccess, onError);
 
             function onSuccess(data, headers) {
-                vm.totalItems = headers('X-Total-Count');
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
                 vm.pollingPlace = data;
@@ -65,9 +60,48 @@
             });
         }
 
-        $scope.bindCausal = function(color, name) {
+        $scope.bindCausal = function(id, name, color) {
+            // Detector de Causales
+            DetectorCausalsPollingPlace.get({
+                idPollingPlace: $stateParams.id,
+                idCausal: id
+            }, onSuccess, onError);
+            vm.causalId = id;
             vm.causalColor = color;
             vm.causalName = name
         };
+
+        function onSuccess(data, headers) {
+            vm.detectorCausals = data;
+            vm.stateDetectorCausals = true;
+        }
+
+        function onError(error) {
+            vm.stateDetectorCausals = false;
+            vm.detectorCausals = {};
+        }
+
+        $scope.updateDetectorCausals = function(detectorCausals) {
+            DetectorCausals.update(detectorCausals, onSaveSuccess, onSaveError);
+            console.log(detectorCausals);
+        };
+
+        $scope.createDetectorCausals = function(detectorCausals, causalId) {
+            console.log(causalId);
+            vm.detectorCausals.idCausal = causalId;
+            vm.detectorCausals.idPollingPlace = $stateParams.id;
+            DetectorCausals.save(JSON.stringify(vm.detectorCausals), onSaveSuccess, onSaveError);
+
+        };
+
+        function onSaveSuccess (result) {
+            $scope.$emit('sidenerApp:detectorCausalsUpdate', result);
+            vm.isSaving = false;
+            vm.stateDetectorCausals = true;
+        }
+
+        function onSaveError () {
+            vm.isSaving = false;
+        }
     }
 })();

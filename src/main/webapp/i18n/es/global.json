@@ -104,7 +104,8 @@
             "edit": "Editar",
             "open": "Open",
             "save": "Guardar",
-            "view": "Ver"
+            "view": "Ver",
+            "update": "Actualizar"
         },
         "detail": {
             "field": "Campo",

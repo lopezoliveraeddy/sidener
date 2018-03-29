@@ -10,7 +10,7 @@
                         <tbody>
                         <tr>
                             <td ng-repeat="causal in vm.causalsNullity">
-                                <a ng-click="bindCausal(causal.color, causal.name)"><span class="causal-color" ng-style="{'background-color': causal.color}" uib-tooltip="{{causal.name}}" tooltip-placement="right"></span></a>
+                                <a ng-click="bindCausal(causal.id, causal.name, causal.color)"><span class="causal-color" ng-style="{'background-color': causal.color}" uib-tooltip="{{causal.name}}" tooltip-placement="right"></span></a>
                             </td>
                         </tr>
                         </tbody>
@@ -34,8 +34,20 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <div class="form-group">
-                                <textarea class="form-control" rows="5" ng-model="vm.texto">{{vm.texto}}</textarea>
-                                <button class="btn-default" ng-click="vm.integrantes = false; vm.lugar= false; vm.guardado=true; vm.otros=false;">Almacenar</button>
+                                <textarea class="form-control" rows="5" ng-model="vm.detectorCausals.observations"></textarea>
+                                <span ng-switch="vm.stateDetectorCausals">
+                                    <span ng-switch-when="false">
+                                        <button type="submit" ng-click="createDetectorCausals(vm.detectorCausals.observations, vm.causalId)" class="btn btn-primary">
+                                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+                                        </button>
+                                    </span>
+                                    <span ng-switch-when="true">
+                                        <button type="submit" ng-click="updateDetectorCausals(vm.detectorCausals)" class="btn btn-success">
+                                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.update">Update</span>
+                                        </button>
+                                    </span>
+                                </span>
+
                             </div>
                         </div>
                     </div>
