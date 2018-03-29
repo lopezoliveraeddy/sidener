@@ -104,4 +104,18 @@ public class DetectorCausalsService {
             .map(detectorCausalsMapper::toDto)
             .collect(Collectors.toList());
     }
+
+    /**
+     * Get detectorCausals by idPollingPlace and idCausal
+     *
+     *  @param idPollingPlace the "idPollingPlace" of the detectorCausals
+     *  @param idCausal the "idCausal" of the detectorCausals
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public DetectorCausalsDTO getDetectorCausalsByPollingPlace(Long idPollingPlace, Long idCausal) {
+        log.debug("Request to get a list of DetectorCausals by idPollingPlace {} and idCausal {}", idPollingPlace, idCausal);
+        DetectorCausals detectorCausals = detectorCausalsRepository.findDetectorCausalsByIdPollingPlaceAndIdCausal(idPollingPlace, idCausal);
+        return detectorCausalsMapper.toDto(detectorCausals);
+    }
 }

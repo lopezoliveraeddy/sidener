@@ -1,12 +1,17 @@
 package electorum.sidener.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import electorum.sidener.domain.DetectorCausals;
+import electorum.sidener.domain.enumeration.TypeCausal;
 import electorum.sidener.service.DetectorCausalsService;
+import electorum.sidener.service.dto.CausalDTO;
 import electorum.sidener.web.rest.util.HeaderUtil;
 import electorum.sidener.service.dto.DetectorCausalsDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -130,6 +135,21 @@ public class DetectorCausalsResource {
     public List<DetectorCausalsDTO> searchDetectorCausals(@RequestParam String query) {
         log.debug("REST request to search DetectorCausals for query {}", query);
         return detectorCausalsService.search(query);
+    }
+
+    /**
+     * GET /detector-causals/polling-place/:idPollingPlace/causal/:idCausal : get detectorCausals by idPollingPlace and idCausal
+     *
+     *  @param idPollingPlace the "idPollingPlace" of the detectorCausals
+     *  @param idCausal the "idCausal" of the detectorCausals
+     *  @return the list of entities
+     */
+    @GetMapping("/detector-causals/polling-place/{idPollingPlace}/causal/{idCausal}")
+    @Timed
+    public ResponseEntity<DetectorCausalsDTO> getDetectorCausalsByPollingPlace(@PathVariable Long idPollingPlace, @PathVariable Long idCausal) {
+        log.debug("REST request to get DetectorCausals by idPollingPlace {} and idCausal {}", idPollingPlace, idCausal);
+        DetectorCausalsDTO detectorCausalsDTO = detectorCausalsService.getDetectorCausalsByPollingPlace(idPollingPlace, idCausal);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(detectorCausalsDTO));
     }
 
 }
