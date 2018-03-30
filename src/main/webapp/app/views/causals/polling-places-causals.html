@@ -1,5 +1,30 @@
 <div>
-    <h2><span data-translate="sidenerApp.district.detail.title">District</span> - {{vm.district.romanNumber + ' ' + vm.district.districtHead}}</h2>
+        <div class="breadcrumb">
+                <a >
+                    <span class="breadcrumb__inner">
+                        <span class="breadcrumb__title"><span><h1>Detección de Causales de Nulidad</h1></span></span>
+                    </span>
+                </a>
+                <a>
+                        <span class="breadcrumb__inner">
+                            <span class="breadcrumb__title"><span>{{vm.election.electionTypeName}}</span></span>
+                            <span class="breadcrumb__desc">{{vm.election.periodElection}}</span>
+    
+                        </span>
+                    </a>
+                <a >
+                    <span class="breadcrumb__inner">
+                        <span class="breadcrumb__title"><span data-translate="{{'sidenerApp.State.' + vm.election.state}}"></span></span>
+                    </span>
+                </a>
+                <a >
+                        <span class="breadcrumb__inner">
+                            <span class="breadcrumb__title"><span>{{vm.district.districtHead}}</span></span>
+                            <span class="breadcrumb__desc">{{vm.district.romanNumber }}</span>
+                        </span>
+                    </a>
+                
+            </div>
     <jhi-alert></jhi-alert>
 
     <div class="table-container">
@@ -17,7 +42,7 @@
                             <th><span data-translate="sidenerApp.pollingPlace.politicalPartyFirstPlace"></span></th>
                             <th><span data-translate="sidenerApp.pollingPlace.politicalPartySecondPlace"></span></th>
                             <th><span data-translate="sidenerApp.pollingPlace.detectnregister"></span></th>
-                            <th><a href="http://eddy.quantumit.com.mx/aguascalientes.docx" class="btn-default">Genera Acta</a></th>
+                            <!--<th><a href="http://eddy.quantumit.com.mx/aguascalientes.docx" class="btn-default"><span data-translate="sidenerApp.pollingPlace.generateDemand"></span></a></th>-->
                         </tr>
                         </thead>
                         <tbody>
@@ -58,9 +83,9 @@
                                     </button>
                                 </div>
                             </td>
-                            <td class="text-center">
+                            <!--<td class="text-center">
                                 <input type="checkbox" class="form-control" checked name="{{district.id}}" ng-checked="$even">
-                            </td>
+                            </td>-->
                         </tr>
                         </tbody>
                     </table>
@@ -83,6 +108,8 @@
                         <th><span data-translate="sidenerApp.pollingPlace.politicalPartyFirstPlace"></span></th>
                         <th><span data-translate="sidenerApp.pollingPlace.politicalPartySecondPlace"></span></th>
                         <th><span data-translate="sidenerApp.pollingPlace.detectnregister"></span></th>
+<<th><a href="http://eddy.quantumit.com.mx/aguascalientes.docx" class="btn-default"><span data-translate="sidenerApp.pollingPlace.generateDemand"></span></a></th>
+
                     </tr>
                     </thead>
                     <tbody>

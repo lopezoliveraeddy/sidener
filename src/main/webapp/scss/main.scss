@@ -764,4 +764,26 @@ Breadcrumb
 .breadcrumb__title {
     font-weight: bold;
 }
-
+/* ==========================================================================
+Tabs
+========================================================================== */
+.nav.nav-tabs{
+    background-color: $electorumOpacity;
+    li{
+        background-color: $electorum;
+        a{
+            color: #FFF;   
+        }
+    }
+    
+}
+.nav.nav-tabs li.active a {
+    background: $red;
+    color: white;   
+}
+.nav.nav-tabs li a:hover  {
+    background: $electorumOpacity;
+}
+.btn.btn-info.btn-sm{
+    background-color: #656722;
+}

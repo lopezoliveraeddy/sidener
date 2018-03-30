@@ -56,7 +56,8 @@
             "watchRecordCount": "Ver acta",
             "enablePollingPlace": "Habilitar Casilla",
             "detectnregister":"Detectar y registrar causales en acta",
-            "totalCausals": "Total de Causales"
+            "totalCausals": "Total de Causales",
+            "generateDemand":"Generar Demanda"
         }
     }
 }
