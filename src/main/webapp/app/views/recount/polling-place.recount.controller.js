@@ -18,7 +18,7 @@
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.loadAll = loadAll;
         // Datos del Distrito
-        vm.loadDistrct = loadDistrict;
+        vm.loadDistrict = loadDistrict;
         vm.district = [];
         vm.pollingPlacesEnabled = [];
         vm.pollingPlaceCuantitative = [];
@@ -67,6 +67,7 @@
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
                 vm.pollingPlaces = data;
+                console.log(data);
                 vm.page = pagingParams.page;
             }
             function onError(error) {

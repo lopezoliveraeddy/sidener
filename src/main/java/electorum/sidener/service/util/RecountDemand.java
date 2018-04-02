@@ -8,10 +8,7 @@ import org.apache.poi.xwpf.usermodel.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
@@ -19,6 +16,83 @@ import java.util.Set;
 
 public class RecountDemand {
     private final Logger log = LoggerFactory.getLogger(PollingPlaceResource.class);
+
+    public void generateNulityDemand(ElectionDTO electionDTO,  DistrictDTO districtDTO, File file, String filename) throws IOException{
+        log.debug("---> filename {}", file);
+
+
+        FileOutputStream out = new FileOutputStream(new File("/Desarrollo/files/demandas/"+filename));
+        try {
+            /** ENCABEZADO */
+            XWPFDocument document = new XWPFDocument();
+            XWPFParagraph paragraph = document.createParagraph();
+            XWPFRun encabezado = paragraph.createRun();
+            paragraph.setAlignment(ParagraphAlignment.RIGHT);
+            encabezado.setBold(true);
+            encabezado.setText("DEMANDA DE INCONFORMIDAD");
+
+
+            XWPFParagraph paragraphA = document.createParagraph();
+            paragraphA.setAlignment(ParagraphAlignment.BOTH);
+            XWPFRun entrada = paragraphA.createRun();
+            entrada.setBold(true);
+            entrada.setText(electionDTO.getRecountElectoralInstitute().toUpperCase());
+            entrada.addCarriageReturn();
+            entrada.setText("PRESENTE.-");
+            entrada.addCarriageReturn();
+            entrada.addCarriageReturn();
+
+            XWPFRun introduccion = paragraphA.createRun();
+            introduccion.setText(electionDTO.getNameDemandant()+" en mi calidad de representante de "+electionDTO.getPoliticalPartyAsociatedName()+" registrado formalmente ante el Consejo Distrital "+districtDTO.getRomanNumber()+" con cabecera en "+districtDTO.getDistrictHead()+", señalo como domicilio para oír y recibir notificaciones el ubicado en ");
+            XWPFRun entradaDireccion = paragraphA.createRun();
+            entradaDireccion.setColor("FF0000");
+            entradaDireccion.setText("UBICACION");
+
+            XWPFRun entradaIntertexto = paragraphA.createRun();
+            entradaIntertexto.setColor("000000");
+            entradaIntertexto.setText(" y autorizo para esos efectos a ");
+
+            XWPFRun autorizados = paragraphA.createRun();
+            autorizados.setColor("FF0000");
+            autorizados.setText("Nombre de los autorizados.");
+            autorizados.addCarriageReturn();
+
+            XWPFRun fundamento = paragraphA.createRun();
+            fundamento.setText("De igual manera, con fundamento en "+electionDTO.getRecountFundamentRequest()+". En contra de los resultados del Cómputo Distrital de la Elección de "+electionDTO.getState()+" "+electionDTO.getElectionTypeName()+" 2015-2016, efectuados por el Consejo distrital con cabecera en  "+districtDTO.getDistrictHead()+", en las casillas que se precisan en la presente demanda.");
+            fundamento.addCarriageReturn();
+            fundamento.setText("Hago valer mi impugnación y pretensión, en los hechos, agravios y pruebas que a continuación se expresan.");
+
+
+
+            XWPFParagraph paragraphB = document.createParagraph();
+            XWPFRun hechosTitulo = paragraphB.createRun();
+            paragraphB.setAlignment(ParagraphAlignment.CENTER);
+            hechosTitulo.setBold(true);
+            hechosTitulo.setText("I.   HECHOS");
+
+            XWPFParagraph paragraphC = document.createParagraph();
+            XWPFRun hechosContenido = paragraphC.createRun();
+
+            hechosContenido.setText("1.     El 06 de Octubre de 2015, inició al proceso electoral ordinario para renovar Gobernador." +
+                "2.     El 05 de Junio de 2016, se llevó acabo la jornada electoral, registrándose diversas irregularidades en la votación recibida en las casillas del Distrito I, las cuales se precisan y se impugnan." +
+                "3.     El 08 de Junio de 2016, se llevaron a cabo los cómputos distritales en la entidad antes mencionada, en específico en el Consejo, concluyendo el correspondiente a la elección de undefined el 15 de Junio de 2016.");
+
+
+
+
+
+
+
+
+            document.write(out);
+            out.close();
+
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+
+
+    }
 
     public void generateRecountDemand(List<DistrictDTO> districtDTOS, ElectionDTO electionDTO, String filename) throws IOException {
         log.debug("---> filename {}", filename);
@@ -278,4 +352,5 @@ public class RecountDemand {
         }
 
     }
+
 }

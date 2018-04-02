@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('ElectionCausalsDistrictController', ElectionCausalsDistrictController);
 
-    ElectionCausalsDistrictController.$inject = ['$state', '$stateParams', 'Election', 'ElectionCausalsDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    ElectionCausalsDistrictController.$inject = ['$state', '$stateParams', 'Election', 'ElectionCausalsDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams','DistrictCausalsPollingPlaces','DistrictCausalsSearchPollingPlaces'];
 
-    function ElectionCausalsDistrictController($state, $stateParams, Election, ElectionCausalsDistrict, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function ElectionCausalsDistrictController($state, $stateParams, Election, ElectionCausalsDistrict, ParseLinks, AlertService, paginationConstants, pagingParams,DistrictCausalsPollingPlaces,DistrictCausalsSearchPollingPlaces) {
 
         var vm = this;
 
@@ -15,6 +15,8 @@
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.loadAll = loadAll;
+        vm.demandByDistrict = demandByDistrict;
+
 
         // Datos de la Elección
         vm.loadElection = loadElection;
@@ -22,6 +24,39 @@
 
         loadElection();
         loadAll();
+
+        function demandByDistrict(id){
+            DistrictCausalsPollingPlaces.get({id:id},onSuccess, onError);
+
+            function onSuccess(data, headers){
+                angular.forEach(data,function(value,key){
+                
+                    DistrictCausalsSearchPollingPlaces.query({
+                        query:"idPollingPlace:"+value.id
+                    },fsuccess,ferror);
+
+                    function fsuccess(data){
+                        if(data.length > 0 ){
+                            console.log(data);
+                        }
+
+                    }
+
+                    function ferror(error){
+                        AlertService.error(error.data.message);
+                    }
+                });
+
+            }
+
+            function onError(error){
+                AlertService.error(error.data.message);
+            }
+
+        }
+
+    
+
 
         function loadElection () {
             Election.get({ id : $stateParams.id }, onSuccess, onError);

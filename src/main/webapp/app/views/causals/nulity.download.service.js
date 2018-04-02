@@ -13,7 +13,7 @@
 
         function get(file) {
             var deferred = $q.defer();
-            var url = "api/file/demand/?districts=" + file;
+            var url = "api/file/getdemandnulity/?idDistrito=" + file;
             var token = AuthServerProvider.getToken();
             if (token ) {
                 var config = {
