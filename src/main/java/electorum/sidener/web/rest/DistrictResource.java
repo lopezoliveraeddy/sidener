@@ -200,9 +200,6 @@ public class DistrictResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(districtsWon));
     }
 
-
-
-
     /**
      * GET DISTRICTS /recount/{idElection}/districtsrecount : get districts by IdElection and with a total recount
      * @param idElection the "idElection" of the district
@@ -217,8 +214,6 @@ public class DistrictResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/recount/{idElection}/districtsrecount");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
-
-
 
     /**
      * Post /district : Create a new election data from file

@@ -25,35 +25,29 @@
             <div class="row">
                 <div id="position" class="col-lg-4 col-md-4 col-sm-12 text-left">
                     <div class="media">
-                            <div class="media-left">
-                                <i class="fa medium fa-certificate associated-position" aria-hidden="true"></i>
-                                <strong>
-                                        <span class="associated-position">{{vm.districtsWonLose.districtsWon}}</span>
-                                        <span class="associated-position" data-translate="sidenerApp.recount.districts-won"></span>
-                                    </strong>
-                            </div>
-                            <div class="media-left">
-                                    &nbsp;<i class="fa medium fa-certificate color-blue" aria-hidden="true"></i>
-                                    <strong>
-                                        <span class="color-blue">{{vm.districtsWonLose.districtsLose}}</span>
-                                        <span class="color-blue" data-translate="sidenerApp.recount.districts-lose"></span>
-                                    </strong>
-                            </div>
-
-                            
+                        <div class="media-left">
+                            <i class="fa medium fa-certificate associated-position" aria-hidden="true"></i>
+                            <strong>
+                                <span class="associated-position">{{vm.districtsWonLose.districtsWon}}</span>
+                                <span class="associated-position" data-translate="sidenerApp.recount.districts-won"></span>
+                            </strong>
                         </div>
-  
+                        <div class="media-left">&nbsp;<i class="fa medium fa-certificate color-blue" aria-hidden="true"></i>
+                            <strong>
+                                <span class="color-blue">{{vm.districtsWonLose.districtsLose}}</span>
+                                <span class="color-blue" data-translate="sidenerApp.recount.districts-lose"></span>
+                            </strong>
+                        </div>
+                    </div>
                 </div>
-                <div id="win-lose" class="col-lg-4 col-md-4 col-sm-12 text-left">
-
-                </div>
+                <div id="win-lose" class="col-lg-4 col-md-4 col-sm-12 text-left"></div>
                 <div id="counting-assumption" class="col-lg-4 col-md-4 col-sm-12 text-left">
                     <div class="media">
                         <div class="media-left media-middle">
                             <i class="fa medium fa-bar-chart" aria-hidden="true"></i>
                         </div>
                         <div class="media-body media-middle">
-                            Distritos contabilizados para Recuento total: <strong>{{vm.districtsForTotalRecount.length}}</strong>
+                            Distritos contabilizados para Recuento total: <strong>{{vm.districtsForTotalRecount}}</strong>
                         </div>
                     </div>
                 </div>

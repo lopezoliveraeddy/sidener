@@ -570,7 +570,7 @@ Recuento
 ========================================================================== */
 .table-header {
     margin-bottom: 30px;
-   
+
     #counting-assumption {
         .media-body {
             background-color: $electorumOpacity;
@@ -763,5 +763,9 @@ Breadcrumb
 
 .breadcrumb__title {
     font-weight: bold;
+}
+
+.breadcrumb h1 {
+    margin: 0;
 }
 

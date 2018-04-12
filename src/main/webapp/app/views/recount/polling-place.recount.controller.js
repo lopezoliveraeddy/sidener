@@ -107,8 +107,8 @@
         }
 
         function generateAllWordDemand(pollingPlace) {
-            
-            
+
+
             if(vm.pollingPlacesEnabled.indexOf(pollingPlace.id) === -1 ){
                 vm.pollingPlacesEnabled.push(pollingPlace.id);
                 angular.forEach(pollingPlace.causals,function(value,key){
@@ -126,13 +126,13 @@
                     }
 
 
-                    
+
                 });
             }
-            console.log(vm.pollingPlaceCuantitative);   
-            console.log(vm.pollingPlaceCualitative);   
-            
-           
+            console.log(vm.pollingPlaceCuantitative);
+            console.log(vm.pollingPlaceCualitative);
+
+
             /*
             var pollingPlaces= [];
             var strPollingPlaces = '';
@@ -224,6 +224,6 @@
                 }
             }
         }
-
     }
+
 })();
