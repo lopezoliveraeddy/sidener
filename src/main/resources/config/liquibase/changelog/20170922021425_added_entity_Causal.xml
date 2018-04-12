@@ -38,6 +38,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="acronym" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="published" type="bit">
                 <constraints nullable="true" />
             </column>

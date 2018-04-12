@@ -613,14 +613,25 @@ Detector de Causales
         > tbody > tr > td {
             text-align: center;
         }
-        .causal-color {
-            width: 30px;
-            height: 30px;
-            display: inline-block;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            border: 1px solid #CCCCCC;
+        .media {
+            a {
+                display: inline-block;
+                text-decoration: none;
+                .media-left.causal-color {
+                    width: 30px;
+                    height: 30px;
+                    display: inline-block;
+                    border-radius: 50%;
+                    text-align: center;
+                    line-height: 30px;
+                    border: 1px solid #CCCCCC;
+                }
+                .media-right {
+                    display: inline-block;
+                    font-size: 25px;
+                    color: #333;
+                }
+            }
         }
     }
     #save-causals {

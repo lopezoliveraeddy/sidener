@@ -37,11 +37,15 @@
             <div id="field-causal">
                 <span class="causal-color" ng-style="{ 'background-color': vm.causal.color }"></span>
                 <input colorpicker colorpicker-position="right" type="text" class="form-control" name="color" id="field_color"
-                    ng-model="vm.causal.color"
-                    />
+                    ng-model="vm.causal.color"/>
             </div>
         </div>
-
+        <div class="form-group">
+            <label class="control-label" data-translate="sidenerApp.causal.acronym" for="field_acronym">Acronym</label>
+            <input type="text" class="form-control" name="acronym" id="field_acronym"
+                    ng-model="vm.causal.acronym"
+                    />
+        </div>
         <div class="form-group">
             <label class="control-label" data-translate="sidenerApp.causal.published" for="field_published">Published</label>
                 <input type="checkbox" name="published" id="field_published"

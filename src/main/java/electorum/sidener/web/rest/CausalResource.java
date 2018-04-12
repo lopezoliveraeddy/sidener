@@ -1,7 +1,6 @@
 package electorum.sidener.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import electorum.sidener.domain.enumeration.SubTypeCausal;
 import electorum.sidener.domain.enumeration.TypeCausal;
 import electorum.sidener.service.CausalService;
 import electorum.sidener.web.rest.util.HeaderUtil;
@@ -23,6 +22,9 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
+
+import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
  * REST controller for managing Causal.
@@ -144,7 +146,7 @@ public class CausalResource {
     }
 
     /**
-     * GET  /causals/type/:typeCausal/:subTypeCausal : get for the causal corresponding
+     * GET  /causals/type/:typeCausal : get for the causal corresponding
      *
      * @param typeCausal the typeCausal of the causal
      * @return the ResponseEntity with status 200 (OK) and the list of causals in body

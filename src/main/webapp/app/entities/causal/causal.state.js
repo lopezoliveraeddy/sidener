@@ -133,6 +133,7 @@
                                 typeCausal: null,
                                 subTypeCausal: null,
                                 color: null,
+                                acronym: null,
                                 published: null,
                                 createdDate: null,
                                 updatedDate: null,

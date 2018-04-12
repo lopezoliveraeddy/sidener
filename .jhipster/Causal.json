@@ -31,6 +31,10 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "acronym",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "published",
             "fieldType": "Boolean"
         },

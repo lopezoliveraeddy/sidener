@@ -61,6 +61,9 @@ public class CausalResourceIntTest {
     private static final String DEFAULT_COLOR = "AAAAAAAAAA";
     private static final String UPDATED_COLOR = "BBBBBBBBBB";
 
+    private static final String DEFAULT_ACRONYM = "AAAAAAAAAA";
+    private static final String UPDATED_ACRONYM = "BBBBBBBBBB";
+
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
 
@@ -120,6 +123,7 @@ public class CausalResourceIntTest {
             .typeCausal(DEFAULT_TYPE_CAUSAL)
             .subTypeCausal(DEFAULT_SUB_TYPE_CAUSAL)
             .color(DEFAULT_COLOR)
+            .acronym(DEFAULT_ACRONYM)
             .published(DEFAULT_PUBLISHED)
             .createdDate(DEFAULT_CREATED_DATE)
             .updatedDate(DEFAULT_UPDATED_DATE);
@@ -152,6 +156,7 @@ public class CausalResourceIntTest {
         assertThat(testCausal.getTypeCausal()).isEqualTo(DEFAULT_TYPE_CAUSAL);
         assertThat(testCausal.getSubTypeCausal()).isEqualTo(DEFAULT_SUB_TYPE_CAUSAL);
         assertThat(testCausal.getColor()).isEqualTo(DEFAULT_COLOR);
+        assertThat(testCausal.getAcronym()).isEqualTo(DEFAULT_ACRONYM);
         assertThat(testCausal.isPublished()).isEqualTo(DEFAULT_PUBLISHED);
         assertThat(testCausal.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testCausal.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
@@ -196,6 +201,7 @@ public class CausalResourceIntTest {
             .andExpect(jsonPath("$.[*].typeCausal").value(hasItem(DEFAULT_TYPE_CAUSAL.toString())))
             .andExpect(jsonPath("$.[*].subTypeCausal").value(hasItem(DEFAULT_SUB_TYPE_CAUSAL.toString())))
             .andExpect(jsonPath("$.[*].color").value(hasItem(DEFAULT_COLOR.toString())))
+            .andExpect(jsonPath("$.[*].acronym").value(hasItem(DEFAULT_ACRONYM.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));
@@ -216,6 +222,7 @@ public class CausalResourceIntTest {
             .andExpect(jsonPath("$.typeCausal").value(DEFAULT_TYPE_CAUSAL.toString()))
             .andExpect(jsonPath("$.subTypeCausal").value(DEFAULT_SUB_TYPE_CAUSAL.toString()))
             .andExpect(jsonPath("$.color").value(DEFAULT_COLOR.toString()))
+            .andExpect(jsonPath("$.acronym").value(DEFAULT_ACRONYM.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
             .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
             .andExpect(jsonPath("$.updatedDate").value(sameInstant(DEFAULT_UPDATED_DATE)));
@@ -244,6 +251,7 @@ public class CausalResourceIntTest {
             .typeCausal(UPDATED_TYPE_CAUSAL)
             .subTypeCausal(UPDATED_SUB_TYPE_CAUSAL)
             .color(UPDATED_COLOR)
+            .acronym(UPDATED_ACRONYM)
             .published(UPDATED_PUBLISHED)
             .createdDate(UPDATED_CREATED_DATE)
             .updatedDate(UPDATED_UPDATED_DATE);
@@ -262,6 +270,7 @@ public class CausalResourceIntTest {
         assertThat(testCausal.getTypeCausal()).isEqualTo(UPDATED_TYPE_CAUSAL);
         assertThat(testCausal.getSubTypeCausal()).isEqualTo(UPDATED_SUB_TYPE_CAUSAL);
         assertThat(testCausal.getColor()).isEqualTo(UPDATED_COLOR);
+        assertThat(testCausal.getAcronym()).isEqualTo(UPDATED_ACRONYM);
         assertThat(testCausal.isPublished()).isEqualTo(UPDATED_PUBLISHED);
         assertThat(testCausal.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testCausal.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
@@ -328,6 +337,7 @@ public class CausalResourceIntTest {
             .andExpect(jsonPath("$.[*].typeCausal").value(hasItem(DEFAULT_TYPE_CAUSAL.toString())))
             .andExpect(jsonPath("$.[*].subTypeCausal").value(hasItem(DEFAULT_SUB_TYPE_CAUSAL.toString())))
             .andExpect(jsonPath("$.[*].color").value(hasItem(DEFAULT_COLOR.toString())))
+            .andExpect(jsonPath("$.[*].acronym").value(hasItem(DEFAULT_ACRONYM.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(sameInstant(DEFAULT_UPDATED_DATE))));

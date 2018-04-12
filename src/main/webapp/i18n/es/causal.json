@@ -21,6 +21,7 @@
             "subTypeCausal": "Sub-Tipo Causal",
             "description": "Descripción",
             "color": "Color",
+            "acronym": "Acronym",
             "published": "Publicado",
             "createdDate": "Creado",
             "updatedDate": "Actualizado",

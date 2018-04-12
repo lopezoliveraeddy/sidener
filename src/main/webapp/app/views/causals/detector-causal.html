@@ -10,7 +10,12 @@
                         <tbody>
                         <tr>
                             <td ng-repeat="causal in vm.causalsNullity">
-                                <a ng-click="bindCausal(causal.id, causal.name, causal.color)"><span class="causal-color" ng-style="{'background-color': causal.color}" uib-tooltip="{{causal.name}}" tooltip-placement="right"></span></a>
+                                <div class="media">
+                                    <a ng-click="bindCausal(causal.id, causal.name, causal.color)">
+                                        <span class="media-left media-middle causal-color" ng-style="{'background-color': causal.color}" uib-tooltip="{{causal.name}}" tooltip-placement="right"></span>
+                                        <span class="media-right media-middle">{{causal.acronym}}</span>
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                         </tbody>

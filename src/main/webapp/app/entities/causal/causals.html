@@ -40,6 +40,7 @@
                     <th jh-sort-by="typeCausal"><span data-translate="sidenerApp.causal.typeCausal">Type Causal</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="subTypeCausal"><span data-translate="sidenerApp.causal.subTypeCausal">Sub Type Causal</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="color"><span data-translate="sidenerApp.causal.color">Color</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="acronym"><span data-translate="sidenerApp.causal.acronym">Acronym</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="published"><span data-translate="sidenerApp.causal.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="createdDate"><span data-translate="sidenerApp.causal.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.causal.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -55,6 +56,7 @@
                     <td id="field-causals">
                         <span class="causal-color" ng-style="{'background-color': causal.color}"></span>
                     </td>
+                    <td>{{causal.acronym}}</td>
                     <td class="text-center">
                         <span ng-if="causal.published==true">
                             <i class="fa fa-check fa-2x"></i>

@@ -47,6 +47,9 @@ public class Causal implements Serializable {
     @Column(name = "color")
     private String color;
 
+    @Column(name = "acronym")
+    private String acronym;
+
     @Column(name = "published")
     private Boolean published;
 
@@ -122,6 +125,19 @@ public class Causal implements Serializable {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getAcronym() {
+        return acronym;
+    }
+
+    public Causal acronym(String acronym) {
+        this.acronym = acronym;
+        return this;
+    }
+
+    public void setAcronym(String acronym) {
+        this.acronym = acronym;
     }
 
     public Boolean isPublished() {
@@ -215,6 +231,7 @@ public class Causal implements Serializable {
             ", typeCausal='" + getTypeCausal() + "'" +
             ", subTypeCausal='" + getSubTypeCausal() + "'" +
             ", color='" + getColor() + "'" +
+            ", acronym='" + getAcronym() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +

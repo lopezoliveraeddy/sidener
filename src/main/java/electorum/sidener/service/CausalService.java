@@ -1,7 +1,6 @@
 package electorum.sidener.service;
 
 import electorum.sidener.domain.Causal;
-import electorum.sidener.domain.enumeration.SubTypeCausal;
 import electorum.sidener.domain.enumeration.TypeCausal;
 import electorum.sidener.repository.CausalRepository;
 import electorum.sidener.repository.search.CausalSearchRepository;

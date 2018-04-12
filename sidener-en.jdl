@@ -191,6 +191,7 @@ entity Causal {
 	typeCausal TypeCausal,
 	subTypeCausal SubTypeCausal,
     color String,
+    acronym String,
     published Boolean,
     createdDate ZonedDateTime,
     updatedDate ZonedDateTime

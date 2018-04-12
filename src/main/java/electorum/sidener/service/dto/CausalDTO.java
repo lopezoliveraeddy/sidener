@@ -26,6 +26,8 @@ public class CausalDTO implements Serializable {
 
     private String color;
 
+    private String acronym;
+
     private Boolean published;
 
     private ZonedDateTime createdDate;
@@ -72,6 +74,14 @@ public class CausalDTO implements Serializable {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getAcronym() {
+        return acronym;
+    }
+
+    public void setAcronym(String acronym) {
+        this.acronym = acronym;
     }
 
     public Boolean isPublished() {
@@ -135,6 +145,7 @@ public class CausalDTO implements Serializable {
             ", typeCausal='" + getTypeCausal() + "'" +
             ", subTypeCausal='" + getSubTypeCausal() + "'" +
             ", color='" + getColor() + "'" +
+            ", acronym='" + getAcronym() + "'" +
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
