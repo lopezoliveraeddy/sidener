@@ -43,6 +43,8 @@
                     $translatePartialLoader.addPart('pollingPlaceType');
                     $translatePartialLoader.addPart('election');
                     $translatePartialLoader.addPart('global');
+                    $translatePartialLoader.addPart('state');
+
                     return $translate.refresh();
                 }]
             }

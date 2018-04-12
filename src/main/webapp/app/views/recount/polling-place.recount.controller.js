@@ -18,12 +18,15 @@
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.loadAll = loadAll;
         // Datos del Distrito
-        vm.loadDistrct = loadDistrict;
+        vm.loadDistrict = loadDistrict;
         vm.district = [];
         vm.pollingPlacesEnabled = [];
         vm.pollingPlaceCuantitative = [];
         vm.pollingPlaceCualitative = [];
-        vm.generateAllWordDemand = generateAllWordDemand;
+        vm.generateCausals = generateCausals;
+        vm.downloadDocument = downloadDocument;
+        vm.addThisPollingPlace = addThisPollingPlace;
+        vm.tmpObject = '';
 
         // Datos de la Elección
         vm.loadElection = loadElection;
@@ -38,7 +41,7 @@
             typeCausal: 'RECOUNT'
         });
         // funciona para agregar casillas al documento
-        vm.generateAllWordDemand = generateAllWordDemand;
+        vm.generateCausals = generateCausals;
         loadDistrict();
         loadAll();
 
@@ -64,6 +67,7 @@
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
                 vm.pollingPlaces = data;
+                console.log(data);
                 vm.page = pagingParams.page;
             }
             function onError(error) {
@@ -106,9 +110,9 @@
             }
         }
 
-        function generateAllWordDemand(pollingPlace) {
-
-
+        function generateCausals(pollingPlace) {
+            
+            
             if(vm.pollingPlacesEnabled.indexOf(pollingPlace.id) === -1 ){
                 vm.pollingPlacesEnabled.push(pollingPlace.id);
                 angular.forEach(pollingPlace.causals,function(value,key){
@@ -129,26 +133,11 @@
 
                 });
             }
-            console.log(vm.pollingPlaceCuantitative);
-            console.log(vm.pollingPlaceCualitative);
+        }
 
-
-            /*
-            var pollingPlaces= [];
-            var strPollingPlaces = '';
-            console.log("eddy");
-
-            for(var i = 0; i < vm.pollingPlacesWithCausals.length; i++){
-                console.log(vm.pollingPlacesWithCausals[i]);
-                pollingPlaces.push(vm.pollingPlacesWithCausals[i].id);
-
-                console.log(pollingPlaces);
-            }
-
-
-
-            DemandDownloadPolling.get(pollingPlaces.join("-")).then(function (response) {
-
+        function downloadDocument(){
+            console.log(vm.pollingPlacesEnabled);
+            DemandDownloadPolling.get(vm.pollingPlacesEnabled.join("-")).then(function (response) {
                 var contentDisposition = response.headers("content-disposition");
                 var tmp = contentDisposition.split("filename=");
                 var filename = "";
@@ -167,8 +156,39 @@
             }).catch(function(error) {
                 AlertService.error(error);
             });
-        */
         }
+
+        function addThisPollingPlace(pollingPlace){
+            console.log(vm.pollingPlacesEnabled);
+            var value = true;
+
+            if(vm.pollingPlacesEnabled.indexOf(pollingPlace.id) === -1){
+                vm.pollingPlacesEnabled.push(pollingPlace.id);
+                console.log(vm.tmpObject);
+                value = true;
+
+            }else{
+                var index = vm.pollingPlacesEnabled.indexOf(pollingPlace.id);
+                vm.pollingPlacesEnabled.splice(index, 1);
+                value = false;
+            }
+            console.log(pollingPlace);
+            pollingPlace.challengedPollingPlace = value;
+            PollingPlace.update(pollingPlace, onSaveSuccess, onSaveError);
+            function onSaveSuccess(data){
+                pollingPlace = data;
+            }
+            function onSaveError(error) {
+                AlertService.error(error.data.message);
+            }
+
+            
+
+
+
+            
+        }
+
         $scope.pollingPlaceType = function (typePollingPlace, typeNumber) {
             switch (typePollingPlace) {
                 case 'BASIC':
@@ -200,6 +220,8 @@
         function onSaveError () {
             vm.isSaving = false;
         }
+
+        
 
         $scope.countingAssumption = function(countingAssumption,causalSize) {
             if (countingAssumption === true || causalSize > 0) {

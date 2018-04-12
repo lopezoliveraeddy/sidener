@@ -1,6 +1,25 @@
 <div>
-    <h2><span>{{vm.election.electionTypeName}}</span> - <span data-translate="{{'sidenerApp.State.' + vm.election.state}}"></span> - <span>{{vm.election.periodElection}}</span></h2>
-    <h3>Detección de Causales de Nulidad / Distritos</h3>
+        <div class="breadcrumb">
+                <a >
+                    <span class="breadcrumb__inner">
+                        <span class="breadcrumb__title"><span><h1>Detección de Causales de Nulidad</h1></span></span>
+                    </span>
+                </a>
+                <a>
+                        <span class="breadcrumb__inner">
+                            <span class="breadcrumb__title"><span>{{vm.election.electionTypeName}}</span></span>
+                            <span class="breadcrumb__desc">{{vm.election.periodElection}}</span>
+    
+                        </span>
+                    </a>
+                <a >
+                    <span class="breadcrumb__inner">
+                        <span class="breadcrumb__title"><span data-translate="{{'sidenerApp.State.' + vm.election.state}}"></span></span>
+                    </span>
+                </a>
+                
+            </div>
+
     <jhi-alert></jhi-alert>
     <div class="table-container">
         <div class="table-responsive">
@@ -12,7 +31,7 @@
                 <th><span data-translate="sidenerApp.district.pollingPlacesTotal"></span></th>
                 <th><span data-translate="sidenerApp.district.totalVotes"></span></th>
                 <th><span data-translate="sidenerApp.district.detectCausalsOfNullity"></span></th>
-                <th>Genera Acta</th>
+                <th>Genera Demanda</th>
             </tr>
             </thead>
             <tbody>
@@ -34,7 +53,7 @@
                 </td>
                 <td class="text-center">
                     <div class="btn-group">
-                        <button type="submit"
+                        <button type="submit" ng-click="vm.demandByDistrict(district.id)"
 
                                 class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>

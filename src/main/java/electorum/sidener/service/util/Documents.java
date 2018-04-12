@@ -28,15 +28,14 @@ public class Documents {
 			XWPFParagraph paragraph = document.createParagraph();
 			XWPFRun encabezado = paragraph.createRun();
             XWPFParagraph paragraphTwo = document.createParagraph();
-            XWPFParagraph paragraphThree = document.createParagraph();
+
+
             paragraph.setAlignment(ParagraphAlignment.LEFT);
             paragraphTwo.setAlignment(ParagraphAlignment.BOTH);
             XWPFRun introduccion = paragraphTwo.createRun();
             XWPFRun solicitud = paragraphTwo.createRun();
             XWPFRun regla = paragraphTwo.createRun();
 
-            XWPFTable table = document.createTable();
-            paragraphThree.setAlignment(ParagraphAlignment.CENTER);
             Long diferenciaPorcentual = (districtDTO.getTotalFirstPlace()- districtDTO.getTotalSecondPlace())/districtDTO.getTotalVotes();
 
 
@@ -61,6 +60,8 @@ public class Documents {
             regla.addCarriageReturn();
             regla.addCarriageReturn();
 
+            XWPFTable table = document.createTable();
+
             //create first row
             XWPFTableRow tableRowOne = table.getRow(0);
             tableRowOne.getCell(0).setText("PRIMER LUGAR");
@@ -84,6 +85,9 @@ public class Documents {
             tableRowThree.getCell(2).setText(districtDTO.getEntitySecondPlace());
             tableRowThree.getCell(3).setText(districtDTO.getTotalSecondPlace().toString());
             tableRowThree.getCell(4).setText(String.valueOf(diferenciaPorcentual));
+            XWPFParagraph paragraphThree = document.createParagraph();
+            paragraphThree.setAlignment(ParagraphAlignment.CENTER);
+
             XWPFRun despedida = paragraphThree.createRun();
             despedida.addCarriageReturn();
             despedida.addCarriageReturn();

@@ -1,6 +1,8 @@
 package electorum.sidener.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import electorum.sidener.domain.District;
+import electorum.sidener.domain.Election;
 import electorum.sidener.domain.PollingPlace;
 import electorum.sidener.service.DistrictService;
 import electorum.sidener.service.ElectionService;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.activation.MimetypesFileTypeMap;
 import java.io.File;
 import java.io.IOException;
+import java.net.ResponseCache;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
@@ -97,9 +100,46 @@ public class DocumentResource {
         }catch (NoSuchFileException e) {
             return ResponseEntity.notFound().headers(headers).build();
         }
+    }
 
+    @PostMapping("/file/getdemandnulity")
+    @Timed
+    public ResponseEntity<Resource> getDemandNulity( @RequestParam Long idDistrito) throws IOException{
+        log.debug("Entra a getDemandNulity con ID {} ", idDistrito);
 
+        DistrictDTO districtDTO = districtService.findOne(idDistrito);
+        ElectionDTO electionDTO = electionService.findOne(districtDTO.getElectionId());
+        RecountDemand recountDemand = new RecountDemand();
+        String filename = "demanda-nulidad-distrito-"+idDistrito+"-eleccion-"+districtDTO.getElectionId().toString()+".doc";
 
+        File file = new File("/Desarrollo/files/demandas/"+ filename);
+        recountDemand.generateNulityDemand(electionDTO, districtDTO, file, filename);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+
+        headers.add("Content-Disposition", "inline; filename=\"" + filename + "\"");
+
+        Path path = Paths.get(file.getAbsolutePath());
+
+        try{
+            ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
+
+            String mimeType = MimetypesFileTypeMap
+                .getDefaultFileTypeMap()
+                .getContentType(file);
+
+            MediaType mediaType = MediaType.parseMediaType(mimeType);
+            log.debug("MediaType {}",mediaType.toString());
+            return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(file.length())
+                .contentType(mediaType)
+                .body(resource);
+        }catch (NoSuchFileException e) {
+            return ResponseEntity.notFound().headers(headers).build();
+        }
 
     }
 
@@ -110,16 +150,20 @@ public class DocumentResource {
          List<PollingPlaceDTO> pollingPlaceDTOList = new ArrayList<PollingPlaceDTO>();
          Long election = 0L;
          RecountDemand recountDemand= new RecountDemand();
-         String filename = "demanda-distrito-"+pollingplaces+"-"+election+"-eleccion.doc";
-         File file = new File("/Desarrollo/files/demandas/" + filename);
+
+
 
 
         for (String s:
             pollingPlaceList) {
+            log.debug("----- pollingPlaceList {}", s);
             pollingPlaceDTOList.add(pollingPlaceService.findOne(Long.parseLong(s)));
-            election = districtService.findOne(Long.parseLong(s)).getElectionId();
+            election = pollingPlaceService.findOne(Long.parseLong(s)).getElectionId();
         }
+        log.debug("E L E C C I O N {}",election);
 
+        String filename = "demanda-distrito-"+pollingplaces+"-"+election+"-eleccion.doc";
+        File file = new File("/Desarrollo/files/demandas/" + filename);
         ElectionDTO electionDTO = electionService.findOne(election);
         recountDemand.generateRecountDemandPollingPlace(pollingPlaceDTOList , electionDTO,filename);
 
@@ -151,6 +195,8 @@ public class DocumentResource {
         }
 
     }
+
+
 
 
     @PostMapping("/file/demand")
