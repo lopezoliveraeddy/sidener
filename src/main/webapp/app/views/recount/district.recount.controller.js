@@ -123,7 +123,6 @@
         };
 
         $scope.asociatedPosition = function(entity) {
-            console.log(entity);
             if (vm.election.coalitionAsociatedId !== null) {
                 if (entity === vm.election.coalitionAsociatedAcronym) {
                     return '<i class="fa medium fa-certificate" aria-hidden="true"></i>';

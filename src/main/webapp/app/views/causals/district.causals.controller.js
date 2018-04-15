@@ -30,16 +30,14 @@
 
             function onSuccess(data, headers){
                 angular.forEach(data,function(value,key){
-                
+
                     DistrictCausalsSearchPollingPlaces.query({
                         query:"idPollingPlace:"+value.id
                     },fsuccess,ferror);
 
                     function fsuccess(data){
                         if(data.length > 0 ){
-                            console.log(data);
                         }
-
                     }
 
                     function ferror(error){
@@ -55,7 +53,7 @@
 
         }
 
-    
+
 
 
         function loadElection () {

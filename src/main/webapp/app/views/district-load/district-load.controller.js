@@ -28,14 +28,12 @@
         function onSuccess(data, headers) {
             vm.totalItems = headers('X-Total-Count');
             vm.elections = data;
-            console.log(vm.elections);
         }
 
 
         function save () {
             if( angular.isDefined(vm.electionSel) ){
                 vm.bandera = 1;
-                console.log("eddy");
                 LoadDistrict.save(
                     {
                         "dbFile": vm.election.dbFile,
@@ -57,20 +55,17 @@
 
         vm.processDistrict = function(idDistrito){
             /*Obtener las casillas por Id*/
-            console.log(idDistrito);
             GenerateDistrict.get({
                 id: idDistrito,
                 page: 1
             }, onSuccess, onError);
 
             function onSuccess(data, headers) {
-                console.log("eddytoWasHere");
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
                 vm.pollingPlaces = data;
                 vm.page = 1;
-                console.log(vm.pollingPlaces);
             }
             function onError(error) {
                 AlertService.error(error.data.message);

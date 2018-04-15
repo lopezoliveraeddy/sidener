@@ -25,7 +25,6 @@
         function onSuccess(data, headers) {
     			 vm.totalItems = headers('X-Total-Count');
              vm.elections = data;
-             console.log(vm.elections);
         }
         function onError(error) {
             AlertService.error(error.data.message);
@@ -46,11 +45,7 @@
 
 
         }
-        vm.processDistrict = function (idEleccion){
-            console.log("llegamos");
-            console.log(vm.electionSel);
-            console.log(idEleccion);
-        }
+        vm.processDistrict = function (idEleccion){ };
 
         vm.loadFile = function($file , election){
 

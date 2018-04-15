@@ -185,7 +185,6 @@
         }
 
         function removeFile(image) {
-            console.log(image);
             vm.image.length = 0;
             vm.trash.push(image);
         }

@@ -152,7 +152,6 @@
         }
 
         $scope.change = function(value) {
-            console.log(value);
             if(value === 'politicalPartyAsociated') {
                 vm.election.coalitionAsociatedId = null;
                 vm.election.coalitionAsociatedName = null;

@@ -67,7 +67,6 @@
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
                 vm.pollingPlaces = data;
-                console.log(data);
                 vm.page = pagingParams.page;
             }
             function onError(error) {
@@ -111,8 +110,8 @@
         }
 
         function generateCausals(pollingPlace) {
-            
-            
+
+
             if(vm.pollingPlacesEnabled.indexOf(pollingPlace.id) === -1 ){
                 vm.pollingPlacesEnabled.push(pollingPlace.id);
                 angular.forEach(pollingPlace.causals,function(value,key){
@@ -136,7 +135,6 @@
         }
 
         function downloadDocument(){
-            console.log(vm.pollingPlacesEnabled);
             DemandDownloadPolling.get(vm.pollingPlacesEnabled.join("-")).then(function (response) {
                 var contentDisposition = response.headers("content-disposition");
                 var tmp = contentDisposition.split("filename=");
@@ -159,12 +157,10 @@
         }
 
         function addThisPollingPlace(pollingPlace){
-            console.log(vm.pollingPlacesEnabled);
             var value = true;
 
             if(vm.pollingPlacesEnabled.indexOf(pollingPlace.id) === -1){
                 vm.pollingPlacesEnabled.push(pollingPlace.id);
-                console.log(vm.tmpObject);
                 value = true;
 
             }else{
@@ -172,7 +168,6 @@
                 vm.pollingPlacesEnabled.splice(index, 1);
                 value = false;
             }
-            console.log(pollingPlace);
             pollingPlace.challengedPollingPlace = value;
             PollingPlace.update(pollingPlace, onSaveSuccess, onSaveError);
             function onSaveSuccess(data){
@@ -182,11 +177,11 @@
                 AlertService.error(error.data.message);
             }
 
-            
 
 
 
-            
+
+
         }
 
         $scope.pollingPlaceType = function (typePollingPlace, typeNumber) {
@@ -221,7 +216,7 @@
             vm.isSaving = false;
         }
 
-        
+
 
         $scope.countingAssumption = function(countingAssumption,causalSize) {
             if (countingAssumption === true || causalSize > 0) {

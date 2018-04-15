@@ -83,11 +83,9 @@
 
         $scope.updateDetectorCausals = function(detectorCausals) {
             DetectorCausals.update(detectorCausals, onSaveSuccess, onSaveError);
-            console.log(detectorCausals);
         };
 
         $scope.createDetectorCausals = function(detectorCausals, causalId) {
-            console.log(causalId);
             vm.detectorCausals.idCausal = causalId;
             vm.detectorCausals.idPollingPlace = $stateParams.id;
             DetectorCausals.save(JSON.stringify(vm.detectorCausals), onSaveSuccess, onSaveError);
