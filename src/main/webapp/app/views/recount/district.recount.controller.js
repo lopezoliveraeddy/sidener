@@ -23,7 +23,7 @@
         vm.loadElection = loadElection;
         vm.openLink = openLink;
         // Distritos Ganados - Perdidos
-        vm.districtsWonLose = ElectionDistrictsWonLose.get({ idElection : $stateParams.id });
+        vm.districtsWonLose = ElectionDistrictsWonLose.get({ idElection : $stateParams.idElection });
         vm.districtsForTotalRecount = '';
         vm.trulyEnabledDIstricts = [];
         vm.districtsForDemand = '';
@@ -34,7 +34,7 @@
 
 
         function loadElection () {
-            Election.get({ id : $stateParams.id }, onSuccess, onError);
+            Election.get({ id : $stateParams.idElection }, onSuccess, onError);
             function onSuccess(data) {
                 vm.election = data;
             }
@@ -44,7 +44,7 @@
         }
 
         function loadDistrictsRecountTotal() {
-            ElectionDistrictsRecount.get({ idElection : $stateParams.id }, onSuccess, onError);
+            ElectionDistrictsRecount.get({ idElection : $stateParams.idElection }, onSuccess, onError);
             function onSuccess(data, headers) {
                 vm.districtsForTotalRecount = headers('X-Total-Count');
             }
@@ -55,7 +55,7 @@
 
         function loadAll() {
             ElectionRecountDistrict.get({
-                idElection : $stateParams.id,
+                idElection : $stateParams.idElection,
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()
@@ -63,7 +63,7 @@
 
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
-                if (vm.predicate == 'districtWon') {
+                if (vm.predicate === 'districtWon') {
                     result.push('decimalNumber');
                 }
                 return result;
@@ -87,7 +87,7 @@
 
         function transition() {
             $state.transitionTo($state.$current, {
-                id: $stateParams.id,
+                idElection: $stateParams.idElection,
                 page: vm.page,
                 sort: vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')
             });

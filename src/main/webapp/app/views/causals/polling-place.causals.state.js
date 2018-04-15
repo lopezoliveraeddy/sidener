@@ -28,6 +28,10 @@
                 page: {
                     value: '1',
                     squash: true
+                },
+                sort: {
+                    value: 'section,asc',
+                    squash: true
                 }
             },
             resolve: {
@@ -35,6 +39,9 @@
                     return {
                         id: $stateParams.id,
                         page: PaginationUtil.parsePage($stateParams.page),
+                        sort: $stateParams.sort,
+                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                        ascending: PaginationUtil.parseAscending($stateParams.sort)
                     };
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
@@ -44,7 +51,6 @@
                     $translatePartialLoader.addPart('election');
                     $translatePartialLoader.addPart('global');
                     $translatePartialLoader.addPart('state');
-
                     return $translate.refresh();
                 }]
             }

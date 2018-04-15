@@ -37,9 +37,19 @@
         function loadAll () {
             DistrictCausalsPollingPlaces.get({
                 id : $stateParams.id,
-                page: pagingParams.page - 1
+                page: pagingParams.page - 1,
+                size: vm.itemsPerPage,
+                sort: sort()
             }, onSuccess, onError);
 
+            function sort() {
+                var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
+                if (vm.predicate === 'section,asc') {
+                    result.push('typePollingPlace');
+                    result.push('typeNumber');
+                }
+                return result;
+            }
             function onSuccess(data, headers) {
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
@@ -80,15 +90,6 @@
             Election.get({ id : idElection }, onSuccess, onError);
             function onSuccess(data) {
                 vm.election = data;
-                vm.causals = vm.election.causals;
-                for(var i = 0; i < vm.causals.length; i++) {
-                    if(vm.causals[i].typeCausal === "RECOUNT") {
-                        vm.causalsRecount.push(vm.causals[i]);
-                    }
-                    if(vm.causals[i].typeCausal === "NULLITY") {
-                        vm.causalsNullity.push(vm.causals[i]);
-                    }
-                }
             }
             function onError(error) {
                 AlertService.error(error.data.message);

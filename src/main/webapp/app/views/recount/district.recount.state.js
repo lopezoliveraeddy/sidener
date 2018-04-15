@@ -29,7 +29,7 @@
         })
         .state('election-recount-district', {
             parent: 'entity',
-            url: '/election/recount/{id}/district?page&sort',
+            url: '/election/recount/{idElection}/district?page&sort',
             data: {
                 authorities: ['ROLE_ADMIN'],
                 pageTitle: 'sidenerApp.election.home.title'
@@ -42,7 +42,6 @@
                 }
             },
             params: {
-                id: null,
                 page: {
                     value: '1',
                     squash: true
@@ -55,7 +54,6 @@
             resolve: {
                 pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
                     return {
-                        id: $stateParams.id,
                         page: PaginationUtil.parsePage($stateParams.page),
                         sort: $stateParams.sort,
                         predicate: PaginationUtil.parsePredicate($stateParams.sort),

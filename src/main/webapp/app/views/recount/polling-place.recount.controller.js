@@ -42,6 +42,7 @@
         });
         // funciona para agregar casillas al documento
         vm.generateCausals = generateCausals;
+
         loadDistrict();
         loadAll();
 

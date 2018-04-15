@@ -1,24 +1,22 @@
 <div xmlns="http://www.w3.org/1999/html">
     <div class="breadcrumb">
-            <a href="#">
-                <span class="breadcrumb__inner">
-                    <span class="breadcrumb__title"><span><h1  data-translate="sidenerApp.recount.total"></h1></span></span>
-                </span>
-            </a>
-            <a href="#">
-                    <span class="breadcrumb__inner">
-                        <span class="breadcrumb__title"><span>{{vm.election.electionTypeName}}</span></span>
-                        <span class="breadcrumb__desc">{{vm.election.periodElection}}</span>
-
-                    </span>
-                </a>
-            <a href="#">
-                <span class="breadcrumb__inner">
-                    <span class="breadcrumb__title"><span data-translate="{{'sidenerApp.State.' + vm.election.state}}"></span></span>
-                </span>
-            </a>
-        </div>
-
+        <a href="#">
+            <span class="breadcrumb__inner">
+                <span class="breadcrumb__title"><span><h1  data-translate="sidenerApp.recount.total"></h1></span></span>
+            </span>
+        </a>
+        <a href="#">
+            <span class="breadcrumb__inner">
+                <span class="breadcrumb__title"><span>{{vm.election.electionTypeName}}</span></span>
+                <span class="breadcrumb__desc">{{vm.election.periodElection}}</span>
+            </span>
+        </a>
+        <a href="#">
+            <span class="breadcrumb__inner">
+                <span class="breadcrumb__title"><span data-translate="{{'sidenerApp.State.' + vm.election.state}}"></span></span>
+            </span>
+        </a>
+    </div>
     <jhi-alert></jhi-alert>
     <div class="table-container">
         <div class="table-header">
@@ -60,8 +58,8 @@
             <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                 <th jh-sort-by="decimalNumber"><span data-translate="sidenerApp.district.romanNumber"></span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th jh-sort-by="districtHead"><span data-translate="sidenerApp.district.districtHead"></span> <span class="glyphicon glyphicon-sort"></span></th>
-                <th jh-sort-by="totalFirstPlace"><span data-translate="sidenerApp.district.firstPlace">Partido 1er Lugar</span> <span class="glyphicon glyphicon-sort"></span></th>
-                <th jh-sort-by="totalSecondPlace"><span data-translate="sidenerApp.district.secondPlace">Partido 2do Lugar</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th><span data-translate="sidenerApp.district.firstPlace">Partido 1er Lugar</span></th>
+                <th><span data-translate="sidenerApp.district.secondPlace">Partido 2do Lugar</span></th>
                 <th><span data-translate="sidenerApp.recount.difference"></span></th>
                 <th><span data-translate="sidenerApp.recount.total-votes"></span></th>
                 <th><span data-translate="sidenerApp.recount.detail"></span></th>

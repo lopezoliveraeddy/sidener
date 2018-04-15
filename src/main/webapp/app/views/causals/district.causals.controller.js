@@ -12,11 +12,12 @@
         var vm = this;
 
         vm.loadPage = loadPage;
+        vm.predicate = pagingParams.predicate;
+        vm.reverse = pagingParams.ascending;
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.loadAll = loadAll;
         vm.demandByDistrict = demandByDistrict;
-
 
         // Datos de la Elección
         vm.loadElection = loadElection;
@@ -28,9 +29,8 @@
         function demandByDistrict(id){
             DistrictCausalsPollingPlaces.get({id:id},onSuccess, onError);
 
-            function onSuccess(data, headers){
+            function onSuccess(data){
                 angular.forEach(data,function(value,key){
-
                     DistrictCausalsSearchPollingPlaces.query({
                         query:"idPollingPlace:"+value.id
                     },fsuccess,ferror);
@@ -39,25 +39,19 @@
                         if(data.length > 0 ){
                         }
                     }
-
                     function ferror(error){
                         AlertService.error(error.data.message);
                     }
                 });
-
             }
 
             function onError(error){
                 AlertService.error(error.data.message);
             }
-
         }
 
-
-
-
         function loadElection () {
-            Election.get({ id : $stateParams.id }, onSuccess, onError);
+            Election.get({ id : $stateParams.idElection }, onSuccess, onError);
             function onSuccess(data) {
                 vm.election = data;
             }
@@ -67,9 +61,19 @@
         }
 
         function loadAll () {
-            ElectionCausalsDistrict.get({ id : $stateParams.id
-                }, onSuccess, onError);
-
+            ElectionCausalsDistrict.get({
+                idElection : $stateParams.idElection,
+                page: pagingParams.page - 1,
+                size: vm.itemsPerPage,
+                sort: sort()
+            }, onSuccess, onError);
+            function sort() {
+                var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
+                if (vm.predicate === 'decimalNumber') {
+                    result.push('decimalNumber');
+                }
+                return result;
+            }
             function onSuccess(data, headers) {
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
@@ -89,8 +93,9 @@
 
         function transition() {
             $state.transitionTo($state.$current, {
-                id: $stateParams.id,
-                page: vm.page
+                idElection: $stateParams.idElection,
+                page: vm.page,
+                sort: vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')
             });
         }
 

@@ -52,7 +52,6 @@
                     $translatePartialLoader.addPart('global');
                     $translatePartialLoader.addPart('recount');
                     $translatePartialLoader.addPart('state');
-
                     return $translate.refresh();
                 }]
             }

@@ -9,7 +9,7 @@
                         <span class="breadcrumb__inner">
                             <span class="breadcrumb__title"><span>{{vm.election.electionTypeName}}</span></span>
                             <span class="breadcrumb__desc">{{vm.election.periodElection}}</span>
-    
+
                         </span>
                     </a>
                 <a >
@@ -17,7 +17,7 @@
                         <span class="breadcrumb__title"><span data-translate="{{'sidenerApp.State.' + vm.election.state}}"></span></span>
                     </span>
                 </a>
-                
+
             </div>
 
     <jhi-alert></jhi-alert>
@@ -25,11 +25,11 @@
         <div class="table-responsive">
         <table class="jh-table table table-striped table-bordered">
             <thead>
-            <tr callback="vm.transition()">
-                <th><span data-translate="sidenerApp.district.romanNumber"></span></th>
-                <th><span data-translate="sidenerApp.district.districtHead"></span></th>
-                <th><span data-translate="sidenerApp.district.pollingPlacesTotal"></span></th>
-                <th><span data-translate="sidenerApp.district.totalVotes"></span></th>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <th jh-sort-by="decimalNumber"><span data-translate="sidenerApp.district.romanNumber"></span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="districtHead"><span data-translate="sidenerApp.district.districtHead"></span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="totalPollingPlaces"><span data-translate="sidenerApp.district.totalPollingPlaces"></span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="totalVotes"><span data-translate="sidenerApp.district.totalVotes"></span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th><span data-translate="sidenerApp.district.detectCausalsOfNullity"></span></th>
                 <th>Genera Demanda</th>
             </tr>

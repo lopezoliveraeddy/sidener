@@ -1,30 +1,29 @@
 <div>
-        <div class="breadcrumb">
-                <a >
-                    <span class="breadcrumb__inner">
-                        <span class="breadcrumb__title"><span><h1>Detección de Causales de Nulidad</h1></span></span>
-                    </span>
-                </a>
-                <a>
-                        <span class="breadcrumb__inner">
-                            <span class="breadcrumb__title"><span>{{vm.election.electionTypeName}}</span></span>
-                            <span class="breadcrumb__desc">{{vm.election.periodElection}}</span>
-    
-                        </span>
-                    </a>
-                <a >
-                    <span class="breadcrumb__inner">
-                        <span class="breadcrumb__title"><span data-translate="{{'sidenerApp.State.' + vm.election.state}}"></span></span>
-                    </span>
-                </a>
-                <a >
-                        <span class="breadcrumb__inner">
-                            <span class="breadcrumb__title"><span>{{vm.district.districtHead}}</span></span>
-                            <span class="breadcrumb__desc">{{vm.district.romanNumber }}</span>
-                        </span>
-                    </a>
-                
-            </div>
+    <div class="breadcrumb">
+        <a>
+            <span class="breadcrumb__inner">
+                <span class="breadcrumb__title"><span><h1>Detección de Causales de Nulidad</h1></span></span>
+            </span>
+        </a>
+        <a>
+            <span class="breadcrumb__inner">
+                <span class="breadcrumb__title"><span>{{vm.election.electionTypeName}}</span></span>
+                <span class="breadcrumb__desc">{{vm.election.periodElection}}</span>
+            </span>
+        </a>
+        <a>
+            <span class="breadcrumb__inner">
+                <span class="breadcrumb__title"><span data-translate="{{'sidenerApp.State.' + vm.election.state}}"></span></span>
+            </span>
+        </a>
+        <a>
+            <span class="breadcrumb__inner">
+                <span class="breadcrumb__title"><span>{{vm.district.districtHead}}</span></span>
+                <span class="breadcrumb__desc">{{vm.district.romanNumber }}</span>
+            </span>
+        </a>
+    </div>
+
     <jhi-alert></jhi-alert>
 
     <div class="table-container">
@@ -100,15 +99,15 @@
                 <table class="jh-table table table-striped table-bordered">
                     <thead>
                     <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                        <th><span data-translate="sidenerApp.pollingPlace.section"></span></th>
-                        <th><span data-translate="sidenerApp.pollingPlace.town"></span></th>
+                        <th jh-sort-by="section"><span data-translate="sidenerApp.pollingPlace.section"></span> <span class="glyphicon glyphicon-sort"></span></th></th>
+                        <th jh-sort-by="town"><span data-translate="sidenerApp.pollingPlace.town"></span> <span class="glyphicon glyphicon-sort"></span></th></th>
                         <th><span data-translate="sidenerApp.pollingPlace.typePollingPlace"></span></th>
-                        <th><span data-translate="sidenerApp.pollingPlace.totalCausals"></span></th>
-                        <th><span data-translate="sidenerApp.pollingPlace.totalVotes"></span></th>
+                        <th><span data-translate="sidenerApp.pollingPlace.totalCausals"></span> <span class="glyphicon glyphicon-sort"></span></th></th>
+                        <th jh-sort-by="totalVotes"><span data-translate="sidenerApp.pollingPlace.totalVotes"></span></th>
                         <th><span data-translate="sidenerApp.pollingPlace.politicalPartyFirstPlace"></span></th>
                         <th><span data-translate="sidenerApp.pollingPlace.politicalPartySecondPlace"></span></th>
                         <th><span data-translate="sidenerApp.pollingPlace.detectnregister"></span></th>
-<<th><a href="http://eddy.quantumit.com.mx/aguascalientes.docx" class="btn-default"><span data-translate="sidenerApp.pollingPlace.generateDemand"></span></a></th>
+                        <th><a href="http://eddy.quantumit.com.mx/aguascalientes.docx" class="btn-default"><span data-translate="sidenerApp.pollingPlace.generateDemand"></span></a></th>
 
                     </tr>
                     </thead>
@@ -154,7 +153,6 @@
                     </tbody>
                 </table>
             </uib-tab>
-
         </uib-tabset>
     </div>
 </div>

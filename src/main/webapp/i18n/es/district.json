@@ -38,7 +38,6 @@
             "createdDate": "Creado",
             "updatedDate": "Actualizado",
             "election": "Elección",
-            "pollingPlacesTotal": "Total de Casillas",
             "detectCausalsOfNullity": "Detectar Causales de Nulidad",
             "districts": "Distritos",
             "recountDocument":"Escrito de Recuento"

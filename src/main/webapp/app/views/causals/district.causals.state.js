@@ -11,7 +11,7 @@
         $stateProvider
         .state('election-causals-district', {
             parent: 'entity',
-            url: '/election/causals/{id}/district?page',
+            url: '/election/causals/{idElection}/district?page&sort',
             data: {
                 authorities: ['ROLE_ADMIN'],
                 pageTitle: 'sidenerApp.election.home.title'
@@ -24,17 +24,22 @@
                 }
             },
             params: {
-                id: null,
                 page: {
                     value: '1',
+                    squash: true
+                },
+                sort: {
+                    value: 'decimalNumber',
                     squash: true
                 }
             },
             resolve: {
                 pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
                     return {
-                        id: $stateParams.id,
                         page: PaginationUtil.parsePage($stateParams.page),
+                        sort: $stateParams.sort,
+                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                        ascending: PaginationUtil.parseAscending($stateParams.sort)
                     };
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
