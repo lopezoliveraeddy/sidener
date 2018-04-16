@@ -13,7 +13,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
-import electorum.sidener.domain.PollingPlace;
 import electorum.sidener.service.dto.*;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -190,35 +189,54 @@ public class PollingPlaceResource {
     }
 
     /**
-     * GET POLLING PLACES /districts/{id}/polling-places : get pollingPlaces by "idDistrict".
+     * GET POLLING PLACES /recount/{districtId}/polling-places : get pollingPlaces by "districtId".
      *
-     * @param idDistrict the "id" of the District
+     * @param districtId the "id" of the District
      * @param pageable   the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of pollingPlaces
      * in body
      */
-    @GetMapping("/recount/{idDistrict}/polling-places")
+    @GetMapping("/recount/{districtId}/polling-places")
     @Timed
-    public ResponseEntity<List<PollingPlaceRecountDTO>> getPollingPlacesByIdDistrict(@PathVariable Long idDistrict,
+    public ResponseEntity<List<PollingPlaceRecountDTO>> getPollingPlacesByDistrictId(@PathVariable Long districtId,
                                                                                      @ApiParam Pageable pageable) {
-        log.debug("REST request to get PollingPlaces by District : {}", idDistrict);
-        Page<PollingPlaceRecountDTO> page = pollingPlaceService.getPollingPlacesByIdDistrict(idDistrict, pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/recount/{idDistrict}/polling-places");
+        log.debug("REST request to get PollingPlaces by District : {}", districtId);
+        Page<PollingPlaceRecountDTO> page = pollingPlaceService.getPollingPlacesByDistrictId(districtId, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/recount/{districtId}/polling-places");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
-     * GET POLLING PLACES WON AND LOSE  /recount/{idDistrict}/polling-places-won-lose : get pollingPlaces-won-lose by "idDistrict"
+     * GET POLLING PLACES WON AND LOSE  /recount/{districtId}/polling-places-won-lose : get pollingPlaces-won-lose by "districtId"
      *
-     * @param idDistrict the "idDistrict" of the pollingPlace
+     * @param districtId the "districtId" of the pollingPlace
      * @return the ResponseEntity with status 200 (OK)
      */
-    @GetMapping("/recount/{idDistrict}/polling-places-won-lose")
+    @GetMapping("/recount/{districtId}/polling-places-won-lose")
     @Timed
-    public ResponseEntity<PollingPlaceWonLoseDTO> pollingPlacesWonLose(@PathVariable Long idDistrict) {
-        log.debug("REST request to get the PollingPlaces won-lose by District : {}", idDistrict);
-        PollingPlaceWonLoseDTO pollingPlaceWonLoseDTO = pollingPlaceService.pollingPlaceWonLose(idDistrict);
+    public ResponseEntity<PollingPlaceWonLoseDTO> pollingPlacesWonLose(@PathVariable Long districtId) {
+        log.debug("REST request to get the PollingPlaces won-lose by District : {}", districtId);
+        PollingPlaceWonLoseDTO pollingPlaceWonLoseDTO = pollingPlaceService.pollingPlaceWonLose(districtId);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(pollingPlaceWonLoseDTO));
+    }
+
+    /**
+     * GET POLLING PLACES /nullity/{districtId}/polling-places/{pollingPlaceWon} : get pollingPlaces by "districtId" and "pollingPlacesWon".
+     *
+     * @param districtId the "id" of the District
+     * @param pollingPlaceWon the "pollingPlaceWon" of the pollingPlace
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of pollingPlaces
+     * in body
+     */
+    @GetMapping("/nullity/{districtId}/polling-places/{pollingPlaceWon}")
+    @Timed
+    public ResponseEntity<List<PollingPlaceDTO>> getPollingPlacesWon(@PathVariable Long districtId, @PathVariable Boolean pollingPlaceWon,
+                                                                                     @ApiParam Pageable pageable) {
+        log.debug("REST request to get PollingPlaces by DistrictId : {} and PollingPlaceWon : {}", districtId, pollingPlaceWon);
+        Page<PollingPlaceDTO> page = pollingPlaceService.getPollingPlacesWon(districtId, pollingPlaceWon, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/nullity/{districtId}/polling-places/{pollingPlaceWon}");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
@@ -257,19 +275,11 @@ public class PollingPlaceResource {
                 pollingPlaceService.save(pollingPlaceDTO);
 
             }
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
-
         /* regresa resultados */
         return null;
     }
-
-
 
 }

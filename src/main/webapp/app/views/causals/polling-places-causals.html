@@ -27,8 +27,10 @@
     <jhi-alert></jhi-alert>
 
     <div class="table-container">
-        <uib-tabset active="active">
-            <uib-tab index="0" heading="Casillas Perdidas">
+        <div id="buttons">
+            <button type="button" class="btn btn-sm color-blue" ui-sref="district-causals-pollingPlaces({idDistrict:vm.district.id, pollingPlaceWon:false})">Casillas Perdidas</button>
+            <button type="button" class="btn btn-sm color-red" ui-sref="district-causals-pollingPlaces({idDistrict:vm.district.id, pollingPlaceWon:true})">Casillas Ganadas</button>
+        </div>
                 <div class="table-responsive table-bordered">
                     <table class="jh-table table table-striped table-bordered">
                         <thead>
@@ -45,10 +47,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="pollingPlace in vm.pollingPlaces track by pollingPlace.id" ng-class="countingAssumption(pollingPlace.countingAssumption)" ng-if="!pollingPlace.pollingPlaceWon">
+                        <tr ng-repeat="pollingPlace in vm.pollingPlaces track by pollingPlace.id" ng-class="countingAssumption(pollingPlace.countingAssumption)">
                             <td><a ui-sref="polling-place-detail({id:pollingPlace.id})" class="btn btn-info">{{pollingPlace.section}}</a></td>
-                            <td><span ng-bind="pollingPlaceType(pollingPlace.typePollingPlace, pollingPlace.typeNumber)"></span></td>
                             <td>{{pollingPlace.town}}</td>
+                            <td><span ng-bind="pollingPlaceType(pollingPlace.typePollingPlace, pollingPlace.typeNumber)"></span></td>
                             <td>{{pollingPlace.totalCausals.length }}</td>
                             <td>{{pollingPlace.totalVotes | number}}</td>
                             <td>
@@ -93,66 +95,5 @@
                     <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
                     <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
                 </div>
-
-            </uib-tab>
-            <uib-tab index="$index + 1" heading="Casillas Ganadas">
-                <table class="jh-table table table-striped table-bordered">
-                    <thead>
-                    <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                        <th jh-sort-by="section"><span data-translate="sidenerApp.pollingPlace.section"></span> <span class="glyphicon glyphicon-sort"></span></th></th>
-                        <th jh-sort-by="town"><span data-translate="sidenerApp.pollingPlace.town"></span> <span class="glyphicon glyphicon-sort"></span></th></th>
-                        <th><span data-translate="sidenerApp.pollingPlace.typePollingPlace"></span></th>
-                        <th><span data-translate="sidenerApp.pollingPlace.totalCausals"></span> <span class="glyphicon glyphicon-sort"></span></th></th>
-                        <th jh-sort-by="totalVotes"><span data-translate="sidenerApp.pollingPlace.totalVotes"></span></th>
-                        <th><span data-translate="sidenerApp.pollingPlace.politicalPartyFirstPlace"></span></th>
-                        <th><span data-translate="sidenerApp.pollingPlace.politicalPartySecondPlace"></span></th>
-                        <th><span data-translate="sidenerApp.pollingPlace.detectnregister"></span></th>
-                        <th><a href="http://eddy.quantumit.com.mx/aguascalientes.docx" class="btn-default"><span data-translate="sidenerApp.pollingPlace.generateDemand"></span></a></th>
-
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="pollingPlace in vm.pollingPlaces track by pollingPlace.id" ng-class="countingAssumption(pollingPlace.countingAssumption)" ng-if="pollingPlace.pollingPlaceWon">
-                        <td><a ui-sref="polling-place-detail({id:pollingPlace.id})" class="btn btn-info">{{pollingPlace.section}}</a></td>
-                        <td><span ng-bind="pollingPlaceType(pollingPlace.typePollingPlace, pollingPlace.typeNumber)"></span></td>
-                        <td>{{pollingPlace.town}}</td>
-                        <td>{{pollingPlace.totalCausals.length }}</td>
-                        <td>{{pollingPlace.totalVotes | number}}</td>
-                        <td>
-                            <div class="media" ng-if="pollingPlace.totalVotes">
-                                <div class="media-left media-middle">
-                                    <span><strong>{{pollingPlace.entityFirstPlace }}</strong></span><br>
-                                    <span>{{pollingPlace.totalFirstPlace | number}} votos | {{pollingPlace.percentageFirstPlace | number:2 }}</span>
-                                </div>
-                                <div class="media-right media-middle">
-                                    <span class="associated-position" ng-bind-html="asociatedPosition(pollingPlace.entityFirstPlace)"></span>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="media" ng-if="pollingPlace.totalVotes">
-                                <div class="media-left media-middle">
-                                    <span><strong>{{pollingPlace.entitySecondPlace }}</strong></span><br>
-                                    <span>{{pollingPlace.totalSecondPlace | number}} votos | {{pollingPlace.percentageSecondPlace | number:2 }}</span>
-                                </div>
-                                <div class="media-right media-middle">
-                                    <span class="associated-position" ng-bind-html="asociatedPosition(pollingPlace.entitySecondPlace)"></span>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <button type="submit"
-                                        ui-sref="detector-causal({id:pollingPlace.id})"
-                                        class="btn btn-info btn-sm">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </uib-tab>
-        </uib-tabset>
     </div>
 </div>

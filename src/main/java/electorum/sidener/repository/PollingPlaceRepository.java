@@ -18,15 +18,26 @@ public interface PollingPlaceRepository extends JpaRepository<PollingPlace, Long
     @Query("select distinct polling_place from PollingPlace polling_place left join fetch polling_place.causals")
     List<PollingPlace> findAllWithEagerRelationships();
 
-    @Query("select polling_place from PollingPlace polling_place left join fetch polling_place.causals where polling_place.id =:id")
+    @Query("select polling_place from PollingPlace polling_place left join fetch polling_place.causals where polling_place.id = :id")
     PollingPlace findOneWithEagerRelationships(@Param("id") Long id);
 
-    Page<PollingPlace> findByDistrictId(Long id, Pageable pageable);
+    Page<PollingPlace> findByDistrictId(Long districtId, Pageable pageable);
 
-    Page<PollingPlace> findByElectionId(Long id, Pageable pageable);
+    Page<PollingPlace> findByElectionId(Long electionId, Pageable pageable);
 
-    Long countByDistrictIdAndPollingPlaceWonIsTrue(Long idDistrict);
+    Long countByDistrictIdAndPollingPlaceWonIsTrue(Long districtId);
 
-    Long countByDistrictIdAndPollingPlaceWonIsFalse(Long idDistrict);
+    Long countByDistrictIdAndPollingPlaceWonIsFalse(Long districtId);
+
+    @Query("select polling_place from PollingPlace polling_place where polling_place.district.id = :districtId and polling_place.pollingPlaceWon = :pollingPlaceWon")
+    Page<PollingPlace> getPollingPlacesWon(@Param("districtId") Long districtId, @Param("pollingPlaceWon") Boolean pollingPlaceWon, Pageable pageable);
+
+    /*
+    @Query("select id from PollingPlace polling_place where polling_place.distrct_id = :idDistrict and polling_place.id = (select min(polling_place_sub.id) FROM PollingPlace polling_place_sub WHERE polling_place_sub.id > :id)")
+    Long nextPollingPlace(Long idDistrict, Long id);
+
+    @Query("select id from PollingPlace polling_place where polling_place.distrct_id = :idDistrict and polling_place.id = (select min(polling_place_sub.id) FROM PollingPlace polling_place_sub WHERE polling_place_sub.id < :id)")
+    Long previousPollingPlace(Long idDistrict, Long id);
+    */
 
 }

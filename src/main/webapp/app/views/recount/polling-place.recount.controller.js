@@ -33,7 +33,7 @@
         vm.election = [];
 
         // Casillas Ganadas - Perdidas
-        vm.pollingPlacesWonLose = ElectionPollingPlacesWonLose.get({ idDistrict : $stateParams.id });
+        vm.pollingPlacesWonLose = ElectionPollingPlacesWonLose.get({ idDistrict : $stateParams.idDistrict });
 
         // Causales
         vm.causals = [];
@@ -48,7 +48,7 @@
 
         function loadAll () {
             DistrictRecountPollingPlaces.get({
-                idDistrict : $stateParams.id,
+                idDistrict : $stateParams.idDistrict,
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()
@@ -82,14 +82,14 @@
 
         function transition() {
             $state.transitionTo($state.$current, {
+                idDistrict: $stateParams.idDistrict,
                 page: vm.page,
-                id: $stateParams.id,
                 sort: vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')
             });
         }
 
         function loadDistrict() {
-            District.get({ id : $stateParams.id }, onSuccess, onError);
+            District.get({ id : $stateParams.idDistrict }, onSuccess, onError);
             function onSuccess(data) {
                 vm.district = data;
                 // Cargamos Datos de la Elección
@@ -111,8 +111,6 @@
         }
 
         function generateCausals(pollingPlace) {
-
-
             if(vm.pollingPlacesEnabled.indexOf(pollingPlace.id) === -1 ){
                 vm.pollingPlacesEnabled.push(pollingPlace.id);
                 angular.forEach(pollingPlace.causals,function(value,key){
@@ -128,9 +126,6 @@
                             vm.pollingPlaceCualitative.push(pollingPlace.id);
                         }
                     }
-
-
-
                 });
             }
         }
@@ -164,7 +159,7 @@
                 vm.pollingPlacesEnabled.push(pollingPlace.id);
                 value = true;
 
-            }else{
+            } else{
                 var index = vm.pollingPlacesEnabled.indexOf(pollingPlace.id);
                 vm.pollingPlacesEnabled.splice(index, 1);
                 value = false;
@@ -177,12 +172,6 @@
             function onSaveError(error) {
                 AlertService.error(error.data.message);
             }
-
-
-
-
-
-
         }
 
         $scope.pollingPlaceType = function (typePollingPlace, typeNumber) {
@@ -227,17 +216,17 @@
 
         $scope.asociatedPosition = function(entity) {
             if (vm.election.coalitionAsociatedId !== null) {
-                if (entity == vm.election.coalitionAsociatedAcronym) {
+                if (entity === vm.election.coalitionAsociatedAcronym) {
                     return '<i class="fa medium fa-certificate" aria-hidden="true"></i>';
                 }
             }
             else if(vm.election.politicalPartyAsociatedId !== null) {
-                if (entity == vm.election.politicalPartyAsociatedAcronym) {
+                if (entity === vm.election.politicalPartyAsociatedAcronym) {
                     return '<i class="fa medium fa-certificate" aria-hidden="true"></i>';
                 }
             }
             else if (vm.election.independentCandidateAsociatedId !== null) {
-                if (entity == vm.election.independentCandidateAsociatedAcronym) {
+                if (entity === vm.election.independentCandidateAsociatedAcronym) {
                     return '<i class="fa medium fa-certificate" aria-hidden="true"></i>';
                 }
             }

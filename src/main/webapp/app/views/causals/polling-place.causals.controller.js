@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('DistrictCausalsPollingPlaceController', DistrictCausalsPollingPlaceController);
 
-    DistrictCausalsPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'District', 'Election', 'DistrictCausalsPollingPlaces', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
+    DistrictCausalsPollingPlaceController.$inject = ['$scope', '$state', '$stateParams', 'AlertService', 'District', 'Election', 'DistrictPollingPlacesWonLose', 'ParseLinks', 'PollingPlace', 'paginationConstants', 'pagingParams'];
 
-    function DistrictCausalsPollingPlaceController($scope, $state, $stateParams, AlertService, District, Election, DistrictCausalsPollingPlaces, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
+    function DistrictCausalsPollingPlaceController($scope, $state, $stateParams, AlertService, District, Election, DistrictPollingPlacesWonLose, ParseLinks, PollingPlace, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -26,6 +26,7 @@
         vm.loadElection = loadElection;
         vm.election = [];
 
+
         // Causales
         vm.causals = [];
         vm.causalsRecount = [];
@@ -34,9 +35,10 @@
         loadDistrict();
         loadAll();
 
-        function loadAll () {
-            DistrictCausalsPollingPlaces.get({
-                id : $stateParams.id,
+        function loadAll() {
+            DistrictPollingPlacesWonLose.get({
+                idDistrict : $stateParams.idDistrict,
+                pollingPlaceWon: $stateParams.pollingPlaceWon,
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()
@@ -70,12 +72,13 @@
         function transition() {
             $state.transitionTo($state.$current, {
                 page: vm.page,
-                id: $stateParams.id
+                idDistrict: $stateParams.idDistrict,
+                pollingPlaceWon: $stateParams.pollingPlaceWon
             });
         }
 
         function loadDistrict() {
-            District.get({ id : $stateParams.id }, onSuccess, onError);
+            District.get({ id : $stateParams.idDistrict }, onSuccess, onError);
             function onSuccess(data) {
                 vm.district = data;
                 // Cargamos Datos de la Elección
@@ -95,6 +98,7 @@
                 AlertService.error(error.data.message);
             }
         }
+
         $scope.countingAssumption = function(countingAssumption) {
             if (countingAssumption === true) {
                 return "total-recount";

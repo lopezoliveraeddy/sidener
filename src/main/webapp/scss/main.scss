@@ -4,8 +4,8 @@ $electorum: #333431;
 $electorumBold: #7D8203;
 $electorumOpacity: #b0b5364f;
 $blue: #6698C0;
-$red:#672927;
-$lightred: #812D2A;
+$red: #672927;
+$lightRed: #812D2A;
 
 
 body {
@@ -564,7 +564,16 @@ td#field-causals {
         float: right;
     }
 }
-
+#buttons {
+    button.color-blue {
+        background-color: $blue;
+        color: white;
+    }
+    button.color-red {
+        background-color: $red;
+        color: white;
+    }
+}
 /* ==========================================================================
 Recuento
 ========================================================================== */
@@ -775,6 +784,10 @@ Breadcrumb
 .breadcrumb__title {
     font-weight: bold;
 }
+
+.breadcrumb h1 {
+    margin: 0;
+}
 /* ==========================================================================
 Tabs
 ========================================================================== */
@@ -795,13 +808,11 @@ Tabs
 .nav.nav-tabs li a:hover  {
     background: $electorumOpacity;
 }
-.btn.btn-info.btn-sm{
+.btn.btn-info.btn-sm {
     background-color: #656722;
 }
 
-.breadcrumb h1 {
-    margin: 0;
-}
+
 /* ==========================================================================
 Magnify
 ========================================================================== */

@@ -113,14 +113,14 @@ public class PollingPlaceService {
     /**
      *  Get pollingPlaces of district by id.
      *
-     *  @param idDistrict the "id" of the district
+     *  @param districtId the "id" of the district
      *  @param pageable the pagination information
      *  @return the list of entities
      */
     @Transactional(readOnly = true)
-    public Page<PollingPlaceRecountDTO> getPollingPlacesByIdDistrict(Long idDistrict, Pageable pageable) {
-        log.debug("Request to get PollingPlaces by District : {}", idDistrict);
-        Page<PollingPlaceDTO> page = pollingPlaceRepository.findByDistrictId(idDistrict, pageable).map(pollingPlaceMapper::toDto);
+    public Page<PollingPlaceRecountDTO> getPollingPlacesByDistrictId(Long districtId, Pageable pageable) {
+        log.debug("Request to get PollingPlaces by District : {}", districtId);
+        Page<PollingPlaceDTO> page = pollingPlaceRepository.findByDistrictId(districtId, pageable).map(pollingPlaceMapper::toDto);
         Page<PollingPlaceRecountDTO> resultPage = resultsRecountDTO(page, pageable);
         return resultPage;
     }
@@ -147,32 +147,31 @@ public class PollingPlaceService {
         return resultpage;
     }
 
-
     /**
-     *  Get pollingPlaces of district by id.
+     *  Get pollingPlaces of election by id.
      *
-     *  @param id the id of the entity
+     *  @param electionId the "id" of the election
      *  @param pageable the pagination information
      *  @return the list of entities
      */
     @Transactional(readOnly = true)
-    public Page<PollingPlaceDTO> getPollingPlacesByIdElection(Long id, Pageable pageable) {
-        log.debug("Request to get PollingPlaces by Election : {}", id);
-        Page<PollingPlace> result = pollingPlaceRepository.findByElectionId(id, pageable);
+    public Page<PollingPlaceDTO> getPollingPlacesByIdElection(Long electionId, Pageable pageable) {
+        log.debug("Request to get PollingPlaces by Election : {}", electionId);
+        Page<PollingPlace> result = pollingPlaceRepository.findByElectionId(electionId, pageable);
         return result.map(pollingPlaceMapper::toDto);
     }
 
     /**
      *  Get pollingPlaces won and lose by idDistrict.
      *
-     *  @param idDistrict the "idDistrict" of the pollingPlace
+     *  @param districtId the "districtId" of the pollingPlace
      *  @return the entity
      */
     @Transactional(readOnly = true)
-    public PollingPlaceWonLoseDTO pollingPlaceWonLose(Long idDistrict) {
-        log.debug("Request to get the PollingPlaces won-lose by District : {}", idDistrict);
-        Long pollingPlaceWon = pollingPlaceRepository.countByDistrictIdAndPollingPlaceWonIsTrue(idDistrict);
-        Long pollingPlaceLose = pollingPlaceRepository.countByDistrictIdAndPollingPlaceWonIsFalse(idDistrict);
+    public PollingPlaceWonLoseDTO pollingPlaceWonLose(Long districtId) {
+        log.debug("Request to get the PollingPlaces won-lose by District : {}", districtId);
+        Long pollingPlaceWon = pollingPlaceRepository.countByDistrictIdAndPollingPlaceWonIsTrue(districtId);
+        Long pollingPlaceLose = pollingPlaceRepository.countByDistrictIdAndPollingPlaceWonIsFalse(districtId);
 
         PollingPlaceWonLoseDTO pollingPlaceWonLoseDTO = new PollingPlaceWonLoseDTO();
         pollingPlaceWonLoseDTO.setPollingPlacesWon(pollingPlaceWon);
@@ -181,5 +180,18 @@ public class PollingPlaceService {
         return pollingPlaceWonLoseDTO;
     }
 
-
+    /**
+     *  Get pollingPlaces by districtId and pollingPlaceWon.
+     *
+     *  @param districtId the "id" of the district
+     *  @param pollingPlaceWon the "pollingPlaceWon" of the pollingPlace
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public Page<PollingPlaceDTO> getPollingPlacesWon(Long districtId, Boolean pollingPlaceWon, Pageable pageable) {
+        log.debug("Request to get PollingPlaces by District : {} and PollingPlaceWon : {}", districtId, pollingPlaceWon);
+        Page<PollingPlace> result = pollingPlaceRepository.getPollingPlacesWon(districtId, pollingPlaceWon, pageable);
+        return result.map(pollingPlaceMapper::toDto);
+    }
 }

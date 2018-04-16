@@ -11,7 +11,7 @@
         $stateProvider
         .state('district-recount-pollingPlaces', {
             parent: 'entity',
-            url: '/district/recount/{id}/polling-places?page',
+            url: '/district/recount/{idDistrict}/polling-places?page&sort',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'sidenerApp.district.home.title'
@@ -24,7 +24,6 @@
                 }
             },
             params: {
-                id: null,
                 page: {
                     value: '1',
                     squash: true
@@ -37,7 +36,6 @@
             resolve: {
                 pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
                     return {
-                        id: $stateParams.id,
                         page: PaginationUtil.parsePage($stateParams.page),
                         sort: $stateParams.sort,
                         predicate: PaginationUtil.parsePredicate($stateParams.sort),
