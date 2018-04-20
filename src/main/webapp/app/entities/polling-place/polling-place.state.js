@@ -133,7 +133,7 @@
                                 address: null,
                                 leftoverBallots: null,
                                 votingCitizens: null,
-                                exctractedBallots: null,
+                                extractedBallots: null,
                                 notRegistered: null,
                                 nullVotes: null,
                                 totalVotes: null,

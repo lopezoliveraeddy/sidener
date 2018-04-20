@@ -18,7 +18,7 @@ public interface PollingPlaceRepository extends JpaRepository<PollingPlace, Long
     @Query("select distinct polling_place from PollingPlace polling_place left join fetch polling_place.causals")
     List<PollingPlace> findAllWithEagerRelationships();
 
-    @Query("select polling_place from PollingPlace polling_place left join fetch polling_place.causals where polling_place.id = :id")
+    @Query("select polling_place from PollingPlace polling_place left join fetch polling_place.causals where polling_place.id =:id")
     PollingPlace findOneWithEagerRelationships(@Param("id") Long id);
 
     Page<PollingPlace> findByDistrictId(Long districtId, Pageable pageable);

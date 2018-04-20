@@ -70,7 +70,7 @@
             "fieldType": "Long"
         },
         {
-            "fieldName": "exctractedBallots",
+            "fieldName": "extractedBallots",
             "javadoc": "Total de Boletas Extraídas",
             "fieldType": "Long"
         },

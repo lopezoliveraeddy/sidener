@@ -23,7 +23,7 @@
             "address": "Dirección",
             "leftoverBallots": "Total de Boletas Sobrantes",
             "votingCitizens": "Total de Ciudadanos que Votaron",
-            "exctractedBallots": "Total de Boletas Extraídas",
+            "extractedBallots": "Total de Boletas Extraídas",
             "notRegistered": "Total de Votos a Candidatos no Registrados",
             "nullVotes": "Total de Votos Nulos",
             "totalVotes": "Total de Votos",

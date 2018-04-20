@@ -60,42 +60,37 @@ public class PollingPlaceResource {
     }
 
     /**
-     * POST /polling-places : Create a new pollingPlace.
+     * POST  /polling-places : Create a new pollingPlace.
      *
      * @param pollingPlaceDTO the pollingPlaceDTO to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new
-     * pollingPlaceDTO, or with status 400 (Bad Request) if the pollingPlace
-     * has already an ID
+     * @return the ResponseEntity with status 201 (Created) and with body the new pollingPlaceDTO, or with status 400 (Bad Request) if the pollingPlace has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/polling-places")
     @Timed
-    public ResponseEntity<PollingPlaceDTO> createPollingPlace(@RequestBody PollingPlaceDTO pollingPlaceDTO)
-        throws URISyntaxException {
+    public ResponseEntity<PollingPlaceDTO> createPollingPlace(@RequestBody PollingPlaceDTO pollingPlaceDTO) throws URISyntaxException {
         log.debug("REST request to save PollingPlace : {}", pollingPlaceDTO);
         if (pollingPlaceDTO.getId() != null) {
-            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists",
-                "A new pollingPlace cannot already have an ID")).body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new pollingPlace cannot already have an ID")).body(null);
         }
         PollingPlaceDTO result = pollingPlaceService.save(pollingPlaceDTO);
         return ResponseEntity.created(new URI("/api/polling-places/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString())).body(result);
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .body(result);
     }
 
     /**
-     * PUT /polling-places : Updates an existing pollingPlace.
+     * PUT  /polling-places : Updates an existing pollingPlace.
      *
      * @param pollingPlaceDTO the pollingPlaceDTO to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated
-     * pollingPlaceDTO, or with status 400 (Bad Request) if the
-     * pollingPlaceDTO is not valid, or with status 500 (Internal Server
-     * Error) if the pollingPlaceDTO couldn't be updated
+     * @return the ResponseEntity with status 200 (OK) and with body the updated pollingPlaceDTO,
+     * or with status 400 (Bad Request) if the pollingPlaceDTO is not valid,
+     * or with status 500 (Internal Server Error) if the pollingPlaceDTO couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/polling-places")
     @Timed
-    public ResponseEntity<PollingPlaceDTO> updatePollingPlace(@RequestBody PollingPlaceDTO pollingPlaceDTO)
-        throws URISyntaxException {
+    public ResponseEntity<PollingPlaceDTO> updatePollingPlace(@RequestBody PollingPlaceDTO pollingPlaceDTO) throws URISyntaxException {
         log.debug("REST request to update PollingPlace : {}", pollingPlaceDTO);
         if (pollingPlaceDTO.getId() == null) {
             return createPollingPlace(pollingPlaceDTO);
@@ -108,8 +103,7 @@ public class PollingPlaceResource {
 
     @PutMapping("/process-places")
     @Timed
-    public ResponseEntity<List<PollingPlaceDTO>> createPollingPlaces(@RequestBody LoadDTO loadDTO)
-        throws URISyntaxException {
+    public ResponseEntity<List<PollingPlaceDTO>> createPollingPlaces(@RequestBody LoadDTO loadDTO) throws URISyntaxException {
         log.debug("REST request to process a bunch of records");
         byte[] dbFile = loadDTO.getDbFile();
         try {
@@ -125,11 +119,10 @@ public class PollingPlaceResource {
     }
 
     /**
-     * GET /polling-places : get all the pollingPlaces.
+     * GET  /polling-places : get all the pollingPlaces.
      *
      * @param pageable the pagination information
-     * @return the ResponseEntity with status 200 (OK) and the list of pollingPlaces
-     * in body
+     * @return the ResponseEntity with status 200 (OK) and the list of pollingPlaces in body
      */
     @GetMapping("/polling-places")
     @Timed
@@ -141,11 +134,10 @@ public class PollingPlaceResource {
     }
 
     /**
-     * GET /polling-places/:id : get the "id" pollingPlace.
+     * GET  /polling-places/:id : get the "id" pollingPlace.
      *
      * @param id the id of the pollingPlaceDTO to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the
-     * pollingPlaceDTO, or with status 404 (Not Found)
+     * @return the ResponseEntity with status 200 (OK) and with body the pollingPlaceDTO, or with status 404 (Not Found)
      */
     @GetMapping("/polling-places/{id}")
     @Timed
@@ -156,7 +148,7 @@ public class PollingPlaceResource {
     }
 
     /**
-     * DELETE /polling-places/:id : delete the "id" pollingPlace.
+     * DELETE  /polling-places/:id : delete the "id" pollingPlace.
      *
      * @param id the id of the pollingPlaceDTO to delete
      * @return the ResponseEntity with status 200 (OK)
@@ -170,21 +162,19 @@ public class PollingPlaceResource {
     }
 
     /**
-     * SEARCH /_search/polling-places?query=:query : search for the pollingPlace
-     * corresponding to the query.
+     * SEARCH  /_search/polling-places?query=:query : search for the pollingPlace corresponding
+     * to the query.
      *
-     * @param query    the query of the pollingPlace search
+     * @param query the query of the pollingPlace search
      * @param pageable the pagination information
      * @return the result of the search
      */
     @GetMapping("/_search/polling-places")
     @Timed
-    public ResponseEntity<List<PollingPlaceDTO>> searchPollingPlaces(@RequestParam String query,
-                                                                     @ApiParam Pageable pageable) {
+    public ResponseEntity<List<PollingPlaceDTO>> searchPollingPlaces(@RequestParam String query, @ApiParam Pageable pageable) {
         log.debug("REST request to search for a page of PollingPlaces for query {}", query);
         Page<PollingPlaceDTO> page = pollingPlaceService.search(query, pageable);
-        HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page,
-            "/api/_search/polling-places");
+        HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page,"/api/_search/polling-places");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
@@ -192,14 +182,13 @@ public class PollingPlaceResource {
      * GET POLLING PLACES /recount/{districtId}/polling-places : get pollingPlaces by "districtId".
      *
      * @param districtId the "id" of the District
-     * @param pageable   the pagination information
+     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of pollingPlaces
      * in body
      */
     @GetMapping("/recount/{districtId}/polling-places")
     @Timed
-    public ResponseEntity<List<PollingPlaceRecountDTO>> getPollingPlacesByDistrictId(@PathVariable Long districtId,
-                                                                                     @ApiParam Pageable pageable) {
+    public ResponseEntity<List<PollingPlaceRecountDTO>> getPollingPlacesByDistrictId(@PathVariable Long districtId, @ApiParam Pageable pageable) {
         log.debug("REST request to get PollingPlaces by District : {}", districtId);
         Page<PollingPlaceRecountDTO> page = pollingPlaceService.getPollingPlacesByDistrictId(districtId, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/recount/{districtId}/polling-places");
@@ -231,8 +220,7 @@ public class PollingPlaceResource {
      */
     @GetMapping("/nullity/{districtId}/polling-places/{pollingPlaceWon}")
     @Timed
-    public ResponseEntity<List<PollingPlaceDTO>> getPollingPlacesWon(@PathVariable Long districtId, @PathVariable Boolean pollingPlaceWon,
-                                                                                     @ApiParam Pageable pageable) {
+    public ResponseEntity<List<PollingPlaceDTO>> getPollingPlacesWon(@PathVariable Long districtId, @PathVariable Boolean pollingPlaceWon, @ApiParam Pageable pageable) {
         log.debug("REST request to get PollingPlaces by DistrictId : {} and PollingPlaceWon : {}", districtId, pollingPlaceWon);
         Page<PollingPlaceDTO> page = pollingPlaceService.getPollingPlacesWon(districtId, pollingPlaceWon, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/nullity/{districtId}/polling-places/{pollingPlaceWon}");

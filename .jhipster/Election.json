@@ -9,19 +9,19 @@
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "politicalPartyAsociated",
+            "relationshipName": "politicalPartyAssociated",
             "otherEntityName": "politicalParty",
             "otherEntityField": "name"
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "coalitionAsociated",
+            "relationshipName": "coalitionAssociated",
             "otherEntityName": "coalition",
             "otherEntityField": "name"
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "independentCandidateAsociated",
+            "relationshipName": "independentCandidateAssociated",
             "otherEntityName": "independentCandidate",
             "otherEntityField": "name"
         },

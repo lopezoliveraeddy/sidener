@@ -69,8 +69,8 @@ public class PollingPlaceResourceIntTest {
     private static final Long DEFAULT_VOTING_CITIZENS = 1L;
     private static final Long UPDATED_VOTING_CITIZENS = 2L;
 
-    private static final Long DEFAULT_EXCTRACTED_BALLOTS = 1L;
-    private static final Long UPDATED_EXCTRACTED_BALLOTS = 2L;
+    private static final Long DEFAULT_EXTRACTED_BALLOTS = 1L;
+    private static final Long UPDATED_EXTRACTED_BALLOTS = 2L;
 
     private static final Long DEFAULT_NOT_REGISTERED = 1L;
     private static final Long UPDATED_NOT_REGISTERED = 2L;
@@ -191,7 +191,7 @@ public class PollingPlaceResourceIntTest {
             .address(DEFAULT_ADDRESS)
             .leftoverBallots(DEFAULT_LEFTOVER_BALLOTS)
             .votingCitizens(DEFAULT_VOTING_CITIZENS)
-            .exctractedBallots(DEFAULT_EXCTRACTED_BALLOTS)
+            .extractedBallots(DEFAULT_EXTRACTED_BALLOTS)
             .notRegistered(DEFAULT_NOT_REGISTERED)
             .nullVotes(DEFAULT_NULL_VOTES)
             .totalVotes(DEFAULT_TOTAL_VOTES)
@@ -246,7 +246,7 @@ public class PollingPlaceResourceIntTest {
         assertThat(testPollingPlace.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testPollingPlace.getLeftoverBallots()).isEqualTo(DEFAULT_LEFTOVER_BALLOTS);
         assertThat(testPollingPlace.getVotingCitizens()).isEqualTo(DEFAULT_VOTING_CITIZENS);
-        assertThat(testPollingPlace.getExctractedBallots()).isEqualTo(DEFAULT_EXCTRACTED_BALLOTS);
+        assertThat(testPollingPlace.getExtractedBallots()).isEqualTo(DEFAULT_EXTRACTED_BALLOTS);
         assertThat(testPollingPlace.getNotRegistered()).isEqualTo(DEFAULT_NOT_REGISTERED);
         assertThat(testPollingPlace.getNullVotes()).isEqualTo(DEFAULT_NULL_VOTES);
         assertThat(testPollingPlace.getTotalVotes()).isEqualTo(DEFAULT_TOTAL_VOTES);
@@ -313,7 +313,7 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
             .andExpect(jsonPath("$.[*].leftoverBallots").value(hasItem(DEFAULT_LEFTOVER_BALLOTS.intValue())))
             .andExpect(jsonPath("$.[*].votingCitizens").value(hasItem(DEFAULT_VOTING_CITIZENS.intValue())))
-            .andExpect(jsonPath("$.[*].exctractedBallots").value(hasItem(DEFAULT_EXCTRACTED_BALLOTS.intValue())))
+            .andExpect(jsonPath("$.[*].extractedBallots").value(hasItem(DEFAULT_EXTRACTED_BALLOTS.intValue())))
             .andExpect(jsonPath("$.[*].notRegistered").value(hasItem(DEFAULT_NOT_REGISTERED.intValue())))
             .andExpect(jsonPath("$.[*].nullVotes").value(hasItem(DEFAULT_NULL_VOTES.intValue())))
             .andExpect(jsonPath("$.[*].totalVotes").value(hasItem(DEFAULT_TOTAL_VOTES.intValue())))
@@ -356,7 +356,7 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
             .andExpect(jsonPath("$.leftoverBallots").value(DEFAULT_LEFTOVER_BALLOTS.intValue()))
             .andExpect(jsonPath("$.votingCitizens").value(DEFAULT_VOTING_CITIZENS.intValue()))
-            .andExpect(jsonPath("$.exctractedBallots").value(DEFAULT_EXCTRACTED_BALLOTS.intValue()))
+            .andExpect(jsonPath("$.extractedBallots").value(DEFAULT_EXTRACTED_BALLOTS.intValue()))
             .andExpect(jsonPath("$.notRegistered").value(DEFAULT_NOT_REGISTERED.intValue()))
             .andExpect(jsonPath("$.nullVotes").value(DEFAULT_NULL_VOTES.intValue()))
             .andExpect(jsonPath("$.totalVotes").value(DEFAULT_TOTAL_VOTES.intValue()))
@@ -407,7 +407,7 @@ public class PollingPlaceResourceIntTest {
             .address(UPDATED_ADDRESS)
             .leftoverBallots(UPDATED_LEFTOVER_BALLOTS)
             .votingCitizens(UPDATED_VOTING_CITIZENS)
-            .exctractedBallots(UPDATED_EXCTRACTED_BALLOTS)
+            .extractedBallots(UPDATED_EXTRACTED_BALLOTS)
             .notRegistered(UPDATED_NOT_REGISTERED)
             .nullVotes(UPDATED_NULL_VOTES)
             .totalVotes(UPDATED_TOTAL_VOTES)
@@ -448,7 +448,7 @@ public class PollingPlaceResourceIntTest {
         assertThat(testPollingPlace.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testPollingPlace.getLeftoverBallots()).isEqualTo(UPDATED_LEFTOVER_BALLOTS);
         assertThat(testPollingPlace.getVotingCitizens()).isEqualTo(UPDATED_VOTING_CITIZENS);
-        assertThat(testPollingPlace.getExctractedBallots()).isEqualTo(UPDATED_EXCTRACTED_BALLOTS);
+        assertThat(testPollingPlace.getExtractedBallots()).isEqualTo(UPDATED_EXTRACTED_BALLOTS);
         assertThat(testPollingPlace.getNotRegistered()).isEqualTo(UPDATED_NOT_REGISTERED);
         assertThat(testPollingPlace.getNullVotes()).isEqualTo(UPDATED_NULL_VOTES);
         assertThat(testPollingPlace.getTotalVotes()).isEqualTo(UPDATED_TOTAL_VOTES);
@@ -537,7 +537,7 @@ public class PollingPlaceResourceIntTest {
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
             .andExpect(jsonPath("$.[*].leftoverBallots").value(hasItem(DEFAULT_LEFTOVER_BALLOTS.intValue())))
             .andExpect(jsonPath("$.[*].votingCitizens").value(hasItem(DEFAULT_VOTING_CITIZENS.intValue())))
-            .andExpect(jsonPath("$.[*].exctractedBallots").value(hasItem(DEFAULT_EXCTRACTED_BALLOTS.intValue())))
+            .andExpect(jsonPath("$.[*].extractedBallots").value(hasItem(DEFAULT_EXTRACTED_BALLOTS.intValue())))
             .andExpect(jsonPath("$.[*].notRegistered").value(hasItem(DEFAULT_NOT_REGISTERED.intValue())))
             .andExpect(jsonPath("$.[*].nullVotes").value(hasItem(DEFAULT_NULL_VOTES.intValue())))
             .andExpect(jsonPath("$.[*].totalVotes").value(hasItem(DEFAULT_TOTAL_VOTES.intValue())))

@@ -93,23 +93,23 @@ public class ElectionDTO implements Serializable {
 
     private String electionTypeName;
 
-    private Long politicalPartyAsociatedId;
+    private Long politicalPartyAssociatedId;
 
-    private String politicalPartyAsociatedName;
+    private String politicalPartyAssociatedName;
 
-    private String politicalPartyAsociatedAcronym;
+    private String politicalPartyAssociatedAcronym;
 
-    private Long coalitionAsociatedId;
+    private Long coalitionAssociatedId;
 
-    private String coalitionAsociatedName;
+    private String coalitionAssociatedName;
 
-    private String coalitionAsociatedAcronym;
+    private String coalitionAssociatedAcronym;
 
-    private Long independentCandidateAsociatedId;
+    private Long independentCandidateAssociatedId;
 
-    private String independentCandidateAsociatedName;
+    private String independentCandidateAssociatedName;
 
-    private String independentCandidateAsociatedAcronym;
+    private String independentCandidateAssociatedAcronym;
 
     private Set<PoliticalPartyDTO> politicalParties = new HashSet<>();
 
@@ -295,76 +295,76 @@ public class ElectionDTO implements Serializable {
         this.electionTypeName = electionTypeName;
     }
 
-    public Long getPoliticalPartyAsociatedId() {
-        return politicalPartyAsociatedId;
+    public Long getPoliticalPartyAssociatedId() {
+        return politicalPartyAssociatedId;
     }
 
-    public void setPoliticalPartyAsociatedId(Long politicalPartyId) {
-        this.politicalPartyAsociatedId = politicalPartyId;
+    public void setPoliticalPartyAssociatedId(Long politicalPartyId) {
+        this.politicalPartyAssociatedId = politicalPartyId;
     }
 
-    public String getPoliticalPartyAsociatedName() {
-        return politicalPartyAsociatedName;
+    public String getPoliticalPartyAssociatedName() {
+        return politicalPartyAssociatedName;
     }
 
-    public void setPoliticalPartyAsociatedName(String politicalPartyName) {
-        this.politicalPartyAsociatedName = politicalPartyName;
+    public void setPoliticalPartyAssociatedName(String politicalPartyName) {
+        this.politicalPartyAssociatedName = politicalPartyName;
     }
 
-    public String getPoliticalPartyAsociatedAcronym() {
-        return politicalPartyAsociatedAcronym;
+    public String getPoliticalPartyAssociatedAcronym() {
+        return politicalPartyAssociatedAcronym;
     }
 
-    public void setPoliticalPartyAsociatedAcronym(String politicalPartyAcronym) {
-        this.politicalPartyAsociatedAcronym = politicalPartyAcronym;
+    public void setPoliticalPartyAssociatedAcronym(String politicalPartyAcronym) {
+        this.politicalPartyAssociatedAcronym = politicalPartyAcronym;
     }
 
-    public Long getCoalitionAsociatedId() {
-        return coalitionAsociatedId;
+    public Long getCoalitionAssociatedId() {
+        return coalitionAssociatedId;
     }
 
-    public void setCoalitionAsociatedId(Long coalitionId) {
-        this.coalitionAsociatedId = coalitionId;
+    public void setCoalitionAssociatedId(Long coalitionId) {
+        this.coalitionAssociatedId = coalitionId;
     }
 
-    public String getCoalitionAsociatedName() {
-        return coalitionAsociatedName;
+    public String getCoalitionAssociatedName() {
+        return coalitionAssociatedName;
     }
 
-    public void setCoalitionAsociatedName(String coalitionName) {
-        this.coalitionAsociatedName = coalitionName;
+    public void setCoalitionAssociatedName(String coalitionName) {
+        this.coalitionAssociatedName = coalitionName;
     }
 
-    public String getCoalitionAsociatedAcronym() {
-        return coalitionAsociatedAcronym;
+    public String getCoalitionAssociatedAcronym() {
+        return coalitionAssociatedAcronym;
     }
 
-    public void setCoalitionAsociatedAcronym(String coalitionAcronym) {
-        this.coalitionAsociatedAcronym = coalitionAcronym;
+    public void setCoalitionAssociatedAcronym(String coalitionAcronym) {
+        this.coalitionAssociatedAcronym = coalitionAcronym;
     }
 
-    public Long getIndependentCandidateAsociatedId() {
-        return independentCandidateAsociatedId;
+    public Long getIndependentCandidateAssociatedId() {
+        return independentCandidateAssociatedId;
     }
 
-    public void setIndependentCandidateAsociatedId(Long independentCandidateId) {
-        this.independentCandidateAsociatedId = independentCandidateId;
+    public void setIndependentCandidateAssociatedId(Long independentCandidateId) {
+        this.independentCandidateAssociatedId = independentCandidateId;
     }
 
-    public String getIndependentCandidateAsociatedAcronym() {
-        return independentCandidateAsociatedAcronym;
+    public String getIndependentCandidateAssociatedAcronym() {
+        return independentCandidateAssociatedAcronym;
     }
 
-    public void setIndependentCandidateAsociatedAcronym(String independentCandidateAcronym) {
-        this.independentCandidateAsociatedAcronym = independentCandidateAcronym;
+    public void setIndependentCandidateAssociatedAcronym(String independentCandidateAcronym) {
+        this.independentCandidateAssociatedAcronym = independentCandidateAcronym;
     }
 
-    public String getIndependentCandidateAsociatedName() {
-        return independentCandidateAsociatedName;
+    public String getIndependentCandidateAssociatedName() {
+        return independentCandidateAssociatedName;
     }
 
-    public void setIndependentCandidateAsociatedName(String independentCandidateName) {
-        this.independentCandidateAsociatedName = independentCandidateName;
+    public void setIndependentCandidateAssociatedName(String independentCandidateName) {
+        this.independentCandidateAssociatedName = independentCandidateName;
     }
 
     public Set<PoliticalPartyDTO> getPoliticalParties() {
@@ -516,9 +516,7 @@ public class ElectionDTO implements Serializable {
         return Objects.equals(getId(), electionDTO.getId());
     }
 
-
-
-	@Override
+    @Override
     public int hashCode() {
         return Objects.hashCode(getId());
     }

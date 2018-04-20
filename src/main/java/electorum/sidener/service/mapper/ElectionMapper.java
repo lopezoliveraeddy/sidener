@@ -14,28 +14,28 @@ public interface ElectionMapper extends EntityMapper <ElectionDTO, Election> {
     @Mapping(source = "electionType.id", target = "electionTypeId")
     @Mapping(source = "electionType.name", target = "electionTypeName")
 
-    @Mapping(source = "politicalPartyAsociated.id", target = "politicalPartyAsociatedId")
-    @Mapping(source = "politicalPartyAsociated.name", target = "politicalPartyAsociatedName")
-    @Mapping(source = "politicalPartyAsociated.acronym", target = "politicalPartyAsociatedAcronym")
+    @Mapping(source = "politicalPartyAssociated.id", target = "politicalPartyAssociatedId")
+    @Mapping(source = "politicalPartyAssociated.name", target = "politicalPartyAssociatedName")
+    @Mapping(source = "politicalPartyAssociated.acronym", target = "politicalPartyAssociatedAcronym")
 
 
-    @Mapping(source = "coalitionAsociated.id", target = "coalitionAsociatedId")
-    @Mapping(source = "coalitionAsociated.name", target = "coalitionAsociatedName")
-    @Mapping(source = "coalitionAsociated.acronym", target = "coalitionAsociatedAcronym")
+    @Mapping(source = "coalitionAssociated.id", target = "coalitionAssociatedId")
+    @Mapping(source = "coalitionAssociated.name", target = "coalitionAssociatedName")
+    @Mapping(source = "coalitionAssociated.acronym", target = "coalitionAssociatedAcronym")
 
-    @Mapping(source = "independentCandidateAsociated.id", target = "independentCandidateAsociatedId")
-    @Mapping(source = "independentCandidateAsociated.name", target = "independentCandidateAsociatedName")
-    @Mapping(source = "independentCandidateAsociated.acronym", target = "independentCandidateAsociatedAcronym")
+    @Mapping(source = "independentCandidateAssociated.id", target = "independentCandidateAssociatedId")
+    @Mapping(source = "independentCandidateAssociated.name", target = "independentCandidateAssociatedName")
+    @Mapping(source = "independentCandidateAssociated.acronym", target = "independentCandidateAssociatedAcronym")
 
     ElectionDTO toDto(Election election);
 
     @Mapping(source = "electionTypeId", target = "electionType")
 
-    @Mapping(source = "politicalPartyAsociatedId", target = "politicalPartyAsociated")
+    @Mapping(source = "politicalPartyAssociatedId", target = "politicalPartyAssociated")
 
-    @Mapping(source = "coalitionAsociatedId", target = "coalitionAsociated")
+    @Mapping(source = "coalitionAssociatedId", target = "coalitionAssociated")
 
-    @Mapping(source = "independentCandidateAsociatedId", target = "independentCandidateAsociated")
+    @Mapping(source = "independentCandidateAssociatedId", target = "independentCandidateAssociated")
     Election toEntity(ElectionDTO electionDTO);
     default Election fromId(Long id) {
         if (id == null) {

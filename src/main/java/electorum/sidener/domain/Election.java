@@ -167,13 +167,13 @@ public class Election implements Serializable {
     private ElectionType electionType;
 
     @ManyToOne
-    private PoliticalParty politicalPartyAsociated;
+    private PoliticalParty politicalPartyAssociated;
 
     @ManyToOne
-    private Coalition coalitionAsociated;
+    private Coalition coalitionAssociated;
 
     @ManyToOne
-    private IndependentCandidate independentCandidateAsociated;
+    private IndependentCandidate independentCandidateAssociated;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -472,43 +472,43 @@ public class Election implements Serializable {
         this.electionType = electionType;
     }
 
-    public PoliticalParty getPoliticalPartyAsociated() {
-        return politicalPartyAsociated;
+    public PoliticalParty getPoliticalPartyAssociated() {
+        return politicalPartyAssociated;
     }
 
-    public Election politicalPartyAsociated(PoliticalParty politicalParty) {
-        this.politicalPartyAsociated = politicalParty;
+    public Election politicalPartyAssociated(PoliticalParty politicalParty) {
+        this.politicalPartyAssociated = politicalParty;
         return this;
     }
 
-    public void setPoliticalPartyAsociated(PoliticalParty politicalParty) {
-        this.politicalPartyAsociated = politicalParty;
+    public void setPoliticalPartyAssociated(PoliticalParty politicalParty) {
+        this.politicalPartyAssociated = politicalParty;
     }
 
-    public Coalition getCoalitionAsociated() {
-        return coalitionAsociated;
+    public Coalition getCoalitionAssociated() {
+        return coalitionAssociated;
     }
 
-    public Election coalitionAsociated(Coalition coalition) {
-        this.coalitionAsociated = coalition;
+    public Election coalitionAssociated(Coalition coalition) {
+        this.coalitionAssociated = coalition;
         return this;
     }
 
-    public void setCoalitionAsociated(Coalition coalition) {
-        this.coalitionAsociated = coalition;
+    public void setCoalitionAssociated(Coalition coalition) {
+        this.coalitionAssociated = coalition;
     }
 
-    public IndependentCandidate getIndependentCandidateAsociated() {
-        return independentCandidateAsociated;
+    public IndependentCandidate getIndependentCandidateAssociated() {
+        return independentCandidateAssociated;
     }
 
-    public Election independentCandidateAsociated(IndependentCandidate independentCandidate) {
-        this.independentCandidateAsociated = independentCandidate;
+    public Election independentCandidateAssociated(IndependentCandidate independentCandidate) {
+        this.independentCandidateAssociated = independentCandidate;
         return this;
     }
 
-    public void setIndependentCandidateAsociated(IndependentCandidate independentCandidate) {
-        this.independentCandidateAsociated = independentCandidate;
+    public void setIndependentCandidateAssociated(IndependentCandidate independentCandidate) {
+        this.independentCandidateAssociated = independentCandidate;
     }
 
     public Set<PoliticalParty> getPoliticalParties() {

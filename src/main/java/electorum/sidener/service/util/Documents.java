@@ -50,7 +50,7 @@ public class Documents {
             encabezado.setText("PRESENTE. -");
             encabezado.addCarriageReturn();
             encabezado.addCarriageReturn();
-            introduccion.setText(electionDTO.getNameDemandant() +" en mi calidad de representante del "+electionDTO.getPoliticalPartyAsociatedName()+", registrado formalmente ante este Consejo Distrital, en la presente sesión de cómputo Distrital de la elección de "+electionDTO.getElectionTypeName()+", con fundamento en lo dispuesto en "+electionDTO.getRecountFundamentRequest()+", me permito solicitar a usted lo siguiente:");
+            introduccion.setText(electionDTO.getNameDemandant() +" en mi calidad de representante del "+electionDTO.getPoliticalPartyAssociatedName()+", registrado formalmente ante este Consejo Distrital, en la presente sesión de cómputo Distrital de la elección de "+electionDTO.getElectionTypeName()+", con fundamento en lo dispuesto en "+electionDTO.getRecountFundamentRequest()+", me permito solicitar a usted lo siguiente:");
             introduccion.addCarriageReturn();
             introduccion.addCarriageReturn();
             solicitud.setText("Se solicita realizar el recuento de votos en la totalidad de las casillas correspondientes al Distrito Electoral "+districtDTO.getRomanNumber()+" con cabecera en "+districtDTO.getDistrictHead());
@@ -97,7 +97,7 @@ public class Documents {
             despedida.addCarriageReturn();
             despedida.setText(electionDTO.getNameDemandant());
             despedida.addCarriageReturn();
-            despedida.setText("Representante, "+electionDTO.getPoliticalPartyAsociatedName());
+            despedida.setText("Representante, "+electionDTO.getPoliticalPartyAssociatedName());
 
 
             document.write(out);

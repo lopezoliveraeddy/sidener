@@ -122,19 +122,19 @@
             }
         };
 
-        $scope.asociatedPosition = function(entity) {
-            if (vm.election.coalitionAsociatedId !== null) {
-                if (entity === vm.election.coalitionAsociatedAcronym) {
+        $scope.associatedPosition = function(entity) {
+            if (vm.election.coalitionAssociatedId !== null) {
+                if (entity === vm.election.coalitionAssociatedAcronym) {
                     return '<i class="fa medium fa-certificate" aria-hidden="true"></i>';
                 }
             }
-            else if(vm.election.politicalPartyAsociatedId !== null) {
-                if (entity === vm.election.politicalPartyAsociatedAcronym) {
+            else if(vm.election.politicalPartyAssociatedId !== null) {
+                if (entity === vm.election.politicalPartyAssociatedAcronym) {
                     return '<i class="fa medium fa-certificate" aria-hidden="true"></i>';
                 }
             }
-            else if (vm.election.independentCandidateAsociatedId !== null) {
-                if (entity === vm.election.independentCandidateAsociatedAcronym) {
+            else if (vm.election.independentCandidateAssociatedId !== null) {
+                if (entity === vm.election.independentCandidateAssociatedAcronym) {
                     return '<i class="fa medium fa-certificate" aria-hidden="true"></i>';
                 }
             }

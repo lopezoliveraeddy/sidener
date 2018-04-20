@@ -133,7 +133,7 @@ entity PollingPlace {
     /* Total de Ciudadanos Votantes */
     votingCitizens Long,
     /* Total de Boletas Extraídas */
-    exctractedBallots Long,
+    extractedBallots Long,
     /* Total de Votos a Candidatos NO Registrados */
     notRegistered Long,
     /* Total de Votos Nulos */
@@ -270,9 +270,9 @@ relationship ManyToMany {
 
 relationship ManyToOne {
     Election{electionType(name)} to ElectionType,
-    Election{politicalPartyAsociated(name)} to PoliticalParty,
-    Election{coalitionAsociated(name)} to Coalition,
-    Election{independentCandidateAsociated(name)} to IndependentCandidate,
+    Election{politicalPartyAssociated(name)} to PoliticalParty,
+    Election{coalitionAssociated(name)} to Coalition,
+    Election{independentCandidateAssociated(name)} to IndependentCandidate,
 	District{election} to Election,
     PollingPlace{election} to Election,
 	PollingPlace{district} to District,

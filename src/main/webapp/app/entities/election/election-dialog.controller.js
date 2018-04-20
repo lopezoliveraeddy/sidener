@@ -30,19 +30,19 @@
         ini();
 
         function ini() {
-            if(vm.election.politicalPartyAsociatedId !== null) {
+            if(vm.election.politicalPartyAssociatedId !== null) {
                 $scope.checked = function() {
-                    return 'politicalPartyAsociated';
+                    return 'politicalPartyAssociated';
                 }
             }
-            if(vm.election.coalitionAsociatedId !== null) {
+            if(vm.election.coalitionAssociatedId !== null) {
                 $scope.checked = function() {
-                    return 'coalitionAsociated';
+                    return 'coalitionAssociated';
                 }
             }
-            if(vm.election.independentCandidateAsociatedId !== null) {
+            if(vm.election.independentCandidateAssociatedId !== null) {
                 $scope.checked = function() {
-                    return 'independentCandidateAsociated';
+                    return 'independentCandidateAssociated';
                 }
             }
         }
@@ -152,23 +152,23 @@
         }
 
         $scope.change = function(value) {
-            if(value === 'politicalPartyAsociated') {
-                vm.election.coalitionAsociatedId = null;
-                vm.election.coalitionAsociatedName = null;
-                vm.election.independentCandidateAsociatedId = null;
-                vm.election.independentCandidateAsociatedName = null;
+            if(value === 'politicalPartyAssociated') {
+                vm.election.coalitionAssociatedId = null;
+                vm.election.coalitionAssociatedName = null;
+                vm.election.independentCandidateAssociatedId = null;
+                vm.election.independentCandidateAssociatedName = null;
             }
-            else if(value === 'coalitionAsociated') {
-                vm.election.politicalPartyAsociatedId = null;
-                vm.election.politicalPartyAsociatedName = null;
-                vm.election.independentCandidateAsociatedId = null;
-                vm.election.independentCandidateAsociatedName = null;
+            else if(value === 'coalitionAssociated') {
+                vm.election.politicalPartyAssociatedId = null;
+                vm.election.politicalPartyAssociatedName = null;
+                vm.election.independentCandidateAssociatedId = null;
+                vm.election.independentCandidateAssociatedName = null;
             }
-            else if(value === 'independentCandidateAsociated') {
-                vm.election.politicalPartyAsociatedId = null;
-                vm.election.politicalPartyAsociatedName = null;
-                vm.election.coalitionAsociatedId = null;
-                vm.election.coalitionAsociatedName = null;
+            else if(value === 'independentCandidateAssociated') {
+                vm.election.politicalPartyAssociatedId = null;
+                vm.election.politicalPartyAssociatedName = null;
+                vm.election.coalitionAssociatedId = null;
+                vm.election.coalitionAssociatedName = null;
             }
         }
     }

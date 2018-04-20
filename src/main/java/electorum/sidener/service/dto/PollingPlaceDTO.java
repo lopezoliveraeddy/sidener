@@ -31,7 +31,7 @@ public class PollingPlaceDTO implements Serializable {
 
     private Long votingCitizens;
 
-    private Long exctractedBallots;
+    private Long extractedBallots;
 
     private Long notRegistered;
 
@@ -152,12 +152,12 @@ public class PollingPlaceDTO implements Serializable {
         this.votingCitizens = votingCitizens;
     }
 
-    public Long getExctractedBallots() {
-        return exctractedBallots;
+    public Long getExtractedBallots() {
+        return extractedBallots;
     }
 
-    public void setExctractedBallots(Long exctractedBallots) {
-        this.exctractedBallots = exctractedBallots;
+    public void setExtractedBallots(Long extractedBallots) {
+        this.extractedBallots = extractedBallots;
     }
 
     public Long getNotRegistered() {
@@ -408,7 +408,7 @@ public class PollingPlaceDTO implements Serializable {
             ", address='" + getAddress() + "'" +
             ", leftoverBallots='" + getLeftoverBallots() + "'" +
             ", votingCitizens='" + getVotingCitizens() + "'" +
-            ", exctractedBallots='" + getExctractedBallots() + "'" +
+            ", extractedBallots='" + getExtractedBallots() + "'" +
             ", notRegistered='" + getNotRegistered() + "'" +
             ", nullVotes='" + getNullVotes() + "'" +
             ", totalVotes='" + getTotalVotes() + "'" +

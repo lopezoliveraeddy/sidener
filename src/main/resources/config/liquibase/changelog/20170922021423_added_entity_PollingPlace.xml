@@ -50,7 +50,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="exctracted_ballots" type="bigint">
+            <column name="extracted_ballots" type="bigint">
                 <constraints nullable="true" />
             </column>
 

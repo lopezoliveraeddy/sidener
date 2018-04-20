@@ -10,7 +10,7 @@
                         <span class="breadcrumb__inner">
                             <span class="breadcrumb__title"><span>{{vm.election.electionTypeName}}</span></span>
                             <span class="breadcrumb__desc">{{vm.election.periodElection}}</span>
-    
+
                         </span>
                     </a>
                 <a >
@@ -46,12 +46,12 @@
                                             <span class="color-blue">{{vm.pollingPlacesWonLose.pollingPlacesLose}} casillas perdidas</span>
                                         </strong>
                                 </div>
-    
-                                
+
+
                             </div>
                 </div>
                 <div id="win-lose" class="col-lg-4 col-md-4 col-sm-12 text-left">
-                    
+
                 </div>
                 <div id="counting-assumption" class="col-lg-4 col-md-4 col-sm-12 text-left">
                     <div class="media">
@@ -105,7 +105,7 @@
                                 <span>{{pollingPlace.totalFirstPlace | number}} votos | {{pollingPlace.percentageFirstPlace | number:2 }}</span>
                             </div>
                             <div class="media-right media-middle">
-                                <span class="associated-position" ng-bind-html="asociatedPosition(pollingPlace.entityFirstPlace)"></span>
+                                <span class="associated-position" ng-bind-html="associatedPosition(pollingPlace.entityFirstPlace)"></span>
                             </div>
                         </div>
                     </td>
@@ -116,7 +116,7 @@
                                 <span>{{pollingPlace.totalSecondPlace | number}} votos | {{pollingPlace.percentageSecondPlace | number:2 }}</span>
                             </div>
                             <div class="media-right media-middle">
-                                <span class="color-blue" ng-bind-html="asociatedPosition(pollingPlace.entitySecondPlace)"></span>
+                                <span class="color-blue" ng-bind-html="associatedPosition(pollingPlace.entitySecondPlace)"></span>
                             </div>
                         </div>
                     </td>
@@ -162,7 +162,7 @@
                         <div class="checkbox">
                             <span ng-if="pollingPlace.causals.length > 0 ">
                                     {{vm.generateCausals(pollingPlace)}}
-                            </span> 
+                            </span>
                             {{pollingPlace.challengedPollingPlace}}
                             <label>
                               <input type="checkbox" ng-model="confirmed[pollingPlace.id]" ng-change="vm.addThisPollingPlace(pollingPlace)" id='ng-change-"pollingPlace.id"'  ng-checked="pollingPlace.causals.length > 0 " />

@@ -43,7 +43,7 @@ public class RecountDemand {
             entrada.addCarriageReturn();
 
             XWPFRun introduccion = paragraphA.createRun();
-            introduccion.setText(electionDTO.getNameDemandant()+" en mi calidad de representante de "+electionDTO.getPoliticalPartyAsociatedName()+" registrado formalmente ante el Consejo Distrital "+districtDTO.getRomanNumber()+" con cabecera en "+districtDTO.getDistrictHead()+", señalo como domicilio para oír y recibir notificaciones el ubicado en ");
+            introduccion.setText(electionDTO.getNameDemandant()+" en mi calidad de representante de "+electionDTO.getPoliticalPartyAssociatedName()+" registrado formalmente ante el Consejo Distrital "+districtDTO.getRomanNumber()+" con cabecera en "+districtDTO.getDistrictHead()+", señalo como domicilio para oír y recibir notificaciones el ubicado en ");
             XWPFRun entradaDireccion = paragraphA.createRun();
             entradaDireccion.setColor("FF0000");
             entradaDireccion.setText("UBICACION");
@@ -112,7 +112,7 @@ public class RecountDemand {
             XWPFRun regla = paragraphTwo.createRun();
 
 
-            introduccion.setText(electionDTO.getNameDemandant() +" en mi calidad de representante del "+electionDTO.getPoliticalPartyAsociatedName()+", registrado formalmente ante este Consejo Distrital, en la presente sesión de cómputo Distrital de la elección de "+electionDTO.getElectionTypeName()+", con fundamento en lo dispuesto en "+electionDTO.getRecountFundamentRequest()+", me permito solicitar a usted lo siguiente:");
+            introduccion.setText(electionDTO.getNameDemandant() +" en mi calidad de representante del "+electionDTO.getPoliticalPartyAssociatedName()+", registrado formalmente ante este Consejo Distrital, en la presente sesión de cómputo Distrital de la elección de "+electionDTO.getElectionTypeName()+", con fundamento en lo dispuesto en "+electionDTO.getRecountFundamentRequest()+", me permito solicitar a usted lo siguiente:");
             introduccion.addCarriageReturn();
             introduccion.addCarriageReturn();
 
@@ -182,7 +182,7 @@ public class RecountDemand {
             despedida.addCarriageReturn();
             despedida.setText(electionDTO.getNameDemandant());
             despedida.addCarriageReturn();
-            despedida.setText("Representante, "+electionDTO.getPoliticalPartyAsociatedName());
+            despedida.setText("Representante, "+electionDTO.getPoliticalPartyAssociatedName());
 
 
 
@@ -214,7 +214,7 @@ public class RecountDemand {
             XWPFRun regla = paragraphTwo.createRun();
 
 
-            introduccion.setText(electionDTO.getNameDemandant() +" en mi calidad de representante del "+electionDTO.getPoliticalPartyAsociatedName()+", registrado formalmente ante este Consejo Distrital, en la presente sesión de cómputo Distrital de la elección de "+electionDTO.getElectionTypeName()+", con fundamento en lo dispuesto en "+electionDTO.getRecountFundamentRequest()+", me permito solicitar a usted lo siguiente: ");
+            introduccion.setText(electionDTO.getNameDemandant() +" en mi calidad de representante del "+electionDTO.getPoliticalPartyAssociatedName()+", registrado formalmente ante este Consejo Distrital, en la presente sesión de cómputo Distrital de la elección de "+electionDTO.getElectionTypeName()+", con fundamento en lo dispuesto en "+electionDTO.getRecountFundamentRequest()+", me permito solicitar a usted lo siguiente: ");
             introduccion.addCarriageReturn();
             introduccion.addCarriageReturn();
 
@@ -338,7 +338,7 @@ public class RecountDemand {
             despedida.addCarriageReturn();
             despedida.setText(electionDTO.getNameDemandant());
             despedida.addCarriageReturn();
-            despedida.setText("Representante, "+electionDTO.getPoliticalPartyAsociatedName());
+            despedida.setText("Representante, "+electionDTO.getPoliticalPartyAssociatedName());
 
 
 

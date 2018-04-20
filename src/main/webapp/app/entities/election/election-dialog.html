@@ -85,33 +85,33 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label">Partido/alianza asociad(a)</label>
-                    <div class="row" ng-init="asociated = checked()">
+                    <div class="row" ng-init="associated = checked()">
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                            <input type="radio" ng-model="asociated" ng-change="change(asociated)" value="politicalPartyAsociated"><span data-translate="sidenerApp.election.politicalPartyAsociated">Political Party Asociated</span>
+                            <input type="radio" ng-model="associated" ng-change="change(associated)" value="politicalPartyAssociated"><span data-translate="sidenerApp.election.politicalPartyAssociated">Political Party Associated</span>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                            <input type="radio" ng-model="asociated" ng-change="change(asociated)" value="coalitionAsociated"><span data-translate="sidenerApp.election.coalitionAsociated">Coalition Asociated</span>
+                            <input type="radio" ng-model="associated" ng-change="change(associated)" value="coalitionAssociated"><span data-translate="sidenerApp.election.coalitionAssociated">Coalition Associated</span>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                            <input type="radio" ng-model="asociated" ng-change="change(asociated)" value="independentCandidateAsociated"><span data-translate="sidenerApp.election.independentCandidateAsociated">Independent Candidate Asociated</span>
+                            <input type="radio" ng-model="associated" ng-change="change(associated)" value="independentCandidateAssociated"><span data-translate="sidenerApp.election.independentCandidateAssociated">Independent Candidate Associated</span>
                         </div>
                     </div>
                     <div>
-                        <div class="form-group" ng-show="asociated == 'politicalPartyAsociated'">
-                            <label data-translate="sidenerApp.election.politicalPartyAsociated" for="field_politicalPartyAsociated">Political Party Asociated</label>
-                            <select class="form-control" id="field_politicalPartyAsociated" name="politicalPartyAsociated" ng-model="vm.election.politicalPartyAsociatedId" ng-options="politicalParty.id as politicalParty.name for politicalParty in vm.politicalparties">
+                        <div class="form-group" ng-show="associated == 'politicalPartyAssociated'">
+                            <label data-translate="sidenerApp.election.politicalPartyAssociated" for="field_politicalPartyAssociated">Political Party Associated</label>
+                            <select class="form-control" id="field_politicalPartyAssociated" name="politicalPartyAssociated" ng-model="vm.election.politicalPartyAssociatedId" ng-options="politicalParty.id as politicalParty.name for politicalParty in vm.politicalparties">
                                 <option value=""></option>
                             </select>
                         </div>
-                        <div class="form-group" ng-show="asociated == 'coalitionAsociated'">
-                            <label data-translate="sidenerApp.election.coalitionAsociated" for="field_coalitionAsociated">Coalition Asociated</label>
-                            <select class="form-control" id="field_coalitionAsociated" name="coalitionAsociated" ng-model="vm.election.coalitionAsociatedId" ng-options="coalition.id as coalition.name for coalition in vm.coalitions">
+                        <div class="form-group" ng-show="associated == 'coalitionAssociated'">
+                            <label data-translate="sidenerApp.election.coalitionAssociated" for="field_coalitionAssociated">Coalition Associated</label>
+                            <select class="form-control" id="field_coalitionAssociated" name="coalitionAssociated" ng-model="vm.election.coalitionAssociatedId" ng-options="coalition.id as coalition.name for coalition in vm.coalitions">
                                 <option value=""></option>
                             </select>
                         </div>
-                        <div class="form-group" ng-show="asociated == 'independentCandidateAsociated'">
-                            <label data-translate="sidenerApp.election.independentCandidateAsociated" for="field_independentCandidateAsociated">Independent Candidate Asociated</label>
-                            <select class="form-control" id="field_independentCandidateAsociated" name="independentCandidateAsociated" ng-model="vm.election.independentCandidateAsociatedId" ng-options="independentCandidate.id as independentCandidate.name for independentCandidate in vm.independentcandidates">
+                        <div class="form-group" ng-show="associated == 'independentCandidateAssociated'">
+                            <label data-translate="sidenerApp.election.independentCandidateAssociated" for="field_independentCandidateAssociated">Independent Candidate Associated</label>
+                            <select class="form-control" id="field_independentCandidateAssociated" name="independentCandidateAssociated" ng-model="vm.election.independentCandidateAssociatedId" ng-options="independentCandidate.id as independentCandidate.name for independentCandidate in vm.independentcandidates">
                                 <option value=""></option>
                             </select>
                         </div>

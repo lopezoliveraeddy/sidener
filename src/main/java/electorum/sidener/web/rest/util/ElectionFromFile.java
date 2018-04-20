@@ -148,7 +148,7 @@ public class ElectionFromFile {
 
         }
         if(!(nextRecord[marcaCoaliciones+5] == "" || nextRecord[marcaCoaliciones+5] == null)){
-            pollingPlaceDTO.setExctractedBallots(Long.valueOf(nextRecord[marcaCoaliciones+5]));
+            pollingPlaceDTO.setExtractedBallots(Long.valueOf(nextRecord[marcaCoaliciones+5]));
 
         }
 

@@ -102,15 +102,15 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="political_party_asociated_id" type="bigint">
+            <column name="political_party_associated_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
-            <column name="coalition_asociated_id" type="bigint">
+            <column name="coalition_associated_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
-            <column name="independent_candidate_asociated_id" type="bigint">
+            <column name="independent_candidate_associated_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

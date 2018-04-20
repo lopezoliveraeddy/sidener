@@ -86,8 +86,8 @@ public class PollingPlace implements Serializable {
      * Total de Boletas Extraídas
      */
     @ApiModelProperty(value = "Total de Boletas Extraídas")
-    @Column(name = "exctracted_ballots")
-    private Long exctractedBallots;
+    @Column(name = "extracted_ballots")
+    private Long extractedBallots;
 
     /**
      * Total de Votos a Candidatos NO Registrados
@@ -353,17 +353,17 @@ public class PollingPlace implements Serializable {
         this.votingCitizens = votingCitizens;
     }
 
-    public Long getExctractedBallots() {
-        return exctractedBallots;
+    public Long getExtractedBallots() {
+        return extractedBallots;
     }
 
-    public PollingPlace exctractedBallots(Long exctractedBallots) {
-        this.exctractedBallots = exctractedBallots;
+    public PollingPlace extractedBallots(Long extractedBallots) {
+        this.extractedBallots = extractedBallots;
         return this;
     }
 
-    public void setExctractedBallots(Long exctractedBallots) {
-        this.exctractedBallots = exctractedBallots;
+    public void setExtractedBallots(Long extractedBallots) {
+        this.extractedBallots = extractedBallots;
     }
 
     public Long getNotRegistered() {
@@ -746,7 +746,7 @@ public class PollingPlace implements Serializable {
             ", address='" + getAddress() + "'" +
             ", leftoverBallots='" + getLeftoverBallots() + "'" +
             ", votingCitizens='" + getVotingCitizens() + "'" +
-            ", exctractedBallots='" + getExctractedBallots() + "'" +
+            ", extractedBallots='" + getExtractedBallots() + "'" +
             ", notRegistered='" + getNotRegistered() + "'" +
             ", nullVotes='" + getNullVotes() + "'" +
             ", totalVotes='" + getTotalVotes() + "'" +
