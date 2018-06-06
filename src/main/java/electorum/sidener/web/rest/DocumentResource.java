@@ -17,6 +17,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -145,20 +148,21 @@ public class DocumentResource {
 
     @PostMapping("/file/demandpolling")
     @Timed
-    public ResponseEntity<Resource> getDemandPolling(@RequestParam String pollingplaces) throws IOException{
-         String[] pollingPlaceList = pollingplaces.split("-");
-         List<PollingPlaceDTO> pollingPlaceDTOList = new ArrayList<PollingPlaceDTO>();
+    public ResponseEntity<Resource>getDemandPolling(@RequestParam Long pollingplaces) throws IOException{
+        log.debug("----  String pollingplaces {} ----",pollingplaces);
+        Page<PollingPlaceDTO> pollingPlaceList = pollingPlaceService.getPollingPlaceChallegented(pollingplaces,new PageRequest(1,1000));
+         List<PollingPlaceDTO> pollingPlaceDTOList = pollingPlaceList.getContent();
          Long election = 0L;
          RecountDemand recountDemand= new RecountDemand();
+         DistrictDTO district = districtService.findOne(pollingplaces);
+         election = district.getElectionId();
 
 
 
-
-        for (String s:
+        for (PollingPlaceDTO s:
             pollingPlaceList) {
-            log.debug("----- pollingPlaceList {}", s);
-            pollingPlaceDTOList.add(pollingPlaceService.findOne(Long.parseLong(s)));
-            election = pollingPlaceService.findOne(Long.parseLong(s)).getElectionId();
+            log.debug("----- pollingPlaceList {}", s.getId());
+            pollingPlaceDTOList.add(pollingPlaceService.findOne(s.getId()));
         }
         log.debug("E L E C C I O N {}",election);
 

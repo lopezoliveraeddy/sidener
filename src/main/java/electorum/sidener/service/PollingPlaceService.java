@@ -194,4 +194,12 @@ public class PollingPlaceService {
         Page<PollingPlace> result = pollingPlaceRepository.getPollingPlacesWon(districtId, pollingPlaceWon, pageable);
         return result.map(pollingPlaceMapper::toDto);
     }
+
+    @Transactional(readOnly = true)
+    public Page<PollingPlaceDTO> getPollingPlaceChallegented( Long districtId, Pageable pageable){
+        log.debug("Request to get getPollingPlaceChallegented by districtId {}", districtId);
+        Page<PollingPlace> result = pollingPlaceRepository.findByChallengedPollingPlaceIsTrueAndDistrictId(districtId, pageable);
+        return result.map(pollingPlaceMapper::toDto);
+
+    }
 }

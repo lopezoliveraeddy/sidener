@@ -26,6 +26,8 @@
         vm.generateCausals = generateCausals;
         vm.downloadDocument = downloadDocument;
         vm.addThisPollingPlace = addThisPollingPlace;
+        vm.regresaValido = regresaValido;
+        vm.confirmed = [];
         vm.tmpObject = '';
 
         // Datos de la Elección
@@ -68,6 +70,7 @@
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
                 vm.pollingPlaces = data;
+                console.log(vm.pollingPlaces);
                 vm.page = pagingParams.page;
             }
             function onError(error) {
@@ -86,6 +89,15 @@
                 page: vm.page,
                 sort: vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')
             });
+        }
+        function regresaValido(valor) {
+            console.log(valor);
+            if (valor == true) {
+                return 1;
+            }else{
+                return 0;
+            }
+
         }
 
         function loadDistrict() {
@@ -130,8 +142,8 @@
             }
         }
 
-        function downloadDocument(){
-            DemandDownloadPolling.get(vm.pollingPlacesEnabled.join("-")).then(function (response) {
+        function downloadDocument(value){
+            DemandDownloadPolling.get(value).then(function (response) {
                 var contentDisposition = response.headers("content-disposition");
                 var tmp = contentDisposition.split("filename=");
                 var filename = "";
@@ -152,22 +164,14 @@
             });
         }
 
-        function addThisPollingPlace(pollingPlace){
-            var value = true;
-
-            if(vm.pollingPlacesEnabled.indexOf(pollingPlace.id) === -1){
-                vm.pollingPlacesEnabled.push(pollingPlace.id);
-                value = true;
-
-            } else{
-                var index = vm.pollingPlacesEnabled.indexOf(pollingPlace.id);
-                vm.pollingPlacesEnabled.splice(index, 1);
-                value = false;
-            }
-            pollingPlace.challengedPollingPlace = value;
+        function addThisPollingPlace(pollingPlace,confirmed){
+            console.log(confirmed);
+            pollingPlace.challengedPollingPlace = confirmed;
             PollingPlace.update(pollingPlace, onSaveSuccess, onSaveError);
             function onSaveSuccess(data){
+
                 pollingPlace = data;
+                console.log(pollingPlace);
             }
             function onSaveError(error) {
                 AlertService.error(error.data.message);

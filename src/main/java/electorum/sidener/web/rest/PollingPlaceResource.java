@@ -144,6 +144,7 @@ public class PollingPlaceResource {
     public ResponseEntity<PollingPlaceDTO> getPollingPlace(@PathVariable Long id) {
         log.debug("REST request to get PollingPlace : {}", id);
         PollingPlaceDTO pollingPlaceDTO = pollingPlaceService.findOne(id);
+        log.debug("-------- pollingPlaceDTO ------------------ {}", pollingPlaceDTO);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(pollingPlaceDTO));
     }
 

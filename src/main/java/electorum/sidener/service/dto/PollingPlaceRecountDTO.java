@@ -37,6 +37,16 @@ public class PollingPlaceRecountDTO implements Serializable {
     private Double percentageSecondPlace;
     private Boolean countingAssumption;
 
+    private Boolean challengedPollingPlace;
+
+    public Boolean getChallengedPollingPlace() {
+        return challengedPollingPlace;
+    }
+
+    public void setChallengedPollingPlace(Boolean challengedPollingPlace) {
+        this.challengedPollingPlace = challengedPollingPlace;
+    }
+
     private Set<CausalDTO> causals = new HashSet<>();
 
 

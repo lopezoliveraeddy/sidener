@@ -196,15 +196,66 @@ public class RecountDemand {
         }
     }
 
+    /**
+     *
+     * @param pollingPlaceDTOList
+     * @param electionDTO
+     * @param filename
+     * @throws IOException
+     */
+
     public void generateRecountDemandPollingPlace(List<PollingPlaceDTO> pollingPlaceDTOList, ElectionDTO electionDTO, String filename) throws IOException {
         log.debug("---> filename {}", filename);
-        //log.debug(districtDTOS.toString());
+        String partyOrCoalitionOrCandidate = "";
+        String nameDemandant = "";
+        String electionTypeName = "";
+        String recountFundamentRequest = "";
+        String recountElectoralInstitute = "";
 
         FileOutputStream out = new FileOutputStream(new File("/Desarrollo/files/demandas/"+filename));
         try{
             XWPFDocument  document = new XWPFDocument();
             XWPFParagraph paragraph = document.createParagraph();
             XWPFRun encabezado = paragraph.createRun();
+
+            try{
+                if(electionDTO.getPoliticalPartyAssociatedName() != null){
+                    partyOrCoalitionOrCandidate = "l partido Político "+ electionDTO.getPoliticalPartyAssociatedName()+" ";
+                }
+                if(electionDTO.getCoalitionAssociatedName() != null){
+                    partyOrCoalitionOrCandidate = " la coalición con nombre \""+ electionDTO.getCoalitionAssociatedName()+"\" ";
+
+                }
+                if(electionDTO.getIndependentCandidateAssociatedName() != null){
+                    partyOrCoalitionOrCandidate = "l candidato independiente  "+ electionDTO.getIndependentCandidateAssociatedName()+" ";
+
+                }
+
+
+
+                electionTypeName = electionDTO.getElectionTypeName();
+                nameDemandant = electionDTO.getNameDemandant();
+                recountFundamentRequest = electionDTO.getRecountFundamentRequest();
+                recountElectoralInstitute = electionDTO.getRecountElectoralInstitute();
+                if(  electionDTO.getRecountElectoralInstitute() == null){
+                    recountElectoralInstitute = "INSTITUTO NACIONAL ELECTORAL";
+                }
+            }catch (NullPointerException e){
+                System.out.print("Caught the NullPointerException");
+            }
+
+
+            XWPFParagraph paragraphA = document.createParagraph();
+            paragraphA.setAlignment(ParagraphAlignment.BOTH);
+            XWPFRun entrada = paragraphA.createRun();
+            entrada.setBold(true);
+            entrada.setText(recountElectoralInstitute.toUpperCase());
+            entrada.addCarriageReturn();
+            entrada.setText("PRESENTE.-");
+            entrada.addCarriageReturn();
+            entrada.addCarriageReturn();
+
+
 
             XWPFParagraph paragraphTwo = document.createParagraph();
             paragraphTwo.setAlignment(ParagraphAlignment.BOTH);
@@ -214,20 +265,26 @@ public class RecountDemand {
             XWPFRun regla = paragraphTwo.createRun();
 
 
-            introduccion.setText(electionDTO.getNameDemandant() +" en mi calidad de representante del "+electionDTO.getPoliticalPartyAssociatedName()+", registrado formalmente ante este Consejo Distrital, en la presente sesión de cómputo Distrital de la elección de "+electionDTO.getElectionTypeName()+", con fundamento en lo dispuesto en "+electionDTO.getRecountFundamentRequest()+", me permito solicitar a usted lo siguiente: ");
+
+
+            if ( partyOrCoalitionOrCandidate == ""){
+                partyOrCoalitionOrCandidate = "-----";
+            }
+
+
+
+            introduccion.setText(nameDemandant +" en mi calidad de representante de"+ partyOrCoalitionOrCandidate +", registrado formalmente ante este Consejo Distrital, en la presente sesión de cómputo Distrital de la elección de "+electionTypeName+", con fundamento en lo dispuesto en "+recountFundamentRequest+", me permito solicitar a usted lo siguiente: ");
             introduccion.addCarriageReturn();
             introduccion.addCarriageReturn();
 
             encabezado.setBold(true);
             encabezado.setCapitalized(true);
             encabezado.addBreak();
-            log.debug("electionDTO.getRecountElectoralInstitute().isEmpty() {}", electionDTO.getRecountElectoralInstitute());
 
-            if(  electionDTO.getRecountElectoralInstitute() == null){
-                electionDTO.setRecountElectoralInstitute("INSTITUTO NACIONAL ELECTORAL");
-            }
+            log.debug("electionDTO.getRecountElectoralInstitute().isEmpty() {}", recountElectoralInstitute);
 
-            encabezado.setText(electionDTO.getRecountElectoralInstitute().toUpperCase());
+
+            encabezado.setText(recountElectoralInstitute.toUpperCase());
             encabezado.addBreak();
             encabezado.addBreak();
             encabezado.setText("PRESENTE. -");
@@ -336,9 +393,9 @@ public class RecountDemand {
             despedida.addCarriageReturn();
             despedida.addCarriageReturn();
             despedida.addCarriageReturn();
-            despedida.setText(electionDTO.getNameDemandant());
+            despedida.setText(nameDemandant);
             despedida.addCarriageReturn();
-            despedida.setText("Representante, "+electionDTO.getPoliticalPartyAssociatedName());
+            despedida.setText("Representante, "+ partyOrCoalitionOrCandidate );
 
 
 

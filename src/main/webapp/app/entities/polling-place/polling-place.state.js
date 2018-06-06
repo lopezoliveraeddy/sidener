@@ -153,7 +153,8 @@
                                 published: null,
                                 createdDate: null,
                                 updatedDate: null,
-                                id: null
+                                id: null,
+                                challengedPollingPlace:null
                             };
                         }
                     }
