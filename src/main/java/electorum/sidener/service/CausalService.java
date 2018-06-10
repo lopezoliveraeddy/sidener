@@ -118,4 +118,10 @@ public class CausalService {
         return causalMapper.toDto(result);
     }
 
+    @Transactional(readOnly =  true)
+    public List<CausalDTO> getAllCausalsList (){
+        List<Causal> result = causalRepository.findAll();
+        return  causalMapper.toDto(result);
+    }
+
 }

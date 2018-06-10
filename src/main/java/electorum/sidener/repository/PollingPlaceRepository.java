@@ -25,7 +25,7 @@ public interface PollingPlaceRepository extends JpaRepository<PollingPlace, Long
 
     Page<PollingPlace> findByElectionId(Long electionId, Pageable pageable);
 
-    Page<PollingPlace> findByChallengedPollingPlaceIsTrueAndDistrictId(Long districtId, Pageable pageable);
+    List<PollingPlace> findByChallengedPollingPlaceIsTrueAndDistrictId(Long districtId);
 
     Long countByDistrictIdAndPollingPlaceWonIsTrue(Long districtId);
 

@@ -23,4 +23,5 @@ public interface CausalRepository extends JpaRepository<Causal, Long> {
 
     List<Causal> findAllByTypeCausal(TypeCausal typeCausal);
 
+
 }

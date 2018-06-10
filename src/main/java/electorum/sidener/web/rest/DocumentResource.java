@@ -1,25 +1,19 @@
 package electorum.sidener.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import electorum.sidener.domain.District;
-import electorum.sidener.domain.Election;
-import electorum.sidener.domain.PollingPlace;
+
+import electorum.sidener.service.CausalService;
 import electorum.sidener.service.DistrictService;
 import electorum.sidener.service.ElectionService;
 import electorum.sidener.service.PollingPlaceService;
-import electorum.sidener.service.dto.DistrictDTO;
-import electorum.sidener.service.dto.ElectionDTO;
-import electorum.sidener.service.dto.ElectionTypeDTO;
-import electorum.sidener.service.dto.PollingPlaceDTO;
+import electorum.sidener.service.dto.*;
 import electorum.sidener.service.util.Documents;
 import electorum.sidener.service.util.RecountDemand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,13 +22,15 @@ import org.springframework.web.bind.annotation.*;
 import javax.activation.MimetypesFileTypeMap;
 import java.io.File;
 import java.io.IOException;
-import java.net.ResponseCache;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 
 @RestController
@@ -46,11 +42,13 @@ public class DocumentResource {
     private final DistrictService districtService;
     private final ElectionService electionService;
     private final PollingPlaceService pollingPlaceService;
+    private final CausalService causalService;
 
-    public DocumentResource(DistrictService districtService, ElectionService electionService, PollingPlaceService pollingPlaceService) {
+    public DocumentResource(DistrictService districtService, ElectionService electionService, PollingPlaceService pollingPlaceService, CausalService causalService) {
         this.districtService = districtService;
         this.electionService = electionService;
         this.pollingPlaceService = pollingPlaceService;
+        this.causalService = causalService;
     }
 
 
@@ -150,26 +148,30 @@ public class DocumentResource {
     @Timed
     public ResponseEntity<Resource>getDemandPolling(@RequestParam Long pollingplaces) throws IOException{
         log.debug("----  String pollingplaces {} ----",pollingplaces);
-        Page<PollingPlaceDTO> pollingPlaceList = pollingPlaceService.getPollingPlaceChallegented(pollingplaces,new PageRequest(1,1000));
-         List<PollingPlaceDTO> pollingPlaceDTOList = pollingPlaceList.getContent();
+        List<PollingPlaceDTO> pollingPlaceList = pollingPlaceService.getPollingPlaceChallegented(pollingplaces);
+
          Long election = 0L;
          RecountDemand recountDemand= new RecountDemand();
          DistrictDTO district = districtService.findOne(pollingplaces);
          election = district.getElectionId();
 
 
+        List<CausalDTO> listaCompletaCausales = causalService.getAllCausalsList();
+        Map<Integer, CausalPollingRelationDTO> listaTratadaCausales = new HashMap<Integer,CausalPollingRelationDTO>();
 
-        for (PollingPlaceDTO s:
-            pollingPlaceList) {
-            log.debug("----- pollingPlaceList {}", s.getId());
-            pollingPlaceDTOList.add(pollingPlaceService.findOne(s.getId()));
+        for(CausalDTO causalDTO : listaCompletaCausales){
+            CausalPollingRelationDTO causalPollingRelationDTO = new CausalPollingRelationDTO();
+            causalPollingRelationDTO.setId(causalDTO.getId());
+            causalPollingRelationDTO.setNombreCausal(causalDTO.getName());
+
+            listaTratadaCausales.put((int)(long)causalDTO.getId(),causalPollingRelationDTO );
         }
-        log.debug("E L E C C I O N {}",election);
 
         String filename = "demanda-distrito-"+pollingplaces+"-"+election+"-eleccion.doc";
         File file = new File("/Desarrollo/files/demandas/" + filename);
         ElectionDTO electionDTO = electionService.findOne(election);
-        recountDemand.generateRecountDemandPollingPlace(pollingPlaceDTOList , electionDTO,filename);
+
+        recountDemand.generateRecountDemandPollingPlace(pollingPlaceList , electionDTO,filename,district,listaTratadaCausales);
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Cache-Control", "no-cache, no-store, must-revalidate");

@@ -8,11 +8,10 @@ import org.apache.poi.xwpf.usermodel.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.management.AttributeList;
 import java.io.*;
 import java.text.DecimalFormat;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class RecountDemand {
     private final Logger log = LoggerFactory.getLogger(PollingPlaceResource.class);
@@ -201,22 +200,88 @@ public class RecountDemand {
      * @param pollingPlaceDTOList
      * @param electionDTO
      * @param filename
+     * @param district
+     * @param listaTratadaCausales
      * @throws IOException
      */
 
-    public void generateRecountDemandPollingPlace(List<PollingPlaceDTO> pollingPlaceDTOList, ElectionDTO electionDTO, String filename) throws IOException {
-        log.debug("---> filename {}", filename);
+    public void generateRecountDemandPollingPlace(List<PollingPlaceDTO> pollingPlaceDTOList, ElectionDTO electionDTO, String filename, DistrictDTO district, Map<Integer, CausalPollingRelationDTO> listaTratadaCausales) throws IOException {
         String partyOrCoalitionOrCandidate = "";
         String nameDemandant = "";
         String electionTypeName = "";
         String recountFundamentRequest = "";
         String recountElectoralInstitute = "";
+        ArrayList<PollingPlaceWithRecountDTO> listPollingPlaceWithRecount = new ArrayList<PollingPlaceWithRecountDTO>() ;
+        //Map<Long, ArrayList<CausalDTO>> listadoCausales  = new HashMap<Long, ArrayList<CausalDTO>>();
+        int i = 1;
+        int j = 0;
+
+        String[] romanos = {"I","II","III","IV","V","VI","VII","VIII","IX", "X", "XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX"};
+        Long [][] relaciones = new Long  [30][];
+
+       // List<Long> casillasConCausal= new ArrayList<Long>();
+
+
+
+
+        for (PollingPlaceDTO pollingPlaceDTO : pollingPlaceDTOList){
+
+            if(pollingPlaceDTO.getNullVotes() > (pollingPlaceDTO.getTotalFirstPlace()- pollingPlaceDTO.getTotalSecondPlace()) ){
+                PollingPlaceWithRecountDTO  pollingPlaceWithRecountDTO = new PollingPlaceWithRecountDTO();
+                pollingPlaceWithRecountDTO.setDiferenceFirstSecond( pollingPlaceDTO.getTotalFirstPlace()- pollingPlaceDTO.getTotalSecondPlace() );
+                pollingPlaceWithRecountDTO.setId(pollingPlaceDTO.getId());
+                pollingPlaceWithRecountDTO.setNullVotes(pollingPlaceDTO.getNullVotes());
+                pollingPlaceWithRecountDTO.setSection(pollingPlaceDTO.getSection());
+                pollingPlaceWithRecountDTO.setTypeNumber(pollingPlaceDTO.getTypeNumber());
+                pollingPlaceWithRecountDTO.setTypePollingPlace(pollingPlaceDTO.getTypePollingPlace());
+                listPollingPlaceWithRecount.add(pollingPlaceWithRecountDTO);
+
+            }
+            if(pollingPlaceDTO.getCausals() != null){
+                for (CausalDTO causalDTO:pollingPlaceDTO.getCausals()
+                    ) {
+                    try{
+                        // obtenemos el id de causal a insertar
+                        Integer idCausal = Math.toIntExact(causalDTO.getId());
+                        // se obtiene el espacio de las causales
+                        CausalPollingRelationDTO causalPollingRelationDTO = listaTratadaCausales.get(idCausal);
+                        // del espacio de causales se obtiene la lista de casillas
+                        // no hay nada de casillas
+                        if(causalPollingRelationDTO.getPollingPlaceDTOList() == null){
+
+                            List<PollingPlaceDTO> pollingPlaceDTOListInner = new ArrayList<PollingPlaceDTO>();
+                            pollingPlaceDTOListInner.add(pollingPlaceDTO);
+                            causalPollingRelationDTO.setPollingPlaceDTOList(pollingPlaceDTOListInner);
+                        }else{
+                            List<PollingPlaceDTO> pollingPlaceDTOListInner = causalPollingRelationDTO.getPollingPlaceDTOList();
+                            pollingPlaceDTOListInner.add(pollingPlaceDTO);
+                            causalPollingRelationDTO.setPollingPlaceDTOList(pollingPlaceDTOListInner);
+                        }
+
+                    }catch (NullPointerException e){
+                        System.out.print("Caught the NullPointerException");
+
+                    }
+
+
+
+
+
+
+                }
+
+            }
+
+
+
+
+
+        }
 
         FileOutputStream out = new FileOutputStream(new File("/Desarrollo/files/demandas/"+filename));
         try{
             XWPFDocument  document = new XWPFDocument();
             XWPFParagraph paragraph = document.createParagraph();
-            XWPFRun encabezado = paragraph.createRun();
 
             try{
                 if(electionDTO.getPoliticalPartyAssociatedName() != null){
@@ -244,12 +309,19 @@ public class RecountDemand {
                 System.out.print("Caught the NullPointerException");
             }
 
-
+            /**
+             * CONSEJO DISTRITAL I
+             * DEL INSTITUTO Instituto Electoral de Oaxaca CON CABECERA EN ACATLAN DE PEREZ FIGUEROA
+             * PRESENTE.-
+             * */
             XWPFParagraph paragraphA = document.createParagraph();
             paragraphA.setAlignment(ParagraphAlignment.BOTH);
             XWPFRun entrada = paragraphA.createRun();
             entrada.setBold(true);
-            entrada.setText(recountElectoralInstitute.toUpperCase());
+            entrada.setText("Consejo Distrital "+district.getRomanNumber());
+            entrada.addCarriageReturn();
+
+            entrada.setText("DEL "+recountElectoralInstitute.toUpperCase()+" CON CABECERA DISTRITAL EN "+ district.getDistrictHead());
             entrada.addCarriageReturn();
             entrada.setText("PRESENTE.-");
             entrada.addCarriageReturn();
@@ -262,7 +334,6 @@ public class RecountDemand {
             XWPFRun introduccion = paragraphTwo.createRun();
 
             XWPFRun solicitud = paragraphTwo.createRun();
-            XWPFRun regla = paragraphTwo.createRun();
 
 
 
@@ -272,121 +343,107 @@ public class RecountDemand {
             }
 
 
-
+            /**
+             * Juan Palacios García en mi calidad de representante del Partido Coalición con rumbo y estabilidad para Oaxaca,
+             * registrado formalmente ante este Consejo Distrital, en la presente sesión de cómputo Distrital de la elección de GOBERNADOR,
+             * con fundamento en lo dispuesto en los artículos Artículos 61, 62 y demás relativos y aplicables de  la
+             * Ley del Sistema de Medios de Impugnación en Materia Electoral y de Participación Ciudadana para el Estado de Oaxaca.,
+             * me permito solicitar a usted lo siguiente:
+             *
+             */
             introduccion.setText(nameDemandant +" en mi calidad de representante de"+ partyOrCoalitionOrCandidate +", registrado formalmente ante este Consejo Distrital, en la presente sesión de cómputo Distrital de la elección de "+electionTypeName+", con fundamento en lo dispuesto en "+recountFundamentRequest+", me permito solicitar a usted lo siguiente: ");
             introduccion.addCarriageReturn();
             introduccion.addCarriageReturn();
 
-            encabezado.setBold(true);
-            encabezado.setCapitalized(true);
-            encabezado.addBreak();
 
-            log.debug("electionDTO.getRecountElectoralInstitute().isEmpty() {}", recountElectoralInstitute);
-
-
-            encabezado.setText(recountElectoralInstitute.toUpperCase());
-            encabezado.addBreak();
-            encabezado.addBreak();
-            encabezado.setText("PRESENTE. -");
-            encabezado.addCarriageReturn();
-            encabezado.addCarriageReturn();
 
             solicitud.setText("Se realice el recuento de votos de las casillas que a continuación se indican ");
-            regla.setBold(true);
-            regla.setText("por encuadrar los supuestos normativos siguientes:\n");
-            regla.addCarriageReturn();
+            solicitud.setBold(true);
+            solicitud.setText(" que generan duda sobre el resultado de la votación en las casillas que a continuación se enumeran:");
+
+            solicitud.addCarriageReturn();
+
+            /*
+            * I.- El número de votos nulos es mayor a la diferencia entre el primer y segundo lugar en las casillas:
+
+             * */
+
+            XWPFParagraph nullVotesSection = document.createParagraph();
+            nullVotesSection.setAlignment(ParagraphAlignment.BOTH);
+            XWPFRun introNullVotes = nullVotesSection.createRun();
+            introNullVotes.setBold(true);
+            introNullVotes.setText("I.- El número de votos nulos es mayor a la diferencia entre el primer y segundo lugar en las casillas:");
+            XWPFTable tableNullVotes    = document.createTable();
+
+            XWPFTableRow tableRowOne = tableNullVotes.getRow(0);
+            tableRowOne.getCell(0).setText("CONSECUTIVO");
+            tableRowOne.addNewTableCell().setText("SECCIÓN");
+            tableRowOne.addNewTableCell().setText("CASILLA");
+            tableRowOne.addNewTableCell().setText("CAUSA DE RECUENTO");
 
 
-            for (int i= 0; i < pollingPlaceDTOList.size(); i++){
-                PollingPlaceDTO pollingPlaceDTO = pollingPlaceDTOList.get(i);
-                String tipo = "";
-
-                if(pollingPlaceDTO.getTypePollingPlace().toString() == "BASIC"){
-                    tipo = "Básica";
+            for (PollingPlaceWithRecountDTO pollingPlaceWithRecount: listPollingPlaceWithRecount ){
+                XWPFTableRow tableRowTwo = tableNullVotes.createRow();
+                if(pollingPlaceWithRecount.getNullVotes() > pollingPlaceWithRecount.getDiferenceFirstSecond() ){
+                    tableRowTwo.getCell(0).setText(String.valueOf(i));
+                    tableRowTwo.getCell(1).setText(String.valueOf(pollingPlaceWithRecount.getSection()));
+                    tableRowTwo.getCell(2).setText(this.getTipoCasilla(String.valueOf(pollingPlaceWithRecount.getTypePollingPlace()))  +" "+ pollingPlaceWithRecount.getTypeNumber() );
+                    tableRowTwo.getCell(3).setText("Hay "+ String.valueOf(pollingPlaceWithRecount.getNullVotes())+" votos nulos y la diferencia entre 1ro y 2do lugar es de "+ String.valueOf(pollingPlaceWithRecount.getDiferenceFirstSecond())  +" votos ");
+                    i++;
                 }
-                if(pollingPlaceDTO.getTypePollingPlace().toString() == "CONTIGUOUS"){
-                    tipo = "Contigua";
-                }
-                if(pollingPlaceDTO.getTypePollingPlace().toString() == "EXTRAORDINARY"){
-                    tipo = "Extraordinaria";
-                }
-                if(pollingPlaceDTO.getTypePollingPlace().toString() == "SPECIAL"){
-                    tipo = "Especial";
-                }
 
-                log.debug("---> pollingPlaceDTO {}",pollingPlaceDTO);
-
-                XWPFParagraph contenidoCasillas = document.createParagraph();
-                XWPFRun tituloCasilla = contenidoCasillas.createRun();
-                tituloCasilla.setBold(true);
-                contenidoCasillas.setAlignment(ParagraphAlignment.CENTER);
-
-                tituloCasilla.setText(pollingPlaceDTO.getTown());
-                tituloCasilla.addCarriageReturn();
-                tituloCasilla.addCarriageReturn();
-                tituloCasilla.setText(" Sección: "+ pollingPlaceDTO.getSection()+", "+tipo+ " "+ pollingPlaceDTO.getTypeNumber());
-                tituloCasilla.addCarriageReturn();
-                Set<CausalDTO> causalDTOS = pollingPlaceDTO.getCausals();
-
-                for(CausalDTO causalDTO : causalDTOS){
-                    log.debug("causal DTO {}", causalDTO);
-                    XWPFRun causalCasilla = contenidoCasillas.createRun();
-
-                    Set<CausalDescriptionDTO> causalDescriptionDTOS = causalDTO.getCausalDescriptions();
-                    String cadenaDescripcion = "";
-                    for(CausalDescriptionDTO causalDescriptionDTO : causalDescriptionDTOS){
-                        cadenaDescripcion += causalDescriptionDTO.getText();
-                    }
-                    causalCasilla.setText(causalDTO.getName()+". "+cadenaDescripcion);
-                    if(causalDTO.getId() == 4){
-                        XWPFTable table = document.createTable();
-                        XWPFRun textoTabla = paragraphTwo.createRun();
-                        textoTabla.setCapitalized(true);
-                        textoTabla.addCarriageReturn();
-                        Double diferenciaPorcentual = ((double)pollingPlaceDTO.getTotalFirstPlace()- (double)pollingPlaceDTO.getTotalSecondPlace())/(double)pollingPlaceDTO.getTotalVotes();
-                        log.debug("PRIMER LUGAR {}",pollingPlaceDTO.getTotalFirstPlace());
-                        log.debug("SEGUNDO LUGAR {}", pollingPlaceDTO.getTotalSecondPlace());
-                        log.debug("TOTAL DE VOTOS {}",pollingPlaceDTO.getTotalVotes());
-                        log.debug("diferenciaPorcentual ----> {}",diferenciaPorcentual);
-                        log.debug("RESTA ----> {}",((double)pollingPlaceDTO.getTotalFirstPlace()- (double)pollingPlaceDTO.getTotalSecondPlace())/(double)pollingPlaceDTO.getTotalVotes());
-                        //create first row
-                        XWPFTableRow tableRowOne = table.getRow(0);
-                        tableRowOne.getCell(0).setText("PRIMER LUGAR");
-                        tableRowOne.addNewTableCell().setText("");
-                        tableRowOne.addNewTableCell().setText("SEGUNDO LUGAR");
-                        tableRowOne.addNewTableCell().setText("");
-                        tableRowOne.addNewTableCell().setText("");
-
-                        //create second row
-                        XWPFTableRow tableRowTwo = table.createRow();
-                        tableRowTwo.getCell(0).setText("Patido o Coalición");
-                        tableRowTwo.getCell(1).setText("Votación");
-                        tableRowTwo.getCell(2).setText("Partido o Coalición");
-                        tableRowTwo.getCell(3).setText("Votación");
-                        tableRowTwo.getCell(4).setText("Diferencia Porcentual");
-
-                        //create third row
-                        XWPFTableRow tableRowThree = table.createRow();
-                        tableRowThree.getCell(0).setText(pollingPlaceDTO.getEntityFirstPlace());
-                        tableRowThree.getCell(1).setText(pollingPlaceDTO.getTotalFirstPlace().toString());
-                        tableRowThree.getCell(2).setText(pollingPlaceDTO.getEntitySecondPlace());
-                        tableRowThree.getCell(3).setText(pollingPlaceDTO.getTotalSecondPlace().toString());
-                        tableRowThree.getCell(4).setText(String.valueOf( new DecimalFormat("#.##").format(diferenciaPorcentual)));
-
-
-
-
-
-                    }
-                    log.debug("--- CAUSAL DTO--- {}",causalDTO.toString());
-                    causalCasilla.addCarriageReturn();
-                    causalCasilla.addBreak();
-                }
             }
+
+
+            Iterator it = listaTratadaCausales.keySet().iterator();
+
+            XWPFParagraph causalsuVotesSection = document.createParagraph();
+            causalsuVotesSection.setAlignment(ParagraphAlignment.BOTH);
+
+            while(it.hasNext()){
+                Integer key = (Integer) it.next();
+                CausalPollingRelationDTO causalPollingRelationDTO = listaTratadaCausales.get(key);
+                List<PollingPlaceDTO> pollingPlaceDTOList1 = causalPollingRelationDTO.getPollingPlaceDTOList();
+                if(pollingPlaceDTOList1 != null  && pollingPlaceDTOList.size() > 0){
+                    try{
+                        XWPFRun introCausalsVotes = causalsuVotesSection.createRun();
+                        introCausalsVotes.addCarriageReturn();
+                        introCausalsVotes.setBold(true);
+                        introCausalsVotes.addCarriageReturn();
+
+
+                        introCausalsVotes.setText( romanos[j+1] + ". "+ causalPollingRelationDTO.getNombreCausal()+" ");
+
+                        for (PollingPlaceDTO pollingPlaceDTO : pollingPlaceDTOList1){
+                            XWPFRun datosCausalsVotes = causalsuVotesSection.createRun();
+                            datosCausalsVotes.setBold(false);
+                            datosCausalsVotes.addCarriageReturn();
+                            log.debug("POLLING PLACE {}", pollingPlaceDTO.toString());
+                            datosCausalsVotes.setText("     - Sección: "+pollingPlaceDTO.getSection()+ ", casilla "+ this.getTipoCasilla(String.valueOf(pollingPlaceDTO.getTypePollingPlace()))  + " " +String.valueOf(pollingPlaceDTO.getTypeNumber()) );
+
+                        }
+
+                        j++;
+
+                    }catch (NullPointerException e){
+                        System.out.print("Caught the NullPointerException");
+                    }
+                }
+
+
+
+
+            }
+
+
+
+
+
 
             XWPFParagraph paragraphThree = document.createParagraph();
             XWPFRun despedida = paragraphThree.createRun();
-            despedida.setText("Asimismo, en caso de que del resultado del cómputo distrital resultara que la diferencia porcentual entre el primer y segundo lugar fuera igual o menor a un punto porcentual, se solicita que ese consejo distrital realizar el recuento de votos en la totalidad de las casillas correspondientes a dicho Distrito Electoral I con cabecera en ACATLAN DE PEREZ FIGUEROA.");
+            despedida.addCarriageReturn();
+            despedida.setText("Asimismo, en caso de que del resultado del cómputo distrital resultara que la diferencia porcentual entre el primer y segundo lugar fuera igual o menor a un punto porcentual, se solicita que ese consejo distrital realizar el recuento de votos en la totalidad de las casillas correspondientes a dicho Distrito Electoral "+ district.getRomanNumber()+" con cabecera en "+district.getDistrictHead()+".");
             despedida.addCarriageReturn();
             despedida.addCarriageReturn();
             despedida.setText("ATENTAMENTE");
@@ -408,6 +465,16 @@ public class RecountDemand {
             e.printStackTrace();
         }
 
+    }
+
+
+    String getTipoCasilla(String casilla){
+        if(casilla == "BASIC") return "Básica ";
+        if(casilla == "CONTIGUOUS") return "Contigua ";
+        if(casilla == "EXTRAORDINARY") return "Extraordinaria ";
+        if(casilla == "SPECIAL") return "Especial ";
+
+        return   casilla;
     }
 
 }
