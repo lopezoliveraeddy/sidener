@@ -11,6 +11,11 @@
             "fieldType": "Long"
         },
         {
+            "fieldName": "idDistrict",
+            "fieldType": "Long"
+        },
+ 
+        {
             "fieldName": "observations",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "text"

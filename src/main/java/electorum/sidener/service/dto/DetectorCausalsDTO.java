@@ -16,6 +16,8 @@ public class DetectorCausalsDTO implements Serializable {
 
     private Long idCausal;
 
+    private Long idDistrict;
+
     @Lob
     private String observations;
 
@@ -41,6 +43,14 @@ public class DetectorCausalsDTO implements Serializable {
 
     public void setIdCausal(Long idCausal) {
         this.idCausal = idCausal;
+    }
+
+    public Long getIdDistrict() {
+        return idDistrict;
+    }
+
+    public void setIdDistrict(Long idDistrict) {
+        this.idDistrict = idDistrict;
     }
 
     public String getObservations() {
@@ -78,6 +88,7 @@ public class DetectorCausalsDTO implements Serializable {
             "id=" + getId() +
             ", idPollingPlace='" + getIdPollingPlace() + "'" +
             ", idCausal='" + getIdCausal() + "'" +
+            ", idDistrict='" + getIdDistrict() + "'" +
             ", observations='" + getObservations() + "'" +
             "}";
     }

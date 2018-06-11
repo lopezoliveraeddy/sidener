@@ -29,6 +29,9 @@ public class DetectorCausals implements Serializable {
     @Column(name = "id_causal")
     private Long idCausal;
 
+    @Column(name = "id_district")
+    private Long idDistrict;
+
     @Lob
     @Column(name = "observations")
     private String observations;
@@ -66,6 +69,19 @@ public class DetectorCausals implements Serializable {
 
     public void setIdCausal(Long idCausal) {
         this.idCausal = idCausal;
+    }
+
+    public Long getIdDistrict() {
+        return idDistrict;
+    }
+
+    public DetectorCausals idDistrict(Long idDistrict) {
+        this.idDistrict = idDistrict;
+        return this;
+    }
+
+    public void setIdDistrict(Long idDistrict) {
+        this.idDistrict = idDistrict;
     }
 
     public String getObservations() {
@@ -108,6 +124,7 @@ public class DetectorCausals implements Serializable {
             "id=" + getId() +
             ", idPollingPlace='" + getIdPollingPlace() + "'" +
             ", idCausal='" + getIdCausal() + "'" +
+            ", idDistrict='" + getIdDistrict() + "'" +
             ", observations='" + getObservations() + "'" +
             "}";
     }

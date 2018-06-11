@@ -48,6 +48,9 @@ public class DetectorCausalsResourceIntTest {
     private static final Long DEFAULT_ID_CAUSAL = 1L;
     private static final Long UPDATED_ID_CAUSAL = 2L;
 
+    private static final Long DEFAULT_ID_DISTRICT = 1L;
+    private static final Long UPDATED_ID_DISTRICT = 2L;
+
     private static final String DEFAULT_OBSERVATIONS = "AAAAAAAAAA";
     private static final String UPDATED_OBSERVATIONS = "BBBBBBBBBB";
 
@@ -99,6 +102,7 @@ public class DetectorCausalsResourceIntTest {
         DetectorCausals detectorCausals = new DetectorCausals()
             .idPollingPlace(DEFAULT_ID_POLLING_PLACE)
             .idCausal(DEFAULT_ID_CAUSAL)
+            .idDistrict(DEFAULT_ID_DISTRICT)
             .observations(DEFAULT_OBSERVATIONS);
         return detectorCausals;
     }
@@ -127,6 +131,7 @@ public class DetectorCausalsResourceIntTest {
         DetectorCausals testDetectorCausals = detectorCausalsList.get(detectorCausalsList.size() - 1);
         assertThat(testDetectorCausals.getIdPollingPlace()).isEqualTo(DEFAULT_ID_POLLING_PLACE);
         assertThat(testDetectorCausals.getIdCausal()).isEqualTo(DEFAULT_ID_CAUSAL);
+        assertThat(testDetectorCausals.getIdDistrict()).isEqualTo(DEFAULT_ID_DISTRICT);
         assertThat(testDetectorCausals.getObservations()).isEqualTo(DEFAULT_OBSERVATIONS);
 
         // Validate the DetectorCausals in Elasticsearch
@@ -167,6 +172,7 @@ public class DetectorCausalsResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(detectorCausals.getId().intValue())))
             .andExpect(jsonPath("$.[*].idPollingPlace").value(hasItem(DEFAULT_ID_POLLING_PLACE.intValue())))
             .andExpect(jsonPath("$.[*].idCausal").value(hasItem(DEFAULT_ID_CAUSAL.intValue())))
+            .andExpect(jsonPath("$.[*].idDistrict").value(hasItem(DEFAULT_ID_DISTRICT.intValue())))
             .andExpect(jsonPath("$.[*].observations").value(hasItem(DEFAULT_OBSERVATIONS.toString())));
     }
 
@@ -183,6 +189,7 @@ public class DetectorCausalsResourceIntTest {
             .andExpect(jsonPath("$.id").value(detectorCausals.getId().intValue()))
             .andExpect(jsonPath("$.idPollingPlace").value(DEFAULT_ID_POLLING_PLACE.intValue()))
             .andExpect(jsonPath("$.idCausal").value(DEFAULT_ID_CAUSAL.intValue()))
+            .andExpect(jsonPath("$.idDistrict").value(DEFAULT_ID_DISTRICT.intValue()))
             .andExpect(jsonPath("$.observations").value(DEFAULT_OBSERVATIONS.toString()));
     }
 
@@ -207,6 +214,7 @@ public class DetectorCausalsResourceIntTest {
         updatedDetectorCausals
             .idPollingPlace(UPDATED_ID_POLLING_PLACE)
             .idCausal(UPDATED_ID_CAUSAL)
+            .idDistrict(UPDATED_ID_DISTRICT)
             .observations(UPDATED_OBSERVATIONS);
         DetectorCausalsDTO detectorCausalsDTO = detectorCausalsMapper.toDto(updatedDetectorCausals);
 
@@ -221,6 +229,7 @@ public class DetectorCausalsResourceIntTest {
         DetectorCausals testDetectorCausals = detectorCausalsList.get(detectorCausalsList.size() - 1);
         assertThat(testDetectorCausals.getIdPollingPlace()).isEqualTo(UPDATED_ID_POLLING_PLACE);
         assertThat(testDetectorCausals.getIdCausal()).isEqualTo(UPDATED_ID_CAUSAL);
+        assertThat(testDetectorCausals.getIdDistrict()).isEqualTo(UPDATED_ID_DISTRICT);
         assertThat(testDetectorCausals.getObservations()).isEqualTo(UPDATED_OBSERVATIONS);
 
         // Validate the DetectorCausals in Elasticsearch
@@ -283,6 +292,7 @@ public class DetectorCausalsResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(detectorCausals.getId().intValue())))
             .andExpect(jsonPath("$.[*].idPollingPlace").value(hasItem(DEFAULT_ID_POLLING_PLACE.intValue())))
             .andExpect(jsonPath("$.[*].idCausal").value(hasItem(DEFAULT_ID_CAUSAL.intValue())))
+            .andExpect(jsonPath("$.[*].idDistrict").value(hasItem(DEFAULT_ID_DISTRICT.intValue())))
             .andExpect(jsonPath("$.[*].observations").value(hasItem(DEFAULT_OBSERVATIONS.toString())));
     }
 

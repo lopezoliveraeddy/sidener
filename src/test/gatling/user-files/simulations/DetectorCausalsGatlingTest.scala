@@ -68,7 +68,7 @@ class DetectorCausalsGatlingTest extends Simulation {
             .exec(http("Create new detectorCausals")
             .post("/api/detector-causals")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "idPollingPlace":null, "idCausal":null, "observations":null}""")).asJSON
+            .body(StringBody("""{"id":null, "idPollingPlace":null, "idCausal":null, "idDistrict":null, "observations":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_detectorCausals_url"))).exitHereIfFailed
             .pause(10)

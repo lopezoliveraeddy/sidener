@@ -11,7 +11,7 @@
         $stateProvider
             .state('detector-causal', {
                 parent: 'entity',
-                url: '/election/detector/{id}',
+                url: '/election/detector/{distrito}/{id}',
                 data: {
                     authorities: ['ROLE_ADMIN'],
                     pageTitle: 'sidenerApp.election.home.title'
@@ -24,6 +24,7 @@
                     }
                 },
                 params: {
+                    distrito: null,
                     id: null,
                     page: {
                         value: '1',

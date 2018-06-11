@@ -82,12 +82,15 @@
         }
 
         $scope.updateDetectorCausals = function(detectorCausals) {
+            detectorCausals.idDistrict = $stateParams.distrito;
             DetectorCausals.update(detectorCausals, onSaveSuccess, onSaveError);
         };
 
         $scope.createDetectorCausals = function(detectorCausals, causalId) {
             vm.detectorCausals.idCausal = causalId;
             vm.detectorCausals.idPollingPlace = $stateParams.id;
+            vm.detectorCausals.idDistrict = $stateParams.distrito;
+            console.log(vm.detectorCausals);
             DetectorCausals.save(JSON.stringify(vm.detectorCausals), onSaveSuccess, onSaveError);
 
         };
@@ -101,5 +104,10 @@
         function onSaveError () {
             vm.isSaving = false;
         }
+
+
+
+
+
     }
 })();

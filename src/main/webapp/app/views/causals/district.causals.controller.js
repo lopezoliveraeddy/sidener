@@ -17,7 +17,8 @@
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.loadAll = loadAll;
-        vm.demandByDistrict = demandByDistrict;
+        vm.demandByDistrict = demandByDistrict
+        vm.getCausalDemand = getCausalDemand;
 
         // Datos de la Elección
         vm.loadElection = loadElection;
@@ -97,6 +98,11 @@
                 page: vm.page,
                 sort: vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')
             });
+        }
+
+
+        function getCausalDemand(district) {
+            console.log(district);
         }
 
     }
