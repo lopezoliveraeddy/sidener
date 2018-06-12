@@ -5,9 +5,9 @@
         .module('sidenerApp')
         .controller('ElectionCausalsDistrictController', ElectionCausalsDistrictController);
 
-    ElectionCausalsDistrictController.$inject = ['$state', '$stateParams', 'Election', 'ElectionCausalsDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams','DistrictCausalsPollingPlaces','DistrictCausalsSearchPollingPlaces'];
+    ElectionCausalsDistrictController.$inject = ['$state', '$stateParams', 'Election', 'ElectionCausalsDistrict', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams','DistrictCausalsPollingPlaces','DistrictCausalsSearchPollingPlaces','DistrictDownload'];
 
-    function ElectionCausalsDistrictController($state, $stateParams, Election, ElectionCausalsDistrict, ParseLinks, AlertService, paginationConstants, pagingParams,DistrictCausalsPollingPlaces,DistrictCausalsSearchPollingPlaces) {
+    function ElectionCausalsDistrictController($state, $stateParams, Election, ElectionCausalsDistrict, ParseLinks, AlertService, paginationConstants, pagingParams,DistrictCausalsPollingPlaces,DistrictCausalsSearchPollingPlaces,DistrictDownload) {
 
         var vm = this;
 
@@ -19,6 +19,7 @@
         vm.loadAll = loadAll;
         vm.demandByDistrict = demandByDistrict
         vm.getCausalDemand = getCausalDemand;
+
 
         // Datos de la Elección
         vm.loadElection = loadElection;
@@ -103,6 +104,28 @@
 
         function getCausalDemand(district) {
             console.log(district);
+            DistrictDownload.get(district).then(function(response) {
+
+                var contentDisposition = response.headers("content-disposition");
+                var tmp = contentDisposition.split("filename=");
+                var filename = "";
+
+                if(tmp.length>1){
+                    filename = tmp[1].replace(/\"/g, '');
+                }
+
+                var a = document.createElement("a");
+                document.body.appendChild(a);
+                var file = new Blob([response.data], {type: 'application/octet-stream'});
+                var fileURL = URL.createObjectURL(file);
+                console.log(fileURL);
+
+                a.href = fileURL;
+                a.download = filename;
+                a.click();
+            }).catch(function(error) {
+                AlertService.error(error);
+            });
         }
 
     }

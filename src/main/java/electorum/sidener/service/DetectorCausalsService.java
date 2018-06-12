@@ -32,6 +32,7 @@ public class DetectorCausalsService {
 
     private final DetectorCausalsSearchRepository detectorCausalsSearchRepository;
 
+
     public DetectorCausalsService(DetectorCausalsRepository detectorCausalsRepository, DetectorCausalsMapper detectorCausalsMapper, DetectorCausalsSearchRepository detectorCausalsSearchRepository) {
         this.detectorCausalsRepository = detectorCausalsRepository;
         this.detectorCausalsMapper = detectorCausalsMapper;
@@ -117,5 +118,18 @@ public class DetectorCausalsService {
         log.debug("Request to get a list of DetectorCausals by idPollingPlace {} and idCausal {}", idPollingPlace, idCausal);
         DetectorCausals detectorCausals = detectorCausalsRepository.findDetectorCausalsByIdPollingPlaceAndIdCausal(idPollingPlace, idCausal);
         return detectorCausalsMapper.toDto(detectorCausals);
+    }
+
+    @Transactional(readOnly =  true)
+    public List<DetectorCausalsDTO> getDetectorCausalsDTOList (Long idDistrict){
+        List<DetectorCausals> result = detectorCausalsRepository.findDetectorCausalsByIdDistrictOrderByIdCausal(idDistrict);
+        return  detectorCausalsMapper.toDto(result);
+    }
+
+    @Transactional(readOnly =  true)
+    public List<DetectorCausalsDTO> getDetectorCausalByIdDistrict(Long idDistrict){
+        List<DetectorCausals> result = detectorCausalsRepository.findDetectorCausalsByIdDistrictOrderByIdCausal(idDistrict);
+        return detectorCausalsMapper.toDto(result);
+
     }
 }

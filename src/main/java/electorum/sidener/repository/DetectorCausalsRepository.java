@@ -17,5 +17,6 @@ import java.util.Set;
 public interface DetectorCausalsRepository extends JpaRepository<DetectorCausals, Long> {
 
     DetectorCausals findDetectorCausalsByIdPollingPlaceAndIdCausal(Long idPollingPlace, Long idCausal);
+    List<DetectorCausals> findDetectorCausalsByIdDistrictOrderByIdCausal(Long idDistrict);
 
 }

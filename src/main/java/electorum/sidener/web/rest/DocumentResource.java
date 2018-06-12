@@ -2,10 +2,8 @@ package electorum.sidener.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 
-import electorum.sidener.service.CausalService;
-import electorum.sidener.service.DistrictService;
-import electorum.sidener.service.ElectionService;
-import electorum.sidener.service.PollingPlaceService;
+import electorum.sidener.domain.PollingPlace;
+import electorum.sidener.service.*;
 import electorum.sidener.service.dto.*;
 import electorum.sidener.service.util.Documents;
 import electorum.sidener.service.util.RecountDemand;
@@ -43,12 +41,14 @@ public class DocumentResource {
     private final ElectionService electionService;
     private final PollingPlaceService pollingPlaceService;
     private final CausalService causalService;
+    private final DetectorCausalsService detectorCausalsService;
 
-    public DocumentResource(DistrictService districtService, ElectionService electionService, PollingPlaceService pollingPlaceService, CausalService causalService) {
+    public DocumentResource(DistrictService districtService, ElectionService electionService, PollingPlaceService pollingPlaceService, CausalService causalService,DetectorCausalsService detectorCausalsService) {
         this.districtService = districtService;
         this.electionService = electionService;
         this.pollingPlaceService = pollingPlaceService;
         this.causalService = causalService;
+        this.detectorCausalsService = detectorCausalsService;
     }
 
 
@@ -202,7 +202,75 @@ public class DocumentResource {
 
     }
 
+    @PostMapping("/file/districtdownload")
+    @Timed
+    public ResponseEntity<Resource> districtDownload(@RequestParam Long idDistrito ) throws  IOException{
+        String filename="district-download-"+idDistrito+"-causals.doc";
+        File file = new File("/Desarrollo/files/demandas/"+filename);
+        RecountDemand recountDemand = new RecountDemand();
+        log.debug("DISTRITO {}", idDistrito);
 
+        List<DetectorCausalsDTO> detectorCausalByIdDistrict = detectorCausalsService.getDetectorCausalByIdDistrict(idDistrito);
+        List<FullDetectorDTO> fullDetectorDTOS = new ArrayList<FullDetectorDTO>();
+
+        log.debug("TAMANO {}", detectorCausalByIdDistrict.size());
+        DistrictDTO districtDTO = districtService.findOne(idDistrito);
+        ElectionDTO electionDTO = electionService.findOne(districtDTO.getElectionId());
+
+        for(DetectorCausalsDTO detectorCausalsDTO : detectorCausalByIdDistrict){
+            FullDetectorDTO fullDetectorDTO = new FullDetectorDTO();
+
+            CausalDTO causalDTO = causalService.findOne(detectorCausalsDTO.getIdCausal()) ;
+            PollingPlaceDTO pollingPlaceDTO = pollingPlaceService.findOne(detectorCausalsDTO.getIdPollingPlace());
+
+            fullDetectorDTO.setCausalDTO(causalDTO);
+            fullDetectorDTO.setPollingPlaceDTO(pollingPlaceDTO);
+            fullDetectorDTO.setId(detectorCausalsDTO.getIdCausal() );
+            fullDetectorDTO.setObservations(detectorCausalsDTO.getObservations());
+            fullDetectorDTOS.add(fullDetectorDTO);
+
+
+
+
+        }
+
+
+
+        recountDemand.generateCausalDemand(districtDTO,filename,fullDetectorDTOS,electionDTO);
+
+
+
+
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+
+        headers.add("Content-Disposition", "inline; filename=\"" + filename + "\"");
+
+        Path path = Paths.get(file.getAbsolutePath());
+
+        try{
+            ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
+
+            String mimeType = MimetypesFileTypeMap
+                .getDefaultFileTypeMap()
+                .getContentType(file);
+
+            MediaType mediaType = MediaType.parseMediaType(mimeType);
+            log.debug("MediaType {}",mediaType.toString());
+            return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(file.length())
+                .contentType(mediaType)
+                .body(resource);
+        }catch (NoSuchFileException e) {
+            return ResponseEntity.notFound().headers(headers).build();
+        }
+
+
+    }
 
 
     @PostMapping("/file/demand")

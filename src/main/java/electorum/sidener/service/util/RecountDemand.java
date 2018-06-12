@@ -1,20 +1,19 @@
 package electorum.sidener.service.util;
 
-import electorum.sidener.domain.Election;
-import electorum.sidener.domain.PollingPlace;
+import electorum.sidener.service.CausalService;
 import electorum.sidener.service.dto.*;
 import electorum.sidener.web.rest.PollingPlaceResource;
 import org.apache.poi.xwpf.usermodel.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.management.AttributeList;
 import java.io.*;
-import java.text.DecimalFormat;
 import java.util.*;
 
 public class RecountDemand {
     private final Logger log = LoggerFactory.getLogger(PollingPlaceResource.class);
+
+
 
     public void generateNulityDemand(ElectionDTO electionDTO,  DistrictDTO districtDTO, File file, String filename) throws IOException{
         log.debug("---> filename {}", file);
@@ -75,12 +74,6 @@ public class RecountDemand {
             hechosContenido.setText("1.     El 06 de Octubre de 2015, inició al proceso electoral ordinario para renovar Gobernador." +
                 "2.     El 05 de Junio de 2016, se llevó acabo la jornada electoral, registrándose diversas irregularidades en la votación recibida en las casillas del Distrito I, las cuales se precisan y se impugnan." +
                 "3.     El 08 de Junio de 2016, se llevaron a cabo los cómputos distritales en la entidad antes mencionada, en específico en el Consejo, concluyendo el correspondiente a la elección de undefined el 15 de Junio de 2016.");
-
-
-
-
-
-
 
 
             document.write(out);
@@ -262,19 +255,9 @@ public class RecountDemand {
                         System.out.print("Caught the NullPointerException");
 
                     }
-
-
-
-
-
-
                 }
 
             }
-
-
-
-
 
         }
 
@@ -477,4 +460,231 @@ public class RecountDemand {
         return   casilla;
     }
 
+    public void generateCausalDemand(DistrictDTO district, String filename, List<FullDetectorDTO> detectorCausalByIdDistrict, ElectionDTO electionDTO) throws IOException{
+        FileOutputStream out = new FileOutputStream(new File("/Desarrollo/files/demandas/"+filename));
+
+        try{
+            XWPFDocument document = new XWPFDocument();
+            XWPFParagraph paragraph = document.createParagraph();
+            XWPFRun encabezado = paragraph.createRun();
+            paragraph.setAlignment(ParagraphAlignment.RIGHT);
+            encabezado.setBold(true);
+            encabezado.setText("DEMANDA DE INCONFORMIDAD");
+            encabezado.addCarriageReturn();
+            String partyOrCoalitionOrCandidate= "------";
+            try{
+                if(electionDTO.getPoliticalPartyAssociatedName() != null){
+                    partyOrCoalitionOrCandidate = "l partido Político "+ electionDTO.getPoliticalPartyAssociatedName()+" ";
+                }
+                if(electionDTO.getCoalitionAssociatedName() != null){
+                    partyOrCoalitionOrCandidate = " la coalición con nombre \""+ electionDTO.getCoalitionAssociatedName()+"\" ";
+
+                }
+                if(electionDTO.getIndependentCandidateAssociatedName() != null){
+                    partyOrCoalitionOrCandidate = "l candidato independiente  "+ electionDTO.getIndependentCandidateAssociatedName()+" ";
+
+                }
+
+                XWPFParagraph presentacionParrafo = document.createParagraph();
+                XWPFRun presentacion = presentacionParrafo.createRun();
+
+
+                presentacion.setBold(true);
+                presentacion.setText(electionDTO.getRecountElectoralInstitute());
+                presentacion.addCarriageReturn();
+                presentacion.addCarriageReturn();
+
+                presentacion.setText("PRESENTE .-");
+                presentacion.addCarriageReturn();
+                presentacion.addCarriageReturn();
+                presentacion.addCarriageReturn();
+
+
+                XWPFParagraph primerParrafoParrafo = document.createParagraph();
+                XWPFRun primerParrafo = primerParrafoParrafo.createRun();
+                primerParrafoParrafo.setAlignment(ParagraphAlignment.BOTH);
+
+
+
+                primerParrafo.setText(electionDTO.getNameDemandant()+" en mi calidad de representante de "+partyOrCoalitionOrCandidate+" registrado " +
+                    "formalmente ante el Consejo distrital "+ district.getRomanNumber() +" con cabecera en  "+district.getDistrictHead()+", señalo como domicilio para oír y " +
+                    "recibir notificaciones el ubicado en "+district.getDistrictHead()+" y autorizo para esos efectos a " +
+                    "[--------------------]\n" +
+                    "De igual manera, con fundamento "+ electionDTO.getRecountFundamentRequest()+
+                    "en contra de los resultados del Cómputo Distrital de la Elección de "+electionDTO.getState().name() +" "+electionDTO.getElectionTypeName() +" 2015-2016, efectuados p" +
+                    "or el Consejo distrital con cabecera en "+district.getDistrictHead()+", en las casillas que se precisan en la presente demanda.\n" +
+                    "Hago valer mi impugnación y pretensión, en los hechos, agravios y pruebas que a continuación se expresan.\n");
+
+
+                XWPFParagraph hechos = document.createParagraph();
+                XWPFRun hechosTitulo = hechos.createRun();
+                hechosTitulo.setBold(true);
+                hechosTitulo.addCarriageReturn();
+                hechosTitulo.addCarriageReturn();
+                hechos.setAlignment(ParagraphAlignment.CENTER);
+                hechosTitulo.setText("I. HECHOS");
+                hechosTitulo.addCarriageReturn();
+                hechosTitulo.addCarriageReturn();
+
+                XWPFParagraph hechosParrafo = document.createParagraph();
+                XWPFRun hechosParrafoTexto = hechosParrafo.createRun();
+                hechosParrafo.setAlignment(ParagraphAlignment.BOTH);
+                hechosParrafoTexto.setText("Con base en los hechos antes expresados, manifiesto que los actos que se impugnan me causan AGRAVIOS, " +
+                    "mismos que, desde este momento, solicito se me supla la deficiencia en la expresión de éstos, " +
+                    "al tratarse de un medio en el que opera dicha figura. Causa agravio el cómputo realizado por el Consejo respecto de la elección de tipo Distrital.\n" +
+                    "Lo anterior, en atención a que debe anularse la votación recibida en las casillas que se detallarán a continuación, " +
+                    "por la actualización de las causas de nulidad de la votación contempladas en "+electionDTO.getRecountFundamentRequest()+"., durante la jornada electoral.\n");
+
+                hechosParrafoTexto.addCarriageReturn();
+                hechosParrafoTexto.addCarriageReturn();
+
+
+                XWPFParagraph agravios = document.createParagraph();
+                XWPFRun agraviosTitulo = agravios.createRun();
+                agravios.setAlignment(ParagraphAlignment.CENTER);
+                agraviosTitulo.setBold(true);
+                agraviosTitulo.addCarriageReturn();
+                agraviosTitulo.addCarriageReturn();
+                agraviosTitulo.setText("II AGRAVIOS");
+                agraviosTitulo.addCarriageReturn();
+                agraviosTitulo.addCarriageReturn();
+
+                XWPFParagraph agraviosTexto = document.createParagraph();
+                XWPFRun agraviosContenido = agraviosTexto.createRun();
+                agraviosTexto.setAlignment(ParagraphAlignment.BOTH);
+                agraviosContenido.setText("Con base en los hechos antes expresados, manifiesto que los actos que se impugnan me causan AGRAVIOS, mismos que, " +
+                    "desde este momento, solicito se me supla la deficiencia en la expresión de éstos, al tratarse de un medio en el que opera dicha figura.\n" +
+                    "Causa agravio el cómputo realizado por el Consejo respecto de la elección de tipo Distrital.\n" +
+                    "Lo anterior, en atención a que debe anularse la votación recibida en las casillas que se detallarán a continuación" +
+                    ", por la actualización de las causas de nulidad de la votación contempladas en "+electionDTO.getRecountFundamentRequest()+"., durante la jornada electoral.\n");
+
+                int  i = 0;
+                long tmpIdCausal = 0L,actual=0L;
+
+                for(FullDetectorDTO fullDetectorDTO :detectorCausalByIdDistrict){
+                    if(i == 0 ){
+                        tmpIdCausal = fullDetectorDTO.getId();
+                        XWPFParagraph causales = document.createParagraph();
+                        XWPFRun causalesTitulo = causales.createRun();
+                        causalesTitulo.setBold(true);
+                        causales.setAlignment(ParagraphAlignment.BOTH);
+                        causalesTitulo.setText(fullDetectorDTO.getCausalDTO().getName());
+                        causalesTitulo.addCarriageReturn();
+
+
+                    }
+
+                    if(tmpIdCausal != fullDetectorDTO.getId() && i != 0){
+                        XWPFParagraph causal = document.createParagraph();
+                        XWPFRun causalTitulo = causal.createRun();
+                        causalTitulo.setBold(true);
+                        causal.setAlignment(ParagraphAlignment.BOTH);
+                        causalTitulo.setText(fullDetectorDTO.getCausalDTO().getName());
+                        causalTitulo.addCarriageReturn();
+                        tmpIdCausal = fullDetectorDTO.getId();
+
+                    }else{
+                        XWPFParagraph observaciones = document.createParagraph();
+                        XWPFRun observacionesTexto = observaciones.createRun();
+                        observacionesTexto.setText(fullDetectorDTO.getObservations());
+                        observacionesTexto.addCarriageReturn();
+                        tmpIdCausal = fullDetectorDTO.getId();
+
+                    }
+
+                    i++;
+
+
+                }
+
+
+                XWPFParagraph cierre = document.createParagraph();
+                XWPFRun cierreParrafoTitulo = cierre.createRun();
+                cierreParrafoTitulo.setBold(true);
+                cierre.setAlignment(ParagraphAlignment.CENTER);
+                cierreParrafoTitulo.addCarriageReturn();
+                cierreParrafoTitulo.addCarriageReturn();
+
+                cierreParrafoTitulo.setText("III. PRUEBAS. ");
+                cierreParrafoTitulo.addCarriageReturn();
+                cierreParrafoTitulo.addCarriageReturn();
+
+
+                XWPFParagraph cierreTexto = document.createParagraph();
+                XWPFRun cierreParrafoTexto = cierreTexto.createRun();
+                cierreParrafoTexto.setBold(false);
+                cierreTexto.setAlignment(ParagraphAlignment.BOTH);
+
+
+                cierreParrafoTexto.setText("A efecto de acreditar lo expresado en el presente escrito, ofrezco las pruebas siguientes:");
+                cierreParrafoTexto.addCarriageReturn();
+                cierreParrafoTexto.addCarriageReturn();
+
+
+                cierreParrafoTexto.setText("    1. Documentales públicas. Consistentes en Acta Circunstanciadas \n");
+                cierreParrafoTexto.addCarriageReturn();
+
+                cierreParrafoTexto.setText("    2. Documentales privadas. Consistentes en Escrito de pruebas");
+                cierreParrafoTexto.addCarriageReturn();
+
+                cierreParrafoTexto.setText("    3. Original del acuse de recibo de la solicitud de expedición de copia certificada de las actas de jornada electoral, escrutinio y cómputo, hojas de incidentes, escritos de protesta, recibos de recepción de paquetes electorales, acta circunstancia de la jornada electoral y de cómputo distrital.\n");
+                cierreParrafoTexto.addCarriageReturn();
+
+                cierreParrafoTexto.setText("    4. Instrumental de actuaciones");
+                cierreParrafoTexto.addCarriageReturn();
+
+                cierreParrafoTexto.setText("    5. Presuncional legal y humana");
+                cierreParrafoTexto.addCarriageReturn();
+
+                cierreParrafoTexto.setText("    6. Otras Videos y grabaciones \n");
+                cierreParrafoTexto.addCarriageReturn();
+
+
+                XWPFParagraph cierrePetitorio = document.createParagraph();
+                XWPFRun cierrePetitorioTitulo = cierrePetitorio.createRun();
+                cierrePetitorioTitulo.setBold(true);
+                cierrePetitorio.setAlignment(ParagraphAlignment.CENTER);
+                cierrePetitorioTitulo.addCarriageReturn();
+                cierrePetitorioTitulo.addCarriageReturn();
+                cierrePetitorioTitulo.setText("IV. PETITORIOS ");
+                cierrePetitorioTitulo.addCarriageReturn();
+                cierrePetitorioTitulo.addCarriageReturn();
+
+                XWPFParagraph petitorios = document.createParagraph();
+                XWPFRun textoPetitorios = petitorios.createRun();
+                textoPetitorios.addCarriageReturn();
+
+                textoPetitorios.setText("PRIMERO. Tener por presentada en tiempo y forma, la presente demanda.\n");
+                textoPetitorios.addCarriageReturn();
+
+                textoPetitorios.setText("SEGUNDO. Reconocer la personalidad con la que me ostento.\n");
+                textoPetitorios.addCarriageReturn();
+
+                textoPetitorios.setText("TERCERO. Se declare la nulidad de la votación recibida en las casillas materia de impugnación en la presente demanda.\n");
+                textoPetitorios.addCarriageReturn();
+
+                textoPetitorios.setText("CUARTO.  Se modifique el cómputo distrital impugnado.\n");
+                textoPetitorios.addCarriageReturn();
+
+
+
+
+            }catch (NullPointerException e ){
+                System.out.print("Caught the NullPointerException");
+            }
+
+
+            document.write(out);
+            out.close();
+
+
+        }catch (FileNotFoundException e){
+        e.printStackTrace();
+    }
+
+
+
+
+
+    }
 }
