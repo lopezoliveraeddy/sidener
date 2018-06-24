@@ -30,6 +30,9 @@
         vm.detectorCausals = {};
         vm.stateDetectorCausals = '';
 
+        vm.idPollingPlaceParam = parseInt($stateParams.id);
+        vm.idPollingPlaceParamNext = vm.idPollingPlaceParam+1;
+        vm.idDistrictParam = parseInt($stateParams.distrito);
 
         loadAll();
 
@@ -68,7 +71,7 @@
             }, onSuccess, onError);
             vm.causalId = id;
             vm.causalColor = color;
-            vm.causalName = name
+            vm.causalName = name;
         };
 
         function onSuccess(data, headers) {

@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="table-responsive">
-        <table class="jh-table table table-striped table-bordered">
+        <table class="jh-table table table-striped table-bordered table-condensed">
             <thead>
             <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                 <th jh-sort-by="decimalNumber"><span data-translate="sidenerApp.district.romanNumber"></span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -99,7 +99,7 @@
                     <uib-progressbar animate="false" max="district.electoralRoll" value="district.totalVotes" type="success">{{district.totalVotes | number}}</uib-progressbar>
                     <span>{{district.percentageTotalVotes | number:2 }}%</span>
                 </td>
-                <td class="text-center">
+                <td class="text-center" style="width: 300px;">
                     <div class="btn-group">
                         <button type="submit"
                                 ui-sref="district-recount-pollingPlaces({idDistrict:district.id})"
@@ -119,9 +119,9 @@
             </tbody>
         </table>
     </div>
-        <div class="text-center">
+        <!--<div class="text-center">
             <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
             <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
-        </div>
+        </div>-->
     </div>
 </div>

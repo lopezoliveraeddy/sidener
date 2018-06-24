@@ -17,6 +17,8 @@
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.loadAll = loadAll;
+        vm.addThisPollingPlace = addThisPollingPlace;
+
 
         // Datos del Distrito
         vm.loadDistrct = loadDistrict;
@@ -40,7 +42,7 @@
                 idDistrict : $stateParams.idDistrict,
                 pollingPlaceWon: $stateParams.pollingPlaceWon,
                 page: pagingParams.page - 1,
-                size: vm.itemsPerPage,
+                size: 1000,
                 sort: sort()
             }, onSuccess, onError);
 
@@ -98,6 +100,37 @@
                 AlertService.error(error.data.message);
             }
         }
+
+        function addThisPollingPlace(pollingPlace,confirmed){
+            console.log(confirmed);
+            pollingPlace.challengedPollingPlace = confirmed;
+            PollingPlace.update(pollingPlace, onSaveSuccess, onSaveError);
+            function onSaveSuccess(data){
+
+                pollingPlace = data;
+                console.log(pollingPlace);
+            }
+            function onSaveError(error) {
+                AlertService.error(error.data.message);
+            }
+        }
+
+        $scope.pollingPlaceType = function (typePollingPlace, typeNumber) {
+            switch (typePollingPlace) {
+                case 'BASIC':
+                    return 'B';
+                    break;
+                case 'CONTIGUOUS':
+                    return 'C'+typeNumber;
+                    break;
+                case 'EXTRAORDINARY':
+                    return 'E'+typeNumber;
+                    break;
+                case 'SPECIAL':
+                    return 'S'+typeNumber;
+                    break;
+            }
+        };
 
         $scope.countingAssumption = function(countingAssumption) {
             if (countingAssumption === true) {

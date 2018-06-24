@@ -66,7 +66,7 @@
             ElectionCausalsDistrict.get({
                 idElection : $stateParams.idElection,
                 page: pagingParams.page - 1,
-                size: vm.itemsPerPage,
+                size: 1000,
                 sort: sort()
             }, onSuccess, onError);
             function sort() {

@@ -9,7 +9,10 @@ import electorum.sidener.service.DistrictService;
 import electorum.sidener.service.ElectionService;
 import electorum.sidener.service.dto.DistrictDTO;
 import electorum.sidener.service.dto.ElectionDTO;
+import electorum.sidener.web.rest.PollingPlaceResource;
 import org.apache.poi.xwpf.usermodel.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 /*
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -19,6 +22,7 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 public class Documents {
 
+    private final Logger log = LoggerFactory.getLogger(PollingPlaceResource.class);
 
     public void generateWord(DistrictDTO districtDTO, ElectionDTO electionDTO, String filename) throws IOException {
 
@@ -36,7 +40,10 @@ public class Documents {
             XWPFRun solicitud = paragraphTwo.createRun();
             XWPFRun regla = paragraphTwo.createRun();
 
-            Long diferenciaPorcentual = (districtDTO.getTotalFirstPlace()- districtDTO.getTotalSecondPlace())/districtDTO.getTotalVotes();
+            double diferenciaPorcentual = ((double)districtDTO.getTotalFirstPlace()- districtDTO.getTotalSecondPlace())/districtDTO.getTotalVotes();
+            log.debug("DIFERENCIA PORCENTUAL {}", districtDTO.getTotalFirstPlace()- districtDTO.getTotalSecondPlace());
+            log.debug("TOTAL VOTOS {}",districtDTO.getTotalVotes());
+            log.debug("DIVISION {}", diferenciaPorcentual);
 
 
             encabezado.setBold(true);
@@ -84,7 +91,7 @@ public class Documents {
             tableRowThree.getCell(1).setText(districtDTO.getTotalFirstPlace().toString());
             tableRowThree.getCell(2).setText(districtDTO.getEntitySecondPlace());
             tableRowThree.getCell(3).setText(districtDTO.getTotalSecondPlace().toString());
-            tableRowThree.getCell(4).setText(String.valueOf(diferenciaPorcentual));
+            tableRowThree.getCell(4).setText( String.format("%.2f",(diferenciaPorcentual)) );
             XWPFParagraph paragraphThree = document.createParagraph();
             paragraphThree.setAlignment(ParagraphAlignment.CENTER);
 

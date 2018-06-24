@@ -52,7 +52,7 @@
             DistrictRecountPollingPlaces.get({
                 idDistrict : $stateParams.idDistrict,
                 page: pagingParams.page - 1,
-                size: vm.itemsPerPage,
+                size: 1000,
                 sort: sort()
             }, onSuccess, onError);
 
@@ -77,6 +77,8 @@
                 AlertService.error(error.data.message);
             }
         }
+
+
 
         function loadPage(page) {
             vm.page = page;
