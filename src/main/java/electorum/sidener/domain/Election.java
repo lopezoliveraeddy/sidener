@@ -166,6 +166,18 @@ public class Election implements Serializable {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "council_place")
+    private String councilPlace;
+
+    @Column(name = "auth_people")
+    private String authPeople;
+
+    @Column(name = "compute_type")
+    private String computeType;
+
+    @Column(name = "judge_type")
+    private String judgeType;
+
     @ManyToOne
     private ElectionType electionType;
 
@@ -475,6 +487,58 @@ public class Election implements Serializable {
         this.address = address;
     }
 
+    public String getCouncilPlace() {
+        return councilPlace;
+    }
+
+    public Election councilPlace(String councilPlace) {
+        this.councilPlace = councilPlace;
+        return this;
+    }
+
+    public void setCouncilPlace(String councilPlace) {
+        this.councilPlace = councilPlace;
+    }
+
+    public String getAuthPeople() {
+        return authPeople;
+    }
+
+    public Election authPeople(String authPeople) {
+        this.authPeople = authPeople;
+        return this;
+    }
+
+    public void setAuthPeople(String authPeople) {
+        this.authPeople = authPeople;
+    }
+
+    public String getComputeType() {
+        return computeType;
+    }
+
+    public Election computeType(String computeType) {
+        this.computeType = computeType;
+        return this;
+    }
+
+    public void setComputeType(String computeType) {
+        this.computeType = computeType;
+    }
+
+    public String getJudgeType() {
+        return judgeType;
+    }
+
+    public Election judgeType(String judgeType) {
+        this.judgeType = judgeType;
+        return this;
+    }
+
+    public void setJudgeType(String judgeType) {
+        this.judgeType = judgeType;
+    }
+
     public ElectionType getElectionType() {
         return electionType;
     }
@@ -664,6 +728,10 @@ public class Election implements Serializable {
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
             ", address='" + getAddress() + "'" +
+            ", councilPlace='" + getCouncilPlace() + "'" +
+            ", authPeople='" + getAuthPeople() + "'" +
+            ", computeType='" + getComputeType() + "'" +
+            ", judgeType='" + getJudgeType() + "'" +
             "}";
     }
 }

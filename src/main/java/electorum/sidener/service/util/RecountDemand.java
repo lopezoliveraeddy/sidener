@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class RecountDemand {
@@ -452,8 +453,11 @@ public class RecountDemand {
     public void generateCausalDemand(DistrictDTO district, String filename, List<FullDetectorDTO> detectorCausalByIdDistrict, ElectionDTO electionDTO) throws IOException{
         FileOutputStream out = new FileOutputStream(new File("/Desarrollo/files/demandas/"+filename));
 
+
         try{
             XWPFDocument document = new XWPFDocument();
+
+
             XWPFParagraph paragraph = document.createParagraph();
             XWPFRun encabezado = paragraph.createRun();
             paragraph.setAlignment(ParagraphAlignment.RIGHT);
@@ -497,9 +501,9 @@ public class RecountDemand {
 
                 primerParrafo.setText(electionDTO.getNameDemandant()+" en mi calidad de representante de "+partyOrCoalitionOrCandidate+" registrado " +
                     "formalmente ante el Consejo distrital "+ district.getRomanNumber() +" con cabecera en  "+district.getDistrictHead()+", señalo como domicilio para oír y " +
-                    "recibir notificaciones el ubicado en "+district.getDistrictHead()+" y autorizo para esos efectos a " +
-                     electionDTO.getAddress() +
-                    "De igual manera, con fundamento en los artículos 1, 16, 41 y 116 de la Constitución Política de los Estados Unidos Mexicanos;  y "+ electionDTO.getRecountFundamentRequest() + " promuevo "+electionDTO.getElectionTypeName()+ " en contra de los resultados del Cómputo de la Elección de "+electionDTO.getElectionTypeName()+", efectuados por el Consejo --------- con cabecera en -------  en las casillas que se precisan en la presente demanda");
+                    "recibir notificaciones el ubicado en "+district.getDistrictHead()+" y autorizo para esos efectos a " + electionDTO.getAuthPeople() );
+                primerParrafo.addCarriageReturn();
+                primerParrafo.setText( "De igual manera, con fundamento en los artículos 1, 16, 41 y 116 de la Constitución Política de los Estados Unidos Mexicanos;  y "+ electionDTO.getRecountFundamentRequest() + " promuevo "+electionDTO.getElectionTypeName()+ " en contra de los resultados del Cómputo de la Elección de "+electionDTO.getElectionTypeName()+", efectuados por el Consejo "+ electionDTO.getCouncilPlace() +" con cabecera   en las casillas que se precisan en la presente demanda");
                 primerParrafo.addCarriageReturn();
                 primerParrafo.setText("Hago valer mi impugnación y pretensión, en los hechos, agravios y pruebas que a continuación se expresan.");
 
@@ -518,12 +522,12 @@ public class RecountDemand {
                 XWPFParagraph hechosParrafo = document.createParagraph();
                 XWPFRun hechosParrafoTexto = hechosParrafo.createRun();
                 hechosParrafo.setAlignment(ParagraphAlignment.BOTH);
-                hechosParrafoTexto.setText("1. El "+electionDTO.getDateElection()+" inició al proceso electoral ordinario para renovar "+electionDTO.getElectionTypeName()+".");
+                hechosParrafoTexto.setText("1. El "+electionDTO.getDateElection().getDayOfMonth()+" de  "+ electionDTO.getDateElection().getMonthValue()+" de "+ electionDTO.getDateElection().getYear() +"inició al proceso electoral ordinario para renovar "+electionDTO.getElectionTypeName()+".");
                 hechosParrafoTexto.addCarriageReturn();
-                hechosParrafoTexto.setText("2. El "+electionDTO.getDateElection()+" se llevó acabo la jornada electoral, registrándose diversas irregularidades en la votación recibida en las casillas del  "+district.getDistrictHead()+", las cuales se precisan y se impugnan");
+                hechosParrafoTexto.setText("2. El "+electionDTO.getDateElection().getDayOfMonth()+" de  "+ electionDTO.getDateElection().getMonthValue()+" de "+ electionDTO.getDateElection().getYear() + " se llevó acabo la jornada electoral, registrándose diversas irregularidades en la votación recibida en las casillas del  "+district.getDistrictHead()+", las cuales se precisan y se impugnan");
                 hechosParrafoTexto.addCarriageReturn();
 
-                hechosParrafoTexto.setText("3. El "+electionDTO.getDateElection()+", se llevaron a cabo los cómputos (municipales o distritales) ____(19)____________en la entidad antes mencionada, en específico en el Consejo, concluyendo el correspondiente a la elección de "+electionDTO.getElectionTypeName()+"__el "+electionDTO.getDateElection()+".");
+                hechosParrafoTexto.setText("3. El "+electionDTO.getDateElection().getDayOfMonth()+" de  "+ electionDTO.getDateElection().getMonthValue()+" de "+ electionDTO.getDateElection().getYear() +", se llevaron a cabo los cómputos (municipales o distritales) " + electionDTO.getComputeType()+ " en la entidad antes mencionada, en específico en el Consejo, concluyendo el correspondiente a la elección de "+electionDTO.getElectionTypeName()+"el "+electionDTO.getDateElection().getDayOfMonth()+" de  "+ electionDTO.getDateElection().getMonthValue()+" de "+ electionDTO.getDateElection().getYear() +".");
                 hechosParrafoTexto.addCarriageReturn();
 
 
@@ -654,17 +658,17 @@ public class RecountDemand {
                 recuentoCcuerpo.setText("Causa agravio que la autoridad responsable, de forma ilegal, sin motivación y fundamentación, realizara un nuevo recuento en las casillas que enseguida se especifican en la tabla inserta, no obstante que no se actualizaba ninguna de las causas legales que lo justifican y que no se cumplieron las formalidades para su solicitud, tal y como puede advertirse en el acta circunstanciada correspondiente. ");
 
                 XWPFTable tableB = document.createTable();
-                XWPFTableRow tableBRowOne = table.getRow(0);
+                XWPFTableRow tableBRowOne = tableB.getRow(0);
                 tableBRowOne.getCell(0).setText("No");
                 tableBRowOne.addNewTableCell().setText("Casilla");
                 tableBRowOne.addNewTableCell().setText("CAUSA POR LA QUE SE SOLICITÓ EL RECUENTO AL INICIAR EL CÓMPUTO");
                 tableBRowOne.addNewTableCell().setText("CAUSA POR LA QUE SE NEGÓ EL RECUENTO");
 
-                XWPFTableRow tableBRowTwo = table.createRow();
-                tableRowTwo.getCell(0).setText("");
-                tableRowTwo.getCell(1).setText("");
-                tableRowTwo.getCell(2).setText("");
-                tableRowTwo.getCell(2).setText("");
+                XWPFTableRow tableBRowTwo = tableB.createRow();
+                tableBRowTwo.getCell(0).setText("");
+                tableBRowTwo.getCell(1).setText("");
+                tableBRowTwo.getCell(2).setText("");
+                tableBRowTwo.getCell(2).setText("");
 
 
                 XWPFParagraph cierre = document.createParagraph();

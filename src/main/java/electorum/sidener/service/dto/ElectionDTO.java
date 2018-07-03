@@ -113,6 +113,14 @@ public class ElectionDTO implements Serializable {
 
     private String address;
 
+    private String councilPlace;
+
+    private String authPeople;
+
+    private String computeType;
+
+    private String judgeType;
+
     private Set<PoliticalPartyDTO> politicalParties = new HashSet<>();
 
     private Set<IndependentCandidateDTO> independentCandidates = new HashSet<>();
@@ -510,6 +518,42 @@ public class ElectionDTO implements Serializable {
         this.address = address;
     }
 
+    public Boolean getPublished() {
+        return published;
+    }
+
+    public String getCouncilPlace() {
+        return councilPlace;
+    }
+
+    public void setCouncilPlace(String councilPlace) {
+        this.councilPlace = councilPlace;
+    }
+
+    public String getAuthPeople() {
+        return authPeople;
+    }
+
+    public void setAuthPeople(String authPeople) {
+        this.authPeople = authPeople;
+    }
+
+    public String getComputeType() {
+        return computeType;
+    }
+
+    public void setComputeType(String computeType) {
+        this.computeType = computeType;
+    }
+
+    public String getJudgeType() {
+        return judgeType;
+    }
+
+    public void setJudgeType(String judgeType) {
+        this.judgeType = judgeType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -555,6 +599,10 @@ public class ElectionDTO implements Serializable {
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
             ", address='" + getAddress() + "'" +
+            ", councilPlace='" + getCouncilPlace() + "'" +
+            ", authPeople='" + getAuthPeople() + "'" +
+            ", computeType='" + getComputeType() + "'" +
+            ", judgeType='" + getJudgeType() + "'" +
             "}";
     }
 }
