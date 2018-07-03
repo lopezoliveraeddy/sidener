@@ -163,6 +163,9 @@ public class Election implements Serializable {
     @Column(name = "updated_date")
     private ZonedDateTime updatedDate;
 
+    @Column(name = "address")
+    private String address;
+
     @ManyToOne
     private ElectionType electionType;
 
@@ -459,6 +462,19 @@ public class Election implements Serializable {
         this.updatedDate = updatedDate;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public Election address(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public ElectionType getElectionType() {
         return electionType;
     }
@@ -647,6 +663,7 @@ public class Election implements Serializable {
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
+            ", address='" + getAddress() + "'" +
             "}";
     }
 }

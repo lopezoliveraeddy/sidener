@@ -55,6 +55,7 @@
                     <th jh-sort-by="published"><span data-translate="sidenerApp.election.published">Published</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="createdDate"><span data-translate="sidenerApp.election.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="updatedDate"><span data-translate="sidenerApp.election.updatedDate">Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address"><span data-translate="sidenerApp.election.address">Address</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="electionTypeName"><span data-translate="sidenerApp.election.electionType">Election Type</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="politicalPartyAssociatedName"><span data-translate="sidenerApp.election.politicalPartyAssociated">Political Party Associated</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="coalitionAssociatedName"><span data-translate="sidenerApp.election.coalitionAssociated">Coalition Associated</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -84,6 +85,7 @@
                     <td>{{election.published}}</td>
                     <td>{{election.createdDate | date:'medium'}}</td>
                     <td>{{election.updatedDate | date:'medium'}}</td>
+                    <td>{{election.address}}</td>
                     <td>
                         <a ui-sref="election-type-detail({id:election.electionTypeId})">{{election.electionTypeName}}</a>
                     </td>

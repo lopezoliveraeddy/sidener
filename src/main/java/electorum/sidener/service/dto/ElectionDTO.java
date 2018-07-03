@@ -111,6 +111,8 @@ public class ElectionDTO implements Serializable {
 
     private String independentCandidateAssociatedAcronym;
 
+    private String address;
+
     private Set<PoliticalPartyDTO> politicalParties = new HashSet<>();
 
     private Set<IndependentCandidateDTO> independentCandidates = new HashSet<>();
@@ -500,6 +502,14 @@ public class ElectionDTO implements Serializable {
 		this.rtFileContentType = rtFileContentType;
 	}
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -544,6 +554,7 @@ public class ElectionDTO implements Serializable {
             ", published='" + isPublished() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
+            ", address='" + getAddress() + "'" +
             "}";
     }
 }

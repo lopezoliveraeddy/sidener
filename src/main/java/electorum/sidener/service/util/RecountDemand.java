@@ -479,7 +479,7 @@ public class RecountDemand {
 
 
                 presentacion.setBold(true);
-                presentacion.setText(electionDTO.getRecountElectoralInstitute());
+                presentacion.setText("TRIBUNAL ELECTORAL DEL "+electionDTO.getRecountElectoralInstitute());
                 presentacion.addCarriageReturn();
                 presentacion.addCarriageReturn();
 
@@ -498,7 +498,7 @@ public class RecountDemand {
                 primerParrafo.setText(electionDTO.getNameDemandant()+" en mi calidad de representante de "+partyOrCoalitionOrCandidate+" registrado " +
                     "formalmente ante el Consejo distrital "+ district.getRomanNumber() +" con cabecera en  "+district.getDistrictHead()+", señalo como domicilio para oír y " +
                     "recibir notificaciones el ubicado en "+district.getDistrictHead()+" y autorizo para esos efectos a " +
-                    "[--------------------]\n" +
+                     electionDTO.getAddress() +
                     "De igual manera, con fundamento en los artículos 1, 16, 41 y 116 de la Constitución Política de los Estados Unidos Mexicanos;  y "+ electionDTO.getRecountFundamentRequest() + " promuevo "+electionDTO.getElectionTypeName()+ " en contra de los resultados del Cómputo de la Elección de "+electionDTO.getElectionTypeName()+", efectuados por el Consejo --------- con cabecera en -------  en las casillas que se precisan en la presente demanda");
                 primerParrafo.addCarriageReturn();
                 primerParrafo.setText("Hago valer mi impugnación y pretensión, en los hechos, agravios y pruebas que a continuación se expresan.");

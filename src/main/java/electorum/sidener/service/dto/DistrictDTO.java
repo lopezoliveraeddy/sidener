@@ -21,6 +21,8 @@ public class DistrictDTO implements Serializable {
 
     private String districtHead;
 
+    private String address;
+
     private State state;
 
     private String entityFirstPlace;
@@ -201,6 +203,14 @@ public class DistrictDTO implements Serializable {
 
     public void setElectionId(Long electionId) {
         this.electionId = electionId;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override

@@ -155,12 +155,17 @@
         {
             "fieldName": "updatedDate",
             "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20170922021415",
-    "javadoc": "Entidad propia de una elección, la cual almacena datos informativos de la elección",
-    "entityTableName": "election",
     "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "election",
+    "jpaMetamodelFiltering": false,
     "pagination": "pagination",
-    "service": "serviceClass"
+    "javadoc": "Entidad propia de una elección, la cual almacena datos informativos de la elección"
 }
