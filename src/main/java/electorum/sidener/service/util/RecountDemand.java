@@ -41,22 +41,11 @@ public class RecountDemand {
             entrada.addCarriageReturn();
 
             XWPFRun introduccion = paragraphA.createRun();
-            introduccion.setText(electionDTO.getNameDemandant()+" en mi calidad de representante de "+electionDTO.getPoliticalPartyAssociatedName()+" registrado formalmente ante el Consejo Distrital "+districtDTO.getRomanNumber()+" con cabecera en "+districtDTO.getDistrictHead()+", señalo como domicilio para oír y recibir notificaciones el ubicado en ");
-            XWPFRun entradaDireccion = paragraphA.createRun();
-            entradaDireccion.setColor("FF0000");
-            entradaDireccion.setText("UBICACION");
+            introduccion.setText(electionDTO.getNameDemandant()+" en mi calidad de representante de "+electionDTO.getPoliticalPartyAssociatedName()+" registrado formalmente ante el Consejo Distrital "+districtDTO.getRomanNumber()+" con cabecera en "+districtDTO.getDistrictHead()+", señalo como domicilio para oír y recibir notificaciones el ubicado en XXXXXXXX y autorizo para esos efectos a "+electionDTO.getNameDemandant());
 
-            XWPFRun entradaIntertexto = paragraphA.createRun();
-            entradaIntertexto.setColor("000000");
-            entradaIntertexto.setText(" y autorizo para esos efectos a ");
-
-            XWPFRun autorizados = paragraphA.createRun();
-            autorizados.setColor("FF0000");
-            autorizados.setText("Nombre de los autorizados.");
-            autorizados.addCarriageReturn();
 
             XWPFRun fundamento = paragraphA.createRun();
-            fundamento.setText("De igual manera, con fundamento en "+electionDTO.getRecountFundamentRequest()+". En contra de los resultados del Cómputo Distrital de la Elección de "+electionDTO.getState()+" "+electionDTO.getElectionTypeName()+" 2015-2016, efectuados por el Consejo distrital con cabecera en  "+districtDTO.getDistrictHead()+", en las casillas que se precisan en la presente demanda.");
+            fundamento.setText("De igual manera, con fundamento en los artículos 1, 16, 41 y 116 de la Constitución Política de los Estados Unidos Mexicanos; y "+electionDTO.getRecountFundamentRequest()+".Promuevo ___________________. ");
             fundamento.addCarriageReturn();
             fundamento.setText("Hago valer mi impugnación y pretensión, en los hechos, agravios y pruebas que a continuación se expresan.");
 
@@ -510,10 +499,10 @@ public class RecountDemand {
                     "formalmente ante el Consejo distrital "+ district.getRomanNumber() +" con cabecera en  "+district.getDistrictHead()+", señalo como domicilio para oír y " +
                     "recibir notificaciones el ubicado en "+district.getDistrictHead()+" y autorizo para esos efectos a " +
                     "[--------------------]\n" +
-                    "De igual manera, con fundamento "+ electionDTO.getRecountFundamentRequest()+
-                    "en contra de los resultados del Cómputo Distrital de la Elección de "+electionDTO.getState().name() +" "+electionDTO.getElectionTypeName() +" 2015-2016, efectuados p" +
-                    "or el Consejo distrital con cabecera en "+district.getDistrictHead()+", en las casillas que se precisan en la presente demanda.\n" +
-                    "Hago valer mi impugnación y pretensión, en los hechos, agravios y pruebas que a continuación se expresan.\n");
+                    "De igual manera, con fundamento en los artículos 1, 16, 41 y 116 de la Constitución Política de los Estados Unidos Mexicanos;  y "+ electionDTO.getRecountFundamentRequest() + " promuevo "+electionDTO.getElectionTypeName()+ " en contra de los resultados del Cómputo de la Elección de "+electionDTO.getElectionTypeName()+", efectuados por el Consejo --------- con cabecera en -------  en las casillas que se precisan en la presente demanda");
+                primerParrafo.addCarriageReturn();
+                primerParrafo.setText("Hago valer mi impugnación y pretensión, en los hechos, agravios y pruebas que a continuación se expresan.");
+
 
 
                 XWPFParagraph hechos = document.createParagraph();
@@ -529,14 +518,15 @@ public class RecountDemand {
                 XWPFParagraph hechosParrafo = document.createParagraph();
                 XWPFRun hechosParrafoTexto = hechosParrafo.createRun();
                 hechosParrafo.setAlignment(ParagraphAlignment.BOTH);
-                hechosParrafoTexto.setText("Con base en los hechos antes expresados, manifiesto que los actos que se impugnan me causan AGRAVIOS, " +
-                    "mismos que, desde este momento, solicito se me supla la deficiencia en la expresión de éstos, " +
-                    "al tratarse de un medio en el que opera dicha figura. Causa agravio el cómputo realizado por el Consejo respecto de la elección de tipo Distrital.\n" +
-                    "Lo anterior, en atención a que debe anularse la votación recibida en las casillas que se detallarán a continuación, " +
-                    "por la actualización de las causas de nulidad de la votación contempladas en "+electionDTO.getRecountFundamentRequest()+"., durante la jornada electoral.\n");
+                hechosParrafoTexto.setText("1. El "+electionDTO.getDateElection()+" inició al proceso electoral ordinario para renovar "+electionDTO.getElectionTypeName()+".");
+                hechosParrafoTexto.addCarriageReturn();
+                hechosParrafoTexto.setText("2. El "+electionDTO.getDateElection()+" se llevó acabo la jornada electoral, registrándose diversas irregularidades en la votación recibida en las casillas del  "+district.getDistrictHead()+", las cuales se precisan y se impugnan");
+                hechosParrafoTexto.addCarriageReturn();
 
+                hechosParrafoTexto.setText("3. El "+electionDTO.getDateElection()+", se llevaron a cabo los cómputos (municipales o distritales) ____(19)____________en la entidad antes mencionada, en específico en el Consejo, concluyendo el correspondiente a la elección de "+electionDTO.getElectionTypeName()+"__el "+electionDTO.getDateElection()+".");
                 hechosParrafoTexto.addCarriageReturn();
-                hechosParrafoTexto.addCarriageReturn();
+
+
 
 
                 XWPFParagraph agravios = document.createParagraph();
@@ -545,18 +535,21 @@ public class RecountDemand {
                 agraviosTitulo.setBold(true);
                 agraviosTitulo.addCarriageReturn();
                 agraviosTitulo.addCarriageReturn();
-                agraviosTitulo.setText("II AGRAVIOS");
+                agraviosTitulo.setText("III AGRAVIOS");
                 agraviosTitulo.addCarriageReturn();
                 agraviosTitulo.addCarriageReturn();
 
                 XWPFParagraph agraviosTexto = document.createParagraph();
                 XWPFRun agraviosContenido = agraviosTexto.createRun();
                 agraviosTexto.setAlignment(ParagraphAlignment.BOTH);
-                agraviosContenido.setText("Con base en los hechos antes expresados, manifiesto que los actos que se impugnan me causan AGRAVIOS, mismos que, " +
-                    "desde este momento, solicito se me supla la deficiencia en la expresión de éstos, al tratarse de un medio en el que opera dicha figura.\n" +
-                    "Causa agravio el cómputo realizado por el Consejo respecto de la elección de tipo Distrital.\n" +
-                    "Lo anterior, en atención a que debe anularse la votación recibida en las casillas que se detallarán a continuación" +
-                    ", por la actualización de las causas de nulidad de la votación contempladas en "+electionDTO.getRecountFundamentRequest()+"., durante la jornada electoral.\n");
+                agraviosContenido.setText("Con base en los hechos antes expresados, manifiesto que los actos que se impugnan me causan AGRAVIOS, mismos que, desde este momento, solicito se me supla la deficiencia en la expresión de éstos, al tratarse de un medio en el que opera dicha figura.\n" +
+                    "\n" +
+                    "Causa agravio el cómputo realizado por el Consejo respecto de la elección de (tipo de elección).\n" +
+                    "\n" +
+                    "Lo anterior, en atención a que debe anularse la votación recibida en las casillas que se detallarán a continuación, por la actualización de las causas de nulidad de la votación contempladas en los artículos (artículos aplicable según el tipo de elección) ______________(22)_____________ __________________, durante la jornada electoral.\n");
+
+                agraviosContenido.addCarriageReturn();
+                agraviosContenido.addCarriageReturn();
 
                 int  i = 0;
                 long tmpIdCausal = 0L,actual=0L;
@@ -566,6 +559,7 @@ public class RecountDemand {
                         tmpIdCausal = fullDetectorDTO.getId();
                         XWPFParagraph causales = document.createParagraph();
                         XWPFRun causalesTitulo = causales.createRun();
+                        causalesTitulo.addCarriageReturn();
                         causalesTitulo.setBold(true);
                         causales.setAlignment(ParagraphAlignment.BOTH);
                         causalesTitulo.setText(fullDetectorDTO.getCausalDTO().getName());
@@ -598,6 +592,81 @@ public class RecountDemand {
                 }
 
 
+                XWPFParagraph recuento = document.createParagraph();
+                XWPFRun recuentoParrafoTitulo = recuento.createRun();
+
+                recuentoParrafoTitulo.addCarriageReturn();
+                recuentoParrafoTitulo.setBold(true);
+                recuentoParrafoTitulo.addCarriageReturn();
+                recuentoParrafoTitulo.setText("9.	Recuento");
+                recuentoParrafoTitulo.addCarriageReturn();
+                recuentoParrafoTitulo.addCarriageReturn();
+                recuentoParrafoTitulo.setText("a) Negativa Injustificada de Recuento Total");
+
+                recuentoParrafoTitulo.addCarriageReturn();
+                recuentoParrafoTitulo.addCarriageReturn();
+
+                XWPFParagraph recuentoTexto = document.createParagraph();
+                recuentoTexto.setAlignment(ParagraphAlignment.BOTH);
+                XWPFRun recuentoTextoRum = recuentoTexto.createRun();
+                recuentoTextoRum.setText("Causa agravio que la autoridad responsable, de forma ilegal, sin motivación y fundamentación, se negara a llevar a cabo un nuevo recuento total, no obstante que le fue solicitado al inicio del cómputo distrital, tal y como puede advertirse en el acta circunstanciada y del acuse de recibo de la solicitud correspondiente, dado que la diferencia entre el primero y segundo lugar observada a partir de los resultados preliminares en el distrito era de menos de un punto porcentual.\n" +
+                    "\n" +
+                    "Lo anterior es así toda vez que la responsable, sin motivar ni fundamentar su determinación de negar el recuento solicitado bajo una causa legalmente justificada, se concretó a señalar que (respuesta que dio l autoridad responsable) ");
+
+
+                XWPFParagraph recuentoB = document.createParagraph();
+                XWPFRun recuentoBParrafoTitulo = recuentoB.createRun();
+
+                recuentoBParrafoTitulo.addCarriageReturn();
+                recuentoBParrafoTitulo.addCarriageReturn();
+                recuentoBParrafoTitulo.setBold(true);
+                recuentoBParrafoTitulo.setText("b)\tNegativa injustificada de recuento parcial");
+                recuentoBParrafoTitulo.addCarriageReturn();
+                recuentoBParrafoTitulo.addCarriageReturn();
+
+                XWPFRun recuentoBCuerpo = recuentoB.createRun();
+                recuentoBCuerpo.setText("Causa agravio que la autoridad responsable, de forma ilegal, sin motivación y fundamentación, se negara a llevar a cabo un nuevo recuento en las casillas que enseguida se especifican en la tabla inserta, por las razones que se detallan, no obstante que le fue solicitado al inicio del cómputo distrital, tal y como puede advertirse en el acta circunstanciada y del acuse de recibo de la solicitud correspondiente.");
+                recuentoBParrafoTitulo.addCarriageReturn();
+                recuentoBParrafoTitulo.addCarriageReturn();
+
+                XWPFTable table = document.createTable();
+                XWPFTableRow tableRowOne = table.getRow(0);
+                tableRowOne.getCell(0).setText("No");
+                tableRowOne.addNewTableCell().setText("Casilla");
+                tableRowOne.addNewTableCell().setText("CAUSA POR LA QUE SE SOLICITÓ EL RECUENTO AL INICIAR EL CÓMPUTO");
+                tableRowOne.addNewTableCell().setText("CAUSA POR LA QUE SE NEGÓ EL RECUENTO");
+
+                XWPFTableRow tableRowTwo = table.createRow();
+                tableRowTwo.getCell(0).setText("");
+                tableRowTwo.getCell(1).setText("");
+                tableRowTwo.getCell(2).setText("");
+                tableRowTwo.getCell(2).setText("");
+
+
+                XWPFParagraph recuentoC = document.createParagraph();
+                XWPFRun recuentoCTitulo = recuentoC.createRun();
+                recuentoCTitulo.addCarriageReturn();
+                recuentoCTitulo.addCarriageReturn();
+                recuentoCTitulo.setBold(true);
+                recuentoCTitulo.setText("c)\tRecuento parcial injustificado");
+
+                XWPFRun recuentoCcuerpo = recuentoC.createRun();
+                recuentoCcuerpo.setText("Causa agravio que la autoridad responsable, de forma ilegal, sin motivación y fundamentación, realizara un nuevo recuento en las casillas que enseguida se especifican en la tabla inserta, no obstante que no se actualizaba ninguna de las causas legales que lo justifican y que no se cumplieron las formalidades para su solicitud, tal y como puede advertirse en el acta circunstanciada correspondiente. ");
+
+                XWPFTable tableB = document.createTable();
+                XWPFTableRow tableBRowOne = table.getRow(0);
+                tableBRowOne.getCell(0).setText("No");
+                tableBRowOne.addNewTableCell().setText("Casilla");
+                tableBRowOne.addNewTableCell().setText("CAUSA POR LA QUE SE SOLICITÓ EL RECUENTO AL INICIAR EL CÓMPUTO");
+                tableBRowOne.addNewTableCell().setText("CAUSA POR LA QUE SE NEGÓ EL RECUENTO");
+
+                XWPFTableRow tableBRowTwo = table.createRow();
+                tableRowTwo.getCell(0).setText("");
+                tableRowTwo.getCell(1).setText("");
+                tableRowTwo.getCell(2).setText("");
+                tableRowTwo.getCell(2).setText("");
+
+
                 XWPFParagraph cierre = document.createParagraph();
                 XWPFRun cierreParrafoTitulo = cierre.createRun();
                 cierreParrafoTitulo.setBold(true);
@@ -605,7 +674,7 @@ public class RecountDemand {
                 cierreParrafoTitulo.addCarriageReturn();
                 cierreParrafoTitulo.addCarriageReturn();
 
-                cierreParrafoTitulo.setText("III. PRUEBAS. ");
+                cierreParrafoTitulo.setText("I. PRUEBAS. ");
                 cierreParrafoTitulo.addCarriageReturn();
                 cierreParrafoTitulo.addCarriageReturn();
 
@@ -646,7 +715,7 @@ public class RecountDemand {
                 cierrePetitorio.setAlignment(ParagraphAlignment.CENTER);
                 cierrePetitorioTitulo.addCarriageReturn();
                 cierrePetitorioTitulo.addCarriageReturn();
-                cierrePetitorioTitulo.setText("IV. PETITORIOS ");
+                cierrePetitorioTitulo.setText("II. PETITORIOS ");
                 cierrePetitorioTitulo.addCarriageReturn();
                 cierrePetitorioTitulo.addCarriageReturn();
 

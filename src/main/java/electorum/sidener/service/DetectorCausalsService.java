@@ -114,7 +114,7 @@ public class DetectorCausalsService {
      *  @return the list of entities
      */
     @Transactional(readOnly = true)
-    public DetectorCausalsDTO getDetectorCausalsByPollingPlace(Long idPollingPlace, Long idCausal) {
+    public DetectorCausalsDTO getDetectorCausalsByPollingPlaceAndCausal(Long idPollingPlace, Long idCausal) {
         log.debug("Request to get a list of DetectorCausals by idPollingPlace {} and idCausal {}", idPollingPlace, idCausal);
         DetectorCausals detectorCausals = detectorCausalsRepository.findDetectorCausalsByIdPollingPlaceAndIdCausal(idPollingPlace, idCausal);
         return detectorCausalsMapper.toDto(detectorCausals);
@@ -132,4 +132,8 @@ public class DetectorCausalsService {
         return detectorCausalsMapper.toDto(result);
 
     }
+
+
+
+
 }

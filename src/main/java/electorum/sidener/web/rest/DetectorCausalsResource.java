@@ -148,8 +148,11 @@ public class DetectorCausalsResource {
     @Timed
     public ResponseEntity<DetectorCausalsDTO> getDetectorCausalsByPollingPlace(@PathVariable Long idPollingPlace, @PathVariable Long idCausal) {
         log.debug("REST request to get DetectorCausals by idPollingPlace {} and idCausal {}", idPollingPlace, idCausal);
-        DetectorCausalsDTO detectorCausalsDTO = detectorCausalsService.getDetectorCausalsByPollingPlace(idPollingPlace, idCausal);
+        DetectorCausalsDTO detectorCausalsDTO = detectorCausalsService.getDetectorCausalsByPollingPlaceAndCausal(idPollingPlace, idCausal);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(detectorCausalsDTO));
     }
+
+
+
 
 }

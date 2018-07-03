@@ -18,5 +18,6 @@ public interface DetectorCausalsRepository extends JpaRepository<DetectorCausals
 
     DetectorCausals findDetectorCausalsByIdPollingPlaceAndIdCausal(Long idPollingPlace, Long idCausal);
     List<DetectorCausals> findDetectorCausalsByIdDistrictOrderByIdCausal(Long idDistrict);
+    List<DetectorCausals> findDetectorCausalsByidPollingPlace(Long idPollingPlace);
 
 }

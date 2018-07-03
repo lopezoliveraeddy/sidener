@@ -70,7 +70,6 @@
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
                 vm.pollingPlaces = data;
-                console.log(vm.pollingPlaces);
                 vm.page = pagingParams.page;
             }
             function onError(error) {
@@ -93,7 +92,6 @@
             });
         }
         function regresaValido(valor) {
-            console.log(valor);
             if (valor == true) {
                 return 1;
             }else{
@@ -167,13 +165,11 @@
         }
 
         function addThisPollingPlace(pollingPlace,confirmed){
-            console.log(confirmed);
             pollingPlace.challengedPollingPlace = confirmed;
             PollingPlace.update(pollingPlace, onSaveSuccess, onSaveError);
             function onSaveSuccess(data){
 
                 pollingPlace = data;
-                console.log(pollingPlace);
             }
             function onSaveError(error) {
                 AlertService.error(error.data.message);
